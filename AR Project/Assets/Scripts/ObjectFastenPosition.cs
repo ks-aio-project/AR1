@@ -1,21 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Video;
+using UnityEngine.XR.ARFoundation;
 
 public class ObjectFastenPosition : MonoBehaviour
 {
     Vector3 initPosition;
 
-    void Start()
-    {
-        initPosition = transform.position;
+    private void Awake() {
+        initPosition = Camera.main.transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    private void Update() {
         transform.position = initPosition;
-        transform.rotation = Quaternion.Euler(0,0,0);
     }
 }

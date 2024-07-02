@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
 
 public class ObjectInitPosition : MonoBehaviour
 {
     public GameObject room;
 
-    private void Awake() {
-        GameObject _room = Instantiate(room);
-        _room.transform.parent = null;
-
-        var rootPosition = Camera.main.transform.position;
-        _room.transform.position = rootPosition;
+    private void Start() {
+        var instance = Instantiate(room);
+        instance.transform.position = Camera.main.transform.position;
+        instance.transform.parent = null;
     }
 }
