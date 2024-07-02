@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public GameObject tmp;
+    public GameObject room;
 
-    private void Start() {
-        string _roomOffset = $"pos:{transform.position}\nrot:{transform.rotation}";
-        tmp.GetComponent<TextMeshProUGUI>().text = _roomOffset;
-    }
+    private void Awake() {
+        GameObject _room = Instantiate(room);
+        _room.transform.parent = null;
 
-    private void Update() {
-        transform.rotation = Quaternion.identity;
+        var rootPosition = Camera.main.transform.position;
+        _room.transform.position = rootPosition;
     }
 }
