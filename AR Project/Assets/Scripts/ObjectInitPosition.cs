@@ -9,52 +9,47 @@ public class ObjectInitPosition : MonoBehaviour
     public GameObject room1, room2, room3;
 
     public TextMeshProUGUI tmp;
-    DefaultObserverEventHandler[] observerEventHandlers;
+    
+    [SerializeField]
+    private ARTrackedImageManager arTrackedImageManager;
 
-    int count = 0;
-
-    private void Start()
+    private void OnEnable()
     {
-        // Scene에서 모든 DefaultObserverEventHandler를 찾아서 가져옴
-        observerEventHandlers = FindObjectsOfType<DefaultObserverEventHandler>();
-
-        // 각 DefaultObserverEventHandler에 대해 구독 설정
-        foreach (var observer in observerEventHandlers)
+        if (arTrackedImageManager != null)
         {
-            observer.OnTargetFound.AddListener(() => OnTargetFoundHandler(observer.transform));
+            arTrackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
         }
     }
 
-    // OnTargetFound 이벤트 발생 시 호출될 메서드
-    private void OnTargetFoundHandler(Transform observer)
+    private void OnDisable()
     {
-        Debug.Log("Target Found!");
-        
-        count++;
-
-        tmp.text = $"Target Found / Count : {count}";
-
-        switch(observer.transform.name)
+        if (arTrackedImageManager != null)
         {
-            case "ImageTarget1":
+            arTrackedImageManager.trackedImagesChanged -= OnTrackedImagesChanged;
+        }
+    }
+
+    private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
+    {
+        foreach (ARTrackedImage trackedImage in eventArgs.added)
+        {
+            // 새로운 이미지가 추가되었을 때 처리할 로직
+            Debug.Log($"New image added: {trackedImage.referenceImage.name}");
+
             room1.SetActive(true);
             room1.transform.position = Camera.main.transform.position;
-            room2.SetActive(false);
-            break;
-            case "ImageTarget2":
-            room1.SetActive(false);
-            room2.SetActive(true);
-            room2.transform.position = Camera.main.transform.position;
-            break;
         }
-    }
 
-    private void OnDestroy()
-    {
-        // 각 DefaultObserverEventHandler에서 구독 해제
-        foreach (var observer in observerEventHandlers)
+        foreach (ARTrackedImage trackedImage in eventArgs.updated)
         {
-            observer.OnTargetFound.RemoveListener(() => OnTargetFoundHandler(observer.transform));
+            // 기존 이미지가 업데이트되었을 때 처리할 로직
+            Debug.Log($"Image updated: {trackedImage.referenceImage.name}");
+        }
+
+        foreach (ARTrackedImage trackedImage in eventArgs.removed)
+        {
+            // 이미지가 제거되었을 때 처리할 로직
+            Debug.Log($"Image removed: {trackedImage.referenceImage.name}");
         }
     }
 }
