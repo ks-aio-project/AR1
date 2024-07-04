@@ -5,13 +5,10 @@ using UnityEngine.XR.ARFoundation;
 
 public class ObjectFastenPosition : MonoBehaviour
 {
-    Vector3 initPosition;
+    public GameObject obj;
 
-    private void Awake() {
-        initPosition = Camera.main.transform.position;
-    }
-
-    private void Update() {
-        transform.position = initPosition;
+    public void onClick() {
+        obj.SetActive(true);
+        obj.transform.position = Camera.main.transform.position;
     }
 }

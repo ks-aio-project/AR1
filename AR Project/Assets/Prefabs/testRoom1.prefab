@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4589168028154284814}
   - component: {fileID: 1839795236512833819}
   - component: {fileID: 2648708581104540358}
-  - component: {fileID: -9078904368696169857}
+  - component: {fileID: 7853356109105711743}
   m_Layer: 0
   m_Name: testRoom1
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 308839048133988750}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.22, y: 0.9345944, z: -0.21}
   m_LocalScale: {x: 1000, y: 100, z: 500}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-9078904368696169857
+--- !u!114 &7853356109105711743
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 308839048133988750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17176b2889815af40ad37faafd1b40ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 52da951267a706b489d99d8f4b18729e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1274527387140467123
@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 6027758565222486818}
   - component: {fileID: 1619381643704622667}
   - component: {fileID: 593613815321005112}
+  - component: {fileID: 5740927519463853853}
   m_Layer: 0
   m_Name: Torus
   m_TagString: Untagged
@@ -180,3 +181,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5740927519463853853
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274527387140467123}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.024999999, y: 0.025000004, z: 0.0050000013}
+  m_Center: {x: 0, y: -0.000000022351742, z: 0.000000011175871}

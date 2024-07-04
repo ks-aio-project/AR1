@@ -5,9 +5,8 @@ using UnityEngine.XR.ARFoundation;
 public class TrackedImageInfomation : MonoBehaviour
 {
     public ARTrackedImageManager trackedImageManager;
-    public GameObject objectToPlace; // 생성할 오브젝트
-
-    private bool objectPlaced = false;
+    public GameObject arObjectPrefab;
+    private GameObject spawnedObject;
 
     void OnEnable()
     {
@@ -21,13 +20,33 @@ public class TrackedImageInfomation : MonoBehaviour
 
     void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
-        foreach (var trackedImage in eventArgs.added)
+        foreach (ARTrackedImage trackedImage in eventArgs.added)
         {
-            if (!objectPlaced && trackedImage.trackingState == TrackingState.Tracking)
+            if (spawnedObject == null)
             {
-                // 트래킹된 이미지의 위치와 방향에 오브젝트 생성
-                Instantiate(objectToPlace, trackedImage.transform.position, trackedImage.transform.rotation);
-                objectPlaced = true; // 한 번만 생성하도록 플래그 설정
+                spawnedObject = Instantiate(arObjectPrefab, trackedImage.transform.position, trackedImage.transform.rotation);
+            }
+            else
+            {
+                spawnedObject.transform.position = trackedImage.transform.position;
+                spawnedObject.transform.rotation = trackedImage.transform.rotation;
+            }
+        }
+
+        foreach (ARTrackedImage trackedImage in eventArgs.updated)
+        {
+            if (spawnedObject != null)
+            {
+                spawnedObject.transform.position = trackedImage.transform.position;
+                spawnedObject.transform.rotation = trackedImage.transform.rotation;
+            }
+        }
+
+        foreach (ARTrackedImage trackedImage in eventArgs.removed)
+        {
+            if (spawnedObject != null)
+            {
+                Destroy(spawnedObject);
             }
         }
     }

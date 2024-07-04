@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6448961091224580792}
-  - component: {fileID: 6148197571487015505}
+  - component: {fileID: 6729412419069522582}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6148197571487015505
+--- !u!114 &6729412419069522582
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,4 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ba4451b8e00424189511e5da38d738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room: {fileID: 193669295802713774, guid: 4720ceb113273a5459f7bf8a0c7ae184, type: 3}
+  room1: {fileID: 308839048133988750, guid: 592152a5133bfcc4d9102e43a3595cd4, type: 3}
+  room2: {fileID: 0}
+  room3: {fileID: 0}
+  tmp: {fileID: 0}
+  arTrackedImageManager: {fileID: 0}
