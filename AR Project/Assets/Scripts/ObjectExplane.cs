@@ -9,6 +9,14 @@ using UnityEngine.XR.ARSubsystems;
 
 public class ObjectExplane : MonoBehaviour
 {
+    public class User
+    {
+        public int userId;
+        public int id;
+        public string title;
+        public string body;
+    }
+
     [SerializeField]
     ARRaycastManager arRaycastManager;
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
@@ -100,12 +108,38 @@ public class ObjectExplane : MonoBehaviour
             if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
             {
                 Debug.LogError(pages[page] + ": Error: " + webRequest.error);
-                descriptionPanel.GetComponent<TextMesh>().text = $"{webRequest.error}";
+                if(webRequest.error.Length > 20)
+                {
+                    descriptionPanel.GetComponent<TextMesh>().text =
+                        descriptionPanel.GetComponent<TestTextMeshSort>().AddLineBreaks(webRequest.error, 20);
+                }
+                else
+                {
+                    descriptionPanel.GetComponent<TextMesh>().text = webRequest.error;
+                }
+                //descriptionPanel.GetComponent<TextMesh>().text = $"{webRequest.error}";
             }
             else
             {
                 Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                descriptionPanel.GetComponent<TextMesh>().text = $"{webRequest.downloadHandler.text}";
+                if (webRequest.downloadHandler.text.Length > 20)
+                {
+                    User user = JsonUtility.FromJson<User>(webRequest.downloadHandler.text);
+
+                    // 변환된 데이터 출력
+                    descriptionPanel.GetComponent<TextMesh>().text = $"UserID : {user.userId}\n" +
+                        $"ID : {user.id}\n" +
+                        $"Title : {user.title}\n" +
+                        $"Body : {user.body}\n";
+
+                        //descriptionPanel.GetComponent<TestTextMeshSort>().AddLineBreaks(webRequest.downloadHandler.text, 20);
+                }
+                else
+                {
+                    descriptionPanel.GetComponent<TextMesh>().text = webRequest.downloadHandler.text;
+                }
+                //descriptionPanel.GetComponent<TestTextMeshSort>().AddLineBreaks(webRequest.downloadHandler.text, 10);
+                //descriptionPanel.GetComponent<TextMesh>().text = $"{webRequest.downloadHandler.text}";
             }
         }
     }
