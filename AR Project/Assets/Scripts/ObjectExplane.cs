@@ -34,6 +34,7 @@ public class ObjectExplane : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
+            Debug.Log("KKS Touch");
             Touch touch = Input.GetTouch(0);
 
             if (touch.phase == TouchPhase.Began)
@@ -45,46 +46,26 @@ public class ObjectExplane : MonoBehaviour
                 {
                     if (hit.collider != null && hit.collider.CompareTag("Touchable"))
                     {
-                        ShowDescription(hit.collider.gameObject);
+                        ShowDescription(touch.position, hit.collider.gameObject);
                     }
                 }
             }
         }
-        //if (Input.touchCount > 0)
-        //{
-        //    Touch touch = Input.GetTouch(0);
-
-        //    Debug.Log("Touch detected!");
-        //    if (touch.phase == TouchPhase.Began)
-        //    {
-        //        Debug.Log("Touch began!");
-
-        //        if (arRaycastManager.Raycast(touch.position, hits, TrackableType.PlaneWithinPolygon))
-        //        {
-        //            Pose hitPose = hits[0].pose;
-
-        //            Ray ray = Camera.main.ScreenPointToRay(touch.position);
-        //            RaycastHit hit;
-
-        //            if (Physics.Raycast(ray, out hit))
-        //            {
-        //                if (hit.collider != null && hit.collider.CompareTag("Touchable"))
-        //                {
-        //                    Debug.Log("Touched object: " + hit.collider.name);
-
-        //                    OnObjectTouched(hit.collider.gameObject);
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
     }
 
-    private void ShowDescription(GameObject touchedObject)
+    private void ShowDescription(Vector2 position, GameObject touchedObject)
     {
-        GetRequestFun("https://jsonplaceholder.typicode.com/posts/1");
-        Vector3 worldPosition = touchedObject.transform.position + offset;
-        descriptionPanel.transform.position = worldPosition;
+        switch(touchedObject.transform.name)
+        {
+            case "Room1":
+                GetRequestFun("https://jsonplaceholder.typicode.com/posts/1");
+                break;
+            case "FloorLight":
+                GetRequestFun("https://jsonplaceholder.typicode.com/posts");
+                break;
+        }
+        //Vector3 worldPosition = touchedObject.transform.position + offset;
+        descriptionPanel.transform.position = position;
         descriptionPanel.transform.LookAt(arCamera.transform);
         descriptionPanel.transform.Rotate(0, 180, 0);
         descriptionPanel.SetActive(true);
@@ -99,7 +80,6 @@ public class ObjectExplane : MonoBehaviour
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
-            // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
 
             string[] pages = uri.Split('/');
@@ -117,7 +97,6 @@ public class ObjectExplane : MonoBehaviour
                 {
                     descriptionPanel.GetComponent<TextMesh>().text = webRequest.error;
                 }
-                //descriptionPanel.GetComponent<TextMesh>().text = $"{webRequest.error}";
             }
             else
             {
@@ -131,15 +110,11 @@ public class ObjectExplane : MonoBehaviour
                         $"ID : {user.id}\n" +
                         $"Title : {user.title}\n" +
                         $"Body : {user.body}\n";
-
-                        //descriptionPanel.GetComponent<TestTextMeshSort>().AddLineBreaks(webRequest.downloadHandler.text, 20);
                 }
                 else
                 {
                     descriptionPanel.GetComponent<TextMesh>().text = webRequest.downloadHandler.text;
                 }
-                //descriptionPanel.GetComponent<TestTextMeshSort>().AddLineBreaks(webRequest.downloadHandler.text, 10);
-                //descriptionPanel.GetComponent<TextMesh>().text = $"{webRequest.downloadHandler.text}";
             }
         }
     }

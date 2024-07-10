@@ -22,8 +22,8 @@ public class ObjectInitPosition : MonoBehaviour
 
     private void Start()
     {
-        GameObject room = Instantiate(room1);
-        room.transform.position = Camera.main.transform.position;
+        //GameObject room = Instantiate(gameObject);
+        //room.transform.position = Camera.main.transform.position;
     }
 
     private void OnEnable()
@@ -48,12 +48,6 @@ public class ObjectInitPosition : MonoBehaviour
         {
             // 새로운 이미지가 추가되었을 때 처리할 로직
             Debug.Log($"New image added: {trackedImage.referenceImage.name}");
-
-            if(!_lock) {
-            room1.SetActive(true);
-            room1.transform.position = Camera.main.transform.position;
-            _lock = true;
-            }
         }
 
         foreach (ARTrackedImage trackedImage in eventArgs.updated)

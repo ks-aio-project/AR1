@@ -6,21 +6,25 @@ using UnityEngine.XR.ARFoundation;
 
 public class ParentTest : MonoBehaviour
 {
-
-    private void Start()
-    {
-        //transform.position = Camera.main.transform.position;
-        Debug.Log($"Scale : {transform.localScale}");
-    }
+    public Vector3 pos;
+    public Quaternion rot;
 
     void Update()
     {
-        //    transform.SetParent(null);
-        //    if (GetComponent<ARTrackedImage>())
-        //    {
-        //        Destroy(GetComponent<ARTrackedImage>());
-        //    }
+        if(transform.parent.name == "room Parent")
+        {
+            transform.position = transform.parent.position;
+            Debug.Log($"Parent : {transform.parent}");
+        }
 
-        //    Debug.Log($"position : {transform.position}");
+        if (pos != null)
+        {
+            transform.SetPositionAndRotation(pos, rot);
+        }
+    }
+
+    public void SetPosAndRot(Vector3 _pos, Quaternion _rot)
+    {
+        pos = _pos; rot = _rot;
     }
 }
