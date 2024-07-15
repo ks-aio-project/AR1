@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.Features2dModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,14 +11,14 @@ namespace OpenCVForUnity.Xfeatures2dModule
 
     // C++: class AffineFeature2D
     /**
-     * Class implementing affine adaptation for key points.
-     *
-     * A REF: FeatureDetector and a REF: DescriptorExtractor are wrapped to augment the
-     * detected points with their affine invariant elliptic region and to compute
-     * the feature descriptors on the regions after warping them into circles.
-     *
-     * The interface is equivalent to REF: Feature2D, adding operations for
-     * REF: Elliptic_KeyPoint "Elliptic_KeyPoints" instead of REF: KeyPoint "KeyPoints".
+     * @brief Class implementing affine adaptation for key points.
+      *
+      * A @ref FeatureDetector and a @ref DescriptorExtractor are wrapped to augment the
+      * detected points with their affine invariant elliptic region and to compute
+      * the feature descriptors on the regions after warping them into circles.
+      *
+      * The interface is equivalent to @ref Feature2D, adding operations for
+      * @ref Elliptic_KeyPoint "Elliptic_KeyPoints" instead of @ref KeyPoint "KeyPoints".
      */
 
     public class AffineFeature2D : Feature2D

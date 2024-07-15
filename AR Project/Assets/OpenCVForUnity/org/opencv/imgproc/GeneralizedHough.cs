@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.ImgprocModule
 
     // C++: class GeneralizedHough
     /**
-     * finds arbitrary template in the grayscale image using Generalized Hough Transform
+     @brief finds arbitrary template in the grayscale image using Generalized Hough Transform
      */
 
     public class GeneralizedHough : Algorithm

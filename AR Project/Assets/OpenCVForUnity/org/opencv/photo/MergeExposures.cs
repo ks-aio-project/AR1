@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.PhotoModule
 
     // C++: class MergeExposures
     /**
-     * The base class algorithms that can merge exposure sequence to a single image.
+     @brief The base class algorithms that can merge exposure sequence to a single image.
      */
 
     public class MergeExposures : Algorithm
@@ -48,13 +48,13 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Merges images.
-         *
-         *     param src vector of input images
-         *     param dst result image
-         *     param times vector of exposure time values for each image
-         *     param response 256x1 matrix with inverse camera response function for each pixel value, it should
-         *     have the same number of channels as images.
+         @brief Merges images.
+         
+             @param src vector of input images
+             @param dst result image
+             @param times vector of exposure time values for each image
+             @param response 256x1 matrix with inverse camera response function for each pixel value, it should
+             have the same number of channels as images.
          */
         public virtual void process(List<Mat> src, Mat dst, Mat times, Mat response)
         {

@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,11 +10,11 @@ namespace OpenCVForUnity.PhotoModule
 
     // C++: class CalibrateDebevec
     /**
-     * Inverse camera response function is extracted for each brightness value by minimizing an objective
-     * function as linear system. Objective function is constructed using pixel values on the same position
-     * in all images, extra term is added to make the result smoother.
-     *
-     * For more information see CITE: DM97 .
+     @brief Inverse camera response function is extracted for each brightness value by minimizing an objective
+     function as linear system. Objective function is constructed using pixel values on the same position
+     in all images, extra term is added to make the result smoother.
+     
+     For more information see @cite DM97 .
      */
 
     public class CalibrateDebevec : CalibrateCRF

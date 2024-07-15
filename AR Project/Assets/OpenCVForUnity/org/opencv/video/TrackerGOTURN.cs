@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,20 +10,20 @@ namespace OpenCVForUnity.VideoModule
 
     // C++: class TrackerGOTURN
     /**
-     * the GOTURN (Generic Object Tracking Using Regression Networks) tracker
-     *
-     * GOTURN (CITE: GOTURN) is kind of trackers based on Convolutional Neural Networks (CNN). While taking all advantages of CNN trackers,
-     * GOTURN is much faster due to offline training without online fine-tuning nature.
-     * GOTURN tracker addresses the problem of single target tracking: given a bounding box label of an object in the first frame of the video,
-     * we track that object through the rest of the video. NOTE: Current method of GOTURN does not handle occlusions; however, it is fairly
-     * robust to viewpoint changes, lighting changes, and deformations.
-     * Inputs of GOTURN are two RGB patches representing Target and Search patches resized to 227x227.
-     * Outputs of GOTURN are predicted bounding box coordinates, relative to Search patch coordinate system, in format X1,Y1,X2,Y2.
-     * Original paper is here: &lt;http://davheld.github.io/GOTURN/GOTURN.pdf&gt;
-     * As long as original authors implementation: &lt;https://github.com/davheld/GOTURN#train-the-tracker&gt;
-     * Implementation of training algorithm is placed in separately here due to 3d-party dependencies:
-     * &lt;https://github.com/Auron-X/GOTURN_Training_Toolkit&gt;
-     * GOTURN architecture goturn.prototxt and trained model goturn.caffemodel are accessible on opencv_extra GitHub repository.
+     @brief the GOTURN (Generic Object Tracking Using Regression Networks) tracker
+      *
+      *  GOTURN (@cite GOTURN) is kind of trackers based on Convolutional Neural Networks (CNN). While taking all advantages of CNN trackers,
+      *  GOTURN is much faster due to offline training without online fine-tuning nature.
+      *  GOTURN tracker addresses the problem of single target tracking: given a bounding box label of an object in the first frame of the video,
+      *  we track that object through the rest of the video. NOTE: Current method of GOTURN does not handle occlusions; however, it is fairly
+      *  robust to viewpoint changes, lighting changes, and deformations.
+      *  Inputs of GOTURN are two RGB patches representing Target and Search patches resized to 227x227.
+      *  Outputs of GOTURN are predicted bounding box coordinates, relative to Search patch coordinate system, in format X1,Y1,X2,Y2.
+      *  Original paper is here: &lt;http://davheld.github.io/GOTURN/GOTURN.pdf&gt;
+      *  As long as original authors implementation: &lt;https://github.com/davheld/GOTURN#train-the-tracker&gt;
+      *  Implementation of training algorithm is placed in separately here due to 3d-party dependencies:
+      *  &lt;https://github.com/Auron-X/GOTURN_Training_Toolkit&gt;
+      *  GOTURN architecture goturn.prototxt and trained model goturn.caffemodel are accessible on opencv_extra GitHub repository.
      */
 
     public class TrackerGOTURN : Tracker
@@ -61,9 +61,8 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Constructor
-         *     param parameters GOTURN parameters TrackerGOTURN::Params
-         * return automatically generated
+         @brief Constructor
+             @param parameters GOTURN parameters TrackerGOTURN::Params
          */
         public static TrackerGOTURN create(TrackerGOTURN_Params parameters)
         {
@@ -75,8 +74,8 @@ namespace OpenCVForUnity.VideoModule
         }
 
         /**
-         * Constructor
-         * return automatically generated
+         @brief Constructor
+             @param parameters GOTURN parameters TrackerGOTURN::Params
          */
         public static TrackerGOTURN create()
         {

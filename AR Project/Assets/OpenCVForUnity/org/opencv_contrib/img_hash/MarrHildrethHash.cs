@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.Img_hashModule
 
     // C++: class MarrHildrethHash
     /**
-     * Marr-Hildreth Operator Based Hash, slowest but more discriminative.
-     *
-     * See CITE: zauner2010implementation for details.
+     @brief Marr-Hildreth Operator Based Hash, slowest but more discriminative.
+     
+     See @cite zauner2010implementation for details.
      */
 
     public class MarrHildrethHash : ImgHashBase
@@ -50,8 +50,7 @@ namespace OpenCVForUnity.Img_hashModule
         //
 
         /**
-         * self explain
-         * return automatically generated
+         * @brief self explain
          */
         public float getAlpha()
         {
@@ -68,8 +67,7 @@ namespace OpenCVForUnity.Img_hashModule
         //
 
         /**
-         * self explain
-         * return automatically generated
+         * @brief self explain
          */
         public float getScale()
         {
@@ -86,9 +84,9 @@ namespace OpenCVForUnity.Img_hashModule
         //
 
         /**
-         * Set Mh kernel parameters
-         *         param alpha int scale factor for marr wavelet (default=2).
-         *         param scale int level of scale factor (default = 1)
+         @brief Set Mh kernel parameters
+                 @param alpha int scale factor for marr wavelet (default=2).
+                 @param scale int level of scale factor (default = 1)
          */
         public void setKernelParam(float alpha, float scale)
         {
@@ -105,9 +103,8 @@ namespace OpenCVForUnity.Img_hashModule
         //
 
         /**
-         * param alpha int scale factor for marr wavelet (default=2).
-         *         param scale int level of scale factor (default = 1)
-         * return automatically generated
+         @param alpha int scale factor for marr wavelet (default=2).
+                 @param scale int level of scale factor (default = 1)
          */
         public static MarrHildrethHash create(float alpha, float scale)
         {
@@ -119,8 +116,8 @@ namespace OpenCVForUnity.Img_hashModule
         }
 
         /**
-         * param alpha int scale factor for marr wavelet (default=2).
-         * return automatically generated
+         @param alpha int scale factor for marr wavelet (default=2).
+                 @param scale int level of scale factor (default = 1)
          */
         public static MarrHildrethHash create(float alpha)
         {
@@ -132,7 +129,8 @@ namespace OpenCVForUnity.Img_hashModule
         }
 
         /**
-         * return automatically generated
+         @param alpha int scale factor for marr wavelet (default=2).
+                 @param scale int level of scale factor (default = 1)
          */
         public static MarrHildrethHash create()
         {

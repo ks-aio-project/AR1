@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class RFFeatureGetter
     /**
-     *
-     *  Jun 17, 2014
-     * author Yury Gitman
+     @file
+     @date Jun 17, 2014
+     @author Yury Gitman
      */
 
     public class RFFeatureGetter : Algorithm

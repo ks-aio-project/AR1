@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,10 +10,10 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class RidgeDetectionFilter
     /**
-     *  Applies Ridge Detection Filter to an input image.
-     * Implements Ridge detection similar to the one in [Mathematica](http://reference.wolfram.com/language/ref/RidgeFilter.html)
-     * using the eigen values from the Hessian Matrix of the input image using Sobel Derivatives.
-     * Additional refinement can be done using Skeletonization and Binarization. Adapted from CITE: segleafvein and CITE: M_RF
+     @brief  Applies Ridge Detection Filter to an input image.
+     Implements Ridge detection similar to the one in [Mathematica](http://reference.wolfram.com/language/ref/RidgeFilter.html)
+     using the eigen values from the Hessian Matrix of the input image using Sobel Derivatives.
+     Additional refinement can be done using Skeletonization and Binarization. Adapted from @cite segleafvein and @cite M_RF
      */
 
     public class RidgeDetectionFilter : Algorithm
@@ -51,17 +51,16 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Create pointer to the Ridge detection filter.
-         *     param ddepth  Specifies output image depth. Defualt is CV_32FC1
-         *     param dx Order of derivative x, default is 1
-         *     param dy  Order of derivative y, default is 1
-         *     param ksize Sobel kernel size , default is 3
-         *     param out_dtype Converted format for output, default is CV_8UC1
-         *     param scale Optional scale value for derivative values, default is 1
-         *     param delta  Optional bias added to output, default is 0
-         *     param borderType Pixel extrapolation method, default is BORDER_DEFAULT
-         *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
-         * return automatically generated
+         @brief Create pointer to the Ridge detection filter.
+             @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+             @param dx Order of derivative x, default is 1
+             @param dy  Order of derivative y, default is 1
+             @param ksize Sobel kernel size , default is 3
+             @param out_dtype Converted format for output, default is CV_8UC1
+             @param scale Optional scale value for derivative values, default is 1
+             @param delta  Optional bias added to output, default is 0
+             @param borderType Pixel extrapolation method, default is BORDER_DEFAULT
+             @see Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
          */
         public static RidgeDetectionFilter create(int ddepth, int dx, int dy, int ksize, int out_dtype, double scale, double delta, int borderType)
         {
@@ -73,16 +72,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Create pointer to the Ridge detection filter.
-         *     param ddepth  Specifies output image depth. Defualt is CV_32FC1
-         *     param dx Order of derivative x, default is 1
-         *     param dy  Order of derivative y, default is 1
-         *     param ksize Sobel kernel size , default is 3
-         *     param out_dtype Converted format for output, default is CV_8UC1
-         *     param scale Optional scale value for derivative values, default is 1
-         *     param delta  Optional bias added to output, default is 0
-         *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
-         * return automatically generated
+         @brief Create pointer to the Ridge detection filter.
+             @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+             @param dx Order of derivative x, default is 1
+             @param dy  Order of derivative y, default is 1
+             @param ksize Sobel kernel size , default is 3
+             @param out_dtype Converted format for output, default is CV_8UC1
+             @param scale Optional scale value for derivative values, default is 1
+             @param delta  Optional bias added to output, default is 0
+             @param borderType Pixel extrapolation method, default is BORDER_DEFAULT
+             @see Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
          */
         public static RidgeDetectionFilter create(int ddepth, int dx, int dy, int ksize, int out_dtype, double scale, double delta)
         {
@@ -94,15 +93,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Create pointer to the Ridge detection filter.
-         *     param ddepth  Specifies output image depth. Defualt is CV_32FC1
-         *     param dx Order of derivative x, default is 1
-         *     param dy  Order of derivative y, default is 1
-         *     param ksize Sobel kernel size , default is 3
-         *     param out_dtype Converted format for output, default is CV_8UC1
-         *     param scale Optional scale value for derivative values, default is 1
-         *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
-         * return automatically generated
+         @brief Create pointer to the Ridge detection filter.
+             @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+             @param dx Order of derivative x, default is 1
+             @param dy  Order of derivative y, default is 1
+             @param ksize Sobel kernel size , default is 3
+             @param out_dtype Converted format for output, default is CV_8UC1
+             @param scale Optional scale value for derivative values, default is 1
+             @param delta  Optional bias added to output, default is 0
+             @param borderType Pixel extrapolation method, default is BORDER_DEFAULT
+             @see Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
          */
         public static RidgeDetectionFilter create(int ddepth, int dx, int dy, int ksize, int out_dtype, double scale)
         {
@@ -114,14 +114,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Create pointer to the Ridge detection filter.
-         *     param ddepth  Specifies output image depth. Defualt is CV_32FC1
-         *     param dx Order of derivative x, default is 1
-         *     param dy  Order of derivative y, default is 1
-         *     param ksize Sobel kernel size , default is 3
-         *     param out_dtype Converted format for output, default is CV_8UC1
-         *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
-         * return automatically generated
+         @brief Create pointer to the Ridge detection filter.
+             @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+             @param dx Order of derivative x, default is 1
+             @param dy  Order of derivative y, default is 1
+             @param ksize Sobel kernel size , default is 3
+             @param out_dtype Converted format for output, default is CV_8UC1
+             @param scale Optional scale value for derivative values, default is 1
+             @param delta  Optional bias added to output, default is 0
+             @param borderType Pixel extrapolation method, default is BORDER_DEFAULT
+             @see Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
          */
         public static RidgeDetectionFilter create(int ddepth, int dx, int dy, int ksize, int out_dtype)
         {
@@ -133,13 +135,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Create pointer to the Ridge detection filter.
-         *     param ddepth  Specifies output image depth. Defualt is CV_32FC1
-         *     param dx Order of derivative x, default is 1
-         *     param dy  Order of derivative y, default is 1
-         *     param ksize Sobel kernel size , default is 3
-         *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
-         * return automatically generated
+         @brief Create pointer to the Ridge detection filter.
+             @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+             @param dx Order of derivative x, default is 1
+             @param dy  Order of derivative y, default is 1
+             @param ksize Sobel kernel size , default is 3
+             @param out_dtype Converted format for output, default is CV_8UC1
+             @param scale Optional scale value for derivative values, default is 1
+             @param delta  Optional bias added to output, default is 0
+             @param borderType Pixel extrapolation method, default is BORDER_DEFAULT
+             @see Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
          */
         public static RidgeDetectionFilter create(int ddepth, int dx, int dy, int ksize)
         {
@@ -151,12 +156,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Create pointer to the Ridge detection filter.
-         *     param ddepth  Specifies output image depth. Defualt is CV_32FC1
-         *     param dx Order of derivative x, default is 1
-         *     param dy  Order of derivative y, default is 1
-         *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
-         * return automatically generated
+         @brief Create pointer to the Ridge detection filter.
+             @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+             @param dx Order of derivative x, default is 1
+             @param dy  Order of derivative y, default is 1
+             @param ksize Sobel kernel size , default is 3
+             @param out_dtype Converted format for output, default is CV_8UC1
+             @param scale Optional scale value for derivative values, default is 1
+             @param delta  Optional bias added to output, default is 0
+             @param borderType Pixel extrapolation method, default is BORDER_DEFAULT
+             @see Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
          */
         public static RidgeDetectionFilter create(int ddepth, int dx, int dy)
         {
@@ -168,11 +177,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Create pointer to the Ridge detection filter.
-         *     param ddepth  Specifies output image depth. Defualt is CV_32FC1
-         *     param dx Order of derivative x, default is 1
-         *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
-         * return automatically generated
+         @brief Create pointer to the Ridge detection filter.
+             @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+             @param dx Order of derivative x, default is 1
+             @param dy  Order of derivative y, default is 1
+             @param ksize Sobel kernel size , default is 3
+             @param out_dtype Converted format for output, default is CV_8UC1
+             @param scale Optional scale value for derivative values, default is 1
+             @param delta  Optional bias added to output, default is 0
+             @param borderType Pixel extrapolation method, default is BORDER_DEFAULT
+             @see Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
          */
         public static RidgeDetectionFilter create(int ddepth, int dx)
         {
@@ -184,10 +198,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Create pointer to the Ridge detection filter.
-         *     param ddepth  Specifies output image depth. Defualt is CV_32FC1
-         *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
-         * return automatically generated
+         @brief Create pointer to the Ridge detection filter.
+             @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+             @param dx Order of derivative x, default is 1
+             @param dy  Order of derivative y, default is 1
+             @param ksize Sobel kernel size , default is 3
+             @param out_dtype Converted format for output, default is CV_8UC1
+             @param scale Optional scale value for derivative values, default is 1
+             @param delta  Optional bias added to output, default is 0
+             @param borderType Pixel extrapolation method, default is BORDER_DEFAULT
+             @see Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
          */
         public static RidgeDetectionFilter create(int ddepth)
         {
@@ -199,9 +219,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Create pointer to the Ridge detection filter.
-         *     SEE: Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
-         * return automatically generated
+         @brief Create pointer to the Ridge detection filter.
+             @param ddepth  Specifies output image depth. Defualt is CV_32FC1
+             @param dx Order of derivative x, default is 1
+             @param dy  Order of derivative y, default is 1
+             @param ksize Sobel kernel size , default is 3
+             @param out_dtype Converted format for output, default is CV_8UC1
+             @param scale Optional scale value for derivative values, default is 1
+             @param delta  Optional bias added to output, default is 0
+             @param borderType Pixel extrapolation method, default is BORDER_DEFAULT
+             @see Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
          */
         public static RidgeDetectionFilter create()
         {
@@ -218,9 +245,9 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Apply Ridge detection filter on input image.
-         *     param _img InputArray as supported by Sobel. img can be 1-Channel or 3-Channels.
-         * param _out automatically generated
+         @brief Apply Ridge detection filter on input image.
+             @param _img InputArray as supported by Sobel. img can be 1-Channel or 3-Channels.
+             @param out OutputAray of structure as RidgeDetectionFilter::ddepth. Output image with ridges.
          */
         public void getRidgeFilteredImage(Mat _img, Mat _out)
         {

@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,21 +10,21 @@ namespace OpenCVForUnity.ObjdetectModule
 {
     // C++: class HOGDescriptor
     /**
-     * Implementation of HOG (Histogram of Oriented Gradients) descriptor and object detector.
-     *
-     * the HOG descriptor algorithm introduced by Navneet Dalal and Bill Triggs CITE: Dalal2005 .
-     *
-     * useful links:
-     *
-     * https://hal.inria.fr/inria-00548512/document/
-     *
-     * https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients
-     *
-     * https://software.intel.com/en-us/ipp-dev-reference-histogram-of-oriented-gradients-hog-descriptor
-     *
-     * http://www.learnopencv.com/histogram-of-oriented-gradients
-     *
-     * http://www.learnopencv.com/handwritten-digits-classification-an-opencv-c-python-tutorial
+     @brief Implementation of HOG (Histogram of Oriented Gradients) descriptor and object detector.
+     
+     the HOG descriptor algorithm introduced by Navneet Dalal and Bill Triggs @cite Dalal2005 .
+     
+     useful links:
+     
+     https://hal.inria.fr/inria-00548512/document/
+     
+     https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients
+     
+     https://software.intel.com/en-us/ipp-dev-reference-histogram-of-oriented-gradients-hog-descriptor
+     
+     http://www.learnopencv.com/histogram-of-oriented-gradients
+     
+     http://www.learnopencv.com/handwritten-digits-classification-an-opencv-c-python-tutorial
      */
 
     public class HOGDescriptor : DisposableOpenCVObject
@@ -72,9 +72,9 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         * Creates the HOG descriptor and detector with default params.
-         *
-         *     aqual to HOGDescriptor(Size(64,128), Size(16,16), Size(8,8), Size(8,8), 9 )
+         @brief Creates the HOG descriptor and detector with default parameters.
+         
+             aqual to HOGDescriptor(Size(64,128), Size(16,16), Size(8,8), Size(8,8), 9 )
          */
         public HOGDescriptor()
         {
@@ -91,19 +91,19 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         *
-         *     param _winSize sets winSize with given value.
-         *     param _blockSize sets blockSize with given value.
-         *     param _blockStride sets blockStride with given value.
-         *     param _cellSize sets cellSize with given value.
-         *     param _nbins sets nbins with given value.
-         *     param _derivAperture sets derivAperture with given value.
-         *     param _winSigma sets winSigma with given value.
-         *     param _histogramNormType sets histogramNormType with given value.
-         *     param _L2HysThreshold sets L2HysThreshold with given value.
-         *     param _gammaCorrection sets gammaCorrection with given value.
-         *     param _nlevels sets nlevels with given value.
-         *     param _signedGradient sets signedGradient with given value.
+         @overload
+             @param _winSize sets winSize with given value.
+             @param _blockSize sets blockSize with given value.
+             @param _blockStride sets blockStride with given value.
+             @param _cellSize sets cellSize with given value.
+             @param _nbins sets nbins with given value.
+             @param _derivAperture sets derivAperture with given value.
+             @param _winSigma sets winSigma with given value.
+             @param _histogramNormType sets histogramNormType with given value.
+             @param _L2HysThreshold sets L2HysThreshold with given value.
+             @param _gammaCorrection sets gammaCorrection with given value.
+             @param _nlevels sets nlevels with given value.
+             @param _signedGradient sets signedGradient with given value.
          */
         public HOGDescriptor(Size _winSize, Size _blockSize, Size _blockStride, Size _cellSize, int _nbins, int _derivAperture, double _winSigma, int _histogramNormType, double _L2HysThreshold, bool _gammaCorrection, int _nlevels, bool _signedGradient)
         {
@@ -115,18 +115,19 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         *
-         *     param _winSize sets winSize with given value.
-         *     param _blockSize sets blockSize with given value.
-         *     param _blockStride sets blockStride with given value.
-         *     param _cellSize sets cellSize with given value.
-         *     param _nbins sets nbins with given value.
-         *     param _derivAperture sets derivAperture with given value.
-         *     param _winSigma sets winSigma with given value.
-         *     param _histogramNormType sets histogramNormType with given value.
-         *     param _L2HysThreshold sets L2HysThreshold with given value.
-         *     param _gammaCorrection sets gammaCorrection with given value.
-         *     param _nlevels sets nlevels with given value.
+         @overload
+             @param _winSize sets winSize with given value.
+             @param _blockSize sets blockSize with given value.
+             @param _blockStride sets blockStride with given value.
+             @param _cellSize sets cellSize with given value.
+             @param _nbins sets nbins with given value.
+             @param _derivAperture sets derivAperture with given value.
+             @param _winSigma sets winSigma with given value.
+             @param _histogramNormType sets histogramNormType with given value.
+             @param _L2HysThreshold sets L2HysThreshold with given value.
+             @param _gammaCorrection sets gammaCorrection with given value.
+             @param _nlevels sets nlevels with given value.
+             @param _signedGradient sets signedGradient with given value.
          */
         public HOGDescriptor(Size _winSize, Size _blockSize, Size _blockStride, Size _cellSize, int _nbins, int _derivAperture, double _winSigma, int _histogramNormType, double _L2HysThreshold, bool _gammaCorrection, int _nlevels)
         {
@@ -138,17 +139,19 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         *
-         *     param _winSize sets winSize with given value.
-         *     param _blockSize sets blockSize with given value.
-         *     param _blockStride sets blockStride with given value.
-         *     param _cellSize sets cellSize with given value.
-         *     param _nbins sets nbins with given value.
-         *     param _derivAperture sets derivAperture with given value.
-         *     param _winSigma sets winSigma with given value.
-         *     param _histogramNormType sets histogramNormType with given value.
-         *     param _L2HysThreshold sets L2HysThreshold with given value.
-         *     param _gammaCorrection sets gammaCorrection with given value.
+         @overload
+             @param _winSize sets winSize with given value.
+             @param _blockSize sets blockSize with given value.
+             @param _blockStride sets blockStride with given value.
+             @param _cellSize sets cellSize with given value.
+             @param _nbins sets nbins with given value.
+             @param _derivAperture sets derivAperture with given value.
+             @param _winSigma sets winSigma with given value.
+             @param _histogramNormType sets histogramNormType with given value.
+             @param _L2HysThreshold sets L2HysThreshold with given value.
+             @param _gammaCorrection sets gammaCorrection with given value.
+             @param _nlevels sets nlevels with given value.
+             @param _signedGradient sets signedGradient with given value.
          */
         public HOGDescriptor(Size _winSize, Size _blockSize, Size _blockStride, Size _cellSize, int _nbins, int _derivAperture, double _winSigma, int _histogramNormType, double _L2HysThreshold, bool _gammaCorrection)
         {
@@ -160,16 +163,19 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         *
-         *     param _winSize sets winSize with given value.
-         *     param _blockSize sets blockSize with given value.
-         *     param _blockStride sets blockStride with given value.
-         *     param _cellSize sets cellSize with given value.
-         *     param _nbins sets nbins with given value.
-         *     param _derivAperture sets derivAperture with given value.
-         *     param _winSigma sets winSigma with given value.
-         *     param _histogramNormType sets histogramNormType with given value.
-         *     param _L2HysThreshold sets L2HysThreshold with given value.
+         @overload
+             @param _winSize sets winSize with given value.
+             @param _blockSize sets blockSize with given value.
+             @param _blockStride sets blockStride with given value.
+             @param _cellSize sets cellSize with given value.
+             @param _nbins sets nbins with given value.
+             @param _derivAperture sets derivAperture with given value.
+             @param _winSigma sets winSigma with given value.
+             @param _histogramNormType sets histogramNormType with given value.
+             @param _L2HysThreshold sets L2HysThreshold with given value.
+             @param _gammaCorrection sets gammaCorrection with given value.
+             @param _nlevels sets nlevels with given value.
+             @param _signedGradient sets signedGradient with given value.
          */
         public HOGDescriptor(Size _winSize, Size _blockSize, Size _blockStride, Size _cellSize, int _nbins, int _derivAperture, double _winSigma, int _histogramNormType, double _L2HysThreshold)
         {
@@ -181,15 +187,19 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         *
-         *     param _winSize sets winSize with given value.
-         *     param _blockSize sets blockSize with given value.
-         *     param _blockStride sets blockStride with given value.
-         *     param _cellSize sets cellSize with given value.
-         *     param _nbins sets nbins with given value.
-         *     param _derivAperture sets derivAperture with given value.
-         *     param _winSigma sets winSigma with given value.
-         *     param _histogramNormType sets histogramNormType with given value.
+         @overload
+             @param _winSize sets winSize with given value.
+             @param _blockSize sets blockSize with given value.
+             @param _blockStride sets blockStride with given value.
+             @param _cellSize sets cellSize with given value.
+             @param _nbins sets nbins with given value.
+             @param _derivAperture sets derivAperture with given value.
+             @param _winSigma sets winSigma with given value.
+             @param _histogramNormType sets histogramNormType with given value.
+             @param _L2HysThreshold sets L2HysThreshold with given value.
+             @param _gammaCorrection sets gammaCorrection with given value.
+             @param _nlevels sets nlevels with given value.
+             @param _signedGradient sets signedGradient with given value.
          */
         public HOGDescriptor(Size _winSize, Size _blockSize, Size _blockStride, Size _cellSize, int _nbins, int _derivAperture, double _winSigma, int _histogramNormType)
         {
@@ -201,14 +211,19 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         *
-         *     param _winSize sets winSize with given value.
-         *     param _blockSize sets blockSize with given value.
-         *     param _blockStride sets blockStride with given value.
-         *     param _cellSize sets cellSize with given value.
-         *     param _nbins sets nbins with given value.
-         *     param _derivAperture sets derivAperture with given value.
-         *     param _winSigma sets winSigma with given value.
+         @overload
+             @param _winSize sets winSize with given value.
+             @param _blockSize sets blockSize with given value.
+             @param _blockStride sets blockStride with given value.
+             @param _cellSize sets cellSize with given value.
+             @param _nbins sets nbins with given value.
+             @param _derivAperture sets derivAperture with given value.
+             @param _winSigma sets winSigma with given value.
+             @param _histogramNormType sets histogramNormType with given value.
+             @param _L2HysThreshold sets L2HysThreshold with given value.
+             @param _gammaCorrection sets gammaCorrection with given value.
+             @param _nlevels sets nlevels with given value.
+             @param _signedGradient sets signedGradient with given value.
          */
         public HOGDescriptor(Size _winSize, Size _blockSize, Size _blockStride, Size _cellSize, int _nbins, int _derivAperture, double _winSigma)
         {
@@ -220,13 +235,19 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         *
-         *     param _winSize sets winSize with given value.
-         *     param _blockSize sets blockSize with given value.
-         *     param _blockStride sets blockStride with given value.
-         *     param _cellSize sets cellSize with given value.
-         *     param _nbins sets nbins with given value.
-         *     param _derivAperture sets derivAperture with given value.
+         @overload
+             @param _winSize sets winSize with given value.
+             @param _blockSize sets blockSize with given value.
+             @param _blockStride sets blockStride with given value.
+             @param _cellSize sets cellSize with given value.
+             @param _nbins sets nbins with given value.
+             @param _derivAperture sets derivAperture with given value.
+             @param _winSigma sets winSigma with given value.
+             @param _histogramNormType sets histogramNormType with given value.
+             @param _L2HysThreshold sets L2HysThreshold with given value.
+             @param _gammaCorrection sets gammaCorrection with given value.
+             @param _nlevels sets nlevels with given value.
+             @param _signedGradient sets signedGradient with given value.
          */
         public HOGDescriptor(Size _winSize, Size _blockSize, Size _blockStride, Size _cellSize, int _nbins, int _derivAperture)
         {
@@ -238,12 +259,19 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         *
-         *     param _winSize sets winSize with given value.
-         *     param _blockSize sets blockSize with given value.
-         *     param _blockStride sets blockStride with given value.
-         *     param _cellSize sets cellSize with given value.
-         *     param _nbins sets nbins with given value.
+         @overload
+             @param _winSize sets winSize with given value.
+             @param _blockSize sets blockSize with given value.
+             @param _blockStride sets blockStride with given value.
+             @param _cellSize sets cellSize with given value.
+             @param _nbins sets nbins with given value.
+             @param _derivAperture sets derivAperture with given value.
+             @param _winSigma sets winSigma with given value.
+             @param _histogramNormType sets histogramNormType with given value.
+             @param _L2HysThreshold sets L2HysThreshold with given value.
+             @param _gammaCorrection sets gammaCorrection with given value.
+             @param _nlevels sets nlevels with given value.
+             @param _signedGradient sets signedGradient with given value.
          */
         public HOGDescriptor(Size _winSize, Size _blockSize, Size _blockStride, Size _cellSize, int _nbins)
         {
@@ -260,8 +288,10 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         *
-         *     param filename The file name containing HOGDescriptor properties and coefficients for the linear SVM classifier.
+         @overload
+         
+             Creates the HOG descriptor and detector and loads HOGDescriptor parameters and coefficients for the linear SVM classifier from a file.
+             @param filename The file name containing HOGDescriptor properties and coefficients for the linear SVM classifier.
          */
         public HOGDescriptor(string filename)
         {
@@ -278,8 +308,7 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         * Returns the number of coefficients required for the classification.
-         * return automatically generated
+         @brief Returns the number of coefficients required for the classification.
          */
         public long getDescriptorSize()
         {
@@ -296,8 +325,7 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         * Checks if detector size equal to descriptor size.
-         * return automatically generated
+         @brief Checks if detector size equal to descriptor size.
          */
         public bool checkDetectorSize()
         {
@@ -314,8 +342,7 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         * Returns winSigma value
-         * return automatically generated
+         @brief Returns winSigma value
          */
         public double getWinSigma()
         {
@@ -332,8 +359,8 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         * Sets coefficients for the linear SVM classifier.
-         *     param svmdetector coefficients for the linear SVM classifier.
+         @brief Sets coefficients for the linear SVM classifier.
+             @param svmdetector coefficients for the linear SVM classifier.
          */
         public void setSVMDetector(Mat svmdetector)
         {
@@ -351,10 +378,9 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         * loads HOGDescriptor parameters and coefficients for the linear SVM classifier from a file.
-         *     param filename Path of the file to read.
-         *     param objname The optional name of the node to read (if empty, the first top-level node will be used).
-         * return automatically generated
+         @brief loads HOGDescriptor parameters and coefficients for the linear SVM classifier from a file
+             @param filename Name of the file to read.
+             @param objname The optional name of the node to read (if empty, the first top-level node will be used).
          */
         public bool load(string filename, string objname)
         {
@@ -366,9 +392,9 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         * loads HOGDescriptor parameters and coefficients for the linear SVM classifier from a file.
-         *     param filename Path of the file to read.
-         * return automatically generated
+         @brief loads HOGDescriptor parameters and coefficients for the linear SVM classifier from a file
+             @param filename Name of the file to read.
+             @param objname The optional name of the node to read (if empty, the first top-level node will be used).
          */
         public bool load(string filename)
         {
@@ -385,9 +411,9 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         * saves HOGDescriptor parameters and coefficients for the linear SVM classifier to a file
-         *     param filename File name
-         *     param objname Object name
+         @brief saves HOGDescriptor parameters and coefficients for the linear SVM classifier to a file
+             @param filename File name
+             @param objname Object name
          */
         public void save(string filename, string objname)
         {
@@ -399,8 +425,9 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         * saves HOGDescriptor parameters and coefficients for the linear SVM classifier to a file
-         *     param filename File name
+         @brief saves HOGDescriptor parameters and coefficients for the linear SVM classifier to a file
+             @param filename File name
+             @param objname Object name
          */
         public void save(string filename)
         {
@@ -417,12 +444,12 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         * Computes HOG descriptors of given image.
-         *     param img Matrix of the type CV_8U containing an image where HOG features will be calculated.
-         *     param descriptors Matrix of the type CV_32F
-         *     param winStride Window stride. It must be a multiple of block stride.
-         *     param padding Padding
-         *     param locations Vector of Point
+         @brief Computes HOG descriptors of given image.
+             @param img Matrix of the type CV_8U containing an image where HOG features will be calculated.
+             @param descriptors Matrix of the type CV_32F
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param locations Vector of Point
          */
         public void compute(Mat img, MatOfFloat descriptors, Size winStride, Size padding, MatOfPoint locations)
         {
@@ -438,11 +465,12 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         * Computes HOG descriptors of given image.
-         *     param img Matrix of the type CV_8U containing an image where HOG features will be calculated.
-         *     param descriptors Matrix of the type CV_32F
-         *     param winStride Window stride. It must be a multiple of block stride.
-         *     param padding Padding
+         @brief Computes HOG descriptors of given image.
+             @param img Matrix of the type CV_8U containing an image where HOG features will be calculated.
+             @param descriptors Matrix of the type CV_32F
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param locations Vector of Point
          */
         public void compute(Mat img, MatOfFloat descriptors, Size winStride, Size padding)
         {
@@ -456,10 +484,12 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         * Computes HOG descriptors of given image.
-         *     param img Matrix of the type CV_8U containing an image where HOG features will be calculated.
-         *     param descriptors Matrix of the type CV_32F
-         *     param winStride Window stride. It must be a multiple of block stride.
+         @brief Computes HOG descriptors of given image.
+             @param img Matrix of the type CV_8U containing an image where HOG features will be calculated.
+             @param descriptors Matrix of the type CV_32F
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param locations Vector of Point
          */
         public void compute(Mat img, MatOfFloat descriptors, Size winStride)
         {
@@ -473,9 +503,12 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         * Computes HOG descriptors of given image.
-         *     param img Matrix of the type CV_8U containing an image where HOG features will be calculated.
-         *     param descriptors Matrix of the type CV_32F
+         @brief Computes HOG descriptors of given image.
+             @param img Matrix of the type CV_8U containing an image where HOG features will be calculated.
+             @param descriptors Matrix of the type CV_32F
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param locations Vector of Point
          */
         public void compute(Mat img, MatOfFloat descriptors)
         {
@@ -494,16 +527,16 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         * Performs object detection without a multi-scale window.
-         *     param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
-         *     param foundLocations Vector of point where each point contains left-top corner point of detected object boundaries.
-         *     param weights Vector that will contain confidence values for each detected object.
-         *     param hitThreshold Threshold for the distance between features and SVM classifying plane.
-         *     Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
-         *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
-         *     param winStride Window stride. It must be a multiple of block stride.
-         *     param padding Padding
-         *     param searchLocations Vector of Point includes set of requested locations to be evaluated.
+         @brief Performs object detection without a multi-scale window.
+             @param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
+             @param foundLocations Vector of point where each point contains left-top corner point of detected object boundaries.
+             @param weights Vector that will contain confidence values for each detected object.
+             @param hitThreshold Threshold for the distance between features and SVM classifying plane.
+             Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
+             But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param searchLocations Vector of Point includes set of requested locations to be evaluated.
          */
         public void detect(Mat img, MatOfPoint foundLocations, MatOfDouble weights, double hitThreshold, Size winStride, Size padding, MatOfPoint searchLocations)
         {
@@ -521,15 +554,16 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         * Performs object detection without a multi-scale window.
-         *     param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
-         *     param foundLocations Vector of point where each point contains left-top corner point of detected object boundaries.
-         *     param weights Vector that will contain confidence values for each detected object.
-         *     param hitThreshold Threshold for the distance between features and SVM classifying plane.
-         *     Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
-         *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
-         *     param winStride Window stride. It must be a multiple of block stride.
-         *     param padding Padding
+         @brief Performs object detection without a multi-scale window.
+             @param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
+             @param foundLocations Vector of point where each point contains left-top corner point of detected object boundaries.
+             @param weights Vector that will contain confidence values for each detected object.
+             @param hitThreshold Threshold for the distance between features and SVM classifying plane.
+             Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
+             But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param searchLocations Vector of Point includes set of requested locations to be evaluated.
          */
         public void detect(Mat img, MatOfPoint foundLocations, MatOfDouble weights, double hitThreshold, Size winStride, Size padding)
         {
@@ -545,14 +579,16 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         * Performs object detection without a multi-scale window.
-         *     param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
-         *     param foundLocations Vector of point where each point contains left-top corner point of detected object boundaries.
-         *     param weights Vector that will contain confidence values for each detected object.
-         *     param hitThreshold Threshold for the distance between features and SVM classifying plane.
-         *     Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
-         *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
-         *     param winStride Window stride. It must be a multiple of block stride.
+         @brief Performs object detection without a multi-scale window.
+             @param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
+             @param foundLocations Vector of point where each point contains left-top corner point of detected object boundaries.
+             @param weights Vector that will contain confidence values for each detected object.
+             @param hitThreshold Threshold for the distance between features and SVM classifying plane.
+             Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
+             But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param searchLocations Vector of Point includes set of requested locations to be evaluated.
          */
         public void detect(Mat img, MatOfPoint foundLocations, MatOfDouble weights, double hitThreshold, Size winStride)
         {
@@ -568,13 +604,16 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         * Performs object detection without a multi-scale window.
-         *     param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
-         *     param foundLocations Vector of point where each point contains left-top corner point of detected object boundaries.
-         *     param weights Vector that will contain confidence values for each detected object.
-         *     param hitThreshold Threshold for the distance between features and SVM classifying plane.
-         *     Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
-         *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+         @brief Performs object detection without a multi-scale window.
+             @param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
+             @param foundLocations Vector of point where each point contains left-top corner point of detected object boundaries.
+             @param weights Vector that will contain confidence values for each detected object.
+             @param hitThreshold Threshold for the distance between features and SVM classifying plane.
+             Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
+             But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param searchLocations Vector of Point includes set of requested locations to be evaluated.
          */
         public void detect(Mat img, MatOfPoint foundLocations, MatOfDouble weights, double hitThreshold)
         {
@@ -590,12 +629,16 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         * Performs object detection without a multi-scale window.
-         *     param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
-         *     param foundLocations Vector of point where each point contains left-top corner point of detected object boundaries.
-         *     param weights Vector that will contain confidence values for each detected object.
-         *     Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
-         *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+         @brief Performs object detection without a multi-scale window.
+             @param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
+             @param foundLocations Vector of point where each point contains left-top corner point of detected object boundaries.
+             @param weights Vector that will contain confidence values for each detected object.
+             @param hitThreshold Threshold for the distance between features and SVM classifying plane.
+             Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
+             But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param searchLocations Vector of Point includes set of requested locations to be evaluated.
          */
         public void detect(Mat img, MatOfPoint foundLocations, MatOfDouble weights)
         {
@@ -612,25 +655,26 @@ namespace OpenCVForUnity.ObjdetectModule
 
 
         //
-        // C++:  void cv::HOGDescriptor::detectMultiScale(Mat img, vector_Rect& foundLocations, vector_double& foundWeights, double hitThreshold = 0, Size winStride = Size(), Size padding = Size(), double scale = 1.05, double finalThreshold = 2.0, bool useMeanshiftGrouping = false)
+        // C++:  void cv::HOGDescriptor::detectMultiScale(Mat img, vector_Rect& foundLocations, vector_double& foundWeights, double hitThreshold = 0, Size winStride = Size(), Size padding = Size(), double scale = 1.05, double groupThreshold = 2.0, bool useMeanshiftGrouping = false)
         //
 
         /**
-         * Detects objects of different sizes in the input image. The detected objects are returned as a list
-         *     of rectangles.
-         *     param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
-         *     param foundLocations Vector of rectangles where each rectangle contains the detected object.
-         *     param foundWeights Vector that will contain confidence values for each detected object.
-         *     param hitThreshold Threshold for the distance between features and SVM classifying plane.
-         *     Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
-         *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
-         *     param winStride Window stride. It must be a multiple of block stride.
-         *     param padding Padding
-         *     param scale Coefficient of the detection window increase.
-         *     param finalThreshold Final threshold
-         *     param useMeanshiftGrouping indicates grouping algorithm
+         @brief Detects objects of different sizes in the input image. The detected objects are returned as a list
+             of rectangles.
+             @param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
+             @param foundLocations Vector of rectangles where each rectangle contains the detected object.
+             @param foundWeights Vector that will contain confidence values for each detected object.
+             @param hitThreshold Threshold for the distance between features and SVM classifying plane.
+             Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
+             But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param scale Coefficient of the detection window increase.
+             @param groupThreshold Coefficient to regulate the similarity threshold. When detected, some objects can be covered
+             by many rectangles. 0 means not to perform grouping.
+             @param useMeanshiftGrouping indicates grouping algorithm
          */
-        public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding, double scale, double finalThreshold, bool useMeanshiftGrouping)
+        public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding, double scale, double groupThreshold, bool useMeanshiftGrouping)
         {
             ThrowIfDisposed();
             if (img != null) img.ThrowIfDisposed();
@@ -638,26 +682,28 @@ namespace OpenCVForUnity.ObjdetectModule
             if (foundWeights != null) foundWeights.ThrowIfDisposed();
             Mat foundLocations_mat = foundLocations;
             Mat foundWeights_mat = foundWeights;
-            objdetect_HOGDescriptor_detectMultiScale_10(nativeObj, img.nativeObj, foundLocations_mat.nativeObj, foundWeights_mat.nativeObj, hitThreshold, winStride.width, winStride.height, padding.width, padding.height, scale, finalThreshold, useMeanshiftGrouping);
+            objdetect_HOGDescriptor_detectMultiScale_10(nativeObj, img.nativeObj, foundLocations_mat.nativeObj, foundWeights_mat.nativeObj, hitThreshold, winStride.width, winStride.height, padding.width, padding.height, scale, groupThreshold, useMeanshiftGrouping);
 
 
         }
 
         /**
-         * Detects objects of different sizes in the input image. The detected objects are returned as a list
-         *     of rectangles.
-         *     param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
-         *     param foundLocations Vector of rectangles where each rectangle contains the detected object.
-         *     param foundWeights Vector that will contain confidence values for each detected object.
-         *     param hitThreshold Threshold for the distance between features and SVM classifying plane.
-         *     Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
-         *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
-         *     param winStride Window stride. It must be a multiple of block stride.
-         *     param padding Padding
-         *     param scale Coefficient of the detection window increase.
-         *     param finalThreshold Final threshold
+         @brief Detects objects of different sizes in the input image. The detected objects are returned as a list
+             of rectangles.
+             @param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
+             @param foundLocations Vector of rectangles where each rectangle contains the detected object.
+             @param foundWeights Vector that will contain confidence values for each detected object.
+             @param hitThreshold Threshold for the distance between features and SVM classifying plane.
+             Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
+             But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param scale Coefficient of the detection window increase.
+             @param groupThreshold Coefficient to regulate the similarity threshold. When detected, some objects can be covered
+             by many rectangles. 0 means not to perform grouping.
+             @param useMeanshiftGrouping indicates grouping algorithm
          */
-        public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding, double scale, double finalThreshold)
+        public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding, double scale, double groupThreshold)
         {
             ThrowIfDisposed();
             if (img != null) img.ThrowIfDisposed();
@@ -665,23 +711,26 @@ namespace OpenCVForUnity.ObjdetectModule
             if (foundWeights != null) foundWeights.ThrowIfDisposed();
             Mat foundLocations_mat = foundLocations;
             Mat foundWeights_mat = foundWeights;
-            objdetect_HOGDescriptor_detectMultiScale_11(nativeObj, img.nativeObj, foundLocations_mat.nativeObj, foundWeights_mat.nativeObj, hitThreshold, winStride.width, winStride.height, padding.width, padding.height, scale, finalThreshold);
+            objdetect_HOGDescriptor_detectMultiScale_11(nativeObj, img.nativeObj, foundLocations_mat.nativeObj, foundWeights_mat.nativeObj, hitThreshold, winStride.width, winStride.height, padding.width, padding.height, scale, groupThreshold);
 
 
         }
 
         /**
-         * Detects objects of different sizes in the input image. The detected objects are returned as a list
-         *     of rectangles.
-         *     param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
-         *     param foundLocations Vector of rectangles where each rectangle contains the detected object.
-         *     param foundWeights Vector that will contain confidence values for each detected object.
-         *     param hitThreshold Threshold for the distance between features and SVM classifying plane.
-         *     Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
-         *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
-         *     param winStride Window stride. It must be a multiple of block stride.
-         *     param padding Padding
-         *     param scale Coefficient of the detection window increase.
+         @brief Detects objects of different sizes in the input image. The detected objects are returned as a list
+             of rectangles.
+             @param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
+             @param foundLocations Vector of rectangles where each rectangle contains the detected object.
+             @param foundWeights Vector that will contain confidence values for each detected object.
+             @param hitThreshold Threshold for the distance between features and SVM classifying plane.
+             Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
+             But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param scale Coefficient of the detection window increase.
+             @param groupThreshold Coefficient to regulate the similarity threshold. When detected, some objects can be covered
+             by many rectangles. 0 means not to perform grouping.
+             @param useMeanshiftGrouping indicates grouping algorithm
          */
         public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding, double scale)
         {
@@ -697,16 +746,20 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         * Detects objects of different sizes in the input image. The detected objects are returned as a list
-         *     of rectangles.
-         *     param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
-         *     param foundLocations Vector of rectangles where each rectangle contains the detected object.
-         *     param foundWeights Vector that will contain confidence values for each detected object.
-         *     param hitThreshold Threshold for the distance between features and SVM classifying plane.
-         *     Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
-         *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
-         *     param winStride Window stride. It must be a multiple of block stride.
-         *     param padding Padding
+         @brief Detects objects of different sizes in the input image. The detected objects are returned as a list
+             of rectangles.
+             @param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
+             @param foundLocations Vector of rectangles where each rectangle contains the detected object.
+             @param foundWeights Vector that will contain confidence values for each detected object.
+             @param hitThreshold Threshold for the distance between features and SVM classifying plane.
+             Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
+             But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param scale Coefficient of the detection window increase.
+             @param groupThreshold Coefficient to regulate the similarity threshold. When detected, some objects can be covered
+             by many rectangles. 0 means not to perform grouping.
+             @param useMeanshiftGrouping indicates grouping algorithm
          */
         public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding)
         {
@@ -722,15 +775,20 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         * Detects objects of different sizes in the input image. The detected objects are returned as a list
-         *     of rectangles.
-         *     param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
-         *     param foundLocations Vector of rectangles where each rectangle contains the detected object.
-         *     param foundWeights Vector that will contain confidence values for each detected object.
-         *     param hitThreshold Threshold for the distance between features and SVM classifying plane.
-         *     Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
-         *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
-         *     param winStride Window stride. It must be a multiple of block stride.
+         @brief Detects objects of different sizes in the input image. The detected objects are returned as a list
+             of rectangles.
+             @param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
+             @param foundLocations Vector of rectangles where each rectangle contains the detected object.
+             @param foundWeights Vector that will contain confidence values for each detected object.
+             @param hitThreshold Threshold for the distance between features and SVM classifying plane.
+             Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
+             But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param scale Coefficient of the detection window increase.
+             @param groupThreshold Coefficient to regulate the similarity threshold. When detected, some objects can be covered
+             by many rectangles. 0 means not to perform grouping.
+             @param useMeanshiftGrouping indicates grouping algorithm
          */
         public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride)
         {
@@ -746,14 +804,20 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         * Detects objects of different sizes in the input image. The detected objects are returned as a list
-         *     of rectangles.
-         *     param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
-         *     param foundLocations Vector of rectangles where each rectangle contains the detected object.
-         *     param foundWeights Vector that will contain confidence values for each detected object.
-         *     param hitThreshold Threshold for the distance between features and SVM classifying plane.
-         *     Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
-         *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+         @brief Detects objects of different sizes in the input image. The detected objects are returned as a list
+             of rectangles.
+             @param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
+             @param foundLocations Vector of rectangles where each rectangle contains the detected object.
+             @param foundWeights Vector that will contain confidence values for each detected object.
+             @param hitThreshold Threshold for the distance between features and SVM classifying plane.
+             Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
+             But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param scale Coefficient of the detection window increase.
+             @param groupThreshold Coefficient to regulate the similarity threshold. When detected, some objects can be covered
+             by many rectangles. 0 means not to perform grouping.
+             @param useMeanshiftGrouping indicates grouping algorithm
          */
         public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold)
         {
@@ -769,13 +833,20 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         * Detects objects of different sizes in the input image. The detected objects are returned as a list
-         *     of rectangles.
-         *     param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
-         *     param foundLocations Vector of rectangles where each rectangle contains the detected object.
-         *     param foundWeights Vector that will contain confidence values for each detected object.
-         *     Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
-         *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+         @brief Detects objects of different sizes in the input image. The detected objects are returned as a list
+             of rectangles.
+             @param img Matrix of the type CV_8U or CV_8UC3 containing an image where objects are detected.
+             @param foundLocations Vector of rectangles where each rectangle contains the detected object.
+             @param foundWeights Vector that will contain confidence values for each detected object.
+             @param hitThreshold Threshold for the distance between features and SVM classifying plane.
+             Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
+             But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+             @param winStride Window stride. It must be a multiple of block stride.
+             @param padding Padding
+             @param scale Coefficient of the detection window increase.
+             @param groupThreshold Coefficient to regulate the similarity threshold. When detected, some objects can be covered
+             by many rectangles. 0 means not to perform grouping.
+             @param useMeanshiftGrouping indicates grouping algorithm
          */
         public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights)
         {
@@ -796,12 +867,12 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         *  Computes gradients and quantized gradient orientations.
-         *     param img Matrix contains the image to be computed
-         *     param grad Matrix of type CV_32FC2 contains computed gradients
-         *     param angleOfs Matrix of type CV_8UC2 contains quantized gradient orientations
-         *     param paddingTL Padding from top-left
-         *     param paddingBR Padding from bottom-right
+         @brief  Computes gradients and quantized gradient orientations.
+             @param img Matrix contains the image to be computed
+             @param grad Matrix of type CV_32FC2 contains computed gradients
+             @param angleOfs Matrix of type CV_8UC2 contains quantized gradient orientations
+             @param paddingTL Padding from top-left
+             @param paddingBR Padding from bottom-right
          */
         public void computeGradient(Mat img, Mat grad, Mat angleOfs, Size paddingTL, Size paddingBR)
         {
@@ -816,11 +887,12 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         *  Computes gradients and quantized gradient orientations.
-         *     param img Matrix contains the image to be computed
-         *     param grad Matrix of type CV_32FC2 contains computed gradients
-         *     param angleOfs Matrix of type CV_8UC2 contains quantized gradient orientations
-         *     param paddingTL Padding from top-left
+         @brief  Computes gradients and quantized gradient orientations.
+             @param img Matrix contains the image to be computed
+             @param grad Matrix of type CV_32FC2 contains computed gradients
+             @param angleOfs Matrix of type CV_8UC2 contains quantized gradient orientations
+             @param paddingTL Padding from top-left
+             @param paddingBR Padding from bottom-right
          */
         public void computeGradient(Mat img, Mat grad, Mat angleOfs, Size paddingTL)
         {
@@ -835,10 +907,12 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         *  Computes gradients and quantized gradient orientations.
-         *     param img Matrix contains the image to be computed
-         *     param grad Matrix of type CV_32FC2 contains computed gradients
-         *     param angleOfs Matrix of type CV_8UC2 contains quantized gradient orientations
+         @brief  Computes gradients and quantized gradient orientations.
+             @param img Matrix contains the image to be computed
+             @param grad Matrix of type CV_32FC2 contains computed gradients
+             @param angleOfs Matrix of type CV_8UC2 contains quantized gradient orientations
+             @param paddingTL Padding from top-left
+             @param paddingBR Padding from bottom-right
          */
         public void computeGradient(Mat img, Mat grad, Mat angleOfs)
         {
@@ -858,8 +932,7 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         * Returns coefficients of the classifier trained for people detection (for 64x128 windows).
-         * return automatically generated
+         @brief Returns coefficients of the classifier trained for people detection (for 64x128 windows).
          */
         public static MatOfFloat getDefaultPeopleDetector()
         {
@@ -876,8 +949,7 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         * Returns coefficients of the classifier trained for people detection (for 48x96 windows).
-         * return automatically generated
+         @brief Returns coefficients of the classifier trained for people detection (for 48x96 windows).
          */
         public static MatOfFloat getDaimlerPeopleDetector()
         {
@@ -1166,11 +1238,11 @@ namespace OpenCVForUnity.ObjdetectModule
         [DllImport(LIBNAME)]
         private static extern void objdetect_HOGDescriptor_detect_14(IntPtr nativeObj, IntPtr img_nativeObj, IntPtr foundLocations_mat_nativeObj, IntPtr weights_mat_nativeObj);
 
-        // C++:  void cv::HOGDescriptor::detectMultiScale(Mat img, vector_Rect& foundLocations, vector_double& foundWeights, double hitThreshold = 0, Size winStride = Size(), Size padding = Size(), double scale = 1.05, double finalThreshold = 2.0, bool useMeanshiftGrouping = false)
+        // C++:  void cv::HOGDescriptor::detectMultiScale(Mat img, vector_Rect& foundLocations, vector_double& foundWeights, double hitThreshold = 0, Size winStride = Size(), Size padding = Size(), double scale = 1.05, double groupThreshold = 2.0, bool useMeanshiftGrouping = false)
         [DllImport(LIBNAME)]
-        private static extern void objdetect_HOGDescriptor_detectMultiScale_10(IntPtr nativeObj, IntPtr img_nativeObj, IntPtr foundLocations_mat_nativeObj, IntPtr foundWeights_mat_nativeObj, double hitThreshold, double winStride_width, double winStride_height, double padding_width, double padding_height, double scale, double finalThreshold, [MarshalAs(UnmanagedType.U1)] bool useMeanshiftGrouping);
+        private static extern void objdetect_HOGDescriptor_detectMultiScale_10(IntPtr nativeObj, IntPtr img_nativeObj, IntPtr foundLocations_mat_nativeObj, IntPtr foundWeights_mat_nativeObj, double hitThreshold, double winStride_width, double winStride_height, double padding_width, double padding_height, double scale, double groupThreshold, [MarshalAs(UnmanagedType.U1)] bool useMeanshiftGrouping);
         [DllImport(LIBNAME)]
-        private static extern void objdetect_HOGDescriptor_detectMultiScale_11(IntPtr nativeObj, IntPtr img_nativeObj, IntPtr foundLocations_mat_nativeObj, IntPtr foundWeights_mat_nativeObj, double hitThreshold, double winStride_width, double winStride_height, double padding_width, double padding_height, double scale, double finalThreshold);
+        private static extern void objdetect_HOGDescriptor_detectMultiScale_11(IntPtr nativeObj, IntPtr img_nativeObj, IntPtr foundLocations_mat_nativeObj, IntPtr foundWeights_mat_nativeObj, double hitThreshold, double winStride_width, double winStride_height, double padding_width, double padding_height, double scale, double groupThreshold);
         [DllImport(LIBNAME)]
         private static extern void objdetect_HOGDescriptor_detectMultiScale_12(IntPtr nativeObj, IntPtr img_nativeObj, IntPtr foundLocations_mat_nativeObj, IntPtr foundWeights_mat_nativeObj, double hitThreshold, double winStride_width, double winStride_height, double padding_width, double padding_height, double scale);
         [DllImport(LIBNAME)]

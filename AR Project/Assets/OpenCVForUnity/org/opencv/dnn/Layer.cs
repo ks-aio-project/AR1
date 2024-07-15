@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,10 +11,10 @@ namespace OpenCVForUnity.DnnModule
 
     // C++: class Layer
     /**
-     * This interface class allows to build new Layers - are building blocks of networks.
-     *
-     * Each class, derived from Layer, must implement allocate() methods to declare own outputs and forward() to compute outputs.
-     * Also before using the new layer into networks you must register your layer by using one of REF: dnnLayerFactory "LayerFactory" macros.
+     @brief This interface class allows to build new Layers - are building blocks of networks.
+          *
+          * Each class, derived from Layer, must implement forward() method to compute outputs.
+          * Also before using the new layer into networks you must register your layer by using one of @ref dnnLayerFactory "LayerFactory" macros.
      */
 
     public class Layer : Algorithm
@@ -52,12 +52,12 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Computes and sets internal parameters according to inputs, outputs and blobs.
-         * param outputs vector of already allocated output blobs
-         *
-         * If this method is called after network has allocated all memory for input and output blobs
-         * and before inferencing.
-         * param inputs automatically generated
+         @brief Computes and sets internal parameters according to inputs, outputs and blobs.
+                  *  @param[in]  inputs  vector of already allocated input blobs
+                  *  @param[out] outputs vector of already allocated output blobs
+                  *
+                  * This method is called after network has allocated all memory for input and output blobs
+                  * and before inferencing.
          */
         public void finalize(List<Mat> inputs, List<Mat> outputs)
         {
@@ -76,11 +76,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Allocates layer and computes output.
-         * deprecated This method will be removed in the future release.
-         * param inputs automatically generated
-         * param outputs automatically generated
-         * param internals automatically generated
+         @brief Allocates layer and computes output.
+                  *  @deprecated This method will be removed in the future release.
          */
         [Obsolete("This method is deprecated.")]
         public void run(List<Mat> inputs, List<Mat> outputs, List<Mat> internals)
@@ -103,10 +100,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Returns index of output blob in output array.
-         * SEE: inputNameToIndex()
-         * param outputName automatically generated
-         * return automatically generated
+         @brief Returns index of output blob in output array.
+                  *  @see inputNameToIndex()
          */
         public int outputNameToIndex(string outputName)
         {
@@ -234,4 +229,5 @@ namespace OpenCVForUnity.DnnModule
 
     }
 }
+
 #endif

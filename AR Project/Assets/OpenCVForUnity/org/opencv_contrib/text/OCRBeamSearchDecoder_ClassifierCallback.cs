@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,14 +10,14 @@ namespace OpenCVForUnity.TextModule
 {
     // C++: class ClassifierCallback
     /**
-     * Callback with the character classifier is made a class.
-     *
-     *     This way it hides the feature extractor and the classifier itself, so developers can write
-     *     their own OCR code.
-     *
-     *     The default character classifier and feature extractor can be loaded using the utility function
-     *     loadOCRBeamSearchClassifierCNN with all its parameters provided in
-     *     &lt;https://github.com/opencv/opencv_contrib/blob/master/modules/text/samples/OCRBeamSearch_CNN_model_data.xml.gz&gt;.
+     @brief Callback with the character classifier is made a class.
+     
+         This way it hides the feature extractor and the classifier itself, so developers can write
+         their own OCR code.
+     
+         The default character classifier and feature extractor can be loaded using the utility function
+         loadOCRBeamSearchClassifierCNN with all its parameters provided in
+         &lt;https://github.com/opencv/opencv_contrib/blob/master/modules/text/samples/OCRBeamSearch_CNN_model_data.xml.gz&gt;.
      */
 
     public class OCRBeamSearchDecoder_ClassifierCallback : DisposableOpenCVObject
@@ -67,4 +67,5 @@ namespace OpenCVForUnity.TextModule
 
     }
 }
+
 #endif

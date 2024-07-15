@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.MlModule
 
     // C++: class StatModel
     /**
-     * Base class for statistical models in OpenCV ML.
+     @brief Base class for statistical models in OpenCV ML.
      */
 
     public class StatModel : Algorithm
@@ -53,8 +53,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns the number of variables in training samples
-         * return automatically generated
+         @brief Returns the number of variables in training samples
          */
         public int getVarCount()
         {
@@ -85,8 +84,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns true if the model is trained
-         * return automatically generated
+         @brief Returns true if the model is trained
          */
         public bool isTrained()
         {
@@ -103,8 +101,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns true if the model is classifier
-         * return automatically generated
+         @brief Returns true if the model is classifier
          */
         public bool isClassifier()
         {
@@ -121,13 +118,12 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Trains the statistical model
-         *
-         *     param trainData training data that can be loaded from file using TrainData::loadFromCSV or
-         *         created with TrainData::create.
-         *     param flags optional flags, depending on the model. Some of the models can be updated with the
-         *         new training samples, not completely overwritten (such as NormalBayesClassifier or ANN_MLP).
-         * return automatically generated
+         @brief Trains the statistical model
+         
+             @param trainData training data that can be loaded from file using TrainData::loadFromCSV or
+                 created with TrainData::create.
+             @param flags optional flags, depending on the model. Some of the models can be updated with the
+                 new training samples, not completely overwritten (such as NormalBayesClassifier or ANN_MLP).
          */
         public bool train(TrainData trainData, int flags)
         {
@@ -140,12 +136,12 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Trains the statistical model
-         *
-         *     param trainData training data that can be loaded from file using TrainData::loadFromCSV or
-         *         created with TrainData::create.
-         *         new training samples, not completely overwritten (such as NormalBayesClassifier or ANN_MLP).
-         * return automatically generated
+         @brief Trains the statistical model
+         
+             @param trainData training data that can be loaded from file using TrainData::loadFromCSV or
+                 created with TrainData::create.
+             @param flags optional flags, depending on the model. Some of the models can be updated with the
+                 new training samples, not completely overwritten (such as NormalBayesClassifier or ANN_MLP).
          */
         public bool train(TrainData trainData)
         {
@@ -163,12 +159,11 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Trains the statistical model
-         *
-         *     param samples training samples
-         *     param layout See ml::SampleTypes.
-         *     param responses vector of responses associated with the training samples.
-         * return automatically generated
+         @brief Trains the statistical model
+         
+             @param samples training samples
+             @param layout See ml::SampleTypes.
+             @param responses vector of responses associated with the training samples.
          */
         public bool train(Mat samples, int layout, Mat responses)
         {
@@ -187,19 +182,18 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Computes error on the training or test dataset
-         *
-         *     param data the training data
-         *     param test if true, the error is computed over the test subset of the data, otherwise it's
-         *         computed over the training subset of the data. Please note that if you loaded a completely
-         *         different dataset to evaluate already trained classifier, you will probably want not to set
-         *         the test subset at all with TrainData::setTrainTestSplitRatio and specify test=false, so
-         *         that the error is computed for the whole new set. Yes, this sounds a bit confusing.
-         *     param resp the optional output responses.
-         *
-         *     The method uses StatModel::predict to compute the error. For regression models the error is
-         *     computed as RMS, for classifiers - as a percent of missclassified samples (0%-100%).
-         * return automatically generated
+         @brief Computes error on the training or test dataset
+         
+             @param data the training data
+             @param test if true, the error is computed over the test subset of the data, otherwise it's
+                 computed over the training subset of the data. Please note that if you loaded a completely
+                 different dataset to evaluate already trained classifier, you will probably want not to set
+                 the test subset at all with TrainData::setTrainTestSplitRatio and specify test=false, so
+                 that the error is computed for the whole new set. Yes, this sounds a bit confusing.
+             @param resp the optional output responses.
+         
+             The method uses StatModel::predict to compute the error. For regression models the error is
+             computed as RMS, for classifiers - as a percent of missclassified samples (0%-100%).
          */
         public float calcError(TrainData data, bool test, Mat resp)
         {
@@ -218,12 +212,11 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Predicts response(s) for the provided sample(s)
-         *
-         *     param samples The input samples, floating-point matrix
-         *     param results The optional output matrix of results.
-         *     param flags The optional flags, model-dependent. See cv::ml::StatModel::Flags.
-         * return automatically generated
+         @brief Predicts response(s) for the provided sample(s)
+         
+             @param samples The input samples, floating-point matrix
+             @param results The optional output matrix of results.
+             @param flags The optional flags, model-dependent. See cv::ml::StatModel::Flags.
          */
         public virtual float predict(Mat samples, Mat results, int flags)
         {
@@ -237,11 +230,11 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Predicts response(s) for the provided sample(s)
-         *
-         *     param samples The input samples, floating-point matrix
-         *     param results The optional output matrix of results.
-         * return automatically generated
+         @brief Predicts response(s) for the provided sample(s)
+         
+             @param samples The input samples, floating-point matrix
+             @param results The optional output matrix of results.
+             @param flags The optional flags, model-dependent. See cv::ml::StatModel::Flags.
          */
         public virtual float predict(Mat samples, Mat results)
         {
@@ -255,10 +248,11 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Predicts response(s) for the provided sample(s)
-         *
-         *     param samples The input samples, floating-point matrix
-         * return automatically generated
+         @brief Predicts response(s) for the provided sample(s)
+         
+             @param samples The input samples, floating-point matrix
+             @param results The optional output matrix of results.
+             @param flags The optional flags, model-dependent. See cv::ml::StatModel::Flags.
          */
         public virtual float predict(Mat samples)
         {

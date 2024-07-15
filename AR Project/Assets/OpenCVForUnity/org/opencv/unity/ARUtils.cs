@@ -1,4 +1,4 @@
-癤퓎sing System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -305,6 +305,14 @@ namespace OpenCVForUnity.UnityUtils
         /// to improve performance; no changes will be made to it.</param>
         public static void SetTransformFromMatrix(Transform transform, ref Matrix4x4 matrix)
         {
+            // KKS
+            // 마커 인식 후 오브젝트 위치 및 회전은 여기서 수정.
+            Vector3 offset = new Vector3(0, 3, -10);
+
+            Vector3 dirCamera = Camera.main.transform.position - transform.position;
+            dirCamera.Normalize();
+            Quaternion rot = Quaternion.LookRotation(dirCamera);
+
             transform.localPosition = ExtractTranslationFromMatrix(ref matrix);
             transform.localRotation = ExtractRotationFromMatrix(ref matrix);
             transform.localScale = ExtractScaleFromMatrix(ref matrix);

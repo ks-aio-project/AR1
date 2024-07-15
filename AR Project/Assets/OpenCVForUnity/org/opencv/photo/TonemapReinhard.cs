@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,12 +10,12 @@ namespace OpenCVForUnity.PhotoModule
 
     // C++: class TonemapReinhard
     /**
-     * This is a global tonemapping operator that models human visual system.
-     *
-     * Mapping function is controlled by adaptation parameter, that is computed using light adaptation and
-     * color adaptation.
-     *
-     * For more information see CITE: RD05 .
+     @brief This is a global tonemapping operator that models human visual system.
+     
+     Mapping function is controlled by adaptation parameter, that is computed using light adaptation and
+     color adaptation.
+     
+     For more information see @cite RD05 .
      */
 
     public class TonemapReinhard : Tonemap

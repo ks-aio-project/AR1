@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.ImgprocModule
 
     // C++: class GeneralizedHoughBallard
     /**
-     * finds arbitrary template in the grayscale image using Generalized Hough Transform
-     *
-     * Detects position only without translation and rotation CITE: Ballard1981 .
+     @brief finds arbitrary template in the grayscale image using Generalized Hough Transform
+     
+     Detects position only without translation and rotation @cite Ballard1981 .
      */
 
     public class GeneralizedHoughBallard : GeneralizedHough

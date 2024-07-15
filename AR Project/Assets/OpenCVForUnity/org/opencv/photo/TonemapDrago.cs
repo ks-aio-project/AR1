@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,15 +10,15 @@ namespace OpenCVForUnity.PhotoModule
 
     // C++: class TonemapDrago
     /**
-     * Adaptive logarithmic mapping is a fast global tonemapping algorithm that scales the image in
-     * logarithmic domain.
-     *
-     * Since it's a global operator the same function is applied to all the pixels, it is controlled by the
-     * bias parameter.
-     *
-     * Optional saturation enhancement is possible as described in CITE: FL02 .
-     *
-     * For more information see CITE: DM03 .
+     @brief Adaptive logarithmic mapping is a fast global tonemapping algorithm that scales the image in
+     logarithmic domain.
+     
+     Since it's a global operator the same function is applied to all the pixels, it is controlled by the
+     bias parameter.
+     
+     Optional saturation enhancement is possible as described in @cite FL02 .
+     
+     For more information see @cite DM03 .
      */
 
     public class TonemapDrago : Tonemap

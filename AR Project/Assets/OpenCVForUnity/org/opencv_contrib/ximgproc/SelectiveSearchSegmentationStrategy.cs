@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,8 +10,8 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class SelectiveSearchSegmentationStrategy
     /**
-     * Strategie for the selective search segmentation algorithm
-     *                         The class implements a generic stragery for the algorithm described in CITE: uijlings2013selective.
+     @brief Strategie for the selective search segmentation algorithm
+                             The class implements a generic stragery for the algorithm described in @cite uijlings2013selective.
      */
 
     public class SelectiveSearchSegmentationStrategy : Algorithm
@@ -49,11 +49,11 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Set a initial image, with a segmentation.
-         *                                 param img The input image. Any number of channel can be provided
-         *                                 param regions A segmentation of the image. The parameter must be the same size of img.
-         *                                 param sizes The sizes of different regions
-         *                                 param image_id If not set to -1, try to cache pre-computations. If the same set og (img, regions, size) is used, the image_id need to be the same.
+         @brief Set a initial image, with a segmentation.
+                                         @param img The input image. Any number of channel can be provided
+                                         @param regions A segmentation of the image. The parameter must be the same size of img.
+                                         @param sizes The sizes of different regions
+                                         @param image_id If not set to -1, try to cache pre-computations. If the same set og (img, regions, size) is used, the image_id need to be the same.
          */
         public void setImage(Mat img, Mat regions, Mat sizes, int image_id)
         {
@@ -68,10 +68,11 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Set a initial image, with a segmentation.
-         *                                 param img The input image. Any number of channel can be provided
-         *                                 param regions A segmentation of the image. The parameter must be the same size of img.
-         *                                 param sizes The sizes of different regions
+         @brief Set a initial image, with a segmentation.
+                                         @param img The input image. Any number of channel can be provided
+                                         @param regions A segmentation of the image. The parameter must be the same size of img.
+                                         @param sizes The sizes of different regions
+                                         @param image_id If not set to -1, try to cache pre-computations. If the same set og (img, regions, size) is used, the image_id need to be the same.
          */
         public void setImage(Mat img, Mat regions, Mat sizes)
         {
@@ -91,10 +92,9 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Return the score between two regions (between 0 and 1)
-         *                                 param r1 The first region
-         *                                 param r2 The second region
-         * return automatically generated
+         @brief Return the score between two regions (between 0 and 1)
+                                         @param r1 The first region
+                                         @param r2 The second region
          */
         public float get(int r1, int r2)
         {
@@ -111,9 +111,9 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Inform the strategy that two regions will be merged
-         *                                 param r1 The first region
-         *                                 param r2 The second region
+         @brief Inform the strategy that two regions will be merged
+                                         @param r1 The first region
+                                         @param r2 The second region
          */
         public void merge(int r1, int r2)
         {

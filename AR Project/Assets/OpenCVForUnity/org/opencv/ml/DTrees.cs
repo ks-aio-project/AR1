@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,14 +10,14 @@ namespace OpenCVForUnity.MlModule
 
     // C++: class DTrees
     /**
-     * The class represents a single decision tree or a collection of decision trees.
-     *
-     * The current public interface of the class allows user to train only a single decision tree, however
-     * the class is capable of storing multiple decision trees and using them for prediction (by summing
-     * responses or using a voting schemes), and the derived from DTrees classes (such as RTrees and Boost)
-     * use this capability to implement decision tree ensembles.
-     *
-     * SEE: REF: ml_intro_trees
+     @brief The class represents a single decision tree or a collection of decision trees.
+     
+     The current public interface of the class allows user to train only a single decision tree, however
+     the class is capable of storing multiple decision trees and using them for prediction (by summing
+     responses or using a voting schemes), and the derived from DTrees classes (such as RTrees and Boost)
+     use this capability to implement decision tree ensembles.
+     
+     @sa @ref ml_intro_trees
      */
 
     public class DTrees : StatModel
@@ -60,8 +60,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setMaxCategories
-         * return automatically generated
+         @see setMaxCategories
          */
         public int getMaxCategories()
         {
@@ -78,8 +77,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getMaxCategories SEE: getMaxCategories
-         * param val automatically generated
+         @copybrief getMaxCategories @see getMaxCategories
          */
         public void setMaxCategories(int val)
         {
@@ -96,8 +94,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setMaxDepth
-         * return automatically generated
+         @see setMaxDepth
          */
         public int getMaxDepth()
         {
@@ -114,8 +111,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getMaxDepth SEE: getMaxDepth
-         * param val automatically generated
+         @copybrief getMaxDepth @see getMaxDepth
          */
         public void setMaxDepth(int val)
         {
@@ -132,8 +128,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setMinSampleCount
-         * return automatically generated
+         @see setMinSampleCount
          */
         public int getMinSampleCount()
         {
@@ -150,8 +145,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getMinSampleCount SEE: getMinSampleCount
-         * param val automatically generated
+         @copybrief getMinSampleCount @see getMinSampleCount
          */
         public void setMinSampleCount(int val)
         {
@@ -168,8 +162,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setCVFolds
-         * return automatically generated
+         @see setCVFolds
          */
         public int getCVFolds()
         {
@@ -186,8 +179,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getCVFolds SEE: getCVFolds
-         * param val automatically generated
+         @copybrief getCVFolds @see getCVFolds
          */
         public void setCVFolds(int val)
         {
@@ -204,8 +196,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setUseSurrogates
-         * return automatically generated
+         @see setUseSurrogates
          */
         public bool getUseSurrogates()
         {
@@ -222,8 +213,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getUseSurrogates SEE: getUseSurrogates
-         * param val automatically generated
+         @copybrief getUseSurrogates @see getUseSurrogates
          */
         public void setUseSurrogates(bool val)
         {
@@ -240,8 +230,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setUse1SERule
-         * return automatically generated
+         @see setUse1SERule
          */
         public bool getUse1SERule()
         {
@@ -258,8 +247,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getUse1SERule SEE: getUse1SERule
-         * param val automatically generated
+         @copybrief getUse1SERule @see getUse1SERule
          */
         public void setUse1SERule(bool val)
         {
@@ -276,8 +264,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setTruncatePrunedTree
-         * return automatically generated
+         @see setTruncatePrunedTree
          */
         public bool getTruncatePrunedTree()
         {
@@ -294,8 +281,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getTruncatePrunedTree SEE: getTruncatePrunedTree
-         * param val automatically generated
+         @copybrief getTruncatePrunedTree @see getTruncatePrunedTree
          */
         public void setTruncatePrunedTree(bool val)
         {
@@ -312,8 +298,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setRegressionAccuracy
-         * return automatically generated
+         @see setRegressionAccuracy
          */
         public float getRegressionAccuracy()
         {
@@ -330,8 +315,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getRegressionAccuracy SEE: getRegressionAccuracy
-         * param val automatically generated
+         @copybrief getRegressionAccuracy @see getRegressionAccuracy
          */
         public void setRegressionAccuracy(float val)
         {
@@ -348,8 +332,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setPriors
-         * return automatically generated
+         @see setPriors
          */
         public Mat getPriors()
         {
@@ -366,8 +349,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getPriors SEE: getPriors
-         * param val automatically generated
+         @copybrief getPriors @see getPriors
          */
         public void setPriors(Mat val)
         {
@@ -385,12 +367,11 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Creates the empty model
-         *
-         *     The static method creates empty decision tree with the specified parameters. It should be then
-         *     trained using train method (see StatModel::train). Alternatively, you can load the model from
-         *     file using Algorithm::load&lt;DTrees&gt;(filename).
-         * return automatically generated
+         @brief Creates the empty model
+         
+             The static method creates empty decision tree with the specified parameters. It should be then
+             trained using train method (see StatModel::train). Alternatively, you can load the model from
+             file using Algorithm::load&lt;DTrees&gt;(filename).
          */
         public static DTrees create()
         {
@@ -407,15 +388,14 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Loads and creates a serialized DTrees from a file
-         *
-         * Use DTree::save to serialize and store an DTree to disk.
-         * Load the DTree from this file again, by calling this function with the path to the file.
-         * Optionally specify the node for the file containing the classifier
-         *
-         * param filepath path to serialized DTree
-         * param nodeName name of node containing the classifier
-         * return automatically generated
+         @brief Loads and creates a serialized DTrees from a file
+              *
+              * Use DTree::save to serialize and store an DTree to disk.
+              * Load the DTree from this file again, by calling this function with the path to the file.
+              * Optionally specify the node for the file containing the classifier
+              *
+              * @param filepath path to serialized DTree
+              * @param nodeName name of node containing the classifier
          */
         public static DTrees load(string filepath, string nodeName)
         {
@@ -427,14 +407,14 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Loads and creates a serialized DTrees from a file
-         *
-         * Use DTree::save to serialize and store an DTree to disk.
-         * Load the DTree from this file again, by calling this function with the path to the file.
-         * Optionally specify the node for the file containing the classifier
-         *
-         * param filepath path to serialized DTree
-         * return automatically generated
+         @brief Loads and creates a serialized DTrees from a file
+              *
+              * Use DTree::save to serialize and store an DTree to disk.
+              * Load the DTree from this file again, by calling this function with the path to the file.
+              * Optionally specify the node for the file containing the classifier
+              *
+              * @param filepath path to serialized DTree
+              * @param nodeName name of node containing the classifier
          */
         public static DTrees load(string filepath)
         {

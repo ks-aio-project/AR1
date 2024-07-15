@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,11 +10,11 @@ namespace OpenCVForUnity.TrackingModule
 
     // C++: class TrackerBoosting
     /**
-     * the Boosting tracker
-     *
-     * This is a real-time object tracking based on a novel on-line version of the AdaBoost algorithm.
-     * The classifier uses the surrounding background as negative examples in update step to avoid the
-     * drifting problem. The implementation is based on CITE: OLB .
+     @brief the Boosting tracker
+     
+     This is a real-time object tracking based on a novel on-line version of the AdaBoost algorithm.
+     The classifier uses the surrounding background as negative examples in update step to avoid the
+     drifting problem. The implementation is based on @cite OLB .
      */
 
     public class legacy_TrackerBoosting : legacy_Tracker
@@ -52,8 +52,8 @@ namespace OpenCVForUnity.TrackingModule
         //
 
         /**
-         * Constructor
-         * return automatically generated
+         @brief Constructor
+             @param parameters BOOSTING parameters TrackerBoosting::Params
          */
         public static legacy_TrackerBoosting create()
         {

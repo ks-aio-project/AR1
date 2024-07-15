@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.XphotoModule
 
     // C++: class SimpleWB
     /**
-     * A simple white balance algorithm that works by independently stretching
-     *     each of the input image channels to the specified range. For increased robustness
-     *     it ignores the top and bottom \(p\%\) of pixel values.
+     @brief A simple white balance algorithm that works by independently stretching
+         each of the input image channels to the specified range. For increased robustness
+         it ignores the top and bottom \f$$p\%\f$$ of pixel values.
      */
 
     public class SimpleWB : WhiteBalancer
@@ -50,9 +50,8 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * Input image range minimum value
-         * SEE: setInputMin
-         * return automatically generated
+         @brief Input image range minimum value
+         @see setInputMin
          */
         public float getInputMin()
         {
@@ -69,8 +68,7 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         *  getInputMin SEE: getInputMin
-         * param val automatically generated
+         @copybrief getInputMin @see getInputMin
          */
         public void setInputMin(float val)
         {
@@ -87,9 +85,8 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * Input image range maximum value
-         * SEE: setInputMax
-         * return automatically generated
+         @brief Input image range maximum value
+         @see setInputMax
          */
         public float getInputMax()
         {
@@ -106,8 +103,7 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         *  getInputMax SEE: getInputMax
-         * param val automatically generated
+         @copybrief getInputMax @see getInputMax
          */
         public void setInputMax(float val)
         {
@@ -124,9 +120,8 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * Output image range minimum value
-         * SEE: setOutputMin
-         * return automatically generated
+         @brief Output image range minimum value
+         @see setOutputMin
          */
         public float getOutputMin()
         {
@@ -143,8 +138,7 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         *  getOutputMin SEE: getOutputMin
-         * param val automatically generated
+         @copybrief getOutputMin @see getOutputMin
          */
         public void setOutputMin(float val)
         {
@@ -161,9 +155,8 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * Output image range maximum value
-         * SEE: setOutputMax
-         * return automatically generated
+         @brief Output image range maximum value
+         @see setOutputMax
          */
         public float getOutputMax()
         {
@@ -180,8 +173,7 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         *  getOutputMax SEE: getOutputMax
-         * param val automatically generated
+         @copybrief getOutputMax @see getOutputMax
          */
         public void setOutputMax(float val)
         {
@@ -198,9 +190,8 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * Percent of top/bottom values to ignore
-         * SEE: setP
-         * return automatically generated
+         @brief Percent of top/bottom values to ignore
+         @see setP
          */
         public float getP()
         {
@@ -217,8 +208,7 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         *  getP SEE: getP
-         * param val automatically generated
+         @copybrief getP @see getP
          */
         public void setP(float val)
         {

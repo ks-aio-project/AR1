@@ -1,5 +1,3 @@
-﻿#if !(PLATFORM_LUMIN && !UNITY_EDITOR)
-
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.ImgprocModule;
 using OpenCVForUnity.UnityUtils;
@@ -133,7 +131,7 @@ namespace OpenCVForUnityExample
             isInitWaiting = true;
 
             // Checks camera permission state.
-#if UNITY_IOS && UNITY_2018_1_OR_NEWER
+#if (UNITY_IOS || UNITY_WEBGL) && UNITY_2018_1_OR_NEWER
             UserAuthorization mode = UserAuthorization.WebCam;
             if (!Application.HasUserAuthorization(mode))
             {
@@ -281,7 +279,7 @@ namespace OpenCVForUnityExample
             }
         }
 
-#if (UNITY_IOS && UNITY_2018_1_OR_NEWER) || (UNITY_ANDROID && UNITY_2018_3_OR_NEWER)
+#if ((UNITY_IOS || UNITY_WEBGL) && UNITY_2018_1_OR_NEWER) || (UNITY_ANDROID && UNITY_2018_3_OR_NEWER)
         bool isUserRequestingPermission;
 
         IEnumerator OnApplicationFocus(bool hasFocus)
@@ -430,5 +428,3 @@ namespace OpenCVForUnityExample
         }
     }
 }
-
-#endif

@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.Features2dModule
 
     // C++: class FastFeatureDetector
     /**
-     * Wrapping class for feature detection using the FAST method. :
+     @brief Wrapping class for feature detection using the FAST method. :
      */
 
     public class FastFeatureDetector : Feature2D

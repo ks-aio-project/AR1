@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,15 +10,15 @@ namespace OpenCVForUnity.TrackingModule
 
     // C++: class TrackerMedianFlow
     /**
-     * the Median Flow tracker
-     *
-     * Implementation of a paper CITE: MedianFlow .
-     *
-     * The tracker is suitable for very smooth and predictable movements when object is visible throughout
-     * the whole sequence. It's quite and accurate for this type of problems (in particular, it was shown
-     * by authors to outperform MIL). During the implementation period the code at
-     * &lt;http://www.aonsquared.co.uk/node/5&gt;, the courtesy of the author Arthur Amarra, was used for the
-     * reference purpose.
+     @brief the Median Flow tracker
+     
+     Implementation of a paper @cite MedianFlow .
+     
+     The tracker is suitable for very smooth and predictable movements when object is visible throughout
+     the whole sequence. It's quite and accurate for this type of problems (in particular, it was shown
+     by authors to outperform MIL). During the implementation period the code at
+     &lt;http://www.aonsquared.co.uk/node/5&gt;, the courtesy of the author Arthur Amarra, was used for the
+     reference purpose.
      */
 
     public class legacy_TrackerMedianFlow : legacy_Tracker
@@ -56,8 +56,8 @@ namespace OpenCVForUnity.TrackingModule
         //
 
         /**
-         * Constructor
-         * return automatically generated
+         @brief Constructor
+             @param parameters Median Flow parameters TrackerMedianFlow::Params
          */
         public static legacy_TrackerMedianFlow create()
         {

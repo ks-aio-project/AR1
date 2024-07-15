@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -63,8 +63,8 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * creates an empty Subdiv2D object.
-         *     To create a new empty Delaunay subdivision you need to use the #initDelaunay function.
+         creates an empty Subdiv2D object.
+             To create a new empty Delaunay subdivision you need to use the #initDelaunay function.
          */
         public Subdiv2D()
         {
@@ -81,13 +81,13 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         *
-         *
-         *     param rect Rectangle that includes all of the 2D points that are to be added to the subdivision.
-         *
-         *     The function creates an empty Delaunay subdivision where 2D points can be added using the function
-         *     insert() . All of the points to be added must be within the specified rectangle, otherwise a runtime
-         *     error is raised.
+         @overload
+         
+             @param rect Rectangle that includes all of the 2D points that are to be added to the subdivision.
+         
+             The function creates an empty Delaunay subdivision where 2D points can be added using the function
+             insert() . All of the points to be added must be within the specified rectangle, otherwise a runtime
+             error is raised.
          */
         public Subdiv2D(Rect rect)
         {
@@ -104,9 +104,9 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Creates a new empty Delaunay subdivision
-         *
-         *     param rect Rectangle that includes all of the 2D points that are to be added to the subdivision.
+         @brief Creates a new empty Delaunay subdivision
+         
+             @param rect Rectangle that includes all of the 2D points that are to be added to the subdivision.
          */
         public void initDelaunay(Rect rect)
         {
@@ -123,15 +123,15 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Insert a single point into a Delaunay triangulation.
-         *
-         *     param pt Point to insert.
-         *
-         *     The function inserts a single point into a subdivision and modifies the subdivision topology
-         *     appropriately. If a point with the same coordinates exists already, no new point is added.
-         *     return the ID of the point.
-         *
-         *     <b>Note:</b> If the point is outside of the triangulation specified rect a runtime error is raised.
+         @brief Insert a single point into a Delaunay triangulation.
+         
+             @param pt Point to insert.
+         
+             The function inserts a single point into a subdivision and modifies the subdivision topology
+             appropriately. If a point with the same coordinates exists already, no new point is added.
+             @returns the ID of the point.
+         
+             @note If the point is outside of the triangulation specified rect a runtime error is raised.
          */
         public int insert(Point pt)
         {
@@ -148,12 +148,12 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Insert multiple points into a Delaunay triangulation.
-         *
-         *     param ptvec Points to insert.
-         *
-         *     The function inserts a vector of points into a subdivision and modifies the subdivision topology
-         *     appropriately.
+         @brief Insert multiple points into a Delaunay triangulation.
+         
+             @param ptvec Points to insert.
+         
+             The function inserts a vector of points into a subdivision and modifies the subdivision topology
+             appropriately.
          */
         public void insert(MatOfPoint2f ptvec)
         {
@@ -171,37 +171,25 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Returns the location of a point within a Delaunay triangulation.
-         *
-         *     param pt Point to locate.
-         *     param edge Output edge that the point belongs to or is located to the right of it.
-         *     param vertex Optional output vertex the input point coincides with.
-         *
-         *     The function locates the input point within the subdivision and gives one of the triangle edges
-         *     or vertices.
-         *
-         *     return an integer which specify one of the following five cases for point location:
-         * <ul>
-         *   <li>
-         *       The point falls into some facet. The function returns #PTLOC_INSIDE and edge will contain one of
-         *        edges of the facet.
-         *   </li>
-         *   <li>
-         *       The point falls onto the edge. The function returns #PTLOC_ON_EDGE and edge will contain this edge.
-         *   </li>
-         *   <li>
-         *       The point coincides with one of the subdivision vertices. The function returns #PTLOC_VERTEX and
-         *        vertex will contain a pointer to the vertex.
-         *   </li>
-         *   <li>
-         *       The point is outside the subdivision reference rectangle. The function returns #PTLOC_OUTSIDE_RECT
-         *        and no pointers are filled.
-         *   </li>
-         *   <li>
-         *       One of input arguments is invalid. A runtime error is raised or, if silent or "parent" error
-         *        processing mode is selected, #PTLOC_ERROR is returned.
-         *   </li>
-         * </ul>
+         @brief Returns the location of a point within a Delaunay triangulation.
+         
+             @param pt Point to locate.
+             @param edge Output edge that the point belongs to or is located to the right of it.
+             @param vertex Optional output vertex the input point coincides with.
+         
+             The function locates the input point within the subdivision and gives one of the triangle edges
+             or vertices.
+         
+             @returns an integer which specify one of the following five cases for point location:
+             -  The point falls into some facet. The function returns #PTLOC_INSIDE and edge will contain one of
+                edges of the facet.
+             -  The point falls onto the edge. The function returns #PTLOC_ON_EDGE and edge will contain this edge.
+             -  The point coincides with one of the subdivision vertices. The function returns #PTLOC_VERTEX and
+                vertex will contain a pointer to the vertex.
+             -  The point is outside the subdivision reference rectangle. The function returns #PTLOC_OUTSIDE_RECT
+                and no pointers are filled.
+             -  One of input arguments is invalid. A runtime error is raised or, if silent or "parent" error
+                processing mode is selected, #PTLOC_ERROR is returned.
          */
         public int locate(Point pt, int[] edge, int[] vertex)
         {
@@ -220,17 +208,17 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Finds the subdivision vertex closest to the given point.
-         *
-         *     param pt Input point.
-         *     param nearestPt Output subdivision vertex point.
-         *
-         *     The function is another function that locates the input point within the subdivision. It finds the
-         *     subdivision vertex that is the closest to the input point. It is not necessarily one of vertices
-         *     of the facet containing the input point, though the facet (located using locate() ) is used as a
-         *     starting point.
-         *
-         *     return vertex ID.
+         @brief Finds the subdivision vertex closest to the given point.
+         
+             @param pt Input point.
+             @param nearestPt Output subdivision vertex point.
+         
+             The function is another function that locates the input point within the subdivision. It finds the
+             subdivision vertex that is the closest to the input point. It is not necessarily one of vertices
+             of the facet containing the input point, though the facet (located using locate() ) is used as a
+             starting point.
+         
+             @returns vertex ID.
          */
         public int findNearest(Point pt, Point nearestPt)
         {
@@ -242,16 +230,17 @@ namespace OpenCVForUnity.ImgprocModule
         }
 
         /**
-         * Finds the subdivision vertex closest to the given point.
-         *
-         *     param pt Input point.
-         *
-         *     The function is another function that locates the input point within the subdivision. It finds the
-         *     subdivision vertex that is the closest to the input point. It is not necessarily one of vertices
-         *     of the facet containing the input point, though the facet (located using locate() ) is used as a
-         *     starting point.
-         *
-         *     return vertex ID.
+         @brief Finds the subdivision vertex closest to the given point.
+         
+             @param pt Input point.
+             @param nearestPt Output subdivision vertex point.
+         
+             The function is another function that locates the input point within the subdivision. It finds the
+             subdivision vertex that is the closest to the input point. It is not necessarily one of vertices
+             of the facet containing the input point, though the facet (located using locate() ) is used as a
+             starting point.
+         
+             @returns vertex ID.
          */
         public int findNearest(Point pt)
         {
@@ -268,12 +257,12 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Returns a list of all edges.
-         *
-         *     param edgeList Output vector.
-         *
-         *     The function gives each edge as a 4 numbers vector, where each two are one of the edge
-         *     vertices. i.e. org_x = v[0], org_y = v[1], dst_x = v[2], dst_y = v[3].
+         @brief Returns a list of all edges.
+         
+             @param edgeList Output vector.
+         
+             The function gives each edge as a 4 numbers vector, where each two are one of the edge
+             vertices. i.e. org_x = v[0], org_y = v[1], dst_x = v[2], dst_y = v[3].
          */
         public void getEdgeList(MatOfFloat4 edgeList)
         {
@@ -291,11 +280,11 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Returns a list of the leading edge ID connected to each triangle.
-         *
-         *     param leadingEdgeList Output vector.
-         *
-         *     The function gives one edge ID for each triangle.
+         @brief Returns a list of the leading edge ID connected to each triangle.
+         
+             @param leadingEdgeList Output vector.
+         
+             The function gives one edge ID for each triangle.
          */
         public void getLeadingEdgeList(MatOfInt leadingEdgeList)
         {
@@ -313,12 +302,12 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Returns a list of all triangles.
-         *
-         *     param triangleList Output vector.
-         *
-         *     The function gives each triangle as a 6 numbers vector, where each two are one of the triangle
-         *     vertices. i.e. p1_x = v[0], p1_y = v[1], p2_x = v[2], p2_y = v[3], p3_x = v[4], p3_y = v[5].
+         @brief Returns a list of all triangles.
+         
+             @param triangleList Output vector.
+         
+             The function gives each triangle as a 6 numbers vector, where each two are one of the triangle
+             vertices. i.e. p1_x = v[0], p1_y = v[1], p2_x = v[2], p2_y = v[3], p3_x = v[4], p3_y = v[5].
          */
         public void getTriangleList(MatOfFloat6 triangleList)
         {
@@ -336,11 +325,11 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Returns a list of all Voronoi facets.
-         *
-         *     param idx Vector of vertices IDs to consider. For all vertices you can pass empty vector.
-         *     param facetList Output vector of the Voronoi facets.
-         *     param facetCenters Output vector of the Voronoi facets center points.
+         @brief Returns a list of all Voronoi facets.
+         
+             @param idx Vector of vertices IDs to consider. For all vertices you can pass empty vector.
+             @param facetList Output vector of the Voronoi facets.
+             @param facetCenters Output vector of the Voronoi facets center points.
          */
         public void getVoronoiFacetList(MatOfInt idx, List<MatOfPoint2f> facetList, MatOfPoint2f facetCenters)
         {
@@ -362,11 +351,11 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Returns vertex location from vertex ID.
-         *
-         *     param vertex vertex ID.
-         *     param firstEdge Optional. The first edge ID which is connected to the vertex.
-         *     return vertex (x,y)
+         @brief Returns vertex location from vertex ID.
+         
+             @param vertex vertex ID.
+             @param firstEdge Optional. The first edge ID which is connected to the vertex.
+             @returns vertex (x,y)
          */
         public Point getVertex(int vertex, int[] firstEdge)
         {
@@ -380,10 +369,11 @@ namespace OpenCVForUnity.ImgprocModule
         }
 
         /**
-         * Returns vertex location from vertex ID.
-         *
-         *     param vertex vertex ID.
-         *     return vertex (x,y)
+         @brief Returns vertex location from vertex ID.
+         
+             @param vertex vertex ID.
+             @param firstEdge Optional. The first edge ID which is connected to the vertex.
+             @returns vertex (x,y)
          */
         public Point getVertex(int vertex)
         {
@@ -402,41 +392,23 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Returns one of the edges related to the given edge.
-         *
-         *     param edge Subdivision edge ID.
-         *     param nextEdgeType Parameter specifying which of the related edges to return.
-         *     The following values are possible:
-         * <ul>
-         *   <li>
-         *        NEXT_AROUND_ORG next around the edge origin ( eOnext on the picture below if e is the input edge)
-         *   </li>
-         *   <li>
-         *        NEXT_AROUND_DST next around the edge vertex ( eDnext )
-         *   </li>
-         *   <li>
-         *        PREV_AROUND_ORG previous around the edge origin (reversed eRnext )
-         *   </li>
-         *   <li>
-         *        PREV_AROUND_DST previous around the edge destination (reversed eLnext )
-         *   </li>
-         *   <li>
-         *        NEXT_AROUND_LEFT next around the left facet ( eLnext )
-         *   </li>
-         *   <li>
-         *        NEXT_AROUND_RIGHT next around the right facet ( eRnext )
-         *   </li>
-         *   <li>
-         *        PREV_AROUND_LEFT previous around the left facet (reversed eOnext )
-         *   </li>
-         *   <li>
-         *        PREV_AROUND_RIGHT previous around the right facet (reversed eDnext )
-         *   </li>
-         * </ul>
-         *
-         *     ![sample output](pics/quadedge.png)
-         *
-         *     return edge ID related to the input edge.
+         @brief Returns one of the edges related to the given edge.
+         
+             @param edge Subdivision edge ID.
+             @param nextEdgeType Parameter specifying which of the related edges to return.
+             The following values are possible:
+             -   NEXT_AROUND_ORG next around the edge origin ( eOnext on the picture below if e is the input edge)
+             -   NEXT_AROUND_DST next around the edge vertex ( eDnext )
+             -   PREV_AROUND_ORG previous around the edge origin (reversed eRnext )
+             -   PREV_AROUND_DST previous around the edge destination (reversed eLnext )
+             -   NEXT_AROUND_LEFT next around the left facet ( eLnext )
+             -   NEXT_AROUND_RIGHT next around the right facet ( eRnext )
+             -   PREV_AROUND_LEFT previous around the left facet (reversed eOnext )
+             -   PREV_AROUND_RIGHT previous around the right facet (reversed eDnext )
+         
+             ![sample output](pics/quadedge.png)
+         
+             @returns edge ID related to the input edge.
          */
         public int getEdge(int edge, int nextEdgeType)
         {
@@ -453,12 +425,12 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Returns next edge around the edge origin.
-         *
-         *     param edge Subdivision edge ID.
-         *
-         *     return an integer which is next edge ID around the edge origin: eOnext on the
-         *     picture above if e is the input edge).
+         @brief Returns next edge around the edge origin.
+         
+             @param edge Subdivision edge ID.
+         
+             @returns an integer which is next edge ID around the edge origin: eOnext on the
+             picture above if e is the input edge).
          */
         public int nextEdge(int edge)
         {
@@ -475,27 +447,17 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Returns another edge of the same quad-edge.
-         *
-         *     param edge Subdivision edge ID.
-         *     param rotate Parameter specifying which of the edges of the same quad-edge as the input
-         *     one to return. The following values are possible:
-         * <ul>
-         *   <li>
-         *        0 - the input edge ( e on the picture below if e is the input edge)
-         *   </li>
-         *   <li>
-         *        1 - the rotated edge ( eRot )
-         *   </li>
-         *   <li>
-         *        2 - the reversed edge (reversed e (in green))
-         *   </li>
-         *   <li>
-         *        3 - the reversed rotated edge (reversed eRot (in green))
-         *   </li>
-         * </ul>
-         *
-         *     return one of the edges ID of the same quad-edge as the input edge.
+         @brief Returns another edge of the same quad-edge.
+         
+             @param edge Subdivision edge ID.
+             @param rotate Parameter specifying which of the edges of the same quad-edge as the input
+             one to return. The following values are possible:
+             -   0 - the input edge ( e on the picture below if e is the input edge)
+             -   1 - the rotated edge ( eRot )
+             -   2 - the reversed edge (reversed e (in green))
+             -   3 - the reversed rotated edge (reversed eRot (in green))
+         
+             @returns one of the edges ID of the same quad-edge as the input edge.
          */
         public int rotateEdge(int edge, int rotate)
         {
@@ -526,12 +488,12 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Returns the edge origin.
-         *
-         *     param edge Subdivision edge ID.
-         *     param orgpt Output vertex location.
-         *
-         *     return vertex ID.
+         @brief Returns the edge origin.
+         
+             @param edge Subdivision edge ID.
+             @param orgpt Output vertex location.
+         
+             @returns vertex ID.
          */
         public int edgeOrg(int edge, Point orgpt)
         {
@@ -543,11 +505,12 @@ namespace OpenCVForUnity.ImgprocModule
         }
 
         /**
-         * Returns the edge origin.
-         *
-         *     param edge Subdivision edge ID.
-         *
-         *     return vertex ID.
+         @brief Returns the edge origin.
+         
+             @param edge Subdivision edge ID.
+             @param orgpt Output vertex location.
+         
+             @returns vertex ID.
          */
         public int edgeOrg(int edge)
         {
@@ -564,12 +527,12 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Returns the edge destination.
-         *
-         *     param edge Subdivision edge ID.
-         *     param dstpt Output vertex location.
-         *
-         *     return vertex ID.
+         @brief Returns the edge destination.
+         
+             @param edge Subdivision edge ID.
+             @param dstpt Output vertex location.
+         
+             @returns vertex ID.
          */
         public int edgeDst(int edge, Point dstpt)
         {
@@ -581,11 +544,12 @@ namespace OpenCVForUnity.ImgprocModule
         }
 
         /**
-         * Returns the edge destination.
-         *
-         *     param edge Subdivision edge ID.
-         *
-         *     return vertex ID.
+         @brief Returns the edge destination.
+         
+             @param edge Subdivision edge ID.
+             @param dstpt Output vertex location.
+         
+             @returns vertex ID.
          */
         public int edgeDst(int edge)
         {

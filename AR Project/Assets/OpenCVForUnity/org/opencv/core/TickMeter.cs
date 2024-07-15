@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,16 +10,16 @@ namespace OpenCVForUnity.CoreModule
 {
     // C++: class TickMeter
     /**
-     * a Class to measure passing time.
-     *
-     * The class computes passing time by counting the number of ticks per second. That is, the following code computes the
-     * execution time in seconds:
-     * SNIPPET: snippets/core_various.cpp TickMeter_total
-     *
-     * It is also possible to compute the average time over multiple runs:
-     * SNIPPET: snippets/core_various.cpp TickMeter_average
-     *
-     * SEE: getTickCount, getTickFrequency
+     @brief a Class to measure passing time.
+     
+     The class computes passing time by counting the number of ticks per second. That is, the following code computes the
+     execution time in seconds:
+     @snippet snippets/core_various.cpp TickMeter_total
+     
+     It is also possible to compute the average time over multiple runs:
+     @snippet snippets/core_various.cpp TickMeter_average
+     
+     @sa getTickCount, getTickFrequency
      */
 
     public class TickMeter : DisposableOpenCVObject

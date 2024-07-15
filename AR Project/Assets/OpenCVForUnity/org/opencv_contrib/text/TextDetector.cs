@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.TextModule
 {
     // C++: class TextDetector
     /**
-     * An abstract class providing interface for text detection algorithms
+     @brief An abstract class providing interface for text detection algorithms
      */
 
     public class TextDetector : DisposableOpenCVObject
@@ -51,11 +51,11 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Method that provides a quick and simple interface to detect text inside an image
-         *
-         *     param inputImage an image to process
-         *     param Bbox a vector of Rect that will store the detected word bounding box
-         *     param confidence a vector of float that will be updated with the confidence the classifier has for the selected bounding box
+         @brief Method that provides a quick and simple interface to detect text inside an image
+         
+             @param inputImage an image to process
+             @param Bbox a vector of Rect that will store the detected word bounding box
+             @param confidence a vector of float that will be updated with the confidence the classifier has for the selected bounding box
          */
         public virtual void detect(Mat inputImage, MatOfRect Bbox, MatOfFloat confidence)
         {
@@ -89,4 +89,5 @@ namespace OpenCVForUnity.TextModule
 
     }
 }
+
 #endif

@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,18 +10,18 @@ namespace OpenCVForUnity.Xfeatures2dModule
 
     // C++: class PCTSignatures
     /**
-     * Class implementing PCT (position-color-texture) signature extraction
-     * as described in CITE: KrulisLS16.
-     * The algorithm is divided to a feature sampler and a clusterizer.
-     * Feature sampler produces samples at given set of coordinates.
-     * Clusterizer then produces clusters of these samples using k-means algorithm.
-     * Resulting set of clusters is the signature of the input image.
+     * @brief Class implementing PCT (position-color-texture) signature extraction
+     *       as described in @cite KrulisLS16.
+     *       The algorithm is divided to a feature sampler and a clusterizer.
+     *       Feature sampler produces samples at given set of coordinates.
+     *       Clusterizer then produces clusters of these samples using k-means algorithm.
+     *       Resulting set of clusters is the signature of the input image.
      *
-     * A signature is an array of SIGNATURE_DIMENSION-dimensional points.
-     * Used dimensions are:
-     * weight, x, y position; lab color, contrast, entropy.
-     * CITE: KrulisLS16
-     * CITE: BeecksUS10
+     *       A signature is an array of SIGNATURE_DIMENSION-dimensional points.
+     *       Used dimensions are:
+     *       weight, x, y position; lab color, contrast, entropy.
+     * @cite KrulisLS16
+     * @cite BeecksUS10
      */
 
     public class PCTSignatures : Algorithm
@@ -75,14 +75,14 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Creates PCTSignatures algorithm using sample and seed count.
-         * It generates its own sets of sampling points and clusterization seed indexes.
-         * param initSampleCount Number of points used for image sampling.
-         * param initSeedCount Number of initial clusterization seeds.
-         * Must be lower or equal to initSampleCount
-         * param pointDistribution Distribution of generated points. Default: UNIFORM.
-         * Available: UNIFORM, REGULAR, NORMAL.
-         * return Created algorithm.
+         * @brief Creates PCTSignatures algorithm using sample and seed count.
+             *       It generates its own sets of sampling points and clusterization seed indexes.
+             * @param initSampleCount Number of points used for image sampling.
+             * @param initSeedCount Number of initial clusterization seeds.
+             *       Must be lower or equal to initSampleCount
+             * @param pointDistribution Distribution of generated points. Default: UNIFORM.
+             *       Available: UNIFORM, REGULAR, NORMAL.
+             * @return Created algorithm.
          */
         public static PCTSignatures create(int initSampleCount, int initSeedCount, int pointDistribution)
         {
@@ -94,13 +94,14 @@ namespace OpenCVForUnity.Xfeatures2dModule
         }
 
         /**
-         * Creates PCTSignatures algorithm using sample and seed count.
-         * It generates its own sets of sampling points and clusterization seed indexes.
-         * param initSampleCount Number of points used for image sampling.
-         * param initSeedCount Number of initial clusterization seeds.
-         * Must be lower or equal to initSampleCount
-         * Available: UNIFORM, REGULAR, NORMAL.
-         * return Created algorithm.
+         * @brief Creates PCTSignatures algorithm using sample and seed count.
+             *       It generates its own sets of sampling points and clusterization seed indexes.
+             * @param initSampleCount Number of points used for image sampling.
+             * @param initSeedCount Number of initial clusterization seeds.
+             *       Must be lower or equal to initSampleCount
+             * @param pointDistribution Distribution of generated points. Default: UNIFORM.
+             *       Available: UNIFORM, REGULAR, NORMAL.
+             * @return Created algorithm.
          */
         public static PCTSignatures create(int initSampleCount, int initSeedCount)
         {
@@ -112,12 +113,14 @@ namespace OpenCVForUnity.Xfeatures2dModule
         }
 
         /**
-         * Creates PCTSignatures algorithm using sample and seed count.
-         * It generates its own sets of sampling points and clusterization seed indexes.
-         * param initSampleCount Number of points used for image sampling.
-         * Must be lower or equal to initSampleCount
-         * Available: UNIFORM, REGULAR, NORMAL.
-         * return Created algorithm.
+         * @brief Creates PCTSignatures algorithm using sample and seed count.
+             *       It generates its own sets of sampling points and clusterization seed indexes.
+             * @param initSampleCount Number of points used for image sampling.
+             * @param initSeedCount Number of initial clusterization seeds.
+             *       Must be lower or equal to initSampleCount
+             * @param pointDistribution Distribution of generated points. Default: UNIFORM.
+             *       Available: UNIFORM, REGULAR, NORMAL.
+             * @return Created algorithm.
          */
         public static PCTSignatures create(int initSampleCount)
         {
@@ -129,11 +132,14 @@ namespace OpenCVForUnity.Xfeatures2dModule
         }
 
         /**
-         * Creates PCTSignatures algorithm using sample and seed count.
-         * It generates its own sets of sampling points and clusterization seed indexes.
-         * Must be lower or equal to initSampleCount
-         * Available: UNIFORM, REGULAR, NORMAL.
-         * return Created algorithm.
+         * @brief Creates PCTSignatures algorithm using sample and seed count.
+             *       It generates its own sets of sampling points and clusterization seed indexes.
+             * @param initSampleCount Number of points used for image sampling.
+             * @param initSeedCount Number of initial clusterization seeds.
+             *       Must be lower or equal to initSampleCount
+             * @param pointDistribution Distribution of generated points. Default: UNIFORM.
+             *       Available: UNIFORM, REGULAR, NORMAL.
+             * @return Created algorithm.
          */
         public static PCTSignatures create()
         {
@@ -150,13 +156,13 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Creates PCTSignatures algorithm using pre-generated sampling points
-         * and number of clusterization seeds. It uses the provided
-         * sampling points and generates its own clusterization seed indexes.
-         * param initSamplingPoints Sampling points used in image sampling.
-         * param initSeedCount Number of initial clusterization seeds.
-         * Must be lower or equal to initSamplingPoints.size().
-         * return Created algorithm.
+         * @brief Creates PCTSignatures algorithm using pre-generated sampling points
+             *       and number of clusterization seeds. It uses the provided
+             *       sampling points and generates its own clusterization seed indexes.
+             * @param initSamplingPoints Sampling points used in image sampling.
+             * @param initSeedCount Number of initial clusterization seeds.
+             *       Must be lower or equal to initSamplingPoints.size().
+             * @return Created algorithm.
          */
         public static PCTSignatures create(MatOfPoint2f initSamplingPoints, int initSeedCount)
         {
@@ -173,12 +179,12 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Creates PCTSignatures algorithm using pre-generated sampling points
-         * and clusterization seeds indexes.
-         * param initSamplingPoints Sampling points used in image sampling.
-         * param initClusterSeedIndexes Indexes of initial clusterization seeds.
-         * Its size must be lower or equal to initSamplingPoints.size().
-         * return Created algorithm.
+         * @brief Creates PCTSignatures algorithm using pre-generated sampling points
+             *       and clusterization seeds indexes.
+             * @param initSamplingPoints Sampling points used in image sampling.
+             * @param initClusterSeedIndexes Indexes of initial clusterization seeds.
+             *       Its size must be lower or equal to initSamplingPoints.size().
+             * @return Created algorithm.
          */
         public static PCTSignatures create(MatOfPoint2f initSamplingPoints, MatOfInt initClusterSeedIndexes)
         {
@@ -197,9 +203,9 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Computes signature of given image.
-         * param image Input image of CV_8U type.
-         * param signature Output computed signature.
+         * @brief Computes signature of given image.
+             * @param image Input image of CV_8U type.
+             * @param signature Output computed signature.
          */
         public void computeSignature(Mat image, Mat signature)
         {
@@ -218,9 +224,9 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Computes signatures for multiple images in parallel.
-         * param images Vector of input images of CV_8U type.
-         * param signatures Vector of computed signatures.
+         * @brief Computes signatures for multiple images in parallel.
+             * @param images Vector of input images of CV_8U type.
+             * @param signatures Vector of computed signatures.
          */
         public void computeSignatures(List<Mat> images, List<Mat> signatures)
         {
@@ -238,16 +244,16 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Draws signature in the source image and outputs the result.
-         * Signatures are visualized as a circle
-         * with radius based on signature weight
-         * and color based on signature color.
-         * Contrast and entropy are not visualized.
-         * param source Source image.
-         * param signature Image signature.
-         * param result Output result.
-         * param radiusToShorterSideRatio Determines maximal radius of signature in the output image.
-         * param borderThickness Border thickness of the visualized signature.
+         * @brief Draws signature in the source image and outputs the result.
+             *       Signatures are visualized as a circle
+             *       with radius based on signature weight
+             *       and color based on signature color.
+             *       Contrast and entropy are not visualized.
+             * @param source Source image.
+             * @param signature Image signature.
+             * @param result Output result.
+             * @param radiusToShorterSideRatio Determines maximal radius of signature in the output image.
+             * @param borderThickness Border thickness of the visualized signature.
          */
         public static void drawSignature(Mat source, Mat signature, Mat result, float radiusToShorterSideRatio, int borderThickness)
         {
@@ -261,15 +267,16 @@ namespace OpenCVForUnity.Xfeatures2dModule
         }
 
         /**
-         * Draws signature in the source image and outputs the result.
-         * Signatures are visualized as a circle
-         * with radius based on signature weight
-         * and color based on signature color.
-         * Contrast and entropy are not visualized.
-         * param source Source image.
-         * param signature Image signature.
-         * param result Output result.
-         * param radiusToShorterSideRatio Determines maximal radius of signature in the output image.
+         * @brief Draws signature in the source image and outputs the result.
+             *       Signatures are visualized as a circle
+             *       with radius based on signature weight
+             *       and color based on signature color.
+             *       Contrast and entropy are not visualized.
+             * @param source Source image.
+             * @param signature Image signature.
+             * @param result Output result.
+             * @param radiusToShorterSideRatio Determines maximal radius of signature in the output image.
+             * @param borderThickness Border thickness of the visualized signature.
          */
         public static void drawSignature(Mat source, Mat signature, Mat result, float radiusToShorterSideRatio)
         {
@@ -283,14 +290,16 @@ namespace OpenCVForUnity.Xfeatures2dModule
         }
 
         /**
-         * Draws signature in the source image and outputs the result.
-         * Signatures are visualized as a circle
-         * with radius based on signature weight
-         * and color based on signature color.
-         * Contrast and entropy are not visualized.
-         * param source Source image.
-         * param signature Image signature.
-         * param result Output result.
+         * @brief Draws signature in the source image and outputs the result.
+             *       Signatures are visualized as a circle
+             *       with radius based on signature weight
+             *       and color based on signature color.
+             *       Contrast and entropy are not visualized.
+             * @param source Source image.
+             * @param signature Image signature.
+             * @param result Output result.
+             * @param radiusToShorterSideRatio Determines maximal radius of signature in the output image.
+             * @param borderThickness Border thickness of the visualized signature.
          */
         public static void drawSignature(Mat source, Mat signature, Mat result)
         {
@@ -309,12 +318,12 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Generates initial sampling points according to selected point distribution.
-         * param initPoints Output vector where the generated points will be saved.
-         * param count Number of points to generate.
-         * param pointDistribution Point distribution selector.
-         * Available: UNIFORM, REGULAR, NORMAL.
-         * <b>Note:</b> Generated coordinates are in range [0..1)
+         * @brief Generates initial sampling points according to selected point distribution.
+             * @param initPoints Output vector where the generated points will be saved.
+             * @param count Number of points to generate.
+             * @param pointDistribution Point distribution selector.
+             *       Available: UNIFORM, REGULAR, NORMAL.
+             * @note Generated coordinates are in range [0..1)
          */
         public static void generateInitPoints(MatOfPoint2f initPoints, int count, int pointDistribution)
         {
@@ -331,8 +340,7 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Number of initial samples taken from the image.
-         * return automatically generated
+         * @brief Number of initial samples taken from the image.
          */
         public int getSampleCount()
         {
@@ -349,10 +357,9 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Color resolution of the greyscale bitmap represented in allocated bits
-         * (i.e., value 4 means that 16 shades of grey are used).
-         * The greyscale bitmap is used for computing contrast and entropy values.
-         * return automatically generated
+         * @brief Color resolution of the greyscale bitmap represented in allocated bits
+             *       (i.e., value 4 means that 16 shades of grey are used).
+             *       The greyscale bitmap is used for computing contrast and entropy values.
          */
         public int getGrayscaleBits()
         {
@@ -369,10 +376,9 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Color resolution of the greyscale bitmap represented in allocated bits
-         * (i.e., value 4 means that 16 shades of grey are used).
-         * The greyscale bitmap is used for computing contrast and entropy values.
-         * param grayscaleBits automatically generated
+         * @brief Color resolution of the greyscale bitmap represented in allocated bits
+             *       (i.e., value 4 means that 16 shades of grey are used).
+             *       The greyscale bitmap is used for computing contrast and entropy values.
          */
         public void setGrayscaleBits(int grayscaleBits)
         {
@@ -389,10 +395,9 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Size of the texture sampling window used to compute contrast and entropy
-         * (center of the window is always in the pixel selected by x,y coordinates
-         * of the corresponding feature sample).
-         * return automatically generated
+         * @brief Size of the texture sampling window used to compute contrast and entropy
+             *       (center of the window is always in the pixel selected by x,y coordinates
+             *       of the corresponding feature sample).
          */
         public int getWindowRadius()
         {
@@ -409,10 +414,9 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Size of the texture sampling window used to compute contrast and entropy
-         * (center of the window is always in the pixel selected by x,y coordinates
-         * of the corresponding feature sample).
-         * param radius automatically generated
+         * @brief Size of the texture sampling window used to compute contrast and entropy
+             *       (center of the window is always in the pixel selected by x,y coordinates
+             *       of the corresponding feature sample).
          */
         public void setWindowRadius(int radius)
         {
@@ -429,9 +433,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
-         * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
-         * return automatically generated
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+             *       (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
          */
         public float getWeightX()
         {
@@ -448,9 +451,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
-         * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
-         * param weight automatically generated
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+             *       (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
          */
         public void setWeightX(float weight)
         {
@@ -467,9 +469,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
-         * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
-         * return automatically generated
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+             *       (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
          */
         public float getWeightY()
         {
@@ -486,9 +487,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
-         * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
-         * param weight automatically generated
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+             *       (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
          */
         public void setWeightY(float weight)
         {
@@ -505,9 +505,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
-         * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
-         * return automatically generated
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+             *       (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
          */
         public float getWeightL()
         {
@@ -524,9 +523,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
-         * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
-         * param weight automatically generated
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+             *       (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
          */
         public void setWeightL(float weight)
         {
@@ -543,9 +541,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
-         * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
-         * return automatically generated
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+             *       (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
          */
         public float getWeightA()
         {
@@ -562,9 +559,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
-         * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
-         * param weight automatically generated
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+             *       (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
          */
         public void setWeightA(float weight)
         {
@@ -581,9 +577,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
-         * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
-         * return automatically generated
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+             *       (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
          */
         public float getWeightB()
         {
@@ -600,9 +595,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
-         * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
-         * param weight automatically generated
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+             *       (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
          */
         public void setWeightB(float weight)
         {
@@ -619,9 +613,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
-         * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
-         * return automatically generated
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+             *       (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
          */
         public float getWeightContrast()
         {
@@ -638,9 +631,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
-         * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
-         * param weight automatically generated
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+             *       (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
          */
         public void setWeightContrast(float weight)
         {
@@ -657,9 +649,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
-         * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
-         * return automatically generated
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+             *       (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
          */
         public float getWeightEntropy()
         {
@@ -676,9 +667,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space
-         * (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
-         * param weight automatically generated
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space
+             *       (x,y = position; L,a,b = color in CIE Lab space; c = contrast. e = entropy)
          */
         public void setWeightEntropy(float weight)
         {
@@ -695,9 +685,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Initial samples taken from the image.
-         * These sampled features become the input for clustering.
-         * return automatically generated
+         * @brief Initial samples taken from the image.
+             *       These sampled features become the input for clustering.
          */
         public MatOfPoint2f getSamplingPoints()
         {
@@ -714,18 +703,18 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space.
-         * param idx ID of the weight
-         * param value Value of the weight
-         * <b>Note:</b>
-         * WEIGHT_IDX = 0;
-         * X_IDX = 1;
-         * Y_IDX = 2;
-         * L_IDX = 3;
-         * A_IDX = 4;
-         * B_IDX = 5;
-         * CONTRAST_IDX = 6;
-         * ENTROPY_IDX = 7;
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space.
+             * @param idx ID of the weight
+             * @param value Value of the weight
+             * @note
+             *       WEIGHT_IDX = 0;
+             *       X_IDX = 1;
+             *       Y_IDX = 2;
+             *       L_IDX = 3;
+             *       A_IDX = 4;
+             *       B_IDX = 5;
+             *       CONTRAST_IDX = 6;
+             *       ENTROPY_IDX = 7;
          */
         public void setWeight(int idx, float value)
         {
@@ -742,17 +731,17 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Weights (multiplicative constants) that linearly stretch individual axes of the feature space.
-         * param weights Values of all weights.
-         * <b>Note:</b>
-         * WEIGHT_IDX = 0;
-         * X_IDX = 1;
-         * Y_IDX = 2;
-         * L_IDX = 3;
-         * A_IDX = 4;
-         * B_IDX = 5;
-         * CONTRAST_IDX = 6;
-         * ENTROPY_IDX = 7;
+         * @brief Weights (multiplicative constants) that linearly stretch individual axes of the feature space.
+             * @param weights Values of all weights.
+             * @note
+             *       WEIGHT_IDX = 0;
+             *       X_IDX = 1;
+             *       Y_IDX = 2;
+             *       L_IDX = 3;
+             *       A_IDX = 4;
+             *       B_IDX = 5;
+             *       CONTRAST_IDX = 6;
+             *       ENTROPY_IDX = 7;
          */
         public void setWeights(MatOfFloat weights)
         {
@@ -770,18 +759,18 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Translations of the individual axes of the feature space.
-         * param idx ID of the translation
-         * param value Value of the translation
-         * <b>Note:</b>
-         * WEIGHT_IDX = 0;
-         * X_IDX = 1;
-         * Y_IDX = 2;
-         * L_IDX = 3;
-         * A_IDX = 4;
-         * B_IDX = 5;
-         * CONTRAST_IDX = 6;
-         * ENTROPY_IDX = 7;
+         * @brief Translations of the individual axes of the feature space.
+             * @param idx ID of the translation
+             * @param value Value of the translation
+             * @note
+             *       WEIGHT_IDX = 0;
+             *       X_IDX = 1;
+             *       Y_IDX = 2;
+             *       L_IDX = 3;
+             *       A_IDX = 4;
+             *       B_IDX = 5;
+             *       CONTRAST_IDX = 6;
+             *       ENTROPY_IDX = 7;
          */
         public void setTranslation(int idx, float value)
         {
@@ -798,17 +787,17 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Translations of the individual axes of the feature space.
-         * param translations Values of all translations.
-         * <b>Note:</b>
-         * WEIGHT_IDX = 0;
-         * X_IDX = 1;
-         * Y_IDX = 2;
-         * L_IDX = 3;
-         * A_IDX = 4;
-         * B_IDX = 5;
-         * CONTRAST_IDX = 6;
-         * ENTROPY_IDX = 7;
+         * @brief Translations of the individual axes of the feature space.
+             * @param translations Values of all translations.
+             * @note
+             *       WEIGHT_IDX = 0;
+             *       X_IDX = 1;
+             *       Y_IDX = 2;
+             *       L_IDX = 3;
+             *       A_IDX = 4;
+             *       B_IDX = 5;
+             *       CONTRAST_IDX = 6;
+             *       ENTROPY_IDX = 7;
          */
         public void setTranslations(MatOfFloat translations)
         {
@@ -826,9 +815,9 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Sets sampling points used to sample the input image.
-         * param samplingPoints Vector of sampling points in range [0..1)
-         * <b>Note:</b> Number of sampling points must be greater or equal to clusterization seed count.
+         * @brief Sets sampling points used to sample the input image.
+             * @param samplingPoints Vector of sampling points in range [0..1)
+             * @note Number of sampling points must be greater or equal to clusterization seed count.
          */
         public void setSamplingPoints(MatOfPoint2f samplingPoints)
         {
@@ -846,8 +835,7 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Initial seeds (initial number of clusters) for the k-means algorithm.
-         * return automatically generated
+         * @brief Initial seeds (initial number of clusters) for the k-means algorithm.
          */
         public MatOfInt getInitSeedIndexes()
         {
@@ -864,8 +852,7 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Initial seed indexes for the k-means algorithm.
-         * param initSeedIndexes automatically generated
+         * @brief Initial seed indexes for the k-means algorithm.
          */
         public void setInitSeedIndexes(MatOfInt initSeedIndexes)
         {
@@ -883,8 +870,7 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Number of initial seeds (initial number of clusters) for the k-means algorithm.
-         * return automatically generated
+         * @brief Number of initial seeds (initial number of clusters) for the k-means algorithm.
          */
         public int getInitSeedCount()
         {
@@ -901,10 +887,9 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Number of iterations of the k-means clustering.
-         * We use fixed number of iterations, since the modified clustering is pruning clusters
-         * (not iteratively refining k clusters).
-         * return automatically generated
+         * @brief Number of iterations of the k-means clustering.
+             *       We use fixed number of iterations, since the modified clustering is pruning clusters
+             *       (not iteratively refining k clusters).
          */
         public int getIterationCount()
         {
@@ -921,10 +906,9 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Number of iterations of the k-means clustering.
-         * We use fixed number of iterations, since the modified clustering is pruning clusters
-         * (not iteratively refining k clusters).
-         * param iterationCount automatically generated
+         * @brief Number of iterations of the k-means clustering.
+             *       We use fixed number of iterations, since the modified clustering is pruning clusters
+             *       (not iteratively refining k clusters).
          */
         public void setIterationCount(int iterationCount)
         {
@@ -941,9 +925,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Maximal number of generated clusters. If the number is exceeded,
-         * the clusters are sorted by their weights and the smallest clusters are cropped.
-         * return automatically generated
+         * @brief Maximal number of generated clusters. If the number is exceeded,
+             *       the clusters are sorted by their weights and the smallest clusters are cropped.
          */
         public int getMaxClustersCount()
         {
@@ -960,9 +943,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Maximal number of generated clusters. If the number is exceeded,
-         * the clusters are sorted by their weights and the smallest clusters are cropped.
-         * param maxClustersCount automatically generated
+         * @brief Maximal number of generated clusters. If the number is exceeded,
+             *       the clusters are sorted by their weights and the smallest clusters are cropped.
          */
         public void setMaxClustersCount(int maxClustersCount)
         {
@@ -979,10 +961,9 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * This parameter multiplied by the index of iteration gives lower limit for cluster size.
-         * Clusters containing fewer points than specified by the limit have their centroid dismissed
-         * and points are reassigned.
-         * return automatically generated
+         * @brief This parameter multiplied by the index of iteration gives lower limit for cluster size.
+             *       Clusters containing fewer points than specified by the limit have their centroid dismissed
+             *       and points are reassigned.
          */
         public int getClusterMinSize()
         {
@@ -999,10 +980,9 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * This parameter multiplied by the index of iteration gives lower limit for cluster size.
-         * Clusters containing fewer points than specified by the limit have their centroid dismissed
-         * and points are reassigned.
-         * param clusterMinSize automatically generated
+         * @brief This parameter multiplied by the index of iteration gives lower limit for cluster size.
+             *       Clusters containing fewer points than specified by the limit have their centroid dismissed
+             *       and points are reassigned.
          */
         public void setClusterMinSize(int clusterMinSize)
         {
@@ -1019,10 +999,9 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Threshold euclidean distance between two centroids.
-         * If two cluster centers are closer than this distance,
-         * one of the centroid is dismissed and points are reassigned.
-         * return automatically generated
+         * @brief Threshold euclidean distance between two centroids.
+             *       If two cluster centers are closer than this distance,
+             *       one of the centroid is dismissed and points are reassigned.
          */
         public float getJoiningDistance()
         {
@@ -1039,10 +1018,9 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Threshold euclidean distance between two centroids.
-         * If two cluster centers are closer than this distance,
-         * one of the centroid is dismissed and points are reassigned.
-         * param joiningDistance automatically generated
+         * @brief Threshold euclidean distance between two centroids.
+             *       If two cluster centers are closer than this distance,
+             *       one of the centroid is dismissed and points are reassigned.
          */
         public void setJoiningDistance(float joiningDistance)
         {
@@ -1059,8 +1037,7 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Remove centroids in k-means whose weight is lesser or equal to given threshold.
-         * return automatically generated
+         * @brief Remove centroids in k-means whose weight is lesser or equal to given threshold.
          */
         public float getDropThreshold()
         {
@@ -1077,8 +1054,7 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Remove centroids in k-means whose weight is lesser or equal to given threshold.
-         * param dropThreshold automatically generated
+         * @brief Remove centroids in k-means whose weight is lesser or equal to given threshold.
          */
         public void setDropThreshold(float dropThreshold)
         {
@@ -1095,8 +1071,7 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Distance function selector used for measuring distance between two points in k-means.
-         * return automatically generated
+         * @brief Distance function selector used for measuring distance between two points in k-means.
          */
         public int getDistanceFunction()
         {
@@ -1113,9 +1088,8 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Distance function selector used for measuring distance between two points in k-means.
-         * Available: L0_25, L0_5, L1, L2, L2SQUARED, L5, L_INFINITY.
-         * param distanceFunction automatically generated
+         * @brief Distance function selector used for measuring distance between two points in k-means.
+             *       Available: L0_25, L0_5, L1, L2, L2SQUARED, L5, L_INFINITY.
          */
         public void setDistanceFunction(int distanceFunction)
         {

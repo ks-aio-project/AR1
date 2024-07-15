@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.Features2dModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,21 +11,21 @@ namespace OpenCVForUnity.Xfeatures2dModule
 
     // C++: class VGG
     /**
-     * Class implementing VGG (Oxford Visual Geometry Group) descriptor trained end to end
-     * using "Descriptor Learning Using Convex Optimisation" (DLCO) aparatus described in CITE: Simonyan14.
-     *
-     * desc type of descriptor to use, VGG::VGG_120 is default (120 dimensions float)
-     * Available types are VGG::VGG_120, VGG::VGG_80, VGG::VGG_64, VGG::VGG_48
-     * isigma gaussian kernel value for image blur (default is 1.4f)
-     * img_normalize use image sample intensity normalization (enabled by default)
-     * use_orientation sample patterns using keypoints orientation, enabled by default
-     * scale_factor adjust the sampling window of detected keypoints to 64.0f (VGG sampling window)
-     * 6.25f is default and fits for KAZE, SURF detected keypoints window ratio
-     * 6.75f should be the scale for SIFT detected keypoints window ratio
-     * 5.00f should be the scale for AKAZE, MSD, AGAST, FAST, BRISK keypoints window ratio
-     * 0.75f should be the scale for ORB keypoints ratio
-     *
-     * dsc_normalize clamp descriptors to 255 and convert to uchar CV_8UC1 (disabled by default)
+     @brief Class implementing VGG (Oxford Visual Geometry Group) descriptor trained end to end
+     using "Descriptor Learning Using Convex Optimisation" (DLCO) aparatus described in @cite Simonyan14.
+     
+     desc type of descriptor to use, VGG::VGG_120 is default (120 dimensions float)
+     Available types are VGG::VGG_120, VGG::VGG_80, VGG::VGG_64, VGG::VGG_48
+     isigma gaussian kernel value for image blur (default is 1.4f)
+     img_normalize use image sample intensity normalization (enabled by default)
+     use_orientation sample patterns using keypoints orientation, enabled by default
+     scale_factor adjust the sampling window of detected keypoints to 64.0f (VGG sampling window)
+     6.25f is default and fits for KAZE, SURF detected keypoints window ratio
+     6.75f should be the scale for SIFT detected keypoints window ratio
+     5.00f should be the scale for AKAZE, MSD, AGAST, FAST, BRISK keypoints window ratio
+     0.75f should be the scale for ORB keypoints ratio
+     
+     dsc_normalize clamp descriptors to 255 and convert to uchar CV_8UC1 (disabled by default)
      */
 
     public class VGG : Feature2D
@@ -123,6 +123,20 @@ namespace OpenCVForUnity.Xfeatures2dModule
             return VGG.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(xfeatures2d_VGG_create_16()));
 
 
+        }
+
+
+        //
+        // C++:  String cv::xfeatures2d::VGG::getDefaultName()
+        //
+
+        public override string getDefaultName()
+        {
+            ThrowIfDisposed();
+
+            string retVal = Marshal.PtrToStringAnsi(DisposableObject.ThrowIfNullIntPtr(xfeatures2d_VGG_getDefaultName_10(nativeObj)));
+
+            return retVal;
         }
 
 
@@ -289,6 +303,10 @@ namespace OpenCVForUnity.Xfeatures2dModule
         private static extern IntPtr xfeatures2d_VGG_create_15(int desc);
         [DllImport(LIBNAME)]
         private static extern IntPtr xfeatures2d_VGG_create_16();
+
+        // C++:  String cv::xfeatures2d::VGG::getDefaultName()
+        [DllImport(LIBNAME)]
+        private static extern IntPtr xfeatures2d_VGG_getDefaultName_10(IntPtr nativeObj);
 
         // C++:  void cv::xfeatures2d::VGG::setSigma(float isigma)
         [DllImport(LIBNAME)]

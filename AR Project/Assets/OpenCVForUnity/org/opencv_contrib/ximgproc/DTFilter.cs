@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class DTFilter
     /**
-     * Interface for realizations of Domain Transform filter.
-     *
-     * For more details about this filter see CITE: Gastal11 .
+     @brief Interface for realizations of Domain Transform filter.
+     
+     For more details about this filter see @cite Gastal11 .
      */
 
     public class DTFilter : Algorithm
@@ -50,14 +50,14 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Produce domain transform filtering operation on source image.
-         *
-         *     param src filtering image with unsigned 8-bit or floating-point 32-bit depth and up to 4 channels.
-         *
-         *     param dst destination image.
-         *
-         *     param dDepth optional depth of the output image. dDepth can be set to -1, which will be equivalent
-         *     to src.depth().
+         @brief Produce domain transform filtering operation on source image.
+         
+             @param src filtering image with unsigned 8-bit or floating-point 32-bit depth and up to 4 channels.
+         
+             @param dst destination image.
+         
+             @param dDepth optional depth of the output image. dDepth can be set to -1, which will be equivalent
+             to src.depth().
          */
         public void filter(Mat src, Mat dst, int dDepth)
         {
@@ -71,13 +71,14 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Produce domain transform filtering operation on source image.
-         *
-         *     param src filtering image with unsigned 8-bit or floating-point 32-bit depth and up to 4 channels.
-         *
-         *     param dst destination image.
-         *
-         *     to src.depth().
+         @brief Produce domain transform filtering operation on source image.
+         
+             @param src filtering image with unsigned 8-bit or floating-point 32-bit depth and up to 4 channels.
+         
+             @param dst destination image.
+         
+             @param dDepth optional depth of the output image. dDepth can be set to -1, which will be equivalent
+             to src.depth().
          */
         public void filter(Mat src, Mat dst)
         {

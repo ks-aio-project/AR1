@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.Img_hashModule
 
     // C++: class BlockMeanHash
     /**
-     * Image hash based on block mean.
-     *
-     * See CITE: zauner2010implementation for details.
+     @brief Image hash based on block mean.
+     
+     See @cite zauner2010implementation for details.
      */
 
     public class BlockMeanHash : ImgHashBase
@@ -50,8 +50,8 @@ namespace OpenCVForUnity.Img_hashModule
         //
 
         /**
-         * Create BlockMeanHash object
-         *         param mode the mode
+         @brief Create BlockMeanHash object
+                 @param mode the mode
          */
         public void setMode(int mode)
         {

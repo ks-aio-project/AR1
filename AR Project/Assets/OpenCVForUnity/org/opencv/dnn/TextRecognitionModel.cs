@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,12 +11,12 @@ namespace OpenCVForUnity.DnnModule
 
     // C++: class TextRecognitionModel
     /**
-     * This class represents high-level API for text recognition networks.
-     *
-     * TextRecognitionModel allows to set params for preprocessing input image.
-     * TextRecognitionModel creates net from file with trained weights and config,
-     * sets preprocessing input, runs forward pass and return recognition result.
-     * For TextRecognitionModel, CRNN-CTC is supported.
+     @brief This class represents high-level API for text recognition networks.
+      *
+      * TextRecognitionModel allows to set params for preprocessing input image.
+      * TextRecognitionModel creates net from file with trained weights and config,
+      * sets preprocessing input, runs forward pass and return recognition result.
+      * For TextRecognitionModel, CRNN-CTC is supported.
      */
 
     public class TextRecognitionModel : Model
@@ -54,9 +54,9 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Create Text Recognition model from deep learning network
-         * Call setDecodeType() and setVocabulary() after constructor to initialize the decoding method
-         * param network Net object
+         * @brief Create Text Recognition model from deep learning network
+              * Call setDecodeType() and setVocabulary() after constructor to initialize the decoding method
+              * @param[in] network Net object
          */
         public TextRecognitionModel(Net network) :
             base(DisposableObject.ThrowIfNullIntPtr(dnn_TextRecognitionModel_TextRecognitionModel_10(network.nativeObj)))
@@ -72,10 +72,10 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Create text recognition model from network represented in one of the supported formats
-         * Call setDecodeType() and setVocabulary() after constructor to initialize the decoding method
-         * param model Binary file contains trained weights
-         * param config Text file contains network configuration
+         * @brief Create text recognition model from network represented in one of the supported formats
+              * Call setDecodeType() and setVocabulary() after constructor to initialize the decoding method
+              * @param[in] model Binary file contains trained weights
+              * @param[in] config Text file contains network configuration
          */
         public TextRecognitionModel(string model, string config) :
             base(DisposableObject.ThrowIfNullIntPtr(dnn_TextRecognitionModel_TextRecognitionModel_11(model, config)))
@@ -86,9 +86,10 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Create text recognition model from network represented in one of the supported formats
-         * Call setDecodeType() and setVocabulary() after constructor to initialize the decoding method
-         * param model Binary file contains trained weights
+         * @brief Create text recognition model from network represented in one of the supported formats
+              * Call setDecodeType() and setVocabulary() after constructor to initialize the decoding method
+              * @param[in] model Binary file contains trained weights
+              * @param[in] config Text file contains network configuration
          */
         public TextRecognitionModel(string model) :
             base(DisposableObject.ThrowIfNullIntPtr(dnn_TextRecognitionModel_TextRecognitionModel_12(model)))
@@ -104,11 +105,10 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Set the decoding method of translating the network output into string
-         * param decodeType The decoding method of translating the network output into string, currently supported type:
-         * - {code "CTC-greedy"} greedy decoding for the output of CTC-based methods
-         * - {code "CTC-prefix-beam-search"} Prefix beam search decoding for the output of CTC-based methods
-         * return automatically generated
+         * @brief Set the decoding method of translating the network output into string
+              * @param[in] decodeType The decoding method of translating the network output into string, currently supported type:
+              *    - `"CTC-greedy"` greedy decoding for the output of CTC-based methods
+              *    - `"CTC-prefix-beam-search"` Prefix beam search decoding for the output of CTC-based methods
          */
         public TextRecognitionModel setDecodeType(string decodeType)
         {
@@ -125,8 +125,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Get the decoding method
-         * return the decoding method
+         * @brief Get the decoding method
+              * @return the decoding method
          */
         public string getDecodeType()
         {
@@ -143,11 +143,10 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Set the decoding method options for {code "CTC-prefix-beam-search"} decode usage
-         * param beamSize Beam size for search
-         * param vocPruneSize Parameter to optimize big vocabulary search,
-         * only take top {code vocPruneSize} tokens in each search step, {code vocPruneSize} &lt;= 0 stands for disable this prune.
-         * return automatically generated
+         * @brief Set the decoding method options for `"CTC-prefix-beam-search"` decode usage
+              * @param[in] beamSize Beam size for search
+              * @param[in] vocPruneSize Parameter to optimize big vocabulary search,
+              * only take top @p vocPruneSize tokens in each search step, @p vocPruneSize &lt;= 0 stands for disable this prune.
          */
         public TextRecognitionModel setDecodeOptsCTCPrefixBeamSearch(int beamSize, int vocPruneSize)
         {
@@ -159,10 +158,10 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Set the decoding method options for {code "CTC-prefix-beam-search"} decode usage
-         * param beamSize Beam size for search
-         * only take top {code vocPruneSize} tokens in each search step, {code vocPruneSize} &lt;= 0 stands for disable this prune.
-         * return automatically generated
+         * @brief Set the decoding method options for `"CTC-prefix-beam-search"` decode usage
+              * @param[in] beamSize Beam size for search
+              * @param[in] vocPruneSize Parameter to optimize big vocabulary search,
+              * only take top @p vocPruneSize tokens in each search step, @p vocPruneSize &lt;= 0 stands for disable this prune.
          */
         public TextRecognitionModel setDecodeOptsCTCPrefixBeamSearch(int beamSize)
         {
@@ -179,9 +178,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Set the vocabulary for recognition.
-         * param vocabulary the associated vocabulary of the network.
-         * return automatically generated
+         * @brief Set the vocabulary for recognition.
+              * @param[in] vocabulary the associated vocabulary of the network.
          */
         public TextRecognitionModel setVocabulary(List<string> vocabulary)
         {
@@ -198,8 +196,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Get the vocabulary for recognition.
-         * return vocabulary the associated vocabulary
+         * @brief Get the vocabulary for recognition.
+              * @return vocabulary the associated vocabulary
          */
         public List<string> getVocabulary()
         {
@@ -216,9 +214,9 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Given the {code input} frame, create input blob, run net and return recognition result
-         * param frame The input image
-         * return The text recognition result
+         * @brief Given the @p input frame, create input blob, run net and return recognition result
+              * @param[in] frame The input image
+              * @return The text recognition result
          */
         public string recognize(Mat frame)
         {
@@ -236,10 +234,10 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Given the {code input} frame, create input blob, run net and return recognition result
-         * param frame The input image
-         * param roiRects List of text detection regions of interest (cv::Rect, CV_32SC4). ROIs is be cropped as the network inputs
-         * param results A set of text recognition results.
+         * @brief Given the @p input frame, create input blob, run net and return recognition result
+              * @param[in] frame The input image
+              * @param[in] roiRects List of text detection regions of interest (cv::Rect, CV_32SC4). ROIs is be cropped as the network inputs
+              * @param[out] results A set of text recognition results.
          */
         public void recognize(Mat frame, List<Mat> roiRects, List<string> results)
         {
@@ -308,4 +306,5 @@ namespace OpenCVForUnity.DnnModule
 
     }
 }
+
 #endif

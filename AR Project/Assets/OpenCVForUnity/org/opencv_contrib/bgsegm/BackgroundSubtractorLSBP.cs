@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using OpenCVForUnity.VideoModule;
@@ -11,7 +11,7 @@ namespace OpenCVForUnity.BgsegmModule
 
     // C++: class BackgroundSubtractorLSBP
     /**
-     * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
+     @brief Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at @cite LGuo2016
      */
 
     public class BackgroundSubtractorLSBP : BackgroundSubtractor

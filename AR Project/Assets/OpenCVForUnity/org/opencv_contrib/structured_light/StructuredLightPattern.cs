@@ -1,4 +1,4 @@
-﻿#if !UNITY_WEBGL
+#if !UNITY_WEBGL
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,7 +11,7 @@ namespace OpenCVForUnity.Structured_lightModule
 
     // C++: class StructuredLightPattern
     /**
-     * Abstract base class for generating and decoding structured light patterns.
+     @brief Abstract base class for generating and decoding structured light patterns.
      */
 
     public class StructuredLightPattern : Algorithm
@@ -49,10 +49,9 @@ namespace OpenCVForUnity.Structured_lightModule
         //
 
         /**
-         * Generates the structured light pattern to project.
-         *
-         *    param patternImages The generated pattern: a vector&lt;Mat&gt;, in which each image is a CV_8U Mat at projector's resolution.
-         * return automatically generated
+         @brief Generates the structured light pattern to project.
+         
+            @param patternImages The generated pattern: a vector&lt;Mat&gt;, in which each image is a CV_8U Mat at projector's resolution.
          */
         public bool generate(List<Mat> patternImages)
         {
@@ -91,4 +90,5 @@ namespace OpenCVForUnity.Structured_lightModule
 
     }
 }
+
 #endif

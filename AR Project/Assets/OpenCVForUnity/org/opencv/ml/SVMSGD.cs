@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.MlModule
 
     // C++: class SVMSGD
     /**
-     * *************************************************************************************\
-     * Stochastic Gradient Descent SVM Classifier                      *
-     * \***************************************************************************************
+     **************************************************************************************\
+     *                        Stochastic Gradient Descent SVM Classifier                      *
+     \***************************************************************************************
      */
 
     public class SVMSGD : StatModel
@@ -56,7 +56,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * return the weights of the trained model (decision function f(x) = weights * x + shift).
+         * @return the weights of the trained model (decision function f(x) = weights * x + shift).
          */
         public Mat getWeights()
         {
@@ -73,7 +73,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * return the shift of the trained model (decision function f(x) = weights * x + shift).
+         * @return the shift of the trained model (decision function f(x) = weights * x + shift).
          */
         public float getShift()
         {
@@ -90,10 +90,9 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Creates empty model.
-         * Use StatModel::train to train the model. Since %SVMSGD has several parameters, you may want to
-         * find the best parameters for your problem or use setOptimalParameters() to set some default parameters.
-         * return automatically generated
+         @brief Creates empty model.
+              * Use StatModel::train to train the model. Since %SVMSGD has several parameters, you may want to
+              * find the best parameters for your problem or use setOptimalParameters() to set some default parameters.
          */
         public static SVMSGD create()
         {
@@ -110,15 +109,14 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Loads and creates a serialized SVMSGD from a file
-         *
-         * Use SVMSGD::save to serialize and store an SVMSGD to disk.
-         * Load the SVMSGD from this file again, by calling this function with the path to the file.
-         * Optionally specify the node for the file containing the classifier
-         *
-         * param filepath path to serialized SVMSGD
-         * param nodeName name of node containing the classifier
-         * return automatically generated
+         @brief Loads and creates a serialized SVMSGD from a file
+              *
+              * Use SVMSGD::save to serialize and store an SVMSGD to disk.
+              * Load the SVMSGD from this file again, by calling this function with the path to the file.
+              * Optionally specify the node for the file containing the classifier
+              *
+              * @param filepath path to serialized SVMSGD
+              * @param nodeName name of node containing the classifier
          */
         public static SVMSGD load(string filepath, string nodeName)
         {
@@ -130,14 +128,14 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Loads and creates a serialized SVMSGD from a file
-         *
-         * Use SVMSGD::save to serialize and store an SVMSGD to disk.
-         * Load the SVMSGD from this file again, by calling this function with the path to the file.
-         * Optionally specify the node for the file containing the classifier
-         *
-         * param filepath path to serialized SVMSGD
-         * return automatically generated
+         @brief Loads and creates a serialized SVMSGD from a file
+              *
+              * Use SVMSGD::save to serialize and store an SVMSGD to disk.
+              * Load the SVMSGD from this file again, by calling this function with the path to the file.
+              * Optionally specify the node for the file containing the classifier
+              *
+              * @param filepath path to serialized SVMSGD
+              * @param nodeName name of node containing the classifier
          */
         public static SVMSGD load(string filepath)
         {
@@ -154,9 +152,9 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Function sets optimal parameters values for chosen SVM SGD model.
-         * param svmsgdType is the type of SVMSGD classifier.
-         * param marginType is the type of margin constraint.
+         @brief Function sets optimal parameters values for chosen SVM SGD model.
+              * @param svmsgdType is the type of SVMSGD classifier.
+              * @param marginType is the type of margin constraint.
          */
         public void setOptimalParameters(int svmsgdType, int marginType)
         {
@@ -168,8 +166,9 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Function sets optimal parameters values for chosen SVM SGD model.
-         * param svmsgdType is the type of SVMSGD classifier.
+         @brief Function sets optimal parameters values for chosen SVM SGD model.
+              * @param svmsgdType is the type of SVMSGD classifier.
+              * @param marginType is the type of margin constraint.
          */
         public void setOptimalParameters(int svmsgdType)
         {
@@ -181,7 +180,9 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Function sets optimal parameters values for chosen SVM SGD model.
+         @brief Function sets optimal parameters values for chosen SVM SGD model.
+              * @param svmsgdType is the type of SVMSGD classifier.
+              * @param marginType is the type of margin constraint.
          */
         public void setOptimalParameters()
         {
@@ -198,8 +199,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setSvmsgdType
-         * return automatically generated
+         @see setSvmsgdType
          */
         public int getSvmsgdType()
         {
@@ -216,8 +216,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getSvmsgdType SEE: getSvmsgdType
-         * param svmsgdType automatically generated
+         @copybrief getSvmsgdType @see getSvmsgdType
          */
         public void setSvmsgdType(int svmsgdType)
         {
@@ -234,8 +233,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setMarginType
-         * return automatically generated
+         @see setMarginType
          */
         public int getMarginType()
         {
@@ -252,8 +250,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getMarginType SEE: getMarginType
-         * param marginType automatically generated
+         @copybrief getMarginType @see getMarginType
          */
         public void setMarginType(int marginType)
         {
@@ -270,8 +267,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setMarginRegularization
-         * return automatically generated
+         @see setMarginRegularization
          */
         public float getMarginRegularization()
         {
@@ -288,8 +284,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getMarginRegularization SEE: getMarginRegularization
-         * param marginRegularization automatically generated
+         @copybrief getMarginRegularization @see getMarginRegularization
          */
         public void setMarginRegularization(float marginRegularization)
         {
@@ -306,8 +301,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setInitialStepSize
-         * return automatically generated
+         @see setInitialStepSize
          */
         public float getInitialStepSize()
         {
@@ -324,8 +318,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getInitialStepSize SEE: getInitialStepSize
-         * param InitialStepSize automatically generated
+         @copybrief getInitialStepSize @see getInitialStepSize
          */
         public void setInitialStepSize(float InitialStepSize)
         {
@@ -342,8 +335,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setStepDecreasingPower
-         * return automatically generated
+         @see setStepDecreasingPower
          */
         public float getStepDecreasingPower()
         {
@@ -360,8 +352,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getStepDecreasingPower SEE: getStepDecreasingPower
-         * param stepDecreasingPower automatically generated
+         @copybrief getStepDecreasingPower @see getStepDecreasingPower
          */
         public void setStepDecreasingPower(float stepDecreasingPower)
         {
@@ -378,8 +369,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setTermCriteria
-         * return automatically generated
+         @see setTermCriteria
          */
         public TermCriteria getTermCriteria()
         {
@@ -398,8 +388,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getTermCriteria SEE: getTermCriteria
-         * param val automatically generated
+         @copybrief getTermCriteria @see getTermCriteria
          */
         public void setTermCriteria(TermCriteria val)
         {

@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,16 +10,16 @@ namespace OpenCVForUnity.CoreModule
 {
     // C++: class Algorithm
     /**
-     * This is a base class for all more or less complex algorithms in OpenCV
-     *
-     * especially for classes of algorithms, for which there can be multiple implementations. The examples
-     * are stereo correspondence (for which there are algorithms like block matching, semi-global block
-     * matching, graph-cut etc.), background subtraction (which can be done using mixture-of-gaussians
-     * models, codebook-based algorithm etc.), optical flow (block matching, Lucas-Kanade, Horn-Schunck
-     * etc.).
-     *
-     * Here is example of SimpleBlobDetector use in your application via Algorithm interface:
-     * SNIPPET: snippets/core_various.cpp Algorithm
+     @brief This is a base class for all more or less complex algorithms in OpenCV
+     
+     especially for classes of algorithms, for which there can be multiple implementations. The examples
+     are stereo correspondence (for which there are algorithms like block matching, semi-global block
+     matching, graph-cut etc.), background subtraction (which can be done using mixture-of-gaussians
+     models, codebook-based algorithm etc.), optical flow (block matching, Lucas-Kanade, Horn-Schunck
+     etc.).
+     
+     Here is example of SimpleBlobDetector use in your application via Algorithm interface:
+     @snippet snippets/core_various.cpp Algorithm
      */
 
     public class Algorithm : DisposableOpenCVObject
@@ -60,7 +60,7 @@ namespace OpenCVForUnity.CoreModule
         //
 
         /**
-         * Clears the algorithm state
+         @brief Clears the algorithm state
          */
         public virtual void clear()
         {
@@ -73,10 +73,17 @@ namespace OpenCVForUnity.CoreModule
 
 
         //
-        // C++:  void cv::Algorithm::write(Ptr_FileStorage fs, String name = String())
+        // C++:  void cv::Algorithm::write(FileStorage fs)
         //
 
-        // Unknown type 'Ptr_FileStorage' (I), skipping the function
+        // Unknown type 'FileStorage' (I), skipping the function
+
+
+        //
+        // C++:  void cv::Algorithm::write(FileStorage fs, String name)
+        //
+
+        // Unknown type 'FileStorage' (I), skipping the function
 
 
         //
@@ -91,8 +98,7 @@ namespace OpenCVForUnity.CoreModule
         //
 
         /**
-         * Returns true if the Algorithm is empty (e.g. in the very beginning or after unsuccessful read
-         * return automatically generated
+         @brief Returns true if the Algorithm is empty (e.g. in the very beginning or after unsuccessful read
          */
         public virtual bool empty()
         {
@@ -109,9 +115,8 @@ namespace OpenCVForUnity.CoreModule
         //
 
         /**
-         * Saves the algorithm to a file.
-         * In order to make this method work, the derived class must implement Algorithm::write(FileStorage&amp; fs).
-         * param filename automatically generated
+         Saves the algorithm to a file.
+         In order to make this method work, the derived class must implement Algorithm::write(FileStorage&amp; fs).
          */
         public void save(string filename)
         {
@@ -128,9 +133,8 @@ namespace OpenCVForUnity.CoreModule
         //
 
         /**
-         * Returns the algorithm string identifier.
-         * This string is used as top level xml/yml node tag when the object is saved to a file or string.
-         * return automatically generated
+         Returns the algorithm string identifier.
+         This string is used as top level xml/yml node tag when the object is saved to a file or string.
          */
         public virtual string getDefaultName()
         {

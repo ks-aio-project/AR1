@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.PhotoModule
 
     // C++: class AlignExposures
     /**
-     * The base class for algorithms that align images of the same scene with different exposures
+     @brief The base class for algorithms that align images of the same scene with different exposures
      */
 
     public class AlignExposures : Algorithm
@@ -48,13 +48,13 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Aligns images
-         *
-         *     param src vector of input images
-         *     param dst vector of aligned images
-         *     param times vector of exposure time values for each image
-         *     param response 256x1 matrix with inverse camera response function for each pixel value, it should
-         *     have the same number of channels as images.
+         @brief Aligns images
+         
+             @param src vector of input images
+             @param dst vector of aligned images
+             @param times vector of exposure time values for each image
+             @param response 256x1 matrix with inverse camera response function for each pixel value, it should
+             have the same number of channels as images.
          */
         public virtual void process(List<Mat> src, List<Mat> dst, Mat times, Mat response)
         {

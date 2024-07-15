@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class DisparityFilter
     /**
-     * Main interface for all disparity map filters.
+     @brief Main interface for all disparity map filters.
      */
 
     public class DisparityFilter : Algorithm
@@ -48,24 +48,24 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Apply filtering to the disparity map.
-         *
-         *     param disparity_map_left disparity map of the left view, 1 channel, CV_16S type. Implicitly assumes that disparity
-         *     values are scaled by 16 (one-pixel disparity corresponds to the value of 16 in the disparity map). Disparity map
-         *     can have any resolution, it will be automatically resized to fit left_view resolution.
-         *
-         *     param left_view left view of the original stereo-pair to guide the filtering process, 8-bit single-channel
-         *     or three-channel image.
-         *
-         *     param filtered_disparity_map output disparity map.
-         *
-         *     param disparity_map_right optional argument, some implementations might also use the disparity map
-         *     of the right view to compute confidence maps, for instance.
-         *
-         *     param ROI region of the disparity map to filter. Optional, usually it should be set automatically.
-         *
-         *     param right_view optional argument, some implementations might also use the right view of the original
-         *     stereo-pair.
+         @brief Apply filtering to the disparity map.
+         
+             @param disparity_map_left disparity map of the left view, 1 channel, CV_16S type. Implicitly assumes that disparity
+             values are scaled by 16 (one-pixel disparity corresponds to the value of 16 in the disparity map). Disparity map
+             can have any resolution, it will be automatically resized to fit left_view resolution.
+         
+             @param left_view left view of the original stereo-pair to guide the filtering process, 8-bit single-channel
+             or three-channel image.
+         
+             @param filtered_disparity_map output disparity map.
+         
+             @param disparity_map_right optional argument, some implementations might also use the disparity map
+             of the right view to compute confidence maps, for instance.
+         
+             @param ROI region of the disparity map to filter. Optional, usually it should be set automatically.
+         
+             @param right_view optional argument, some implementations might also use the right view of the original
+             stereo-pair.
          */
         public void filter(Mat disparity_map_left, Mat left_view, Mat filtered_disparity_map, Mat disparity_map_right, Rect ROI, Mat right_view)
         {
@@ -82,23 +82,24 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Apply filtering to the disparity map.
-         *
-         *     param disparity_map_left disparity map of the left view, 1 channel, CV_16S type. Implicitly assumes that disparity
-         *     values are scaled by 16 (one-pixel disparity corresponds to the value of 16 in the disparity map). Disparity map
-         *     can have any resolution, it will be automatically resized to fit left_view resolution.
-         *
-         *     param left_view left view of the original stereo-pair to guide the filtering process, 8-bit single-channel
-         *     or three-channel image.
-         *
-         *     param filtered_disparity_map output disparity map.
-         *
-         *     param disparity_map_right optional argument, some implementations might also use the disparity map
-         *     of the right view to compute confidence maps, for instance.
-         *
-         *     param ROI region of the disparity map to filter. Optional, usually it should be set automatically.
-         *
-         *     stereo-pair.
+         @brief Apply filtering to the disparity map.
+         
+             @param disparity_map_left disparity map of the left view, 1 channel, CV_16S type. Implicitly assumes that disparity
+             values are scaled by 16 (one-pixel disparity corresponds to the value of 16 in the disparity map). Disparity map
+             can have any resolution, it will be automatically resized to fit left_view resolution.
+         
+             @param left_view left view of the original stereo-pair to guide the filtering process, 8-bit single-channel
+             or three-channel image.
+         
+             @param filtered_disparity_map output disparity map.
+         
+             @param disparity_map_right optional argument, some implementations might also use the disparity map
+             of the right view to compute confidence maps, for instance.
+         
+             @param ROI region of the disparity map to filter. Optional, usually it should be set automatically.
+         
+             @param right_view optional argument, some implementations might also use the right view of the original
+             stereo-pair.
          */
         public void filter(Mat disparity_map_left, Mat left_view, Mat filtered_disparity_map, Mat disparity_map_right, Rect ROI)
         {
@@ -114,22 +115,24 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Apply filtering to the disparity map.
-         *
-         *     param disparity_map_left disparity map of the left view, 1 channel, CV_16S type. Implicitly assumes that disparity
-         *     values are scaled by 16 (one-pixel disparity corresponds to the value of 16 in the disparity map). Disparity map
-         *     can have any resolution, it will be automatically resized to fit left_view resolution.
-         *
-         *     param left_view left view of the original stereo-pair to guide the filtering process, 8-bit single-channel
-         *     or three-channel image.
-         *
-         *     param filtered_disparity_map output disparity map.
-         *
-         *     param disparity_map_right optional argument, some implementations might also use the disparity map
-         *     of the right view to compute confidence maps, for instance.
-         *
-         *
-         *     stereo-pair.
+         @brief Apply filtering to the disparity map.
+         
+             @param disparity_map_left disparity map of the left view, 1 channel, CV_16S type. Implicitly assumes that disparity
+             values are scaled by 16 (one-pixel disparity corresponds to the value of 16 in the disparity map). Disparity map
+             can have any resolution, it will be automatically resized to fit left_view resolution.
+         
+             @param left_view left view of the original stereo-pair to guide the filtering process, 8-bit single-channel
+             or three-channel image.
+         
+             @param filtered_disparity_map output disparity map.
+         
+             @param disparity_map_right optional argument, some implementations might also use the disparity map
+             of the right view to compute confidence maps, for instance.
+         
+             @param ROI region of the disparity map to filter. Optional, usually it should be set automatically.
+         
+             @param right_view optional argument, some implementations might also use the right view of the original
+             stereo-pair.
          */
         public void filter(Mat disparity_map_left, Mat left_view, Mat filtered_disparity_map, Mat disparity_map_right)
         {
@@ -145,21 +148,24 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Apply filtering to the disparity map.
-         *
-         *     param disparity_map_left disparity map of the left view, 1 channel, CV_16S type. Implicitly assumes that disparity
-         *     values are scaled by 16 (one-pixel disparity corresponds to the value of 16 in the disparity map). Disparity map
-         *     can have any resolution, it will be automatically resized to fit left_view resolution.
-         *
-         *     param left_view left view of the original stereo-pair to guide the filtering process, 8-bit single-channel
-         *     or three-channel image.
-         *
-         *     param filtered_disparity_map output disparity map.
-         *
-         *     of the right view to compute confidence maps, for instance.
-         *
-         *
-         *     stereo-pair.
+         @brief Apply filtering to the disparity map.
+         
+             @param disparity_map_left disparity map of the left view, 1 channel, CV_16S type. Implicitly assumes that disparity
+             values are scaled by 16 (one-pixel disparity corresponds to the value of 16 in the disparity map). Disparity map
+             can have any resolution, it will be automatically resized to fit left_view resolution.
+         
+             @param left_view left view of the original stereo-pair to guide the filtering process, 8-bit single-channel
+             or three-channel image.
+         
+             @param filtered_disparity_map output disparity map.
+         
+             @param disparity_map_right optional argument, some implementations might also use the disparity map
+             of the right view to compute confidence maps, for instance.
+         
+             @param ROI region of the disparity map to filter. Optional, usually it should be set automatically.
+         
+             @param right_view optional argument, some implementations might also use the right view of the original
+             stereo-pair.
          */
         public void filter(Mat disparity_map_left, Mat left_view, Mat filtered_disparity_map)
         {

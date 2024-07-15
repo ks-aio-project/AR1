@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,10 +10,10 @@ namespace OpenCVForUnity.PhotoModule
 
     // C++: class MergeDebevec
     /**
-     * The resulting HDR image is calculated as weighted average of the exposures considering exposure
-     * values and camera response.
-     *
-     * For more information see CITE: DM97 .
+     @brief The resulting HDR image is calculated as weighted average of the exposures considering exposure
+     values and camera response.
+     
+     For more information see @cite DM97 .
      */
 
     public class MergeDebevec : MergeExposures

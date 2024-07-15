@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class SelectiveSearchSegmentationStrategyMultiple
     /**
-     * Regroup multiple strategies for the selective search segmentation algorithm
+     @brief Regroup multiple strategies for the selective search segmentation algorithm
      */
 
     public class SelectiveSearchSegmentationStrategyMultiple : SelectiveSearchSegmentationStrategy
@@ -48,9 +48,9 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Add a new sub-strategy
-         *                                 param g The strategy
-         *                                 param weight The weight of the strategy
+         @brief Add a new sub-strategy
+                                         @param g The strategy
+                                         @param weight The weight of the strategy
          */
         public void addStrategy(SelectiveSearchSegmentationStrategy g, float weight)
         {
@@ -68,7 +68,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Remove all sub-strategies
+         @brief Remove all sub-strategies
          */
         public void clearStrategies()
         {

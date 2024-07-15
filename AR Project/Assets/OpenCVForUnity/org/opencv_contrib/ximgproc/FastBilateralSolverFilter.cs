@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class FastBilateralSolverFilter
     /**
-     * Interface for implementations of Fast Bilateral Solver.
-     *
-     * For more details about this solver see CITE: BarronPoole2016 .
+     @brief Interface for implementations of Fast Bilateral Solver.
+     
+     For more details about this solver see @cite BarronPoole2016 .
      */
 
     public class FastBilateralSolverFilter : Algorithm
@@ -50,15 +50,15 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Apply smoothing operation to the source image.
-         *
-         *     param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 3 channels.
-         *
-         *     param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
-         *
-         *     param dst destination image.
-         *
-         *     <b>Note:</b> Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
+         @brief Apply smoothing operation to the source image.
+         
+             @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 3 channels.
+         
+             @param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
+         
+             @param dst destination image.
+         
+             @note Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
          */
         public void filter(Mat src, Mat confidence, Mat dst)
         {

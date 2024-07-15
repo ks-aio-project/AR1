@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,13 +10,13 @@ namespace OpenCVForUnity.TrackingModule
 
     // C++: class TrackerMIL
     /**
-     * The MIL algorithm trains a classifier in an online manner to separate the object from the
-     * background.
-     *
-     * Multiple Instance Learning avoids the drift problem for a robust tracking. The implementation is
-     * based on CITE: MIL .
-     *
-     * Original code can be found here &lt;http://vision.ucsd.edu/~bbabenko/project_miltrack.shtml&gt;
+     @brief The MIL algorithm trains a classifier in an online manner to separate the object from the
+     background.
+     
+     Multiple Instance Learning avoids the drift problem for a robust tracking. The implementation is
+     based on @cite MIL .
+     
+     Original code can be found here &lt;http://vision.ucsd.edu/~bbabenko/project_miltrack.shtml&gt;
      */
 
     public class legacy_TrackerMIL : legacy_Tracker
@@ -54,8 +54,8 @@ namespace OpenCVForUnity.TrackingModule
         //
 
         /**
-         * Constructor
-         * return automatically generated
+         @brief Constructor
+             @param parameters MIL parameters TrackerMIL::Params
          */
         public static legacy_TrackerMIL create()
         {

@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,8 +10,8 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class FastLineDetector
     /**
-     * Class implementing the FLD (Fast Line Detector) algorithm described
-     * in CITE: Lee14 .
+     @brief Class implementing the FLD (Fast Line Detector) algorithm described
+     in @cite Lee14 .
      */
 
     public class FastLineDetector : Algorithm
@@ -49,19 +49,19 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Finds lines in the input image.
-         *       This is the output of the default parameters of the algorithm on the above
-         *       shown image.
-         *
-         *       ![image](pics/corridor_fld.jpg)
-         *
-         *       param image A grayscale (CV_8UC1) input image. If only a roi needs to be
-         *       selected, use: `fld_ptr-&gt;detect(image(roi), lines, ...);
-         *       lines += Scalar(roi.x, roi.y, roi.x, roi.y);`
-         *       param lines A vector of Vec4f elements specifying the beginning
-         *       and ending point of a line.  Where Vec4f is (x1, y1, x2, y2), point
-         *       1 is the start, point 2 - end. Returned lines are directed so that the
-         *       brighter side is on their left.
+         @brief Finds lines in the input image.
+               This is the output of the default parameters of the algorithm on the above
+               shown image.
+         
+               ![image](pics/corridor_fld.jpg)
+         
+               @param image A grayscale (CV_8UC1) input image. If only a roi needs to be
+               selected, use: `fld_ptr-&gt;detect(image(roi), lines, ...);
+               lines += Scalar(roi.x, roi.y, roi.x, roi.y);`
+               @param lines A vector of Vec4f elements specifying the beginning
+               and ending point of a line.  Where Vec4f is (x1, y1, x2, y2), point
+               1 is the start, point 2 - end. Returned lines are directed so that the
+               brighter side is on their left.
          */
         public void detect(Mat image, Mat lines)
         {
@@ -80,13 +80,13 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Draws the line segments on a given image.
-         *       param image The image, where the lines will be drawn. Should be bigger
-         *       or equal to the image, where the lines were found.
-         *       param lines A vector of the lines that needed to be drawn.
-         *       param draw_arrow If true, arrow heads will be drawn.
-         *       param linecolor Line color.
-         *       param linethickness Line thickness.
+         @brief Draws the line segments on a given image.
+               @param image The image, where the lines will be drawn. Should be bigger
+               or equal to the image, where the lines were found.
+               @param lines A vector of the lines that needed to be drawn.
+               @param draw_arrow If true, arrow heads will be drawn.
+               @param linecolor Line color.
+               @param linethickness Line thickness.
          */
         public void drawSegments(Mat image, Mat lines, bool draw_arrow, Scalar linecolor, int linethickness)
         {
@@ -100,12 +100,13 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Draws the line segments on a given image.
-         *       param image The image, where the lines will be drawn. Should be bigger
-         *       or equal to the image, where the lines were found.
-         *       param lines A vector of the lines that needed to be drawn.
-         *       param draw_arrow If true, arrow heads will be drawn.
-         *       param linecolor Line color.
+         @brief Draws the line segments on a given image.
+               @param image The image, where the lines will be drawn. Should be bigger
+               or equal to the image, where the lines were found.
+               @param lines A vector of the lines that needed to be drawn.
+               @param draw_arrow If true, arrow heads will be drawn.
+               @param linecolor Line color.
+               @param linethickness Line thickness.
          */
         public void drawSegments(Mat image, Mat lines, bool draw_arrow, Scalar linecolor)
         {
@@ -119,11 +120,13 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Draws the line segments on a given image.
-         *       param image The image, where the lines will be drawn. Should be bigger
-         *       or equal to the image, where the lines were found.
-         *       param lines A vector of the lines that needed to be drawn.
-         *       param draw_arrow If true, arrow heads will be drawn.
+         @brief Draws the line segments on a given image.
+               @param image The image, where the lines will be drawn. Should be bigger
+               or equal to the image, where the lines were found.
+               @param lines A vector of the lines that needed to be drawn.
+               @param draw_arrow If true, arrow heads will be drawn.
+               @param linecolor Line color.
+               @param linethickness Line thickness.
          */
         public void drawSegments(Mat image, Mat lines, bool draw_arrow)
         {
@@ -137,10 +140,13 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Draws the line segments on a given image.
-         *       param image The image, where the lines will be drawn. Should be bigger
-         *       or equal to the image, where the lines were found.
-         *       param lines A vector of the lines that needed to be drawn.
+         @brief Draws the line segments on a given image.
+               @param image The image, where the lines will be drawn. Should be bigger
+               or equal to the image, where the lines were found.
+               @param lines A vector of the lines that needed to be drawn.
+               @param draw_arrow If true, arrow heads will be drawn.
+               @param linecolor Line color.
+               @param linethickness Line thickness.
          */
         public void drawSegments(Mat image, Mat lines)
         {

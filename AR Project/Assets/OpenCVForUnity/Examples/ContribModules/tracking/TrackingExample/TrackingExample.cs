@@ -1,9 +1,11 @@
-﻿using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.ImgprocModule;
 using OpenCVForUnity.TrackingModule;
 using OpenCVForUnity.UnityUtils;
 using OpenCVForUnity.UnityUtils.Helper;
 using OpenCVForUnity.VideoModule;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -17,6 +19,10 @@ namespace OpenCVForUnityExample
     /// Tracking Example
     /// An example of object tracking using the tracking (Tracking API) module.
     /// http://docs.opencv.org/trunk/d5/d07/tutorial_multitracker.html
+    /// 
+    /// https://github.com/opencv/opencv_zoo/tree/main/models/object_tracking_vittrack
+    /// https://github.com/opencv/opencv/blob/4.x/samples/dnn/dasiamrpn_tracker.cpp
+    /// https://github.com/opencv/opencv/blob/4.x/samples/dnn/nanotrack_tracker.cpp
     /// </summary>
     [RequireComponent(typeof(VideoCaptureToMatHelper))]
     public class TrackingExample : MonoBehaviour
@@ -35,6 +41,91 @@ namespace OpenCVForUnityExample
         /// The trackerMIL Toggle.
         /// </summary>
         public Toggle trackerMILToggle;
+
+        /// <summary>
+        /// The trackerVit Toggle.
+        /// </summary>
+        public Toggle trackerVitToggle;
+
+        /// <summary>
+        /// The trackerDaSiamRPN Toggle.
+        /// </summary>
+        public Toggle trackerDaSiamRPNToggle;
+
+        /// <summary>
+        /// The trackerNano Toggle.
+        /// </summary>
+        public Toggle trackerNanoToggle;
+
+        /// <summary>
+        /// Vit_MODEL_FILENAME
+        /// </summary>
+        protected static readonly string Vit_MODEL_FILENAME = "OpenCVForUnity/tracking/object_tracking_vittrack_2023sep.onnx";
+
+        /// <summary>
+        /// The Vit model filepath.
+        /// </summary>
+        string Vit_model_filepath;
+
+        /// <summary>
+        /// DaSiamRPN_MODEL_FILENAME
+        /// </summary>
+        protected static readonly string DaSiamRPN_MODEL_FILENAME = "OpenCVForUnity/tracking/dasiamrpn_model.onnx";
+
+        /// <summary>
+        /// The DaSiamRPN model filepath.
+        /// </summary>
+        string DaSiamRPN_model_filepath;
+
+        /// <summary>
+        /// DaSiamRPN_KERNEL_R1_FILENAME
+        /// </summary>
+        protected static readonly string DaSiamRPN_KERNEL_R1_FILENAME = "OpenCVForUnity/tracking/dasiamrpn_kernel_r1.onnx";
+
+        /// <summary>
+        /// The DaSiamRPN kernel_r1 filepath.
+        /// </summary>
+        string DaSiamRPN_kernel_r1_filepath;
+
+        /// <summary>
+        /// DaSiamRPN_KERNEL_CLS1_FILENAME
+        /// </summary>
+        protected static readonly string DaSiamRPN_KERNEL_CLS1_FILENAME = "OpenCVForUnity/tracking/dasiamrpn_kernel_cls1.onnx";
+
+        /// <summary>
+        /// The DaSiamRPN kernel_cls1 filepath.
+        /// </summary>
+        string DaSiamRPN_kernel_cls1_filepath;
+
+        /// <summary>
+        /// NANOTRACK_BACKBONE_SIM_FILENAME
+        /// </summary>
+        protected static readonly string NANOTRACK_BACKBONE_SIM_FILENAME = "OpenCVForUnity/tracking/nanotrack_backbone_sim.onnx";
+
+        /// <summary>
+        /// The NANOTRACK_backbone_sim filepath.
+        /// </summary>
+        string NANOTRACK_backbone_sim_filepath;
+
+        /// <summary>
+        /// NANOTRACK_HEAD_SIM_FILENAME
+        /// </summary>
+        protected static readonly string NANOTRACK_HEAD_SIM_FILENAME = "OpenCVForUnity/tracking/nanotrack_head_sim.onnx";
+
+        /// <summary>
+        /// The NANOTRACK_head_sim filepath.
+        /// </summary>
+        string NANOTRACK_head_sim_filepath;
+
+        bool disableTrackerVit = false;
+
+        bool disableTrackerDaSiamRPN = false;
+
+        bool disableTrackerNano = false;
+
+#if UNITY_WEBGL
+        IEnumerator getFilePath_Coroutine;
+#endif
 
         /// <summary>
         /// The texture.
@@ -69,7 +160,7 @@ namespace OpenCVForUnityExample
         /// <summary>
         /// VIDEO_FILENAME
         /// </summary>
-        protected static readonly string VIDEO_FILENAME = "768x576_mjpeg.mjpeg";
+        protected static readonly string VIDEO_FILENAME = "OpenCVForUnity/768x576_mjpeg.mjpeg";
 
         // Use this for initialization
         void Start()
@@ -77,6 +168,113 @@ namespace OpenCVForUnityExample
             fpsMonitor = GetComponent<FpsMonitor>();
 
             sourceToMatHelper = gameObject.GetComponent<VideoCaptureToMatHelper>();
+
+
+#if UNITY_WSA_10_0
+            
+            // Disable the DNN module-dependent Tracker on UWP platforms, as it cannot be used.
+            trackerVitToggle.isOn = trackerVitToggle.interactable = false;
+            disableTrackerVit = true;
+            trackerDaSiamRPNToggle.isOn = trackerDaSiamRPNToggle.interactable = false;
+            disableTrackerDaSiamRPN = true;
+            trackerNanoToggle.isOn = trackerNanoToggle.interactable = false;
+            disableTrackerNano = true;
+            Run();
+
+#elif UNITY_WEBGL
+
+            getFilePath_Coroutine = GetFilePath();
+            StartCoroutine(getFilePath_Coroutine);
+
+#else
+
+            Vit_model_filepath = Utils.getFilePath(Vit_MODEL_FILENAME);
+            DaSiamRPN_model_filepath = Utils.getFilePath(DaSiamRPN_MODEL_FILENAME);
+            DaSiamRPN_kernel_r1_filepath = Utils.getFilePath(DaSiamRPN_KERNEL_R1_FILENAME);
+            DaSiamRPN_kernel_cls1_filepath = Utils.getFilePath(DaSiamRPN_KERNEL_CLS1_FILENAME);
+            NANOTRACK_backbone_sim_filepath = Utils.getFilePath(NANOTRACK_BACKBONE_SIM_FILENAME);
+            NANOTRACK_head_sim_filepath = Utils.getFilePath(NANOTRACK_HEAD_SIM_FILENAME);
+            CheckFilePaths();
+            Run();
+
+#endif
+        }
+
+#if UNITY_WEBGL
+        private IEnumerator GetFilePath()
+        {
+            var getFilePathAsync_0_Coroutine = Utils.getFilePathAsync(Vit_MODEL_FILENAME, (result) =>
+            {
+                Vit_model_filepath = result;
+            });
+            yield return getFilePathAsync_0_Coroutine;
+
+            var getFilePathAsync_1_Coroutine = Utils.getFilePathAsync(DaSiamRPN_MODEL_FILENAME, (result) =>
+            {
+                DaSiamRPN_model_filepath = result;
+            });
+            yield return getFilePathAsync_1_Coroutine;
+
+            var getFilePathAsync_2_Coroutine = Utils.getFilePathAsync(DaSiamRPN_KERNEL_R1_FILENAME, (result) =>
+            {
+                DaSiamRPN_kernel_r1_filepath = result;
+            });
+            yield return getFilePathAsync_2_Coroutine;
+
+            var getFilePathAsync_3_Coroutine = Utils.getFilePathAsync(DaSiamRPN_KERNEL_CLS1_FILENAME, (result) =>
+            {
+                DaSiamRPN_kernel_cls1_filepath = result;
+            });
+            yield return getFilePathAsync_3_Coroutine;
+
+            var getFilePathAsync_4_Coroutine = Utils.getFilePathAsync(NANOTRACK_BACKBONE_SIM_FILENAME, (result) =>
+            {
+                NANOTRACK_backbone_sim_filepath = result;
+            });
+            yield return getFilePathAsync_4_Coroutine;
+
+            var getFilePathAsync_5_Coroutine = Utils.getFilePathAsync(NANOTRACK_HEAD_SIM_FILENAME, (result) =>
+            {
+                NANOTRACK_head_sim_filepath = result;
+            });
+            yield return getFilePathAsync_5_Coroutine;
+
+            getFilePath_Coroutine = null;
+
+            CheckFilePaths();
+            Run();
+        }
+#endif
+
+        void CheckFilePaths()
+        {
+            if (string.IsNullOrEmpty(Vit_model_filepath))
+            {
+                Debug.LogError(Vit_MODEL_FILENAME + " is not loaded. Please read “StreamingAssets/OpenCVForUnity/tracking/setup_tracking_module.pdf” to make the necessary setup.");
+
+                trackerVitToggle.isOn = trackerVitToggle.interactable = false;
+                disableTrackerVit = true;
+            }
+
+            if (string.IsNullOrEmpty(DaSiamRPN_model_filepath) || string.IsNullOrEmpty(DaSiamRPN_kernel_r1_filepath) || string.IsNullOrEmpty(DaSiamRPN_kernel_cls1_filepath))
+            {
+                Debug.LogError(DaSiamRPN_MODEL_FILENAME + " or " + DaSiamRPN_KERNEL_R1_FILENAME + " or " + DaSiamRPN_KERNEL_CLS1_FILENAME + " is not loaded. Please read “StreamingAssets/OpenCVForUnity/tracking/setup_tracking_module.pdf” to make the necessary setup.");
+
+                trackerDaSiamRPNToggle.isOn = trackerDaSiamRPNToggle.interactable = false;
+                disableTrackerDaSiamRPN = true;
+            }
+
+            if (string.IsNullOrEmpty(NANOTRACK_backbone_sim_filepath) || string.IsNullOrEmpty(NANOTRACK_head_sim_filepath))
+            {
+                Debug.LogError(NANOTRACK_BACKBONE_SIM_FILENAME + " or " + NANOTRACK_HEAD_SIM_FILENAME + " is not loaded. Please read “StreamingAssets/OpenCVForUnity/tracking/setup_tracking_module.pdf” to make the necessary setup.");
+
+                trackerNanoToggle.isOn = trackerNanoToggle.interactable = false;
+                disableTrackerNano = true;
+            }
+        }
+
+        void Run()
+        {
             if (string.IsNullOrEmpty(sourceToMatHelper.requestedVideoFilePath))
                 sourceToMatHelper.requestedVideoFilePath = VIDEO_FILENAME;
             sourceToMatHelper.outputColorFormat = VideoCaptureToMatHelper.ColorFormat.RGB; // Tracking API must handle 3 channels Mat image.
@@ -93,7 +291,7 @@ namespace OpenCVForUnityExample
             Mat rgbMat = sourceToMatHelper.GetMat();
 
             texture = new Texture2D(rgbMat.cols(), rgbMat.rows(), TextureFormat.RGB24, false);
-            Utils.fastMatToTexture2D(rgbMat, texture);
+            Utils.matToTexture2D(rgbMat, texture);
 
             gameObject.GetComponent<Renderer>().material.mainTexture = texture;
 
@@ -229,6 +427,36 @@ namespace OpenCVForUnityExample
                                 trackerMIL.init(rgbMat, region);
                                 trackers.Add(new TrackerSetting(trackerMIL, trackerMIL.GetType().Name.ToString(), new Scalar(0, 0, 255)));
                             }
+
+                            if (!disableTrackerVit && trackerVitToggle.isOn)
+                            {
+                                var _params = new TrackerVit_Params();
+                                _params.set_net(Vit_model_filepath);
+                                TrackerVit TrackerVit = TrackerVit.create(_params);
+                                TrackerVit.init(rgbMat, region);
+                                trackers.Add(new TrackerSetting(TrackerVit, TrackerVit.GetType().Name.ToString(), new Scalar(255, 255, 0)));
+                            }
+
+                            if (!disableTrackerDaSiamRPN && trackerDaSiamRPNToggle.isOn)
+                            {
+                                var _params = new TrackerDaSiamRPN_Params();
+                                _params.set_model(DaSiamRPN_model_filepath);
+                                _params.set_kernel_r1(DaSiamRPN_kernel_r1_filepath);
+                                _params.set_kernel_cls1(DaSiamRPN_kernel_cls1_filepath);
+                                TrackerDaSiamRPN trackerDaSiamRPN = TrackerDaSiamRPN.create(_params);
+                                trackerDaSiamRPN.init(rgbMat, region);
+                                trackers.Add(new TrackerSetting(trackerDaSiamRPN, trackerDaSiamRPN.GetType().Name.ToString(), new Scalar(255, 0, 255)));
+                            }
+
+                            if (!disableTrackerNano && trackerNanoToggle.isOn)
+                            {
+                                var _params = new TrackerNano_Params();
+                                _params.set_backbone(NANOTRACK_backbone_sim_filepath);
+                                _params.set_neckhead(NANOTRACK_head_sim_filepath);
+                                TrackerNano trackerNano = TrackerNano.create(_params);
+                                trackerNano.init(rgbMat, region);
+                                trackers.Add(new TrackerSetting(trackerNano, trackerNano.GetType().Name.ToString(), new Scalar(0, 255, 255)));
+                            }
                         }
 
                         selectedPointList.Clear();
@@ -241,6 +469,15 @@ namespace OpenCVForUnityExample
                             }
 
                             trackerKCFToggle.interactable = trackerCSRTToggle.interactable = trackerMILToggle.interactable = false;
+
+                            if (!disableTrackerVit)
+                                trackerVitToggle.interactable = false;
+
+                            if (!disableTrackerDaSiamRPN)
+                                trackerDaSiamRPNToggle.interactable = false;
+
+                            if (!disableTrackerNano)
+                                trackerNanoToggle.interactable = false;
                         }
                     }
 
@@ -255,7 +492,25 @@ namespace OpenCVForUnityExample
                         tracker.update(rgbMat, boundingBox);
 
                         Imgproc.rectangle(rgbMat, boundingBox.tl(), boundingBox.br(), lineColor, 2, 1, 0);
-                        Imgproc.putText(rgbMat, label, new Point(boundingBox.x, boundingBox.y - 5), Imgproc.FONT_HERSHEY_SIMPLEX, 0.5, lineColor, 1, Imgproc.LINE_AA, false);
+
+                        //  vit tracker provides confidence values during the tracking process, which can be used to determine if the tracking is currently lost.
+                        if (trackers[i].tracker is TrackerVit)
+                        {
+                            TrackerVit trackerVit = (TrackerVit)trackers[i].tracker;
+                            float score = trackerVit.getTrackingScore();
+                            if (score < 0.4f)
+                            {
+                                Imgproc.putText(rgbMat, label + " " + String.Format("{0:0.00}", score), new Point(boundingBox.x, boundingBox.y - 5), Imgproc.FONT_HERSHEY_SIMPLEX, 0.5, new Scalar(255, 0, 0, 255), 1, Imgproc.LINE_AA, false);
+                            }
+                            else
+                            {
+                                Imgproc.putText(rgbMat, label + " " + String.Format("{0:0.00}", score), new Point(boundingBox.x, boundingBox.y - 5), Imgproc.FONT_HERSHEY_SIMPLEX, 0.5, lineColor, 1, Imgproc.LINE_AA, false);
+                            }
+                        }
+                        else
+                        {
+                            Imgproc.putText(rgbMat, label, new Point(boundingBox.x, boundingBox.y - 5), Imgproc.FONT_HERSHEY_SIMPLEX, 0.5, lineColor, 1, Imgproc.LINE_AA, false);
+                        }
                     }
 
                     if (trackers.Count == 0)
@@ -278,7 +533,7 @@ namespace OpenCVForUnityExample
                         }
                     }
 
-                    Utils.fastMatToTexture2D(rgbMat, texture);
+                    Utils.matToTexture2D(rgbMat, texture);
                 }
             }
             else
@@ -307,6 +562,15 @@ namespace OpenCVForUnityExample
             }
 
             trackerKCFToggle.interactable = trackerCSRTToggle.interactable = trackerMILToggle.interactable = true;
+
+            if (!disableTrackerVit)
+                trackerVitToggle.interactable = true;
+
+            if (!disableTrackerDaSiamRPN)
+                trackerDaSiamRPNToggle.interactable = true;
+
+            if (!disableTrackerNano)
+                trackerNanoToggle.interactable = true;
         }
 
         private void OnTouch(Point touchPoint, int textureWidth = -1, int textureHeight = -1)
@@ -377,14 +641,26 @@ namespace OpenCVForUnityExample
         }
 
         /// <summary>
+        /// Raises the disable event.
+        /// </summary>
+        void OnDisable()
+        {
+#if UNITY_WEBGL
+            if (getFilePath_Coroutine != null)
+            {
+                StopCoroutine(getFilePath_Coroutine);
+                ((IDisposable)getFilePath_Coroutine).Dispose();
+            }
+#endif
+        }
+
+        /// <summary>
         /// Raises the destroy event.
         /// </summary>
         void OnDestroy()
         {
             if (sourceToMatHelper != null)
                 sourceToMatHelper.Dispose();
-
-            ResetTrackers();
         }
 
         /// <summary>

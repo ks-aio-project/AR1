@@ -1,4 +1,4 @@
-﻿#if !UNITY_WEBGL
+#if !UNITY_WEBGL
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,13 +10,13 @@ namespace OpenCVForUnity.Phase_unwrappingModule
 {
     // C++: class Params
     /**
-     * Parameters of phaseUnwrapping constructor.
-     *
-     * width Phase map width.
-     * height Phase map height.
-     * histThresh Bins in the histogram are not of equal size. Default value is 3*pi*pi. The one before "histThresh" value are smaller.
-     * nbrOfSmallBins Number of bins between 0 and "histThresh". Default value is 10.
-     * nbrOfLargeBins Number of bins between "histThresh" and 32*pi*pi (highest edge reliability value). Default value is 5.
+     * @brief Parameters of phaseUnwrapping constructor.
+     
+          * width Phase map width.
+          * height Phase map height.
+          * histThresh Bins in the histogram are not of equal size. Default value is 3*pi*pi. The one before "histThresh" value are smaller.
+          * nbrOfSmallBins Number of bins between 0 and "histThresh". Default value is 10.
+          * nbrOfLargeBins Number of bins between "histThresh" and 32*pi*pi (highest edge reliability value). Default value is 5.
      */
 
     public class HistogramPhaseUnwrapping_Params : DisposableOpenCVObject
@@ -264,4 +264,5 @@ namespace OpenCVForUnity.Phase_unwrappingModule
 
     }
 }
+
 #endif

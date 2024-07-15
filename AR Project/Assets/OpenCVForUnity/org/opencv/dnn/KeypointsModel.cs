@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,11 +11,11 @@ namespace OpenCVForUnity.DnnModule
 
     // C++: class KeypointsModel
     /**
-     * This class represents high-level API for keypoints models
-     *
-     * KeypointsModel allows to set params for preprocessing input image.
-     * KeypointsModel creates net from file with trained weights and config,
-     * sets preprocessing input, runs forward pass and returns the x and y coordinates of each detected keypoint
+     @brief This class represents high-level API for keypoints models
+           *
+           * KeypointsModel allows to set params for preprocessing input image.
+           * KeypointsModel creates net from file with trained weights and config,
+           * sets preprocessing input, runs forward pass and returns the x and y coordinates of each detected keypoint
      */
 
     public class KeypointsModel : Model
@@ -53,10 +53,10 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Create keypoints model from network represented in one of the supported formats.
-         * An order of {code model} and {code config} arguments does not matter.
-         * param model Binary file contains trained weights.
-         * param config Text file contains network configuration.
+         * @brief Create keypoints model from network represented in one of the supported formats.
+                   * An order of @p model and @p config arguments does not matter.
+                   * @param[in] model Binary file contains trained weights.
+                   * @param[in] config Text file contains network configuration.
          */
         public KeypointsModel(string model, string config) :
             base(DisposableObject.ThrowIfNullIntPtr(dnn_KeypointsModel_KeypointsModel_10(model, config)))
@@ -67,9 +67,10 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Create keypoints model from network represented in one of the supported formats.
-         * An order of {code model} and {code config} arguments does not matter.
-         * param model Binary file contains trained weights.
+         * @brief Create keypoints model from network represented in one of the supported formats.
+                   * An order of @p model and @p config arguments does not matter.
+                   * @param[in] model Binary file contains trained weights.
+                   * @param[in] config Text file contains network configuration.
          */
         public KeypointsModel(string model) :
             base(DisposableObject.ThrowIfNullIntPtr(dnn_KeypointsModel_KeypointsModel_11(model)))
@@ -85,8 +86,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Create model from deep learning network.
-         * param network Net object.
+         * @brief Create model from deep learning network.
+                   * @param[in] network Net object.
          */
         public KeypointsModel(Net network) :
             base(DisposableObject.ThrowIfNullIntPtr(dnn_KeypointsModel_KeypointsModel_12(network.nativeObj)))
@@ -102,11 +103,11 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Given the {code input} frame, create input blob, run net
-         * param thresh minimum confidence threshold to select a keypoint
-         * return a vector holding the x and y coordinates of each detected keypoint
-         *
-         * param frame automatically generated
+         @brief Given the @p input frame, create input blob, run net
+                   *  @param[in]  frame  The input image.
+                   *  @param thresh minimum confidence threshold to select a keypoint
+                   *  @returns a vector holding the x and y coordinates of each detected keypoint
+                   *
          */
         public MatOfPoint2f estimate(Mat frame, float thresh)
         {
@@ -119,10 +120,11 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Given the {code input} frame, create input blob, run net
-         * return a vector holding the x and y coordinates of each detected keypoint
-         *
-         * param frame automatically generated
+         @brief Given the @p input frame, create input blob, run net
+                   *  @param[in]  frame  The input image.
+                   *  @param thresh minimum confidence threshold to select a keypoint
+                   *  @returns a vector holding the x and y coordinates of each detected keypoint
+                   *
          */
         public MatOfPoint2f estimate(Mat frame)
         {
@@ -165,4 +167,5 @@ namespace OpenCVForUnity.DnnModule
 
     }
 }
+
 #endif

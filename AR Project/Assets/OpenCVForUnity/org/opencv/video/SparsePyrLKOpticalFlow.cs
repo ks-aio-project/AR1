@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,12 +10,12 @@ namespace OpenCVForUnity.VideoModule
 
     // C++: class SparsePyrLKOpticalFlow
     /**
-     * Class used for calculating a sparse optical flow.
-     *
-     * The class can calculate an optical flow for a sparse feature set using the
-     * iterative Lucas-Kanade method with pyramids.
-     *
-     * SEE: calcOpticalFlowPyrLK
+     @brief Class used for calculating a sparse optical flow.
+     
+     The class can calculate an optical flow for a sparse feature set using the
+     iterative Lucas-Kanade method with pyramids.
+     
+     @sa calcOpticalFlowPyrLK
      */
 
     public class SparsePyrLKOpticalFlow : SparseOpticalFlow

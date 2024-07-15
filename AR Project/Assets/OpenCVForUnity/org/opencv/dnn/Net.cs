@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,15 +10,15 @@ namespace OpenCVForUnity.DnnModule
 {
     // C++: class Net
     /**
-     * This class allows to create and manipulate comprehensive artificial neural networks.
-     *
-     * Neural network is presented as directed acyclic graph (DAG), where vertices are Layer instances,
-     * and edges specify relationships between layers inputs and outputs.
-     *
-     * Each network layer has unique integer id and unique string name inside its network.
-     * LayerId can store either layer name or layer id.
-     *
-     * This class supports reference counting of its instances, i. e. copies point to the same instance.
+     @brief This class allows to create and manipulate comprehensive artificial neural networks.
+          *
+          * Neural network is presented as directed acyclic graph (DAG), where vertices are Layer instances,
+          * and edges specify relationships between layers inputs and outputs.
+          *
+          * Each network layer has unique integer id and unique string name inside its network.
+          * LayerId can store either layer name or layer id.
+          *
+          * This class supports reference counting of its instances, i. e. copies point to the same instance.
      */
 
     public class Net : DisposableOpenCVObject
@@ -73,12 +73,11 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Create a network from Intel's Model Optimizer intermediate representation (IR).
-         * param xml XML configuration file with network's topology.
-         * param bin Binary file with trained weights.
-         * Networks imported from Intel's Model Optimizer are launched in Intel's Inference Engine
-         * backend.
-         * return automatically generated
+         @brief Create a network from Intel's Model Optimizer intermediate representation (IR).
+                  *  @param[in] xml XML configuration file with network's topology.
+                  *  @param[in] bin Binary file with trained weights.
+                  *  Networks imported from Intel's Model Optimizer are launched in Intel's Inference Engine
+                  *  backend.
          */
         public static Net readFromModelOptimizer(string xml, string bin)
         {
@@ -95,10 +94,10 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Create a network from Intel's Model Optimizer in-memory buffers with intermediate representation (IR).
-         * param bufferModelConfig buffer with model's configuration.
-         * param bufferWeights buffer with model's trained weights.
-         * return Net object.
+         @brief Create a network from Intel's Model Optimizer in-memory buffers with intermediate representation (IR).
+                  *  @param[in] bufferModelConfig buffer with model's configuration.
+                  *  @param[in] bufferWeights buffer with model's trained weights.
+                  *  @returns Net object.
          */
         public static Net readFromModelOptimizer(MatOfByte bufferModelConfig, MatOfByte bufferWeights)
         {
@@ -117,8 +116,7 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Returns true if there are no layers in the network.
-         * return automatically generated
+         Returns true if there are no layers in the network.
          */
         public bool empty()
         {
@@ -135,9 +133,9 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Dump net to String
-         * return String with structure, hyperparameters, backend, target and fusion
-         * Call method after setInput(). To see correct backend, target and fusion run after forward().
+         @brief Dump net to String
+                  *  @returns String with structure, hyperparameters, backend, target and fusion
+                  *  Call method after setInput(). To see correct backend, target and fusion run after forward().
          */
         public string dump()
         {
@@ -154,9 +152,9 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Dump net structure, hyperparameters, backend, target and fusion to dot file
-         * param path   path to output file with .dot extension
-         * SEE: dump()
+         @brief Dump net structure, hyperparameters, backend, target and fusion to dot file
+                  *  @param path   path to output file with .dot extension
+                  *  @see dump()
          */
         public void dumpToFile(string path)
         {
@@ -169,13 +167,33 @@ namespace OpenCVForUnity.DnnModule
 
 
         //
+        // C++:  void cv::dnn::Net::dumpToPbtxt(String path)
+        //
+
+        /**
+         @brief Dump net structure, hyperparameters, backend, target and fusion to pbtxt file
+                  *  @param path   path to output file with .pbtxt extension
+                  *
+                  *  Use Netron (https://netron.app) to open the target file to visualize the model.
+                  *  Call method after setInput(). To see correct backend, target and fusion run after forward().
+         */
+        public void dumpToPbtxt(string path)
+        {
+            ThrowIfDisposed();
+
+            dnn_Net_dumpToPbtxt_10(nativeObj, path);
+
+
+        }
+
+
+        //
         // C++:  int cv::dnn::Net::getLayerId(String layer)
         //
 
         /**
-         * Converts string name of the layer to the integer identifier.
-         * return id of the layer, or -1 if the layer wasn't found.
-         * param layer automatically generated
+         @brief Converts string name of the layer to the integer identifier.
+                  *  @returns id of the layer, or -1 if the layer wasn't found.
          */
         public int getLayerId(string layer)
         {
@@ -202,20 +220,56 @@ namespace OpenCVForUnity.DnnModule
 
 
         //
+        // C++:  Ptr_Layer cv::dnn::Net::getLayer(int layerId)
+        //
+
+        /**
+         @brief Returns pointer to layer with specified id or name which the network use.
+         */
+        public Layer getLayer(int layerId)
+        {
+            ThrowIfDisposed();
+
+            return Layer.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getLayer_10(nativeObj, layerId)));
+
+
+        }
+
+
+        //
+        // C++:  Ptr_Layer cv::dnn::Net::getLayer(String layerName)
+        //
+
+        /**
+         @overload
+                  *  @deprecated Use int getLayerId(const String &amp;layer)
+         */
+        [Obsolete("This method is deprecated.")]
+        public Layer getLayer(string layerName)
+        {
+            ThrowIfDisposed();
+
+            return Layer.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getLayer_11(nativeObj, layerName)));
+
+
+        }
+
+
+        //
         // C++:  Ptr_Layer cv::dnn::Net::getLayer(LayerId layerId)
         //
 
         /**
-         * Returns pointer to layer with specified id or name which the network use.
-         * param layerId automatically generated
-         * return automatically generated
+         @overload
+                  *  @deprecated to be removed
          */
+        [Obsolete("This method is deprecated.")]
         public Layer getLayer(DictValue layerId)
         {
             ThrowIfDisposed();
             if (layerId != null) layerId.ThrowIfDisposed();
 
-            return Layer.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getLayer_10(nativeObj, layerId.getNativeObjAddr())));
+            return Layer.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getLayer_12(nativeObj, layerId.getNativeObjAddr())));
 
 
         }
@@ -226,18 +280,18 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Connects output of the first layer to input of the second layer.
-         * param outPin descriptor of the first layer output.
-         * param inpPin descriptor of the second layer input.
-         *
-         * Descriptors have the following template &lt;DFN&gt;&amp;lt;layer_name&amp;gt;[.input_number]&lt;/DFN&gt;:
-         * - the first part of the template &lt;DFN&gt;layer_name&lt;/DFN&gt; is string name of the added layer.
-         * If this part is empty then the network input pseudo layer will be used;
-         * - the second optional part of the template &lt;DFN&gt;input_number&lt;/DFN&gt;
-         * is either number of the layer input, either label one.
-         * If this part is omitted then the first layer input will be used.
-         *
-         * SEE: setNetInputs(), Layer::inputNameToIndex(), Layer::outputNameToIndex()
+         @brief Connects output of the first layer to input of the second layer.
+                  *  @param outPin descriptor of the first layer output.
+                  *  @param inpPin descriptor of the second layer input.
+                  *
+                  * Descriptors have the following template &lt;DFN&gt;&amp;lt;layer_name&amp;gt;[.input_number]&lt;/DFN&gt;:
+                  * - the first part of the template &lt;DFN&gt;layer_name&lt;/DFN&gt; is string name of the added layer.
+                  *   If this part is empty then the network input pseudo layer will be used;
+                  * - the second optional part of the template &lt;DFN&gt;input_number&lt;/DFN&gt;
+                  *   is either number of the layer input, either label one.
+                  *   If this part is omitted then the first layer input will be used.
+                  *
+                  *  @see setNetInputs(), Layer::inputNameToIndex(), Layer::outputNameToIndex()
          */
         public void connect(string outPin, string inpPin)
         {
@@ -254,13 +308,12 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Sets outputs names of the network input pseudo layer.
-         *
-         * Each net always has special own the network input pseudo layer with id=0.
-         * This layer stores the user blobs only and don't make any computations.
-         * In fact, this layer provides the only way to pass user data into the network.
-         * As any other layer, this layer can label its outputs and this function provides an easy way to do this.
-         * param inputBlobNames automatically generated
+         @brief Sets outputs names of the network input pseudo layer.
+                  *
+                  * Each net always has special own the network input pseudo layer with id=0.
+                  * This layer stores the user blobs only and don't make any computations.
+                  * In fact, this layer provides the only way to pass user data into the network.
+                  * As any other layer, this layer can label its outputs and this function provides an easy way to do this.
          */
         public void setInputsNames(List<string> inputBlobNames)
         {
@@ -277,9 +330,7 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Specify shape of network input.
-         * param inputName automatically generated
-         * param shape automatically generated
+         @brief Specify shape of network input.
          */
         public void setInputShape(string inputName, MatOfInt shape)
         {
@@ -297,10 +348,10 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Runs forward pass to compute output of layer with name {code outputName}.
-         * param outputName name for layer which output is needed to get
-         * return blob for first output of specified layer.
-         * By default runs forward pass for the whole network.
+         @brief Runs forward pass to compute output of layer with name @p outputName.
+                  *  @param outputName name for layer which output is needed to get
+                  *  @return blob for first output of specified layer.
+                  *  @details By default runs forward pass for the whole network.
          */
         public Mat forward(string outputName)
         {
@@ -312,9 +363,10 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Runs forward pass to compute output of layer with name {code outputName}.
-         * return blob for first output of specified layer.
-         * By default runs forward pass for the whole network.
+         @brief Runs forward pass to compute output of layer with name @p outputName.
+                  *  @param outputName name for layer which output is needed to get
+                  *  @return blob for first output of specified layer.
+                  *  @details By default runs forward pass for the whole network.
          */
         public Mat forward()
         {
@@ -338,10 +390,10 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Runs forward pass to compute output of layer with name {code outputName}.
-         * param outputBlobs contains all output blobs for specified layer.
-         * param outputName name for layer which output is needed to get
-         * If {code outputName} is empty, runs forward pass for the whole network.
+         @brief Runs forward pass to compute output of layer with name @p outputName.
+                  *  @param outputBlobs contains all output blobs for specified layer.
+                  *  @param outputName name for layer which output is needed to get
+                  *  @details If @p outputName is empty, runs forward pass for the whole network.
          */
         public void forward(List<Mat> outputBlobs, string outputName)
         {
@@ -354,9 +406,10 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Runs forward pass to compute output of layer with name {code outputName}.
-         * param outputBlobs contains all output blobs for specified layer.
-         * If {code outputName} is empty, runs forward pass for the whole network.
+         @brief Runs forward pass to compute output of layer with name @p outputName.
+                  *  @param outputBlobs contains all output blobs for specified layer.
+                  *  @param outputName name for layer which output is needed to get
+                  *  @details If @p outputName is empty, runs forward pass for the whole network.
          */
         public void forward(List<Mat> outputBlobs)
         {
@@ -374,9 +427,9 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Runs forward pass to compute outputs of layers listed in {code outBlobNames}.
-         * param outputBlobs contains blobs for first outputs of specified layers.
-         * param outBlobNames names for layers which outputs are needed to get
+         @brief Runs forward pass to compute outputs of layers listed in @p outBlobNames.
+                  *  @param outputBlobs contains blobs for first outputs of specified layers.
+                  *  @param outBlobNames names for layers which outputs are needed to get
          */
         public void forward(List<Mat> outputBlobs, List<string> outBlobNames)
         {
@@ -398,21 +451,39 @@ namespace OpenCVForUnity.DnnModule
 
 
         //
-        // C++:  Net cv::dnn::Net::quantize(vector_Mat calibData, int inputsDtype, int outputsDtype)
+        // C++:  Net cv::dnn::Net::quantize(vector_Mat calibData, int inputsDtype, int outputsDtype, bool perChannel = true)
         //
 
         /**
-         * Returns a quantized Net from a floating-point Net.
-         * param calibData Calibration data to compute the quantization parameters.
-         * param inputsDtype Datatype of quantized net's inputs. Can be CV_32F or CV_8S.
-         * param outputsDtype Datatype of quantized net's outputs. Can be CV_32F or CV_8S.
-         * return automatically generated
+         @brief Returns a quantized Net from a floating-point Net.
+                  *  @param calibData Calibration data to compute the quantization parameters.
+                  *  @param inputsDtype Datatype of quantized net's inputs. Can be CV_32F or CV_8S.
+                  *  @param outputsDtype Datatype of quantized net's outputs. Can be CV_32F or CV_8S.
+                  *  @param perChannel Quantization granularity of quantized Net. The default is true, that means quantize model
+                  *  in per-channel way (channel-wise). Set it false to quantize model in per-tensor way (or tensor-wise).
+         */
+        public Net quantize(List<Mat> calibData, int inputsDtype, int outputsDtype, bool perChannel)
+        {
+            ThrowIfDisposed();
+            Mat calibData_mat = Converters.vector_Mat_to_Mat(calibData);
+            return new Net(DisposableObject.ThrowIfNullIntPtr(dnn_Net_quantize_10(nativeObj, calibData_mat.nativeObj, inputsDtype, outputsDtype, perChannel)));
+
+
+        }
+
+        /**
+         @brief Returns a quantized Net from a floating-point Net.
+                  *  @param calibData Calibration data to compute the quantization parameters.
+                  *  @param inputsDtype Datatype of quantized net's inputs. Can be CV_32F or CV_8S.
+                  *  @param outputsDtype Datatype of quantized net's outputs. Can be CV_32F or CV_8S.
+                  *  @param perChannel Quantization granularity of quantized Net. The default is true, that means quantize model
+                  *  in per-channel way (channel-wise). Set it false to quantize model in per-tensor way (or tensor-wise).
          */
         public Net quantize(List<Mat> calibData, int inputsDtype, int outputsDtype)
         {
             ThrowIfDisposed();
             Mat calibData_mat = Converters.vector_Mat_to_Mat(calibData);
-            return new Net(DisposableObject.ThrowIfNullIntPtr(dnn_Net_quantize_10(nativeObj, calibData_mat.nativeObj, inputsDtype, outputsDtype)));
+            return new Net(DisposableObject.ThrowIfNullIntPtr(dnn_Net_quantize_11(nativeObj, calibData_mat.nativeObj, inputsDtype, outputsDtype)));
 
 
         }
@@ -423,9 +494,9 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Returns input scale and zeropoint for a quantized Net.
-         * param scales output parameter for returning input scales.
-         * param zeropoints output parameter for returning input zeropoints.
+         @brief Returns input scale and zeropoint for a quantized Net.
+                  *  @param scales output parameter for returning input scales.
+                  *  @param zeropoints output parameter for returning input zeropoints.
          */
         public void getInputDetails(MatOfFloat scales, MatOfInt zeropoints)
         {
@@ -445,9 +516,9 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Returns output scale and zeropoint for a quantized Net.
-         * param scales output parameter for returning output scales.
-         * param zeropoints output parameter for returning output zeropoints.
+         @brief Returns output scale and zeropoint for a quantized Net.
+                  *  @param scales output parameter for returning output scales.
+                  *  @param zeropoints output parameter for returning output zeropoints.
          */
         public void getOutputDetails(MatOfFloat scales, MatOfInt zeropoints)
         {
@@ -467,13 +538,13 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Compile Halide layers.
-         * param scheduler Path to YAML file with scheduling directives.
-         * SEE: setPreferableBackend
-         *
-         * Schedule layers that support Halide backend. Then compile them for
-         * specific target. For layers that not represented in scheduling file
-         * or if no manual scheduling used at all, automatic scheduling will be applied.
+         * @brief Compile Halide layers.
+                  * @param[in] scheduler Path to YAML file with scheduling directives.
+                  * @see setPreferableBackend
+                  *
+                  * Schedule layers that support Halide backend. Then compile them for
+                  * specific target. For layers that not represented in scheduling file
+                  * or if no manual scheduling used at all, automatic scheduling will be applied.
          */
         public void setHalideScheduler(string scheduler)
         {
@@ -490,12 +561,9 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Ask network to use specific computation backend where it supported.
-         * param backendId backend identifier.
-         * SEE: Backend
-         *
-         * If OpenCV is compiled with Intel's Inference Engine library, DNN_BACKEND_DEFAULT
-         * means DNN_BACKEND_INFERENCE_ENGINE. Otherwise it equals to DNN_BACKEND_OPENCV.
+         * @brief Ask network to use specific computation backend where it supported.
+                  * @param[in] backendId backend identifier.
+                  * @see Backend
          */
         public void setPreferableBackend(int backendId)
         {
@@ -512,21 +580,21 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Ask network to make computations on specific target device.
-         * param targetId target identifier.
-         * SEE: Target
-         *
-         * List of supported combinations backend / target:
-         * |                        | DNN_BACKEND_OPENCV | DNN_BACKEND_INFERENCE_ENGINE | DNN_BACKEND_HALIDE |  DNN_BACKEND_CUDA |
-         * |------------------------|--------------------|------------------------------|--------------------|-------------------|
-         * | DNN_TARGET_CPU         |                  + |                            + |                  + |                   |
-         * | DNN_TARGET_OPENCL      |                  + |                            + |                  + |                   |
-         * | DNN_TARGET_OPENCL_FP16 |                  + |                            + |                    |                   |
-         * | DNN_TARGET_MYRIAD      |                    |                            + |                    |                   |
-         * | DNN_TARGET_FPGA        |                    |                            + |                    |                   |
-         * | DNN_TARGET_CUDA        |                    |                              |                    |                 + |
-         * | DNN_TARGET_CUDA_FP16   |                    |                              |                    |                 + |
-         * | DNN_TARGET_HDDL        |                    |                            + |                    |                   |
+         * @brief Ask network to make computations on specific target device.
+                  * @param[in] targetId target identifier.
+                  * @see Target
+                  *
+                  * List of supported combinations backend / target:
+                  * |                        | DNN_BACKEND_OPENCV | DNN_BACKEND_INFERENCE_ENGINE | DNN_BACKEND_HALIDE |  DNN_BACKEND_CUDA |
+                  * |------------------------|--------------------|------------------------------|--------------------|-------------------|
+                  * | DNN_TARGET_CPU         |                  + |                            + |                  + |                   |
+                  * | DNN_TARGET_OPENCL      |                  + |                            + |                  + |                   |
+                  * | DNN_TARGET_OPENCL_FP16 |                  + |                            + |                    |                   |
+                  * | DNN_TARGET_MYRIAD      |                    |                            + |                    |                   |
+                  * | DNN_TARGET_FPGA        |                    |                            + |                    |                   |
+                  * | DNN_TARGET_CUDA        |                    |                              |                    |                 + |
+                  * | DNN_TARGET_CUDA_FP16   |                    |                              |                    |                 + |
+                  * | DNN_TARGET_HDDL        |                    |                            + |                    |                   |
          */
         public void setPreferableTarget(int targetId)
         {
@@ -543,16 +611,16 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Sets the new input value for the network
-         * param blob        A new blob. Should have CV_32F or CV_8U depth.
-         * param name        A name of input layer.
-         * param scalefactor An optional normalization scale.
-         * param mean        An optional mean subtraction values.
-         * SEE: connect(String, String) to know format of the descriptor.
-         *
-         * If scale or mean values are specified, a final input blob is computed
-         * as:
-         * \(input(n,c,h,w) = scalefactor \times (blob(n,c,h,w) - mean_c)\)
+         @brief Sets the new input value for the network
+                  *  @param blob        A new blob. Should have CV_32F or CV_8U depth.
+                  *  @param name        A name of input layer.
+                  *  @param scalefactor An optional normalization scale.
+                  *  @param mean        An optional mean subtraction values.
+                  *  @see connect(String, String) to know format of the descriptor.
+                  *
+                  *  If scale or mean values are specified, a final input blob is computed
+                  *  as:
+                  * \f[input(n,c,h,w) = scalefactor \times (blob(n,c,h,w) - mean_c)\f]
          */
         public void setInput(Mat blob, string name, double scalefactor, Scalar mean)
         {
@@ -565,15 +633,16 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Sets the new input value for the network
-         * param blob        A new blob. Should have CV_32F or CV_8U depth.
-         * param name        A name of input layer.
-         * param scalefactor An optional normalization scale.
-         * SEE: connect(String, String) to know format of the descriptor.
-         *
-         * If scale or mean values are specified, a final input blob is computed
-         * as:
-         * \(input(n,c,h,w) = scalefactor \times (blob(n,c,h,w) - mean_c)\)
+         @brief Sets the new input value for the network
+                  *  @param blob        A new blob. Should have CV_32F or CV_8U depth.
+                  *  @param name        A name of input layer.
+                  *  @param scalefactor An optional normalization scale.
+                  *  @param mean        An optional mean subtraction values.
+                  *  @see connect(String, String) to know format of the descriptor.
+                  *
+                  *  If scale or mean values are specified, a final input blob is computed
+                  *  as:
+                  * \f[input(n,c,h,w) = scalefactor \times (blob(n,c,h,w) - mean_c)\f]
          */
         public void setInput(Mat blob, string name, double scalefactor)
         {
@@ -586,14 +655,16 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Sets the new input value for the network
-         * param blob        A new blob. Should have CV_32F or CV_8U depth.
-         * param name        A name of input layer.
-         * SEE: connect(String, String) to know format of the descriptor.
-         *
-         * If scale or mean values are specified, a final input blob is computed
-         * as:
-         * \(input(n,c,h,w) = scalefactor \times (blob(n,c,h,w) - mean_c)\)
+         @brief Sets the new input value for the network
+                  *  @param blob        A new blob. Should have CV_32F or CV_8U depth.
+                  *  @param name        A name of input layer.
+                  *  @param scalefactor An optional normalization scale.
+                  *  @param mean        An optional mean subtraction values.
+                  *  @see connect(String, String) to know format of the descriptor.
+                  *
+                  *  If scale or mean values are specified, a final input blob is computed
+                  *  as:
+                  * \f[input(n,c,h,w) = scalefactor \times (blob(n,c,h,w) - mean_c)\f]
          */
         public void setInput(Mat blob, string name)
         {
@@ -606,13 +677,16 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Sets the new input value for the network
-         * param blob        A new blob. Should have CV_32F or CV_8U depth.
-         * SEE: connect(String, String) to know format of the descriptor.
-         *
-         * If scale or mean values are specified, a final input blob is computed
-         * as:
-         * \(input(n,c,h,w) = scalefactor \times (blob(n,c,h,w) - mean_c)\)
+         @brief Sets the new input value for the network
+                  *  @param blob        A new blob. Should have CV_32F or CV_8U depth.
+                  *  @param name        A name of input layer.
+                  *  @param scalefactor An optional normalization scale.
+                  *  @param mean        An optional mean subtraction values.
+                  *  @see connect(String, String) to know format of the descriptor.
+                  *
+                  *  If scale or mean values are specified, a final input blob is computed
+                  *  as:
+                  * \f[input(n,c,h,w) = scalefactor \times (blob(n,c,h,w) - mean_c)\f]
          */
         public void setInput(Mat blob)
         {
@@ -626,63 +700,97 @@ namespace OpenCVForUnity.DnnModule
 
 
         //
-        // C++:  void cv::dnn::Net::setParam(LayerId layer, int numParam, Mat blob)
+        // C++:  void cv::dnn::Net::setParam(int layer, int numParam, Mat blob)
         //
 
         /**
-         * Sets the new value for the learned param of the layer.
-         * param layer name or id of the layer.
-         * param numParam index of the layer parameter in the Layer::blobs array.
-         * param blob the new value.
-         * SEE: Layer::blobs
-         * <b>Note:</b> If shape of the new blob differs from the previous shape,
-         * then the following forward pass may fail.
+         @brief Sets the new value for the learned param of the layer.
+                  *  @param layer name or id of the layer.
+                  *  @param numParam index of the layer parameter in the Layer::blobs array.
+                  *  @param blob the new value.
+                  *  @see Layer::blobs
+                  *  @note If shape of the new blob differs from the previous shape,
+                  *  then the following forward pass may fail.
          */
-        public void setParam(DictValue layer, int numParam, Mat blob)
+        public void setParam(int layer, int numParam, Mat blob)
         {
             ThrowIfDisposed();
-            if (layer != null) layer.ThrowIfDisposed();
             if (blob != null) blob.ThrowIfDisposed();
 
-            dnn_Net_setParam_10(nativeObj, layer.getNativeObjAddr(), numParam, blob.nativeObj);
+            dnn_Net_setParam_10(nativeObj, layer, numParam, blob.nativeObj);
 
 
         }
 
 
         //
-        // C++:  Mat cv::dnn::Net::getParam(LayerId layer, int numParam = 0)
+        // C++:  void cv::dnn::Net::setParam(String layerName, int numParam, Mat blob)
+        //
+
+        public void setParam(string layerName, int numParam, Mat blob)
+        {
+            ThrowIfDisposed();
+            if (blob != null) blob.ThrowIfDisposed();
+
+            dnn_Net_setParam_11(nativeObj, layerName, numParam, blob.nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  Mat cv::dnn::Net::getParam(int layer, int numParam = 0)
         //
 
         /**
-         * Returns parameter blob of the layer.
-         * param layer name or id of the layer.
-         * param numParam index of the layer parameter in the Layer::blobs array.
-         * SEE: Layer::blobs
-         * return automatically generated
+         @brief Returns parameter blob of the layer.
+                  *  @param layer name or id of the layer.
+                  *  @param numParam index of the layer parameter in the Layer::blobs array.
+                  *  @see Layer::blobs
          */
-        public Mat getParam(DictValue layer, int numParam)
+        public Mat getParam(int layer, int numParam)
         {
             ThrowIfDisposed();
-            if (layer != null) layer.ThrowIfDisposed();
 
-            return new Mat(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getParam_10(nativeObj, layer.getNativeObjAddr(), numParam)));
+            return new Mat(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getParam_10(nativeObj, layer, numParam)));
 
 
         }
 
         /**
-         * Returns parameter blob of the layer.
-         * param layer name or id of the layer.
-         * SEE: Layer::blobs
-         * return automatically generated
+         @brief Returns parameter blob of the layer.
+                  *  @param layer name or id of the layer.
+                  *  @param numParam index of the layer parameter in the Layer::blobs array.
+                  *  @see Layer::blobs
          */
-        public Mat getParam(DictValue layer)
+        public Mat getParam(int layer)
         {
             ThrowIfDisposed();
-            if (layer != null) layer.ThrowIfDisposed();
 
-            return new Mat(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getParam_11(nativeObj, layer.getNativeObjAddr())));
+            return new Mat(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getParam_11(nativeObj, layer)));
+
+
+        }
+
+
+        //
+        // C++:  Mat cv::dnn::Net::getParam(String layerName, int numParam = 0)
+        //
+
+        public Mat getParam(string layerName, int numParam)
+        {
+            ThrowIfDisposed();
+
+            return new Mat(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getParam_12(nativeObj, layerName, numParam)));
+
+
+        }
+
+        public Mat getParam(string layerName)
+        {
+            ThrowIfDisposed();
+
+            return new Mat(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getParam_13(nativeObj, layerName)));
 
 
         }
@@ -693,8 +801,9 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Returns indexes of layers with unconnected outputs.
-         * return automatically generated
+         @brief Returns indexes of layers with unconnected outputs.
+                  *
+                  * FIXIT: Rework API to registerOutput() approach, deprecate this call
          */
         public MatOfInt getUnconnectedOutLayers()
         {
@@ -711,8 +820,9 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Returns names of layers with unconnected outputs.
-         * return automatically generated
+         @brief Returns names of layers with unconnected outputs.
+                  *
+                  * FIXIT: Rework API to registerOutput() approach, deprecate this call
          */
         public List<string> getUnconnectedOutLayersNames()
         {
@@ -743,9 +853,9 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Computes FLOP for whole loaded model with specified input shapes.
-         * param netInputShapes vector of shapes for all net inputs.
-         * return computed FLOP.
+         @brief Computes FLOP for whole loaded model with specified input shapes.
+                  * @param netInputShapes vector of shapes for all net inputs.
+                  * @returns computed FLOP.
          */
         public long getFLOPS(List<MatOfInt> netInputShapes)
         {
@@ -761,6 +871,9 @@ namespace OpenCVForUnity.DnnModule
         // C++:  int64 cv::dnn::Net::getFLOPS(MatShape netInputShape)
         //
 
+        /**
+         @overload
+         */
         public long getFLOPS(MatOfInt netInputShape)
         {
             ThrowIfDisposed();
@@ -776,6 +889,9 @@ namespace OpenCVForUnity.DnnModule
         // C++:  int64 cv::dnn::Net::getFLOPS(int layerId, vector_MatShape netInputShapes)
         //
 
+        /**
+         @overload
+         */
         public long getFLOPS(int layerId, List<MatOfInt> netInputShapes)
         {
             ThrowIfDisposed();
@@ -790,6 +906,9 @@ namespace OpenCVForUnity.DnnModule
         // C++:  int64 cv::dnn::Net::getFLOPS(int layerId, MatShape netInputShape)
         //
 
+        /**
+         @overload
+         */
         public long getFLOPS(int layerId, MatOfInt netInputShape)
         {
             ThrowIfDisposed();
@@ -806,8 +925,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Returns list of types for layer used in model.
-         * param layersTypes output parameter for returning types.
+         @brief Returns list of types for layer used in model.
+                  * @param layersTypes output parameter for returning types.
          */
         public void getLayerTypes(List<string> layersTypes)
         {
@@ -825,9 +944,9 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Returns count of layers of specified type.
-         * param layerType type.
-         * return count of layers
+         @brief Returns count of layers of specified type.
+                  * @param layerType type.
+                  * @returns count of layers
          */
         public int getLayersCount(string layerType)
         {
@@ -843,6 +962,9 @@ namespace OpenCVForUnity.DnnModule
         // C++:  void cv::dnn::Net::getMemoryConsumption(MatShape netInputShape, size_t& weights, size_t& blobs)
         //
 
+        /**
+         @overload
+         */
         public void getMemoryConsumption(MatOfInt netInputShape, long[] weights, long[] blobs)
         {
             ThrowIfDisposed();
@@ -861,6 +983,9 @@ namespace OpenCVForUnity.DnnModule
         // C++:  void cv::dnn::Net::getMemoryConsumption(int layerId, vector_MatShape netInputShapes, size_t& weights, size_t& blobs)
         //
 
+        /**
+         @overload
+         */
         public void getMemoryConsumption(int layerId, List<MatOfInt> netInputShapes, long[] weights, long[] blobs)
         {
             ThrowIfDisposed();
@@ -878,6 +1003,9 @@ namespace OpenCVForUnity.DnnModule
         // C++:  void cv::dnn::Net::getMemoryConsumption(int layerId, MatShape netInputShape, size_t& weights, size_t& blobs)
         //
 
+        /**
+         @overload
+         */
         public void getMemoryConsumption(int layerId, MatOfInt netInputShape, long[] weights, long[] blobs)
         {
             ThrowIfDisposed();
@@ -897,8 +1025,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Enables or disables layer fusion in the network.
-         * param fusion true to enable the fusion, false to disable. The fusion is enabled by default.
+         @brief Enables or disables layer fusion in the network.
+                  * @param fusion true to enable the fusion, false to disable. The fusion is enabled by default.
          */
         public void enableFusion(bool fusion)
         {
@@ -911,17 +1039,36 @@ namespace OpenCVForUnity.DnnModule
 
 
         //
+        // C++:  void cv::dnn::Net::enableWinograd(bool useWinograd)
+        //
+
+        /**
+         @brief Enables or disables the Winograd compute branch. The Winograd compute branch can speed up
+                  * 3x3 Convolution at a small loss of accuracy.
+                 * @param useWinograd true to enable the Winograd compute branch. The default is true.
+         */
+        public void enableWinograd(bool useWinograd)
+        {
+            ThrowIfDisposed();
+
+            dnn_Net_enableWinograd_10(nativeObj, useWinograd);
+
+
+        }
+
+
+        //
         // C++:  int64 cv::dnn::Net::getPerfProfile(vector_double& timings)
         //
 
         /**
-         * Returns overall time for inference and timings (in ticks) for layers.
-         *
-         * Indexes in returned vector correspond to layers ids. Some layers can be fused with others,
-         * in this case zero ticks count will be return for that skipped layers. Supported by DNN_BACKEND_OPENCV on DNN_TARGET_CPU only.
-         *
-         * param timings vector for tick timings for all layers.
-         * return overall ticks for model inference.
+         @brief Returns overall time for inference and timings (in ticks) for layers.
+                  *
+                  * Indexes in returned vector correspond to layers ids. Some layers can be fused with others,
+                  * in this case zero ticks count will be return for that skipped layers. Supported by DNN_BACKEND_OPENCV on DNN_TARGET_CPU only.
+                  *
+                  * @param[out] timings vector for tick timings for all layers.
+                  * @return overall ticks for model inference.
          */
         public long getPerfProfile(MatOfDouble timings)
         {
@@ -967,6 +1114,10 @@ namespace OpenCVForUnity.DnnModule
         [DllImport(LIBNAME)]
         private static extern void dnn_Net_dumpToFile_10(IntPtr nativeObj, string path);
 
+        // C++:  void cv::dnn::Net::dumpToPbtxt(String path)
+        [DllImport(LIBNAME)]
+        private static extern void dnn_Net_dumpToPbtxt_10(IntPtr nativeObj, string path);
+
         // C++:  int cv::dnn::Net::getLayerId(String layer)
         [DllImport(LIBNAME)]
         private static extern int dnn_Net_getLayerId_10(IntPtr nativeObj, string layer);
@@ -975,9 +1126,17 @@ namespace OpenCVForUnity.DnnModule
         [DllImport(LIBNAME)]
         private static extern IntPtr dnn_Net_getLayerNames_10(IntPtr nativeObj);
 
+        // C++:  Ptr_Layer cv::dnn::Net::getLayer(int layerId)
+        [DllImport(LIBNAME)]
+        private static extern IntPtr dnn_Net_getLayer_10(IntPtr nativeObj, int layerId);
+
+        // C++:  Ptr_Layer cv::dnn::Net::getLayer(String layerName)
+        [DllImport(LIBNAME)]
+        private static extern IntPtr dnn_Net_getLayer_11(IntPtr nativeObj, string layerName);
+
         // C++:  Ptr_Layer cv::dnn::Net::getLayer(LayerId layerId)
         [DllImport(LIBNAME)]
-        private static extern IntPtr dnn_Net_getLayer_10(IntPtr nativeObj, IntPtr layerId_nativeObj);
+        private static extern IntPtr dnn_Net_getLayer_12(IntPtr nativeObj, IntPtr layerId_nativeObj);
 
         // C++:  void cv::dnn::Net::connect(String outPin, String inpPin)
         [DllImport(LIBNAME)]
@@ -1007,9 +1166,11 @@ namespace OpenCVForUnity.DnnModule
         [DllImport(LIBNAME)]
         private static extern void dnn_Net_forward_14(IntPtr nativeObj, IntPtr outputBlobs_mat_nativeObj, IntPtr outBlobNames_mat_nativeObj);
 
-        // C++:  Net cv::dnn::Net::quantize(vector_Mat calibData, int inputsDtype, int outputsDtype)
+        // C++:  Net cv::dnn::Net::quantize(vector_Mat calibData, int inputsDtype, int outputsDtype, bool perChannel = true)
         [DllImport(LIBNAME)]
-        private static extern IntPtr dnn_Net_quantize_10(IntPtr nativeObj, IntPtr calibData_mat_nativeObj, int inputsDtype, int outputsDtype);
+        private static extern IntPtr dnn_Net_quantize_10(IntPtr nativeObj, IntPtr calibData_mat_nativeObj, int inputsDtype, int outputsDtype, [MarshalAs(UnmanagedType.U1)] bool perChannel);
+        [DllImport(LIBNAME)]
+        private static extern IntPtr dnn_Net_quantize_11(IntPtr nativeObj, IntPtr calibData_mat_nativeObj, int inputsDtype, int outputsDtype);
 
         // C++:  void cv::dnn::Net::getInputDetails(vector_float& scales, vector_int& zeropoints)
         [DllImport(LIBNAME)]
@@ -1041,15 +1202,25 @@ namespace OpenCVForUnity.DnnModule
         [DllImport(LIBNAME)]
         private static extern void dnn_Net_setInput_13(IntPtr nativeObj, IntPtr blob_nativeObj);
 
-        // C++:  void cv::dnn::Net::setParam(LayerId layer, int numParam, Mat blob)
+        // C++:  void cv::dnn::Net::setParam(int layer, int numParam, Mat blob)
         [DllImport(LIBNAME)]
-        private static extern void dnn_Net_setParam_10(IntPtr nativeObj, IntPtr layer_nativeObj, int numParam, IntPtr blob_nativeObj);
+        private static extern void dnn_Net_setParam_10(IntPtr nativeObj, int layer, int numParam, IntPtr blob_nativeObj);
 
-        // C++:  Mat cv::dnn::Net::getParam(LayerId layer, int numParam = 0)
+        // C++:  void cv::dnn::Net::setParam(String layerName, int numParam, Mat blob)
         [DllImport(LIBNAME)]
-        private static extern IntPtr dnn_Net_getParam_10(IntPtr nativeObj, IntPtr layer_nativeObj, int numParam);
+        private static extern void dnn_Net_setParam_11(IntPtr nativeObj, string layerName, int numParam, IntPtr blob_nativeObj);
+
+        // C++:  Mat cv::dnn::Net::getParam(int layer, int numParam = 0)
         [DllImport(LIBNAME)]
-        private static extern IntPtr dnn_Net_getParam_11(IntPtr nativeObj, IntPtr layer_nativeObj);
+        private static extern IntPtr dnn_Net_getParam_10(IntPtr nativeObj, int layer, int numParam);
+        [DllImport(LIBNAME)]
+        private static extern IntPtr dnn_Net_getParam_11(IntPtr nativeObj, int layer);
+
+        // C++:  Mat cv::dnn::Net::getParam(String layerName, int numParam = 0)
+        [DllImport(LIBNAME)]
+        private static extern IntPtr dnn_Net_getParam_12(IntPtr nativeObj, string layerName, int numParam);
+        [DllImport(LIBNAME)]
+        private static extern IntPtr dnn_Net_getParam_13(IntPtr nativeObj, string layerName);
 
         // C++:  vector_int cv::dnn::Net::getUnconnectedOutLayers()
         [DllImport(LIBNAME)]
@@ -1099,6 +1270,10 @@ namespace OpenCVForUnity.DnnModule
         [DllImport(LIBNAME)]
         private static extern void dnn_Net_enableFusion_10(IntPtr nativeObj, [MarshalAs(UnmanagedType.U1)] bool fusion);
 
+        // C++:  void cv::dnn::Net::enableWinograd(bool useWinograd)
+        [DllImport(LIBNAME)]
+        private static extern void dnn_Net_enableWinograd_10(IntPtr nativeObj, [MarshalAs(UnmanagedType.U1)] bool useWinograd);
+
         // C++:  int64 cv::dnn::Net::getPerfProfile(vector_double& timings)
         [DllImport(LIBNAME)]
         private static extern long dnn_Net_getPerfProfile_10(IntPtr nativeObj, IntPtr timings_mat_nativeObj);
@@ -1109,4 +1284,5 @@ namespace OpenCVForUnity.DnnModule
 
     }
 }
+
 #endif

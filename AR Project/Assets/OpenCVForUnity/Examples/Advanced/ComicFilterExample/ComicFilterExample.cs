@@ -1,5 +1,3 @@
-﻿#if !(PLATFORM_LUMIN && !UNITY_EDITOR)
-
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.ImgprocModule;
 using OpenCVForUnity.UnityUtils;
@@ -62,7 +60,7 @@ namespace OpenCVForUnityExample
             Mat webCamTextureMat = webCamTextureToMatHelper.GetMat();
 
             texture = new Texture2D(webCamTextureMat.cols(), webCamTextureMat.rows(), TextureFormat.RGBA32, false);
-            Utils.fastMatToTexture2D(webCamTextureMat, texture);
+            Utils.matToTexture2D(webCamTextureMat, texture);
 
             gameObject.GetComponent<Renderer>().material.mainTexture = texture;
 
@@ -132,7 +130,7 @@ namespace OpenCVForUnityExample
 
                 //Imgproc.putText(rgbaMat, "W:" + rgbaMat.width() + " H:" + rgbaMat.height() + " SO:" + Screen.orientation, new Point(5, rgbaMat.rows() - 10), Imgproc.FONT_HERSHEY_SIMPLEX, 1.0, new Scalar(255, 255, 255, 255), 2, Imgproc.LINE_AA, false);
 
-                Utils.fastMatToTexture2D(rgbaMat, texture);
+                Utils.matToTexture2D(rgbaMat, texture);
             }
         }
 
@@ -185,5 +183,3 @@ namespace OpenCVForUnityExample
         }
     }
 }
-
-#endif

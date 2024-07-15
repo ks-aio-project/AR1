@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.ImgprocModule
 
     // C++: class CLAHE
     /**
-     * Base class for Contrast Limited Adaptive Histogram Equalization.
+     @brief Base class for Contrast Limited Adaptive Histogram Equalization.
      */
 
     public class CLAHE : Algorithm
@@ -48,10 +48,10 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Equalizes the histogram of a grayscale image using Contrast Limited Adaptive Histogram Equalization.
-         *
-         *     param src Source image of type CV_8UC1 or CV_16UC1.
-         *     param dst Destination image.
+         @brief Equalizes the histogram of a grayscale image using Contrast Limited Adaptive Histogram Equalization.
+         
+             @param src Source image of type CV_8UC1 or CV_16UC1.
+             @param dst Destination image.
          */
         public void apply(Mat src, Mat dst)
         {
@@ -70,9 +70,9 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Sets threshold for contrast limiting.
-         *
-         *     param clipLimit threshold value.
+         @brief Sets threshold for contrast limiting.
+         
+             @param clipLimit threshold value.
          */
         public void setClipLimit(double clipLimit)
         {
@@ -103,10 +103,10 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Sets size of grid for histogram equalization. Input image will be divided into
-         *     equally sized rectangular tiles.
-         *
-         *     param tileGridSize defines the number of tiles in row and column.
+         @brief Sets size of grid for histogram equalization. Input image will be divided into
+             equally sized rectangular tiles.
+         
+             @param tileGridSize defines the number of tiles in row and column.
          */
         public void setTilesGridSize(Size tileGridSize)
         {

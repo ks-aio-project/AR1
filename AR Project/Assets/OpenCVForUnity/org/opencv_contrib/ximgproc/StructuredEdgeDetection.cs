@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class StructuredEdgeDetection
     /**
-     * Class implementing edge detection algorithm from CITE: Dollar2013 :
+     @brief Class implementing edge detection algorithm from @cite Dollar2013 :
      */
 
     public class StructuredEdgeDetection : Algorithm
@@ -44,157 +44,167 @@ namespace OpenCVForUnity.XimgprocModule
         public static new StructuredEdgeDetection __fromPtr__(IntPtr addr) { return new StructuredEdgeDetection(addr); }
 
         //
-        // C++:  void cv::ximgproc::StructuredEdgeDetection::detectEdges(Mat _src, Mat& _dst)
+        // C++:  void cv::ximgproc::StructuredEdgeDetection::detectEdges(Mat src, Mat& dst)
         //
 
         /**
-         * The function detects edges in src and draw them to dst.
-         *
-         *     The algorithm underlies this function is much more robust to texture presence, than common
-         *     approaches, e.g. Sobel
-         *     param _src source image (RGB, float, in [0;1]) to detect edges
-         *     param _dst destination image (grayscale, float, in [0;1]) where edges are drawn
-         *     SEE: Sobel, Canny
+         @brief The function detects edges in src and draw them to dst.
+         
+             The algorithm underlies this function is much more robust to texture presence, than common
+             approaches, e.g. Sobel
+             @param src source image (RGB, float, in [0;1]) to detect edges
+             @param dst destination image (grayscale, float, in [0;1]) where edges are drawn
+             @sa Sobel, Canny
          */
-        public void detectEdges(Mat _src, Mat _dst)
+        public void detectEdges(Mat src, Mat dst)
         {
             ThrowIfDisposed();
-            if (_src != null) _src.ThrowIfDisposed();
-            if (_dst != null) _dst.ThrowIfDisposed();
+            if (src != null) src.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
 
-            ximgproc_StructuredEdgeDetection_detectEdges_10(nativeObj, _src.nativeObj, _dst.nativeObj);
-
-
-        }
-
-
-        //
-        // C++:  void cv::ximgproc::StructuredEdgeDetection::computeOrientation(Mat _src, Mat& _dst)
-        //
-
-        /**
-         * The function computes orientation from edge image.
-         *
-         *     param _src edge image.
-         *     param _dst orientation image.
-         */
-        public void computeOrientation(Mat _src, Mat _dst)
-        {
-            ThrowIfDisposed();
-            if (_src != null) _src.ThrowIfDisposed();
-            if (_dst != null) _dst.ThrowIfDisposed();
-
-            ximgproc_StructuredEdgeDetection_computeOrientation_10(nativeObj, _src.nativeObj, _dst.nativeObj);
+            ximgproc_StructuredEdgeDetection_detectEdges_10(nativeObj, src.nativeObj, dst.nativeObj);
 
 
         }
 
 
         //
-        // C++:  void cv::ximgproc::StructuredEdgeDetection::edgesNms(Mat edge_image, Mat orientation_image, Mat& _dst, int r = 2, int s = 0, float m = 1, bool isParallel = true)
+        // C++:  void cv::ximgproc::StructuredEdgeDetection::computeOrientation(Mat src, Mat& dst)
         //
 
         /**
-         * The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.
-         *
-         *     param edge_image edge image from detectEdges function.
-         *     param orientation_image orientation image from computeOrientation function.
-         *     param _dst suppressed image (grayscale, float, in [0;1])
-         *     param r radius for NMS suppression.
-         *     param s radius for boundary suppression.
-         *     param m multiplier for conservative suppression.
-         *     param isParallel enables/disables parallel computing.
+         @brief The function computes orientation from edge image.
+         
+             @param src edge image.
+             @param dst orientation image.
          */
-        public void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst, int r, int s, float m, bool isParallel)
+        public void computeOrientation(Mat src, Mat dst)
+        {
+            ThrowIfDisposed();
+            if (src != null) src.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
+
+            ximgproc_StructuredEdgeDetection_computeOrientation_10(nativeObj, src.nativeObj, dst.nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::ximgproc::StructuredEdgeDetection::edgesNms(Mat edge_image, Mat orientation_image, Mat& dst, int r = 2, int s = 0, float m = 1, bool isParallel = true)
+        //
+
+        /**
+         @brief The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.
+         
+             @param edge_image edge image from detectEdges function.
+             @param orientation_image orientation image from computeOrientation function.
+             @param dst suppressed image (grayscale, float, in [0;1])
+             @param r radius for NMS suppression.
+             @param s radius for boundary suppression.
+             @param m multiplier for conservative suppression.
+             @param isParallel enables/disables parallel computing.
+         */
+        public void edgesNms(Mat edge_image, Mat orientation_image, Mat dst, int r, int s, float m, bool isParallel)
         {
             ThrowIfDisposed();
             if (edge_image != null) edge_image.ThrowIfDisposed();
             if (orientation_image != null) orientation_image.ThrowIfDisposed();
-            if (_dst != null) _dst.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
 
-            ximgproc_StructuredEdgeDetection_edgesNms_10(nativeObj, edge_image.nativeObj, orientation_image.nativeObj, _dst.nativeObj, r, s, m, isParallel);
+            ximgproc_StructuredEdgeDetection_edgesNms_10(nativeObj, edge_image.nativeObj, orientation_image.nativeObj, dst.nativeObj, r, s, m, isParallel);
 
 
         }
 
         /**
-         * The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.
-         *
-         *     param edge_image edge image from detectEdges function.
-         *     param orientation_image orientation image from computeOrientation function.
-         *     param _dst suppressed image (grayscale, float, in [0;1])
-         *     param r radius for NMS suppression.
-         *     param s radius for boundary suppression.
-         *     param m multiplier for conservative suppression.
+         @brief The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.
+         
+             @param edge_image edge image from detectEdges function.
+             @param orientation_image orientation image from computeOrientation function.
+             @param dst suppressed image (grayscale, float, in [0;1])
+             @param r radius for NMS suppression.
+             @param s radius for boundary suppression.
+             @param m multiplier for conservative suppression.
+             @param isParallel enables/disables parallel computing.
          */
-        public void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst, int r, int s, float m)
+        public void edgesNms(Mat edge_image, Mat orientation_image, Mat dst, int r, int s, float m)
         {
             ThrowIfDisposed();
             if (edge_image != null) edge_image.ThrowIfDisposed();
             if (orientation_image != null) orientation_image.ThrowIfDisposed();
-            if (_dst != null) _dst.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
 
-            ximgproc_StructuredEdgeDetection_edgesNms_11(nativeObj, edge_image.nativeObj, orientation_image.nativeObj, _dst.nativeObj, r, s, m);
+            ximgproc_StructuredEdgeDetection_edgesNms_11(nativeObj, edge_image.nativeObj, orientation_image.nativeObj, dst.nativeObj, r, s, m);
 
 
         }
 
         /**
-         * The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.
-         *
-         *     param edge_image edge image from detectEdges function.
-         *     param orientation_image orientation image from computeOrientation function.
-         *     param _dst suppressed image (grayscale, float, in [0;1])
-         *     param r radius for NMS suppression.
-         *     param s radius for boundary suppression.
+         @brief The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.
+         
+             @param edge_image edge image from detectEdges function.
+             @param orientation_image orientation image from computeOrientation function.
+             @param dst suppressed image (grayscale, float, in [0;1])
+             @param r radius for NMS suppression.
+             @param s radius for boundary suppression.
+             @param m multiplier for conservative suppression.
+             @param isParallel enables/disables parallel computing.
          */
-        public void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst, int r, int s)
+        public void edgesNms(Mat edge_image, Mat orientation_image, Mat dst, int r, int s)
         {
             ThrowIfDisposed();
             if (edge_image != null) edge_image.ThrowIfDisposed();
             if (orientation_image != null) orientation_image.ThrowIfDisposed();
-            if (_dst != null) _dst.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
 
-            ximgproc_StructuredEdgeDetection_edgesNms_12(nativeObj, edge_image.nativeObj, orientation_image.nativeObj, _dst.nativeObj, r, s);
+            ximgproc_StructuredEdgeDetection_edgesNms_12(nativeObj, edge_image.nativeObj, orientation_image.nativeObj, dst.nativeObj, r, s);
 
 
         }
 
         /**
-         * The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.
-         *
-         *     param edge_image edge image from detectEdges function.
-         *     param orientation_image orientation image from computeOrientation function.
-         *     param _dst suppressed image (grayscale, float, in [0;1])
-         *     param r radius for NMS suppression.
+         @brief The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.
+         
+             @param edge_image edge image from detectEdges function.
+             @param orientation_image orientation image from computeOrientation function.
+             @param dst suppressed image (grayscale, float, in [0;1])
+             @param r radius for NMS suppression.
+             @param s radius for boundary suppression.
+             @param m multiplier for conservative suppression.
+             @param isParallel enables/disables parallel computing.
          */
-        public void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst, int r)
+        public void edgesNms(Mat edge_image, Mat orientation_image, Mat dst, int r)
         {
             ThrowIfDisposed();
             if (edge_image != null) edge_image.ThrowIfDisposed();
             if (orientation_image != null) orientation_image.ThrowIfDisposed();
-            if (_dst != null) _dst.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
 
-            ximgproc_StructuredEdgeDetection_edgesNms_13(nativeObj, edge_image.nativeObj, orientation_image.nativeObj, _dst.nativeObj, r);
+            ximgproc_StructuredEdgeDetection_edgesNms_13(nativeObj, edge_image.nativeObj, orientation_image.nativeObj, dst.nativeObj, r);
 
 
         }
 
         /**
-         * The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.
-         *
-         *     param edge_image edge image from detectEdges function.
-         *     param orientation_image orientation image from computeOrientation function.
-         *     param _dst suppressed image (grayscale, float, in [0;1])
+         @brief The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.
+         
+             @param edge_image edge image from detectEdges function.
+             @param orientation_image orientation image from computeOrientation function.
+             @param dst suppressed image (grayscale, float, in [0;1])
+             @param r radius for NMS suppression.
+             @param s radius for boundary suppression.
+             @param m multiplier for conservative suppression.
+             @param isParallel enables/disables parallel computing.
          */
-        public void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst)
+        public void edgesNms(Mat edge_image, Mat orientation_image, Mat dst)
         {
             ThrowIfDisposed();
             if (edge_image != null) edge_image.ThrowIfDisposed();
             if (orientation_image != null) orientation_image.ThrowIfDisposed();
-            if (_dst != null) _dst.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
 
-            ximgproc_StructuredEdgeDetection_edgesNms_14(nativeObj, edge_image.nativeObj, orientation_image.nativeObj, _dst.nativeObj);
+            ximgproc_StructuredEdgeDetection_edgesNms_14(nativeObj, edge_image.nativeObj, orientation_image.nativeObj, dst.nativeObj);
 
 
         }
@@ -208,25 +218,25 @@ namespace OpenCVForUnity.XimgprocModule
 
 
 
-        // C++:  void cv::ximgproc::StructuredEdgeDetection::detectEdges(Mat _src, Mat& _dst)
+        // C++:  void cv::ximgproc::StructuredEdgeDetection::detectEdges(Mat src, Mat& dst)
         [DllImport(LIBNAME)]
-        private static extern void ximgproc_StructuredEdgeDetection_detectEdges_10(IntPtr nativeObj, IntPtr _src_nativeObj, IntPtr _dst_nativeObj);
+        private static extern void ximgproc_StructuredEdgeDetection_detectEdges_10(IntPtr nativeObj, IntPtr src_nativeObj, IntPtr dst_nativeObj);
 
-        // C++:  void cv::ximgproc::StructuredEdgeDetection::computeOrientation(Mat _src, Mat& _dst)
+        // C++:  void cv::ximgproc::StructuredEdgeDetection::computeOrientation(Mat src, Mat& dst)
         [DllImport(LIBNAME)]
-        private static extern void ximgproc_StructuredEdgeDetection_computeOrientation_10(IntPtr nativeObj, IntPtr _src_nativeObj, IntPtr _dst_nativeObj);
+        private static extern void ximgproc_StructuredEdgeDetection_computeOrientation_10(IntPtr nativeObj, IntPtr src_nativeObj, IntPtr dst_nativeObj);
 
-        // C++:  void cv::ximgproc::StructuredEdgeDetection::edgesNms(Mat edge_image, Mat orientation_image, Mat& _dst, int r = 2, int s = 0, float m = 1, bool isParallel = true)
+        // C++:  void cv::ximgproc::StructuredEdgeDetection::edgesNms(Mat edge_image, Mat orientation_image, Mat& dst, int r = 2, int s = 0, float m = 1, bool isParallel = true)
         [DllImport(LIBNAME)]
-        private static extern void ximgproc_StructuredEdgeDetection_edgesNms_10(IntPtr nativeObj, IntPtr edge_image_nativeObj, IntPtr orientation_image_nativeObj, IntPtr _dst_nativeObj, int r, int s, float m, [MarshalAs(UnmanagedType.U1)] bool isParallel);
+        private static extern void ximgproc_StructuredEdgeDetection_edgesNms_10(IntPtr nativeObj, IntPtr edge_image_nativeObj, IntPtr orientation_image_nativeObj, IntPtr dst_nativeObj, int r, int s, float m, [MarshalAs(UnmanagedType.U1)] bool isParallel);
         [DllImport(LIBNAME)]
-        private static extern void ximgproc_StructuredEdgeDetection_edgesNms_11(IntPtr nativeObj, IntPtr edge_image_nativeObj, IntPtr orientation_image_nativeObj, IntPtr _dst_nativeObj, int r, int s, float m);
+        private static extern void ximgproc_StructuredEdgeDetection_edgesNms_11(IntPtr nativeObj, IntPtr edge_image_nativeObj, IntPtr orientation_image_nativeObj, IntPtr dst_nativeObj, int r, int s, float m);
         [DllImport(LIBNAME)]
-        private static extern void ximgproc_StructuredEdgeDetection_edgesNms_12(IntPtr nativeObj, IntPtr edge_image_nativeObj, IntPtr orientation_image_nativeObj, IntPtr _dst_nativeObj, int r, int s);
+        private static extern void ximgproc_StructuredEdgeDetection_edgesNms_12(IntPtr nativeObj, IntPtr edge_image_nativeObj, IntPtr orientation_image_nativeObj, IntPtr dst_nativeObj, int r, int s);
         [DllImport(LIBNAME)]
-        private static extern void ximgproc_StructuredEdgeDetection_edgesNms_13(IntPtr nativeObj, IntPtr edge_image_nativeObj, IntPtr orientation_image_nativeObj, IntPtr _dst_nativeObj, int r);
+        private static extern void ximgproc_StructuredEdgeDetection_edgesNms_13(IntPtr nativeObj, IntPtr edge_image_nativeObj, IntPtr orientation_image_nativeObj, IntPtr dst_nativeObj, int r);
         [DllImport(LIBNAME)]
-        private static extern void ximgproc_StructuredEdgeDetection_edgesNms_14(IntPtr nativeObj, IntPtr edge_image_nativeObj, IntPtr orientation_image_nativeObj, IntPtr _dst_nativeObj);
+        private static extern void ximgproc_StructuredEdgeDetection_edgesNms_14(IntPtr nativeObj, IntPtr edge_image_nativeObj, IntPtr orientation_image_nativeObj, IntPtr dst_nativeObj);
 
         // native support for java finalize()
         [DllImport(LIBNAME)]

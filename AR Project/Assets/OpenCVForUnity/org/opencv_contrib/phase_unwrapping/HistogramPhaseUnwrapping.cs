@@ -1,4 +1,4 @@
-﻿#if !UNITY_WEBGL
+#if !UNITY_WEBGL
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,16 +11,16 @@ namespace OpenCVForUnity.Phase_unwrappingModule
 
     // C++: class HistogramPhaseUnwrapping
     /**
-     * Class implementing two-dimensional phase unwrapping based on CITE: histogramUnwrapping
-     * This algorithm belongs to the quality-guided phase unwrapping methods.
-     * First, it computes a reliability map from second differences between a pixel and its eight neighbours.
-     * Reliability values lie between 0 and 16*pi*pi. Then, this reliability map is used to compute
-     * the reliabilities of "edges". An edge is an entity defined by two pixels that are connected
-     * horizontally or vertically. Its reliability is found by adding the the reliabilities of the
-     * two pixels connected through it. Edges are sorted in a histogram based on their reliability values.
-     * This histogram is then used to unwrap pixels, starting from the highest quality pixel.
-     *
-     * The wrapped phase map and the unwrapped result are stored in CV_32FC1 Mat.
+     @brief Class implementing two-dimensional phase unwrapping based on @cite histogramUnwrapping
+          * This algorithm belongs to the quality-guided phase unwrapping methods.
+          * First, it computes a reliability map from second differences between a pixel and its eight neighbours.
+          * Reliability values lie between 0 and 16*pi*pi. Then, this reliability map is used to compute
+          * the reliabilities of "edges". An edge is an entity defined by two pixels that are connected
+          * horizontally or vertically. Its reliability is found by adding the the reliabilities of the
+          * two pixels connected through it. Edges are sorted in a histogram based on their reliability values.
+          * This histogram is then used to unwrap pixels, starting from the highest quality pixel.
+     
+          * The wrapped phase map and the unwrapped result are stored in CV_32FC1 Mat.
      */
 
     public class HistogramPhaseUnwrapping : PhaseUnwrapping
@@ -58,10 +58,9 @@ namespace OpenCVForUnity.Phase_unwrappingModule
         //
 
         /**
-         * Constructor
-         *
-         * param parameters HistogramPhaseUnwrapping parameters HistogramPhaseUnwrapping::Params: width,height of the phase map and histogram characteristics.
-         * return automatically generated
+         * @brief Constructor
+         
+              * @param parameters HistogramPhaseUnwrapping parameters HistogramPhaseUnwrapping::Params: width,height of the phase map and histogram characteristics.
          */
         public static HistogramPhaseUnwrapping create(HistogramPhaseUnwrapping_Params parameters)
         {
@@ -73,9 +72,9 @@ namespace OpenCVForUnity.Phase_unwrappingModule
         }
 
         /**
-         * Constructor
-         *
-         * return automatically generated
+         * @brief Constructor
+         
+              * @param parameters HistogramPhaseUnwrapping parameters HistogramPhaseUnwrapping::Params: width,height of the phase map and histogram characteristics.
          */
         public static HistogramPhaseUnwrapping create()
         {
@@ -92,9 +91,9 @@ namespace OpenCVForUnity.Phase_unwrappingModule
         //
 
         /**
-         * Get the reliability map computed from the wrapped phase map.
-         *
-         * param reliabilityMap Image where the reliability map is stored.
+         * @brief Get the reliability map computed from the wrapped phase map.
+         
+              * @param reliabilityMap Image where the reliability map is stored.
          */
         public void getInverseReliabilityMap(Mat reliabilityMap)
         {
@@ -131,4 +130,5 @@ namespace OpenCVForUnity.Phase_unwrappingModule
 
     }
 }
+
 #endif

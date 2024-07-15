@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.MlModule
 
     // C++: class LogisticRegression
     /**
-     * Implements Logistic Regression classifier.
-     *
-     * SEE: REF: ml_intro_lr
+     @brief Implements Logistic Regression classifier.
+     
+     @sa @ref ml_intro_lr
      */
 
     public class LogisticRegression : StatModel
@@ -57,8 +57,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setLearningRate
-         * return automatically generated
+         @see setLearningRate
          */
         public double getLearningRate()
         {
@@ -75,8 +74,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getLearningRate SEE: getLearningRate
-         * param val automatically generated
+         @copybrief getLearningRate @see getLearningRate
          */
         public void setLearningRate(double val)
         {
@@ -93,8 +91,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setIterations
-         * return automatically generated
+         @see setIterations
          */
         public int getIterations()
         {
@@ -111,8 +108,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getIterations SEE: getIterations
-         * param val automatically generated
+         @copybrief getIterations @see getIterations
          */
         public void setIterations(int val)
         {
@@ -129,8 +125,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setRegularization
-         * return automatically generated
+         @see setRegularization
          */
         public int getRegularization()
         {
@@ -147,8 +142,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getRegularization SEE: getRegularization
-         * param val automatically generated
+         @copybrief getRegularization @see getRegularization
          */
         public void setRegularization(int val)
         {
@@ -165,8 +159,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setTrainMethod
-         * return automatically generated
+         @see setTrainMethod
          */
         public int getTrainMethod()
         {
@@ -183,8 +176,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getTrainMethod SEE: getTrainMethod
-         * param val automatically generated
+         @copybrief getTrainMethod @see getTrainMethod
          */
         public void setTrainMethod(int val)
         {
@@ -201,8 +193,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setMiniBatchSize
-         * return automatically generated
+         @see setMiniBatchSize
          */
         public int getMiniBatchSize()
         {
@@ -219,8 +210,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getMiniBatchSize SEE: getMiniBatchSize
-         * param val automatically generated
+         @copybrief getMiniBatchSize @see getMiniBatchSize
          */
         public void setMiniBatchSize(int val)
         {
@@ -237,8 +227,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setTermCriteria
-         * return automatically generated
+         @see setTermCriteria
          */
         public TermCriteria getTermCriteria()
         {
@@ -257,8 +246,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getTermCriteria SEE: getTermCriteria
-         * param val automatically generated
+         @copybrief getTermCriteria @see getTermCriteria
          */
         public void setTermCriteria(TermCriteria val)
         {
@@ -275,13 +263,12 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Predicts responses for input samples and returns a float type.
-         *
-         *     param samples The input data for the prediction algorithm. Matrix [m x n], where each row
-         *         contains variables (features) of one object being classified. Should have data type CV_32F.
-         *     param results Predicted labels as a column matrix of type CV_32S.
-         *     param flags Not used.
-         * return automatically generated
+         @brief Predicts responses for input samples and returns a float type.
+         
+             @param samples The input data for the prediction algorithm. Matrix [m x n], where each row
+                 contains variables (features) of one object being classified. Should have data type CV_32F.
+             @param results Predicted labels as a column matrix of type CV_32S.
+             @param flags Not used.
          */
         public override float predict(Mat samples, Mat results, int flags)
         {
@@ -295,12 +282,12 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Predicts responses for input samples and returns a float type.
-         *
-         *     param samples The input data for the prediction algorithm. Matrix [m x n], where each row
-         *         contains variables (features) of one object being classified. Should have data type CV_32F.
-         *     param results Predicted labels as a column matrix of type CV_32S.
-         * return automatically generated
+         @brief Predicts responses for input samples and returns a float type.
+         
+             @param samples The input data for the prediction algorithm. Matrix [m x n], where each row
+                 contains variables (features) of one object being classified. Should have data type CV_32F.
+             @param results Predicted labels as a column matrix of type CV_32S.
+             @param flags Not used.
          */
         public override float predict(Mat samples, Mat results)
         {
@@ -314,11 +301,12 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Predicts responses for input samples and returns a float type.
-         *
-         *     param samples The input data for the prediction algorithm. Matrix [m x n], where each row
-         *         contains variables (features) of one object being classified. Should have data type CV_32F.
-         * return automatically generated
+         @brief Predicts responses for input samples and returns a float type.
+         
+             @param samples The input data for the prediction algorithm. Matrix [m x n], where each row
+                 contains variables (features) of one object being classified. Should have data type CV_32F.
+             @param results Predicted labels as a column matrix of type CV_32S.
+             @param flags Not used.
          */
         public override float predict(Mat samples)
         {
@@ -336,11 +324,10 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * This function returns the trained parameters arranged across rows.
-         *
-         *     For a two class classification problem, it returns a row matrix. It returns learnt parameters of
-         *     the Logistic Regression as a matrix of type CV_32F.
-         * return automatically generated
+         @brief This function returns the trained parameters arranged across rows.
+         
+             For a two class classification problem, it returns a row matrix. It returns learnt parameters of
+             the Logistic Regression as a matrix of type CV_32F.
          */
         public Mat get_learnt_thetas()
         {
@@ -357,10 +344,9 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Creates empty model.
-         *
-         *     Creates Logistic Regression model with parameters given.
-         * return automatically generated
+         @brief Creates empty model.
+         
+             Creates Logistic Regression model with parameters given.
          */
         public static LogisticRegression create()
         {
@@ -377,15 +363,14 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Loads and creates a serialized LogisticRegression from a file
-         *
-         * Use LogisticRegression::save to serialize and store an LogisticRegression to disk.
-         * Load the LogisticRegression from this file again, by calling this function with the path to the file.
-         * Optionally specify the node for the file containing the classifier
-         *
-         * param filepath path to serialized LogisticRegression
-         * param nodeName name of node containing the classifier
-         * return automatically generated
+         @brief Loads and creates a serialized LogisticRegression from a file
+              *
+              * Use LogisticRegression::save to serialize and store an LogisticRegression to disk.
+              * Load the LogisticRegression from this file again, by calling this function with the path to the file.
+              * Optionally specify the node for the file containing the classifier
+              *
+              * @param filepath path to serialized LogisticRegression
+              * @param nodeName name of node containing the classifier
          */
         public static LogisticRegression load(string filepath, string nodeName)
         {
@@ -397,14 +382,14 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Loads and creates a serialized LogisticRegression from a file
-         *
-         * Use LogisticRegression::save to serialize and store an LogisticRegression to disk.
-         * Load the LogisticRegression from this file again, by calling this function with the path to the file.
-         * Optionally specify the node for the file containing the classifier
-         *
-         * param filepath path to serialized LogisticRegression
-         * return automatically generated
+         @brief Loads and creates a serialized LogisticRegression from a file
+              *
+              * Use LogisticRegression::save to serialize and store an LogisticRegression to disk.
+              * Load the LogisticRegression from this file again, by calling this function with the path to the file.
+              * Optionally specify the node for the file containing the classifier
+              *
+              * @param filepath path to serialized LogisticRegression
+              * @param nodeName name of node containing the classifier
          */
         public static LogisticRegression load(string filepath)
         {

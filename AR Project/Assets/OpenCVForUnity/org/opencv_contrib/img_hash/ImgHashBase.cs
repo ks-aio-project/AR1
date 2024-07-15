@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.Img_hashModule
 
     // C++: class ImgHashBase
     /**
-     * The base class for image hash algorithms
+     @brief The base class for image hash algorithms
      */
 
     public class ImgHashBase : Algorithm
@@ -48,9 +48,9 @@ namespace OpenCVForUnity.Img_hashModule
         //
 
         /**
-         * Computes hash of the input image
-         *         param inputArr input image want to compute hash value
-         *         param outputArr hash of the image
+         @brief Computes hash of the input image
+                 @param inputArr input image want to compute hash value
+                 @param outputArr hash of the image
          */
         public void compute(Mat inputArr, Mat outputArr)
         {
@@ -69,11 +69,11 @@ namespace OpenCVForUnity.Img_hashModule
         //
 
         /**
-         * Compare the hash value between inOne and inTwo
-         *         param hashOne Hash value one
-         *         param hashTwo Hash value two
-         *         return value indicate similarity between inOne and inTwo, the meaning
-         *         of the value vary from algorithms to algorithms
+         @brief Compare the hash value between inOne and inTwo
+                 @param hashOne Hash value one
+                 @param hashTwo Hash value two
+                 @return value indicate similarity between inOne and inTwo, the meaning
+                 of the value vary from algorithms to algorithms
          */
         public double compare(Mat hashOne, Mat hashTwo)
         {

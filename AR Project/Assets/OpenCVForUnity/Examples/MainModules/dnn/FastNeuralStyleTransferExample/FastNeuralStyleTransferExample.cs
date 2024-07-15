@@ -1,5 +1,3 @@
-﻿#if !(PLATFORM_LUMIN && !UNITY_EDITOR)
-
 #if !UNITY_WSA_10_0
 
 using System;
@@ -18,8 +16,8 @@ using Range = OpenCVForUnity.CoreModule.Range;
 namespace OpenCVForUnityExample
 {
     /// <summary>
-    /// FastNeuralStyleTransfer WebCamTexture Example
-    /// Referring to https://github.com/opencv/opencv/blob/master/samples/dnn/fast_neural_style.py and https://github.com/jcjohnson/fast-neural-style.
+    /// Fast Neural Style Transfer Example
+    /// Referring to https://github.com/opencv/opencv/blob/master/samples/dnn/fast_neural_style.py and https://github.com/jcjohnson/fast-neural-style
     /// </summary>
     [RequireComponent(typeof(WebCamTextureToMatHelper))]
     public class FastNeuralStyleTransferExample : MonoBehaviour
@@ -57,7 +55,7 @@ namespace OpenCVForUnityExample
         /// <summary>
         /// MODEL_FILENAME
         /// </summary>
-        protected static readonly string MODEL_FILENAME = "dnn/mosaic.t7";
+        protected static readonly string MODEL_FILENAME = "OpenCVForUnity/dnn/mosaic.t7";
 
         /// <summary>
         /// The model filepath.
@@ -106,10 +104,13 @@ namespace OpenCVForUnityExample
             Utils.setDebugMode(true);
 
 
-            net = Dnn.readNetFromTorch(model_filepath);
-            if (net.empty())
+            if (string.IsNullOrEmpty(model_filepath))
             {
-                Debug.LogError("model file is not loaded. The model and class names list can be downloaded here: \"https://cs.stanford.edu/people/jcjohns/fast-neural-style/models/instance_norm/mosaic.t7\". Please copy to “Assets/StreamingAssets/dnn/” folder. ");
+                Debug.LogError(MODEL_FILENAME + " is not loaded. Please read “StreamingAssets/OpenCVForUnity/dnn/setup_dnn_module.pdf” to make the necessary setup.");
+            }
+            else
+            {
+                net = Dnn.readNetFromTorch(model_filepath);
             }
 
 #if UNITY_ANDROID && !UNITY_EDITOR
@@ -129,7 +130,7 @@ namespace OpenCVForUnityExample
             Mat webCamTextureMat = webCamTextureToMatHelper.GetMat();
 
             texture = new Texture2D(webCamTextureMat.cols(), webCamTextureMat.rows(), TextureFormat.RGBA32, false);
-            Utils.fastMatToTexture2D(webCamTextureMat, texture);
+            Utils.matToTexture2D(webCamTextureMat, texture);
 
             gameObject.GetComponent<Renderer>().material.mainTexture = texture;
 
@@ -199,7 +200,7 @@ namespace OpenCVForUnityExample
 
                 Mat rgbaMat = webCamTextureToMatHelper.GetMat();
 
-                if (net.empty())
+                if (net == null)
                 {
                     Imgproc.putText(rgbaMat, "model file is not loaded.", new Point(5, rgbaMat.rows() - 30), Imgproc.FONT_HERSHEY_SIMPLEX, 0.7, new Scalar(255, 255, 255, 255), 2, Imgproc.LINE_AA, false);
                     Imgproc.putText(rgbaMat, "Please read console message.", new Point(5, rgbaMat.rows() - 10), Imgproc.FONT_HERSHEY_SIMPLEX, 0.7, new Scalar(255, 255, 255, 255), 2, Imgproc.LINE_AA, false);
@@ -237,7 +238,7 @@ namespace OpenCVForUnityExample
 
                 }
 
-                Utils.fastMatToTexture2D(rgbaMat, texture);
+                Utils.matToTexture2D(rgbaMat, texture);
             }
         }
 
@@ -303,6 +304,5 @@ namespace OpenCVForUnityExample
         }
     }
 }
-#endif
 
 #endif

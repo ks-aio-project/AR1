@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,10 +10,10 @@ namespace OpenCVForUnity.BgsegmModule
 
     // C++: class SyntheticSequenceGenerator
     /**
-     * Synthetic frame sequence generator for testing background subtraction algorithms.
-     *
-     *  It will generate the moving object on top of the background.
-     *  It will apply some distortion to the background to make the test more complex.
+     @brief Synthetic frame sequence generator for testing background subtraction algorithms.
+     
+      It will generate the moving object on top of the background.
+      It will apply some distortion to the background to make the test more complex.
      */
 
     public class SyntheticSequenceGenerator : Algorithm
@@ -51,14 +51,14 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Creates an instance of SyntheticSequenceGenerator.
-         *
-         *     param background Background image for object.
-         *     param amplitude Amplitude of wave distortion applied to background.
-         *     param wavelength Length of waves in distortion applied to background.
-         *     param wavespeed How fast waves will move.
-         *     param objspeed How fast object will fly over background.
-         * param _object automatically generated
+         @brief Creates an instance of SyntheticSequenceGenerator.
+         
+             @param background Background image for object.
+             @param object Object image which will move slowly over the background.
+             @param amplitude Amplitude of wave distortion applied to background.
+             @param wavelength Length of waves in distortion applied to background.
+             @param wavespeed How fast waves will move.
+             @param objspeed How fast object will fly over background.
          */
         public SyntheticSequenceGenerator(Mat background, Mat _object, double amplitude, double wavelength, double wavespeed, double objspeed) :
             base(DisposableObject.ThrowIfNullIntPtr(bgsegm_SyntheticSequenceGenerator_SyntheticSequenceGenerator_10(background.nativeObj, _object.nativeObj, amplitude, wavelength, wavespeed, objspeed)))
@@ -74,10 +74,10 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Obtain the next frame in the sequence.
-         *
-         *     param frame Output frame.
-         *     param gtMask Output ground-truth (reference) segmentation mask object/background.
+         @brief Obtain the next frame in the sequence.
+         
+             @param frame Output frame.
+             @param gtMask Output ground-truth (reference) segmentation mask object/background.
          */
         public void getNextFrame(Mat frame, Mat gtMask)
         {

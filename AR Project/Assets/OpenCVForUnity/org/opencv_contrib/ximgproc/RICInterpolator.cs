@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,11 +10,11 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class RICInterpolator
     /**
-     * Sparse match interpolation algorithm based on modified piecewise locally-weighted affine
-     * estimator called Robust Interpolation method of Correspondences or RIC from CITE: Hu2017 and Variational
-     * and Fast Global Smoother as post-processing filter. The RICInterpolator is a extension of the EdgeAwareInterpolator.
-     * Main concept of this extension is an piece-wise affine model based on over-segmentation via SLIC superpixel estimation.
-     * The method contains an efficient propagation mechanism to estimate among the pieces-wise models.
+     @brief Sparse match interpolation algorithm based on modified piecewise locally-weighted affine
+      * estimator called Robust Interpolation method of Correspondences or RIC from @cite Hu2017 and Variational
+      * and Fast Global Smoother as post-processing filter. The RICInterpolator is a extension of the EdgeAwareInterpolator.
+      * Main concept of this extension is an piece-wise affine model based on over-segmentation via SLIC superpixel estimation.
+      * The method contains an efficient propagation mechanism to estimate among the pieces-wise models.
      */
 
     public class RICInterpolator : SparseMatchInterpolator
@@ -52,10 +52,9 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * K is a number of nearest-neighbor matches considered, when fitting a locally affine
-         * model for a superpixel segment. However, lower values would make the interpolation
-         * noticeably faster. The original implementation of CITE: Hu2017 uses 32.
-         * param k automatically generated
+         @brief K is a number of nearest-neighbor matches considered, when fitting a locally affine
+              *model for a superpixel segment. However, lower values would make the interpolation
+              *noticeably faster. The original implementation of @cite Hu2017 uses 32.
          */
         public void setK(int k)
         {
@@ -67,9 +66,9 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * K is a number of nearest-neighbor matches considered, when fitting a locally affine
-         * model for a superpixel segment. However, lower values would make the interpolation
-         * noticeably faster. The original implementation of CITE: Hu2017 uses 32.
+         @brief K is a number of nearest-neighbor matches considered, when fitting a locally affine
+              *model for a superpixel segment. However, lower values would make the interpolation
+              *noticeably faster. The original implementation of @cite Hu2017 uses 32.
          */
         public void setK()
         {
@@ -86,9 +85,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         *  setK
-         * SEE: setK
-         * return automatically generated
+         @copybrief setK
+              *  @see setK
          */
         public int getK()
         {
@@ -105,13 +103,13 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Interface to provide a more elaborated cost map, i.e. edge map, for the edge-aware term.
-         * This implementation is based on a rather simple gradient-based edge map estimation.
-         * To used more complex edge map estimator (e.g. StructuredEdgeDetection that has been
-         * used in the original publication) that may lead to improved accuracies, the internal
-         * edge map estimation can be bypassed here.
-         * param costMap a type CV_32FC1 Mat is required.
-         * SEE: cv::ximgproc::createSuperpixelSLIC
+         @brief Interface to provide a more elaborated cost map, i.e. edge map, for the edge-aware term.
+              *  This implementation is based on a rather simple gradient-based edge map estimation.
+              *  To used more complex edge map estimator (e.g. StructuredEdgeDetection that has been
+              *  used in the original publication) that may lead to improved accuracies, the internal
+              *  edge map estimation can be bypassed here.
+              *  @param costMap a type CV_32FC1 Mat is required.
+              *  @see cv::ximgproc::createSuperpixelSLIC
          */
         public void setCostMap(Mat costMap)
         {
@@ -129,9 +127,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Get the internal cost, i.e. edge map, used for estimating the edge-aware term.
-         * SEE: setCostMap
-         * param spSize automatically generated
+         @brief Get the internal cost, i.e. edge map, used for estimating the edge-aware term.
+              *  @see setCostMap
          */
         public void setSuperpixelSize(int spSize)
         {
@@ -143,8 +140,8 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Get the internal cost, i.e. edge map, used for estimating the edge-aware term.
-         * SEE: setCostMap
+         @brief Get the internal cost, i.e. edge map, used for estimating the edge-aware term.
+              *  @see setCostMap
          */
         public void setSuperpixelSize()
         {
@@ -161,9 +158,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         *  setSuperpixelSize
-         * SEE: setSuperpixelSize
-         * return automatically generated
+         @copybrief setSuperpixelSize
+              *  @see setSuperpixelSize
          */
         public int getSuperpixelSize()
         {
@@ -180,9 +176,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Parameter defines the number of nearest-neighbor matches for each superpixel considered, when fitting a locally affine
-         * model.
-         * param spNN automatically generated
+         @brief Parameter defines the number of nearest-neighbor matches for each superpixel considered, when fitting a locally affine
+              *model.
          */
         public void setSuperpixelNNCnt(int spNN)
         {
@@ -194,8 +189,8 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Parameter defines the number of nearest-neighbor matches for each superpixel considered, when fitting a locally affine
-         * model.
+         @brief Parameter defines the number of nearest-neighbor matches for each superpixel considered, when fitting a locally affine
+              *model.
          */
         public void setSuperpixelNNCnt()
         {
@@ -212,9 +207,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         *  setSuperpixelNNCnt
-         * SEE: setSuperpixelNNCnt
-         * return automatically generated
+         @copybrief setSuperpixelNNCnt
+              *  @see setSuperpixelNNCnt
          */
         public int getSuperpixelNNCnt()
         {
@@ -231,9 +225,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Parameter to tune enforcement of superpixel smoothness factor used for oversegmentation.
-         * SEE: cv::ximgproc::createSuperpixelSLIC
-         * param ruler automatically generated
+         @brief Parameter to tune enforcement of superpixel smoothness factor used for oversegmentation.
+              *  @see cv::ximgproc::createSuperpixelSLIC
          */
         public void setSuperpixelRuler(float ruler)
         {
@@ -245,8 +238,8 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Parameter to tune enforcement of superpixel smoothness factor used for oversegmentation.
-         * SEE: cv::ximgproc::createSuperpixelSLIC
+         @brief Parameter to tune enforcement of superpixel smoothness factor used for oversegmentation.
+              *  @see cv::ximgproc::createSuperpixelSLIC
          */
         public void setSuperpixelRuler()
         {
@@ -263,9 +256,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         *  setSuperpixelRuler
-         * SEE: setSuperpixelRuler
-         * return automatically generated
+         @copybrief setSuperpixelRuler
+              *  @see setSuperpixelRuler
          */
         public float getSuperpixelRuler()
         {
@@ -282,12 +274,11 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Parameter to choose superpixel algorithm variant to use:
-         * - cv::ximgproc::SLICType SLIC segments image using a desired region_size (value: 100)
-         * - cv::ximgproc::SLICType SLICO will optimize using adaptive compactness factor (value: 101)
-         * - cv::ximgproc::SLICType MSLIC will optimize using manifold methods resulting in more content-sensitive superpixels (value: 102).
-         * SEE: cv::ximgproc::createSuperpixelSLIC
-         * param mode automatically generated
+         @brief Parameter to choose superpixel algorithm variant to use:
+              * - cv::ximgproc::SLICType SLIC segments image using a desired region_size (value: 100)
+              * - cv::ximgproc::SLICType SLICO will optimize using adaptive compactness factor (value: 101)
+              * - cv::ximgproc::SLICType MSLIC will optimize using manifold methods resulting in more content-sensitive superpixels (value: 102).
+              *  @see cv::ximgproc::createSuperpixelSLIC
          */
         public void setSuperpixelMode(int mode)
         {
@@ -299,11 +290,11 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Parameter to choose superpixel algorithm variant to use:
-         * - cv::ximgproc::SLICType SLIC segments image using a desired region_size (value: 100)
-         * - cv::ximgproc::SLICType SLICO will optimize using adaptive compactness factor (value: 101)
-         * - cv::ximgproc::SLICType MSLIC will optimize using manifold methods resulting in more content-sensitive superpixels (value: 102).
-         * SEE: cv::ximgproc::createSuperpixelSLIC
+         @brief Parameter to choose superpixel algorithm variant to use:
+              * - cv::ximgproc::SLICType SLIC segments image using a desired region_size (value: 100)
+              * - cv::ximgproc::SLICType SLICO will optimize using adaptive compactness factor (value: 101)
+              * - cv::ximgproc::SLICType MSLIC will optimize using manifold methods resulting in more content-sensitive superpixels (value: 102).
+              *  @see cv::ximgproc::createSuperpixelSLIC
          */
         public void setSuperpixelMode()
         {
@@ -320,9 +311,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         *  setSuperpixelMode
-         * SEE: setSuperpixelMode
-         * return automatically generated
+         @copybrief setSuperpixelMode
+              *  @see setSuperpixelMode
          */
         public int getSuperpixelMode()
         {
@@ -339,8 +329,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Alpha is a parameter defining a global weight for transforming geodesic distance into weight.
-         * param alpha automatically generated
+         @brief Alpha is a parameter defining a global weight for transforming geodesic distance into weight.
          */
         public void setAlpha(float alpha)
         {
@@ -352,7 +341,7 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Alpha is a parameter defining a global weight for transforming geodesic distance into weight.
+         @brief Alpha is a parameter defining a global weight for transforming geodesic distance into weight.
          */
         public void setAlpha()
         {
@@ -369,9 +358,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         *  setAlpha
-         * SEE: setAlpha
-         * return automatically generated
+         @copybrief setAlpha
+              *  @see setAlpha
          */
         public float getAlpha()
         {
@@ -388,8 +376,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Parameter defining the number of iterations for piece-wise affine model estimation.
-         * param modelIter automatically generated
+         @brief Parameter defining the number of iterations for piece-wise affine model estimation.
          */
         public void setModelIter(int modelIter)
         {
@@ -401,7 +388,7 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Parameter defining the number of iterations for piece-wise affine model estimation.
+         @brief Parameter defining the number of iterations for piece-wise affine model estimation.
          */
         public void setModelIter()
         {
@@ -418,9 +405,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         *  setModelIter
-         * SEE: setModelIter
-         * return automatically generated
+         @copybrief setModelIter
+              *  @see setModelIter
          */
         public int getModelIter()
         {
@@ -437,8 +423,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Parameter to choose wether additional refinement of the piece-wise affine models is employed.
-         * param refineModles automatically generated
+         @brief Parameter to choose wether additional refinement of the piece-wise affine models is employed.
          */
         public void setRefineModels(bool refineModles)
         {
@@ -450,7 +435,7 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Parameter to choose wether additional refinement of the piece-wise affine models is employed.
+         @brief Parameter to choose wether additional refinement of the piece-wise affine models is employed.
          */
         public void setRefineModels()
         {
@@ -467,9 +452,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         *  setRefineModels
-         * SEE: setRefineModels
-         * return automatically generated
+         @copybrief setRefineModels
+              *  @see setRefineModels
          */
         public bool getRefineModels()
         {
@@ -486,9 +470,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * MaxFlow is a threshold to validate the predictions using a certain piece-wise affine model.
-         * If the prediction exceeds the treshold the translational model will be applied instead.
-         * param maxFlow automatically generated
+         @brief MaxFlow is a threshold to validate the predictions using a certain piece-wise affine model.
+              * If the prediction exceeds the treshold the translational model will be applied instead.
          */
         public void setMaxFlow(float maxFlow)
         {
@@ -500,8 +483,8 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * MaxFlow is a threshold to validate the predictions using a certain piece-wise affine model.
-         * If the prediction exceeds the treshold the translational model will be applied instead.
+         @brief MaxFlow is a threshold to validate the predictions using a certain piece-wise affine model.
+              * If the prediction exceeds the treshold the translational model will be applied instead.
          */
         public void setMaxFlow()
         {
@@ -518,9 +501,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         *  setMaxFlow
-         * SEE: setMaxFlow
-         * return automatically generated
+         @copybrief setMaxFlow
+              *  @see setMaxFlow
          */
         public float getMaxFlow()
         {
@@ -537,8 +519,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Parameter to choose wether the VariationalRefinement post-processing  is employed.
-         * param use_variational_refinement automatically generated
+         @brief Parameter to choose wether the VariationalRefinement post-processing  is employed.
          */
         public void setUseVariationalRefinement(bool use_variational_refinement)
         {
@@ -550,7 +531,7 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Parameter to choose wether the VariationalRefinement post-processing  is employed.
+         @brief Parameter to choose wether the VariationalRefinement post-processing  is employed.
          */
         public void setUseVariationalRefinement()
         {
@@ -567,9 +548,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         *  setUseVariationalRefinement
-         * SEE: setUseVariationalRefinement
-         * return automatically generated
+         @copybrief setUseVariationalRefinement
+              *  @see setUseVariationalRefinement
          */
         public bool getUseVariationalRefinement()
         {
@@ -586,8 +566,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets whether the fastGlobalSmootherFilter() post-processing is employed.
-         * param use_FGS automatically generated
+         @brief Sets whether the fastGlobalSmootherFilter() post-processing is employed.
          */
         public void setUseGlobalSmootherFilter(bool use_FGS)
         {
@@ -599,7 +578,7 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Sets whether the fastGlobalSmootherFilter() post-processing is employed.
+         @brief Sets whether the fastGlobalSmootherFilter() post-processing is employed.
          */
         public void setUseGlobalSmootherFilter()
         {
@@ -616,9 +595,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         *  setUseGlobalSmootherFilter
-         * SEE: setUseGlobalSmootherFilter
-         * return automatically generated
+         @copybrief setUseGlobalSmootherFilter
+              *  @see setUseGlobalSmootherFilter
          */
         public bool getUseGlobalSmootherFilter()
         {
@@ -635,8 +613,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets the respective fastGlobalSmootherFilter() parameter.
-         * param lambda automatically generated
+         @brief Sets the respective fastGlobalSmootherFilter() parameter.
          */
         public void setFGSLambda(float lambda)
         {
@@ -648,7 +625,7 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Sets the respective fastGlobalSmootherFilter() parameter.
+         @brief Sets the respective fastGlobalSmootherFilter() parameter.
          */
         public void setFGSLambda()
         {
@@ -665,9 +642,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         *  setFGSLambda
-         * SEE: setFGSLambda
-         * return automatically generated
+         @copybrief setFGSLambda
+              *  @see setFGSLambda
          */
         public float getFGSLambda()
         {
@@ -684,8 +660,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets the respective fastGlobalSmootherFilter() parameter.
-         * param sigma automatically generated
+         @brief Sets the respective fastGlobalSmootherFilter() parameter.
          */
         public void setFGSSigma(float sigma)
         {
@@ -697,7 +672,7 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Sets the respective fastGlobalSmootherFilter() parameter.
+         @brief Sets the respective fastGlobalSmootherFilter() parameter.
          */
         public void setFGSSigma()
         {
@@ -714,9 +689,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         *  setFGSSigma
-         * SEE: setFGSSigma
-         * return automatically generated
+         @copybrief setFGSSigma
+              *  @see setFGSSigma
          */
         public float getFGSSigma()
         {

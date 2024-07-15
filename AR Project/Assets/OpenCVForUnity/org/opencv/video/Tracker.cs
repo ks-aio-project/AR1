@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.VideoModule
 {
     // C++: class Tracker
     /**
-     * Base abstract class for the long-term tracker
+     @brief Base abstract class for the long-term tracker
      */
 
     public class Tracker : DisposableOpenCVObject
@@ -51,9 +51,9 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Initialize the tracker with a known bounding box that surrounded the target
-         *     param image The initial frame
-         *     param boundingBox The initial bounding box
+         @brief Initialize the tracker with a known bounding box that surrounded the target
+             @param image The initial frame
+             @param boundingBox The initial bounding box
          */
         public void init(Mat image, Rect boundingBox)
         {
@@ -71,14 +71,14 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Update the tracker, find the new most likely bounding box for the target
-         *     param image The current frame
-         *     param boundingBox The bounding box that represent the new target location, if true was returned, not
-         *     modified otherwise
-         *
-         *     return True means that target was located and false means that tracker cannot locate target in
-         *     current frame. Note, that latter *does not* imply that tracker has failed, maybe target is indeed
-         *     missing from the frame (say, out of sight)
+         @brief Update the tracker, find the new most likely bounding box for the target
+             @param image The current frame
+             @param boundingBox The bounding box that represent the new target location, if true was returned, not
+             modified otherwise
+         
+             @return True means that target was located and false means that tracker cannot locate target in
+             current frame. Note, that latter *does not* imply that tracker has failed, maybe target is indeed
+             missing from the frame (say, out of sight)
          */
         public bool update(Mat image, Rect boundingBox)
         {

@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,9 +11,9 @@ namespace OpenCVForUnity.TextModule
 
     // C++: class ERFilter
     /**
-     * Base class for 1st and 2nd stages of Neumann and Matas scene text detection algorithm CITE: Neumann12. :
-     *
-     * Extracts the component tree (if needed) and filter the extremal regions (ER's) by using a given classifier.
+     @brief Base class for 1st and 2nd stages of Neumann and Matas scene text detection algorithm @cite Neumann12. :
+     
+     Extracts the component tree (if needed) and filter the extremal regions (ER's) by using a given classifier.
      */
 
     public class ERFilter : Algorithm
@@ -60,4 +60,5 @@ namespace OpenCVForUnity.TextModule
 
     }
 }
+
 #endif

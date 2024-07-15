@@ -1,4 +1,5 @@
-﻿using System;
+using OpenCVForUnity.UtilsModule;
+using System;
 using System.Collections.Generic;
 
 namespace OpenCVForUnity.CoreModule
@@ -60,15 +61,8 @@ namespace OpenCVForUnity.CoreModule
                 return;
             int num = a.Length;
             alloc(num);
-            float[] buff = new float[num * _channels];
-            for (int i = 0; i < num; i++)
-            {
-                Point3 p = a[i];
-                buff[_channels * i + 0] = (float)p.x;
-                buff[_channels * i + 1] = (float)p.y;
-                buff[_channels * i + 2] = (float)p.z;
-            }
-            put(0, 0, buff); //TODO: check ret val!
+
+            Converters.Array_Point3_to_Mat(a, this, num, CvType.CV_32FC3);
         }
 
         public Point3[] toArray()
@@ -77,23 +71,38 @@ namespace OpenCVForUnity.CoreModule
             Point3[] ap = new Point3[num];
             if (num == 0)
                 return ap;
-            float[] buff = new float[num * _channels];
-            get(0, 0, buff); //TODO: check ret val!
-            for (int i = 0; i < num; i++)
-                ap[i] = new Point3(buff[i * _channels], buff[i * _channels + 1], buff[i * _channels + 2]);
+
+            for (int i = 0; i < ap.Length; i++)
+            {
+                ap[i] = new Point3();
+            }
+            Converters.Mat_to_Array_Point3(this, ap, num, CvType.CV_32FC3);
             return ap;
         }
 
         public void fromList(List<Point3> lp)
         {
-            Point3[] ap = lp.ToArray();
-            fromArray(ap);
+            if (lp == null || lp.Count == 0)
+                return;
+            int num = lp.Count;
+            alloc(num);
+
+            Converters.List_Point3_to_Mat(lp, this, num, CvType.CV_32FC3);
         }
 
         public List<Point3> toList()
         {
-            Point3[] ap = toArray();
-            return new List<Point3>(ap);
+            int num = (int)total();
+            List<Point3> ap = new List<Point3>(num);
+            if (num == 0)
+                return ap;
+
+            for (int i = 0; i < num; i++)
+            {
+                ap.Add(new Point3());
+            }
+            Converters.Mat_to_List_Point3(this, ap, num, CvType.CV_32FC3);
+            return ap;
         }
     }
 

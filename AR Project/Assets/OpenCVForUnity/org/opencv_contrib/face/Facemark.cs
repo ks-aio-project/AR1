@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,29 +10,23 @@ namespace OpenCVForUnity.FaceModule
 
     // C++: class Facemark
     /**
-     * Abstract base class for all facemark models
-     *
-     * To utilize this API in your program, please take a look at the REF: tutorial_table_of_content_facemark
-     * ### Description
-     *
-     * Facemark is a base class which provides universal access to any specific facemark algorithm.
-     * Therefore, the users should declare a desired algorithm before they can use it in their application.
-     *
-     * Here is an example on how to declare a facemark algorithm:
-     * <code>
-     * // Using Facemark in your code:
-     * Ptr&lt;Facemark&gt; facemark = createFacemarkLBF();
-     * </code>
-     *
-     * The typical pipeline for facemark detection is as follows:
-     * <ul>
-     *   <li>
-     *  Load the trained model using Facemark::loadModel.
-     *   </li>
-     *   <li>
-     *  Perform the fitting on an image via Facemark::fit.
-     *   </li>
-     * </ul>
+     @brief Abstract base class for all facemark models
+     
+     To utilize this API in your program, please take a look at the @ref tutorial_table_of_content_facemark
+     ### Description
+     
+     Facemark is a base class which provides universal access to any specific facemark algorithm.
+     Therefore, the users should declare a desired algorithm before they can use it in their application.
+     
+     Here is an example on how to declare a facemark algorithm:
+     @code
+     // Using Facemark in your code:
+     Ptr&lt;Facemark&gt; facemark = createFacemarkLBF();
+     @endcode
+     
+     The typical pipeline for facemark detection is as follows:
+     - Load the trained model using Facemark::loadModel.
+     - Perform the fitting on an image via Facemark::fit.
      */
 
     public class Facemark : Algorithm
@@ -70,13 +64,13 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * A function to load the trained model before the fitting process.
-         *     param model A string represent the filename of a trained model.
-         *
-         *     &lt;B&gt;Example of usage&lt;/B&gt;
-         *     <code>
-         *     facemark-&gt;loadModel("../data/lbf.model");
-         *     </code>
+         @brief A function to load the trained model before the fitting process.
+             @param model A string represent the filename of a trained model.
+         
+             &lt;B&gt;Example of usage&lt;/B&gt;
+             @code
+             facemark-&gt;loadModel("../data/lbf.model");
+             @endcode
          */
         public void loadModel(string model)
         {
@@ -93,20 +87,19 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * Detect facial landmarks from an image.
-         *     param image Input image.
-         *     param faces Output of the function which represent region of interest of the detected faces.
-         *     Each face is stored in cv::Rect container.
-         *     param landmarks The detected landmark points for each faces.
-         *
-         *     &lt;B&gt;Example of usage&lt;/B&gt;
-         *     <code>
-         *     Mat image = imread("image.jpg");
-         *     std::vector&lt;Rect&gt; faces;
-         *     std::vector&lt;std::vector&lt;Point2f&gt; &gt; landmarks;
-         *     facemark-&gt;fit(image, faces, landmarks);
-         *     </code>
-         * return automatically generated
+         @brief Detect facial landmarks from an image.
+             @param image Input image.
+             @param faces Output of the function which represent region of interest of the detected faces.
+             Each face is stored in cv::Rect container.
+             @param landmarks The detected landmark points for each faces.
+         
+             &lt;B&gt;Example of usage&lt;/B&gt;
+             @code
+             Mat image = imread("image.jpg");
+             std::vector&lt;Rect&gt; faces;
+             std::vector&lt;std::vector&lt;Point2f&gt; &gt; landmarks;
+             facemark-&gt;fit(image, faces, landmarks);
+             @endcode
          */
         public bool fit(Mat image, MatOfRect faces, List<MatOfPoint2f> landmarks)
         {

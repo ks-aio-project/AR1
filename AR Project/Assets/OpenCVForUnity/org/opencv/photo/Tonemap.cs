@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.PhotoModule
 
     // C++: class Tonemap
     /**
-     * Base class for tonemapping algorithms - tools that are used to map HDR image to 8-bit range.
+     @brief Base class for tonemapping algorithms - tools that are used to map HDR image to 8-bit range.
      */
 
     public class Tonemap : Algorithm
@@ -48,10 +48,10 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Tonemaps image
-         *
-         *     param src source image - CV_32FC3 Mat (float 32 bits 3 channels)
-         *     param dst destination image - CV_32FC3 Mat with values in [0, 1] range
+         @brief Tonemaps image
+         
+             @param src source image - CV_32FC3 Mat (float 32 bits 3 channels)
+             @param dst destination image - CV_32FC3 Mat with values in [0, 1] range
          */
         public void process(Mat src, Mat dst)
         {

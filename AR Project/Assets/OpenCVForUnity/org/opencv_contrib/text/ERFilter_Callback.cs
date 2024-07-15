@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,10 +10,10 @@ namespace OpenCVForUnity.TextModule
 {
     // C++: class Callback
     /**
-     * Callback with the classifier is made a class.
-     *
-     *     By doing it we hide SVM, Boost etc. Developers can provide their own classifiers to the
-     *     ERFilter algorithm.
+     @brief Callback with the classifier is made a class.
+     
+         By doing it we hide SVM, Boost etc. Developers can provide their own classifiers to the
+         ERFilter algorithm.
      */
 
     public class ERFilter_Callback : DisposableOpenCVObject
@@ -63,4 +63,5 @@ namespace OpenCVForUnity.TextModule
 
     }
 }
+
 #endif

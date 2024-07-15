@@ -1,4 +1,6 @@
-﻿using System;
+using OpenCVForUnity.UnityUtils;
+using OpenCVForUnity.UtilsModule;
+using System;
 using System.Collections.Generic;
 
 namespace OpenCVForUnity.CoreModule
@@ -60,7 +62,22 @@ namespace OpenCVForUnity.CoreModule
                 return;
             int num = a.Length / _channels;
             alloc(num);
-            put(0, 0, a); //TODO: check ret val!
+
+            if (isContinuous())
+            {
+                MatUtils.copyToMat<float>(a, this);
+            }
+            else
+            {
+                if (dims() <= 2)
+                {
+                    MatUtils.copyToMat<float>(a, this);
+                }
+                else
+                {
+                    put(0, 0, a); //TODO: check ret val!
+                }
+            }
         }
 
         public float[] toArray()
@@ -71,7 +88,22 @@ namespace OpenCVForUnity.CoreModule
             float[] a = new float[num * _channels];
             if (num == 0)
                 return a;
-            get(0, 0, a); //TODO: check ret val!
+
+            if (isContinuous())
+            {
+                MatUtils.copyFromMat<float>(this, a);
+            }
+            else
+            {
+                if (dims() <= 2)
+                {
+                    MatUtils.copyFromMat<float>(this, a);
+                }
+                else
+                {
+                    get(0, 0, a); //TODO: check ret val!
+                }
+            }
             return a;
         }
 
@@ -80,14 +112,25 @@ namespace OpenCVForUnity.CoreModule
             if (lb == null || lb.Count == 0)
                 return;
 
-            fromArray(lb.ToArray());
+            int num = lb.Count / _channels;
+            alloc(num);
+
+            Converters.List_float_to_Mat(lb, this, num, CvType.CV_32FC4);
         }
 
         public List<float> toList()
         {
-            float[] a = toArray();
+            int num = checkVector(_channels, _depth);
+            if (num < 0)
+                throw new CvException("Native Mat has unexpected type or size: " + ToString());
 
-            return new List<float>(a);
+            List<float> a = new List<float>(num);
+            for (int i = 0; i < num; i++)
+            {
+                a.Add(0);
+            }
+            Converters.Mat_to_List_float(this, a, num, CvType.CV_32FC4);
+            return a;
         }
     }
 }

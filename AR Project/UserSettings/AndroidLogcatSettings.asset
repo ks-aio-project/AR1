@@ -1,0 +1,274 @@
+{
+    "m_SelectedDeviceId": "192.168.1.172:35011",
+    "m_SelectedProcess": {
+        "deviceId": "192.168.1.172:35011",
+        "name": "com.unity.template.ar_mobile",
+        "processId": 26951,
+        "exited": false
+    },
+    "m_SelectedPriority": 0,
+    "m_KnownProcessesForSerialization": [
+        {
+            "deviceId": "192.168.1.172:33275",
+            "name": "com.sec.android.app.launcher",
+            "processId": 5528,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:33275",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 28037,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:33275",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 32325,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:33275",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 2632,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:36119",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 8771,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:36119",
+            "name": "com.sec.android.app.launcher",
+            "processId": 5528,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:36119",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 10314,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:36119",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 18567,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:36119",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 21656,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:36119",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 23837,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:37887",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 5224,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:39031",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 30103,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:45387",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 9069,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:37321",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 29675,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:35877",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 16158,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:33501",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 17511,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:33501",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 29381,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:33501",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 12298,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:43497",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 19185,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:39077",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 13813,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:39077",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 18907,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:39077",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 21917,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:39077",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 24746,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:39077",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 30192,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:34025",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 26027,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:34025",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 30072,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:34025",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 4671,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:37883",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 20607,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:37883",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 32713,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:35011",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 26951,
+            "exited": false
+        }
+    ],
+    "m_Tags": {
+        "m_Entries": [
+            {
+                "m_Name": "Filter by all listed tags",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "No Filter",
+                "m_Selected": true
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Tag Control...",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Unity",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "CRASH",
+                "m_Selected": false
+            }
+        ]
+    },
+    "m_ExtraWindowState": {
+        "Type": 0,
+        "Height": 0.0
+    },
+    "m_MemoryViewerState": {
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "MemoryGroup": 2,
+        "AutoCapture": true
+    },
+    "m_FilterOptions": {
+        "m_Filter": "kks",
+        "m_UseRegularExpressions": false,
+        "m_MatchCase": false
+    },
+    "m_SymbolPaths": [],
+    "m_CaptureVideoSettings": {
+        "TimeLimitEnabled": false,
+        "TimeLimit": 180,
+        "VideoSizeEnabled": false,
+        "VideoSizeX": 1280,
+        "VideoSizeY": 720,
+        "BitRateEnabled": false,
+        "BitRateK": 20000,
+        "DisplayIdEnabled": false,
+        "DisplayId": ""
+    },
+    "m_InputSettings": {
+        "ShiftModifier": false,
+        "SendText": "",
+        "PosixKillSignal": 0,
+        "TargetProcess": {
+            "deviceId": "",
+            "name": "",
+            "processId": 0,
+            "exited": false
+        }
+    },
+    "m_AutoScroll": 2
+}

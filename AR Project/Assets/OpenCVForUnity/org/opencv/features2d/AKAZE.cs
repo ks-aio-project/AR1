@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,20 +10,20 @@ namespace OpenCVForUnity.Features2dModule
 
     // C++: class AKAZE
     /**
-     * Class implementing the AKAZE keypoint detector and descriptor extractor, described in CITE: ANB13.
-     *
-     * AKAZE descriptors can only be used with KAZE or AKAZE keypoints. This class is thread-safe.
-     *
-     * <b>Note:</b> When you need descriptors use Feature2D::detectAndCompute, which
-     * provides better performance. When using Feature2D::detect followed by
-     * Feature2D::compute scale space pyramid is computed twice.
-     *
-     * <b>Note:</b> AKAZE implements T-API. When image is passed as UMat some parts of the algorithm
-     * will use OpenCL.
-     *
-     * <b>Note:</b> [ANB13] Fast Explicit Diffusion for Accelerated Features in Nonlinear
-     * Scale Spaces. Pablo F. Alcantarilla, Jesús Nuevo and Adrien Bartoli. In
-     * British Machine Vision Conference (BMVC), Bristol, UK, September 2013.
+     @brief Class implementing the AKAZE keypoint detector and descriptor extractor, described in @cite ANB13.
+     
+     @details AKAZE descriptors can only be used with KAZE or AKAZE keypoints. This class is thread-safe.
+     
+     @note When you need descriptors use Feature2D::detectAndCompute, which
+     provides better performance. When using Feature2D::detect followed by
+     Feature2D::compute scale space pyramid is computed twice.
+     
+     @note AKAZE implements T-API. When image is passed as UMat some parts of the algorithm
+     will use OpenCL.
+     
+     @note [ANB13] Fast Explicit Diffusion for Accelerated Features in Nonlinear
+     Scale Spaces. Pablo F. Alcantarilla, Jesús Nuevo and Adrien Bartoli. In
+     British Machine Vision Conference (BMVC), Bristol, UK, September 2013.
      */
 
     public class AKAZE : Feature2D
@@ -62,161 +62,230 @@ namespace OpenCVForUnity.Features2dModule
         public const int DESCRIPTOR_MLDB_UPRIGHT = 4;
         public const int DESCRIPTOR_MLDB = 5;
         //
-        // C++: static Ptr_AKAZE cv::AKAZE::create(AKAZE_DescriptorType descriptor_type = AKAZE::DESCRIPTOR_MLDB, int descriptor_size = 0, int descriptor_channels = 3, float threshold = 0.001f, int nOctaves = 4, int nOctaveLayers = 4, KAZE_DiffusivityType diffusivity = KAZE::DIFF_PM_G2)
+        // C++: static Ptr_AKAZE cv::AKAZE::create(AKAZE_DescriptorType descriptor_type = AKAZE::DESCRIPTOR_MLDB, int descriptor_size = 0, int descriptor_channels = 3, float threshold = 0.001f, int nOctaves = 4, int nOctaveLayers = 4, KAZE_DiffusivityType diffusivity = KAZE::DIFF_PM_G2, int max_points = -1)
         //
 
         /**
-         * The AKAZE constructor
-         *
-         *     param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
-         *     DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
-         *     param descriptor_size Size of the descriptor in bits. 0 -&gt; Full size
-         *     param descriptor_channels Number of channels in the descriptor (1, 2, 3)
-         *     param threshold Detector response threshold to accept point
-         *     param nOctaves Maximum octave evolution of the image
-         *     param nOctaveLayers Default number of sublevels per scale level
-         *     param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
-         *     DIFF_CHARBONNIER
-         * return automatically generated
+         @brief The AKAZE constructor
+         
+             @param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
+             DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
+             @param descriptor_size Size of the descriptor in bits. 0 -&gt; Full size
+             @param descriptor_channels Number of channels in the descriptor (1, 2, 3)
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
+             @param max_points Maximum amount of returned points. In case if image contains
+             more features, then the features with highest response are returned.
+             Negative value means no limitation.
+         */
+        public static AKAZE create(int descriptor_type, int descriptor_size, int descriptor_channels, float threshold, int nOctaves, int nOctaveLayers, int diffusivity, int max_points)
+        {
+
+
+            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_10(descriptor_type, descriptor_size, descriptor_channels, threshold, nOctaves, nOctaveLayers, diffusivity, max_points)));
+
+
+        }
+
+        /**
+         @brief The AKAZE constructor
+         
+             @param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
+             DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
+             @param descriptor_size Size of the descriptor in bits. 0 -&gt; Full size
+             @param descriptor_channels Number of channels in the descriptor (1, 2, 3)
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
+             @param max_points Maximum amount of returned points. In case if image contains
+             more features, then the features with highest response are returned.
+             Negative value means no limitation.
          */
         public static AKAZE create(int descriptor_type, int descriptor_size, int descriptor_channels, float threshold, int nOctaves, int nOctaveLayers, int diffusivity)
         {
 
 
-            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_10(descriptor_type, descriptor_size, descriptor_channels, threshold, nOctaves, nOctaveLayers, diffusivity)));
+            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_11(descriptor_type, descriptor_size, descriptor_channels, threshold, nOctaves, nOctaveLayers, diffusivity)));
 
 
         }
 
         /**
-         * The AKAZE constructor
-         *
-         *     param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
-         *     DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
-         *     param descriptor_size Size of the descriptor in bits. 0 -&gt; Full size
-         *     param descriptor_channels Number of channels in the descriptor (1, 2, 3)
-         *     param threshold Detector response threshold to accept point
-         *     param nOctaves Maximum octave evolution of the image
-         *     param nOctaveLayers Default number of sublevels per scale level
-         *     DIFF_CHARBONNIER
-         * return automatically generated
+         @brief The AKAZE constructor
+         
+             @param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
+             DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
+             @param descriptor_size Size of the descriptor in bits. 0 -&gt; Full size
+             @param descriptor_channels Number of channels in the descriptor (1, 2, 3)
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
+             @param max_points Maximum amount of returned points. In case if image contains
+             more features, then the features with highest response are returned.
+             Negative value means no limitation.
          */
         public static AKAZE create(int descriptor_type, int descriptor_size, int descriptor_channels, float threshold, int nOctaves, int nOctaveLayers)
         {
 
 
-            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_11(descriptor_type, descriptor_size, descriptor_channels, threshold, nOctaves, nOctaveLayers)));
+            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_12(descriptor_type, descriptor_size, descriptor_channels, threshold, nOctaves, nOctaveLayers)));
 
 
         }
 
         /**
-         * The AKAZE constructor
-         *
-         *     param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
-         *     DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
-         *     param descriptor_size Size of the descriptor in bits. 0 -&gt; Full size
-         *     param descriptor_channels Number of channels in the descriptor (1, 2, 3)
-         *     param threshold Detector response threshold to accept point
-         *     param nOctaves Maximum octave evolution of the image
-         *     DIFF_CHARBONNIER
-         * return automatically generated
+         @brief The AKAZE constructor
+         
+             @param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
+             DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
+             @param descriptor_size Size of the descriptor in bits. 0 -&gt; Full size
+             @param descriptor_channels Number of channels in the descriptor (1, 2, 3)
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
+             @param max_points Maximum amount of returned points. In case if image contains
+             more features, then the features with highest response are returned.
+             Negative value means no limitation.
          */
         public static AKAZE create(int descriptor_type, int descriptor_size, int descriptor_channels, float threshold, int nOctaves)
         {
 
 
-            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_12(descriptor_type, descriptor_size, descriptor_channels, threshold, nOctaves)));
+            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_13(descriptor_type, descriptor_size, descriptor_channels, threshold, nOctaves)));
 
 
         }
 
         /**
-         * The AKAZE constructor
-         *
-         *     param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
-         *     DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
-         *     param descriptor_size Size of the descriptor in bits. 0 -&gt; Full size
-         *     param descriptor_channels Number of channels in the descriptor (1, 2, 3)
-         *     param threshold Detector response threshold to accept point
-         *     DIFF_CHARBONNIER
-         * return automatically generated
+         @brief The AKAZE constructor
+         
+             @param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
+             DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
+             @param descriptor_size Size of the descriptor in bits. 0 -&gt; Full size
+             @param descriptor_channels Number of channels in the descriptor (1, 2, 3)
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
+             @param max_points Maximum amount of returned points. In case if image contains
+             more features, then the features with highest response are returned.
+             Negative value means no limitation.
          */
         public static AKAZE create(int descriptor_type, int descriptor_size, int descriptor_channels, float threshold)
         {
 
 
-            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_13(descriptor_type, descriptor_size, descriptor_channels, threshold)));
+            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_14(descriptor_type, descriptor_size, descriptor_channels, threshold)));
 
 
         }
 
         /**
-         * The AKAZE constructor
-         *
-         *     param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
-         *     DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
-         *     param descriptor_size Size of the descriptor in bits. 0 -&gt; Full size
-         *     param descriptor_channels Number of channels in the descriptor (1, 2, 3)
-         *     DIFF_CHARBONNIER
-         * return automatically generated
+         @brief The AKAZE constructor
+         
+             @param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
+             DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
+             @param descriptor_size Size of the descriptor in bits. 0 -&gt; Full size
+             @param descriptor_channels Number of channels in the descriptor (1, 2, 3)
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
+             @param max_points Maximum amount of returned points. In case if image contains
+             more features, then the features with highest response are returned.
+             Negative value means no limitation.
          */
         public static AKAZE create(int descriptor_type, int descriptor_size, int descriptor_channels)
         {
 
 
-            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_14(descriptor_type, descriptor_size, descriptor_channels)));
+            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_15(descriptor_type, descriptor_size, descriptor_channels)));
 
 
         }
 
         /**
-         * The AKAZE constructor
-         *
-         *     param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
-         *     DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
-         *     param descriptor_size Size of the descriptor in bits. 0 -&gt; Full size
-         *     DIFF_CHARBONNIER
-         * return automatically generated
+         @brief The AKAZE constructor
+         
+             @param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
+             DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
+             @param descriptor_size Size of the descriptor in bits. 0 -&gt; Full size
+             @param descriptor_channels Number of channels in the descriptor (1, 2, 3)
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
+             @param max_points Maximum amount of returned points. In case if image contains
+             more features, then the features with highest response are returned.
+             Negative value means no limitation.
          */
         public static AKAZE create(int descriptor_type, int descriptor_size)
         {
 
 
-            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_15(descriptor_type, descriptor_size)));
+            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_16(descriptor_type, descriptor_size)));
 
 
         }
 
         /**
-         * The AKAZE constructor
-         *
-         *     param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
-         *     DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
-         *     DIFF_CHARBONNIER
-         * return automatically generated
+         @brief The AKAZE constructor
+         
+             @param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
+             DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
+             @param descriptor_size Size of the descriptor in bits. 0 -&gt; Full size
+             @param descriptor_channels Number of channels in the descriptor (1, 2, 3)
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
+             @param max_points Maximum amount of returned points. In case if image contains
+             more features, then the features with highest response are returned.
+             Negative value means no limitation.
          */
         public static AKAZE create(int descriptor_type)
         {
 
 
-            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_16(descriptor_type)));
+            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_17(descriptor_type)));
 
 
         }
 
         /**
-         * The AKAZE constructor
-         *
-         *     DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
-         *     DIFF_CHARBONNIER
-         * return automatically generated
+         @brief The AKAZE constructor
+         
+             @param descriptor_type Type of the extracted descriptor: DESCRIPTOR_KAZE,
+             DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
+             @param descriptor_size Size of the descriptor in bits. 0 -&gt; Full size
+             @param descriptor_channels Number of channels in the descriptor (1, 2, 3)
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
+             @param max_points Maximum amount of returned points. In case if image contains
+             more features, then the features with highest response are returned.
+             Negative value means no limitation.
          */
         public static AKAZE create()
         {
 
 
-            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_17()));
+            return AKAZE.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(features2d_AKAZE_create_18()));
 
 
         }
@@ -432,6 +501,34 @@ namespace OpenCVForUnity.Features2dModule
         }
 
 
+        //
+        // C++:  void cv::AKAZE::setMaxPoints(int max_points)
+        //
+
+        public void setMaxPoints(int max_points)
+        {
+            ThrowIfDisposed();
+
+            features2d_AKAZE_setMaxPoints_10(nativeObj, max_points);
+
+
+        }
+
+
+        //
+        // C++:  int cv::AKAZE::getMaxPoints()
+        //
+
+        public int getMaxPoints()
+        {
+            ThrowIfDisposed();
+
+            return features2d_AKAZE_getMaxPoints_10(nativeObj);
+
+
+        }
+
+
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         const string LIBNAME = "__Internal";
 #else
@@ -440,23 +537,25 @@ namespace OpenCVForUnity.Features2dModule
 
 
 
-        // C++: static Ptr_AKAZE cv::AKAZE::create(AKAZE_DescriptorType descriptor_type = AKAZE::DESCRIPTOR_MLDB, int descriptor_size = 0, int descriptor_channels = 3, float threshold = 0.001f, int nOctaves = 4, int nOctaveLayers = 4, KAZE_DiffusivityType diffusivity = KAZE::DIFF_PM_G2)
+        // C++: static Ptr_AKAZE cv::AKAZE::create(AKAZE_DescriptorType descriptor_type = AKAZE::DESCRIPTOR_MLDB, int descriptor_size = 0, int descriptor_channels = 3, float threshold = 0.001f, int nOctaves = 4, int nOctaveLayers = 4, KAZE_DiffusivityType diffusivity = KAZE::DIFF_PM_G2, int max_points = -1)
         [DllImport(LIBNAME)]
-        private static extern IntPtr features2d_AKAZE_create_10(int descriptor_type, int descriptor_size, int descriptor_channels, float threshold, int nOctaves, int nOctaveLayers, int diffusivity);
+        private static extern IntPtr features2d_AKAZE_create_10(int descriptor_type, int descriptor_size, int descriptor_channels, float threshold, int nOctaves, int nOctaveLayers, int diffusivity, int max_points);
         [DllImport(LIBNAME)]
-        private static extern IntPtr features2d_AKAZE_create_11(int descriptor_type, int descriptor_size, int descriptor_channels, float threshold, int nOctaves, int nOctaveLayers);
+        private static extern IntPtr features2d_AKAZE_create_11(int descriptor_type, int descriptor_size, int descriptor_channels, float threshold, int nOctaves, int nOctaveLayers, int diffusivity);
         [DllImport(LIBNAME)]
-        private static extern IntPtr features2d_AKAZE_create_12(int descriptor_type, int descriptor_size, int descriptor_channels, float threshold, int nOctaves);
+        private static extern IntPtr features2d_AKAZE_create_12(int descriptor_type, int descriptor_size, int descriptor_channels, float threshold, int nOctaves, int nOctaveLayers);
         [DllImport(LIBNAME)]
-        private static extern IntPtr features2d_AKAZE_create_13(int descriptor_type, int descriptor_size, int descriptor_channels, float threshold);
+        private static extern IntPtr features2d_AKAZE_create_13(int descriptor_type, int descriptor_size, int descriptor_channels, float threshold, int nOctaves);
         [DllImport(LIBNAME)]
-        private static extern IntPtr features2d_AKAZE_create_14(int descriptor_type, int descriptor_size, int descriptor_channels);
+        private static extern IntPtr features2d_AKAZE_create_14(int descriptor_type, int descriptor_size, int descriptor_channels, float threshold);
         [DllImport(LIBNAME)]
-        private static extern IntPtr features2d_AKAZE_create_15(int descriptor_type, int descriptor_size);
+        private static extern IntPtr features2d_AKAZE_create_15(int descriptor_type, int descriptor_size, int descriptor_channels);
         [DllImport(LIBNAME)]
-        private static extern IntPtr features2d_AKAZE_create_16(int descriptor_type);
+        private static extern IntPtr features2d_AKAZE_create_16(int descriptor_type, int descriptor_size);
         [DllImport(LIBNAME)]
-        private static extern IntPtr features2d_AKAZE_create_17();
+        private static extern IntPtr features2d_AKAZE_create_17(int descriptor_type);
+        [DllImport(LIBNAME)]
+        private static extern IntPtr features2d_AKAZE_create_18();
 
         // C++:  void cv::AKAZE::setDescriptorType(AKAZE_DescriptorType dtype)
         [DllImport(LIBNAME)]
@@ -517,6 +616,14 @@ namespace OpenCVForUnity.Features2dModule
         // C++:  String cv::AKAZE::getDefaultName()
         [DllImport(LIBNAME)]
         private static extern IntPtr features2d_AKAZE_getDefaultName_10(IntPtr nativeObj);
+
+        // C++:  void cv::AKAZE::setMaxPoints(int max_points)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_AKAZE_setMaxPoints_10(IntPtr nativeObj, int max_points);
+
+        // C++:  int cv::AKAZE::getMaxPoints()
+        [DllImport(LIBNAME)]
+        private static extern int features2d_AKAZE_getMaxPoints_10(IntPtr nativeObj);
 
         // native support for java finalize()
         [DllImport(LIBNAME)]

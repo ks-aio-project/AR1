@@ -1,4 +1,4 @@
-﻿
+
 //using OpenCVForUnity.CoreModule;
 //using OpenCVForUnity.Features2dModule;
 //using OpenCVForUnity.UtilsModule;
@@ -11,64 +11,34 @@
 
 //    // C++: class SURF
 //    /**
-//     * Class for extracting Speeded Up Robust Features from an image CITE: Bay06 .
-//     *
-//     * The algorithm parameters:
-//     * <ul>
-//     *   <li>
-//     *    member int extended
-//     *   <ul>
-//     *     <li>
-//     *        0 means that the basic descriptors (64 elements each) shall be computed
-//     *     </li>
-//     *     <li>
-//     *        1 means that the extended descriptors (128 elements each) shall be computed
-//     *     </li>
-//     *   </ul>
-//     *   <li>
-//     *    member int upright
-//     *   <ul>
-//     *     <li>
-//     *        0 means that detector computes orientation of each feature.
-//     *     </li>
-//     *     <li>
-//     *        1 means that the orientation is not computed (which is much, much faster). For example,
-//     * if you match images from a stereo pair, or do image stitching, the matched features
-//     * likely have very similar angles, and you can speed up feature extraction by setting
-//     * upright=1.
-//     *     </li>
-//     *   </ul>
-//     *   <li>
-//     *    member double hessianThreshold
-//     * Threshold for the keypoint detector. Only features, whose hessian is larger than
-//     * hessianThreshold are retained by the detector. Therefore, the larger the value, the less
-//     * keypoints you will get. A good default value could be from 300 to 500, depending from the
-//     * image contrast.
-//     *   </li>
-//     *   <li>
-//     *    member int nOctaves
-//     * The number of a gaussian pyramid octaves that the detector uses. It is set to 4 by default.
-//     * If you want to get very large features, use the larger value. If you want just small
-//     * features, decrease it.
-//     *   </li>
-//     *   <li>
-//     *    member int nOctaveLayers
-//     * The number of images within each octave of a gaussian pyramid. It is set to 2 by default.
-//     *   </li>
-//     * </ul>
-//     * <b>Note:</b>
-//     * <ul>
-//     *   <li>
-//     *       An example using the SURF feature detector can be found at
-//     *         opencv_source_code/samples/cpp/generic_descriptor_match.cpp
-//     *   <ul>
-//     *     <li>
-//     *        Another example using the SURF feature detector, extractor and matcher can be found at
-//     *         opencv_source_code/samples/cpp/matcher_simple.cpp
-//     *     </li>
-//     *   </ul>
-//     *   </li>
-//     * </ul>
+//     @brief Class for extracting Speeded Up Robust Features from an image @cite Bay06 .
+     
+//     The algorithm parameters:
+//     -   member int extended
+//         -   0 means that the basic descriptors (64 elements each) shall be computed
+//         -   1 means that the extended descriptors (128 elements each) shall be computed
+//     -   member int upright
+//         -   0 means that detector computes orientation of each feature.
+//         -   1 means that the orientation is not computed (which is much, much faster). For example,
+//     if you match images from a stereo pair, or do image stitching, the matched features
+//     likely have very similar angles, and you can speed up feature extraction by setting
+//     upright=1.
+//     -   member double hessianThreshold
+//     Threshold for the keypoint detector. Only features, whose hessian is larger than
+//     hessianThreshold are retained by the detector. Therefore, the larger the value, the less
+//     keypoints you will get. A good default value could be from 300 to 500, depending from the
+//     image contrast.
+//     -   member int nOctaves
+//     The number of a gaussian pyramid octaves that the detector uses. It is set to 4 by default.
+//     If you want to get very large features, use the larger value. If you want just small
+//     features, decrease it.
+//     -   member int nOctaveLayers
+//     The number of images within each octave of a gaussian pyramid. It is set to 2 by default.
+//     @note
+//        -   An example using the SURF feature detector can be found at
+//             opencv_source_code/samples/cpp/generic_descriptor_match.cpp
+//         -   Another example using the SURF feature detector, extractor and matcher can be found at
+//             opencv_source_code/samples/cpp/matcher_simple.cpp
 //     */
 
 //    public class SURF : Feature2D
@@ -106,14 +76,13 @@
 //        //
 
 //        /**
-//         * param hessianThreshold Threshold for hessian keypoint detector used in SURF.
-//         *     param nOctaves Number of pyramid octaves the keypoint detector will use.
-//         *     param nOctaveLayers Number of octave layers within each octave.
-//         *     param extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
-//         *     64-element descriptors).
-//         *     param upright Up-right or rotated features flag (true - do not compute orientation of features;
-//         *     false - compute orientation).
-//         * return automatically generated
+//         @param hessianThreshold Threshold for hessian keypoint detector used in SURF.
+//             @param nOctaves Number of pyramid octaves the keypoint detector will use.
+//             @param nOctaveLayers Number of octave layers within each octave.
+//             @param extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
+//             64-element descriptors).
+//             @param upright Up-right or rotated features flag (true - do not compute orientation of features;
+//             false - compute orientation).
 //         */
 //        public static SURF create(double hessianThreshold, int nOctaves, int nOctaveLayers, bool extended, bool upright)
 //        {
@@ -125,13 +94,13 @@
 //        }
 
 //        /**
-//         * param hessianThreshold Threshold for hessian keypoint detector used in SURF.
-//         *     param nOctaves Number of pyramid octaves the keypoint detector will use.
-//         *     param nOctaveLayers Number of octave layers within each octave.
-//         *     param extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
-//         *     64-element descriptors).
-//         *     false - compute orientation).
-//         * return automatically generated
+//         @param hessianThreshold Threshold for hessian keypoint detector used in SURF.
+//             @param nOctaves Number of pyramid octaves the keypoint detector will use.
+//             @param nOctaveLayers Number of octave layers within each octave.
+//             @param extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
+//             64-element descriptors).
+//             @param upright Up-right or rotated features flag (true - do not compute orientation of features;
+//             false - compute orientation).
 //         */
 //        public static SURF create(double hessianThreshold, int nOctaves, int nOctaveLayers, bool extended)
 //        {
@@ -143,12 +112,13 @@
 //        }
 
 //        /**
-//         * param hessianThreshold Threshold for hessian keypoint detector used in SURF.
-//         *     param nOctaves Number of pyramid octaves the keypoint detector will use.
-//         *     param nOctaveLayers Number of octave layers within each octave.
-//         *     64-element descriptors).
-//         *     false - compute orientation).
-//         * return automatically generated
+//         @param hessianThreshold Threshold for hessian keypoint detector used in SURF.
+//             @param nOctaves Number of pyramid octaves the keypoint detector will use.
+//             @param nOctaveLayers Number of octave layers within each octave.
+//             @param extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
+//             64-element descriptors).
+//             @param upright Up-right or rotated features flag (true - do not compute orientation of features;
+//             false - compute orientation).
 //         */
 //        public static SURF create(double hessianThreshold, int nOctaves, int nOctaveLayers)
 //        {
@@ -160,11 +130,13 @@
 //        }
 
 //        /**
-//         * param hessianThreshold Threshold for hessian keypoint detector used in SURF.
-//         *     param nOctaves Number of pyramid octaves the keypoint detector will use.
-//         *     64-element descriptors).
-//         *     false - compute orientation).
-//         * return automatically generated
+//         @param hessianThreshold Threshold for hessian keypoint detector used in SURF.
+//             @param nOctaves Number of pyramid octaves the keypoint detector will use.
+//             @param nOctaveLayers Number of octave layers within each octave.
+//             @param extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
+//             64-element descriptors).
+//             @param upright Up-right or rotated features flag (true - do not compute orientation of features;
+//             false - compute orientation).
 //         */
 //        public static SURF create(double hessianThreshold, int nOctaves)
 //        {
@@ -176,10 +148,13 @@
 //        }
 
 //        /**
-//         * param hessianThreshold Threshold for hessian keypoint detector used in SURF.
-//         *     64-element descriptors).
-//         *     false - compute orientation).
-//         * return automatically generated
+//         @param hessianThreshold Threshold for hessian keypoint detector used in SURF.
+//             @param nOctaves Number of pyramid octaves the keypoint detector will use.
+//             @param nOctaveLayers Number of octave layers within each octave.
+//             @param extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
+//             64-element descriptors).
+//             @param upright Up-right or rotated features flag (true - do not compute orientation of features;
+//             false - compute orientation).
 //         */
 //        public static SURF create(double hessianThreshold)
 //        {
@@ -191,9 +166,13 @@
 //        }
 
 //        /**
-//         *     64-element descriptors).
-//         *     false - compute orientation).
-//         * return automatically generated
+//         @param hessianThreshold Threshold for hessian keypoint detector used in SURF.
+//             @param nOctaves Number of pyramid octaves the keypoint detector will use.
+//             @param nOctaveLayers Number of octave layers within each octave.
+//             @param extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
+//             64-element descriptors).
+//             @param upright Up-right or rotated features flag (true - do not compute orientation of features;
+//             false - compute orientation).
 //         */
 //        public static SURF create()
 //        {
@@ -345,6 +324,20 @@
 //        }
 
 
+//        //
+//        // C++:  String cv::xfeatures2d::SURF::getDefaultName()
+//        //
+
+//        public override string getDefaultName()
+//        {
+//            ThrowIfDisposed();
+
+//            string retVal = Marshal.PtrToStringAnsi(DisposableObject.ThrowIfNullIntPtr(xfeatures2d_SURF_getDefaultName_10(nativeObj)));
+
+//            return retVal;
+//        }
+
+
 //#if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
 //        const string LIBNAME = "__Internal";
 //#else
@@ -408,6 +401,10 @@
 //        [DllImport(LIBNAME)]
 //        [return: MarshalAs(UnmanagedType.U1)]
 //        private static extern bool xfeatures2d_SURF_getUpright_10(IntPtr nativeObj);
+
+//        // C++:  String cv::xfeatures2d::SURF::getDefaultName()
+//        [DllImport(LIBNAME)]
+//        private static extern IntPtr xfeatures2d_SURF_getDefaultName_10(IntPtr nativeObj);
 
 //        // native support for java finalize()
 //        [DllImport(LIBNAME)]

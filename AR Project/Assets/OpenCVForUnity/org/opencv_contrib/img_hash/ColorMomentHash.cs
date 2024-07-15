@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.Img_hashModule
 
     // C++: class ColorMomentHash
     /**
-     * Image hash based on color moments.
-     *
-     * See CITE: tang2012perceptual for details.
+     @brief Image hash based on color moments.
+     
+     See @cite tang2012perceptual for details.
      */
 
     public class ColorMomentHash : ImgHashBase

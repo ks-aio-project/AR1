@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,11 +10,11 @@ namespace OpenCVForUnity.DnnModule
 {
     // C++: class Model
     /**
-     * This class is presented high-level API for neural networks.
-     *
-     * Model allows to set params for preprocessing input image.
-     * Model creates net from file with trained weights and config,
-     * sets preprocessing input and runs forward pass.
+     @brief This class is presented high-level API for neural networks.
+           *
+           * Model allows to set params for preprocessing input image.
+           * Model creates net from file with trained weights and config,
+           * sets preprocessing input and runs forward pass.
      */
 
     public class Model : DisposableOpenCVObject
@@ -55,10 +55,10 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Create model from deep learning network represented in one of the supported formats.
-         * An order of {code model} and {code config} arguments does not matter.
-         * param model Binary file contains trained weights.
-         * param config Text file contains network configuration.
+         * @brief Create model from deep learning network represented in one of the supported formats.
+                   * An order of @p model and @p config arguments does not matter.
+                   * @param[in] model Binary file contains trained weights.
+                   * @param[in] config Text file contains network configuration.
          */
         public Model(string model, string config)
         {
@@ -70,9 +70,10 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Create model from deep learning network represented in one of the supported formats.
-         * An order of {code model} and {code config} arguments does not matter.
-         * param model Binary file contains trained weights.
+         * @brief Create model from deep learning network represented in one of the supported formats.
+                   * An order of @p model and @p config arguments does not matter.
+                   * @param[in] model Binary file contains trained weights.
+                   * @param[in] config Text file contains network configuration.
          */
         public Model(string model)
         {
@@ -89,8 +90,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Create model from deep learning network.
-         * param network Net object.
+         * @brief Create model from deep learning network.
+                   * @param[in] network Net object.
          */
         public Model(Net network)
         {
@@ -107,10 +108,9 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Set input size for frame.
-         * param size New input size.
-         * <b>Note:</b> If shape of the new blob less than 0, then frame size not change.
-         * return automatically generated
+         @brief Set input size for frame.
+                   *  @param[in] size New input size.
+                   *  @note If shape of the new blob less than 0, then frame size not change.
          */
         public Model setInputSize(Size size)
         {
@@ -127,10 +127,9 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         *
-         * param width New input width.
-         * param height New input height.
-         * return automatically generated
+         @overload
+                  *  @param[in] width New input width.
+                  *  @param[in] height New input height.
          */
         public Model setInputSize(int width, int height)
         {
@@ -147,9 +146,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Set mean value for frame.
-         * param mean Scalar with mean values which are subtracted from channels.
-         * return automatically generated
+         @brief Set mean value for frame.
+                   *  @param[in] mean Scalar with mean values which are subtracted from channels.
          */
         public Model setInputMean(Scalar mean)
         {
@@ -162,19 +160,18 @@ namespace OpenCVForUnity.DnnModule
 
 
         //
-        // C++:  Model cv::dnn::Model::setInputScale(double scale)
+        // C++:  Model cv::dnn::Model::setInputScale(Scalar scale)
         //
 
         /**
-         * Set scalefactor value for frame.
-         * param scale Multiplier for frame values.
-         * return automatically generated
+         @brief Set scalefactor value for frame.
+                   *  @param[in] scale Multiplier for frame values.
          */
-        public Model setInputScale(double scale)
+        public Model setInputScale(Scalar scale)
         {
             ThrowIfDisposed();
 
-            return new Model(DisposableObject.ThrowIfNullIntPtr(dnn_Model_setInputScale_10(nativeObj, scale)));
+            return new Model(DisposableObject.ThrowIfNullIntPtr(dnn_Model_setInputScale_10(nativeObj, scale.val[0], scale.val[1], scale.val[2], scale.val[3])));
 
 
         }
@@ -185,9 +182,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Set flag crop for frame.
-         * param crop Flag which indicates whether image will be cropped after resize or not.
-         * return automatically generated
+         @brief Set flag crop for frame.
+                   *  @param[in] crop Flag which indicates whether image will be cropped after resize or not.
          */
         public Model setInputCrop(bool crop)
         {
@@ -204,9 +200,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Set flag swapRB for frame.
-         * param swapRB Flag which indicates that swap first and last channels.
-         * return automatically generated
+         @brief Set flag swapRB for frame.
+                   *  @param[in] swapRB Flag which indicates that swap first and last channels.
          */
         public Model setInputSwapRB(bool swapRB)
         {
@@ -219,17 +214,35 @@ namespace OpenCVForUnity.DnnModule
 
 
         //
+        // C++:  Model cv::dnn::Model::setOutputNames(vector_String outNames)
+        //
+
+        /**
+         @brief Set output names for frame.
+                   *  @param[in] outNames Names for output layers.
+         */
+        public Model setOutputNames(List<string> outNames)
+        {
+            ThrowIfDisposed();
+            Mat outNames_mat = Converters.vector_String_to_Mat(outNames);
+            return new Model(DisposableObject.ThrowIfNullIntPtr(dnn_Model_setOutputNames_10(nativeObj, outNames_mat.nativeObj)));
+
+
+        }
+
+
+        //
         // C++:  void cv::dnn::Model::setInputParams(double scale = 1.0, Size size = Size(), Scalar mean = Scalar(), bool swapRB = false, bool crop = false)
         //
 
         /**
-         * Set preprocessing parameters for frame.
-         * param size New input size.
-         * param mean Scalar with mean values which are subtracted from channels.
-         * param scale Multiplier for frame values.
-         * param swapRB Flag which indicates that swap first and last channels.
-         * param crop Flag which indicates whether image will be cropped after resize or not.
-         * blob(n, c, y, x) = scale * resize( frame(y, x, c) ) - mean(c) )
+         @brief Set preprocessing parameters for frame.
+                  *  @param[in] size New input size.
+                  *  @param[in] mean Scalar with mean values which are subtracted from channels.
+                  *  @param[in] scale Multiplier for frame values.
+                  *  @param[in] swapRB Flag which indicates that swap first and last channels.
+                  *  @param[in] crop Flag which indicates whether image will be cropped after resize or not.
+                  *  blob(n, c, y, x) = scale * resize( frame(y, x, c) ) - mean(c) )
          */
         public void setInputParams(double scale, Size size, Scalar mean, bool swapRB, bool crop)
         {
@@ -241,12 +254,13 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Set preprocessing parameters for frame.
-         * param size New input size.
-         * param mean Scalar with mean values which are subtracted from channels.
-         * param scale Multiplier for frame values.
-         * param swapRB Flag which indicates that swap first and last channels.
-         * blob(n, c, y, x) = scale * resize( frame(y, x, c) ) - mean(c) )
+         @brief Set preprocessing parameters for frame.
+                  *  @param[in] size New input size.
+                  *  @param[in] mean Scalar with mean values which are subtracted from channels.
+                  *  @param[in] scale Multiplier for frame values.
+                  *  @param[in] swapRB Flag which indicates that swap first and last channels.
+                  *  @param[in] crop Flag which indicates whether image will be cropped after resize or not.
+                  *  blob(n, c, y, x) = scale * resize( frame(y, x, c) ) - mean(c) )
          */
         public void setInputParams(double scale, Size size, Scalar mean, bool swapRB)
         {
@@ -258,11 +272,13 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Set preprocessing parameters for frame.
-         * param size New input size.
-         * param mean Scalar with mean values which are subtracted from channels.
-         * param scale Multiplier for frame values.
-         * blob(n, c, y, x) = scale * resize( frame(y, x, c) ) - mean(c) )
+         @brief Set preprocessing parameters for frame.
+                  *  @param[in] size New input size.
+                  *  @param[in] mean Scalar with mean values which are subtracted from channels.
+                  *  @param[in] scale Multiplier for frame values.
+                  *  @param[in] swapRB Flag which indicates that swap first and last channels.
+                  *  @param[in] crop Flag which indicates whether image will be cropped after resize or not.
+                  *  blob(n, c, y, x) = scale * resize( frame(y, x, c) ) - mean(c) )
          */
         public void setInputParams(double scale, Size size, Scalar mean)
         {
@@ -274,10 +290,13 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Set preprocessing parameters for frame.
-         * param size New input size.
-         * param scale Multiplier for frame values.
-         * blob(n, c, y, x) = scale * resize( frame(y, x, c) ) - mean(c) )
+         @brief Set preprocessing parameters for frame.
+                  *  @param[in] size New input size.
+                  *  @param[in] mean Scalar with mean values which are subtracted from channels.
+                  *  @param[in] scale Multiplier for frame values.
+                  *  @param[in] swapRB Flag which indicates that swap first and last channels.
+                  *  @param[in] crop Flag which indicates whether image will be cropped after resize or not.
+                  *  blob(n, c, y, x) = scale * resize( frame(y, x, c) ) - mean(c) )
          */
         public void setInputParams(double scale, Size size)
         {
@@ -289,9 +308,13 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Set preprocessing parameters for frame.
-         * param scale Multiplier for frame values.
-         * blob(n, c, y, x) = scale * resize( frame(y, x, c) ) - mean(c) )
+         @brief Set preprocessing parameters for frame.
+                  *  @param[in] size New input size.
+                  *  @param[in] mean Scalar with mean values which are subtracted from channels.
+                  *  @param[in] scale Multiplier for frame values.
+                  *  @param[in] swapRB Flag which indicates that swap first and last channels.
+                  *  @param[in] crop Flag which indicates whether image will be cropped after resize or not.
+                  *  blob(n, c, y, x) = scale * resize( frame(y, x, c) ) - mean(c) )
          */
         public void setInputParams(double scale)
         {
@@ -303,8 +326,13 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Set preprocessing parameters for frame.
-         * blob(n, c, y, x) = scale * resize( frame(y, x, c) ) - mean(c) )
+         @brief Set preprocessing parameters for frame.
+                  *  @param[in] size New input size.
+                  *  @param[in] mean Scalar with mean values which are subtracted from channels.
+                  *  @param[in] scale Multiplier for frame values.
+                  *  @param[in] swapRB Flag which indicates that swap first and last channels.
+                  *  @param[in] crop Flag which indicates whether image will be cropped after resize or not.
+                  *  blob(n, c, y, x) = scale * resize( frame(y, x, c) ) - mean(c) )
          */
         public void setInputParams()
         {
@@ -321,9 +349,9 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Given the {code input} frame, create input blob, run net and return the output {code blobs}.
-         * param outs Allocated output blobs, which will store results of the computation.
-         * param frame automatically generated
+         @brief Given the @p input frame, create input blob, run net and return the output @p blobs.
+                   *  @param[in]  frame  The input image.
+                   *  @param[out] outs Allocated output blobs, which will store results of the computation.
          */
         public void predict(Mat frame, List<Mat> outs)
         {
@@ -365,6 +393,20 @@ namespace OpenCVForUnity.DnnModule
         }
 
 
+        //
+        // C++:  Model cv::dnn::Model::enableWinograd(bool useWinograd)
+        //
+
+        public Model enableWinograd(bool useWinograd)
+        {
+            ThrowIfDisposed();
+
+            return new Model(DisposableObject.ThrowIfNullIntPtr(dnn_Model_enableWinograd_10(nativeObj, useWinograd)));
+
+
+        }
+
+
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         const string LIBNAME = "__Internal";
 #else
@@ -395,9 +437,9 @@ namespace OpenCVForUnity.DnnModule
         [DllImport(LIBNAME)]
         private static extern IntPtr dnn_Model_setInputMean_10(IntPtr nativeObj, double mean_val0, double mean_val1, double mean_val2, double mean_val3);
 
-        // C++:  Model cv::dnn::Model::setInputScale(double scale)
+        // C++:  Model cv::dnn::Model::setInputScale(Scalar scale)
         [DllImport(LIBNAME)]
-        private static extern IntPtr dnn_Model_setInputScale_10(IntPtr nativeObj, double scale);
+        private static extern IntPtr dnn_Model_setInputScale_10(IntPtr nativeObj, double scale_val0, double scale_val1, double scale_val2, double scale_val3);
 
         // C++:  Model cv::dnn::Model::setInputCrop(bool crop)
         [DllImport(LIBNAME)]
@@ -406,6 +448,10 @@ namespace OpenCVForUnity.DnnModule
         // C++:  Model cv::dnn::Model::setInputSwapRB(bool swapRB)
         [DllImport(LIBNAME)]
         private static extern IntPtr dnn_Model_setInputSwapRB_10(IntPtr nativeObj, [MarshalAs(UnmanagedType.U1)] bool swapRB);
+
+        // C++:  Model cv::dnn::Model::setOutputNames(vector_String outNames)
+        [DllImport(LIBNAME)]
+        private static extern IntPtr dnn_Model_setOutputNames_10(IntPtr nativeObj, IntPtr outNames_mat_nativeObj);
 
         // C++:  void cv::dnn::Model::setInputParams(double scale = 1.0, Size size = Size(), Scalar mean = Scalar(), bool swapRB = false, bool crop = false)
         [DllImport(LIBNAME)]
@@ -433,10 +479,15 @@ namespace OpenCVForUnity.DnnModule
         [DllImport(LIBNAME)]
         private static extern IntPtr dnn_Model_setPreferableTarget_10(IntPtr nativeObj, int targetId);
 
+        // C++:  Model cv::dnn::Model::enableWinograd(bool useWinograd)
+        [DllImport(LIBNAME)]
+        private static extern IntPtr dnn_Model_enableWinograd_10(IntPtr nativeObj, [MarshalAs(UnmanagedType.U1)] bool useWinograd);
+
         // native support for java finalize()
         [DllImport(LIBNAME)]
         private static extern void dnn_Model_delete(IntPtr nativeObj);
 
     }
 }
+
 #endif

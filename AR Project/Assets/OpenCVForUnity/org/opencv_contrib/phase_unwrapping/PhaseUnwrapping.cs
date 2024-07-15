@@ -1,4 +1,4 @@
-﻿#if !UNITY_WEBGL
+#if !UNITY_WEBGL
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,7 +11,7 @@ namespace OpenCVForUnity.Phase_unwrappingModule
 
     // C++: class PhaseUnwrapping
     /**
-     * Abstract base class for phase unwrapping.
+     @brief Abstract base class for phase unwrapping.
      */
 
     public class PhaseUnwrapping : Algorithm
@@ -49,11 +49,11 @@ namespace OpenCVForUnity.Phase_unwrappingModule
         //
 
         /**
-         * Unwraps a 2D phase map.
-         *
-         * param wrappedPhaseMap The wrapped phase map of type CV_32FC1 that needs to be unwrapped.
-         * param unwrappedPhaseMap The unwrapped phase map.
-         * param shadowMask Optional CV_8UC1 mask image used when some pixels do not hold any phase information in the wrapped phase map.
+         * @brief Unwraps a 2D phase map.
+         
+              * @param wrappedPhaseMap The wrapped phase map of type CV_32FC1 that needs to be unwrapped.
+              * @param unwrappedPhaseMap The unwrapped phase map.
+              * @param shadowMask Optional CV_8UC1 mask image used when some pixels do not hold any phase information in the wrapped phase map.
          */
         public void unwrapPhaseMap(Mat wrappedPhaseMap, Mat unwrappedPhaseMap, Mat shadowMask)
         {
@@ -68,10 +68,11 @@ namespace OpenCVForUnity.Phase_unwrappingModule
         }
 
         /**
-         * Unwraps a 2D phase map.
-         *
-         * param wrappedPhaseMap The wrapped phase map of type CV_32FC1 that needs to be unwrapped.
-         * param unwrappedPhaseMap The unwrapped phase map.
+         * @brief Unwraps a 2D phase map.
+         
+              * @param wrappedPhaseMap The wrapped phase map of type CV_32FC1 that needs to be unwrapped.
+              * @param unwrappedPhaseMap The unwrapped phase map.
+              * @param shadowMask Optional CV_8UC1 mask image used when some pixels do not hold any phase information in the wrapped phase map.
          */
         public void unwrapPhaseMap(Mat wrappedPhaseMap, Mat unwrappedPhaseMap)
         {
@@ -105,4 +106,5 @@ namespace OpenCVForUnity.Phase_unwrappingModule
 
     }
 }
+
 #endif

@@ -1,4 +1,5 @@
-﻿using System;
+using OpenCVForUnity.UtilsModule;
+using System;
 using System.Collections.Generic;
 
 namespace OpenCVForUnity.CoreModule
@@ -58,16 +59,8 @@ namespace OpenCVForUnity.CoreModule
                 return;
             int num = a.Length;
             alloc(num);
-            double[] buff = new double[num * _channels];
-            for (int i = 0; i < num; i++)
-            {
-                Rect2d r = a[i];
-                buff[_channels * i + 0] = (double)r.x;
-                buff[_channels * i + 1] = (double)r.y;
-                buff[_channels * i + 2] = (double)r.width;
-                buff[_channels * i + 3] = (double)r.height;
-            }
-            put(0, 0, buff); //TODO: check ret val!
+
+            Converters.Array_Rect2d_to_Mat(a, this, num);
         }
 
         public Rect2d[] toArray()
@@ -76,24 +69,38 @@ namespace OpenCVForUnity.CoreModule
             Rect2d[] a = new Rect2d[num];
             if (num == 0)
                 return a;
-            double[] buff = new double[num * _channels];
-            get(0, 0, buff); //TODO: check ret val!
-            for (int i = 0; i < num; i++)
-                a[i] = new Rect2d(buff[i * _channels], buff[i * _channels + 1], buff[i * _channels + 2], buff[i * _channels + 3]);
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                a[i] = new Rect2d();
+            }
+            Converters.Mat_to_Array_Rect2d(this, a, num);
             return a;
         }
 
         public void fromList(List<Rect2d> lr)
         {
-            //            Rect2d[] ap = lr.ToArray (new Rect2d[0]);
-            Rect2d[] ap = lr.ToArray();
-            fromArray(ap);
+            if (lr == null || lr.Count == 0)
+                return;
+            int num = lr.Count;
+            alloc(num);
+
+            Converters.List_Rect2d_to_Mat(lr, this, num);
         }
 
         public List<Rect2d> toList()
         {
-            Rect2d[] ar = toArray();
-            return new List<Rect2d>(ar);
+            int num = (int)total();
+            List<Rect2d> a = new List<Rect2d>(num);
+            if (num == 0)
+                return a;
+
+            for (int i = 0; i < num; i++)
+            {
+                a.Add(new Rect2d());
+            }
+            Converters.Mat_to_List_Rect2d(this, a, num);
+            return a;
         }
     }
 }

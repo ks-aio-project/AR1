@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -23,20 +23,20 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Draws keypoints.
-         *
-         * param image Source image.
-         * param keypoints Keypoints from the source image.
-         * param outImage Output image. Its content depends on the flags value defining what is drawn in the
-         * output image. See possible flags bit values below.
-         * param color Color of keypoints.
-         * param flags Flags setting drawing features. Possible flags bit values are defined by
-         * DrawMatchesFlags. See details above in drawMatches .
-         *
-         * <b>Note:</b>
-         * For Python API, flags are modified as cv.DRAW_MATCHES_FLAGS_DEFAULT,
-         * cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS, cv.DRAW_MATCHES_FLAGS_DRAW_OVER_OUTIMG,
-         * cv.DRAW_MATCHES_FLAGS_NOT_DRAW_SINGLE_POINTS
+         @brief Draws keypoints.
+         
+         @param image Source image.
+         @param keypoints Keypoints from the source image.
+         @param outImage Output image. Its content depends on the flags value defining what is drawn in the
+         output image. See possible flags bit values below.
+         @param color Color of keypoints.
+         @param flags Flags setting drawing features. Possible flags bit values are defined by
+         DrawMatchesFlags. See details above in drawMatches .
+         
+         @note
+         For Python API, flags are modified as cv.DRAW_MATCHES_FLAGS_DEFAULT,
+         cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS, cv.DRAW_MATCHES_FLAGS_DRAW_OVER_OUTIMG,
+         cv.DRAW_MATCHES_FLAGS_NOT_DRAW_SINGLE_POINTS
          */
         public static void drawKeypoints(Mat image, MatOfKeyPoint keypoints, Mat outImage, Scalar color, int flags)
         {
@@ -50,19 +50,20 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * Draws keypoints.
-         *
-         * param image Source image.
-         * param keypoints Keypoints from the source image.
-         * param outImage Output image. Its content depends on the flags value defining what is drawn in the
-         * output image. See possible flags bit values below.
-         * param color Color of keypoints.
-         * DrawMatchesFlags. See details above in drawMatches .
-         *
-         * <b>Note:</b>
-         * For Python API, flags are modified as cv.DRAW_MATCHES_FLAGS_DEFAULT,
-         * cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS, cv.DRAW_MATCHES_FLAGS_DRAW_OVER_OUTIMG,
-         * cv.DRAW_MATCHES_FLAGS_NOT_DRAW_SINGLE_POINTS
+         @brief Draws keypoints.
+         
+         @param image Source image.
+         @param keypoints Keypoints from the source image.
+         @param outImage Output image. Its content depends on the flags value defining what is drawn in the
+         output image. See possible flags bit values below.
+         @param color Color of keypoints.
+         @param flags Flags setting drawing features. Possible flags bit values are defined by
+         DrawMatchesFlags. See details above in drawMatches .
+         
+         @note
+         For Python API, flags are modified as cv.DRAW_MATCHES_FLAGS_DEFAULT,
+         cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS, cv.DRAW_MATCHES_FLAGS_DRAW_OVER_OUTIMG,
+         cv.DRAW_MATCHES_FLAGS_NOT_DRAW_SINGLE_POINTS
          */
         public static void drawKeypoints(Mat image, MatOfKeyPoint keypoints, Mat outImage, Scalar color)
         {
@@ -76,18 +77,20 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * Draws keypoints.
-         *
-         * param image Source image.
-         * param keypoints Keypoints from the source image.
-         * param outImage Output image. Its content depends on the flags value defining what is drawn in the
-         * output image. See possible flags bit values below.
-         * DrawMatchesFlags. See details above in drawMatches .
-         *
-         * <b>Note:</b>
-         * For Python API, flags are modified as cv.DRAW_MATCHES_FLAGS_DEFAULT,
-         * cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS, cv.DRAW_MATCHES_FLAGS_DRAW_OVER_OUTIMG,
-         * cv.DRAW_MATCHES_FLAGS_NOT_DRAW_SINGLE_POINTS
+         @brief Draws keypoints.
+         
+         @param image Source image.
+         @param keypoints Keypoints from the source image.
+         @param outImage Output image. Its content depends on the flags value defining what is drawn in the
+         output image. See possible flags bit values below.
+         @param color Color of keypoints.
+         @param flags Flags setting drawing features. Possible flags bit values are defined by
+         DrawMatchesFlags. See details above in drawMatches .
+         
+         @note
+         For Python API, flags are modified as cv.DRAW_MATCHES_FLAGS_DEFAULT,
+         cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS, cv.DRAW_MATCHES_FLAGS_DRAW_OVER_OUTIMG,
+         cv.DRAW_MATCHES_FLAGS_NOT_DRAW_SINGLE_POINTS
          */
         public static void drawKeypoints(Mat image, MatOfKeyPoint keypoints, Mat outImage)
         {
@@ -106,27 +109,27 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Draws the found matches of keypoints from two images.
-         *
-         * param img1 First source image.
-         * param keypoints1 Keypoints from the first source image.
-         * param img2 Second source image.
-         * param keypoints2 Keypoints from the second source image.
-         * param matches1to2 Matches from the first image to the second one, which means that keypoints1[i]
-         * has a corresponding point in keypoints2[matches[i]] .
-         * param outImg Output image. Its content depends on the flags value defining what is drawn in the
-         * output image. See possible flags bit values below.
-         * param matchColor Color of matches (lines and connected keypoints). If matchColor==Scalar::all(-1)
-         * , the color is generated randomly.
-         * param singlePointColor Color of single keypoints (circles), which means that keypoints do not
-         * have the matches. If singlePointColor==Scalar::all(-1) , the color is generated randomly.
-         * param matchesMask Mask determining which matches are drawn. If the mask is empty, all matches are
-         * drawn.
-         * param flags Flags setting drawing features. Possible flags bit values are defined by
-         * DrawMatchesFlags.
-         *
-         * This function draws matches of keypoints from two images in the output image. Match is a line
-         * connecting two keypoints (circles). See cv::DrawMatchesFlags.
+         @brief Draws the found matches of keypoints from two images.
+         
+         @param img1 First source image.
+         @param keypoints1 Keypoints from the first source image.
+         @param img2 Second source image.
+         @param keypoints2 Keypoints from the second source image.
+         @param matches1to2 Matches from the first image to the second one, which means that keypoints1[i]
+         has a corresponding point in keypoints2[matches[i]] .
+         @param outImg Output image. Its content depends on the flags value defining what is drawn in the
+         output image. See possible flags bit values below.
+         @param matchColor Color of matches (lines and connected keypoints). If matchColor==Scalar::all(-1)
+         , the color is generated randomly.
+         @param singlePointColor Color of single keypoints (circles), which means that keypoints do not
+         have the matches. If singlePointColor==Scalar::all(-1) , the color is generated randomly.
+         @param matchesMask Mask determining which matches are drawn. If the mask is empty, all matches are
+         drawn.
+         @param flags Flags setting drawing features. Possible flags bit values are defined by
+         DrawMatchesFlags.
+         
+         This function draws matches of keypoints from two images in the output image. Match is a line
+         connecting two keypoints (circles). See cv::DrawMatchesFlags.
          */
         public static void drawMatches(Mat img1, MatOfKeyPoint keypoints1, Mat img2, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, Mat outImg, Scalar matchColor, Scalar singlePointColor, MatOfByte matchesMask, int flags)
         {
@@ -147,26 +150,27 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * Draws the found matches of keypoints from two images.
-         *
-         * param img1 First source image.
-         * param keypoints1 Keypoints from the first source image.
-         * param img2 Second source image.
-         * param keypoints2 Keypoints from the second source image.
-         * param matches1to2 Matches from the first image to the second one, which means that keypoints1[i]
-         * has a corresponding point in keypoints2[matches[i]] .
-         * param outImg Output image. Its content depends on the flags value defining what is drawn in the
-         * output image. See possible flags bit values below.
-         * param matchColor Color of matches (lines and connected keypoints). If matchColor==Scalar::all(-1)
-         * , the color is generated randomly.
-         * param singlePointColor Color of single keypoints (circles), which means that keypoints do not
-         * have the matches. If singlePointColor==Scalar::all(-1) , the color is generated randomly.
-         * param matchesMask Mask determining which matches are drawn. If the mask is empty, all matches are
-         * drawn.
-         * DrawMatchesFlags.
-         *
-         * This function draws matches of keypoints from two images in the output image. Match is a line
-         * connecting two keypoints (circles). See cv::DrawMatchesFlags.
+         @brief Draws the found matches of keypoints from two images.
+         
+         @param img1 First source image.
+         @param keypoints1 Keypoints from the first source image.
+         @param img2 Second source image.
+         @param keypoints2 Keypoints from the second source image.
+         @param matches1to2 Matches from the first image to the second one, which means that keypoints1[i]
+         has a corresponding point in keypoints2[matches[i]] .
+         @param outImg Output image. Its content depends on the flags value defining what is drawn in the
+         output image. See possible flags bit values below.
+         @param matchColor Color of matches (lines and connected keypoints). If matchColor==Scalar::all(-1)
+         , the color is generated randomly.
+         @param singlePointColor Color of single keypoints (circles), which means that keypoints do not
+         have the matches. If singlePointColor==Scalar::all(-1) , the color is generated randomly.
+         @param matchesMask Mask determining which matches are drawn. If the mask is empty, all matches are
+         drawn.
+         @param flags Flags setting drawing features. Possible flags bit values are defined by
+         DrawMatchesFlags.
+         
+         This function draws matches of keypoints from two images in the output image. Match is a line
+         connecting two keypoints (circles). See cv::DrawMatchesFlags.
          */
         public static void drawMatches(Mat img1, MatOfKeyPoint keypoints1, Mat img2, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, Mat outImg, Scalar matchColor, Scalar singlePointColor, MatOfByte matchesMask)
         {
@@ -187,25 +191,27 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * Draws the found matches of keypoints from two images.
-         *
-         * param img1 First source image.
-         * param keypoints1 Keypoints from the first source image.
-         * param img2 Second source image.
-         * param keypoints2 Keypoints from the second source image.
-         * param matches1to2 Matches from the first image to the second one, which means that keypoints1[i]
-         * has a corresponding point in keypoints2[matches[i]] .
-         * param outImg Output image. Its content depends on the flags value defining what is drawn in the
-         * output image. See possible flags bit values below.
-         * param matchColor Color of matches (lines and connected keypoints). If matchColor==Scalar::all(-1)
-         * , the color is generated randomly.
-         * param singlePointColor Color of single keypoints (circles), which means that keypoints do not
-         * have the matches. If singlePointColor==Scalar::all(-1) , the color is generated randomly.
-         * drawn.
-         * DrawMatchesFlags.
-         *
-         * This function draws matches of keypoints from two images in the output image. Match is a line
-         * connecting two keypoints (circles). See cv::DrawMatchesFlags.
+         @brief Draws the found matches of keypoints from two images.
+         
+         @param img1 First source image.
+         @param keypoints1 Keypoints from the first source image.
+         @param img2 Second source image.
+         @param keypoints2 Keypoints from the second source image.
+         @param matches1to2 Matches from the first image to the second one, which means that keypoints1[i]
+         has a corresponding point in keypoints2[matches[i]] .
+         @param outImg Output image. Its content depends on the flags value defining what is drawn in the
+         output image. See possible flags bit values below.
+         @param matchColor Color of matches (lines and connected keypoints). If matchColor==Scalar::all(-1)
+         , the color is generated randomly.
+         @param singlePointColor Color of single keypoints (circles), which means that keypoints do not
+         have the matches. If singlePointColor==Scalar::all(-1) , the color is generated randomly.
+         @param matchesMask Mask determining which matches are drawn. If the mask is empty, all matches are
+         drawn.
+         @param flags Flags setting drawing features. Possible flags bit values are defined by
+         DrawMatchesFlags.
+         
+         This function draws matches of keypoints from two images in the output image. Match is a line
+         connecting two keypoints (circles). See cv::DrawMatchesFlags.
          */
         public static void drawMatches(Mat img1, MatOfKeyPoint keypoints1, Mat img2, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, Mat outImg, Scalar matchColor, Scalar singlePointColor)
         {
@@ -224,24 +230,27 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * Draws the found matches of keypoints from two images.
-         *
-         * param img1 First source image.
-         * param keypoints1 Keypoints from the first source image.
-         * param img2 Second source image.
-         * param keypoints2 Keypoints from the second source image.
-         * param matches1to2 Matches from the first image to the second one, which means that keypoints1[i]
-         * has a corresponding point in keypoints2[matches[i]] .
-         * param outImg Output image. Its content depends on the flags value defining what is drawn in the
-         * output image. See possible flags bit values below.
-         * param matchColor Color of matches (lines and connected keypoints). If matchColor==Scalar::all(-1)
-         * , the color is generated randomly.
-         * have the matches. If singlePointColor==Scalar::all(-1) , the color is generated randomly.
-         * drawn.
-         * DrawMatchesFlags.
-         *
-         * This function draws matches of keypoints from two images in the output image. Match is a line
-         * connecting two keypoints (circles). See cv::DrawMatchesFlags.
+         @brief Draws the found matches of keypoints from two images.
+         
+         @param img1 First source image.
+         @param keypoints1 Keypoints from the first source image.
+         @param img2 Second source image.
+         @param keypoints2 Keypoints from the second source image.
+         @param matches1to2 Matches from the first image to the second one, which means that keypoints1[i]
+         has a corresponding point in keypoints2[matches[i]] .
+         @param outImg Output image. Its content depends on the flags value defining what is drawn in the
+         output image. See possible flags bit values below.
+         @param matchColor Color of matches (lines and connected keypoints). If matchColor==Scalar::all(-1)
+         , the color is generated randomly.
+         @param singlePointColor Color of single keypoints (circles), which means that keypoints do not
+         have the matches. If singlePointColor==Scalar::all(-1) , the color is generated randomly.
+         @param matchesMask Mask determining which matches are drawn. If the mask is empty, all matches are
+         drawn.
+         @param flags Flags setting drawing features. Possible flags bit values are defined by
+         DrawMatchesFlags.
+         
+         This function draws matches of keypoints from two images in the output image. Match is a line
+         connecting two keypoints (circles). See cv::DrawMatchesFlags.
          */
         public static void drawMatches(Mat img1, MatOfKeyPoint keypoints1, Mat img2, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, Mat outImg, Scalar matchColor)
         {
@@ -260,23 +269,27 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * Draws the found matches of keypoints from two images.
-         *
-         * param img1 First source image.
-         * param keypoints1 Keypoints from the first source image.
-         * param img2 Second source image.
-         * param keypoints2 Keypoints from the second source image.
-         * param matches1to2 Matches from the first image to the second one, which means that keypoints1[i]
-         * has a corresponding point in keypoints2[matches[i]] .
-         * param outImg Output image. Its content depends on the flags value defining what is drawn in the
-         * output image. See possible flags bit values below.
-         * , the color is generated randomly.
-         * have the matches. If singlePointColor==Scalar::all(-1) , the color is generated randomly.
-         * drawn.
-         * DrawMatchesFlags.
-         *
-         * This function draws matches of keypoints from two images in the output image. Match is a line
-         * connecting two keypoints (circles). See cv::DrawMatchesFlags.
+         @brief Draws the found matches of keypoints from two images.
+         
+         @param img1 First source image.
+         @param keypoints1 Keypoints from the first source image.
+         @param img2 Second source image.
+         @param keypoints2 Keypoints from the second source image.
+         @param matches1to2 Matches from the first image to the second one, which means that keypoints1[i]
+         has a corresponding point in keypoints2[matches[i]] .
+         @param outImg Output image. Its content depends on the flags value defining what is drawn in the
+         output image. See possible flags bit values below.
+         @param matchColor Color of matches (lines and connected keypoints). If matchColor==Scalar::all(-1)
+         , the color is generated randomly.
+         @param singlePointColor Color of single keypoints (circles), which means that keypoints do not
+         have the matches. If singlePointColor==Scalar::all(-1) , the color is generated randomly.
+         @param matchesMask Mask determining which matches are drawn. If the mask is empty, all matches are
+         drawn.
+         @param flags Flags setting drawing features. Possible flags bit values are defined by
+         DrawMatchesFlags.
+         
+         This function draws matches of keypoints from two images in the output image. Match is a line
+         connecting two keypoints (circles). See cv::DrawMatchesFlags.
          */
         public static void drawMatches(Mat img1, MatOfKeyPoint keypoints1, Mat img2, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, Mat outImg)
         {
@@ -299,6 +312,9 @@ namespace OpenCVForUnity.Features2dModule
         // C++:  void cv::drawMatches(Mat img1, vector_KeyPoint keypoints1, Mat img2, vector_KeyPoint keypoints2, vector_DMatch matches1to2, Mat& outImg, int matchesThickness, Scalar matchColor = Scalar::all(-1), Scalar singlePointColor = Scalar::all(-1), vector_char matchesMask = std::vector<char>(), DrawMatchesFlags flags = DrawMatchesFlags::DEFAULT)
         //
 
+        /**
+         @overload
+         */
         public static void drawMatches(Mat img1, MatOfKeyPoint keypoints1, Mat img2, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, Mat outImg, int matchesThickness, Scalar matchColor, Scalar singlePointColor, MatOfByte matchesMask, int flags)
         {
             if (img1 != null) img1.ThrowIfDisposed();
@@ -317,6 +333,9 @@ namespace OpenCVForUnity.Features2dModule
 
         }
 
+        /**
+         @overload
+         */
         public static void drawMatches(Mat img1, MatOfKeyPoint keypoints1, Mat img2, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, Mat outImg, int matchesThickness, Scalar matchColor, Scalar singlePointColor, MatOfByte matchesMask)
         {
             if (img1 != null) img1.ThrowIfDisposed();
@@ -335,6 +354,9 @@ namespace OpenCVForUnity.Features2dModule
 
         }
 
+        /**
+         @overload
+         */
         public static void drawMatches(Mat img1, MatOfKeyPoint keypoints1, Mat img2, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, Mat outImg, int matchesThickness, Scalar matchColor, Scalar singlePointColor)
         {
             if (img1 != null) img1.ThrowIfDisposed();
@@ -351,6 +373,9 @@ namespace OpenCVForUnity.Features2dModule
 
         }
 
+        /**
+         @overload
+         */
         public static void drawMatches(Mat img1, MatOfKeyPoint keypoints1, Mat img2, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, Mat outImg, int matchesThickness, Scalar matchColor)
         {
             if (img1 != null) img1.ThrowIfDisposed();
@@ -367,6 +392,9 @@ namespace OpenCVForUnity.Features2dModule
 
         }
 
+        /**
+         @overload
+         */
         public static void drawMatches(Mat img1, MatOfKeyPoint keypoints1, Mat img2, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, Mat outImg, int matchesThickness)
         {
             if (img1 != null) img1.ThrowIfDisposed();

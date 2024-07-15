@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,8 +10,8 @@ namespace OpenCVForUnity.Features2dModule
 
     // C++: class AffineFeature
     /**
-     * Class for implementing the wrapper which makes detectors and extractors to be affine invariant,
-     * described as ASIFT in CITE: YM11 .
+     @brief Class for implementing the wrapper which makes detectors and extractors to be affine invariant,
+     described as ASIFT in @cite YM11 .
      */
 
     public class AffineFeature : Feature2D
@@ -49,12 +49,11 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * param backend The detector/extractor you want to use as backend.
-         *     param maxTilt The highest power index of tilt factor. 5 is used in the paper as tilt sampling range n.
-         *     param minTilt The lowest power index of tilt factor. 0 is used in the paper.
-         *     param tiltStep Tilt sampling step \(\delta_t\) in Algorithm 1 in the paper.
-         *     param rotateStepBase Rotation sampling step factor b in Algorithm 1 in the paper.
-         * return automatically generated
+         @param backend The detector/extractor you want to use as backend.
+             @param maxTilt The highest power index of tilt factor. 5 is used in the paper as tilt sampling range n.
+             @param minTilt The lowest power index of tilt factor. 0 is used in the paper.
+             @param tiltStep Tilt sampling step \f$\delta_t\f$ in Algorithm 1 in the paper.
+             @param rotateStepBase Rotation sampling step factor b in Algorithm 1 in the paper.
          */
         public static AffineFeature create(Feature2D backend, int maxTilt, int minTilt, float tiltStep, float rotateStepBase)
         {
@@ -66,11 +65,11 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * param backend The detector/extractor you want to use as backend.
-         *     param maxTilt The highest power index of tilt factor. 5 is used in the paper as tilt sampling range n.
-         *     param minTilt The lowest power index of tilt factor. 0 is used in the paper.
-         *     param tiltStep Tilt sampling step \(\delta_t\) in Algorithm 1 in the paper.
-         * return automatically generated
+         @param backend The detector/extractor you want to use as backend.
+             @param maxTilt The highest power index of tilt factor. 5 is used in the paper as tilt sampling range n.
+             @param minTilt The lowest power index of tilt factor. 0 is used in the paper.
+             @param tiltStep Tilt sampling step \f$\delta_t\f$ in Algorithm 1 in the paper.
+             @param rotateStepBase Rotation sampling step factor b in Algorithm 1 in the paper.
          */
         public static AffineFeature create(Feature2D backend, int maxTilt, int minTilt, float tiltStep)
         {
@@ -82,10 +81,11 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * param backend The detector/extractor you want to use as backend.
-         *     param maxTilt The highest power index of tilt factor. 5 is used in the paper as tilt sampling range n.
-         *     param minTilt The lowest power index of tilt factor. 0 is used in the paper.
-         * return automatically generated
+         @param backend The detector/extractor you want to use as backend.
+             @param maxTilt The highest power index of tilt factor. 5 is used in the paper as tilt sampling range n.
+             @param minTilt The lowest power index of tilt factor. 0 is used in the paper.
+             @param tiltStep Tilt sampling step \f$\delta_t\f$ in Algorithm 1 in the paper.
+             @param rotateStepBase Rotation sampling step factor b in Algorithm 1 in the paper.
          */
         public static AffineFeature create(Feature2D backend, int maxTilt, int minTilt)
         {
@@ -97,9 +97,11 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * param backend The detector/extractor you want to use as backend.
-         *     param maxTilt The highest power index of tilt factor. 5 is used in the paper as tilt sampling range n.
-         * return automatically generated
+         @param backend The detector/extractor you want to use as backend.
+             @param maxTilt The highest power index of tilt factor. 5 is used in the paper as tilt sampling range n.
+             @param minTilt The lowest power index of tilt factor. 0 is used in the paper.
+             @param tiltStep Tilt sampling step \f$\delta_t\f$ in Algorithm 1 in the paper.
+             @param rotateStepBase Rotation sampling step factor b in Algorithm 1 in the paper.
          */
         public static AffineFeature create(Feature2D backend, int maxTilt)
         {
@@ -111,8 +113,11 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * param backend The detector/extractor you want to use as backend.
-         * return automatically generated
+         @param backend The detector/extractor you want to use as backend.
+             @param maxTilt The highest power index of tilt factor. 5 is used in the paper as tilt sampling range n.
+             @param minTilt The lowest power index of tilt factor. 0 is used in the paper.
+             @param tiltStep Tilt sampling step \f$\delta_t\f$ in Algorithm 1 in the paper.
+             @param rotateStepBase Rotation sampling step factor b in Algorithm 1 in the paper.
          */
         public static AffineFeature create(Feature2D backend)
         {

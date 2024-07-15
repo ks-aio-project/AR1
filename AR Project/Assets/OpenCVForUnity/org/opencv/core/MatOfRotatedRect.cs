@@ -1,4 +1,5 @@
-﻿using System;
+using OpenCVForUnity.UtilsModule;
+using System;
 using System.Collections.Generic;
 
 namespace OpenCVForUnity.CoreModule
@@ -57,17 +58,8 @@ namespace OpenCVForUnity.CoreModule
                 return;
             int num = a.Length;
             alloc(num);
-            float[] buff = new float[num * _channels];
-            for (int i = 0; i < num; i++)
-            {
-                RotatedRect r = a[i];
-                buff[_channels * i + 0] = (float)r.center.x;
-                buff[_channels * i + 1] = (float)r.center.y;
-                buff[_channels * i + 2] = (float)r.size.width;
-                buff[_channels * i + 3] = (float)r.size.height;
-                buff[_channels * i + 4] = (float)r.angle;
-            }
-            put(0, 0, buff); //TODO: check ret val!
+
+            Converters.Array_RotatedRect_to_Mat(a, this, num);
         }
 
         public RotatedRect[] toArray()
@@ -76,26 +68,38 @@ namespace OpenCVForUnity.CoreModule
             RotatedRect[] a = new RotatedRect[num];
             if (num == 0)
                 return a;
-            float[] buff = new float[_channels];
-            for (int i = 0; i < num; i++)
+
+            for (int i = 0; i < a.Length; i++)
             {
-                get(i, 0, buff); //TODO: check ret val!
-                a[i] = new RotatedRect(new Point(buff[0], buff[1]), new Size(buff[2], buff[3]), buff[4]);
+                a[i] = new RotatedRect();
             }
+            Converters.Mat_to_Array_RotatedRect(this, a, num);
             return a;
         }
 
         public void fromList(List<RotatedRect> lr)
         {
-            //        RotatedRect[] ap = lr.ToArray(new RotatedRect[0]);
-            RotatedRect[] ap = lr.ToArray();
-            fromArray(ap);
+            if (lr == null || lr.Count == 0)
+                return;
+            int num = lr.Count;
+            alloc(num);
+
+            Converters.List_RotatedRect_to_Mat(lr, this, num);
         }
 
         public List<RotatedRect> toList()
         {
-            RotatedRect[] ar = toArray();
-            return new List<RotatedRect>(ar);
+            int num = (int)total();
+            List<RotatedRect> a = new List<RotatedRect>(num);
+            if (num == 0)
+                return a;
+
+            for (int i = 0; i < num; i++)
+            {
+                a.Add(new RotatedRect());
+            }
+            Converters.Mat_to_List_RotatedRect(this, a, num);
+            return a;
         }
     }
 }

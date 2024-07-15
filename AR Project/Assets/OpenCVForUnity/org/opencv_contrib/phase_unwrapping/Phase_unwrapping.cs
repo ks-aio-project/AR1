@@ -1,4 +1,4 @@
-﻿#if !UNITY_WEBGL
+#if !UNITY_WEBGL
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -18,4 +18,5 @@ namespace OpenCVForUnity.Phase_unwrappingModule
 
     }
 }
+
 #endif

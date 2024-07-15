@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,8 +10,8 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class GraphSegmentation
     /**
-     * Graph Based Segmentation Algorithm.
-     *                         The class implements the algorithm described in CITE: PFF2004 .
+     @brief Graph Based Segmentation Algorithm.
+                             The class implements the algorithm described in @cite PFF2004 .
      */
 
     public class GraphSegmentation : Algorithm
@@ -49,9 +49,9 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Segment an image and store output in dst
-         *                                 param src The input image. Any number of channel (1 (Eg: Gray), 3 (Eg: RGB), 4 (Eg: RGB-D)) can be provided
-         *                                 param dst The output segmentation. It's a CV_32SC1 Mat with the same number of cols and rows as input image, with an unique, sequential, id for each pixel.
+         @brief Segment an image and store output in dst
+                                         @param src The input image. Any number of channel (1 (Eg: Gray), 3 (Eg: RGB), 4 (Eg: RGB-D)) can be provided
+                                         @param dst The output segmentation. It's a CV_32SC1 Mat with the same number of cols and rows as input image, with an unique, sequential, id for each pixel.
          */
         public void processImage(Mat src, Mat dst)
         {

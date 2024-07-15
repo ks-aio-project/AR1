@@ -1,5 +1,3 @@
-﻿#if !(PLATFORM_LUMIN && !UNITY_EDITOR)
-
 #if !UNITY_WSA_10_0
 
 using System;
@@ -19,7 +17,7 @@ namespace OpenCVForUnityExample
 {
     /// <summary>
     /// Dnn ObjectDetection Example
-    /// Referring to https://github.com/opencv/opencv/blob/master/samples/dnn/object_detection.cpp.
+    /// Referring to https://github.com/opencv/opencv/blob/master/samples/dnn/object_detection.cpp
     /// </summary>
     [RequireComponent(typeof(WebCamTextureToMatHelper))]
     public class DnnObjectDetectionWebCamTextureExample : MonoBehaviour
@@ -107,9 +105,21 @@ namespace OpenCVForUnityExample
             getFilePath_Coroutine = GetFilePath();
             StartCoroutine(getFilePath_Coroutine);
 #else
-            if (!string.IsNullOrEmpty(classes)) classes_filepath = Utils.getFilePath("dnn/" + classes);
-            if (!string.IsNullOrEmpty(config)) config_filepath = Utils.getFilePath("dnn/" + config);
-            if (!string.IsNullOrEmpty(model)) model_filepath = Utils.getFilePath("dnn/" + model);
+            if (!string.IsNullOrEmpty(classes))
+            {
+                classes_filepath = Utils.getFilePath("OpenCVForUnity/dnn/" + classes);
+                if (string.IsNullOrEmpty(classes_filepath)) Debug.Log("The file:" + classes + " did not exist in the folder “Assets/StreamingAssets/OpenCVForUnity/dnn”.");
+            }
+            if (!string.IsNullOrEmpty(config))
+            {
+                config_filepath = Utils.getFilePath("OpenCVForUnity/dnn/" + config);
+                if (string.IsNullOrEmpty(config_filepath)) Debug.Log("The file:" + config + " did not exist in the folder “Assets/StreamingAssets/OpenCVForUnity/dnn”.");
+            }
+            if (!string.IsNullOrEmpty(model))
+            {
+                model_filepath = Utils.getFilePath("OpenCVForUnity/dnn/" + model);
+                if (string.IsNullOrEmpty(model_filepath)) Debug.Log("The file:" + model + " did not exist in the folder “Assets/StreamingAssets/OpenCVForUnity/dnn”.");
+            }
             Run();
 #endif
         }
@@ -119,29 +129,35 @@ namespace OpenCVForUnityExample
         {
             if (!string.IsNullOrEmpty(classes))
             {
-                var getFilePathAsync_0_Coroutine = Utils.getFilePathAsync("dnn/" + classes, (result) =>
+                var getFilePathAsync_0_Coroutine = Utils.getFilePathAsync("OpenCVForUnity/dnn/" + classes, (result) =>
                 {
                     classes_filepath = result;
                 });
                 yield return getFilePathAsync_0_Coroutine;
+
+                if (string.IsNullOrEmpty(classes_filepath)) Debug.Log("The file:" + classes + " did not exist in the folder “Assets/StreamingAssets/OpenCVForUnity/dnn”.");
             }
 
             if (!string.IsNullOrEmpty(config))
             {
-                var getFilePathAsync_1_Coroutine = Utils.getFilePathAsync("dnn/" + config, (result) =>
+                var getFilePathAsync_1_Coroutine = Utils.getFilePathAsync("OpenCVForUnity/dnn/" + config, (result) =>
                 {
                     config_filepath = result;
                 });
                 yield return getFilePathAsync_1_Coroutine;
+
+                if (string.IsNullOrEmpty(config_filepath)) Debug.Log("The file:" + config + " did not exist in the folder “Assets/StreamingAssets/OpenCVForUnity/dnn”.");
             }
 
             if (!string.IsNullOrEmpty(model))
             {
-                var getFilePathAsync_2_Coroutine = Utils.getFilePathAsync("dnn/" + model, (result) =>
+                var getFilePathAsync_2_Coroutine = Utils.getFilePathAsync("OpenCVForUnity/dnn/" + model, (result) =>
                 {
                     model_filepath = result;
                 });
                 yield return getFilePathAsync_2_Coroutine;
+
+                if (string.IsNullOrEmpty(model_filepath)) Debug.Log("The file:" + model + " did not exist in the folder “Assets/StreamingAssets/OpenCVForUnity/dnn”.");
             }
 
             getFilePath_Coroutine = null;
@@ -161,7 +177,7 @@ namespace OpenCVForUnityExample
                 classNames = readClassNames(classes_filepath);
                 if (classNames == null)
                 {
-                    Debug.LogError(classes_filepath + " is not loaded. Please see \"StreamingAssets/dnn/setup_dnn_module.pdf\". ");
+                    Debug.LogError(classes + " is not loaded. Please see “Assets/StreamingAssets/OpenCVForUnity/dnn/setup_dnn_module.pdf”. ");
                 }
             }
             else if (classesList.Count > 0)
@@ -171,7 +187,7 @@ namespace OpenCVForUnityExample
 
             if (string.IsNullOrEmpty(model_filepath))
             {
-                Debug.LogError(model_filepath + " is not loaded. Please see \"StreamingAssets/dnn/setup_dnn_module.pdf\". ");
+                Debug.LogError(model + " is not loaded. Please see “Assets/StreamingAssets/OpenCVForUnity/dnn/setup_dnn_module.pdf”. ");
             }
             else
             {
@@ -296,7 +312,7 @@ namespace OpenCVForUnityExample
                     // Run a model.
                     net.setInput(blob);
 
-                    if (net.getLayer(new DictValue(0)).outputNameToIndex("im_info") != -1)
+                    if (net.getLayer(0).outputNameToIndex("im_info") != -1)
                     {  // Faster-RCNN or R-FCN
                         Imgproc.resize(bgrMat, bgrMat, inpSize);
                         Mat imInfo = new Mat(1, 3, CvType.CV_32FC1);
@@ -326,7 +342,7 @@ namespace OpenCVForUnityExample
                     blob.Dispose();
                 }
 
-                Utils.fastMatToTexture2D(rgbaMat, texture);
+                Utils.matToTexture2D(rgbaMat, texture);
             }
         }
 
@@ -440,7 +456,8 @@ namespace OpenCVForUnityExample
             List<int> classIdsList = new List<int>();
             List<float> confidencesList = new List<float>();
             List<Rect2d> boxesList = new List<Rect2d>();
-            if (net.getLayer(new DictValue(0)).outputNameToIndex("im_info") != -1)
+
+            if (net.getLayer(0).outputNameToIndex("im_info") != -1)
             {
                 // Faster-RCNN or R-FCN
                 // Network produces output blob with a shape 1x1xNx7 where N is a number of
@@ -657,7 +674,7 @@ namespace OpenCVForUnityExample
             MatOfInt outLayers = net.getUnconnectedOutLayers();
             for (int i = 0; i < outLayers.total(); ++i)
             {
-                names.Add(net.getLayer(new DictValue((int)outLayers.get(i, 0)[0])).get_name());
+                names.Add(net.getLayer((int)outLayers.get(i, 0)[0]).get_name());
             }
             outLayers.Dispose();
 
@@ -677,7 +694,7 @@ namespace OpenCVForUnityExample
             MatOfInt outLayers = net.getUnconnectedOutLayers();
             for (int i = 0; i < outLayers.total(); ++i)
             {
-                types.Add(net.getLayer(new DictValue((int)outLayers.get(i, 0)[0])).get_type());
+                types.Add(net.getLayer((int)outLayers.get(i, 0)[0]).get_type());
             }
             outLayers.Dispose();
 
@@ -685,6 +702,5 @@ namespace OpenCVForUnityExample
         }
     }
 }
-#endif
 
 #endif

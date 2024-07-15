@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -576,6 +576,34 @@ namespace OpenCVForUnity.Features2dModule
         }
 
 
+        //
+        // C++: bool SimpleBlobDetector_Params::collectContours
+        //
+
+        public bool get_collectContours()
+        {
+            ThrowIfDisposed();
+
+            return features2d_SimpleBlobDetector_1Params_get_1collectContours_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++: void SimpleBlobDetector_Params::collectContours
+        //
+
+        public void set_collectContours(bool collectContours)
+        {
+            ThrowIfDisposed();
+
+            features2d_SimpleBlobDetector_1Params_set_1collectContours_10(nativeObj, collectContours);
+
+
+        }
+
+
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         const string LIBNAME = "__Internal";
 #else
@@ -736,6 +764,15 @@ namespace OpenCVForUnity.Features2dModule
         // C++: void SimpleBlobDetector_Params::maxConvexity
         [DllImport(LIBNAME)]
         private static extern void features2d_SimpleBlobDetector_1Params_set_1maxConvexity_10(IntPtr nativeObj, float maxConvexity);
+
+        // C++: bool SimpleBlobDetector_Params::collectContours
+        [DllImport(LIBNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+        private static extern bool features2d_SimpleBlobDetector_1Params_get_1collectContours_10(IntPtr nativeObj);
+
+        // C++: void SimpleBlobDetector_Params::collectContours
+        [DllImport(LIBNAME)]
+        private static extern void features2d_SimpleBlobDetector_1Params_set_1collectContours_10(IntPtr nativeObj, [MarshalAs(UnmanagedType.U1)] bool collectContours);
 
         // native support for java finalize()
         [DllImport(LIBNAME)]

@@ -1,4 +1,5 @@
-﻿using System;
+using OpenCVForUnity.UtilsModule;
+using System;
 using System.Collections.Generic;
 
 namespace OpenCVForUnity.CoreModule
@@ -60,16 +61,8 @@ namespace OpenCVForUnity.CoreModule
                 return;
             int num = a.Length;
             alloc(num);
-            float[] buff = new float[num * _channels];
-            for (int i = 0; i < num; i++)
-            {
-                DMatch m = a[i];
-                buff[_channels * i + 0] = m.queryIdx;
-                buff[_channels * i + 1] = m.trainIdx;
-                buff[_channels * i + 2] = m.imgIdx;
-                buff[_channels * i + 3] = m.distance;
-            }
-            put(0, 0, buff); //TODO: check ret val!
+
+            Converters.Array_DMatch_to_Mat(a, this, num, CvType.CV_32FC4);
         }
 
         public DMatch[] toArray()
@@ -78,23 +71,38 @@ namespace OpenCVForUnity.CoreModule
             DMatch[] a = new DMatch[num];
             if (num == 0)
                 return a;
-            float[] buff = new float[num * _channels];
-            get(0, 0, buff); //TODO: check ret val!
-            for (int i = 0; i < num; i++)
-                a[i] = new DMatch((int)buff[_channels * i + 0], (int)buff[_channels * i + 1], (int)buff[_channels * i + 2], buff[_channels * i + 3]);
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                a[i] = new DMatch();
+            }
+            Converters.Mat_to_Array_DMatch(this, a, num, CvType.CV_32FC4);
             return a;
         }
 
         public void fromList(List<DMatch> ldm)
         {
-            DMatch[] adm = ldm.ToArray();
-            fromArray(adm);
+            if (ldm == null || ldm.Count == 0)
+                return;
+            int num = ldm.Count;
+            alloc(num);
+
+            Converters.List_DMatch_to_Mat(ldm, this, num, CvType.CV_32FC4);
         }
 
         public List<DMatch> toList()
         {
-            DMatch[] adm = toArray();
-            return new List<DMatch>(adm);
+            int num = (int)total();
+            List<DMatch> a = new List<DMatch>(num);
+            if (num == 0)
+                return a;
+
+            for (int i = 0; i < num; i++)
+            {
+                a.Add(new DMatch());
+            }
+            Converters.Mat_to_List_DMatch(this, a, num, CvType.CV_32FC4);
+            return a;
         }
     }
 }

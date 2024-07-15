@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.Calib3dModule
 
     // C++: class StereoMatcher
     /**
-     * The base class for stereo correspondence algorithms.
+     @brief The base class for stereo correspondence algorithms.
      */
 
     public class StereoMatcher : Algorithm
@@ -51,13 +51,13 @@ namespace OpenCVForUnity.Calib3dModule
         //
 
         /**
-         * Computes disparity map for the specified stereo pair
-         *
-         *     param left Left 8-bit single-channel image.
-         *     param right Right image of the same size and the same type as the left one.
-         *     param disparity Output disparity map. It has the same size as the input images. Some algorithms,
-         *     like StereoBM or StereoSGBM compute 16-bit fixed-point disparity map (where each disparity value
-         *     has 4 fractional bits), whereas other algorithms output 32-bit floating-point disparity map.
+         @brief Computes disparity map for the specified stereo pair
+         
+             @param left Left 8-bit single-channel image.
+             @param right Right image of the same size and the same type as the left one.
+             @param disparity Output disparity map. It has the same size as the input images. Some algorithms,
+             like StereoBM or StereoSGBM compute 16-bit fixed-point disparity map (where each disparity value
+             has 4 fractional bits), whereas other algorithms output 32-bit floating-point disparity map.
          */
         public void compute(Mat left, Mat right, Mat disparity)
         {

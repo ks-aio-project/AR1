@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,55 +10,55 @@ namespace OpenCVForUnity.FaceModule
 
     // C++: class MACE
     /**
-     * Minimum Average Correlation Energy Filter
-     *     useful for authentication with (cancellable) biometrical features.
-     *     (does not need many positives to train (10-50), and no negatives at all, also robust to noise/salting)
-     *
-     *     see also: CITE: Savvides04
-     *
-     *     this implementation is largely based on: https://code.google.com/archive/p/pam-face-authentication (GSOC 2009)
-     *
-     *     use it like:
-     *     <code>
-     *
-     *     Ptr&lt;face::MACE&gt; mace = face::MACE::create(64);
-     *
-     *     vector&lt;Mat&gt; pos_images = ...
-     *     mace-&gt;train(pos_images);
-     *
-     *     Mat query = ...
-     *     bool same = mace-&gt;same(query);
-     *
-     *     </code>
-     *
-     *     you can also use two-factor authentication, with an additional passphrase:
-     *
-     *     <code>
-     *     String owners_passphrase = "ilikehotdogs";
-     *     Ptr&lt;face::MACE&gt; mace = face::MACE::create(64);
-     *     mace-&gt;salt(owners_passphrase);
-     *     vector&lt;Mat&gt; pos_images = ...
-     *     mace-&gt;train(pos_images);
-     *
-     *     // now, users have to give a valid passphrase, along with the image:
-     *     Mat query = ...
-     *     cout &lt;&lt; "enter passphrase: ";
-     *     string pass;
-     *     getline(cin, pass);
-     *     mace-&gt;salt(pass);
-     *     bool same = mace-&gt;same(query);
-     *     </code>
-     *
-     *     save/load your model:
-     *     <code>
-     *     Ptr&lt;face::MACE&gt; mace = face::MACE::create(64);
-     *     mace-&gt;train(pos_images);
-     *     mace-&gt;save("my_mace.xml");
-     *
-     *     // later:
-     *     Ptr&lt;MACE&gt; reloaded = MACE::load("my_mace.xml");
-     *     reloaded-&gt;same(some_image);
-     *     </code>
+     @brief Minimum Average Correlation Energy Filter
+         useful for authentication with (cancellable) biometrical features.
+         (does not need many positives to train (10-50), and no negatives at all, also robust to noise/salting)
+     
+         see also: @cite Savvides04
+     
+         this implementation is largely based on: https://code.google.com/archive/p/pam-face-authentication (GSOC 2009)
+     
+         use it like:
+         @code
+     
+         Ptr&lt;face::MACE&gt; mace = face::MACE::create(64);
+     
+         vector&lt;Mat&gt; pos_images = ...
+         mace-&gt;train(pos_images);
+     
+         Mat query = ...
+         bool same = mace-&gt;same(query);
+     
+         @endcode
+     
+         you can also use two-factor authentication, with an additional passphrase:
+     
+         @code
+         String owners_passphrase = "ilikehotdogs";
+         Ptr&lt;face::MACE&gt; mace = face::MACE::create(64);
+         mace-&gt;salt(owners_passphrase);
+         vector&lt;Mat&gt; pos_images = ...
+         mace-&gt;train(pos_images);
+     
+         // now, users have to give a valid passphrase, along with the image:
+         Mat query = ...
+         cout &lt;&lt; "enter passphrase: ";
+         string pass;
+         getline(cin, pass);
+         mace-&gt;salt(pass);
+         bool same = mace-&gt;same(query);
+         @endcode
+     
+         save/load your model:
+         @code
+         Ptr&lt;face::MACE&gt; mace = face::MACE::create(64);
+         mace-&gt;train(pos_images);
+         mace-&gt;save("my_mace.xml");
+     
+         // later:
+         Ptr&lt;MACE&gt; reloaded = MACE::load("my_mace.xml");
+         reloaded-&gt;same(some_image);
+         @endcode
      */
 
     public class MACE : Algorithm
@@ -96,8 +96,8 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * optionally encrypt images with random convolution
-         *     param passphrase a crc64 random seed will get generated from this
+         @brief optionally encrypt images with random convolution
+             @param passphrase a crc64 random seed will get generated from this
          */
         public void salt(string passphrase)
         {
@@ -114,10 +114,10 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * train it on positive features
-         *        compute the mace filter: {code h = D(-1) * X * (X(+) * D(-1) * X)(-1) * C}
-         *        also calculate a minimal threshold for this class, the smallest self-similarity from the train images
-         *     param images  a vector&lt;Mat&gt; with the train images
+         @brief train it on positive features
+                compute the mace filter: `h = D(-1) * X * (X(+) * D(-1) * X)(-1) * C`
+                also calculate a minimal threshold for this class, the smallest self-similarity from the train images
+             @param images  a vector&lt;Mat&gt; with the train images
          */
         public void train(List<Mat> images)
         {
@@ -134,9 +134,8 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * correlate query img and threshold to min class value
-         *     param query  a Mat with query image
-         * return automatically generated
+         @brief correlate query img and threshold to min class value
+             @param query  a Mat with query image
          */
         public bool same(Mat query)
         {
@@ -154,10 +153,9 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * constructor
-         *     param filename  build a new MACE instance from a pre-serialized FileStorage
-         *     param objname (optional) top-level node in the FileStorage
-         * return automatically generated
+         @brief constructor
+             @param filename  build a new MACE instance from a pre-serialized FileStorage
+             @param objname (optional) top-level node in the FileStorage
          */
         public static MACE load(string filename, string objname)
         {
@@ -169,9 +167,9 @@ namespace OpenCVForUnity.FaceModule
         }
 
         /**
-         * constructor
-         *     param filename  build a new MACE instance from a pre-serialized FileStorage
-         * return automatically generated
+         @brief constructor
+             @param filename  build a new MACE instance from a pre-serialized FileStorage
+             @param objname (optional) top-level node in the FileStorage
          */
         public static MACE load(string filename)
         {
@@ -188,9 +186,8 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * constructor
-         *     param IMGSIZE  images will get resized to this (should be an even number)
-         * return automatically generated
+         @brief constructor
+             @param IMGSIZE  images will get resized to this (should be an even number)
          */
         public static MACE create(int IMGSIZE)
         {
@@ -202,8 +199,8 @@ namespace OpenCVForUnity.FaceModule
         }
 
         /**
-         * constructor
-         * return automatically generated
+         @brief constructor
+             @param IMGSIZE  images will get resized to this (should be an even number)
          */
         public static MACE create()
         {

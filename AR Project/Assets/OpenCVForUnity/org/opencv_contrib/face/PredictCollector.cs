@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.FaceModule
 {
     // C++: class PredictCollector
     /**
-     * Abstract base class for all strategies of prediction result handling
+     @brief Abstract base class for all strategies of prediction result handling
      */
 
     public class PredictCollector : DisposableOpenCVObject

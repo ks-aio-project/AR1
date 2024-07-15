@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using OpenCVForUnity.VideoModule;
@@ -11,13 +11,13 @@ namespace OpenCVForUnity.TrackingModule
 
     // C++: class TrackerKCF
     /**
-     * the KCF (Kernelized Correlation Filter) tracker
-     *
-     * KCF is a novel tracking framework that utilizes properties of circulant matrix to enhance the processing speed.
-     * This tracking method is an implementation of CITE: KCF_ECCV which is extended to KCF with color-names features (CITE: KCF_CN).
-     * The original paper of KCF is available at &lt;http://www.robots.ox.ac.uk/~joao/publications/henriques_tpami2015.pdf&gt;
-     * as well as the matlab implementation. For more information about KCF with color-names features, please refer to
-     * &lt;http://www.cvl.isy.liu.se/research/objrec/visualtracking/colvistrack/index.html&gt;.
+     @brief the KCF (Kernelized Correlation Filter) tracker
+     
+      * KCF is a novel tracking framework that utilizes properties of circulant matrix to enhance the processing speed.
+      * This tracking method is an implementation of @cite KCF_ECCV which is extended to KCF with color-names features (@cite KCF_CN).
+      * The original paper of KCF is available at &lt;http://www.robots.ox.ac.uk/~joao/publications/henriques_tpami2015.pdf&gt;
+      * as well as the matlab implementation. For more information about KCF with color-names features, please refer to
+      * &lt;http://www.cvl.isy.liu.se/research/objrec/visualtracking/colvistrack/index.html&gt;.
      */
 
     public class TrackerKCF : Tracker
@@ -59,9 +59,8 @@ namespace OpenCVForUnity.TrackingModule
         //
 
         /**
-         * Create KCF tracker instance
-         *     param parameters KCF parameters TrackerKCF::Params
-         * return automatically generated
+         @brief Create KCF tracker instance
+             @param parameters KCF parameters TrackerKCF::Params
          */
         public static TrackerKCF create(TrackerKCF_Params parameters)
         {
@@ -73,8 +72,8 @@ namespace OpenCVForUnity.TrackingModule
         }
 
         /**
-         * Create KCF tracker instance
-         * return automatically generated
+         @brief Create KCF tracker instance
+             @param parameters KCF parameters TrackerKCF::Params
          */
         public static TrackerKCF create()
         {

@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,17 +10,17 @@ namespace OpenCVForUnity.VideoModule
 
     // C++: class DISOpticalFlow
     /**
-     * DIS optical flow algorithm.
-     *
-     * This class implements the Dense Inverse Search (DIS) optical flow algorithm. More
-     * details about the algorithm can be found at CITE: Kroeger2016 . Includes three presets with preselected
-     * parameters to provide reasonable trade-off between speed and quality. However, even the slowest preset is
-     * still relatively fast, use DeepFlow if you need better quality and don't care about speed.
-     *
-     * This implementation includes several additional features compared to the algorithm described in the paper,
-     * including spatial propagation of flow vectors (REF: getUseSpatialPropagation), as well as an option to
-     * utilize an initial flow approximation passed to REF: calc (which is, essentially, temporal propagation,
-     * if the previous frame's flow field is passed).
+     @brief DIS optical flow algorithm.
+     
+     This class implements the Dense Inverse Search (DIS) optical flow algorithm. More
+     details about the algorithm can be found at @cite Kroeger2016 . Includes three presets with preselected
+     parameters to provide reasonable trade-off between speed and quality. However, even the slowest preset is
+     still relatively fast, use DeepFlow if you need better quality and don't care about speed.
+     
+     This implementation includes several additional features compared to the algorithm described in the paper,
+     including spatial propagation of flow vectors (@ref getUseSpatialPropagation), as well as an option to
+     utilize an initial flow approximation passed to @ref calc (which is, essentially, temporal propagation,
+     if the previous frame's flow field is passed).
      */
 
     public class DISOpticalFlow : DenseOpticalFlow
@@ -62,10 +62,9 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Finest level of the Gaussian pyramid on which the flow is computed (zero level
-         *         corresponds to the original image resolution). The final flow is obtained by bilinear upscaling.
-         * SEE: setFinestScale
-         * return automatically generated
+         @brief Finest level of the Gaussian pyramid on which the flow is computed (zero level
+                 corresponds to the original image resolution). The final flow is obtained by bilinear upscaling.
+         @see setFinestScale
          */
         public int getFinestScale()
         {
@@ -82,8 +81,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getFinestScale SEE: getFinestScale
-         * param val automatically generated
+         @copybrief getFinestScale @see getFinestScale
          */
         public void setFinestScale(int val)
         {
@@ -100,10 +98,9 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Size of an image patch for matching (in pixels). Normally, default 8x8 patches work well
-         *         enough in most cases.
-         * SEE: setPatchSize
-         * return automatically generated
+         @brief Size of an image patch for matching (in pixels). Normally, default 8x8 patches work well
+                 enough in most cases.
+         @see setPatchSize
          */
         public int getPatchSize()
         {
@@ -120,8 +117,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getPatchSize SEE: getPatchSize
-         * param val automatically generated
+         @copybrief getPatchSize @see getPatchSize
          */
         public void setPatchSize(int val)
         {
@@ -138,10 +134,9 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Stride between neighbor patches. Must be less than patch size. Lower values correspond
-         *         to higher flow quality.
-         * SEE: setPatchStride
-         * return automatically generated
+         @brief Stride between neighbor patches. Must be less than patch size. Lower values correspond
+                 to higher flow quality.
+         @see setPatchStride
          */
         public int getPatchStride()
         {
@@ -158,8 +153,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getPatchStride SEE: getPatchStride
-         * param val automatically generated
+         @copybrief getPatchStride @see getPatchStride
          */
         public void setPatchStride(int val)
         {
@@ -176,10 +170,9 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Maximum number of gradient descent iterations in the patch inverse search stage. Higher values
-         *         may improve quality in some cases.
-         * SEE: setGradientDescentIterations
-         * return automatically generated
+         @brief Maximum number of gradient descent iterations in the patch inverse search stage. Higher values
+                 may improve quality in some cases.
+         @see setGradientDescentIterations
          */
         public int getGradientDescentIterations()
         {
@@ -196,8 +189,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getGradientDescentIterations SEE: getGradientDescentIterations
-         * param val automatically generated
+         @copybrief getGradientDescentIterations @see getGradientDescentIterations
          */
         public void setGradientDescentIterations(int val)
         {
@@ -214,11 +206,10 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Number of fixed point iterations of variational refinement per scale. Set to zero to
-         *         disable variational refinement completely. Higher values will typically result in more smooth and
-         *         high-quality flow.
-         * SEE: setGradientDescentIterations
-         * return automatically generated
+         @brief Number of fixed point iterations of variational refinement per scale. Set to zero to
+                 disable variational refinement completely. Higher values will typically result in more smooth and
+                 high-quality flow.
+         @see setGradientDescentIterations
          */
         public int getVariationalRefinementIterations()
         {
@@ -235,8 +226,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getGradientDescentIterations SEE: getGradientDescentIterations
-         * param val automatically generated
+         @copybrief getGradientDescentIterations @see getGradientDescentIterations
          */
         public void setVariationalRefinementIterations(int val)
         {
@@ -253,9 +243,8 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Weight of the smoothness term
-         * SEE: setVariationalRefinementAlpha
-         * return automatically generated
+         @brief Weight of the smoothness term
+         @see setVariationalRefinementAlpha
          */
         public float getVariationalRefinementAlpha()
         {
@@ -272,8 +261,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getVariationalRefinementAlpha SEE: getVariationalRefinementAlpha
-         * param val automatically generated
+         @copybrief getVariationalRefinementAlpha @see getVariationalRefinementAlpha
          */
         public void setVariationalRefinementAlpha(float val)
         {
@@ -290,9 +278,8 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Weight of the color constancy term
-         * SEE: setVariationalRefinementDelta
-         * return automatically generated
+         @brief Weight of the color constancy term
+         @see setVariationalRefinementDelta
          */
         public float getVariationalRefinementDelta()
         {
@@ -309,8 +296,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getVariationalRefinementDelta SEE: getVariationalRefinementDelta
-         * param val automatically generated
+         @copybrief getVariationalRefinementDelta @see getVariationalRefinementDelta
          */
         public void setVariationalRefinementDelta(float val)
         {
@@ -327,9 +313,8 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Weight of the gradient constancy term
-         * SEE: setVariationalRefinementGamma
-         * return automatically generated
+         @brief Weight of the gradient constancy term
+         @see setVariationalRefinementGamma
          */
         public float getVariationalRefinementGamma()
         {
@@ -346,8 +331,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getVariationalRefinementGamma SEE: getVariationalRefinementGamma
-         * param val automatically generated
+         @copybrief getVariationalRefinementGamma @see getVariationalRefinementGamma
          */
         public void setVariationalRefinementGamma(float val)
         {
@@ -360,16 +344,50 @@ namespace OpenCVForUnity.VideoModule
 
 
         //
+        // C++:  float cv::DISOpticalFlow::getVariationalRefinementEpsilon()
+        //
+
+        /**
+         @brief Norm value shift for robust penalizer
+         @see setVariationalRefinementEpsilon
+         */
+        public float getVariationalRefinementEpsilon()
+        {
+            ThrowIfDisposed();
+
+            return video_DISOpticalFlow_getVariationalRefinementEpsilon_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::DISOpticalFlow::setVariationalRefinementEpsilon(float val)
+        //
+
+        /**
+         @copybrief getVariationalRefinementEpsilon @see getVariationalRefinementEpsilon
+         */
+        public void setVariationalRefinementEpsilon(float val)
+        {
+            ThrowIfDisposed();
+
+            video_DISOpticalFlow_setVariationalRefinementEpsilon_10(nativeObj, val);
+
+
+        }
+
+
+        //
         // C++:  bool cv::DISOpticalFlow::getUseMeanNormalization()
         //
 
         /**
-         * Whether to use mean-normalization of patches when computing patch distance. It is turned on
-         *         by default as it typically provides a noticeable quality boost because of increased robustness to
-         *         illumination variations. Turn it off if you are certain that your sequence doesn't contain any changes
-         *         in illumination.
-         * SEE: setUseMeanNormalization
-         * return automatically generated
+         @brief Whether to use mean-normalization of patches when computing patch distance. It is turned on
+                 by default as it typically provides a noticeable quality boost because of increased robustness to
+                 illumination variations. Turn it off if you are certain that your sequence doesn't contain any changes
+                 in illumination.
+         @see setUseMeanNormalization
          */
         public bool getUseMeanNormalization()
         {
@@ -386,8 +404,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getUseMeanNormalization SEE: getUseMeanNormalization
-         * param val automatically generated
+         @copybrief getUseMeanNormalization @see getUseMeanNormalization
          */
         public void setUseMeanNormalization(bool val)
         {
@@ -404,12 +421,11 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Whether to use spatial propagation of good optical flow vectors. This option is turned on by
-         *         default, as it tends to work better on average and can sometimes help recover from major errors
-         *         introduced by the coarse-to-fine scheme employed by the DIS optical flow algorithm. Turning this
-         *         option off can make the output flow field a bit smoother, however.
-         * SEE: setUseSpatialPropagation
-         * return automatically generated
+         @brief Whether to use spatial propagation of good optical flow vectors. This option is turned on by
+                 default, as it tends to work better on average and can sometimes help recover from major errors
+                 introduced by the coarse-to-fine scheme employed by the DIS optical flow algorithm. Turning this
+                 option off can make the output flow field a bit smoother, however.
+         @see setUseSpatialPropagation
          */
         public bool getUseSpatialPropagation()
         {
@@ -426,8 +442,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getUseSpatialPropagation SEE: getUseSpatialPropagation
-         * param val automatically generated
+         @copybrief getUseSpatialPropagation @see getUseSpatialPropagation
          */
         public void setUseSpatialPropagation(bool val)
         {
@@ -444,10 +459,9 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Creates an instance of DISOpticalFlow
-         *
-         *     param preset one of PRESET_ULTRAFAST, PRESET_FAST and PRESET_MEDIUM
-         * return automatically generated
+         @brief Creates an instance of DISOpticalFlow
+         
+             @param preset one of PRESET_ULTRAFAST, PRESET_FAST and PRESET_MEDIUM
          */
         public static DISOpticalFlow create(int preset)
         {
@@ -459,9 +473,9 @@ namespace OpenCVForUnity.VideoModule
         }
 
         /**
-         * Creates an instance of DISOpticalFlow
-         *
-         * return automatically generated
+         @brief Creates an instance of DISOpticalFlow
+         
+             @param preset one of PRESET_ULTRAFAST, PRESET_FAST and PRESET_MEDIUM
          */
         public static DISOpticalFlow create()
         {
@@ -544,6 +558,14 @@ namespace OpenCVForUnity.VideoModule
         // C++:  void cv::DISOpticalFlow::setVariationalRefinementGamma(float val)
         [DllImport(LIBNAME)]
         private static extern void video_DISOpticalFlow_setVariationalRefinementGamma_10(IntPtr nativeObj, float val);
+
+        // C++:  float cv::DISOpticalFlow::getVariationalRefinementEpsilon()
+        [DllImport(LIBNAME)]
+        private static extern float video_DISOpticalFlow_getVariationalRefinementEpsilon_10(IntPtr nativeObj);
+
+        // C++:  void cv::DISOpticalFlow::setVariationalRefinementEpsilon(float val)
+        [DllImport(LIBNAME)]
+        private static extern void video_DISOpticalFlow_setVariationalRefinementEpsilon_10(IntPtr nativeObj, float val);
 
         // C++:  bool cv::DISOpticalFlow::getUseMeanNormalization()
         [DllImport(LIBNAME)]

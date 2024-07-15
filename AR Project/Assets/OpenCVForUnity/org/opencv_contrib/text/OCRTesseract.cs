@@ -1,4 +1,4 @@
-﻿//#if !UNITY_WSA_10_0
+//#if !UNITY_WSA_10_0
 
 //using OpenCVForUnity.CoreModule;
 //using OpenCVForUnity.UtilsModule;
@@ -11,25 +11,17 @@
 
 //    // C++: class OCRTesseract
 //    /**
-//     * OCRTesseract class provides an interface with the tesseract-ocr API (v3.02.02) in C++.
-//     *
-//     * Notice that it is compiled only when tesseract-ocr is correctly installed.
-//     *
-//     * <b>Note:</b>
-//     * <ul>
-//     *   <li>
-//     *       (C++) An example of OCRTesseract recognition combined with scene text detection can be found
-//     *         at the end_to_end_recognition demo:
-//     *         &lt;https://github.com/opencv/opencv_contrib/blob/master/modules/text/samples/end_to_end_recognition.cpp&gt;
-//     *   <ul>
-//     *     <li>
-//     *        (C++) Another example of OCRTesseract recognition combined with scene text detection can be
-//     *         found at the webcam_demo:
-//     *         &lt;https://github.com/opencv/opencv_contrib/blob/master/modules/text/samples/webcam_demo.cpp&gt;
-//     *     </li>
-//     *   </ul>
-//     *   </li>
-//     * </ul>
+//     @brief OCRTesseract class provides an interface with the tesseract-ocr API (v3.02.02) in C++.
+     
+//     Notice that it is compiled only when tesseract-ocr is correctly installed.
+     
+//     @note
+//        -   (C++) An example of OCRTesseract recognition combined with scene text detection can be found
+//             at the end_to_end_recognition demo:
+//             &lt;https://github.com/opencv/opencv_contrib/blob/master/modules/text/samples/end_to_end_recognition.cpp&gt;
+//         -   (C++) Another example of OCRTesseract recognition combined with scene text detection can be
+//             found at the webcam_demo:
+//             &lt;https://github.com/opencv/opencv_contrib/blob/master/modules/text/samples/webcam_demo.cpp&gt;
 //     */
 
 //    public class OCRTesseract : BaseOCR
@@ -67,19 +59,21 @@
 //        //
 
 //        /**
-//         * Recognize text using the tesseract-ocr API.
-//         *
-//         *     Takes image on input and returns recognized text in the output_text parameter. Optionally
-//         *     provides also the Rects for individual text elements found (e.g. words), and the list of those
-//         *     text elements with their confidence values.
-//         *
-//         *     param image Input image CV_8UC1 or CV_8UC3
-//         *     text elements found (e.g. words or text lines).
-//         *     recognition of individual text elements found (e.g. words or text lines).
-//         *     for the recognition of individual text elements found (e.g. words or text lines).
-//         *     param component_level OCR_LEVEL_WORD (by default), or OCR_LEVEL_TEXTLINE.
-//         * param min_confidence automatically generated
-//         * return automatically generated
+//         @brief Recognize text using the tesseract-ocr API.
+         
+//             Takes image on input and returns recognized text in the output_text parameter. Optionally
+//             provides also the Rects for individual text elements found (e.g. words), and the list of those
+//             text elements with their confidence values.
+         
+//             @param image Input image CV_8UC1 or CV_8UC3
+//             @param output_text Output text of the tesseract-ocr.
+//             @param component_rects If provided the method will output a list of Rects for the individual
+//             text elements found (e.g. words or text lines).
+//             @param component_texts If provided the method will output a list of text strings for the
+//             recognition of individual text elements found (e.g. words or text lines).
+//             @param component_confidences If provided the method will output a list of confidence values
+//             for the recognition of individual text elements found (e.g. words or text lines).
+//             @param component_level OCR_LEVEL_WORD (by default), or OCR_LEVEL_TEXTLINE.
 //         */
 //        public string run(Mat image, int min_confidence, int component_level)
 //        {
@@ -92,18 +86,21 @@
 //        }
 
 //        /**
-//         * Recognize text using the tesseract-ocr API.
-//         *
-//         *     Takes image on input and returns recognized text in the output_text parameter. Optionally
-//         *     provides also the Rects for individual text elements found (e.g. words), and the list of those
-//         *     text elements with their confidence values.
-//         *
-//         *     param image Input image CV_8UC1 or CV_8UC3
-//         *     text elements found (e.g. words or text lines).
-//         *     recognition of individual text elements found (e.g. words or text lines).
-//         *     for the recognition of individual text elements found (e.g. words or text lines).
-//         * param min_confidence automatically generated
-//         * return automatically generated
+//         @brief Recognize text using the tesseract-ocr API.
+         
+//             Takes image on input and returns recognized text in the output_text parameter. Optionally
+//             provides also the Rects for individual text elements found (e.g. words), and the list of those
+//             text elements with their confidence values.
+         
+//             @param image Input image CV_8UC1 or CV_8UC3
+//             @param output_text Output text of the tesseract-ocr.
+//             @param component_rects If provided the method will output a list of Rects for the individual
+//             text elements found (e.g. words or text lines).
+//             @param component_texts If provided the method will output a list of text strings for the
+//             recognition of individual text elements found (e.g. words or text lines).
+//             @param component_confidences If provided the method will output a list of confidence values
+//             for the recognition of individual text elements found (e.g. words or text lines).
+//             @param component_level OCR_LEVEL_WORD (by default), or OCR_LEVEL_TEXTLINE.
 //         */
 //        public string run(Mat image, int min_confidence)
 //        {
@@ -162,20 +159,21 @@
 //        //
 
 //        /**
-//         * Creates an instance of the OCRTesseract class. Initializes Tesseract.
-//         *
-//         *     param datapath the name of the parent directory of tessdata ended with "/", or NULL to use the
-//         *     system's default directory.
-//         *     param language an ISO 639-3 code or NULL will default to "eng".
-//         *     param char_whitelist specifies the list of characters used for recognition. NULL defaults to
-//         *     "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".
-//         *     param oem tesseract-ocr offers different OCR Engine Modes (OEM), by default
-//         *     tesseract::OEM_DEFAULT is used. See the tesseract-ocr API documentation for other possible
-//         *     values.
-//         *     param psmode tesseract-ocr offers different Page Segmentation Modes (PSM) tesseract::PSM_AUTO
-//         *     (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other
-//         *     possible values.
-//         * return automatically generated
+//         @brief Creates an instance of the OCRTesseract class. Initializes Tesseract.
+         
+//             @param datapath the name of the parent directory of tessdata ended with "/", or NULL to use the
+//             system's default directory.
+//             @param language an ISO 639-3 code or NULL will default to "eng".
+//             @param char_whitelist specifies the list of characters used for recognition. NULL defaults to ""
+//             (All characters will be used for recognition).
+//             @param oem tesseract-ocr offers different OCR Engine Modes (OEM), by default
+//             tesseract::OEM_DEFAULT is used. See the tesseract-ocr API documentation for other possible
+//             values.
+//             @param psmode tesseract-ocr offers different Page Segmentation Modes (PSM) tesseract::PSM_AUTO
+//             (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other
+//             possible values.
+         
+//             @note The char_whitelist default is changed after OpenCV 4.7.0/3.19.0 from "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" to "".
 //         */
 //        public static OCRTesseract create(string datapath, string language, string char_whitelist, int oem, int psmode)
 //        {
@@ -187,19 +185,21 @@
 //        }
 
 //        /**
-//         * Creates an instance of the OCRTesseract class. Initializes Tesseract.
-//         *
-//         *     param datapath the name of the parent directory of tessdata ended with "/", or NULL to use the
-//         *     system's default directory.
-//         *     param language an ISO 639-3 code or NULL will default to "eng".
-//         *     param char_whitelist specifies the list of characters used for recognition. NULL defaults to
-//         *     "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".
-//         *     param oem tesseract-ocr offers different OCR Engine Modes (OEM), by default
-//         *     tesseract::OEM_DEFAULT is used. See the tesseract-ocr API documentation for other possible
-//         *     values.
-//         *     (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other
-//         *     possible values.
-//         * return automatically generated
+//         @brief Creates an instance of the OCRTesseract class. Initializes Tesseract.
+         
+//             @param datapath the name of the parent directory of tessdata ended with "/", or NULL to use the
+//             system's default directory.
+//             @param language an ISO 639-3 code or NULL will default to "eng".
+//             @param char_whitelist specifies the list of characters used for recognition. NULL defaults to ""
+//             (All characters will be used for recognition).
+//             @param oem tesseract-ocr offers different OCR Engine Modes (OEM), by default
+//             tesseract::OEM_DEFAULT is used. See the tesseract-ocr API documentation for other possible
+//             values.
+//             @param psmode tesseract-ocr offers different Page Segmentation Modes (PSM) tesseract::PSM_AUTO
+//             (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other
+//             possible values.
+         
+//             @note The char_whitelist default is changed after OpenCV 4.7.0/3.19.0 from "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" to "".
 //         */
 //        public static OCRTesseract create(string datapath, string language, string char_whitelist, int oem)
 //        {
@@ -211,18 +211,21 @@
 //        }
 
 //        /**
-//         * Creates an instance of the OCRTesseract class. Initializes Tesseract.
-//         *
-//         *     param datapath the name of the parent directory of tessdata ended with "/", or NULL to use the
-//         *     system's default directory.
-//         *     param language an ISO 639-3 code or NULL will default to "eng".
-//         *     param char_whitelist specifies the list of characters used for recognition. NULL defaults to
-//         *     "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".
-//         *     tesseract::OEM_DEFAULT is used. See the tesseract-ocr API documentation for other possible
-//         *     values.
-//         *     (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other
-//         *     possible values.
-//         * return automatically generated
+//         @brief Creates an instance of the OCRTesseract class. Initializes Tesseract.
+         
+//             @param datapath the name of the parent directory of tessdata ended with "/", or NULL to use the
+//             system's default directory.
+//             @param language an ISO 639-3 code or NULL will default to "eng".
+//             @param char_whitelist specifies the list of characters used for recognition. NULL defaults to ""
+//             (All characters will be used for recognition).
+//             @param oem tesseract-ocr offers different OCR Engine Modes (OEM), by default
+//             tesseract::OEM_DEFAULT is used. See the tesseract-ocr API documentation for other possible
+//             values.
+//             @param psmode tesseract-ocr offers different Page Segmentation Modes (PSM) tesseract::PSM_AUTO
+//             (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other
+//             possible values.
+         
+//             @note The char_whitelist default is changed after OpenCV 4.7.0/3.19.0 from "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" to "".
 //         */
 //        public static OCRTesseract create(string datapath, string language, string char_whitelist)
 //        {
@@ -234,17 +237,21 @@
 //        }
 
 //        /**
-//         * Creates an instance of the OCRTesseract class. Initializes Tesseract.
-//         *
-//         *     param datapath the name of the parent directory of tessdata ended with "/", or NULL to use the
-//         *     system's default directory.
-//         *     param language an ISO 639-3 code or NULL will default to "eng".
-//         *     "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".
-//         *     tesseract::OEM_DEFAULT is used. See the tesseract-ocr API documentation for other possible
-//         *     values.
-//         *     (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other
-//         *     possible values.
-//         * return automatically generated
+//         @brief Creates an instance of the OCRTesseract class. Initializes Tesseract.
+         
+//             @param datapath the name of the parent directory of tessdata ended with "/", or NULL to use the
+//             system's default directory.
+//             @param language an ISO 639-3 code or NULL will default to "eng".
+//             @param char_whitelist specifies the list of characters used for recognition. NULL defaults to ""
+//             (All characters will be used for recognition).
+//             @param oem tesseract-ocr offers different OCR Engine Modes (OEM), by default
+//             tesseract::OEM_DEFAULT is used. See the tesseract-ocr API documentation for other possible
+//             values.
+//             @param psmode tesseract-ocr offers different Page Segmentation Modes (PSM) tesseract::PSM_AUTO
+//             (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other
+//             possible values.
+         
+//             @note The char_whitelist default is changed after OpenCV 4.7.0/3.19.0 from "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" to "".
 //         */
 //        public static OCRTesseract create(string datapath, string language)
 //        {
@@ -256,16 +263,21 @@
 //        }
 
 //        /**
-//         * Creates an instance of the OCRTesseract class. Initializes Tesseract.
-//         *
-//         *     param datapath the name of the parent directory of tessdata ended with "/", or NULL to use the
-//         *     system's default directory.
-//         *     "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".
-//         *     tesseract::OEM_DEFAULT is used. See the tesseract-ocr API documentation for other possible
-//         *     values.
-//         *     (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other
-//         *     possible values.
-//         * return automatically generated
+//         @brief Creates an instance of the OCRTesseract class. Initializes Tesseract.
+         
+//             @param datapath the name of the parent directory of tessdata ended with "/", or NULL to use the
+//             system's default directory.
+//             @param language an ISO 639-3 code or NULL will default to "eng".
+//             @param char_whitelist specifies the list of characters used for recognition. NULL defaults to ""
+//             (All characters will be used for recognition).
+//             @param oem tesseract-ocr offers different OCR Engine Modes (OEM), by default
+//             tesseract::OEM_DEFAULT is used. See the tesseract-ocr API documentation for other possible
+//             values.
+//             @param psmode tesseract-ocr offers different Page Segmentation Modes (PSM) tesseract::PSM_AUTO
+//             (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other
+//             possible values.
+         
+//             @note The char_whitelist default is changed after OpenCV 4.7.0/3.19.0 from "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" to "".
 //         */
 //        public static OCRTesseract create(string datapath)
 //        {
@@ -277,15 +289,21 @@
 //        }
 
 //        /**
-//         * Creates an instance of the OCRTesseract class. Initializes Tesseract.
-//         *
-//         *     system's default directory.
-//         *     "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".
-//         *     tesseract::OEM_DEFAULT is used. See the tesseract-ocr API documentation for other possible
-//         *     values.
-//         *     (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other
-//         *     possible values.
-//         * return automatically generated
+//         @brief Creates an instance of the OCRTesseract class. Initializes Tesseract.
+         
+//             @param datapath the name of the parent directory of tessdata ended with "/", or NULL to use the
+//             system's default directory.
+//             @param language an ISO 639-3 code or NULL will default to "eng".
+//             @param char_whitelist specifies the list of characters used for recognition. NULL defaults to ""
+//             (All characters will be used for recognition).
+//             @param oem tesseract-ocr offers different OCR Engine Modes (OEM), by default
+//             tesseract::OEM_DEFAULT is used. See the tesseract-ocr API documentation for other possible
+//             values.
+//             @param psmode tesseract-ocr offers different Page Segmentation Modes (PSM) tesseract::PSM_AUTO
+//             (fully automatic layout analysis) is used. See the tesseract-ocr API documentation for other
+//             possible values.
+         
+//             @note The char_whitelist default is changed after OpenCV 4.7.0/3.19.0 from "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" to "".
 //         */
 //        public static OCRTesseract create()
 //        {
@@ -341,4 +359,5 @@
 
 //    }
 //}
+
 //#endif

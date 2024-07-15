@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,10 +10,10 @@ namespace OpenCVForUnity.TrackingModule
 
     // C++: class TrackerMOSSE
     /**
-     * the MOSSE (Minimum Output Sum of Squared %Error) tracker
-     *
-     * The implementation is based on CITE: MOSSE Visual Object Tracking using Adaptive Correlation Filters
-     * <b>Note:</b> this tracker works with grayscale images, if passed bgr ones, they will get converted internally.
+     @brief the MOSSE (Minimum Output Sum of Squared %Error) tracker
+     
+     The implementation is based on @cite MOSSE Visual Object Tracking using Adaptive Correlation Filters
+     @note this tracker works with grayscale images, if passed bgr ones, they will get converted internally.
      */
 
     public class legacy_TrackerMOSSE : legacy_Tracker
@@ -51,8 +51,7 @@ namespace OpenCVForUnity.TrackingModule
         //
 
         /**
-         * Constructor
-         * return automatically generated
+         @brief Constructor
          */
         public static legacy_TrackerMOSSE create()
         {

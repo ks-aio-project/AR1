@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.PhotoModule
 
     // C++: class CalibrateCRF
     /**
-     * The base class for camera response calibration algorithms.
+     @brief The base class for camera response calibration algorithms.
      */
 
     public class CalibrateCRF : Algorithm
@@ -48,11 +48,11 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Recovers inverse camera response.
-         *
-         *     param src vector of input images
-         *     param dst 256x1 matrix with inverse camera response function
-         *     param times vector of exposure time values for each image
+         @brief Recovers inverse camera response.
+         
+             @param src vector of input images
+             @param dst 256x1 matrix with inverse camera response function
+             @param times vector of exposure time values for each image
          */
         public void process(List<Mat> src, Mat dst, Mat times)
         {

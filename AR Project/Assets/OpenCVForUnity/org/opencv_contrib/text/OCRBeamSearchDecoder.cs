@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,16 +11,12 @@ namespace OpenCVForUnity.TextModule
 
     // C++: class OCRBeamSearchDecoder
     /**
-     * OCRBeamSearchDecoder class provides an interface for OCR using Beam Search algorithm.
-     *
-     * <b>Note:</b>
-     * <ul>
-     *   <li>
-     *       (C++) An example on using OCRBeamSearchDecoder recognition combined with scene text detection can
-     *         be found at the demo sample:
-     *         &lt;https://github.com/opencv/opencv_contrib/blob/master/modules/text/samples/word_recognition.cpp&gt;
-     *   </li>
-     * </ul>
+     @brief OCRBeamSearchDecoder class provides an interface for OCR using Beam Search algorithm.
+     
+     @note
+        -   (C++) An example on using OCRBeamSearchDecoder recognition combined with scene text detection can
+             be found at the demo sample:
+             &lt;https://github.com/opencv/opencv_contrib/blob/master/modules/text/samples/word_recognition.cpp&gt;
      */
 
     public class OCRBeamSearchDecoder : BaseOCR
@@ -58,24 +54,26 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Recognize text using Beam Search.
-         *
-         *     Takes image on input and returns recognized text in the output_text parameter. Optionally
-         *     provides also the Rects for individual text elements found (e.g. words), and the list of those
-         *     text elements with their confidence values.
-         *
-         *     param image Input binary image CV_8UC1 with a single text line (or word).
-         *
-         *
-         *     text elements found (e.g. words).
-         *
-         *     recognition of individual text elements found (e.g. words).
-         *
-         *     for the recognition of individual text elements found (e.g. words).
-         *
-         *     param component_level Only OCR_LEVEL_WORD is supported.
-         * param min_confidence automatically generated
-         * return automatically generated
+         @brief Recognize text using Beam Search.
+         
+             Takes image on input and returns recognized text in the output_text parameter. Optionally
+             provides also the Rects for individual text elements found (e.g. words), and the list of those
+             text elements with their confidence values.
+         
+             @param image Input binary image CV_8UC1 with a single text line (or word).
+         
+             @param output_text Output text. Most likely character sequence found by the HMM decoder.
+         
+             @param component_rects If provided the method will output a list of Rects for the individual
+             text elements found (e.g. words).
+         
+             @param component_texts If provided the method will output a list of text strings for the
+             recognition of individual text elements found (e.g. words).
+         
+             @param component_confidences If provided the method will output a list of confidence values
+             for the recognition of individual text elements found (e.g. words).
+         
+             @param component_level Only OCR_LEVEL_WORD is supported.
          */
         public string run(Mat image, int min_confidence, int component_level)
         {
@@ -88,23 +86,26 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Recognize text using Beam Search.
-         *
-         *     Takes image on input and returns recognized text in the output_text parameter. Optionally
-         *     provides also the Rects for individual text elements found (e.g. words), and the list of those
-         *     text elements with their confidence values.
-         *
-         *     param image Input binary image CV_8UC1 with a single text line (or word).
-         *
-         *
-         *     text elements found (e.g. words).
-         *
-         *     recognition of individual text elements found (e.g. words).
-         *
-         *     for the recognition of individual text elements found (e.g. words).
-         *
-         * param min_confidence automatically generated
-         * return automatically generated
+         @brief Recognize text using Beam Search.
+         
+             Takes image on input and returns recognized text in the output_text parameter. Optionally
+             provides also the Rects for individual text elements found (e.g. words), and the list of those
+             text elements with their confidence values.
+         
+             @param image Input binary image CV_8UC1 with a single text line (or word).
+         
+             @param output_text Output text. Most likely character sequence found by the HMM decoder.
+         
+             @param component_rects If provided the method will output a list of Rects for the individual
+             text elements found (e.g. words).
+         
+             @param component_texts If provided the method will output a list of text strings for the
+             recognition of individual text elements found (e.g. words).
+         
+             @param component_confidences If provided the method will output a list of confidence values
+             for the recognition of individual text elements found (e.g. words).
+         
+             @param component_level Only OCR_LEVEL_WORD is supported.
          */
         public string run(Mat image, int min_confidence)
         {
@@ -149,24 +150,23 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Creates an instance of the OCRBeamSearchDecoder class. Initializes HMMDecoder.
-         *
-         *     param classifier The character classifier with built in feature extractor.
-         *
-         *     param vocabulary The language vocabulary (chars when ASCII English text). vocabulary.size()
-         *     must be equal to the number of classes of the classifier.
-         *
-         *     param transition_probabilities_table Table with transition probabilities between character
-         *     pairs. cols == rows == vocabulary.size().
-         *
-         *     param emission_probabilities_table Table with observation emission probabilities. cols ==
-         *     rows == vocabulary.size().
-         *
-         *     param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment
-         *     (&lt;http://en.wikipedia.org/wiki/Viterbi_algorithm&gt;).
-         *
-         *     param beam_size Size of the beam in Beam Search algorithm.
-         * return automatically generated
+         @brief Creates an instance of the OCRBeamSearchDecoder class. Initializes HMMDecoder.
+         
+             @param classifier The character classifier with built in feature extractor.
+         
+             @param vocabulary The language vocabulary (chars when ASCII English text). vocabulary.size()
+             must be equal to the number of classes of the classifier.
+         
+             @param transition_probabilities_table Table with transition probabilities between character
+             pairs. cols == rows == vocabulary.size().
+         
+             @param emission_probabilities_table Table with observation emission probabilities. cols ==
+             rows == vocabulary.size().
+         
+             @param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment
+             (&lt;http://en.wikipedia.org/wiki/Viterbi_algorithm&gt;).
+         
+             @param beam_size Size of the beam in Beam Search algorithm.
          */
         public static OCRBeamSearchDecoder create(OCRBeamSearchDecoder_ClassifierCallback classifier, string vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table, int mode, int beam_size)
         {
@@ -180,23 +180,23 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Creates an instance of the OCRBeamSearchDecoder class. Initializes HMMDecoder.
-         *
-         *     param classifier The character classifier with built in feature extractor.
-         *
-         *     param vocabulary The language vocabulary (chars when ASCII English text). vocabulary.size()
-         *     must be equal to the number of classes of the classifier.
-         *
-         *     param transition_probabilities_table Table with transition probabilities between character
-         *     pairs. cols == rows == vocabulary.size().
-         *
-         *     param emission_probabilities_table Table with observation emission probabilities. cols ==
-         *     rows == vocabulary.size().
-         *
-         *     param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment
-         *     (&lt;http://en.wikipedia.org/wiki/Viterbi_algorithm&gt;).
-         *
-         * return automatically generated
+         @brief Creates an instance of the OCRBeamSearchDecoder class. Initializes HMMDecoder.
+         
+             @param classifier The character classifier with built in feature extractor.
+         
+             @param vocabulary The language vocabulary (chars when ASCII English text). vocabulary.size()
+             must be equal to the number of classes of the classifier.
+         
+             @param transition_probabilities_table Table with transition probabilities between character
+             pairs. cols == rows == vocabulary.size().
+         
+             @param emission_probabilities_table Table with observation emission probabilities. cols ==
+             rows == vocabulary.size().
+         
+             @param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment
+             (&lt;http://en.wikipedia.org/wiki/Viterbi_algorithm&gt;).
+         
+             @param beam_size Size of the beam in Beam Search algorithm.
          */
         public static OCRBeamSearchDecoder create(OCRBeamSearchDecoder_ClassifierCallback classifier, string vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table, int mode)
         {
@@ -210,22 +210,23 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Creates an instance of the OCRBeamSearchDecoder class. Initializes HMMDecoder.
-         *
-         *     param classifier The character classifier with built in feature extractor.
-         *
-         *     param vocabulary The language vocabulary (chars when ASCII English text). vocabulary.size()
-         *     must be equal to the number of classes of the classifier.
-         *
-         *     param transition_probabilities_table Table with transition probabilities between character
-         *     pairs. cols == rows == vocabulary.size().
-         *
-         *     param emission_probabilities_table Table with observation emission probabilities. cols ==
-         *     rows == vocabulary.size().
-         *
-         *     (&lt;http://en.wikipedia.org/wiki/Viterbi_algorithm&gt;).
-         *
-         * return automatically generated
+         @brief Creates an instance of the OCRBeamSearchDecoder class. Initializes HMMDecoder.
+         
+             @param classifier The character classifier with built in feature extractor.
+         
+             @param vocabulary The language vocabulary (chars when ASCII English text). vocabulary.size()
+             must be equal to the number of classes of the classifier.
+         
+             @param transition_probabilities_table Table with transition probabilities between character
+             pairs. cols == rows == vocabulary.size().
+         
+             @param emission_probabilities_table Table with observation emission probabilities. cols ==
+             rows == vocabulary.size().
+         
+             @param mode HMM Decoding algorithm. Only OCR_DECODER_VITERBI is available for the moment
+             (&lt;http://en.wikipedia.org/wiki/Viterbi_algorithm&gt;).
+         
+             @param beam_size Size of the beam in Beam Search algorithm.
          */
         public static OCRBeamSearchDecoder create(OCRBeamSearchDecoder_ClassifierCallback classifier, string vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table)
         {
@@ -273,4 +274,5 @@ namespace OpenCVForUnity.TextModule
 
     }
 }
+
 #endif

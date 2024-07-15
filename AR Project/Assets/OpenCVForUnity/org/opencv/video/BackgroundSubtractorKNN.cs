@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,10 +10,10 @@ namespace OpenCVForUnity.VideoModule
 
     // C++: class BackgroundSubtractorKNN
     /**
-     * K-nearest neighbours - based Background/Foreground Segmentation Algorithm.
-     *
-     * The class implements the K-nearest neighbours background subtraction described in CITE: Zivkovic2006 .
-     * Very efficient if number of foreground pixels is low.
+     @brief K-nearest neighbours - based Background/Foreground Segmentation Algorithm.
+     
+     The class implements the K-nearest neighbours background subtraction described in @cite Zivkovic2006 .
+     Very efficient if number of foreground pixels is low.
      */
 
     public class BackgroundSubtractorKNN : BackgroundSubtractor
@@ -51,8 +51,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Returns the number of last frames that affect the background model
-         * return automatically generated
+         @brief Returns the number of last frames that affect the background model
          */
         public int getHistory()
         {
@@ -69,8 +68,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Sets the number of last frames that affect the background model
-         * param history automatically generated
+         @brief Sets the number of last frames that affect the background model
          */
         public void setHistory(int history)
         {
@@ -87,8 +85,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Returns the number of data samples in the background model
-         * return automatically generated
+         @brief Returns the number of data samples in the background model
          */
         public int getNSamples()
         {
@@ -105,10 +102,9 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Sets the number of data samples in the background model.
-         *
-         *     The model needs to be reinitalized to reserve memory.
-         * param _nN automatically generated
+         @brief Sets the number of data samples in the background model.
+         
+             The model needs to be reinitalized to reserve memory.
          */
         public void setNSamples(int _nN)
         {
@@ -125,11 +121,10 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Returns the threshold on the squared distance between the pixel and the sample
-         *
-         *     The threshold on the squared distance between the pixel and the sample to decide whether a pixel is
-         *     close to a data sample.
-         * return automatically generated
+         @brief Returns the threshold on the squared distance between the pixel and the sample
+         
+             The threshold on the squared distance between the pixel and the sample to decide whether a pixel is
+             close to a data sample.
          */
         public double getDist2Threshold()
         {
@@ -146,8 +141,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Sets the threshold on the squared distance
-         * param _dist2Threshold automatically generated
+         @brief Sets the threshold on the squared distance
          */
         public void setDist2Threshold(double _dist2Threshold)
         {
@@ -164,11 +158,10 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Returns the number of neighbours, the k in the kNN.
-         *
-         *     K is the number of samples that need to be within dist2Threshold in order to decide that that
-         *     pixel is matching the kNN background model.
-         * return automatically generated
+         @brief Returns the number of neighbours, the k in the kNN.
+         
+             K is the number of samples that need to be within dist2Threshold in order to decide that that
+             pixel is matching the kNN background model.
          */
         public int getkNNSamples()
         {
@@ -185,8 +178,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Sets the k in the kNN. How many nearest neighbours need to match.
-         * param _nkNN automatically generated
+         @brief Sets the k in the kNN. How many nearest neighbours need to match.
          */
         public void setkNNSamples(int _nkNN)
         {
@@ -203,11 +195,10 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Returns the shadow detection flag
-         *
-         *     If true, the algorithm detects shadows and marks them. See createBackgroundSubtractorKNN for
-         *     details.
-         * return automatically generated
+         @brief Returns the shadow detection flag
+         
+             If true, the algorithm detects shadows and marks them. See createBackgroundSubtractorKNN for
+             details.
          */
         public bool getDetectShadows()
         {
@@ -224,8 +215,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Enables or disables shadow detection
-         * param detectShadows automatically generated
+         @brief Enables or disables shadow detection
          */
         public void setDetectShadows(bool detectShadows)
         {
@@ -242,11 +232,10 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Returns the shadow value
-         *
-         *     Shadow value is the value used to mark shadows in the foreground mask. Default value is 127. Value 0
-         *     in the mask always means background, 255 means foreground.
-         * return automatically generated
+         @brief Returns the shadow value
+         
+             Shadow value is the value used to mark shadows in the foreground mask. Default value is 127. Value 0
+             in the mask always means background, 255 means foreground.
          */
         public int getShadowValue()
         {
@@ -263,8 +252,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Sets the shadow value
-         * param value automatically generated
+         @brief Sets the shadow value
          */
         public void setShadowValue(int value)
         {
@@ -281,13 +269,12 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Returns the shadow threshold
-         *
-         *     A shadow is detected if pixel is a darker version of the background. The shadow threshold (Tau in
-         *     the paper) is a threshold defining how much darker the shadow can be. Tau= 0.5 means that if a pixel
-         *     is more than twice darker then it is not shadow. See Prati, Mikic, Trivedi and Cucchiara,
-         * Detecting Moving Shadows...*, IEEE PAMI,2003.
-         * return automatically generated
+         @brief Returns the shadow threshold
+         
+             A shadow is detected if pixel is a darker version of the background. The shadow threshold (Tau in
+             the paper) is a threshold defining how much darker the shadow can be. Tau= 0.5 means that if a pixel
+             is more than twice darker then it is not shadow. See Prati, Mikic, Trivedi and Cucchiara,
+             *Detecting Moving Shadows...*, IEEE PAMI,2003.
          */
         public double getShadowThreshold()
         {
@@ -304,8 +291,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Sets the shadow threshold
-         * param threshold automatically generated
+         @brief Sets the shadow threshold
          */
         public void setShadowThreshold(double threshold)
         {

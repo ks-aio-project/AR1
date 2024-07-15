@@ -1,4 +1,4 @@
-﻿
+
 
 //using OpenCVForUnity.CoreModule;
 //using OpenCVForUnity.UtilsModule;
@@ -10,57 +10,37 @@
 //{
 //    // C++: class SURF_CUDA
 //    /**
-//     * Class used for extracting Speeded Up Robust Features (SURF) from an image. :
-//     *
-//     * The class SURF_CUDA implements Speeded Up Robust Features descriptor. There is a fast multi-scale
-//     * Hessian keypoint detector that can be used to find the keypoints (which is the default option). But
-//     * the descriptors can also be computed for the user-specified keypoints. Only 8-bit grayscale images
-//     * are supported.
-//     *
-//     * The class SURF_CUDA can store results in the GPU and CPU memory. It provides functions to convert
-//     * results between CPU and GPU version ( uploadKeypoints, downloadKeypoints, downloadDescriptors ). The
-//     * format of CPU results is the same as SURF results. GPU results are stored in GpuMat. The keypoints
-//     * matrix is \(\texttt{nFeatures} \times 7\) matrix with the CV_32FC1 type.
-//     *
-//     * <ul>
-//     *   <li>
-//     *    keypoints.ptr&lt;float&gt;(X_ROW)[i] contains x coordinate of the i-th feature.
-//     *   </li>
-//     *   <li>
-//     *    keypoints.ptr&lt;float&gt;(Y_ROW)[i] contains y coordinate of the i-th feature.
-//     *   </li>
-//     *   <li>
-//     *    keypoints.ptr&lt;float&gt;(LAPLACIAN_ROW)[i] contains the laplacian sign of the i-th feature.
-//     *   </li>
-//     *   <li>
-//     *    keypoints.ptr&lt;float&gt;(OCTAVE_ROW)[i] contains the octave of the i-th feature.
-//     *   </li>
-//     *   <li>
-//     *    keypoints.ptr&lt;float&gt;(SIZE_ROW)[i] contains the size of the i-th feature.
-//     *   </li>
-//     *   <li>
-//     *    keypoints.ptr&lt;float&gt;(ANGLE_ROW)[i] contain orientation of the i-th feature.
-//     *   </li>
-//     *   <li>
-//     *    keypoints.ptr&lt;float&gt;(HESSIAN_ROW)[i] contains the response of the i-th feature.
-//     *   </li>
-//     * </ul>
-//     *
-//     * The descriptors matrix is \(\texttt{nFeatures} \times \texttt{descriptorSize}\) matrix with the
-//     * CV_32FC1 type.
-//     *
-//     * The class SURF_CUDA uses some buffers and provides access to it. All buffers can be safely released
-//     * between function calls.
-//     *
-//     * SEE: SURF
-//     *
-//     * <b>Note:</b>
-//     * <ul>
-//     *   <li>
-//     *       An example for using the SURF keypoint matcher on GPU can be found at
-//     *         opencv_source_code/samples/gpu/surf_keypoint_matcher.cpp
-//     *   </li>
-//     * </ul>
+//     @brief Class used for extracting Speeded Up Robust Features (SURF) from an image. :
+     
+//     The class SURF_CUDA implements Speeded Up Robust Features descriptor. There is a fast multi-scale
+//     Hessian keypoint detector that can be used to find the keypoints (which is the default option). But
+//     the descriptors can also be computed for the user-specified keypoints. Only 8-bit grayscale images
+//     are supported.
+     
+//     The class SURF_CUDA can store results in the GPU and CPU memory. It provides functions to convert
+//     results between CPU and GPU version ( uploadKeypoints, downloadKeypoints, downloadDescriptors ). The
+//     format of CPU results is the same as SURF results. GPU results are stored in GpuMat. The keypoints
+//     matrix is \f$$\texttt{nFeatures} \times 7\f$$ matrix with the CV_32FC1 type.
+     
+//     -   keypoints.ptr&lt;float&gt;(X_ROW)[i] contains x coordinate of the i-th feature.
+//     -   keypoints.ptr&lt;float&gt;(Y_ROW)[i] contains y coordinate of the i-th feature.
+//     -   keypoints.ptr&lt;float&gt;(LAPLACIAN_ROW)[i] contains the laplacian sign of the i-th feature.
+//     -   keypoints.ptr&lt;float&gt;(OCTAVE_ROW)[i] contains the octave of the i-th feature.
+//     -   keypoints.ptr&lt;float&gt;(SIZE_ROW)[i] contains the size of the i-th feature.
+//     -   keypoints.ptr&lt;float&gt;(ANGLE_ROW)[i] contain orientation of the i-th feature.
+//     -   keypoints.ptr&lt;float&gt;(HESSIAN_ROW)[i] contains the response of the i-th feature.
+     
+//     The descriptors matrix is \f$$\texttt{nFeatures} \times \texttt{descriptorSize}\f$$ matrix with the
+//     CV_32FC1 type.
+     
+//     The class SURF_CUDA uses some buffers and provides access to it. All buffers can be safely released
+//     between function calls.
+     
+//     @sa SURF
+     
+//     @note
+//        -   An example for using the SURF keypoint matcher on GPU can be found at
+//             opencv_source_code/samples/gpu/surf_keypoint_matcher.cpp
 //     */
 
 //    public class SURF_CUDA : DisposableOpenCVObject
@@ -110,15 +90,14 @@
 //        //
 
 //        /**
-//         * param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
-//         *     param _nOctaves Number of pyramid octaves the keypoint detector will use.
-//         *     param _nOctaveLayers Number of octave layers within each octave.
-//         *     param _extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
-//         *     64-element descriptors).
-//         *     param _keypointsRatio
-//         *     param _upright Up-right or rotated features flag (true - do not compute orientation of features;
-//         *     false - compute orientation).
-//         * return automatically generated
+//         @param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
+//             @param _nOctaves Number of pyramid octaves the keypoint detector will use.
+//             @param _nOctaveLayers Number of octave layers within each octave.
+//             @param _extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
+//             64-element descriptors).
+//             @param _keypointsRatio Limits a maximum number of features
+//             @param _upright Up-right or rotated features flag (true - do not compute orientation of features;
+//             false - compute orientation).
 //         */
 //        public static SURF_CUDA create(double _hessianThreshold, int _nOctaves, int _nOctaveLayers, bool _extended, float _keypointsRatio, bool _upright)
 //        {
@@ -130,14 +109,14 @@
 //        }
 
 //        /**
-//         * param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
-//         *     param _nOctaves Number of pyramid octaves the keypoint detector will use.
-//         *     param _nOctaveLayers Number of octave layers within each octave.
-//         *     param _extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
-//         *     64-element descriptors).
-//         *     param _keypointsRatio
-//         *     false - compute orientation).
-//         * return automatically generated
+//         @param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
+//             @param _nOctaves Number of pyramid octaves the keypoint detector will use.
+//             @param _nOctaveLayers Number of octave layers within each octave.
+//             @param _extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
+//             64-element descriptors).
+//             @param _keypointsRatio Limits a maximum number of features
+//             @param _upright Up-right or rotated features flag (true - do not compute orientation of features;
+//             false - compute orientation).
 //         */
 //        public static SURF_CUDA create(double _hessianThreshold, int _nOctaves, int _nOctaveLayers, bool _extended, float _keypointsRatio)
 //        {
@@ -149,13 +128,14 @@
 //        }
 
 //        /**
-//         * param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
-//         *     param _nOctaves Number of pyramid octaves the keypoint detector will use.
-//         *     param _nOctaveLayers Number of octave layers within each octave.
-//         *     param _extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
-//         *     64-element descriptors).
-//         *     false - compute orientation).
-//         * return automatically generated
+//         @param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
+//             @param _nOctaves Number of pyramid octaves the keypoint detector will use.
+//             @param _nOctaveLayers Number of octave layers within each octave.
+//             @param _extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
+//             64-element descriptors).
+//             @param _keypointsRatio Limits a maximum number of features
+//             @param _upright Up-right or rotated features flag (true - do not compute orientation of features;
+//             false - compute orientation).
 //         */
 //        public static SURF_CUDA create(double _hessianThreshold, int _nOctaves, int _nOctaveLayers, bool _extended)
 //        {
@@ -167,12 +147,14 @@
 //        }
 
 //        /**
-//         * param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
-//         *     param _nOctaves Number of pyramid octaves the keypoint detector will use.
-//         *     param _nOctaveLayers Number of octave layers within each octave.
-//         *     64-element descriptors).
-//         *     false - compute orientation).
-//         * return automatically generated
+//         @param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
+//             @param _nOctaves Number of pyramid octaves the keypoint detector will use.
+//             @param _nOctaveLayers Number of octave layers within each octave.
+//             @param _extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
+//             64-element descriptors).
+//             @param _keypointsRatio Limits a maximum number of features
+//             @param _upright Up-right or rotated features flag (true - do not compute orientation of features;
+//             false - compute orientation).
 //         */
 //        public static SURF_CUDA create(double _hessianThreshold, int _nOctaves, int _nOctaveLayers)
 //        {
@@ -184,11 +166,14 @@
 //        }
 
 //        /**
-//         * param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
-//         *     param _nOctaves Number of pyramid octaves the keypoint detector will use.
-//         *     64-element descriptors).
-//         *     false - compute orientation).
-//         * return automatically generated
+//         @param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
+//             @param _nOctaves Number of pyramid octaves the keypoint detector will use.
+//             @param _nOctaveLayers Number of octave layers within each octave.
+//             @param _extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
+//             64-element descriptors).
+//             @param _keypointsRatio Limits a maximum number of features
+//             @param _upright Up-right or rotated features flag (true - do not compute orientation of features;
+//             false - compute orientation).
 //         */
 //        public static SURF_CUDA create(double _hessianThreshold, int _nOctaves)
 //        {
@@ -200,10 +185,14 @@
 //        }
 
 //        /**
-//         * param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
-//         *     64-element descriptors).
-//         *     false - compute orientation).
-//         * return automatically generated
+//         @param _hessianThreshold Threshold for hessian keypoint detector used in SURF.
+//             @param _nOctaves Number of pyramid octaves the keypoint detector will use.
+//             @param _nOctaveLayers Number of octave layers within each octave.
+//             @param _extended Extended descriptor flag (true - use extended 128-element descriptors; false - use
+//             64-element descriptors).
+//             @param _keypointsRatio Limits a maximum number of features
+//             @param _upright Up-right or rotated features flag (true - do not compute orientation of features;
+//             false - compute orientation).
 //         */
 //        public static SURF_CUDA create(double _hessianThreshold)
 //        {

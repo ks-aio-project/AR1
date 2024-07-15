@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using OpenCVForUnity.VideoModule;
@@ -11,12 +11,12 @@ namespace OpenCVForUnity.BgsegmModule
 
     // C++: class BackgroundSubtractorCNT
     /**
-     * Background subtraction based on counting.
-     *
-     *   About as fast as MOG2 on a high end system.
-     *   More than twice faster than MOG2 on cheap hardware (benchmarked on Raspberry Pi3).
-     *
-     *   %Algorithm by Sagi Zeevi ( https://github.com/sagi-z/BackgroundSubtractorCNT )
+     @brief Background subtraction based on counting.
+     
+       About as fast as MOG2 on a high end system.
+       More than twice faster than MOG2 on cheap hardware (benchmarked on Raspberry Pi3).
+     
+       %Algorithm by Sagi Zeevi ( https://github.com/sagi-z/BackgroundSubtractorCNT )
      */
 
     public class BackgroundSubtractorCNT : BackgroundSubtractor
@@ -96,8 +96,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Returns number of frames with same pixel color to consider stable.
-         * return automatically generated
+         @brief Returns number of frames with same pixel color to consider stable.
          */
         public int getMinPixelStability()
         {
@@ -114,8 +113,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Sets the number of frames with same pixel color to consider stable.
-         * param value automatically generated
+         @brief Sets the number of frames with same pixel color to consider stable.
          */
         public void setMinPixelStability(int value)
         {
@@ -132,8 +130,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Returns maximum allowed credit for a pixel in history.
-         * return automatically generated
+         @brief Returns maximum allowed credit for a pixel in history.
          */
         public int getMaxPixelStability()
         {
@@ -150,8 +147,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Sets the maximum allowed credit for a pixel in history.
-         * param value automatically generated
+         @brief Sets the maximum allowed credit for a pixel in history.
          */
         public void setMaxPixelStability(int value)
         {
@@ -168,8 +164,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Returns if we're giving a pixel credit for being stable for a long time.
-         * return automatically generated
+         @brief Returns if we're giving a pixel credit for being stable for a long time.
          */
         public bool getUseHistory()
         {
@@ -186,8 +181,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Sets if we're giving a pixel credit for being stable for a long time.
-         * param value automatically generated
+         @brief Sets if we're giving a pixel credit for being stable for a long time.
          */
         public void setUseHistory(bool value)
         {
@@ -204,8 +198,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Returns if we're parallelizing the algorithm.
-         * return automatically generated
+         @brief Returns if we're parallelizing the algorithm.
          */
         public bool getIsParallel()
         {
@@ -222,8 +215,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Sets if we're parallelizing the algorithm.
-         * param value automatically generated
+         @brief Sets if we're parallelizing the algorithm.
          */
         public void setIsParallel(bool value)
         {

@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -49,26 +49,25 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Create an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm CITE: Neumann12.
-         *
-         * loadClassifierNM1, e.g. from file in samples/cpp/trained_classifierNM1.xml
-         *
-         * The component tree of the image is extracted by a threshold increased step by step from 0 to 255,
-         * incrementally computable descriptors (aspect_ratio, compactness, number of holes, and number of
-         * horizontal crossings) are computed for each ER and used as features for a classifier which estimates
-         * the class-conditional probability P(er|character). The value of P(er|character) is tracked using the
-         * inclusion relation of ER across all thresholds and only the ERs which correspond to local maximum of
-         * the probability P(er|character) are selected (if the local maximum of the probability is above a
-         * global limit pmin and the difference between local maximum and local minimum is greater than
-         * minProbabilityDiff).
-         * param cb automatically generated
-         * param thresholdDelta automatically generated
-         * param minArea automatically generated
-         * param maxArea automatically generated
-         * param minProbability automatically generated
-         * param nonMaxSuppression automatically generated
-         * param minProbabilityDiff automatically generated
-         * return automatically generated
+         @brief Create an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm @cite Neumann12.
+         
+         @param  cb :   Callback with the classifier. Default classifier can be implicitly load with function
+         loadClassifierNM1, e.g. from file in samples/cpp/trained_classifierNM1.xml
+         @param  thresholdDelta :   Threshold step in subsequent thresholds when extracting the component tree
+         @param  minArea :   The minimum area (% of image size) allowed for retreived ER's
+         @param  maxArea :   The maximum area (% of image size) allowed for retreived ER's
+         @param  minProbability :   The minimum probability P(er|character) allowed for retreived ER's
+         @param  nonMaxSuppression :   Whenever non-maximum suppression is done over the branch probabilities
+         @param  minProbabilityDiff :   The minimum probability difference between local maxima and local minima ERs
+         
+         The component tree of the image is extracted by a threshold increased step by step from 0 to 255,
+         incrementally computable descriptors (aspect_ratio, compactness, number of holes, and number of
+         horizontal crossings) are computed for each ER and used as features for a classifier which estimates
+         the class-conditional probability P(er|character). The value of P(er|character) is tracked using the
+         inclusion relation of ER across all thresholds and only the ERs which correspond to local maximum of
+         the probability P(er|character) are selected (if the local maximum of the probability is above a
+         global limit pmin and the difference between local maximum and local minimum is greater than
+         minProbabilityDiff).
          */
         public static ERFilter createERFilterNM1(ERFilter_Callback cb, int thresholdDelta, float minArea, float maxArea, float minProbability, bool nonMaxSuppression, float minProbabilityDiff)
         {
@@ -80,25 +79,25 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Create an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm CITE: Neumann12.
-         *
-         * loadClassifierNM1, e.g. from file in samples/cpp/trained_classifierNM1.xml
-         *
-         * The component tree of the image is extracted by a threshold increased step by step from 0 to 255,
-         * incrementally computable descriptors (aspect_ratio, compactness, number of holes, and number of
-         * horizontal crossings) are computed for each ER and used as features for a classifier which estimates
-         * the class-conditional probability P(er|character). The value of P(er|character) is tracked using the
-         * inclusion relation of ER across all thresholds and only the ERs which correspond to local maximum of
-         * the probability P(er|character) are selected (if the local maximum of the probability is above a
-         * global limit pmin and the difference between local maximum and local minimum is greater than
-         * minProbabilityDiff).
-         * param cb automatically generated
-         * param thresholdDelta automatically generated
-         * param minArea automatically generated
-         * param maxArea automatically generated
-         * param minProbability automatically generated
-         * param nonMaxSuppression automatically generated
-         * return automatically generated
+         @brief Create an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm @cite Neumann12.
+         
+         @param  cb :   Callback with the classifier. Default classifier can be implicitly load with function
+         loadClassifierNM1, e.g. from file in samples/cpp/trained_classifierNM1.xml
+         @param  thresholdDelta :   Threshold step in subsequent thresholds when extracting the component tree
+         @param  minArea :   The minimum area (% of image size) allowed for retreived ER's
+         @param  maxArea :   The maximum area (% of image size) allowed for retreived ER's
+         @param  minProbability :   The minimum probability P(er|character) allowed for retreived ER's
+         @param  nonMaxSuppression :   Whenever non-maximum suppression is done over the branch probabilities
+         @param  minProbabilityDiff :   The minimum probability difference between local maxima and local minima ERs
+         
+         The component tree of the image is extracted by a threshold increased step by step from 0 to 255,
+         incrementally computable descriptors (aspect_ratio, compactness, number of holes, and number of
+         horizontal crossings) are computed for each ER and used as features for a classifier which estimates
+         the class-conditional probability P(er|character). The value of P(er|character) is tracked using the
+         inclusion relation of ER across all thresholds and only the ERs which correspond to local maximum of
+         the probability P(er|character) are selected (if the local maximum of the probability is above a
+         global limit pmin and the difference between local maximum and local minimum is greater than
+         minProbabilityDiff).
          */
         public static ERFilter createERFilterNM1(ERFilter_Callback cb, int thresholdDelta, float minArea, float maxArea, float minProbability, bool nonMaxSuppression)
         {
@@ -110,24 +109,25 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Create an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm CITE: Neumann12.
-         *
-         * loadClassifierNM1, e.g. from file in samples/cpp/trained_classifierNM1.xml
-         *
-         * The component tree of the image is extracted by a threshold increased step by step from 0 to 255,
-         * incrementally computable descriptors (aspect_ratio, compactness, number of holes, and number of
-         * horizontal crossings) are computed for each ER and used as features for a classifier which estimates
-         * the class-conditional probability P(er|character). The value of P(er|character) is tracked using the
-         * inclusion relation of ER across all thresholds and only the ERs which correspond to local maximum of
-         * the probability P(er|character) are selected (if the local maximum of the probability is above a
-         * global limit pmin and the difference between local maximum and local minimum is greater than
-         * minProbabilityDiff).
-         * param cb automatically generated
-         * param thresholdDelta automatically generated
-         * param minArea automatically generated
-         * param maxArea automatically generated
-         * param minProbability automatically generated
-         * return automatically generated
+         @brief Create an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm @cite Neumann12.
+         
+         @param  cb :   Callback with the classifier. Default classifier can be implicitly load with function
+         loadClassifierNM1, e.g. from file in samples/cpp/trained_classifierNM1.xml
+         @param  thresholdDelta :   Threshold step in subsequent thresholds when extracting the component tree
+         @param  minArea :   The minimum area (% of image size) allowed for retreived ER's
+         @param  maxArea :   The maximum area (% of image size) allowed for retreived ER's
+         @param  minProbability :   The minimum probability P(er|character) allowed for retreived ER's
+         @param  nonMaxSuppression :   Whenever non-maximum suppression is done over the branch probabilities
+         @param  minProbabilityDiff :   The minimum probability difference between local maxima and local minima ERs
+         
+         The component tree of the image is extracted by a threshold increased step by step from 0 to 255,
+         incrementally computable descriptors (aspect_ratio, compactness, number of holes, and number of
+         horizontal crossings) are computed for each ER and used as features for a classifier which estimates
+         the class-conditional probability P(er|character). The value of P(er|character) is tracked using the
+         inclusion relation of ER across all thresholds and only the ERs which correspond to local maximum of
+         the probability P(er|character) are selected (if the local maximum of the probability is above a
+         global limit pmin and the difference between local maximum and local minimum is greater than
+         minProbabilityDiff).
          */
         public static ERFilter createERFilterNM1(ERFilter_Callback cb, int thresholdDelta, float minArea, float maxArea, float minProbability)
         {
@@ -139,23 +139,25 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Create an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm CITE: Neumann12.
-         *
-         * loadClassifierNM1, e.g. from file in samples/cpp/trained_classifierNM1.xml
-         *
-         * The component tree of the image is extracted by a threshold increased step by step from 0 to 255,
-         * incrementally computable descriptors (aspect_ratio, compactness, number of holes, and number of
-         * horizontal crossings) are computed for each ER and used as features for a classifier which estimates
-         * the class-conditional probability P(er|character). The value of P(er|character) is tracked using the
-         * inclusion relation of ER across all thresholds and only the ERs which correspond to local maximum of
-         * the probability P(er|character) are selected (if the local maximum of the probability is above a
-         * global limit pmin and the difference between local maximum and local minimum is greater than
-         * minProbabilityDiff).
-         * param cb automatically generated
-         * param thresholdDelta automatically generated
-         * param minArea automatically generated
-         * param maxArea automatically generated
-         * return automatically generated
+         @brief Create an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm @cite Neumann12.
+         
+         @param  cb :   Callback with the classifier. Default classifier can be implicitly load with function
+         loadClassifierNM1, e.g. from file in samples/cpp/trained_classifierNM1.xml
+         @param  thresholdDelta :   Threshold step in subsequent thresholds when extracting the component tree
+         @param  minArea :   The minimum area (% of image size) allowed for retreived ER's
+         @param  maxArea :   The maximum area (% of image size) allowed for retreived ER's
+         @param  minProbability :   The minimum probability P(er|character) allowed for retreived ER's
+         @param  nonMaxSuppression :   Whenever non-maximum suppression is done over the branch probabilities
+         @param  minProbabilityDiff :   The minimum probability difference between local maxima and local minima ERs
+         
+         The component tree of the image is extracted by a threshold increased step by step from 0 to 255,
+         incrementally computable descriptors (aspect_ratio, compactness, number of holes, and number of
+         horizontal crossings) are computed for each ER and used as features for a classifier which estimates
+         the class-conditional probability P(er|character). The value of P(er|character) is tracked using the
+         inclusion relation of ER across all thresholds and only the ERs which correspond to local maximum of
+         the probability P(er|character) are selected (if the local maximum of the probability is above a
+         global limit pmin and the difference between local maximum and local minimum is greater than
+         minProbabilityDiff).
          */
         public static ERFilter createERFilterNM1(ERFilter_Callback cb, int thresholdDelta, float minArea, float maxArea)
         {
@@ -167,22 +169,25 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Create an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm CITE: Neumann12.
-         *
-         * loadClassifierNM1, e.g. from file in samples/cpp/trained_classifierNM1.xml
-         *
-         * The component tree of the image is extracted by a threshold increased step by step from 0 to 255,
-         * incrementally computable descriptors (aspect_ratio, compactness, number of holes, and number of
-         * horizontal crossings) are computed for each ER and used as features for a classifier which estimates
-         * the class-conditional probability P(er|character). The value of P(er|character) is tracked using the
-         * inclusion relation of ER across all thresholds and only the ERs which correspond to local maximum of
-         * the probability P(er|character) are selected (if the local maximum of the probability is above a
-         * global limit pmin and the difference between local maximum and local minimum is greater than
-         * minProbabilityDiff).
-         * param cb automatically generated
-         * param thresholdDelta automatically generated
-         * param minArea automatically generated
-         * return automatically generated
+         @brief Create an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm @cite Neumann12.
+         
+         @param  cb :   Callback with the classifier. Default classifier can be implicitly load with function
+         loadClassifierNM1, e.g. from file in samples/cpp/trained_classifierNM1.xml
+         @param  thresholdDelta :   Threshold step in subsequent thresholds when extracting the component tree
+         @param  minArea :   The minimum area (% of image size) allowed for retreived ER's
+         @param  maxArea :   The maximum area (% of image size) allowed for retreived ER's
+         @param  minProbability :   The minimum probability P(er|character) allowed for retreived ER's
+         @param  nonMaxSuppression :   Whenever non-maximum suppression is done over the branch probabilities
+         @param  minProbabilityDiff :   The minimum probability difference between local maxima and local minima ERs
+         
+         The component tree of the image is extracted by a threshold increased step by step from 0 to 255,
+         incrementally computable descriptors (aspect_ratio, compactness, number of holes, and number of
+         horizontal crossings) are computed for each ER and used as features for a classifier which estimates
+         the class-conditional probability P(er|character). The value of P(er|character) is tracked using the
+         inclusion relation of ER across all thresholds and only the ERs which correspond to local maximum of
+         the probability P(er|character) are selected (if the local maximum of the probability is above a
+         global limit pmin and the difference between local maximum and local minimum is greater than
+         minProbabilityDiff).
          */
         public static ERFilter createERFilterNM1(ERFilter_Callback cb, int thresholdDelta, float minArea)
         {
@@ -194,21 +199,25 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Create an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm CITE: Neumann12.
-         *
-         * loadClassifierNM1, e.g. from file in samples/cpp/trained_classifierNM1.xml
-         *
-         * The component tree of the image is extracted by a threshold increased step by step from 0 to 255,
-         * incrementally computable descriptors (aspect_ratio, compactness, number of holes, and number of
-         * horizontal crossings) are computed for each ER and used as features for a classifier which estimates
-         * the class-conditional probability P(er|character). The value of P(er|character) is tracked using the
-         * inclusion relation of ER across all thresholds and only the ERs which correspond to local maximum of
-         * the probability P(er|character) are selected (if the local maximum of the probability is above a
-         * global limit pmin and the difference between local maximum and local minimum is greater than
-         * minProbabilityDiff).
-         * param cb automatically generated
-         * param thresholdDelta automatically generated
-         * return automatically generated
+         @brief Create an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm @cite Neumann12.
+         
+         @param  cb :   Callback with the classifier. Default classifier can be implicitly load with function
+         loadClassifierNM1, e.g. from file in samples/cpp/trained_classifierNM1.xml
+         @param  thresholdDelta :   Threshold step in subsequent thresholds when extracting the component tree
+         @param  minArea :   The minimum area (% of image size) allowed for retreived ER's
+         @param  maxArea :   The maximum area (% of image size) allowed for retreived ER's
+         @param  minProbability :   The minimum probability P(er|character) allowed for retreived ER's
+         @param  nonMaxSuppression :   Whenever non-maximum suppression is done over the branch probabilities
+         @param  minProbabilityDiff :   The minimum probability difference between local maxima and local minima ERs
+         
+         The component tree of the image is extracted by a threshold increased step by step from 0 to 255,
+         incrementally computable descriptors (aspect_ratio, compactness, number of holes, and number of
+         horizontal crossings) are computed for each ER and used as features for a classifier which estimates
+         the class-conditional probability P(er|character). The value of P(er|character) is tracked using the
+         inclusion relation of ER across all thresholds and only the ERs which correspond to local maximum of
+         the probability P(er|character) are selected (if the local maximum of the probability is above a
+         global limit pmin and the difference between local maximum and local minimum is greater than
+         minProbabilityDiff).
          */
         public static ERFilter createERFilterNM1(ERFilter_Callback cb, int thresholdDelta)
         {
@@ -220,20 +229,25 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Create an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm CITE: Neumann12.
-         *
-         * loadClassifierNM1, e.g. from file in samples/cpp/trained_classifierNM1.xml
-         *
-         * The component tree of the image is extracted by a threshold increased step by step from 0 to 255,
-         * incrementally computable descriptors (aspect_ratio, compactness, number of holes, and number of
-         * horizontal crossings) are computed for each ER and used as features for a classifier which estimates
-         * the class-conditional probability P(er|character). The value of P(er|character) is tracked using the
-         * inclusion relation of ER across all thresholds and only the ERs which correspond to local maximum of
-         * the probability P(er|character) are selected (if the local maximum of the probability is above a
-         * global limit pmin and the difference between local maximum and local minimum is greater than
-         * minProbabilityDiff).
-         * param cb automatically generated
-         * return automatically generated
+         @brief Create an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm @cite Neumann12.
+         
+         @param  cb :   Callback with the classifier. Default classifier can be implicitly load with function
+         loadClassifierNM1, e.g. from file in samples/cpp/trained_classifierNM1.xml
+         @param  thresholdDelta :   Threshold step in subsequent thresholds when extracting the component tree
+         @param  minArea :   The minimum area (% of image size) allowed for retreived ER's
+         @param  maxArea :   The maximum area (% of image size) allowed for retreived ER's
+         @param  minProbability :   The minimum probability P(er|character) allowed for retreived ER's
+         @param  nonMaxSuppression :   Whenever non-maximum suppression is done over the branch probabilities
+         @param  minProbabilityDiff :   The minimum probability difference between local maxima and local minima ERs
+         
+         The component tree of the image is extracted by a threshold increased step by step from 0 to 255,
+         incrementally computable descriptors (aspect_ratio, compactness, number of holes, and number of
+         horizontal crossings) are computed for each ER and used as features for a classifier which estimates
+         the class-conditional probability P(er|character). The value of P(er|character) is tracked using the
+         inclusion relation of ER across all thresholds and only the ERs which correspond to local maximum of
+         the probability P(er|character) are selected (if the local maximum of the probability is above a
+         global limit pmin and the difference between local maximum and local minimum is greater than
+         minProbabilityDiff).
          */
         public static ERFilter createERFilterNM1(ERFilter_Callback cb)
         {
@@ -250,17 +264,16 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Create an Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm CITE: Neumann12.
-         *
-         * loadClassifierNM2, e.g. from file in samples/cpp/trained_classifierNM2.xml
-         *
-         * In the second stage, the ERs that passed the first stage are classified into character and
-         * non-character classes using more informative but also more computationally expensive features. The
-         * classifier uses all the features calculated in the first stage and the following additional
-         * features: hole area ratio, convex hull ratio, and number of outer inflexion points.
-         * param cb automatically generated
-         * param minProbability automatically generated
-         * return automatically generated
+         @brief Create an Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm @cite Neumann12.
+         
+         @param  cb :   Callback with the classifier. Default classifier can be implicitly load with function
+         loadClassifierNM2, e.g. from file in samples/cpp/trained_classifierNM2.xml
+         @param  minProbability :   The minimum probability P(er|character) allowed for retreived ER's
+         
+         In the second stage, the ERs that passed the first stage are classified into character and
+         non-character classes using more informative but also more computationally expensive features. The
+         classifier uses all the features calculated in the first stage and the following additional
+         features: hole area ratio, convex hull ratio, and number of outer inflexion points.
          */
         public static ERFilter createERFilterNM2(ERFilter_Callback cb, float minProbability)
         {
@@ -272,16 +285,16 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Create an Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm CITE: Neumann12.
-         *
-         * loadClassifierNM2, e.g. from file in samples/cpp/trained_classifierNM2.xml
-         *
-         * In the second stage, the ERs that passed the first stage are classified into character and
-         * non-character classes using more informative but also more computationally expensive features. The
-         * classifier uses all the features calculated in the first stage and the following additional
-         * features: hole area ratio, convex hull ratio, and number of outer inflexion points.
-         * param cb automatically generated
-         * return automatically generated
+         @brief Create an Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm @cite Neumann12.
+         
+         @param  cb :   Callback with the classifier. Default classifier can be implicitly load with function
+         loadClassifierNM2, e.g. from file in samples/cpp/trained_classifierNM2.xml
+         @param  minProbability :   The minimum probability P(er|character) allowed for retreived ER's
+         
+         In the second stage, the ERs that passed the first stage are classified into character and
+         non-character classes using more informative but also more computationally expensive features. The
+         classifier uses all the features calculated in the first stage and the following additional
+         features: hole area ratio, convex hull ratio, and number of outer inflexion points.
          */
         public static ERFilter createERFilterNM2(ERFilter_Callback cb)
         {
@@ -298,17 +311,10 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Reads an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm
-         *     from the provided path e.g. /path/to/cpp/trained_classifierNM1.xml
-         *
-         * param filename automatically generated
-         * param thresholdDelta automatically generated
-         * param minArea automatically generated
-         * param maxArea automatically generated
-         * param minProbability automatically generated
-         * param nonMaxSuppression automatically generated
-         * param minProbabilityDiff automatically generated
-         * return automatically generated
+         @brief Reads an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm
+             from the provided path e.g. /path/to/cpp/trained_classifierNM1.xml
+         
+         @overload
          */
         public static ERFilter createERFilterNM1(string filename, int thresholdDelta, float minArea, float maxArea, float minProbability, bool nonMaxSuppression, float minProbabilityDiff)
         {
@@ -320,16 +326,10 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Reads an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm
-         *     from the provided path e.g. /path/to/cpp/trained_classifierNM1.xml
-         *
-         * param filename automatically generated
-         * param thresholdDelta automatically generated
-         * param minArea automatically generated
-         * param maxArea automatically generated
-         * param minProbability automatically generated
-         * param nonMaxSuppression automatically generated
-         * return automatically generated
+         @brief Reads an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm
+             from the provided path e.g. /path/to/cpp/trained_classifierNM1.xml
+         
+         @overload
          */
         public static ERFilter createERFilterNM1(string filename, int thresholdDelta, float minArea, float maxArea, float minProbability, bool nonMaxSuppression)
         {
@@ -341,15 +341,10 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Reads an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm
-         *     from the provided path e.g. /path/to/cpp/trained_classifierNM1.xml
-         *
-         * param filename automatically generated
-         * param thresholdDelta automatically generated
-         * param minArea automatically generated
-         * param maxArea automatically generated
-         * param minProbability automatically generated
-         * return automatically generated
+         @brief Reads an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm
+             from the provided path e.g. /path/to/cpp/trained_classifierNM1.xml
+         
+         @overload
          */
         public static ERFilter createERFilterNM1(string filename, int thresholdDelta, float minArea, float maxArea, float minProbability)
         {
@@ -361,14 +356,10 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Reads an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm
-         *     from the provided path e.g. /path/to/cpp/trained_classifierNM1.xml
-         *
-         * param filename automatically generated
-         * param thresholdDelta automatically generated
-         * param minArea automatically generated
-         * param maxArea automatically generated
-         * return automatically generated
+         @brief Reads an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm
+             from the provided path e.g. /path/to/cpp/trained_classifierNM1.xml
+         
+         @overload
          */
         public static ERFilter createERFilterNM1(string filename, int thresholdDelta, float minArea, float maxArea)
         {
@@ -380,13 +371,10 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Reads an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm
-         *     from the provided path e.g. /path/to/cpp/trained_classifierNM1.xml
-         *
-         * param filename automatically generated
-         * param thresholdDelta automatically generated
-         * param minArea automatically generated
-         * return automatically generated
+         @brief Reads an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm
+             from the provided path e.g. /path/to/cpp/trained_classifierNM1.xml
+         
+         @overload
          */
         public static ERFilter createERFilterNM1(string filename, int thresholdDelta, float minArea)
         {
@@ -398,12 +386,10 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Reads an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm
-         *     from the provided path e.g. /path/to/cpp/trained_classifierNM1.xml
-         *
-         * param filename automatically generated
-         * param thresholdDelta automatically generated
-         * return automatically generated
+         @brief Reads an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm
+             from the provided path e.g. /path/to/cpp/trained_classifierNM1.xml
+         
+         @overload
          */
         public static ERFilter createERFilterNM1(string filename, int thresholdDelta)
         {
@@ -415,11 +401,10 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Reads an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm
-         *     from the provided path e.g. /path/to/cpp/trained_classifierNM1.xml
-         *
-         * param filename automatically generated
-         * return automatically generated
+         @brief Reads an Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm
+             from the provided path e.g. /path/to/cpp/trained_classifierNM1.xml
+         
+         @overload
          */
         public static ERFilter createERFilterNM1(string filename)
         {
@@ -436,12 +421,10 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Reads an Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm
-         *     from the provided path e.g. /path/to/cpp/trained_classifierNM2.xml
-         *
-         * param filename automatically generated
-         * param minProbability automatically generated
-         * return automatically generated
+         @brief Reads an Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm
+             from the provided path e.g. /path/to/cpp/trained_classifierNM2.xml
+         
+         @overload
          */
         public static ERFilter createERFilterNM2(string filename, float minProbability)
         {
@@ -453,11 +436,10 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Reads an Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm
-         *     from the provided path e.g. /path/to/cpp/trained_classifierNM2.xml
-         *
-         * param filename automatically generated
-         * return automatically generated
+         @brief Reads an Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm
+             from the provided path e.g. /path/to/cpp/trained_classifierNM2.xml
+         
+         @overload
          */
         public static ERFilter createERFilterNM2(string filename)
         {
@@ -474,12 +456,11 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Allow to implicitly load the default classifier when creating an ERFilter object.
-         *
-         * param filename The XML or YAML file with the classifier model (e.g. trained_classifierNM1.xml)
-         *
-         * returns a pointer to ERFilter::Callback.
-         * return automatically generated
+         @brief Allow to implicitly load the default classifier when creating an ERFilter object.
+         
+         @param filename The XML or YAML file with the classifier model (e.g. trained_classifierNM1.xml)
+         
+         returns a pointer to ERFilter::Callback.
          */
         public static ERFilter_Callback loadClassifierNM1(string filename)
         {
@@ -496,12 +477,11 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Allow to implicitly load the default classifier when creating an ERFilter object.
-         *
-         * param filename The XML or YAML file with the classifier model (e.g. trained_classifierNM2.xml)
-         *
-         * returns a pointer to ERFilter::Callback.
-         * return automatically generated
+         @brief Allow to implicitly load the default classifier when creating an ERFilter object.
+         
+         @param filename The XML or YAML file with the classifier model (e.g. trained_classifierNM2.xml)
+         
+         returns a pointer to ERFilter::Callback.
          */
         public static ERFilter_Callback loadClassifierNM2(string filename)
         {
@@ -518,19 +498,19 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Compute the different channels to be processed independently in the N&amp;M algorithm CITE: Neumann12.
-         *
-         * param _src Source image. Must be RGB CV_8UC3.
-         *
-         * param _channels Output vector&lt;Mat&gt; where computed channels are stored.
-         *
-         * param _mode Mode of operation. Currently the only available options are:
-         * <b>ERFILTER_NM_RGBLGrad</b> (used by default) and <b>ERFILTER_NM_IHSGrad</b>.
-         *
-         * In N&amp;M algorithm, the combination of intensity (I), hue (H), saturation (S), and gradient magnitude
-         * channels (Grad) are used in order to obtain high localization recall. This implementation also
-         * provides an alternative combination of red (R), green (G), blue (B), lightness (L), and gradient
-         * magnitude (Grad).
+         @brief Compute the different channels to be processed independently in the N&amp;M algorithm @cite Neumann12.
+         
+         @param _src Source image. Must be RGB CV_8UC3.
+         
+         @param _channels Output vector&lt;Mat&gt; where computed channels are stored.
+         
+         @param _mode Mode of operation. Currently the only available options are:
+         **ERFILTER_NM_RGBLGrad** (used by default) and **ERFILTER_NM_IHSGrad**.
+         
+         In N&amp;M algorithm, the combination of intensity (I), hue (H), saturation (S), and gradient magnitude
+         channels (Grad) are used in order to obtain high localization recall. This implementation also
+         provides an alternative combination of red (R), green (G), blue (B), lightness (L), and gradient
+         magnitude (Grad).
          */
         public static void computeNMChannels(Mat _src, List<Mat> _channels, int _mode)
         {
@@ -543,18 +523,19 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Compute the different channels to be processed independently in the N&amp;M algorithm CITE: Neumann12.
-         *
-         * param _src Source image. Must be RGB CV_8UC3.
-         *
-         * param _channels Output vector&lt;Mat&gt; where computed channels are stored.
-         *
-         * <b>ERFILTER_NM_RGBLGrad</b> (used by default) and <b>ERFILTER_NM_IHSGrad</b>.
-         *
-         * In N&amp;M algorithm, the combination of intensity (I), hue (H), saturation (S), and gradient magnitude
-         * channels (Grad) are used in order to obtain high localization recall. This implementation also
-         * provides an alternative combination of red (R), green (G), blue (B), lightness (L), and gradient
-         * magnitude (Grad).
+         @brief Compute the different channels to be processed independently in the N&amp;M algorithm @cite Neumann12.
+         
+         @param _src Source image. Must be RGB CV_8UC3.
+         
+         @param _channels Output vector&lt;Mat&gt; where computed channels are stored.
+         
+         @param _mode Mode of operation. Currently the only available options are:
+         **ERFILTER_NM_RGBLGrad** (used by default) and **ERFILTER_NM_IHSGrad**.
+         
+         In N&amp;M algorithm, the combination of intensity (I), hue (H), saturation (S), and gradient magnitude
+         channels (Grad) are used in order to obtain high localization recall. This implementation also
+         provides an alternative combination of red (R), green (G), blue (B), lightness (L), and gradient
+         magnitude (Grad).
          */
         public static void computeNMChannels(Mat _src, List<Mat> _channels)
         {
@@ -572,27 +553,28 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Find groups of Extremal Regions that are organized as text blocks.
-         *
-         *
-         *
-         * param regions Vector of ER's retrieved from the ERFilter algorithm from each channel.
-         *
-         * provided regions.
-         *
-         * param groups_rects The output of the algorithm are stored in this parameter as list of rectangles.
-         *
-         * param method Grouping method (see text::erGrouping_Modes). Can be one of ERGROUPING_ORIENTATION_HORIZ,
-         * ERGROUPING_ORIENTATION_ANY.
-         *
-         * param filename The XML or YAML file with the classifier model (e.g.
-         * samples/trained_classifier_erGrouping.xml). Only to use when grouping method is
-         * ERGROUPING_ORIENTATION_ANY.
-         *
-         * param minProbablity The minimum probability for accepting a group. Only to use when grouping
-         * method is ERGROUPING_ORIENTATION_ANY.
-         * param image automatically generated
-         * param channel automatically generated
+         @brief Find groups of Extremal Regions that are organized as text blocks.
+         
+         @param img Original RGB or Greyscale image from wich the regions were extracted.
+         
+         @param channels Vector of single channel images CV_8UC1 from wich the regions were extracted.
+         
+         @param regions Vector of ER's retrieved from the ERFilter algorithm from each channel.
+         
+         @param groups The output of the algorithm is stored in this parameter as set of lists of indexes to
+         provided regions.
+         
+         @param groups_rects The output of the algorithm are stored in this parameter as list of rectangles.
+         
+         @param method Grouping method (see text::erGrouping_Modes). Can be one of ERGROUPING_ORIENTATION_HORIZ,
+         ERGROUPING_ORIENTATION_ANY.
+         
+         @param filename The XML or YAML file with the classifier model (e.g.
+         samples/trained_classifier_erGrouping.xml). Only to use when grouping method is
+         ERGROUPING_ORIENTATION_ANY.
+         
+         @param minProbablity The minimum probability for accepting a group. Only to use when grouping
+         method is ERGROUPING_ORIENTATION_ANY.
          */
         public static void erGrouping(Mat image, Mat channel, List<MatOfPoint> regions, MatOfRect groups_rects, int method, string filename, float minProbablity)
         {
@@ -608,26 +590,28 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Find groups of Extremal Regions that are organized as text blocks.
-         *
-         *
-         *
-         * param regions Vector of ER's retrieved from the ERFilter algorithm from each channel.
-         *
-         * provided regions.
-         *
-         * param groups_rects The output of the algorithm are stored in this parameter as list of rectangles.
-         *
-         * param method Grouping method (see text::erGrouping_Modes). Can be one of ERGROUPING_ORIENTATION_HORIZ,
-         * ERGROUPING_ORIENTATION_ANY.
-         *
-         * param filename The XML or YAML file with the classifier model (e.g.
-         * samples/trained_classifier_erGrouping.xml). Only to use when grouping method is
-         * ERGROUPING_ORIENTATION_ANY.
-         *
-         * method is ERGROUPING_ORIENTATION_ANY.
-         * param image automatically generated
-         * param channel automatically generated
+         @brief Find groups of Extremal Regions that are organized as text blocks.
+         
+         @param img Original RGB or Greyscale image from wich the regions were extracted.
+         
+         @param channels Vector of single channel images CV_8UC1 from wich the regions were extracted.
+         
+         @param regions Vector of ER's retrieved from the ERFilter algorithm from each channel.
+         
+         @param groups The output of the algorithm is stored in this parameter as set of lists of indexes to
+         provided regions.
+         
+         @param groups_rects The output of the algorithm are stored in this parameter as list of rectangles.
+         
+         @param method Grouping method (see text::erGrouping_Modes). Can be one of ERGROUPING_ORIENTATION_HORIZ,
+         ERGROUPING_ORIENTATION_ANY.
+         
+         @param filename The XML or YAML file with the classifier model (e.g.
+         samples/trained_classifier_erGrouping.xml). Only to use when grouping method is
+         ERGROUPING_ORIENTATION_ANY.
+         
+         @param minProbablity The minimum probability for accepting a group. Only to use when grouping
+         method is ERGROUPING_ORIENTATION_ANY.
          */
         public static void erGrouping(Mat image, Mat channel, List<MatOfPoint> regions, MatOfRect groups_rects, int method, string filename)
         {
@@ -643,25 +627,28 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Find groups of Extremal Regions that are organized as text blocks.
-         *
-         *
-         *
-         * param regions Vector of ER's retrieved from the ERFilter algorithm from each channel.
-         *
-         * provided regions.
-         *
-         * param groups_rects The output of the algorithm are stored in this parameter as list of rectangles.
-         *
-         * param method Grouping method (see text::erGrouping_Modes). Can be one of ERGROUPING_ORIENTATION_HORIZ,
-         * ERGROUPING_ORIENTATION_ANY.
-         *
-         * samples/trained_classifier_erGrouping.xml). Only to use when grouping method is
-         * ERGROUPING_ORIENTATION_ANY.
-         *
-         * method is ERGROUPING_ORIENTATION_ANY.
-         * param image automatically generated
-         * param channel automatically generated
+         @brief Find groups of Extremal Regions that are organized as text blocks.
+         
+         @param img Original RGB or Greyscale image from wich the regions were extracted.
+         
+         @param channels Vector of single channel images CV_8UC1 from wich the regions were extracted.
+         
+         @param regions Vector of ER's retrieved from the ERFilter algorithm from each channel.
+         
+         @param groups The output of the algorithm is stored in this parameter as set of lists of indexes to
+         provided regions.
+         
+         @param groups_rects The output of the algorithm are stored in this parameter as list of rectangles.
+         
+         @param method Grouping method (see text::erGrouping_Modes). Can be one of ERGROUPING_ORIENTATION_HORIZ,
+         ERGROUPING_ORIENTATION_ANY.
+         
+         @param filename The XML or YAML file with the classifier model (e.g.
+         samples/trained_classifier_erGrouping.xml). Only to use when grouping method is
+         ERGROUPING_ORIENTATION_ANY.
+         
+         @param minProbablity The minimum probability for accepting a group. Only to use when grouping
+         method is ERGROUPING_ORIENTATION_ANY.
          */
         public static void erGrouping(Mat image, Mat channel, List<MatOfPoint> regions, MatOfRect groups_rects, int method)
         {
@@ -677,24 +664,28 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Find groups of Extremal Regions that are organized as text blocks.
-         *
-         *
-         *
-         * param regions Vector of ER's retrieved from the ERFilter algorithm from each channel.
-         *
-         * provided regions.
-         *
-         * param groups_rects The output of the algorithm are stored in this parameter as list of rectangles.
-         *
-         * ERGROUPING_ORIENTATION_ANY.
-         *
-         * samples/trained_classifier_erGrouping.xml). Only to use when grouping method is
-         * ERGROUPING_ORIENTATION_ANY.
-         *
-         * method is ERGROUPING_ORIENTATION_ANY.
-         * param image automatically generated
-         * param channel automatically generated
+         @brief Find groups of Extremal Regions that are organized as text blocks.
+         
+         @param img Original RGB or Greyscale image from wich the regions were extracted.
+         
+         @param channels Vector of single channel images CV_8UC1 from wich the regions were extracted.
+         
+         @param regions Vector of ER's retrieved from the ERFilter algorithm from each channel.
+         
+         @param groups The output of the algorithm is stored in this parameter as set of lists of indexes to
+         provided regions.
+         
+         @param groups_rects The output of the algorithm are stored in this parameter as list of rectangles.
+         
+         @param method Grouping method (see text::erGrouping_Modes). Can be one of ERGROUPING_ORIENTATION_HORIZ,
+         ERGROUPING_ORIENTATION_ANY.
+         
+         @param filename The XML or YAML file with the classifier model (e.g.
+         samples/trained_classifier_erGrouping.xml). Only to use when grouping method is
+         ERGROUPING_ORIENTATION_ANY.
+         
+         @param minProbablity The minimum probability for accepting a group. Only to use when grouping
+         method is ERGROUPING_ORIENTATION_ANY.
          */
         public static void erGrouping(Mat image, Mat channel, List<MatOfPoint> regions, MatOfRect groups_rects)
         {
@@ -715,22 +706,21 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Converts MSER contours (vector&lt;Point&gt;) to ERStat regions.
-         *
-         * param image Source image CV_8UC1 from which the MSERs where extracted.
-         *
-         *
-         * param regions Output where the ERStat regions are stored.
-         *
-         * It takes as input the contours provided by the OpenCV MSER feature detector and returns as output
-         * two vectors of ERStats. This is because MSER() output contains both MSER+ and MSER- regions in a
-         * single vector&lt;Point&gt;, the function separates them in two different vectors (this is as if the
-         * ERStats where extracted from two different channels).
-         *
-         * An example of MSERsToERStats in use can be found in the text detection webcam_demo:
-         * &lt;https://github.com/opencv/opencv_contrib/blob/master/modules/text/samples/webcam_demo.cpp&gt;
-         * param er_filter1 automatically generated
-         * param er_filter2 automatically generated
+         @brief Converts MSER contours (vector&lt;Point&gt;) to ERStat regions.
+         
+         @param image Source image CV_8UC1 from which the MSERs where extracted.
+         
+         @param contours Input vector with all the contours (vector&lt;Point&gt;).
+         
+         @param regions Output where the ERStat regions are stored.
+         
+         It takes as input the contours provided by the OpenCV MSER feature detector and returns as output
+         two vectors of ERStats. This is because MSER() output contains both MSER+ and MSER- regions in a
+         single vector&lt;Point&gt;, the function separates them in two different vectors (this is as if the
+         ERStats where extracted from two different channels).
+         
+         An example of MSERsToERStats in use can be found in the text detection webcam_demo:
+         &lt;https://github.com/opencv/opencv_contrib/blob/master/modules/text/samples/webcam_demo.cpp&gt;
          */
         public static void detectRegions(Mat image, ERFilter er_filter1, ERFilter er_filter2, List<MatOfPoint> regions)
         {
@@ -750,15 +740,15 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Extracts text regions from image.
-         *
-         * param image Source image where text blocks needs to be extracted from.  Should be CV_8UC3 (color).
-         * param er_filter1 Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm CITE: Neumann12
-         * param er_filter2 Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm CITE: Neumann12
-         * param groups_rects Output list of rectangle blocks with text
-         * param method Grouping method (see text::erGrouping_Modes). Can be one of ERGROUPING_ORIENTATION_HORIZ, ERGROUPING_ORIENTATION_ANY.
-         * param filename The XML or YAML file with the classifier model (e.g. samples/trained_classifier_erGrouping.xml). Only to use when grouping method is ERGROUPING_ORIENTATION_ANY.
-         * param minProbability The minimum probability for accepting a group. Only to use when grouping method is ERGROUPING_ORIENTATION_ANY.
+         @brief Extracts text regions from image.
+         
+         @param image Source image where text blocks needs to be extracted from.  Should be CV_8UC3 (color).
+         @param er_filter1 Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm @cite Neumann12
+         @param er_filter2 Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm @cite Neumann12
+         @param groups_rects Output list of rectangle blocks with text
+         @param method Grouping method (see text::erGrouping_Modes). Can be one of ERGROUPING_ORIENTATION_HORIZ, ERGROUPING_ORIENTATION_ANY.
+         @param filename The XML or YAML file with the classifier model (e.g. samples/trained_classifier_erGrouping.xml). Only to use when grouping method is ERGROUPING_ORIENTATION_ANY.
+         @param minProbability The minimum probability for accepting a group. Only to use when grouping method is ERGROUPING_ORIENTATION_ANY.
          */
         public static void detectRegions(Mat image, ERFilter er_filter1, ERFilter er_filter2, MatOfRect groups_rects, int method, string filename, float minProbability)
         {
@@ -773,14 +763,15 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Extracts text regions from image.
-         *
-         * param image Source image where text blocks needs to be extracted from.  Should be CV_8UC3 (color).
-         * param er_filter1 Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm CITE: Neumann12
-         * param er_filter2 Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm CITE: Neumann12
-         * param groups_rects Output list of rectangle blocks with text
-         * param method Grouping method (see text::erGrouping_Modes). Can be one of ERGROUPING_ORIENTATION_HORIZ, ERGROUPING_ORIENTATION_ANY.
-         * param filename The XML or YAML file with the classifier model (e.g. samples/trained_classifier_erGrouping.xml). Only to use when grouping method is ERGROUPING_ORIENTATION_ANY.
+         @brief Extracts text regions from image.
+         
+         @param image Source image where text blocks needs to be extracted from.  Should be CV_8UC3 (color).
+         @param er_filter1 Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm @cite Neumann12
+         @param er_filter2 Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm @cite Neumann12
+         @param groups_rects Output list of rectangle blocks with text
+         @param method Grouping method (see text::erGrouping_Modes). Can be one of ERGROUPING_ORIENTATION_HORIZ, ERGROUPING_ORIENTATION_ANY.
+         @param filename The XML or YAML file with the classifier model (e.g. samples/trained_classifier_erGrouping.xml). Only to use when grouping method is ERGROUPING_ORIENTATION_ANY.
+         @param minProbability The minimum probability for accepting a group. Only to use when grouping method is ERGROUPING_ORIENTATION_ANY.
          */
         public static void detectRegions(Mat image, ERFilter er_filter1, ERFilter er_filter2, MatOfRect groups_rects, int method, string filename)
         {
@@ -795,13 +786,15 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Extracts text regions from image.
-         *
-         * param image Source image where text blocks needs to be extracted from.  Should be CV_8UC3 (color).
-         * param er_filter1 Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm CITE: Neumann12
-         * param er_filter2 Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm CITE: Neumann12
-         * param groups_rects Output list of rectangle blocks with text
-         * param method Grouping method (see text::erGrouping_Modes). Can be one of ERGROUPING_ORIENTATION_HORIZ, ERGROUPING_ORIENTATION_ANY.
+         @brief Extracts text regions from image.
+         
+         @param image Source image where text blocks needs to be extracted from.  Should be CV_8UC3 (color).
+         @param er_filter1 Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm @cite Neumann12
+         @param er_filter2 Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm @cite Neumann12
+         @param groups_rects Output list of rectangle blocks with text
+         @param method Grouping method (see text::erGrouping_Modes). Can be one of ERGROUPING_ORIENTATION_HORIZ, ERGROUPING_ORIENTATION_ANY.
+         @param filename The XML or YAML file with the classifier model (e.g. samples/trained_classifier_erGrouping.xml). Only to use when grouping method is ERGROUPING_ORIENTATION_ANY.
+         @param minProbability The minimum probability for accepting a group. Only to use when grouping method is ERGROUPING_ORIENTATION_ANY.
          */
         public static void detectRegions(Mat image, ERFilter er_filter1, ERFilter er_filter2, MatOfRect groups_rects, int method)
         {
@@ -816,12 +809,15 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Extracts text regions from image.
-         *
-         * param image Source image where text blocks needs to be extracted from.  Should be CV_8UC3 (color).
-         * param er_filter1 Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm CITE: Neumann12
-         * param er_filter2 Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm CITE: Neumann12
-         * param groups_rects Output list of rectangle blocks with text
+         @brief Extracts text regions from image.
+         
+         @param image Source image where text blocks needs to be extracted from.  Should be CV_8UC3 (color).
+         @param er_filter1 Extremal Region Filter for the 1st stage classifier of N&amp;M algorithm @cite Neumann12
+         @param er_filter2 Extremal Region Filter for the 2nd stage classifier of N&amp;M algorithm @cite Neumann12
+         @param groups_rects Output list of rectangle blocks with text
+         @param method Grouping method (see text::erGrouping_Modes). Can be one of ERGROUPING_ORIENTATION_HORIZ, ERGROUPING_ORIENTATION_ANY.
+         @param filename The XML or YAML file with the classifier model (e.g. samples/trained_classifier_erGrouping.xml). Only to use when grouping method is ERGROUPING_ORIENTATION_ANY.
+         @param minProbability The minimum probability for accepting a group. Only to use when grouping method is ERGROUPING_ORIENTATION_ANY.
          */
         public static void detectRegions(Mat image, ERFilter er_filter1, ERFilter er_filter2, MatOfRect groups_rects)
         {
@@ -841,19 +837,18 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Allow to implicitly load the default character classifier when creating an OCRHMMDecoder object.
-         *
-         * param filename The XML or YAML file with the classifier model (e.g. OCRHMM_knn_model_data.xml)
-         *
-         * The KNN default classifier is based in the scene text recognition method proposed by Lukás Neumann &amp;
-         * Jiri Matas in [Neumann11b]. Basically, the region (contour) in the input image is normalized to a
-         * fixed size, while retaining the centroid and aspect ratio, in order to extract a feature vector
-         * based on gradient orientations along the chain-code of its perimeter. Then, the region is classified
-         * using a KNN model trained with synthetic data of rendered characters with different standard font
-         * types.
-         *
-         * deprecated loadOCRHMMClassifier instead
-         * return automatically generated
+         @brief Allow to implicitly load the default character classifier when creating an OCRHMMDecoder object.
+         
+         @param filename The XML or YAML file with the classifier model (e.g. OCRHMM_knn_model_data.xml)
+         
+         The KNN default classifier is based in the scene text recognition method proposed by Lukás Neumann &amp;
+         Jiri Matas in [Neumann11b]. Basically, the region (contour) in the input image is normalized to a
+         fixed size, while retaining the centroid and aspect ratio, in order to extract a feature vector
+         based on gradient orientations along the chain-code of its perimeter. Then, the region is classified
+         using a KNN model trained with synthetic data of rendered characters with different standard font
+         types.
+         
+         @deprecated loadOCRHMMClassifier instead
          */
         [Obsolete("This method is deprecated.")]
         public static OCRHMMDecoder_ClassifierCallback loadOCRHMMClassifierNM(string filename)
@@ -871,17 +866,16 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Allow to implicitly load the default character classifier when creating an OCRHMMDecoder object.
-         *
-         * param filename The XML or YAML file with the classifier model (e.g. OCRBeamSearch_CNN_model_data.xml.gz)
-         *
-         * The CNN default classifier is based in the scene text recognition method proposed by Adam Coates &amp;
-         * Andrew NG in [Coates11a]. The character classifier consists in a Single Layer Convolutional Neural Network and
-         * a linear classifier. It is applied to the input image in a sliding window fashion, providing a set of recognitions
-         * at each window location.
-         *
-         * deprecated use loadOCRHMMClassifier instead
-         * return automatically generated
+         @brief Allow to implicitly load the default character classifier when creating an OCRHMMDecoder object.
+         
+         @param filename The XML or YAML file with the classifier model (e.g. OCRBeamSearch_CNN_model_data.xml.gz)
+         
+         The CNN default classifier is based in the scene text recognition method proposed by Adam Coates &amp;
+         Andrew NG in [Coates11a]. The character classifier consists in a Single Layer Convolutional Neural Network and
+         a linear classifier. It is applied to the input image in a sliding window fashion, providing a set of recognitions
+         at each window location.
+         
+         @deprecated use loadOCRHMMClassifier instead
          */
         [Obsolete("This method is deprecated.")]
         public static OCRHMMDecoder_ClassifierCallback loadOCRHMMClassifierCNN(string filename)
@@ -899,12 +893,11 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Allow to implicitly load the default character classifier when creating an OCRHMMDecoder object.
-         *
-         *  param filename The XML or YAML file with the classifier model (e.g. OCRBeamSearch_CNN_model_data.xml.gz)
-         *
-         *  param classifier Can be one of classifier_type enum values.
-         * return automatically generated
+         @brief Allow to implicitly load the default character classifier when creating an OCRHMMDecoder object.
+         
+          @param filename The XML or YAML file with the classifier model (e.g. OCRBeamSearch_CNN_model_data.xml.gz)
+         
+          @param classifier Can be one of classifier_type enum values.
          */
         public static OCRHMMDecoder_ClassifierCallback loadOCRHMMClassifier(string filename, int classifier)
         {
@@ -921,19 +914,19 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Utility function to create a tailored language model transitions table from a given list of words (lexicon).
+         @brief Utility function to create a tailored language model transitions table from a given list of words (lexicon).
+          *
+          * @param vocabulary The language vocabulary (chars when ASCII English text).
+          *
+          * @param lexicon The list of words that are expected to be found in a particular image.
+          *
+          * @param transition_probabilities_table Output table with transition probabilities between character pairs. cols == rows == vocabulary.size().
+          *
+          * The function calculate frequency statistics of character pairs from the given lexicon and fills the output transition_probabilities_table with them. The transition_probabilities_table can be used as input in the OCRHMMDecoder::create() and OCRBeamSearchDecoder::create() methods.
+          * @note
+          *    -   (C++) An alternative would be to load the default generic language transition table provided in the text module samples folder (created from ispell 42869 english words list) :
+          *            &lt;https://github.com/opencv/opencv_contrib/blob/master/modules/text/samples/OCRHMM_transitions_table.xml&gt;
          *
-         * param vocabulary The language vocabulary (chars when ASCII English text).
-         *
-         * param lexicon The list of words that are expected to be found in a particular image.
-         *
-         *
-         * The function calculate frequency statistics of character pairs from the given lexicon and fills the output transition_probabilities_table with them. The transition_probabilities_table can be used as input in the OCRHMMDecoder::create() and OCRBeamSearchDecoder::create() methods.
-         * <b>Note:</b>
-         * -   (C++) An alternative would be to load the default generic language transition table provided in the text module samples folder (created from ispell 42869 english words list) :
-         * &lt;https://github.com/opencv/opencv_contrib/blob/master/modules/text/samples/OCRHMM_transitions_table.xml&gt;
-         *
-         * return automatically generated
          */
         public static Mat createOCRHMMTransitionsTable(string vocabulary, List<string> lexicon)
         {
@@ -950,15 +943,14 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Allow to implicitly load the default character classifier when creating an OCRBeamSearchDecoder object.
-         *
-         * param filename The XML or YAML file with the classifier model (e.g. OCRBeamSearch_CNN_model_data.xml.gz)
-         *
-         * The CNN default classifier is based in the scene text recognition method proposed by Adam Coates &amp;
-         * Andrew NG in [Coates11a]. The character classifier consists in a Single Layer Convolutional Neural Network and
-         * a linear classifier. It is applied to the input image in a sliding window fashion, providing a set of recognitions
-         * at each window location.
-         * return automatically generated
+         @brief Allow to implicitly load the default character classifier when creating an OCRBeamSearchDecoder object.
+         
+         @param filename The XML or YAML file with the classifier model (e.g. OCRBeamSearch_CNN_model_data.xml.gz)
+         
+         The CNN default classifier is based in the scene text recognition method proposed by Adam Coates &amp;
+         Andrew NG in [Coates11a]. The character classifier consists in a Single Layer Convolutional Neural Network and
+         a linear classifier. It is applied to the input image in a sliding window fashion, providing a set of recognitions
+         at each window location.
          */
         public static OCRBeamSearchDecoder_ClassifierCallback loadOCRBeamSearchClassifierCNN(string filename)
         {
@@ -975,12 +967,12 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         * Applies the Stroke Width Transform operator followed by filtering of connected components of similar Stroke Widths to return letter candidates. It also chain them by proximity and size, saving the result in chainBBs.
-         *     param input the input image with 3 channels.
-         *     param result a vector of resulting bounding boxes where probability of finding text is high
-         *     param dark_on_light a boolean value signifying whether the text is darker or lighter than the background, it is observed to reverse the gradient obtained from Scharr operator, and significantly affect the result.
-         *     param draw an optional Mat of type CV_8UC3 which visualises the detected letters using bounding boxes.
-         *     param chainBBs an optional parameter which chains the letter candidates according to heuristics in the paper and returns all possible regions where text is likely to occur.
+         @brief Applies the Stroke Width Transform operator followed by filtering of connected components of similar Stroke Widths to return letter candidates. It also chain them by proximity and size, saving the result in chainBBs.
+             @param input the input image with 3 channels.
+             @param result a vector of resulting bounding boxes where probability of finding text is high
+             @param dark_on_light a boolean value signifying whether the text is darker or lighter than the background, it is observed to reverse the gradient obtained from Scharr operator, and significantly affect the result.
+             @param draw an optional Mat of type CV_8UC3 which visualises the detected letters using bounding boxes.
+             @param chainBBs an optional parameter which chains the letter candidates according to heuristics in the paper and returns all possible regions where text is likely to occur.
          */
         public static void detectTextSWT(Mat input, MatOfRect result, bool dark_on_light, Mat draw, Mat chainBBs)
         {
@@ -995,11 +987,12 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Applies the Stroke Width Transform operator followed by filtering of connected components of similar Stroke Widths to return letter candidates. It also chain them by proximity and size, saving the result in chainBBs.
-         *     param input the input image with 3 channels.
-         *     param result a vector of resulting bounding boxes where probability of finding text is high
-         *     param dark_on_light a boolean value signifying whether the text is darker or lighter than the background, it is observed to reverse the gradient obtained from Scharr operator, and significantly affect the result.
-         *     param draw an optional Mat of type CV_8UC3 which visualises the detected letters using bounding boxes.
+         @brief Applies the Stroke Width Transform operator followed by filtering of connected components of similar Stroke Widths to return letter candidates. It also chain them by proximity and size, saving the result in chainBBs.
+             @param input the input image with 3 channels.
+             @param result a vector of resulting bounding boxes where probability of finding text is high
+             @param dark_on_light a boolean value signifying whether the text is darker or lighter than the background, it is observed to reverse the gradient obtained from Scharr operator, and significantly affect the result.
+             @param draw an optional Mat of type CV_8UC3 which visualises the detected letters using bounding boxes.
+             @param chainBBs an optional parameter which chains the letter candidates according to heuristics in the paper and returns all possible regions where text is likely to occur.
          */
         public static void detectTextSWT(Mat input, MatOfRect result, bool dark_on_light, Mat draw)
         {
@@ -1013,10 +1006,12 @@ namespace OpenCVForUnity.TextModule
         }
 
         /**
-         * Applies the Stroke Width Transform operator followed by filtering of connected components of similar Stroke Widths to return letter candidates. It also chain them by proximity and size, saving the result in chainBBs.
-         *     param input the input image with 3 channels.
-         *     param result a vector of resulting bounding boxes where probability of finding text is high
-         *     param dark_on_light a boolean value signifying whether the text is darker or lighter than the background, it is observed to reverse the gradient obtained from Scharr operator, and significantly affect the result.
+         @brief Applies the Stroke Width Transform operator followed by filtering of connected components of similar Stroke Widths to return letter candidates. It also chain them by proximity and size, saving the result in chainBBs.
+             @param input the input image with 3 channels.
+             @param result a vector of resulting bounding boxes where probability of finding text is high
+             @param dark_on_light a boolean value signifying whether the text is darker or lighter than the background, it is observed to reverse the gradient obtained from Scharr operator, and significantly affect the result.
+             @param draw an optional Mat of type CV_8UC3 which visualises the detected letters using bounding boxes.
+             @param chainBBs an optional parameter which chains the letter candidates according to heuristics in the paper and returns all possible regions where text is likely to occur.
          */
         public static void detectTextSWT(Mat input, MatOfRect result, bool dark_on_light)
         {
@@ -1149,4 +1144,5 @@ namespace OpenCVForUnity.TextModule
 
     }
 }
+
 #endif

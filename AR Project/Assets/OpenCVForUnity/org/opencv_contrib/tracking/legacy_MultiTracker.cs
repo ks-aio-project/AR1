@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,8 +10,8 @@ namespace OpenCVForUnity.TrackingModule
 
     // C++: class MultiTracker
     /**
-     * This class is used to track multiple objects using the specified tracker algorithm.
-     *
+     @brief This class is used to track multiple objects using the specified tracker algorithm.
+     
      * The %MultiTracker is naive implementation of multiple object tracking.
      * It process the tracked objects independently without any optimization accross the tracked objects.
      */
@@ -51,7 +51,7 @@ namespace OpenCVForUnity.TrackingModule
         //
 
         /**
-         * Constructor.
+         * \brief Constructor.
          */
         public legacy_MultiTracker() :
             base(DisposableObject.ThrowIfNullIntPtr(tracking_legacy_1MultiTracker_legacy_1MultiTracker_10()))
@@ -67,12 +67,11 @@ namespace OpenCVForUnity.TrackingModule
         //
 
         /**
-         * Add a new object to be tracked.
-         *
-         * param newTracker tracking algorithm to be used
-         * param image input image
-         * param boundingBox a rectangle represents ROI of the tracked object
-         * return automatically generated
+         * \brief Add a new object to be tracked.
+           *
+           * @param newTracker tracking algorithm to be used
+           * @param image input image
+           * @param boundingBox a rectangle represents ROI of the tracked object
          */
         public bool add(legacy_Tracker newTracker, Mat image, Rect2d boundingBox)
         {
@@ -91,10 +90,9 @@ namespace OpenCVForUnity.TrackingModule
         //
 
         /**
-         * Update the current tracking status.
-         * param image input image
-         * param boundingBox the tracking result, represent a list of ROIs of the tracked objects.
-         * return automatically generated
+         * \brief Update the current tracking status.
+           * @param image input image
+           * @param boundingBox the tracking result, represent a list of ROIs of the tracked objects.
          */
         public bool update(Mat image, MatOfRect2d boundingBox)
         {
@@ -113,8 +111,7 @@ namespace OpenCVForUnity.TrackingModule
         //
 
         /**
-         * Returns a reference to a storage for the tracked objects, each object corresponds to one tracker algorithm
-         * return automatically generated
+         * \brief Returns a reference to a storage for the tracked objects, each object corresponds to one tracker algorithm
          */
         public MatOfRect2d getObjects()
         {

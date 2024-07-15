@@ -1,4 +1,5 @@
-﻿using System;
+using OpenCVForUnity.UtilsModule;
+using System;
 using System.Collections.Generic;
 
 namespace OpenCVForUnity.CoreModule
@@ -60,14 +61,8 @@ namespace OpenCVForUnity.CoreModule
                 return;
             int num = a.Length;
             alloc(num);
-            int[] buff = new int[num * _channels];
-            for (int i = 0; i < num; i++)
-            {
-                Point p = a[i];
-                buff[_channels * i + 0] = (int)p.x;
-                buff[_channels * i + 1] = (int)p.y;
-            }
-            put(0, 0, buff); //TODO: check ret val!
+
+            Converters.Array_Point_to_Mat(a, this, num, CvType.CV_32SC2);
         }
 
         public Point[] toArray()
@@ -76,23 +71,38 @@ namespace OpenCVForUnity.CoreModule
             Point[] ap = new Point[num];
             if (num == 0)
                 return ap;
-            int[] buff = new int[num * _channels];
-            get(0, 0, buff); //TODO: check ret val!
-            for (int i = 0; i < num; i++)
-                ap[i] = new Point(buff[i * _channels], buff[i * _channels + 1]);
+            for (int i = 0; i < ap.Length; i++)
+            {
+                ap[i] = new Point();
+            }
+            Converters.Mat_to_Array_Point(this, ap, num, CvType.CV_32SC2);
             return ap;
+
         }
 
         public void fromList(List<Point> lp)
         {
-            Point[] ap = lp.ToArray();
-            fromArray(ap);
+            if (lp == null || lp.Count == 0)
+                return;
+            int num = lp.Count;
+            alloc(num);
+
+            Converters.List_Point_to_Mat(lp, this, num, CvType.CV_32SC2);
         }
 
         public List<Point> toList()
         {
-            Point[] ap = toArray();
-            return new List<Point>(ap);
+            int num = (int)total();
+            List<Point> ap = new List<Point>(num);
+            if (num == 0)
+                return ap;
+
+            for (int i = 0; i < num; i++)
+            {
+                ap.Add(new Point());
+            }
+            Converters.Mat_to_List_Point(this, ap, num, CvType.CV_32SC2);
+            return ap;
         }
     }
 }

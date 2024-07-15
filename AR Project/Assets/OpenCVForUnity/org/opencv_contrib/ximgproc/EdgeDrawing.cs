@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class EdgeDrawing
     /**
-     * Class implementing the ED (EdgeDrawing) CITE: topal2012edge, EDLines CITE: akinlar2011edlines, EDPF CITE: akinlar2012edpf and EDCircles CITE: akinlar2013edcircles algorithms
+     @brief Class implementing the ED (EdgeDrawing) @cite topal2012edge, EDLines @cite akinlar2011edlines, EDPF @cite akinlar2012edpf and EDCircles @cite akinlar2013edcircles algorithms
      */
 
     public class EdgeDrawing : Algorithm
@@ -53,9 +53,9 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Detects edges and prepares them to detect lines and ellipses.
-         *
-         *     param src input image
+         @brief Detects edges in a grayscale image and prepares them to detect lines and ellipses.
+         
+             @param src 8-bit, single-channel, grayscale input image.
          */
         public void detectEdges(Mat src)
         {
@@ -72,6 +72,11 @@ namespace OpenCVForUnity.XimgprocModule
         // C++:  void cv::ximgproc::EdgeDrawing::getEdgeImage(Mat& dst)
         //
 
+        /**
+         @brief returns Edge Image prepared by detectEdges() function.
+         
+             @param dst returns 8-bit, single-channel output image.
+         */
         public void getEdgeImage(Mat dst)
         {
             ThrowIfDisposed();
@@ -87,6 +92,11 @@ namespace OpenCVForUnity.XimgprocModule
         // C++:  void cv::ximgproc::EdgeDrawing::getGradientImage(Mat& dst)
         //
 
+        /**
+         @brief returns Gradient Image prepared by detectEdges() function.
+         
+             @param dst returns 16-bit, single-channel output image.
+         */
         public void getGradientImage(Mat dst)
         {
             ThrowIfDisposed();
@@ -102,6 +112,9 @@ namespace OpenCVForUnity.XimgprocModule
         // C++:  vector_vector_Point cv::ximgproc::EdgeDrawing::getSegments()
         //
 
+        /**
+         @brief Returns std::vector&lt;std::vector&lt;Point&gt;&gt; of detected edge segments, see detectEdges()
+         */
         public List<MatOfPoint> getSegments()
         {
             ThrowIfDisposed();
@@ -113,14 +126,31 @@ namespace OpenCVForUnity.XimgprocModule
 
 
         //
+        // C++:  vector_int cv::ximgproc::EdgeDrawing::getSegmentIndicesOfLines()
+        //
+
+        /**
+         @brief Returns for each line found in detectLines() its edge segment index in getSegments()
+         */
+        public MatOfInt getSegmentIndicesOfLines()
+        {
+            ThrowIfDisposed();
+
+            return MatOfInt.fromNativeAddr(DisposableObject.ThrowIfNullIntPtr(ximgproc_EdgeDrawing_getSegmentIndicesOfLines_10(nativeObj)));
+
+
+        }
+
+
+        //
         // C++:  void cv::ximgproc::EdgeDrawing::detectLines(Mat& lines)
         //
 
         /**
-         * Detects lines.
-         *
-         *     param lines  output Vec&lt;4f&gt; contains start point and end point of detected lines.
-         *     <b>Note:</b> you should call detectEdges() method before call this.
+         @brief Detects lines.
+         
+             @param lines  output Vec&lt;4f&gt; contains the start point and the end point of detected lines.
+             @note you should call detectEdges() before calling this function.
          */
         public void detectLines(Mat lines)
         {
@@ -138,10 +168,10 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Detects circles and ellipses.
-         *
-         *     param ellipses  output Vec&lt;6d&gt; contains center point and perimeter for circles.
-         *     <b>Note:</b> you should call detectEdges() method before call this.
+         @brief Detects circles and ellipses.
+         
+             @param ellipses  output Vec&lt;6d&gt; contains center point and perimeter for circles, center point, axes and angle for ellipses.
+             @note you should call detectEdges() before calling this function.
          */
         public void detectEllipses(Mat ellipses)
         {
@@ -159,10 +189,10 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * sets parameters.
-         *
-         *     this function is meant to be used for parameter setting in other languages than c++.
-         * param parameters automatically generated
+         @brief sets parameters.
+         
+             this function is meant to be used for parameter setting in other languages than c++ like python.
+             @param parameters Parameters of the algorithm
          */
         public void setParams(EdgeDrawing_Params parameters)
         {
@@ -198,6 +228,10 @@ namespace OpenCVForUnity.XimgprocModule
         // C++:  vector_vector_Point cv::ximgproc::EdgeDrawing::getSegments()
         [DllImport(LIBNAME)]
         private static extern IntPtr ximgproc_EdgeDrawing_getSegments_10(IntPtr nativeObj);
+
+        // C++:  vector_int cv::ximgproc::EdgeDrawing::getSegmentIndicesOfLines()
+        [DllImport(LIBNAME)]
+        private static extern IntPtr ximgproc_EdgeDrawing_getSegmentIndicesOfLines_10(IntPtr nativeObj);
 
         // C++:  void cv::ximgproc::EdgeDrawing::detectLines(Mat& lines)
         [DllImport(LIBNAME)]

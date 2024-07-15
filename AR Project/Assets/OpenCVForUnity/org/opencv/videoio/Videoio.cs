@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -313,6 +313,21 @@ namespace OpenCVForUnity.VideoioModule
         public const int CAP_INTEL_MFX = 2300;
         public const int CAP_XINE = 2400;
         public const int CAP_UEYE = 2500;
+        public const int CAP_OBSENSOR = 2600;
+        // C++: enum cv.VideoCaptureOBSensorDataType
+        public const int CAP_OBSENSOR_DEPTH_MAP = 0;
+        public const int CAP_OBSENSOR_BGR_IMAGE = 1;
+        public const int CAP_OBSENSOR_IR_IMAGE = 2;
+        // C++: enum cv.VideoCaptureOBSensorGenerators
+        public const int CAP_OBSENSOR_DEPTH_GENERATOR = 1 << 29;
+        public const int CAP_OBSENSOR_IMAGE_GENERATOR = 1 << 28;
+        public const int CAP_OBSENSOR_IR_GENERATOR = 1 << 27;
+        public const int CAP_OBSENSOR_GENERATORS_MASK = CAP_OBSENSOR_DEPTH_GENERATOR + CAP_OBSENSOR_IMAGE_GENERATOR + CAP_OBSENSOR_IR_GENERATOR;
+        // C++: enum cv.VideoCaptureOBSensorProperties
+        public const int CAP_PROP_OBSENSOR_INTRINSIC_FX = 26001;
+        public const int CAP_PROP_OBSENSOR_INTRINSIC_FY = 26002;
+        public const int CAP_PROP_OBSENSOR_INTRINSIC_CX = 26003;
+        public const int CAP_PROP_OBSENSOR_INTRINSIC_CY = 26004;
         // C++: enum cv.VideoCaptureProperties
         public const int CAP_PROP_POS_MSEC = 0;
         public const int CAP_PROP_POS_FRAMES = 1;
@@ -369,6 +384,21 @@ namespace OpenCVForUnity.VideoioModule
         public const int CAP_PROP_OPEN_TIMEOUT_MSEC = 53;
         public const int CAP_PROP_READ_TIMEOUT_MSEC = 54;
         public const int CAP_PROP_STREAM_OPEN_TIME_USEC = 55;
+        public const int CAP_PROP_VIDEO_TOTAL_CHANNELS = 56;
+        public const int CAP_PROP_VIDEO_STREAM = 57;
+        public const int CAP_PROP_AUDIO_STREAM = 58;
+        public const int CAP_PROP_AUDIO_POS = 59;
+        public const int CAP_PROP_AUDIO_SHIFT_NSEC = 60;
+        public const int CAP_PROP_AUDIO_DATA_DEPTH = 61;
+        public const int CAP_PROP_AUDIO_SAMPLES_PER_SECOND = 62;
+        public const int CAP_PROP_AUDIO_BASE_INDEX = 63;
+        public const int CAP_PROP_AUDIO_TOTAL_CHANNELS = 64;
+        public const int CAP_PROP_AUDIO_TOTAL_STREAMS = 65;
+        public const int CAP_PROP_AUDIO_SYNCHRONIZE = 66;
+        public const int CAP_PROP_LRF_HAS_KEY_FRAME = 67;
+        public const int CAP_PROP_CODEC_EXTRADATA_INDEX = 68;
+        public const int CAP_PROP_FRAME_TYPE = 69;
+        public const int CAP_PROP_N_THREADS = 70;
         // C++: enum cv.VideoWriterProperties
         public const int VIDEOWRITER_PROP_QUALITY = 1;
         public const int VIDEOWRITER_PROP_FRAMEBYTES = 2;
@@ -378,14 +408,16 @@ namespace OpenCVForUnity.VideoioModule
         public const int VIDEOWRITER_PROP_HW_ACCELERATION = 6;
         public const int VIDEOWRITER_PROP_HW_DEVICE = 7;
         public const int VIDEOWRITER_PROP_HW_ACCELERATION_USE_OPENCL = 8;
+        public const int VIDEOWRITER_PROP_RAW_VIDEO = 9;
+        public const int VIDEOWRITER_PROP_KEY_INTERVAL = 10;
+        public const int VIDEOWRITER_PROP_KEY_FLAG = 11;
         //
         // C++:  String cv::videoio_registry::getBackendName(VideoCaptureAPIs api)
         //
 
         /**
-         * Returns backend API name or "UnknownVideoAPI(xxx)"
-         * param api backend ID (#VideoCaptureAPIs)
-         * return automatically generated
+         @brief Returns backend API name or "UnknownVideoAPI(xxx)"
+         @param api backend ID (#VideoCaptureAPIs)
          */
         public static string getBackendName(int api)
         {
@@ -430,9 +462,7 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Returns true if backend is available
-         * param api automatically generated
-         * return automatically generated
+         @brief Returns true if backend is available
          */
         public static bool hasBackend(int api)
         {
@@ -449,9 +479,7 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Returns true if backend is built in (false if backend is used as plugin)
-         * param api automatically generated
-         * return automatically generated
+         @brief Returns true if backend is built in (false if backend is used as plugin)
          */
         public static bool isBackendBuiltIn(int api)
         {
@@ -468,11 +496,7 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Returns description and ABI/API version of videoio plugin's camera interface
-         * param api automatically generated
-         * param version_ABI automatically generated
-         * param version_API automatically generated
-         * return automatically generated
+         @brief Returns description and ABI/API version of videoio plugin's camera interface
          */
         public static string getCameraBackendPluginVersion(int api, int[] version_ABI, int[] version_API)
         {
@@ -491,11 +515,7 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Returns description and ABI/API version of videoio plugin's stream capture interface
-         * param api automatically generated
-         * param version_ABI automatically generated
-         * param version_API automatically generated
-         * return automatically generated
+         @brief Returns description and ABI/API version of videoio plugin's stream capture interface
          */
         public static string getStreamBackendPluginVersion(int api, int[] version_ABI, int[] version_API)
         {
@@ -514,11 +534,7 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Returns description and ABI/API version of videoio plugin's writer interface
-         * param api automatically generated
-         * param version_ABI automatically generated
-         * param version_API automatically generated
-         * return automatically generated
+         @brief Returns description and ABI/API version of videoio plugin's writer interface
          */
         public static string getWriterBackendPluginVersion(int api, int[] version_ABI, int[] version_API)
         {

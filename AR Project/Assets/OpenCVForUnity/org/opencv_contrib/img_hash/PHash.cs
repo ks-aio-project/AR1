@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,11 +10,11 @@ namespace OpenCVForUnity.Img_hashModule
 
     // C++: class PHash
     /**
-     * pHash
-     *
-     * Slower than average_hash, but tolerant of minor modifications
-     *
-     * This algorithm can combat more variation than averageHash, for more details please refer to CITE: lookslikeit
+     @brief pHash
+     
+     Slower than average_hash, but tolerant of minor modifications
+     
+     This algorithm can combat more variation than averageHash, for more details please refer to @cite lookslikeit
      */
 
     public class PHash : ImgHashBase

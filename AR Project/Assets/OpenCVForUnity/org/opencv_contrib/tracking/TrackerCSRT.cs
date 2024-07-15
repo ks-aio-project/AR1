@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using OpenCVForUnity.VideoModule;
@@ -11,9 +11,9 @@ namespace OpenCVForUnity.TrackingModule
 
     // C++: class TrackerCSRT
     /**
-     * the CSRT tracker
-     *
-     * The implementation is based on CITE: Lukezic_IJCV2018 Discriminative Correlation Filter with Channel and Spatial Reliability
+     @brief the CSRT tracker
+     
+     The implementation is based on @cite Lukezic_IJCV2018 Discriminative Correlation Filter with Channel and Spatial Reliability
      */
 
     public class TrackerCSRT : Tracker
@@ -51,9 +51,8 @@ namespace OpenCVForUnity.TrackingModule
         //
 
         /**
-         * Create CSRT tracker instance
-         *     param parameters CSRT parameters TrackerCSRT::Params
-         * return automatically generated
+         @brief Create CSRT tracker instance
+             @param parameters CSRT parameters TrackerCSRT::Params
          */
         public static TrackerCSRT create(TrackerCSRT_Params parameters)
         {
@@ -65,8 +64,8 @@ namespace OpenCVForUnity.TrackingModule
         }
 
         /**
-         * Create CSRT tracker instance
-         * return automatically generated
+         @brief Create CSRT tracker instance
+             @param parameters CSRT parameters TrackerCSRT::Params
          */
         public static TrackerCSRT create()
         {

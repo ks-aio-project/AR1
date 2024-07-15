@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,17 +10,17 @@ namespace OpenCVForUnity.MlModule
 
     // C++: class ANN_MLP
     /**
-     * Artificial Neural Networks - Multi-Layer Perceptrons.
-     *
-     * Unlike many other models in ML that are constructed and trained at once, in the MLP model these
-     * steps are separated. First, a network with the specified topology is created using the non-default
-     * constructor or the method ANN_MLP::create. All the weights are set to zeros. Then, the network is
-     * trained using a set of input and output vectors. The training procedure can be repeated more than
-     * once, that is, the weights can be adjusted based on the new training data.
-     *
-     * Additional flags for StatModel::train are available: ANN_MLP::TrainFlags.
-     *
-     * SEE: REF: ml_intro_ann
+     @brief Artificial Neural Networks - Multi-Layer Perceptrons.
+     
+     Unlike many other models in ML that are constructed and trained at once, in the MLP model these
+     steps are separated. First, a network with the specified topology is created using the non-default
+     constructor or the method ANN_MLP::create. All the weights are set to zeros. Then, the network is
+     trained using a set of input and output vectors. The training procedure can be repeated more than
+     once, that is, the weights can be adjusted based on the new training data.
+     
+     Additional flags for StatModel::train are available: ANN_MLP::TrainFlags.
+     
+     @sa @ref ml_intro_ann
      */
 
     public class ANN_MLP : StatModel
@@ -72,10 +72,10 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Sets training method and common parameters.
-         *     param method Default value is ANN_MLP::RPROP. See ANN_MLP::TrainingMethods.
-         *     param param1 passed to setRpropDW0 for ANN_MLP::RPROP and to setBackpropWeightScale for ANN_MLP::BACKPROP and to initialT for ANN_MLP::ANNEAL.
-         *     param param2 passed to setRpropDWMin for ANN_MLP::RPROP and to setBackpropMomentumScale for ANN_MLP::BACKPROP and to finalT for ANN_MLP::ANNEAL.
+         Sets training method and common parameters.
+             @param method Default value is ANN_MLP::RPROP. See ANN_MLP::TrainingMethods.
+             @param param1 passed to setRpropDW0 for ANN_MLP::RPROP and to setBackpropWeightScale for ANN_MLP::BACKPROP and to initialT for ANN_MLP::ANNEAL.
+             @param param2 passed to setRpropDWMin for ANN_MLP::RPROP and to setBackpropMomentumScale for ANN_MLP::BACKPROP and to finalT for ANN_MLP::ANNEAL.
          */
         public void setTrainMethod(int method, double param1, double param2)
         {
@@ -87,9 +87,10 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Sets training method and common parameters.
-         *     param method Default value is ANN_MLP::RPROP. See ANN_MLP::TrainingMethods.
-         *     param param1 passed to setRpropDW0 for ANN_MLP::RPROP and to setBackpropWeightScale for ANN_MLP::BACKPROP and to initialT for ANN_MLP::ANNEAL.
+         Sets training method and common parameters.
+             @param method Default value is ANN_MLP::RPROP. See ANN_MLP::TrainingMethods.
+             @param param1 passed to setRpropDW0 for ANN_MLP::RPROP and to setBackpropWeightScale for ANN_MLP::BACKPROP and to initialT for ANN_MLP::ANNEAL.
+             @param param2 passed to setRpropDWMin for ANN_MLP::RPROP and to setBackpropMomentumScale for ANN_MLP::BACKPROP and to finalT for ANN_MLP::ANNEAL.
          */
         public void setTrainMethod(int method, double param1)
         {
@@ -101,8 +102,10 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Sets training method and common parameters.
-         *     param method Default value is ANN_MLP::RPROP. See ANN_MLP::TrainingMethods.
+         Sets training method and common parameters.
+             @param method Default value is ANN_MLP::RPROP. See ANN_MLP::TrainingMethods.
+             @param param1 passed to setRpropDW0 for ANN_MLP::RPROP and to setBackpropWeightScale for ANN_MLP::BACKPROP and to initialT for ANN_MLP::ANNEAL.
+             @param param2 passed to setRpropDWMin for ANN_MLP::RPROP and to setBackpropMomentumScale for ANN_MLP::BACKPROP and to finalT for ANN_MLP::ANNEAL.
          */
         public void setTrainMethod(int method)
         {
@@ -119,8 +122,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns current training method
-         * return automatically generated
+         Returns current training method
          */
         public int getTrainMethod()
         {
@@ -137,11 +139,11 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Initialize the activation function for each neuron.
-         *     Currently the default and the only fully supported activation function is ANN_MLP::SIGMOID_SYM.
-         *     param type The type of activation function. See ANN_MLP::ActivationFunctions.
-         *     param param1 The first parameter of the activation function, \(\alpha\). Default value is 0.
-         *     param param2 The second parameter of the activation function, \(\beta\). Default value is 0.
+         Initialize the activation function for each neuron.
+             Currently the default and the only fully supported activation function is ANN_MLP::SIGMOID_SYM.
+             @param type The type of activation function. See ANN_MLP::ActivationFunctions.
+             @param param1 The first parameter of the activation function, \f$\alpha\f$. Default value is 0.
+             @param param2 The second parameter of the activation function, \f$\beta\f$. Default value is 0.
          */
         public void setActivationFunction(int type, double param1, double param2)
         {
@@ -153,10 +155,11 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Initialize the activation function for each neuron.
-         *     Currently the default and the only fully supported activation function is ANN_MLP::SIGMOID_SYM.
-         *     param type The type of activation function. See ANN_MLP::ActivationFunctions.
-         *     param param1 The first parameter of the activation function, \(\alpha\). Default value is 0.
+         Initialize the activation function for each neuron.
+             Currently the default and the only fully supported activation function is ANN_MLP::SIGMOID_SYM.
+             @param type The type of activation function. See ANN_MLP::ActivationFunctions.
+             @param param1 The first parameter of the activation function, \f$\alpha\f$. Default value is 0.
+             @param param2 The second parameter of the activation function, \f$\beta\f$. Default value is 0.
          */
         public void setActivationFunction(int type, double param1)
         {
@@ -168,9 +171,11 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Initialize the activation function for each neuron.
-         *     Currently the default and the only fully supported activation function is ANN_MLP::SIGMOID_SYM.
-         *     param type The type of activation function. See ANN_MLP::ActivationFunctions.
+         Initialize the activation function for each neuron.
+             Currently the default and the only fully supported activation function is ANN_MLP::SIGMOID_SYM.
+             @param type The type of activation function. See ANN_MLP::ActivationFunctions.
+             @param param1 The first parameter of the activation function, \f$\alpha\f$. Default value is 0.
+             @param param2 The second parameter of the activation function, \f$\beta\f$. Default value is 0.
          */
         public void setActivationFunction(int type)
         {
@@ -187,11 +192,10 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Integer vector specifying the number of neurons in each layer including the input and output layers.
-         *     The very first element specifies the number of elements in the input layer.
-         *     The last element - number of elements in the output layer. Default value is empty Mat.
-         * SEE: getLayerSizes
-         * param _layer_sizes automatically generated
+         Integer vector specifying the number of neurons in each layer including the input and output layers.
+             The very first element specifies the number of elements in the input layer.
+             The last element - number of elements in the output layer. Default value is empty Mat.
+         @sa getLayerSizes
          */
         public void setLayerSizes(Mat _layer_sizes)
         {
@@ -209,11 +213,10 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Integer vector specifying the number of neurons in each layer including the input and output layers.
-         *     The very first element specifies the number of elements in the input layer.
-         *     The last element - number of elements in the output layer.
-         * SEE: setLayerSizes
-         * return automatically generated
+         Integer vector specifying the number of neurons in each layer including the input and output layers.
+             The very first element specifies the number of elements in the input layer.
+             The last element - number of elements in the output layer.
+         @sa setLayerSizes
          */
         public Mat getLayerSizes()
         {
@@ -230,8 +233,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setTermCriteria
-         * return automatically generated
+         @see setTermCriteria
          */
         public TermCriteria getTermCriteria()
         {
@@ -250,8 +252,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getTermCriteria SEE: getTermCriteria
-         * param val automatically generated
+         @copybrief getTermCriteria @see getTermCriteria
          */
         public void setTermCriteria(TermCriteria val)
         {
@@ -268,8 +269,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setBackpropWeightScale
-         * return automatically generated
+         @see setBackpropWeightScale
          */
         public double getBackpropWeightScale()
         {
@@ -286,8 +286,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getBackpropWeightScale SEE: getBackpropWeightScale
-         * param val automatically generated
+         @copybrief getBackpropWeightScale @see getBackpropWeightScale
          */
         public void setBackpropWeightScale(double val)
         {
@@ -304,8 +303,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setBackpropMomentumScale
-         * return automatically generated
+         @see setBackpropMomentumScale
          */
         public double getBackpropMomentumScale()
         {
@@ -322,8 +320,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getBackpropMomentumScale SEE: getBackpropMomentumScale
-         * param val automatically generated
+         @copybrief getBackpropMomentumScale @see getBackpropMomentumScale
          */
         public void setBackpropMomentumScale(double val)
         {
@@ -340,8 +337,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setRpropDW0
-         * return automatically generated
+         @see setRpropDW0
          */
         public double getRpropDW0()
         {
@@ -358,8 +354,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getRpropDW0 SEE: getRpropDW0
-         * param val automatically generated
+         @copybrief getRpropDW0 @see getRpropDW0
          */
         public void setRpropDW0(double val)
         {
@@ -376,8 +371,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setRpropDWPlus
-         * return automatically generated
+         @see setRpropDWPlus
          */
         public double getRpropDWPlus()
         {
@@ -394,8 +388,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getRpropDWPlus SEE: getRpropDWPlus
-         * param val automatically generated
+         @copybrief getRpropDWPlus @see getRpropDWPlus
          */
         public void setRpropDWPlus(double val)
         {
@@ -412,8 +405,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setRpropDWMinus
-         * return automatically generated
+         @see setRpropDWMinus
          */
         public double getRpropDWMinus()
         {
@@ -430,8 +422,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getRpropDWMinus SEE: getRpropDWMinus
-         * param val automatically generated
+         @copybrief getRpropDWMinus @see getRpropDWMinus
          */
         public void setRpropDWMinus(double val)
         {
@@ -448,8 +439,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setRpropDWMin
-         * return automatically generated
+         @see setRpropDWMin
          */
         public double getRpropDWMin()
         {
@@ -466,8 +456,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getRpropDWMin SEE: getRpropDWMin
-         * param val automatically generated
+         @copybrief getRpropDWMin @see getRpropDWMin
          */
         public void setRpropDWMin(double val)
         {
@@ -484,8 +473,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setRpropDWMax
-         * return automatically generated
+         @see setRpropDWMax
          */
         public double getRpropDWMax()
         {
@@ -502,8 +490,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getRpropDWMax SEE: getRpropDWMax
-         * param val automatically generated
+         @copybrief getRpropDWMax @see getRpropDWMax
          */
         public void setRpropDWMax(double val)
         {
@@ -520,8 +507,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setAnnealInitialT
-         * return automatically generated
+         @see setAnnealInitialT
          */
         public double getAnnealInitialT()
         {
@@ -538,8 +524,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getAnnealInitialT SEE: getAnnealInitialT
-         * param val automatically generated
+         @copybrief getAnnealInitialT @see getAnnealInitialT
          */
         public void setAnnealInitialT(double val)
         {
@@ -556,8 +541,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setAnnealFinalT
-         * return automatically generated
+         @see setAnnealFinalT
          */
         public double getAnnealFinalT()
         {
@@ -574,8 +558,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getAnnealFinalT SEE: getAnnealFinalT
-         * param val automatically generated
+         @copybrief getAnnealFinalT @see getAnnealFinalT
          */
         public void setAnnealFinalT(double val)
         {
@@ -592,8 +575,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setAnnealCoolingRatio
-         * return automatically generated
+         @see setAnnealCoolingRatio
          */
         public double getAnnealCoolingRatio()
         {
@@ -610,8 +592,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getAnnealCoolingRatio SEE: getAnnealCoolingRatio
-         * param val automatically generated
+         @copybrief getAnnealCoolingRatio @see getAnnealCoolingRatio
          */
         public void setAnnealCoolingRatio(double val)
         {
@@ -628,8 +609,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setAnnealItePerStep
-         * return automatically generated
+         @see setAnnealItePerStep
          */
         public int getAnnealItePerStep()
         {
@@ -646,8 +626,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getAnnealItePerStep SEE: getAnnealItePerStep
-         * param val automatically generated
+         @copybrief getAnnealItePerStep @see getAnnealItePerStep
          */
         public void setAnnealItePerStep(int val)
         {
@@ -678,11 +657,10 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Creates empty model
-         *
-         *     Use StatModel::train to train the model, Algorithm::load&lt;ANN_MLP&gt;(filename) to load the pre-trained model.
-         *     Note that the train method has optional flags: ANN_MLP::TrainFlags.
-         * return automatically generated
+         @brief Creates empty model
+         
+             Use StatModel::train to train the model, Algorithm::load&lt;ANN_MLP&gt;(filename) to load the pre-trained model.
+             Note that the train method has optional flags: ANN_MLP::TrainFlags.
          */
         public static ANN_MLP create()
         {
@@ -699,13 +677,12 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Loads and creates a serialized ANN from a file
-         *
-         * Use ANN::save to serialize and store an ANN to disk.
-         * Load the ANN from this file again, by calling this function with the path to the file.
-         *
-         * param filepath path to serialized ANN
-         * return automatically generated
+         @brief Loads and creates a serialized ANN from a file
+              *
+              * Use ANN::save to serialize and store an ANN to disk.
+              * Load the ANN from this file again, by calling this function with the path to the file.
+              *
+              * @param filepath path to serialized ANN
          */
         public static ANN_MLP load(string filepath)
         {

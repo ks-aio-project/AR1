@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.BgsegmModule
 {
     // C++: class BackgroundSubtractorLSBPDesc
     /**
-     * This is for calculation of the LSBP descriptors.
+     @brief This is for calculation of the LSBP descriptors.
      */
 
     public class BackgroundSubtractorLSBPDesc : DisposableOpenCVObject

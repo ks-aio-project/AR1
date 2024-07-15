@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.Calib3dModule;
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -62,43 +62,37 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Performs thresholding on input images using Niblack's technique or some of the
-         * popular variations it inspired.
-         *
-         * The function transforms a grayscale image to a binary image according to the formulae:
-         * <ul>
-         *   <li>
-         *    <b>THRESH_BINARY</b>
-         *     \(dst(x,y) =  \fork{\texttt{maxValue}}{if \(src(x,y) &gt; T(x,y)\)}{0}{otherwise}\)
-         *   </li>
-         *   <li>
-         *    <b>THRESH_BINARY_INV</b>
-         *     \(dst(x,y) =  \fork{0}{if \(src(x,y) &gt; T(x,y)\)}{\texttt{maxValue}}{otherwise}\)
-         * where \(T(x,y)\) is a threshold calculated individually for each pixel.
-         *   </li>
-         * </ul>
-         *
-         * The threshold value \(T(x, y)\) is determined based on the binarization method chosen. For
-         * classic Niblack, it is the mean minus \( k \) times standard deviation of
-         * \(\texttt{blockSize} \times\texttt{blockSize}\) neighborhood of \((x, y)\).
-         *
-         * The function can't process the image in-place.
-         *
-         * param _src Source 8-bit single-channel image.
-         * param _dst Destination image of the same size and the same type as src.
-         * param maxValue Non-zero value assigned to the pixels for which the condition is satisfied,
-         * used with the THRESH_BINARY and THRESH_BINARY_INV thresholding types.
-         * param type Thresholding type, see cv::ThresholdTypes.
-         * param blockSize Size of a pixel neighborhood that is used to calculate a threshold value
-         * for the pixel: 3, 5, 7, and so on.
-         * param k The user-adjustable parameter used by Niblack and inspired techniques. For Niblack, this is
-         * normally a value between 0 and 1 that is multiplied with the standard deviation and subtracted from
-         * the mean.
-         * param binarizationMethod Binarization method to use. By default, Niblack's technique is used.
-         * Other techniques can be specified, see cv::ximgproc::LocalBinarizationMethods.
-         * param r The user-adjustable parameter used by Sauvola's technique. This is the dynamic range
-         * of standard deviation.
-         * SEE:  threshold, adaptiveThreshold
+         @brief Performs thresholding on input images using Niblack's technique or some of the
+         popular variations it inspired.
+         
+         The function transforms a grayscale image to a binary image according to the formulae:
+         -   **THRESH_BINARY**
+             \f[dst(x,y) =  \fork{\texttt{maxValue}}{if \(src(x,y) &gt; T(x,y)\)}{0}{otherwise}\f]
+         -   **THRESH_BINARY_INV**
+             \f[dst(x,y) =  \fork{0}{if \(src(x,y) &gt; T(x,y)\)}{\texttt{maxValue}}{otherwise}\f]
+         where \f$T(x,y)\f$ is a threshold calculated individually for each pixel.
+         
+         The threshold value \f$T(x, y)\f$ is determined based on the binarization method chosen. For
+         classic Niblack, it is the mean minus \f$ k \f$ times standard deviation of
+         \f$\texttt{blockSize} \times\texttt{blockSize}\f$ neighborhood of \f$(x, y)\f$.
+         
+         The function can't process the image in-place.
+         
+         @param _src Source 8-bit single-channel image.
+         @param _dst Destination image of the same size and the same type as src.
+         @param maxValue Non-zero value assigned to the pixels for which the condition is satisfied,
+         used with the THRESH_BINARY and THRESH_BINARY_INV thresholding types.
+         @param type Thresholding type, see cv::ThresholdTypes.
+         @param blockSize Size of a pixel neighborhood that is used to calculate a threshold value
+         for the pixel: 3, 5, 7, and so on.
+         @param k The user-adjustable parameter used by Niblack and inspired techniques. For Niblack, this is
+         normally a value between 0 and 1 that is multiplied with the standard deviation and subtracted from
+         the mean.
+         @param binarizationMethod Binarization method to use. By default, Niblack's technique is used.
+         Other techniques can be specified, see cv::ximgproc::LocalBinarizationMethods.
+         @param r The user-adjustable parameter used by Sauvola's technique. This is the dynamic range
+         of standard deviation.
+         @sa  threshold, adaptiveThreshold
          */
         public static void niBlackThreshold(Mat _src, Mat _dst, double maxValue, int type, int blockSize, double k, int binarizationMethod, double r)
         {
@@ -111,42 +105,37 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Performs thresholding on input images using Niblack's technique or some of the
-         * popular variations it inspired.
-         *
-         * The function transforms a grayscale image to a binary image according to the formulae:
-         * <ul>
-         *   <li>
-         *    <b>THRESH_BINARY</b>
-         *     \(dst(x,y) =  \fork{\texttt{maxValue}}{if \(src(x,y) &gt; T(x,y)\)}{0}{otherwise}\)
-         *   </li>
-         *   <li>
-         *    <b>THRESH_BINARY_INV</b>
-         *     \(dst(x,y) =  \fork{0}{if \(src(x,y) &gt; T(x,y)\)}{\texttt{maxValue}}{otherwise}\)
-         * where \(T(x,y)\) is a threshold calculated individually for each pixel.
-         *   </li>
-         * </ul>
-         *
-         * The threshold value \(T(x, y)\) is determined based on the binarization method chosen. For
-         * classic Niblack, it is the mean minus \( k \) times standard deviation of
-         * \(\texttt{blockSize} \times\texttt{blockSize}\) neighborhood of \((x, y)\).
-         *
-         * The function can't process the image in-place.
-         *
-         * param _src Source 8-bit single-channel image.
-         * param _dst Destination image of the same size and the same type as src.
-         * param maxValue Non-zero value assigned to the pixels for which the condition is satisfied,
-         * used with the THRESH_BINARY and THRESH_BINARY_INV thresholding types.
-         * param type Thresholding type, see cv::ThresholdTypes.
-         * param blockSize Size of a pixel neighborhood that is used to calculate a threshold value
-         * for the pixel: 3, 5, 7, and so on.
-         * param k The user-adjustable parameter used by Niblack and inspired techniques. For Niblack, this is
-         * normally a value between 0 and 1 that is multiplied with the standard deviation and subtracted from
-         * the mean.
-         * param binarizationMethod Binarization method to use. By default, Niblack's technique is used.
-         * Other techniques can be specified, see cv::ximgproc::LocalBinarizationMethods.
-         * of standard deviation.
-         * SEE:  threshold, adaptiveThreshold
+         @brief Performs thresholding on input images using Niblack's technique or some of the
+         popular variations it inspired.
+         
+         The function transforms a grayscale image to a binary image according to the formulae:
+         -   **THRESH_BINARY**
+             \f[dst(x,y) =  \fork{\texttt{maxValue}}{if \(src(x,y) &gt; T(x,y)\)}{0}{otherwise}\f]
+         -   **THRESH_BINARY_INV**
+             \f[dst(x,y) =  \fork{0}{if \(src(x,y) &gt; T(x,y)\)}{\texttt{maxValue}}{otherwise}\f]
+         where \f$T(x,y)\f$ is a threshold calculated individually for each pixel.
+         
+         The threshold value \f$T(x, y)\f$ is determined based on the binarization method chosen. For
+         classic Niblack, it is the mean minus \f$ k \f$ times standard deviation of
+         \f$\texttt{blockSize} \times\texttt{blockSize}\f$ neighborhood of \f$(x, y)\f$.
+         
+         The function can't process the image in-place.
+         
+         @param _src Source 8-bit single-channel image.
+         @param _dst Destination image of the same size and the same type as src.
+         @param maxValue Non-zero value assigned to the pixels for which the condition is satisfied,
+         used with the THRESH_BINARY and THRESH_BINARY_INV thresholding types.
+         @param type Thresholding type, see cv::ThresholdTypes.
+         @param blockSize Size of a pixel neighborhood that is used to calculate a threshold value
+         for the pixel: 3, 5, 7, and so on.
+         @param k The user-adjustable parameter used by Niblack and inspired techniques. For Niblack, this is
+         normally a value between 0 and 1 that is multiplied with the standard deviation and subtracted from
+         the mean.
+         @param binarizationMethod Binarization method to use. By default, Niblack's technique is used.
+         Other techniques can be specified, see cv::ximgproc::LocalBinarizationMethods.
+         @param r The user-adjustable parameter used by Sauvola's technique. This is the dynamic range
+         of standard deviation.
+         @sa  threshold, adaptiveThreshold
          */
         public static void niBlackThreshold(Mat _src, Mat _dst, double maxValue, int type, int blockSize, double k, int binarizationMethod)
         {
@@ -159,41 +148,37 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Performs thresholding on input images using Niblack's technique or some of the
-         * popular variations it inspired.
-         *
-         * The function transforms a grayscale image to a binary image according to the formulae:
-         * <ul>
-         *   <li>
-         *    <b>THRESH_BINARY</b>
-         *     \(dst(x,y) =  \fork{\texttt{maxValue}}{if \(src(x,y) &gt; T(x,y)\)}{0}{otherwise}\)
-         *   </li>
-         *   <li>
-         *    <b>THRESH_BINARY_INV</b>
-         *     \(dst(x,y) =  \fork{0}{if \(src(x,y) &gt; T(x,y)\)}{\texttt{maxValue}}{otherwise}\)
-         * where \(T(x,y)\) is a threshold calculated individually for each pixel.
-         *   </li>
-         * </ul>
-         *
-         * The threshold value \(T(x, y)\) is determined based on the binarization method chosen. For
-         * classic Niblack, it is the mean minus \( k \) times standard deviation of
-         * \(\texttt{blockSize} \times\texttt{blockSize}\) neighborhood of \((x, y)\).
-         *
-         * The function can't process the image in-place.
-         *
-         * param _src Source 8-bit single-channel image.
-         * param _dst Destination image of the same size and the same type as src.
-         * param maxValue Non-zero value assigned to the pixels for which the condition is satisfied,
-         * used with the THRESH_BINARY and THRESH_BINARY_INV thresholding types.
-         * param type Thresholding type, see cv::ThresholdTypes.
-         * param blockSize Size of a pixel neighborhood that is used to calculate a threshold value
-         * for the pixel: 3, 5, 7, and so on.
-         * param k The user-adjustable parameter used by Niblack and inspired techniques. For Niblack, this is
-         * normally a value between 0 and 1 that is multiplied with the standard deviation and subtracted from
-         * the mean.
-         * Other techniques can be specified, see cv::ximgproc::LocalBinarizationMethods.
-         * of standard deviation.
-         * SEE:  threshold, adaptiveThreshold
+         @brief Performs thresholding on input images using Niblack's technique or some of the
+         popular variations it inspired.
+         
+         The function transforms a grayscale image to a binary image according to the formulae:
+         -   **THRESH_BINARY**
+             \f[dst(x,y) =  \fork{\texttt{maxValue}}{if \(src(x,y) &gt; T(x,y)\)}{0}{otherwise}\f]
+         -   **THRESH_BINARY_INV**
+             \f[dst(x,y) =  \fork{0}{if \(src(x,y) &gt; T(x,y)\)}{\texttt{maxValue}}{otherwise}\f]
+         where \f$T(x,y)\f$ is a threshold calculated individually for each pixel.
+         
+         The threshold value \f$T(x, y)\f$ is determined based on the binarization method chosen. For
+         classic Niblack, it is the mean minus \f$ k \f$ times standard deviation of
+         \f$\texttt{blockSize} \times\texttt{blockSize}\f$ neighborhood of \f$(x, y)\f$.
+         
+         The function can't process the image in-place.
+         
+         @param _src Source 8-bit single-channel image.
+         @param _dst Destination image of the same size and the same type as src.
+         @param maxValue Non-zero value assigned to the pixels for which the condition is satisfied,
+         used with the THRESH_BINARY and THRESH_BINARY_INV thresholding types.
+         @param type Thresholding type, see cv::ThresholdTypes.
+         @param blockSize Size of a pixel neighborhood that is used to calculate a threshold value
+         for the pixel: 3, 5, 7, and so on.
+         @param k The user-adjustable parameter used by Niblack and inspired techniques. For Niblack, this is
+         normally a value between 0 and 1 that is multiplied with the standard deviation and subtracted from
+         the mean.
+         @param binarizationMethod Binarization method to use. By default, Niblack's technique is used.
+         Other techniques can be specified, see cv::ximgproc::LocalBinarizationMethods.
+         @param r The user-adjustable parameter used by Sauvola's technique. This is the dynamic range
+         of standard deviation.
+         @sa  threshold, adaptiveThreshold
          */
         public static void niBlackThreshold(Mat _src, Mat _dst, double maxValue, int type, int blockSize, double k)
         {
@@ -211,13 +196,13 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Applies a binary blob thinning operation, to achieve a skeletization of the input image.
-         *
-         * The function transforms a binary blob image into a skeletized form using the technique of Zhang-Suen.
-         *
-         * param src Source 8-bit single-channel image, containing binary blobs, with blobs having 255 pixel values.
-         * param dst Destination image of the same size and the same type as src. The function can work in-place.
-         * param thinningType Value that defines which thinning algorithm should be used. See cv::ximgproc::ThinningTypes
+         @brief Applies a binary blob thinning operation, to achieve a skeletization of the input image.
+         
+         The function transforms a binary blob image into a skeletized form using the technique of Zhang-Suen.
+         
+         @param src Source 8-bit single-channel image, containing binary blobs, with blobs having 255 pixel values.
+         @param dst Destination image of the same size and the same type as src. The function can work in-place.
+         @param thinningType Value that defines which thinning algorithm should be used. See cv::ximgproc::ThinningTypes
          */
         public static void thinning(Mat src, Mat dst, int thinningType)
         {
@@ -230,12 +215,13 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Applies a binary blob thinning operation, to achieve a skeletization of the input image.
-         *
-         * The function transforms a binary blob image into a skeletized form using the technique of Zhang-Suen.
-         *
-         * param src Source 8-bit single-channel image, containing binary blobs, with blobs having 255 pixel values.
-         * param dst Destination image of the same size and the same type as src. The function can work in-place.
+         @brief Applies a binary blob thinning operation, to achieve a skeletization of the input image.
+         
+         The function transforms a binary blob image into a skeletized form using the technique of Zhang-Suen.
+         
+         @param src Source 8-bit single-channel image, containing binary blobs, with blobs having 255 pixel values.
+         @param dst Destination image of the same size and the same type as src. The function can work in-place.
+         @param thinningType Value that defines which thinning algorithm should be used. See cv::ximgproc::ThinningTypes
          */
         public static void thinning(Mat src, Mat dst)
         {
@@ -253,25 +239,25 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Performs anisotropic diffusion on an image.
-         *
-         *  The function applies Perona-Malik anisotropic diffusion to an image. This is the solution to the partial differential equation:
-         *
-         *  \({\frac  {\partial I}{\partial t}}={\mathrm  {div}}\left(c(x,y,t)\nabla I\right)=\nabla c\cdot \nabla I+c(x,y,t)\Delta I\)
-         *
-         *  Suggested functions for c(x,y,t) are:
-         *
-         *  \(c\left(\|\nabla I\|\right)=e^{{-\left(\|\nabla I\|/K\right)^{2}}}\)
-         *
-         *  or
-         *
-         *  \( c\left(\|\nabla I\|\right)={\frac {1}{1+\left({\frac  {\|\nabla I\|}{K}}\right)^{2}}} \)
-         *
-         *  param src Source image with 3 channels.
-         *  param dst Destination image of the same size and the same number of channels as src .
-         *  param alpha The amount of time to step forward by on each iteration (normally, it's between 0 and 1).
-         *  param K sensitivity to the edges
-         *  param niters The number of iterations
+         @brief Performs anisotropic diffusion on an image.
+         
+          The function applies Perona-Malik anisotropic diffusion to an image. This is the solution to the partial differential equation:
+         
+          \f[{\frac  {\partial I}{\partial t}}={\mathrm  {div}}\left(c(x,y,t)\nabla I\right)=\nabla c\cdot \nabla I+c(x,y,t)\Delta I\f]
+         
+          Suggested functions for c(x,y,t) are:
+         
+          \f[c\left(\|\nabla I\|\right)=e^{{-\left(\|\nabla I\|/K\right)^{2}}}\f]
+         
+          or
+         
+          \f[ c\left(\|\nabla I\|\right)={\frac {1}{1+\left({\frac  {\|\nabla I\|}{K}}\right)^{2}}} \f]
+         
+          @param src Source image with 3 channels.
+          @param dst Destination image of the same size and the same number of channels as src .
+          @param alpha The amount of time to step forward by on each iteration (normally, it's between 0 and 1).
+          @param K sensitivity to the edges
+          @param niters The number of iterations
          */
         public static void anisotropicDiffusion(Mat src, Mat dst, float alpha, float K, int niters)
         {
@@ -289,10 +275,10 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * creates a quaternion image.
+         * @brief   creates a quaternion image.
          *
-         * param img automatically generated
-         * param qimg automatically generated
+         * @param   img         Source 8-bit, 32-bit or 64-bit image, with 3-channel image.
+         * @param   qimg        result CV_64FC4 a quaternion image( 4 chanels zero channel and B,G,R).
          */
         public static void createQuaternionImage(Mat img, Mat qimg)
         {
@@ -310,10 +296,10 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * calculates conjugate of a quaternion image.
+         * @brief   calculates conjugate of a quaternion image.
          *
-         * param qimg automatically generated
-         * param qcimg automatically generated
+         * @param   qimg         quaternion image.
+         * @param   qcimg        conjugate of qimg
          */
         public static void qconj(Mat qimg, Mat qcimg)
         {
@@ -331,10 +317,10 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * divides each element by its modulus.
+         * @brief   divides each element by its modulus.
          *
-         * param qimg automatically generated
-         * param qnimg automatically generated
+         * @param   qimg         quaternion image.
+         * @param   qnimg        conjugate of qimg
          */
         public static void qunitary(Mat qimg, Mat qnimg)
         {
@@ -352,11 +338,11 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Calculates the per-element quaternion product of two arrays
+         * @brief   Calculates the per-element quaternion product of two arrays
          *
-         * param src1 automatically generated
-         * param src2 automatically generated
-         * param dst automatically generated
+         * @param   src1         quaternion image.
+         * @param   src2         quaternion image.
+         * @param   dst        product dst(I)=src1(I) . src2(I)
          */
         public static void qmultiply(Mat src1, Mat src2, Mat dst)
         {
@@ -375,12 +361,12 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Performs a forward or inverse Discrete quaternion Fourier transform of a 2D quaternion array.
+         * @brief    Performs a forward or inverse Discrete quaternion Fourier transform of a 2D quaternion array.
          *
-         * param img automatically generated
-         * param qimg automatically generated
-         * param flags automatically generated
-         * param sideLeft automatically generated
+         * @param   img        quaternion image.
+         * @param   qimg       quaternion image in dual space.
+         * @param   flags      quaternion image in dual space. only DFT_INVERSE flags is supported
+         * @param   sideLeft   true the hypercomplex exponential is to be multiplied on the left (false on the right ).
          */
         public static void qdft(Mat img, Mat qimg, int flags, bool sideLeft)
         {
@@ -398,11 +384,11 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Compares a color template against overlapped color image regions.
+         * @brief    Compares a color template against overlapped color image regions.
          *
-         * param img automatically generated
-         * param templ automatically generated
-         * param result automatically generated
+         * @param   img        Image where the search is running. It must be 3 channels image
+         * @param   templ       Searched template. It must be not greater than the source image and have 3 channels
+         * @param   result     Map of comparison results. It must be single-channel 64-bit floating-point
          */
         public static void colorMatchTemplate(Mat img, Mat templ, Mat result)
         {
@@ -421,15 +407,15 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Applies Y Deriche filter to an image.
+         * @brief   Applies Y Deriche filter to an image.
          *
          * For more details about this implementation, please see http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.476.5736&amp;rep=rep1&amp;type=pdf
          *
+         * @param   op         Source 8-bit or 16bit image, 1-channel or 3-channel image.
+         * @param   dst        result CV_32FC image with same number of channel than _op.
+         * @param   alpha double see paper
+         * @param   omega   double see paper
          *
-         * param op automatically generated
-         * param dst automatically generated
-         * param alpha automatically generated
-         * param omega automatically generated
          */
         public static void GradientDericheY(Mat op, Mat dst, double alpha, double omega)
         {
@@ -447,15 +433,15 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Applies X Deriche filter to an image.
+         * @brief   Applies X Deriche filter to an image.
          *
          * For more details about this implementation, please see http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.476.5736&amp;rep=rep1&amp;type=pdf
          *
+         * @param   op         Source 8-bit or 16bit image, 1-channel or 3-channel image.
+         * @param   dst        result CV_32FC image with same number of channel than _op.
+         * @param   alpha double see paper
+         * @param   omega   double see paper
          *
-         * param op automatically generated
-         * param dst automatically generated
-         * param alpha automatically generated
-         * param omega automatically generated
          */
         public static void GradientDericheX(Mat op, Mat dst, double alpha, double omega)
         {
@@ -473,11 +459,10 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Convenience factory method that creates an instance of DisparityWLSFilter and sets up all the relevant
-         * filter parameters automatically based on the matcher instance. Currently supports only StereoBM and StereoSGBM.
-         *
-         * param matcher_left stereo matcher instance that will be used with the filter
-         * return automatically generated
+         @brief Convenience factory method that creates an instance of DisparityWLSFilter and sets up all the relevant
+         filter parameters automatically based on the matcher instance. Currently supports only StereoBM and StereoSGBM.
+         
+         @param matcher_left stereo matcher instance that will be used with the filter
          */
         public static DisparityWLSFilter createDisparityWLSFilter(StereoMatcher matcher_left)
         {
@@ -494,11 +479,10 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Convenience method to set up the matcher for computing the right-view disparity map
-         * that is required in case of filtering with confidence.
-         *
-         * param matcher_left main stereo matcher instance that will be used with the filter
-         * return automatically generated
+         @brief Convenience method to set up the matcher for computing the right-view disparity map
+         that is required in case of filtering with confidence.
+         
+         @param matcher_left main stereo matcher instance that will be used with the filter
          */
         public static StereoMatcher createRightMatcher(StereoMatcher matcher_left)
         {
@@ -515,13 +499,12 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * More generic factory method, create instance of DisparityWLSFilter and execute basic
-         * initialization routines. When using this method you will need to set-up the ROI, matchers and
-         * other parameters by yourself.
-         *
-         * param use_confidence filtering with confidence requires two disparity maps (for the left and right views) and is
-         * approximately two times slower. However, quality is typically significantly better.
-         * return automatically generated
+         @brief More generic factory method, create instance of DisparityWLSFilter and execute basic
+         initialization routines. When using this method you will need to set-up the ROI, matchers and
+         other parameters by yourself.
+         
+         @param use_confidence filtering with confidence requires two disparity maps (for the left and right views) and is
+         approximately two times slower. However, quality is typically significantly better.
          */
         public static DisparityWLSFilter createDisparityWLSFilterGeneric(bool use_confidence)
         {
@@ -538,14 +521,14 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Function for reading ground truth disparity maps. Supports basic Middlebury
-         * and MPI-Sintel formats. Note that the resulting disparity map is scaled by 16.
-         *
-         * param src_path path to the image, containing ground-truth disparity map
-         *
-         * param dst output disparity map, CV_16S depth
-         *
-         * return returns zero if successfully read the ground truth
+         @brief Function for reading ground truth disparity maps. Supports basic Middlebury
+         and MPI-Sintel formats. Note that the resulting disparity map is scaled by 16.
+         
+         @param src_path path to the image, containing ground-truth disparity map
+         
+         @param dst output disparity map, CV_16S depth
+         
+         @result returns zero if successfully read the ground truth
          */
         public static int readGT(string src_path, Mat dst)
         {
@@ -562,15 +545,15 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Function for computing mean square error for disparity maps
-         *
-         * param GT ground truth disparity map
-         *
-         * param src disparity map to evaluate
-         *
-         * param ROI region of interest
-         *
-         * return returns mean square error between GT and src
+         @brief Function for computing mean square error for disparity maps
+         
+         @param GT ground truth disparity map
+         
+         @param src disparity map to evaluate
+         
+         @param ROI region of interest
+         
+         @result returns mean square error between GT and src
          */
         public static double computeMSE(Mat GT, Mat src, Rect ROI)
         {
@@ -588,18 +571,18 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Function for computing the percent of "bad" pixels in the disparity map
-         * (pixels where error is higher than a specified threshold)
-         *
-         * param GT ground truth disparity map
-         *
-         * param src disparity map to evaluate
-         *
-         * param ROI region of interest
-         *
-         * param thresh threshold used to determine "bad" pixels
-         *
-         * return returns mean square error between GT and src
+         @brief Function for computing the percent of "bad" pixels in the disparity map
+         (pixels where error is higher than a specified threshold)
+         
+         @param GT ground truth disparity map
+         
+         @param src disparity map to evaluate
+         
+         @param ROI region of interest
+         
+         @param thresh threshold used to determine "bad" pixels
+         
+         @result returns mean square error between GT and src
          */
         public static double computeBadPixelPercent(Mat GT, Mat src, Rect ROI, int thresh)
         {
@@ -612,17 +595,18 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Function for computing the percent of "bad" pixels in the disparity map
-         * (pixels where error is higher than a specified threshold)
-         *
-         * param GT ground truth disparity map
-         *
-         * param src disparity map to evaluate
-         *
-         * param ROI region of interest
-         *
-         *
-         * return returns mean square error between GT and src
+         @brief Function for computing the percent of "bad" pixels in the disparity map
+         (pixels where error is higher than a specified threshold)
+         
+         @param GT ground truth disparity map
+         
+         @param src disparity map to evaluate
+         
+         @param ROI region of interest
+         
+         @param thresh threshold used to determine "bad" pixels
+         
+         @result returns mean square error between GT and src
          */
         public static double computeBadPixelPercent(Mat GT, Mat src, Rect ROI)
         {
@@ -640,13 +624,13 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Function for creating a disparity map visualization (clamped CV_8U image)
-         *
-         * param src input disparity map (CV_16S depth)
-         *
-         * param dst output visualization
-         *
-         * param scale disparity map will be multiplied by this value for visualization
+         @brief Function for creating a disparity map visualization (clamped CV_8U image)
+         
+         @param src input disparity map (CV_16S depth)
+         
+         @param dst output visualization
+         
+         @param scale disparity map will be multiplied by this value for visualization
          */
         public static void getDisparityVis(Mat src, Mat dst, double scale)
         {
@@ -659,12 +643,13 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Function for creating a disparity map visualization (clamped CV_8U image)
-         *
-         * param src input disparity map (CV_16S depth)
-         *
-         * param dst output visualization
-         *
+         @brief Function for creating a disparity map visualization (clamped CV_8U image)
+         
+         @param src input disparity map (CV_16S depth)
+         
+         @param dst output visualization
+         
+         @param scale disparity map will be multiplied by this value for visualization
          */
         public static void getDisparityVis(Mat src, Mat dst)
         {
@@ -682,21 +667,20 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Creates a Edgeboxes
-         *
-         * param alpha step size of sliding window search.
-         * param beta nms threshold for object proposals.
-         * param eta adaptation rate for nms threshold.
-         * param minScore min score of boxes to detect.
-         * param maxBoxes max number of boxes to detect.
-         * param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
-         * param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
-         * param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
-         * param maxAspectRatio max aspect ratio of boxes.
-         * param minBoxArea minimum area of boxes.
-         * param gamma affinity sensitivity.
-         * param kappa scale sensitivity.
-         * return automatically generated
+         @brief Creates a Edgeboxes
+         
+         @param alpha step size of sliding window search.
+         @param beta nms threshold for object proposals.
+         @param eta adaptation rate for nms threshold.
+         @param minScore min score of boxes to detect.
+         @param maxBoxes max number of boxes to detect.
+         @param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
+         @param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
+         @param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
+         @param maxAspectRatio max aspect ratio of boxes.
+         @param minBoxArea minimum area of boxes.
+         @param gamma affinity sensitivity.
+         @param kappa scale sensitivity.
          */
         public static EdgeBoxes createEdgeBoxes(float alpha, float beta, float eta, float minScore, int maxBoxes, float edgeMinMag, float edgeMergeThr, float clusterMinMag, float maxAspectRatio, float minBoxArea, float gamma, float kappa)
         {
@@ -708,20 +692,20 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a Edgeboxes
-         *
-         * param alpha step size of sliding window search.
-         * param beta nms threshold for object proposals.
-         * param eta adaptation rate for nms threshold.
-         * param minScore min score of boxes to detect.
-         * param maxBoxes max number of boxes to detect.
-         * param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
-         * param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
-         * param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
-         * param maxAspectRatio max aspect ratio of boxes.
-         * param minBoxArea minimum area of boxes.
-         * param gamma affinity sensitivity.
-         * return automatically generated
+         @brief Creates a Edgeboxes
+         
+         @param alpha step size of sliding window search.
+         @param beta nms threshold for object proposals.
+         @param eta adaptation rate for nms threshold.
+         @param minScore min score of boxes to detect.
+         @param maxBoxes max number of boxes to detect.
+         @param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
+         @param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
+         @param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
+         @param maxAspectRatio max aspect ratio of boxes.
+         @param minBoxArea minimum area of boxes.
+         @param gamma affinity sensitivity.
+         @param kappa scale sensitivity.
          */
         public static EdgeBoxes createEdgeBoxes(float alpha, float beta, float eta, float minScore, int maxBoxes, float edgeMinMag, float edgeMergeThr, float clusterMinMag, float maxAspectRatio, float minBoxArea, float gamma)
         {
@@ -733,19 +717,20 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a Edgeboxes
-         *
-         * param alpha step size of sliding window search.
-         * param beta nms threshold for object proposals.
-         * param eta adaptation rate for nms threshold.
-         * param minScore min score of boxes to detect.
-         * param maxBoxes max number of boxes to detect.
-         * param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
-         * param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
-         * param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
-         * param maxAspectRatio max aspect ratio of boxes.
-         * param minBoxArea minimum area of boxes.
-         * return automatically generated
+         @brief Creates a Edgeboxes
+         
+         @param alpha step size of sliding window search.
+         @param beta nms threshold for object proposals.
+         @param eta adaptation rate for nms threshold.
+         @param minScore min score of boxes to detect.
+         @param maxBoxes max number of boxes to detect.
+         @param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
+         @param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
+         @param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
+         @param maxAspectRatio max aspect ratio of boxes.
+         @param minBoxArea minimum area of boxes.
+         @param gamma affinity sensitivity.
+         @param kappa scale sensitivity.
          */
         public static EdgeBoxes createEdgeBoxes(float alpha, float beta, float eta, float minScore, int maxBoxes, float edgeMinMag, float edgeMergeThr, float clusterMinMag, float maxAspectRatio, float minBoxArea)
         {
@@ -757,18 +742,20 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a Edgeboxes
-         *
-         * param alpha step size of sliding window search.
-         * param beta nms threshold for object proposals.
-         * param eta adaptation rate for nms threshold.
-         * param minScore min score of boxes to detect.
-         * param maxBoxes max number of boxes to detect.
-         * param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
-         * param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
-         * param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
-         * param maxAspectRatio max aspect ratio of boxes.
-         * return automatically generated
+         @brief Creates a Edgeboxes
+         
+         @param alpha step size of sliding window search.
+         @param beta nms threshold for object proposals.
+         @param eta adaptation rate for nms threshold.
+         @param minScore min score of boxes to detect.
+         @param maxBoxes max number of boxes to detect.
+         @param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
+         @param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
+         @param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
+         @param maxAspectRatio max aspect ratio of boxes.
+         @param minBoxArea minimum area of boxes.
+         @param gamma affinity sensitivity.
+         @param kappa scale sensitivity.
          */
         public static EdgeBoxes createEdgeBoxes(float alpha, float beta, float eta, float minScore, int maxBoxes, float edgeMinMag, float edgeMergeThr, float clusterMinMag, float maxAspectRatio)
         {
@@ -780,17 +767,20 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a Edgeboxes
-         *
-         * param alpha step size of sliding window search.
-         * param beta nms threshold for object proposals.
-         * param eta adaptation rate for nms threshold.
-         * param minScore min score of boxes to detect.
-         * param maxBoxes max number of boxes to detect.
-         * param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
-         * param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
-         * param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
-         * return automatically generated
+         @brief Creates a Edgeboxes
+         
+         @param alpha step size of sliding window search.
+         @param beta nms threshold for object proposals.
+         @param eta adaptation rate for nms threshold.
+         @param minScore min score of boxes to detect.
+         @param maxBoxes max number of boxes to detect.
+         @param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
+         @param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
+         @param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
+         @param maxAspectRatio max aspect ratio of boxes.
+         @param minBoxArea minimum area of boxes.
+         @param gamma affinity sensitivity.
+         @param kappa scale sensitivity.
          */
         public static EdgeBoxes createEdgeBoxes(float alpha, float beta, float eta, float minScore, int maxBoxes, float edgeMinMag, float edgeMergeThr, float clusterMinMag)
         {
@@ -802,16 +792,20 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a Edgeboxes
-         *
-         * param alpha step size of sliding window search.
-         * param beta nms threshold for object proposals.
-         * param eta adaptation rate for nms threshold.
-         * param minScore min score of boxes to detect.
-         * param maxBoxes max number of boxes to detect.
-         * param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
-         * param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
-         * return automatically generated
+         @brief Creates a Edgeboxes
+         
+         @param alpha step size of sliding window search.
+         @param beta nms threshold for object proposals.
+         @param eta adaptation rate for nms threshold.
+         @param minScore min score of boxes to detect.
+         @param maxBoxes max number of boxes to detect.
+         @param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
+         @param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
+         @param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
+         @param maxAspectRatio max aspect ratio of boxes.
+         @param minBoxArea minimum area of boxes.
+         @param gamma affinity sensitivity.
+         @param kappa scale sensitivity.
          */
         public static EdgeBoxes createEdgeBoxes(float alpha, float beta, float eta, float minScore, int maxBoxes, float edgeMinMag, float edgeMergeThr)
         {
@@ -823,15 +817,20 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a Edgeboxes
-         *
-         * param alpha step size of sliding window search.
-         * param beta nms threshold for object proposals.
-         * param eta adaptation rate for nms threshold.
-         * param minScore min score of boxes to detect.
-         * param maxBoxes max number of boxes to detect.
-         * param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
-         * return automatically generated
+         @brief Creates a Edgeboxes
+         
+         @param alpha step size of sliding window search.
+         @param beta nms threshold for object proposals.
+         @param eta adaptation rate for nms threshold.
+         @param minScore min score of boxes to detect.
+         @param maxBoxes max number of boxes to detect.
+         @param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
+         @param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
+         @param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
+         @param maxAspectRatio max aspect ratio of boxes.
+         @param minBoxArea minimum area of boxes.
+         @param gamma affinity sensitivity.
+         @param kappa scale sensitivity.
          */
         public static EdgeBoxes createEdgeBoxes(float alpha, float beta, float eta, float minScore, int maxBoxes, float edgeMinMag)
         {
@@ -843,14 +842,20 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a Edgeboxes
-         *
-         * param alpha step size of sliding window search.
-         * param beta nms threshold for object proposals.
-         * param eta adaptation rate for nms threshold.
-         * param minScore min score of boxes to detect.
-         * param maxBoxes max number of boxes to detect.
-         * return automatically generated
+         @brief Creates a Edgeboxes
+         
+         @param alpha step size of sliding window search.
+         @param beta nms threshold for object proposals.
+         @param eta adaptation rate for nms threshold.
+         @param minScore min score of boxes to detect.
+         @param maxBoxes max number of boxes to detect.
+         @param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
+         @param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
+         @param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
+         @param maxAspectRatio max aspect ratio of boxes.
+         @param minBoxArea minimum area of boxes.
+         @param gamma affinity sensitivity.
+         @param kappa scale sensitivity.
          */
         public static EdgeBoxes createEdgeBoxes(float alpha, float beta, float eta, float minScore, int maxBoxes)
         {
@@ -862,13 +867,20 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a Edgeboxes
-         *
-         * param alpha step size of sliding window search.
-         * param beta nms threshold for object proposals.
-         * param eta adaptation rate for nms threshold.
-         * param minScore min score of boxes to detect.
-         * return automatically generated
+         @brief Creates a Edgeboxes
+         
+         @param alpha step size of sliding window search.
+         @param beta nms threshold for object proposals.
+         @param eta adaptation rate for nms threshold.
+         @param minScore min score of boxes to detect.
+         @param maxBoxes max number of boxes to detect.
+         @param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
+         @param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
+         @param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
+         @param maxAspectRatio max aspect ratio of boxes.
+         @param minBoxArea minimum area of boxes.
+         @param gamma affinity sensitivity.
+         @param kappa scale sensitivity.
          */
         public static EdgeBoxes createEdgeBoxes(float alpha, float beta, float eta, float minScore)
         {
@@ -880,12 +892,20 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a Edgeboxes
-         *
-         * param alpha step size of sliding window search.
-         * param beta nms threshold for object proposals.
-         * param eta adaptation rate for nms threshold.
-         * return automatically generated
+         @brief Creates a Edgeboxes
+         
+         @param alpha step size of sliding window search.
+         @param beta nms threshold for object proposals.
+         @param eta adaptation rate for nms threshold.
+         @param minScore min score of boxes to detect.
+         @param maxBoxes max number of boxes to detect.
+         @param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
+         @param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
+         @param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
+         @param maxAspectRatio max aspect ratio of boxes.
+         @param minBoxArea minimum area of boxes.
+         @param gamma affinity sensitivity.
+         @param kappa scale sensitivity.
          */
         public static EdgeBoxes createEdgeBoxes(float alpha, float beta, float eta)
         {
@@ -897,11 +917,20 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a Edgeboxes
-         *
-         * param alpha step size of sliding window search.
-         * param beta nms threshold for object proposals.
-         * return automatically generated
+         @brief Creates a Edgeboxes
+         
+         @param alpha step size of sliding window search.
+         @param beta nms threshold for object proposals.
+         @param eta adaptation rate for nms threshold.
+         @param minScore min score of boxes to detect.
+         @param maxBoxes max number of boxes to detect.
+         @param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
+         @param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
+         @param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
+         @param maxAspectRatio max aspect ratio of boxes.
+         @param minBoxArea minimum area of boxes.
+         @param gamma affinity sensitivity.
+         @param kappa scale sensitivity.
          */
         public static EdgeBoxes createEdgeBoxes(float alpha, float beta)
         {
@@ -913,10 +942,20 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a Edgeboxes
-         *
-         * param alpha step size of sliding window search.
-         * return automatically generated
+         @brief Creates a Edgeboxes
+         
+         @param alpha step size of sliding window search.
+         @param beta nms threshold for object proposals.
+         @param eta adaptation rate for nms threshold.
+         @param minScore min score of boxes to detect.
+         @param maxBoxes max number of boxes to detect.
+         @param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
+         @param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
+         @param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
+         @param maxAspectRatio max aspect ratio of boxes.
+         @param minBoxArea minimum area of boxes.
+         @param gamma affinity sensitivity.
+         @param kappa scale sensitivity.
          */
         public static EdgeBoxes createEdgeBoxes(float alpha)
         {
@@ -928,9 +967,20 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a Edgeboxes
-         *
-         * return automatically generated
+         @brief Creates a Edgeboxes
+         
+         @param alpha step size of sliding window search.
+         @param beta nms threshold for object proposals.
+         @param eta adaptation rate for nms threshold.
+         @param minScore min score of boxes to detect.
+         @param maxBoxes max number of boxes to detect.
+         @param edgeMinMag edge min magnitude. Increase to trade off accuracy for speed.
+         @param edgeMergeThr edge merge threshold. Increase to trade off accuracy for speed.
+         @param clusterMinMag cluster min magnitude. Increase to trade off accuracy for speed.
+         @param maxAspectRatio max aspect ratio of boxes.
+         @param minBoxArea minimum area of boxes.
+         @param gamma affinity sensitivity.
+         @param kappa scale sensitivity.
          */
         public static EdgeBoxes createEdgeBoxes()
         {
@@ -947,16 +997,16 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Smoothes an image using the Edge-Preserving filter.
-         *
-         * The function smoothes Gaussian noise as well as salt &amp; pepper noise.
-         * For more details about this implementation, please see
-         * [ReiWoe18]  Reich, S. and Wörgötter, F. and Dellen, B. (2018). A Real-Time Edge-Preserving Denoising Filter. Proceedings of the 13th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications (VISIGRAPP): Visapp, 85-94, 4. DOI: 10.5220/0006509000850094.
-         *
-         * param src Source 8-bit 3-channel image.
-         * param dst Destination image of the same size and type as src.
-         * param d Diameter of each pixel neighborhood that is used during filtering. Must be greater or equal 3.
-         * param threshold Threshold, which distinguishes between noise, outliers, and data.
+         * @brief Smoothes an image using the Edge-Preserving filter.
+             *
+             * The function smoothes Gaussian noise as well as salt &amp; pepper noise.
+             * For more details about this implementation, please see
+             * [ReiWoe18]  Reich, S. and Wörgötter, F. and Dellen, B. (2018). A Real-Time Edge-Preserving Denoising Filter. Proceedings of the 13th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications (VISIGRAPP): Visapp, 85-94, 4. DOI: 10.5220/0006509000850094.
+             *
+             * @param src Source 8-bit 3-channel image.
+             * @param dst Destination image of the same size and type as src.
+             * @param d Diameter of each pixel neighborhood that is used during filtering. Must be greater or equal 3.
+             * @param threshold Threshold, which distinguishes between noise, outliers, and data.
          */
         public static void edgePreservingFilter(Mat src, Mat dst, int d, double threshold)
         {
@@ -974,8 +1024,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Creates a smart pointer to a EdgeDrawing object and initializes it
-         * return automatically generated
+         @brief Creates a smart pointer to a EdgeDrawing object and initializes it
          */
         public static EdgeDrawing createEdgeDrawing()
         {
@@ -992,25 +1041,24 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Factory method, create instance of DTFilter and produce initialization routines.
-         *
-         * param guide guided image (used to build transformed distance, which describes edge structure of
-         * guided image).
-         *
-         * param sigmaSpatial \({\sigma}_H\) parameter in the original article, it's similar to the sigma in the
-         * coordinate space into bilateralFilter.
-         *
-         * param sigmaColor \({\sigma}_r\) parameter in the original article, it's similar to the sigma in the
-         * color space into bilateralFilter.
-         *
-         * param mode one form three modes DTF_NC, DTF_RF and DTF_IC which corresponds to three modes for
-         * filtering 2D signals in the article.
-         *
-         * param numIters optional number of iterations used for filtering, 3 is quite enough.
-         *
-         * For more details about Domain Transform filter parameters, see the original article CITE: Gastal11 and
-         * [Domain Transform filter homepage](http://www.inf.ufrgs.br/~eslgastal/DomainTransform/).
-         * return automatically generated
+         @brief Factory method, create instance of DTFilter and produce initialization routines.
+         
+         @param guide guided image (used to build transformed distance, which describes edge structure of
+         guided image).
+         
+         @param sigmaSpatial \f${\sigma}_H\f$ parameter in the original article, it's similar to the sigma in the
+         coordinate space into bilateralFilter.
+         
+         @param sigmaColor \f${\sigma}_r\f$ parameter in the original article, it's similar to the sigma in the
+         color space into bilateralFilter.
+         
+         @param mode one form three modes DTF_NC, DTF_RF and DTF_IC which corresponds to three modes for
+         filtering 2D signals in the article.
+         
+         @param numIters optional number of iterations used for filtering, 3 is quite enough.
+         
+         For more details about Domain Transform filter parameters, see the original article @cite Gastal11 and
+         [Domain Transform filter homepage](http://www.inf.ufrgs.br/~eslgastal/DomainTransform/).
          */
         public static DTFilter createDTFilter(Mat guide, double sigmaSpatial, double sigmaColor, int mode, int numIters)
         {
@@ -1022,24 +1070,24 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Factory method, create instance of DTFilter and produce initialization routines.
-         *
-         * param guide guided image (used to build transformed distance, which describes edge structure of
-         * guided image).
-         *
-         * param sigmaSpatial \({\sigma}_H\) parameter in the original article, it's similar to the sigma in the
-         * coordinate space into bilateralFilter.
-         *
-         * param sigmaColor \({\sigma}_r\) parameter in the original article, it's similar to the sigma in the
-         * color space into bilateralFilter.
-         *
-         * param mode one form three modes DTF_NC, DTF_RF and DTF_IC which corresponds to three modes for
-         * filtering 2D signals in the article.
-         *
-         *
-         * For more details about Domain Transform filter parameters, see the original article CITE: Gastal11 and
-         * [Domain Transform filter homepage](http://www.inf.ufrgs.br/~eslgastal/DomainTransform/).
-         * return automatically generated
+         @brief Factory method, create instance of DTFilter and produce initialization routines.
+         
+         @param guide guided image (used to build transformed distance, which describes edge structure of
+         guided image).
+         
+         @param sigmaSpatial \f${\sigma}_H\f$ parameter in the original article, it's similar to the sigma in the
+         coordinate space into bilateralFilter.
+         
+         @param sigmaColor \f${\sigma}_r\f$ parameter in the original article, it's similar to the sigma in the
+         color space into bilateralFilter.
+         
+         @param mode one form three modes DTF_NC, DTF_RF and DTF_IC which corresponds to three modes for
+         filtering 2D signals in the article.
+         
+         @param numIters optional number of iterations used for filtering, 3 is quite enough.
+         
+         For more details about Domain Transform filter parameters, see the original article @cite Gastal11 and
+         [Domain Transform filter homepage](http://www.inf.ufrgs.br/~eslgastal/DomainTransform/).
          */
         public static DTFilter createDTFilter(Mat guide, double sigmaSpatial, double sigmaColor, int mode)
         {
@@ -1051,23 +1099,24 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Factory method, create instance of DTFilter and produce initialization routines.
-         *
-         * param guide guided image (used to build transformed distance, which describes edge structure of
-         * guided image).
-         *
-         * param sigmaSpatial \({\sigma}_H\) parameter in the original article, it's similar to the sigma in the
-         * coordinate space into bilateralFilter.
-         *
-         * param sigmaColor \({\sigma}_r\) parameter in the original article, it's similar to the sigma in the
-         * color space into bilateralFilter.
-         *
-         * filtering 2D signals in the article.
-         *
-         *
-         * For more details about Domain Transform filter parameters, see the original article CITE: Gastal11 and
-         * [Domain Transform filter homepage](http://www.inf.ufrgs.br/~eslgastal/DomainTransform/).
-         * return automatically generated
+         @brief Factory method, create instance of DTFilter and produce initialization routines.
+         
+         @param guide guided image (used to build transformed distance, which describes edge structure of
+         guided image).
+         
+         @param sigmaSpatial \f${\sigma}_H\f$ parameter in the original article, it's similar to the sigma in the
+         coordinate space into bilateralFilter.
+         
+         @param sigmaColor \f${\sigma}_r\f$ parameter in the original article, it's similar to the sigma in the
+         color space into bilateralFilter.
+         
+         @param mode one form three modes DTF_NC, DTF_RF and DTF_IC which corresponds to three modes for
+         filtering 2D signals in the article.
+         
+         @param numIters optional number of iterations used for filtering, 3 is quite enough.
+         
+         For more details about Domain Transform filter parameters, see the original article @cite Gastal11 and
+         [Domain Transform filter homepage](http://www.inf.ufrgs.br/~eslgastal/DomainTransform/).
          */
         public static DTFilter createDTFilter(Mat guide, double sigmaSpatial, double sigmaColor)
         {
@@ -1084,21 +1133,21 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Simple one-line Domain Transform filter call. If you have multiple images to filter with the same
-         * guided image then use DTFilter interface to avoid extra computations on initialization stage.
-         *
-         * param guide guided image (also called as joint image) with unsigned 8-bit or floating-point 32-bit
-         * depth and up to 4 channels.
-         * param src filtering image with unsigned 8-bit or floating-point 32-bit depth and up to 4 channels.
-         * param dst destination image
-         * param sigmaSpatial \({\sigma}_H\) parameter in the original article, it's similar to the sigma in the
-         * coordinate space into bilateralFilter.
-         * param sigmaColor \({\sigma}_r\) parameter in the original article, it's similar to the sigma in the
-         * color space into bilateralFilter.
-         * param mode one form three modes DTF_NC, DTF_RF and DTF_IC which corresponds to three modes for
-         * filtering 2D signals in the article.
-         * param numIters optional number of iterations used for filtering, 3 is quite enough.
-         * SEE: bilateralFilter, guidedFilter, amFilter
+         @brief Simple one-line Domain Transform filter call. If you have multiple images to filter with the same
+         guided image then use DTFilter interface to avoid extra computations on initialization stage.
+         
+         @param guide guided image (also called as joint image) with unsigned 8-bit or floating-point 32-bit
+         depth and up to 4 channels.
+         @param src filtering image with unsigned 8-bit or floating-point 32-bit depth and up to 4 channels.
+         @param dst destination image
+         @param sigmaSpatial \f${\sigma}_H\f$ parameter in the original article, it's similar to the sigma in the
+         coordinate space into bilateralFilter.
+         @param sigmaColor \f${\sigma}_r\f$ parameter in the original article, it's similar to the sigma in the
+         color space into bilateralFilter.
+         @param mode one form three modes DTF_NC, DTF_RF and DTF_IC which corresponds to three modes for
+         filtering 2D signals in the article.
+         @param numIters optional number of iterations used for filtering, 3 is quite enough.
+         @sa bilateralFilter, guidedFilter, amFilter
          */
         public static void dtFilter(Mat guide, Mat src, Mat dst, double sigmaSpatial, double sigmaColor, int mode, int numIters)
         {
@@ -1112,20 +1161,21 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Simple one-line Domain Transform filter call. If you have multiple images to filter with the same
-         * guided image then use DTFilter interface to avoid extra computations on initialization stage.
-         *
-         * param guide guided image (also called as joint image) with unsigned 8-bit or floating-point 32-bit
-         * depth and up to 4 channels.
-         * param src filtering image with unsigned 8-bit or floating-point 32-bit depth and up to 4 channels.
-         * param dst destination image
-         * param sigmaSpatial \({\sigma}_H\) parameter in the original article, it's similar to the sigma in the
-         * coordinate space into bilateralFilter.
-         * param sigmaColor \({\sigma}_r\) parameter in the original article, it's similar to the sigma in the
-         * color space into bilateralFilter.
-         * param mode one form three modes DTF_NC, DTF_RF and DTF_IC which corresponds to three modes for
-         * filtering 2D signals in the article.
-         * SEE: bilateralFilter, guidedFilter, amFilter
+         @brief Simple one-line Domain Transform filter call. If you have multiple images to filter with the same
+         guided image then use DTFilter interface to avoid extra computations on initialization stage.
+         
+         @param guide guided image (also called as joint image) with unsigned 8-bit or floating-point 32-bit
+         depth and up to 4 channels.
+         @param src filtering image with unsigned 8-bit or floating-point 32-bit depth and up to 4 channels.
+         @param dst destination image
+         @param sigmaSpatial \f${\sigma}_H\f$ parameter in the original article, it's similar to the sigma in the
+         coordinate space into bilateralFilter.
+         @param sigmaColor \f${\sigma}_r\f$ parameter in the original article, it's similar to the sigma in the
+         color space into bilateralFilter.
+         @param mode one form three modes DTF_NC, DTF_RF and DTF_IC which corresponds to three modes for
+         filtering 2D signals in the article.
+         @param numIters optional number of iterations used for filtering, 3 is quite enough.
+         @sa bilateralFilter, guidedFilter, amFilter
          */
         public static void dtFilter(Mat guide, Mat src, Mat dst, double sigmaSpatial, double sigmaColor, int mode)
         {
@@ -1139,19 +1189,21 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Simple one-line Domain Transform filter call. If you have multiple images to filter with the same
-         * guided image then use DTFilter interface to avoid extra computations on initialization stage.
-         *
-         * param guide guided image (also called as joint image) with unsigned 8-bit or floating-point 32-bit
-         * depth and up to 4 channels.
-         * param src filtering image with unsigned 8-bit or floating-point 32-bit depth and up to 4 channels.
-         * param dst destination image
-         * param sigmaSpatial \({\sigma}_H\) parameter in the original article, it's similar to the sigma in the
-         * coordinate space into bilateralFilter.
-         * param sigmaColor \({\sigma}_r\) parameter in the original article, it's similar to the sigma in the
-         * color space into bilateralFilter.
-         * filtering 2D signals in the article.
-         * SEE: bilateralFilter, guidedFilter, amFilter
+         @brief Simple one-line Domain Transform filter call. If you have multiple images to filter with the same
+         guided image then use DTFilter interface to avoid extra computations on initialization stage.
+         
+         @param guide guided image (also called as joint image) with unsigned 8-bit or floating-point 32-bit
+         depth and up to 4 channels.
+         @param src filtering image with unsigned 8-bit or floating-point 32-bit depth and up to 4 channels.
+         @param dst destination image
+         @param sigmaSpatial \f${\sigma}_H\f$ parameter in the original article, it's similar to the sigma in the
+         coordinate space into bilateralFilter.
+         @param sigmaColor \f${\sigma}_r\f$ parameter in the original article, it's similar to the sigma in the
+         color space into bilateralFilter.
+         @param mode one form three modes DTF_NC, DTF_RF and DTF_IC which corresponds to three modes for
+         filtering 2D signals in the article.
+         @param numIters optional number of iterations used for filtering, 3 is quite enough.
+         @sa bilateralFilter, guidedFilter, amFilter
          */
         public static void dtFilter(Mat guide, Mat src, Mat dst, double sigmaSpatial, double sigmaColor)
         {
@@ -1166,58 +1218,124 @@ namespace OpenCVForUnity.XimgprocModule
 
 
         //
-        // C++:  Ptr_GuidedFilter cv::ximgproc::createGuidedFilter(Mat guide, int radius, double eps)
+        // C++:  Ptr_GuidedFilter cv::ximgproc::createGuidedFilter(Mat guide, int radius, double eps, double scale = 1.0)
         //
 
         /**
-         * Factory method, create instance of GuidedFilter and produce initialization routines.
-         *
-         * param guide guided image (or array of images) with up to 3 channels, if it have more then 3
-         * channels then only first 3 channels will be used.
-         *
-         * param radius radius of Guided Filter.
-         *
-         * param eps regularization term of Guided Filter. \({eps}^2\) is similar to the sigma in the color
-         * space into bilateralFilter.
-         *
-         * For more details about Guided Filter parameters, see the original article CITE: Kaiming10 .
-         * return automatically generated
+         @brief Factory method, create instance of GuidedFilter and produce initialization routines.
+         
+         @param guide guided image (or array of images) with up to 3 channels, if it have more then 3
+         channels then only first 3 channels will be used.
+         
+         @param radius radius of Guided Filter.
+         
+         @param eps regularization term of Guided Filter. \f${eps}^2\f$ is similar to the sigma in the color
+         space into bilateralFilter.
+         
+         @param scale subsample factor of Fast Guided Filter, use a scale less than 1 to speeds up computation
+         with almost no visible degradation. (e.g. scale==0.5 shrinks the image by 2x inside the filter)
+         
+         For more details about (Fast) Guided Filter parameters, see the original articles @cite Kaiming10 @cite Kaiming15 .
+         */
+        public static GuidedFilter createGuidedFilter(Mat guide, int radius, double eps, double scale)
+        {
+            if (guide != null) guide.ThrowIfDisposed();
+
+            return GuidedFilter.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(ximgproc_Ximgproc_createGuidedFilter_10(guide.nativeObj, radius, eps, scale)));
+
+
+        }
+
+        /**
+         @brief Factory method, create instance of GuidedFilter and produce initialization routines.
+         
+         @param guide guided image (or array of images) with up to 3 channels, if it have more then 3
+         channels then only first 3 channels will be used.
+         
+         @param radius radius of Guided Filter.
+         
+         @param eps regularization term of Guided Filter. \f${eps}^2\f$ is similar to the sigma in the color
+         space into bilateralFilter.
+         
+         @param scale subsample factor of Fast Guided Filter, use a scale less than 1 to speeds up computation
+         with almost no visible degradation. (e.g. scale==0.5 shrinks the image by 2x inside the filter)
+         
+         For more details about (Fast) Guided Filter parameters, see the original articles @cite Kaiming10 @cite Kaiming15 .
          */
         public static GuidedFilter createGuidedFilter(Mat guide, int radius, double eps)
         {
             if (guide != null) guide.ThrowIfDisposed();
 
-            return GuidedFilter.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(ximgproc_Ximgproc_createGuidedFilter_10(guide.nativeObj, radius, eps)));
+            return GuidedFilter.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(ximgproc_Ximgproc_createGuidedFilter_11(guide.nativeObj, radius, eps)));
 
 
         }
 
 
         //
-        // C++:  void cv::ximgproc::guidedFilter(Mat guide, Mat src, Mat& dst, int radius, double eps, int dDepth = -1)
+        // C++:  void cv::ximgproc::guidedFilter(Mat guide, Mat src, Mat& dst, int radius, double eps, int dDepth = -1, double scale = 1.0)
         //
 
         /**
-         * Simple one-line Guided Filter call.
-         *
-         * If you have multiple images to filter with the same guided image then use GuidedFilter interface to
-         * avoid extra computations on initialization stage.
-         *
-         * param guide guided image (or array of images) with up to 3 channels, if it have more then 3
-         * channels then only first 3 channels will be used.
-         *
-         * param src filtering image with any numbers of channels.
-         *
-         * param dst output image.
-         *
-         * param radius radius of Guided Filter.
-         *
-         * param eps regularization term of Guided Filter. \({eps}^2\) is similar to the sigma in the color
-         * space into bilateralFilter.
-         *
-         * param dDepth optional depth of the output image.
-         *
-         * SEE: bilateralFilter, dtFilter, amFilter
+         @brief Simple one-line (Fast) Guided Filter call.
+         
+         If you have multiple images to filter with the same guided image then use GuidedFilter interface to
+         avoid extra computations on initialization stage.
+         
+         @param guide guided image (or array of images) with up to 3 channels, if it have more then 3
+         channels then only first 3 channels will be used.
+         
+         @param src filtering image with any numbers of channels.
+         
+         @param dst output image.
+         
+         @param radius radius of Guided Filter.
+         
+         @param eps regularization term of Guided Filter. \f${eps}^2\f$ is similar to the sigma in the color
+         space into bilateralFilter.
+         
+         @param dDepth optional depth of the output image.
+         
+         @param scale subsample factor of Fast Guided Filter, use a scale less than 1 to speeds up computation
+         with almost no visible degradation. (e.g. scale==0.5 shrinks the image by 2x inside the filter)
+         
+         @sa bilateralFilter, dtFilter, amFilter
+         */
+        public static void guidedFilter(Mat guide, Mat src, Mat dst, int radius, double eps, int dDepth, double scale)
+        {
+            if (guide != null) guide.ThrowIfDisposed();
+            if (src != null) src.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
+
+            ximgproc_Ximgproc_guidedFilter_10(guide.nativeObj, src.nativeObj, dst.nativeObj, radius, eps, dDepth, scale);
+
+
+        }
+
+        /**
+         @brief Simple one-line (Fast) Guided Filter call.
+         
+         If you have multiple images to filter with the same guided image then use GuidedFilter interface to
+         avoid extra computations on initialization stage.
+         
+         @param guide guided image (or array of images) with up to 3 channels, if it have more then 3
+         channels then only first 3 channels will be used.
+         
+         @param src filtering image with any numbers of channels.
+         
+         @param dst output image.
+         
+         @param radius radius of Guided Filter.
+         
+         @param eps regularization term of Guided Filter. \f${eps}^2\f$ is similar to the sigma in the color
+         space into bilateralFilter.
+         
+         @param dDepth optional depth of the output image.
+         
+         @param scale subsample factor of Fast Guided Filter, use a scale less than 1 to speeds up computation
+         with almost no visible degradation. (e.g. scale==0.5 shrinks the image by 2x inside the filter)
+         
+         @sa bilateralFilter, dtFilter, amFilter
          */
         public static void guidedFilter(Mat guide, Mat src, Mat dst, int radius, double eps, int dDepth)
         {
@@ -1225,31 +1343,35 @@ namespace OpenCVForUnity.XimgprocModule
             if (src != null) src.ThrowIfDisposed();
             if (dst != null) dst.ThrowIfDisposed();
 
-            ximgproc_Ximgproc_guidedFilter_10(guide.nativeObj, src.nativeObj, dst.nativeObj, radius, eps, dDepth);
+            ximgproc_Ximgproc_guidedFilter_11(guide.nativeObj, src.nativeObj, dst.nativeObj, radius, eps, dDepth);
 
 
         }
 
         /**
-         * Simple one-line Guided Filter call.
-         *
-         * If you have multiple images to filter with the same guided image then use GuidedFilter interface to
-         * avoid extra computations on initialization stage.
-         *
-         * param guide guided image (or array of images) with up to 3 channels, if it have more then 3
-         * channels then only first 3 channels will be used.
-         *
-         * param src filtering image with any numbers of channels.
-         *
-         * param dst output image.
-         *
-         * param radius radius of Guided Filter.
-         *
-         * param eps regularization term of Guided Filter. \({eps}^2\) is similar to the sigma in the color
-         * space into bilateralFilter.
-         *
-         *
-         * SEE: bilateralFilter, dtFilter, amFilter
+         @brief Simple one-line (Fast) Guided Filter call.
+         
+         If you have multiple images to filter with the same guided image then use GuidedFilter interface to
+         avoid extra computations on initialization stage.
+         
+         @param guide guided image (or array of images) with up to 3 channels, if it have more then 3
+         channels then only first 3 channels will be used.
+         
+         @param src filtering image with any numbers of channels.
+         
+         @param dst output image.
+         
+         @param radius radius of Guided Filter.
+         
+         @param eps regularization term of Guided Filter. \f${eps}^2\f$ is similar to the sigma in the color
+         space into bilateralFilter.
+         
+         @param dDepth optional depth of the output image.
+         
+         @param scale subsample factor of Fast Guided Filter, use a scale less than 1 to speeds up computation
+         with almost no visible degradation. (e.g. scale==0.5 shrinks the image by 2x inside the filter)
+         
+         @sa bilateralFilter, dtFilter, amFilter
          */
         public static void guidedFilter(Mat guide, Mat src, Mat dst, int radius, double eps)
         {
@@ -1257,7 +1379,7 @@ namespace OpenCVForUnity.XimgprocModule
             if (src != null) src.ThrowIfDisposed();
             if (dst != null) dst.ThrowIfDisposed();
 
-            ximgproc_Ximgproc_guidedFilter_11(guide.nativeObj, src.nativeObj, dst.nativeObj, radius, eps);
+            ximgproc_Ximgproc_guidedFilter_12(guide.nativeObj, src.nativeObj, dst.nativeObj, radius, eps);
 
 
         }
@@ -1268,22 +1390,21 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Factory method, create instance of AdaptiveManifoldFilter and produce some initialization routines.
-         *
-         * param sigma_s spatial standard deviation.
-         *
-         * param sigma_r color space standard deviation, it is similar to the sigma in the color space into
-         * bilateralFilter.
-         *
-         * param adjust_outliers optional, specify perform outliers adjust operation or not, (Eq. 9) in the
-         * original paper.
-         *
-         * For more details about Adaptive Manifold Filter parameters, see the original article CITE: Gastal12 .
-         *
-         * <b>Note:</b> Joint images with CV_8U and CV_16U depth converted to images with CV_32F depth and [0; 1]
-         * color range before processing. Hence color space sigma sigma_r must be in [0; 1] range, unlike same
-         * sigmas in bilateralFilter and dtFilter functions.
-         * return automatically generated
+         @brief Factory method, create instance of AdaptiveManifoldFilter and produce some initialization routines.
+         
+         @param sigma_s spatial standard deviation.
+         
+         @param sigma_r color space standard deviation, it is similar to the sigma in the color space into
+         bilateralFilter.
+         
+         @param adjust_outliers optional, specify perform outliers adjust operation or not, (Eq. 9) in the
+         original paper.
+         
+         For more details about Adaptive Manifold Filter parameters, see the original article @cite Gastal12 .
+         
+         @note Joint images with CV_8U and CV_16U depth converted to images with CV_32F depth and [0; 1]
+         color range before processing. Hence color space sigma sigma_r must be in [0; 1] range, unlike same
+         sigmas in bilateralFilter and dtFilter functions.
          */
         public static AdaptiveManifoldFilter createAMFilter(double sigma_s, double sigma_r, bool adjust_outliers)
         {
@@ -1295,21 +1416,21 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Factory method, create instance of AdaptiveManifoldFilter and produce some initialization routines.
-         *
-         * param sigma_s spatial standard deviation.
-         *
-         * param sigma_r color space standard deviation, it is similar to the sigma in the color space into
-         * bilateralFilter.
-         *
-         * original paper.
-         *
-         * For more details about Adaptive Manifold Filter parameters, see the original article CITE: Gastal12 .
-         *
-         * <b>Note:</b> Joint images with CV_8U and CV_16U depth converted to images with CV_32F depth and [0; 1]
-         * color range before processing. Hence color space sigma sigma_r must be in [0; 1] range, unlike same
-         * sigmas in bilateralFilter and dtFilter functions.
-         * return automatically generated
+         @brief Factory method, create instance of AdaptiveManifoldFilter and produce some initialization routines.
+         
+         @param sigma_s spatial standard deviation.
+         
+         @param sigma_r color space standard deviation, it is similar to the sigma in the color space into
+         bilateralFilter.
+         
+         @param adjust_outliers optional, specify perform outliers adjust operation or not, (Eq. 9) in the
+         original paper.
+         
+         For more details about Adaptive Manifold Filter parameters, see the original article @cite Gastal12 .
+         
+         @note Joint images with CV_8U and CV_16U depth converted to images with CV_32F depth and [0; 1]
+         color range before processing. Hence color space sigma sigma_r must be in [0; 1] range, unlike same
+         sigmas in bilateralFilter and dtFilter functions.
          */
         public static AdaptiveManifoldFilter createAMFilter(double sigma_s, double sigma_r)
         {
@@ -1326,25 +1447,25 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Simple one-line Adaptive Manifold Filter call.
-         *
-         * param joint joint (also called as guided) image or array of images with any numbers of channels.
-         *
-         * param src filtering image with any numbers of channels.
-         *
-         * param dst output image.
-         *
-         * param sigma_s spatial standard deviation.
-         *
-         * param sigma_r color space standard deviation, it is similar to the sigma in the color space into
-         * bilateralFilter.
-         *
-         * param adjust_outliers optional, specify perform outliers adjust operation or not, (Eq. 9) in the
-         * original paper.
-         *
-         * <b>Note:</b> Joint images with CV_8U and CV_16U depth converted to images with CV_32F depth and [0; 1]
-         * color range before processing. Hence color space sigma sigma_r must be in [0; 1] range, unlike same
-         * sigmas in bilateralFilter and dtFilter functions. SEE: bilateralFilter, dtFilter, guidedFilter
+         @brief Simple one-line Adaptive Manifold Filter call.
+         
+         @param joint joint (also called as guided) image or array of images with any numbers of channels.
+         
+         @param src filtering image with any numbers of channels.
+         
+         @param dst output image.
+         
+         @param sigma_s spatial standard deviation.
+         
+         @param sigma_r color space standard deviation, it is similar to the sigma in the color space into
+         bilateralFilter.
+         
+         @param adjust_outliers optional, specify perform outliers adjust operation or not, (Eq. 9) in the
+         original paper.
+         
+         @note Joint images with CV_8U and CV_16U depth converted to images with CV_32F depth and [0; 1]
+         color range before processing. Hence color space sigma sigma_r must be in [0; 1] range, unlike same
+         sigmas in bilateralFilter and dtFilter functions. @sa bilateralFilter, dtFilter, guidedFilter
          */
         public static void amFilter(Mat joint, Mat src, Mat dst, double sigma_s, double sigma_r, bool adjust_outliers)
         {
@@ -1358,24 +1479,25 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Simple one-line Adaptive Manifold Filter call.
-         *
-         * param joint joint (also called as guided) image or array of images with any numbers of channels.
-         *
-         * param src filtering image with any numbers of channels.
-         *
-         * param dst output image.
-         *
-         * param sigma_s spatial standard deviation.
-         *
-         * param sigma_r color space standard deviation, it is similar to the sigma in the color space into
-         * bilateralFilter.
-         *
-         * original paper.
-         *
-         * <b>Note:</b> Joint images with CV_8U and CV_16U depth converted to images with CV_32F depth and [0; 1]
-         * color range before processing. Hence color space sigma sigma_r must be in [0; 1] range, unlike same
-         * sigmas in bilateralFilter and dtFilter functions. SEE: bilateralFilter, dtFilter, guidedFilter
+         @brief Simple one-line Adaptive Manifold Filter call.
+         
+         @param joint joint (also called as guided) image or array of images with any numbers of channels.
+         
+         @param src filtering image with any numbers of channels.
+         
+         @param dst output image.
+         
+         @param sigma_s spatial standard deviation.
+         
+         @param sigma_r color space standard deviation, it is similar to the sigma in the color space into
+         bilateralFilter.
+         
+         @param adjust_outliers optional, specify perform outliers adjust operation or not, (Eq. 9) in the
+         original paper.
+         
+         @note Joint images with CV_8U and CV_16U depth converted to images with CV_32F depth and [0; 1]
+         color range before processing. Hence color space sigma sigma_r must be in [0; 1] range, unlike same
+         sigmas in bilateralFilter and dtFilter functions. @sa bilateralFilter, dtFilter, guidedFilter
          */
         public static void amFilter(Mat joint, Mat src, Mat dst, double sigma_s, double sigma_r)
         {
@@ -1394,32 +1516,32 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Applies the joint bilateral filter to an image.
-         *
-         * param joint Joint 8-bit or floating-point, 1-channel or 3-channel image.
-         *
-         * param src Source 8-bit or floating-point, 1-channel or 3-channel image with the same depth as joint
-         * image.
-         *
-         * param dst Destination image of the same size and type as src .
-         *
-         * param d Diameter of each pixel neighborhood that is used during filtering. If it is non-positive,
-         * it is computed from sigmaSpace .
-         *
-         * param sigmaColor Filter sigma in the color space. A larger value of the parameter means that
-         * farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
-         * larger areas of semi-equal color.
-         *
-         * param sigmaSpace Filter sigma in the coordinate space. A larger value of the parameter means that
-         * farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
-         * When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
-         * proportional to sigmaSpace .
-         *
-         * param borderType
-         *
-         * <b>Note:</b> bilateralFilter and jointBilateralFilter use L1 norm to compute difference between colors.
-         *
-         * SEE: bilateralFilter, amFilter
+         @brief Applies the joint bilateral filter to an image.
+         
+         @param joint Joint 8-bit or floating-point, 1-channel or 3-channel image.
+         
+         @param src Source 8-bit or floating-point, 1-channel or 3-channel image with the same depth as joint
+         image.
+         
+         @param dst Destination image of the same size and type as src .
+         
+         @param d Diameter of each pixel neighborhood that is used during filtering. If it is non-positive,
+         it is computed from sigmaSpace .
+         
+         @param sigmaColor Filter sigma in the color space. A larger value of the parameter means that
+         farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
+         larger areas of semi-equal color.
+         
+         @param sigmaSpace Filter sigma in the coordinate space. A larger value of the parameter means that
+         farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
+         When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
+         proportional to sigmaSpace .
+         
+         @param borderType
+         
+         @note bilateralFilter and jointBilateralFilter use L1 norm to compute difference between colors.
+         
+         @sa bilateralFilter, amFilter
          */
         public static void jointBilateralFilter(Mat joint, Mat src, Mat dst, int d, double sigmaColor, double sigmaSpace, int borderType)
         {
@@ -1433,31 +1555,32 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Applies the joint bilateral filter to an image.
-         *
-         * param joint Joint 8-bit or floating-point, 1-channel or 3-channel image.
-         *
-         * param src Source 8-bit or floating-point, 1-channel or 3-channel image with the same depth as joint
-         * image.
-         *
-         * param dst Destination image of the same size and type as src .
-         *
-         * param d Diameter of each pixel neighborhood that is used during filtering. If it is non-positive,
-         * it is computed from sigmaSpace .
-         *
-         * param sigmaColor Filter sigma in the color space. A larger value of the parameter means that
-         * farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
-         * larger areas of semi-equal color.
-         *
-         * param sigmaSpace Filter sigma in the coordinate space. A larger value of the parameter means that
-         * farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
-         * When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
-         * proportional to sigmaSpace .
-         *
-         *
-         * <b>Note:</b> bilateralFilter and jointBilateralFilter use L1 norm to compute difference between colors.
-         *
-         * SEE: bilateralFilter, amFilter
+         @brief Applies the joint bilateral filter to an image.
+         
+         @param joint Joint 8-bit or floating-point, 1-channel or 3-channel image.
+         
+         @param src Source 8-bit or floating-point, 1-channel or 3-channel image with the same depth as joint
+         image.
+         
+         @param dst Destination image of the same size and type as src .
+         
+         @param d Diameter of each pixel neighborhood that is used during filtering. If it is non-positive,
+         it is computed from sigmaSpace .
+         
+         @param sigmaColor Filter sigma in the color space. A larger value of the parameter means that
+         farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
+         larger areas of semi-equal color.
+         
+         @param sigmaSpace Filter sigma in the coordinate space. A larger value of the parameter means that
+         farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
+         When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
+         proportional to sigmaSpace .
+         
+         @param borderType
+         
+         @note bilateralFilter and jointBilateralFilter use L1 norm to compute difference between colors.
+         
+         @sa bilateralFilter, amFilter
          */
         public static void jointBilateralFilter(Mat joint, Mat src, Mat dst, int d, double sigmaColor, double sigmaSpace)
         {
@@ -1476,24 +1599,24 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Applies the bilateral texture filter to an image. It performs structure-preserving texture filter.
-         * For more details about this filter see CITE: Cho2014.
-         *
-         * param src Source image whose depth is 8-bit UINT or 32-bit FLOAT
-         *
-         * param dst Destination image of the same size and type as src.
-         *
-         * param fr Radius of kernel to be used for filtering. It should be positive integer
-         *
-         * param numIter Number of iterations of algorithm, It should be positive integer
-         *
-         * param sigmaAlpha Controls the sharpness of the weight transition from edges to smooth/texture regions, where
-         * a bigger value means sharper transition. When the value is negative, it is automatically calculated.
-         *
-         * param sigmaAvg Range blur parameter for texture blurring. Larger value makes result to be more blurred. When the
-         * value is negative, it is automatically calculated as described in the paper.
-         *
-         * SEE: rollingGuidanceFilter, bilateralFilter
+         @brief Applies the bilateral texture filter to an image. It performs structure-preserving texture filter.
+         For more details about this filter see @cite Cho2014.
+         
+         @param src Source image whose depth is 8-bit UINT or 32-bit FLOAT
+         
+         @param dst Destination image of the same size and type as src.
+         
+         @param fr Radius of kernel to be used for filtering. It should be positive integer
+         
+         @param numIter Number of iterations of algorithm, It should be positive integer
+         
+         @param sigmaAlpha Controls the sharpness of the weight transition from edges to smooth/texture regions, where
+         a bigger value means sharper transition. When the value is negative, it is automatically calculated.
+         
+         @param sigmaAvg Range blur parameter for texture blurring. Larger value makes result to be more blurred. When the
+         value is negative, it is automatically calculated as described in the paper.
+         
+         @sa rollingGuidanceFilter, bilateralFilter
          */
         public static void bilateralTextureFilter(Mat src, Mat dst, int fr, int numIter, double sigmaAlpha, double sigmaAvg)
         {
@@ -1506,23 +1629,24 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Applies the bilateral texture filter to an image. It performs structure-preserving texture filter.
-         * For more details about this filter see CITE: Cho2014.
-         *
-         * param src Source image whose depth is 8-bit UINT or 32-bit FLOAT
-         *
-         * param dst Destination image of the same size and type as src.
-         *
-         * param fr Radius of kernel to be used for filtering. It should be positive integer
-         *
-         * param numIter Number of iterations of algorithm, It should be positive integer
-         *
-         * param sigmaAlpha Controls the sharpness of the weight transition from edges to smooth/texture regions, where
-         * a bigger value means sharper transition. When the value is negative, it is automatically calculated.
-         *
-         * value is negative, it is automatically calculated as described in the paper.
-         *
-         * SEE: rollingGuidanceFilter, bilateralFilter
+         @brief Applies the bilateral texture filter to an image. It performs structure-preserving texture filter.
+         For more details about this filter see @cite Cho2014.
+         
+         @param src Source image whose depth is 8-bit UINT or 32-bit FLOAT
+         
+         @param dst Destination image of the same size and type as src.
+         
+         @param fr Radius of kernel to be used for filtering. It should be positive integer
+         
+         @param numIter Number of iterations of algorithm, It should be positive integer
+         
+         @param sigmaAlpha Controls the sharpness of the weight transition from edges to smooth/texture regions, where
+         a bigger value means sharper transition. When the value is negative, it is automatically calculated.
+         
+         @param sigmaAvg Range blur parameter for texture blurring. Larger value makes result to be more blurred. When the
+         value is negative, it is automatically calculated as described in the paper.
+         
+         @sa rollingGuidanceFilter, bilateralFilter
          */
         public static void bilateralTextureFilter(Mat src, Mat dst, int fr, int numIter, double sigmaAlpha)
         {
@@ -1535,22 +1659,24 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Applies the bilateral texture filter to an image. It performs structure-preserving texture filter.
-         * For more details about this filter see CITE: Cho2014.
-         *
-         * param src Source image whose depth is 8-bit UINT or 32-bit FLOAT
-         *
-         * param dst Destination image of the same size and type as src.
-         *
-         * param fr Radius of kernel to be used for filtering. It should be positive integer
-         *
-         * param numIter Number of iterations of algorithm, It should be positive integer
-         *
-         * a bigger value means sharper transition. When the value is negative, it is automatically calculated.
-         *
-         * value is negative, it is automatically calculated as described in the paper.
-         *
-         * SEE: rollingGuidanceFilter, bilateralFilter
+         @brief Applies the bilateral texture filter to an image. It performs structure-preserving texture filter.
+         For more details about this filter see @cite Cho2014.
+         
+         @param src Source image whose depth is 8-bit UINT or 32-bit FLOAT
+         
+         @param dst Destination image of the same size and type as src.
+         
+         @param fr Radius of kernel to be used for filtering. It should be positive integer
+         
+         @param numIter Number of iterations of algorithm, It should be positive integer
+         
+         @param sigmaAlpha Controls the sharpness of the weight transition from edges to smooth/texture regions, where
+         a bigger value means sharper transition. When the value is negative, it is automatically calculated.
+         
+         @param sigmaAvg Range blur parameter for texture blurring. Larger value makes result to be more blurred. When the
+         value is negative, it is automatically calculated as described in the paper.
+         
+         @sa rollingGuidanceFilter, bilateralFilter
          */
         public static void bilateralTextureFilter(Mat src, Mat dst, int fr, int numIter)
         {
@@ -1563,21 +1689,24 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Applies the bilateral texture filter to an image. It performs structure-preserving texture filter.
-         * For more details about this filter see CITE: Cho2014.
-         *
-         * param src Source image whose depth is 8-bit UINT or 32-bit FLOAT
-         *
-         * param dst Destination image of the same size and type as src.
-         *
-         * param fr Radius of kernel to be used for filtering. It should be positive integer
-         *
-         *
-         * a bigger value means sharper transition. When the value is negative, it is automatically calculated.
-         *
-         * value is negative, it is automatically calculated as described in the paper.
-         *
-         * SEE: rollingGuidanceFilter, bilateralFilter
+         @brief Applies the bilateral texture filter to an image. It performs structure-preserving texture filter.
+         For more details about this filter see @cite Cho2014.
+         
+         @param src Source image whose depth is 8-bit UINT or 32-bit FLOAT
+         
+         @param dst Destination image of the same size and type as src.
+         
+         @param fr Radius of kernel to be used for filtering. It should be positive integer
+         
+         @param numIter Number of iterations of algorithm, It should be positive integer
+         
+         @param sigmaAlpha Controls the sharpness of the weight transition from edges to smooth/texture regions, where
+         a bigger value means sharper transition. When the value is negative, it is automatically calculated.
+         
+         @param sigmaAvg Range blur parameter for texture blurring. Larger value makes result to be more blurred. When the
+         value is negative, it is automatically calculated as described in the paper.
+         
+         @sa rollingGuidanceFilter, bilateralFilter
          */
         public static void bilateralTextureFilter(Mat src, Mat dst, int fr)
         {
@@ -1590,20 +1719,24 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Applies the bilateral texture filter to an image. It performs structure-preserving texture filter.
-         * For more details about this filter see CITE: Cho2014.
-         *
-         * param src Source image whose depth is 8-bit UINT or 32-bit FLOAT
-         *
-         * param dst Destination image of the same size and type as src.
-         *
-         *
-         *
-         * a bigger value means sharper transition. When the value is negative, it is automatically calculated.
-         *
-         * value is negative, it is automatically calculated as described in the paper.
-         *
-         * SEE: rollingGuidanceFilter, bilateralFilter
+         @brief Applies the bilateral texture filter to an image. It performs structure-preserving texture filter.
+         For more details about this filter see @cite Cho2014.
+         
+         @param src Source image whose depth is 8-bit UINT or 32-bit FLOAT
+         
+         @param dst Destination image of the same size and type as src.
+         
+         @param fr Radius of kernel to be used for filtering. It should be positive integer
+         
+         @param numIter Number of iterations of algorithm, It should be positive integer
+         
+         @param sigmaAlpha Controls the sharpness of the weight transition from edges to smooth/texture regions, where
+         a bigger value means sharper transition. When the value is negative, it is automatically calculated.
+         
+         @param sigmaAvg Range blur parameter for texture blurring. Larger value makes result to be more blurred. When the
+         value is negative, it is automatically calculated as described in the paper.
+         
+         @sa rollingGuidanceFilter, bilateralFilter
          */
         public static void bilateralTextureFilter(Mat src, Mat dst)
         {
@@ -1621,33 +1754,33 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Applies the rolling guidance filter to an image.
-         *
-         * For more details, please see CITE: zhang2014rolling
-         *
-         * param src Source 8-bit or floating-point, 1-channel or 3-channel image.
-         *
-         * param dst Destination image of the same size and type as src.
-         *
-         * param d Diameter of each pixel neighborhood that is used during filtering. If it is non-positive,
-         * it is computed from sigmaSpace .
-         *
-         * param sigmaColor Filter sigma in the color space. A larger value of the parameter means that
-         * farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
-         * larger areas of semi-equal color.
-         *
-         * param sigmaSpace Filter sigma in the coordinate space. A larger value of the parameter means that
-         * farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
-         * When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
-         * proportional to sigmaSpace .
-         *
-         * param numOfIter Number of iterations of joint edge-preserving filtering applied on the source image.
-         *
-         * param borderType
-         *
-         * <b>Note:</b>  rollingGuidanceFilter uses jointBilateralFilter as the edge-preserving filter.
-         *
-         * SEE: jointBilateralFilter, bilateralFilter, amFilter
+         @brief Applies the rolling guidance filter to an image.
+         
+         For more details, please see @cite zhang2014rolling
+         
+         @param src Source 8-bit or floating-point, 1-channel or 3-channel image.
+         
+         @param dst Destination image of the same size and type as src.
+         
+         @param d Diameter of each pixel neighborhood that is used during filtering. If it is non-positive,
+         it is computed from sigmaSpace .
+         
+         @param sigmaColor Filter sigma in the color space. A larger value of the parameter means that
+         farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
+         larger areas of semi-equal color.
+         
+         @param sigmaSpace Filter sigma in the coordinate space. A larger value of the parameter means that
+         farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
+         When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
+         proportional to sigmaSpace .
+         
+         @param numOfIter Number of iterations of joint edge-preserving filtering applied on the source image.
+         
+         @param borderType
+         
+         @note  rollingGuidanceFilter uses jointBilateralFilter as the edge-preserving filter.
+         
+         @sa jointBilateralFilter, bilateralFilter, amFilter
          */
         public static void rollingGuidanceFilter(Mat src, Mat dst, int d, double sigmaColor, double sigmaSpace, int numOfIter, int borderType)
         {
@@ -1660,32 +1793,33 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Applies the rolling guidance filter to an image.
-         *
-         * For more details, please see CITE: zhang2014rolling
-         *
-         * param src Source 8-bit or floating-point, 1-channel or 3-channel image.
-         *
-         * param dst Destination image of the same size and type as src.
-         *
-         * param d Diameter of each pixel neighborhood that is used during filtering. If it is non-positive,
-         * it is computed from sigmaSpace .
-         *
-         * param sigmaColor Filter sigma in the color space. A larger value of the parameter means that
-         * farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
-         * larger areas of semi-equal color.
-         *
-         * param sigmaSpace Filter sigma in the coordinate space. A larger value of the parameter means that
-         * farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
-         * When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
-         * proportional to sigmaSpace .
-         *
-         * param numOfIter Number of iterations of joint edge-preserving filtering applied on the source image.
-         *
-         *
-         * <b>Note:</b>  rollingGuidanceFilter uses jointBilateralFilter as the edge-preserving filter.
-         *
-         * SEE: jointBilateralFilter, bilateralFilter, amFilter
+         @brief Applies the rolling guidance filter to an image.
+         
+         For more details, please see @cite zhang2014rolling
+         
+         @param src Source 8-bit or floating-point, 1-channel or 3-channel image.
+         
+         @param dst Destination image of the same size and type as src.
+         
+         @param d Diameter of each pixel neighborhood that is used during filtering. If it is non-positive,
+         it is computed from sigmaSpace .
+         
+         @param sigmaColor Filter sigma in the color space. A larger value of the parameter means that
+         farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
+         larger areas of semi-equal color.
+         
+         @param sigmaSpace Filter sigma in the coordinate space. A larger value of the parameter means that
+         farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
+         When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
+         proportional to sigmaSpace .
+         
+         @param numOfIter Number of iterations of joint edge-preserving filtering applied on the source image.
+         
+         @param borderType
+         
+         @note  rollingGuidanceFilter uses jointBilateralFilter as the edge-preserving filter.
+         
+         @sa jointBilateralFilter, bilateralFilter, amFilter
          */
         public static void rollingGuidanceFilter(Mat src, Mat dst, int d, double sigmaColor, double sigmaSpace, int numOfIter)
         {
@@ -1698,31 +1832,33 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Applies the rolling guidance filter to an image.
-         *
-         * For more details, please see CITE: zhang2014rolling
-         *
-         * param src Source 8-bit or floating-point, 1-channel or 3-channel image.
-         *
-         * param dst Destination image of the same size and type as src.
-         *
-         * param d Diameter of each pixel neighborhood that is used during filtering. If it is non-positive,
-         * it is computed from sigmaSpace .
-         *
-         * param sigmaColor Filter sigma in the color space. A larger value of the parameter means that
-         * farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
-         * larger areas of semi-equal color.
-         *
-         * param sigmaSpace Filter sigma in the coordinate space. A larger value of the parameter means that
-         * farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
-         * When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
-         * proportional to sigmaSpace .
-         *
-         *
-         *
-         * <b>Note:</b>  rollingGuidanceFilter uses jointBilateralFilter as the edge-preserving filter.
-         *
-         * SEE: jointBilateralFilter, bilateralFilter, amFilter
+         @brief Applies the rolling guidance filter to an image.
+         
+         For more details, please see @cite zhang2014rolling
+         
+         @param src Source 8-bit or floating-point, 1-channel or 3-channel image.
+         
+         @param dst Destination image of the same size and type as src.
+         
+         @param d Diameter of each pixel neighborhood that is used during filtering. If it is non-positive,
+         it is computed from sigmaSpace .
+         
+         @param sigmaColor Filter sigma in the color space. A larger value of the parameter means that
+         farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
+         larger areas of semi-equal color.
+         
+         @param sigmaSpace Filter sigma in the coordinate space. A larger value of the parameter means that
+         farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
+         When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
+         proportional to sigmaSpace .
+         
+         @param numOfIter Number of iterations of joint edge-preserving filtering applied on the source image.
+         
+         @param borderType
+         
+         @note  rollingGuidanceFilter uses jointBilateralFilter as the edge-preserving filter.
+         
+         @sa jointBilateralFilter, bilateralFilter, amFilter
          */
         public static void rollingGuidanceFilter(Mat src, Mat dst, int d, double sigmaColor, double sigmaSpace)
         {
@@ -1735,30 +1871,33 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Applies the rolling guidance filter to an image.
-         *
-         * For more details, please see CITE: zhang2014rolling
-         *
-         * param src Source 8-bit or floating-point, 1-channel or 3-channel image.
-         *
-         * param dst Destination image of the same size and type as src.
-         *
-         * param d Diameter of each pixel neighborhood that is used during filtering. If it is non-positive,
-         * it is computed from sigmaSpace .
-         *
-         * param sigmaColor Filter sigma in the color space. A larger value of the parameter means that
-         * farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
-         * larger areas of semi-equal color.
-         *
-         * farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
-         * When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
-         * proportional to sigmaSpace .
-         *
-         *
-         *
-         * <b>Note:</b>  rollingGuidanceFilter uses jointBilateralFilter as the edge-preserving filter.
-         *
-         * SEE: jointBilateralFilter, bilateralFilter, amFilter
+         @brief Applies the rolling guidance filter to an image.
+         
+         For more details, please see @cite zhang2014rolling
+         
+         @param src Source 8-bit or floating-point, 1-channel or 3-channel image.
+         
+         @param dst Destination image of the same size and type as src.
+         
+         @param d Diameter of each pixel neighborhood that is used during filtering. If it is non-positive,
+         it is computed from sigmaSpace .
+         
+         @param sigmaColor Filter sigma in the color space. A larger value of the parameter means that
+         farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
+         larger areas of semi-equal color.
+         
+         @param sigmaSpace Filter sigma in the coordinate space. A larger value of the parameter means that
+         farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
+         When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
+         proportional to sigmaSpace .
+         
+         @param numOfIter Number of iterations of joint edge-preserving filtering applied on the source image.
+         
+         @param borderType
+         
+         @note  rollingGuidanceFilter uses jointBilateralFilter as the edge-preserving filter.
+         
+         @sa jointBilateralFilter, bilateralFilter, amFilter
          */
         public static void rollingGuidanceFilter(Mat src, Mat dst, int d, double sigmaColor)
         {
@@ -1771,29 +1910,33 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Applies the rolling guidance filter to an image.
-         *
-         * For more details, please see CITE: zhang2014rolling
-         *
-         * param src Source 8-bit or floating-point, 1-channel or 3-channel image.
-         *
-         * param dst Destination image of the same size and type as src.
-         *
-         * param d Diameter of each pixel neighborhood that is used during filtering. If it is non-positive,
-         * it is computed from sigmaSpace .
-         *
-         * farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
-         * larger areas of semi-equal color.
-         *
-         * farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
-         * When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
-         * proportional to sigmaSpace .
-         *
-         *
-         *
-         * <b>Note:</b>  rollingGuidanceFilter uses jointBilateralFilter as the edge-preserving filter.
-         *
-         * SEE: jointBilateralFilter, bilateralFilter, amFilter
+         @brief Applies the rolling guidance filter to an image.
+         
+         For more details, please see @cite zhang2014rolling
+         
+         @param src Source 8-bit or floating-point, 1-channel or 3-channel image.
+         
+         @param dst Destination image of the same size and type as src.
+         
+         @param d Diameter of each pixel neighborhood that is used during filtering. If it is non-positive,
+         it is computed from sigmaSpace .
+         
+         @param sigmaColor Filter sigma in the color space. A larger value of the parameter means that
+         farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
+         larger areas of semi-equal color.
+         
+         @param sigmaSpace Filter sigma in the coordinate space. A larger value of the parameter means that
+         farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
+         When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
+         proportional to sigmaSpace .
+         
+         @param numOfIter Number of iterations of joint edge-preserving filtering applied on the source image.
+         
+         @param borderType
+         
+         @note  rollingGuidanceFilter uses jointBilateralFilter as the edge-preserving filter.
+         
+         @sa jointBilateralFilter, bilateralFilter, amFilter
          */
         public static void rollingGuidanceFilter(Mat src, Mat dst, int d)
         {
@@ -1806,28 +1949,33 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Applies the rolling guidance filter to an image.
-         *
-         * For more details, please see CITE: zhang2014rolling
-         *
-         * param src Source 8-bit or floating-point, 1-channel or 3-channel image.
-         *
-         * param dst Destination image of the same size and type as src.
-         *
-         * it is computed from sigmaSpace .
-         *
-         * farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
-         * larger areas of semi-equal color.
-         *
-         * farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
-         * When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
-         * proportional to sigmaSpace .
-         *
-         *
-         *
-         * <b>Note:</b>  rollingGuidanceFilter uses jointBilateralFilter as the edge-preserving filter.
-         *
-         * SEE: jointBilateralFilter, bilateralFilter, amFilter
+         @brief Applies the rolling guidance filter to an image.
+         
+         For more details, please see @cite zhang2014rolling
+         
+         @param src Source 8-bit or floating-point, 1-channel or 3-channel image.
+         
+         @param dst Destination image of the same size and type as src.
+         
+         @param d Diameter of each pixel neighborhood that is used during filtering. If it is non-positive,
+         it is computed from sigmaSpace .
+         
+         @param sigmaColor Filter sigma in the color space. A larger value of the parameter means that
+         farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together, resulting in
+         larger areas of semi-equal color.
+         
+         @param sigmaSpace Filter sigma in the coordinate space. A larger value of the parameter means that
+         farther pixels will influence each other as long as their colors are close enough (see sigmaColor ).
+         When d&gt;0 , it specifies the neighborhood size regardless of sigmaSpace . Otherwise, d is
+         proportional to sigmaSpace .
+         
+         @param numOfIter Number of iterations of joint edge-preserving filtering applied on the source image.
+         
+         @param borderType
+         
+         @note  rollingGuidanceFilter uses jointBilateralFilter as the edge-preserving filter.
+         
+         @sa jointBilateralFilter, bilateralFilter, amFilter
          */
         public static void rollingGuidanceFilter(Mat src, Mat dst)
         {
@@ -1845,24 +1993,23 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Factory method, create instance of FastBilateralSolverFilter and execute the initialization routines.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
-         *
-         * param lambda smoothness strength parameter for solver.
-         *
-         * param num_iter number of iterations used for solver, 25 is usually enough.
-         *
-         * param max_tol convergence tolerance used for solver.
-         *
-         * For more details about the Fast Bilateral Solver parameters, see the original paper CITE: BarronPoole2016.
-         * return automatically generated
+         @brief Factory method, create instance of FastBilateralSolverFilter and execute the initialization routines.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
+         
+         @param lambda smoothness strength parameter for solver.
+         
+         @param num_iter number of iterations used for solver, 25 is usually enough.
+         
+         @param max_tol convergence tolerance used for solver.
+         
+         For more details about the Fast Bilateral Solver parameters, see the original paper @cite BarronPoole2016.
          */
         public static FastBilateralSolverFilter createFastBilateralSolverFilter(Mat guide, double sigma_spatial, double sigma_luma, double sigma_chroma, double lambda, int num_iter, double max_tol)
         {
@@ -1874,23 +2021,23 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Factory method, create instance of FastBilateralSolverFilter and execute the initialization routines.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
-         *
-         * param lambda smoothness strength parameter for solver.
-         *
-         * param num_iter number of iterations used for solver, 25 is usually enough.
-         *
-         *
-         * For more details about the Fast Bilateral Solver parameters, see the original paper CITE: BarronPoole2016.
-         * return automatically generated
+         @brief Factory method, create instance of FastBilateralSolverFilter and execute the initialization routines.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
+         
+         @param lambda smoothness strength parameter for solver.
+         
+         @param num_iter number of iterations used for solver, 25 is usually enough.
+         
+         @param max_tol convergence tolerance used for solver.
+         
+         For more details about the Fast Bilateral Solver parameters, see the original paper @cite BarronPoole2016.
          */
         public static FastBilateralSolverFilter createFastBilateralSolverFilter(Mat guide, double sigma_spatial, double sigma_luma, double sigma_chroma, double lambda, int num_iter)
         {
@@ -1902,22 +2049,23 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Factory method, create instance of FastBilateralSolverFilter and execute the initialization routines.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
-         *
-         * param lambda smoothness strength parameter for solver.
-         *
-         *
-         *
-         * For more details about the Fast Bilateral Solver parameters, see the original paper CITE: BarronPoole2016.
-         * return automatically generated
+         @brief Factory method, create instance of FastBilateralSolverFilter and execute the initialization routines.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
+         
+         @param lambda smoothness strength parameter for solver.
+         
+         @param num_iter number of iterations used for solver, 25 is usually enough.
+         
+         @param max_tol convergence tolerance used for solver.
+         
+         For more details about the Fast Bilateral Solver parameters, see the original paper @cite BarronPoole2016.
          */
         public static FastBilateralSolverFilter createFastBilateralSolverFilter(Mat guide, double sigma_spatial, double sigma_luma, double sigma_chroma, double lambda)
         {
@@ -1929,21 +2077,23 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Factory method, create instance of FastBilateralSolverFilter and execute the initialization routines.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
-         *
-         *
-         *
-         *
-         * For more details about the Fast Bilateral Solver parameters, see the original paper CITE: BarronPoole2016.
-         * return automatically generated
+         @brief Factory method, create instance of FastBilateralSolverFilter and execute the initialization routines.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
+         
+         @param lambda smoothness strength parameter for solver.
+         
+         @param num_iter number of iterations used for solver, 25 is usually enough.
+         
+         @param max_tol convergence tolerance used for solver.
+         
+         For more details about the Fast Bilateral Solver parameters, see the original paper @cite BarronPoole2016.
          */
         public static FastBilateralSolverFilter createFastBilateralSolverFilter(Mat guide, double sigma_spatial, double sigma_luma, double sigma_chroma)
         {
@@ -1960,32 +2110,32 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Simple one-line Fast Bilateral Solver filter call. If you have multiple images to filter with the same
-         * guide then use FastBilateralSolverFilter interface to avoid extra computations.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
-         *
-         * param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
-         *
-         * param dst destination image.
-         *
-         * param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
-         *
-         * param lambda smoothness strength parameter for solver.
-         *
-         * param num_iter number of iterations used for solver, 25 is usually enough.
-         *
-         * param max_tol convergence tolerance used for solver.
-         *
-         * For more details about the Fast Bilateral Solver parameters, see the original paper CITE: BarronPoole2016.
-         *
-         * <b>Note:</b> Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
+         @brief Simple one-line Fast Bilateral Solver filter call. If you have multiple images to filter with the same
+         guide then use FastBilateralSolverFilter interface to avoid extra computations.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
+         
+         @param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
+         
+         @param dst destination image.
+         
+         @param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
+         
+         @param lambda smoothness strength parameter for solver.
+         
+         @param num_iter number of iterations used for solver, 25 is usually enough.
+         
+         @param max_tol convergence tolerance used for solver.
+         
+         For more details about the Fast Bilateral Solver parameters, see the original paper @cite BarronPoole2016.
+         
+         @note Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
          */
         public static void fastBilateralSolverFilter(Mat guide, Mat src, Mat confidence, Mat dst, double sigma_spatial, double sigma_luma, double sigma_chroma, double lambda, int num_iter, double max_tol)
         {
@@ -2000,31 +2150,32 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Simple one-line Fast Bilateral Solver filter call. If you have multiple images to filter with the same
-         * guide then use FastBilateralSolverFilter interface to avoid extra computations.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
-         *
-         * param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
-         *
-         * param dst destination image.
-         *
-         * param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
-         *
-         * param lambda smoothness strength parameter for solver.
-         *
-         * param num_iter number of iterations used for solver, 25 is usually enough.
-         *
-         *
-         * For more details about the Fast Bilateral Solver parameters, see the original paper CITE: BarronPoole2016.
-         *
-         * <b>Note:</b> Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
+         @brief Simple one-line Fast Bilateral Solver filter call. If you have multiple images to filter with the same
+         guide then use FastBilateralSolverFilter interface to avoid extra computations.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
+         
+         @param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
+         
+         @param dst destination image.
+         
+         @param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
+         
+         @param lambda smoothness strength parameter for solver.
+         
+         @param num_iter number of iterations used for solver, 25 is usually enough.
+         
+         @param max_tol convergence tolerance used for solver.
+         
+         For more details about the Fast Bilateral Solver parameters, see the original paper @cite BarronPoole2016.
+         
+         @note Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
          */
         public static void fastBilateralSolverFilter(Mat guide, Mat src, Mat confidence, Mat dst, double sigma_spatial, double sigma_luma, double sigma_chroma, double lambda, int num_iter)
         {
@@ -2039,30 +2190,32 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Simple one-line Fast Bilateral Solver filter call. If you have multiple images to filter with the same
-         * guide then use FastBilateralSolverFilter interface to avoid extra computations.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
-         *
-         * param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
-         *
-         * param dst destination image.
-         *
-         * param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
-         *
-         * param lambda smoothness strength parameter for solver.
-         *
-         *
-         *
-         * For more details about the Fast Bilateral Solver parameters, see the original paper CITE: BarronPoole2016.
-         *
-         * <b>Note:</b> Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
+         @brief Simple one-line Fast Bilateral Solver filter call. If you have multiple images to filter with the same
+         guide then use FastBilateralSolverFilter interface to avoid extra computations.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
+         
+         @param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
+         
+         @param dst destination image.
+         
+         @param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
+         
+         @param lambda smoothness strength parameter for solver.
+         
+         @param num_iter number of iterations used for solver, 25 is usually enough.
+         
+         @param max_tol convergence tolerance used for solver.
+         
+         For more details about the Fast Bilateral Solver parameters, see the original paper @cite BarronPoole2016.
+         
+         @note Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
          */
         public static void fastBilateralSolverFilter(Mat guide, Mat src, Mat confidence, Mat dst, double sigma_spatial, double sigma_luma, double sigma_chroma, double lambda)
         {
@@ -2077,29 +2230,32 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Simple one-line Fast Bilateral Solver filter call. If you have multiple images to filter with the same
-         * guide then use FastBilateralSolverFilter interface to avoid extra computations.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
-         *
-         * param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
-         *
-         * param dst destination image.
-         *
-         * param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
-         *
-         *
-         *
-         *
-         * For more details about the Fast Bilateral Solver parameters, see the original paper CITE: BarronPoole2016.
-         *
-         * <b>Note:</b> Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
+         @brief Simple one-line Fast Bilateral Solver filter call. If you have multiple images to filter with the same
+         guide then use FastBilateralSolverFilter interface to avoid extra computations.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
+         
+         @param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
+         
+         @param dst destination image.
+         
+         @param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
+         
+         @param lambda smoothness strength parameter for solver.
+         
+         @param num_iter number of iterations used for solver, 25 is usually enough.
+         
+         @param max_tol convergence tolerance used for solver.
+         
+         For more details about the Fast Bilateral Solver parameters, see the original paper @cite BarronPoole2016.
+         
+         @note Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
          */
         public static void fastBilateralSolverFilter(Mat guide, Mat src, Mat confidence, Mat dst, double sigma_spatial, double sigma_luma, double sigma_chroma)
         {
@@ -2114,28 +2270,32 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Simple one-line Fast Bilateral Solver filter call. If you have multiple images to filter with the same
-         * guide then use FastBilateralSolverFilter interface to avoid extra computations.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
-         *
-         * param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
-         *
-         * param dst destination image.
-         *
-         * param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
-         *
-         * param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
-         *
-         *
-         *
-         *
-         *
-         * For more details about the Fast Bilateral Solver parameters, see the original paper CITE: BarronPoole2016.
-         *
-         * <b>Note:</b> Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
+         @brief Simple one-line Fast Bilateral Solver filter call. If you have multiple images to filter with the same
+         guide then use FastBilateralSolverFilter interface to avoid extra computations.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
+         
+         @param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
+         
+         @param dst destination image.
+         
+         @param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
+         
+         @param lambda smoothness strength parameter for solver.
+         
+         @param num_iter number of iterations used for solver, 25 is usually enough.
+         
+         @param max_tol convergence tolerance used for solver.
+         
+         For more details about the Fast Bilateral Solver parameters, see the original paper @cite BarronPoole2016.
+         
+         @note Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
          */
         public static void fastBilateralSolverFilter(Mat guide, Mat src, Mat confidence, Mat dst, double sigma_spatial, double sigma_luma)
         {
@@ -2150,27 +2310,32 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Simple one-line Fast Bilateral Solver filter call. If you have multiple images to filter with the same
-         * guide then use FastBilateralSolverFilter interface to avoid extra computations.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
-         *
-         * param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
-         *
-         * param dst destination image.
-         *
-         * param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
-         *
-         *
-         *
-         *
-         *
-         *
-         * For more details about the Fast Bilateral Solver parameters, see the original paper CITE: BarronPoole2016.
-         *
-         * <b>Note:</b> Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
+         @brief Simple one-line Fast Bilateral Solver filter call. If you have multiple images to filter with the same
+         guide then use FastBilateralSolverFilter interface to avoid extra computations.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
+         
+         @param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
+         
+         @param dst destination image.
+         
+         @param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
+         
+         @param lambda smoothness strength parameter for solver.
+         
+         @param num_iter number of iterations used for solver, 25 is usually enough.
+         
+         @param max_tol convergence tolerance used for solver.
+         
+         For more details about the Fast Bilateral Solver parameters, see the original paper @cite BarronPoole2016.
+         
+         @note Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
          */
         public static void fastBilateralSolverFilter(Mat guide, Mat src, Mat confidence, Mat dst, double sigma_spatial)
         {
@@ -2185,26 +2350,32 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Simple one-line Fast Bilateral Solver filter call. If you have multiple images to filter with the same
-         * guide then use FastBilateralSolverFilter interface to avoid extra computations.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
-         *
-         * param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
-         *
-         * param dst destination image.
-         *
-         *
-         *
-         *
-         *
-         *
-         *
-         * For more details about the Fast Bilateral Solver parameters, see the original paper CITE: BarronPoole2016.
-         *
-         * <b>Note:</b> Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
+         @brief Simple one-line Fast Bilateral Solver filter call. If you have multiple images to filter with the same
+         guide then use FastBilateralSolverFilter interface to avoid extra computations.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
+         
+         @param confidence confidence image with unsigned 8-bit or floating-point 32-bit confidence and 1 channel.
+         
+         @param dst destination image.
+         
+         @param sigma_spatial parameter, that is similar to spatial space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_luma parameter, that is similar to luma space sigma (bandwidth) in bilateralFilter.
+         
+         @param sigma_chroma parameter, that is similar to chroma space sigma (bandwidth) in bilateralFilter.
+         
+         @param lambda smoothness strength parameter for solver.
+         
+         @param num_iter number of iterations used for solver, 25 is usually enough.
+         
+         @param max_tol convergence tolerance used for solver.
+         
+         For more details about the Fast Bilateral Solver parameters, see the original paper @cite BarronPoole2016.
+         
+         @note Confidence images with CV_8U depth are expected to in [0, 255] and CV_32F in [0, 1] range.
          */
         public static void fastBilateralSolverFilter(Mat guide, Mat src, Mat confidence, Mat dst)
         {
@@ -2224,26 +2395,25 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Factory method, create instance of FastGlobalSmootherFilter and execute the initialization routines.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param lambda parameter defining the amount of regularization
-         *
-         * param sigma_color parameter, that is similar to color space sigma in bilateralFilter.
-         *
-         * param lambda_attenuation internal parameter, defining how much lambda decreases after each iteration. Normally,
-         * it should be 0.25. Setting it to 1.0 may lead to streaking artifacts.
-         *
-         * param num_iter number of iterations used for filtering, 3 is usually enough.
-         *
-         * For more details about Fast Global Smoother parameters, see the original paper CITE: Min2014. However, please note that
-         * there are several differences. Lambda attenuation described in the paper is implemented a bit differently so do not
-         * expect the results to be identical to those from the paper; sigma_color values from the paper should be multiplied by 255.0 to
-         * achieve the same effect. Also, in case of image filtering where source and guide image are the same, authors
-         * propose to dynamically update the guide image after each iteration. To maximize the performance this feature
-         * was not implemented here.
-         * return automatically generated
+         @brief Factory method, create instance of FastGlobalSmootherFilter and execute the initialization routines.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param lambda parameter defining the amount of regularization
+         
+         @param sigma_color parameter, that is similar to color space sigma in bilateralFilter.
+         
+         @param lambda_attenuation internal parameter, defining how much lambda decreases after each iteration. Normally,
+         it should be 0.25. Setting it to 1.0 may lead to streaking artifacts.
+         
+         @param num_iter number of iterations used for filtering, 3 is usually enough.
+         
+         For more details about Fast Global Smoother parameters, see the original paper @cite Min2014. However, please note that
+         there are several differences. Lambda attenuation described in the paper is implemented a bit differently so do not
+         expect the results to be identical to those from the paper; sigma_color values from the paper should be multiplied by 255.0 to
+         achieve the same effect. Also, in case of image filtering where source and guide image are the same, authors
+         propose to dynamically update the guide image after each iteration. To maximize the performance this feature
+         was not implemented here.
          */
         public static FastGlobalSmootherFilter createFastGlobalSmootherFilter(Mat guide, double lambda, double sigma_color, double lambda_attenuation, int num_iter)
         {
@@ -2255,25 +2425,25 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Factory method, create instance of FastGlobalSmootherFilter and execute the initialization routines.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param lambda parameter defining the amount of regularization
-         *
-         * param sigma_color parameter, that is similar to color space sigma in bilateralFilter.
-         *
-         * param lambda_attenuation internal parameter, defining how much lambda decreases after each iteration. Normally,
-         * it should be 0.25. Setting it to 1.0 may lead to streaking artifacts.
-         *
-         *
-         * For more details about Fast Global Smoother parameters, see the original paper CITE: Min2014. However, please note that
-         * there are several differences. Lambda attenuation described in the paper is implemented a bit differently so do not
-         * expect the results to be identical to those from the paper; sigma_color values from the paper should be multiplied by 255.0 to
-         * achieve the same effect. Also, in case of image filtering where source and guide image are the same, authors
-         * propose to dynamically update the guide image after each iteration. To maximize the performance this feature
-         * was not implemented here.
-         * return automatically generated
+         @brief Factory method, create instance of FastGlobalSmootherFilter and execute the initialization routines.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param lambda parameter defining the amount of regularization
+         
+         @param sigma_color parameter, that is similar to color space sigma in bilateralFilter.
+         
+         @param lambda_attenuation internal parameter, defining how much lambda decreases after each iteration. Normally,
+         it should be 0.25. Setting it to 1.0 may lead to streaking artifacts.
+         
+         @param num_iter number of iterations used for filtering, 3 is usually enough.
+         
+         For more details about Fast Global Smoother parameters, see the original paper @cite Min2014. However, please note that
+         there are several differences. Lambda attenuation described in the paper is implemented a bit differently so do not
+         expect the results to be identical to those from the paper; sigma_color values from the paper should be multiplied by 255.0 to
+         achieve the same effect. Also, in case of image filtering where source and guide image are the same, authors
+         propose to dynamically update the guide image after each iteration. To maximize the performance this feature
+         was not implemented here.
          */
         public static FastGlobalSmootherFilter createFastGlobalSmootherFilter(Mat guide, double lambda, double sigma_color, double lambda_attenuation)
         {
@@ -2285,24 +2455,25 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Factory method, create instance of FastGlobalSmootherFilter and execute the initialization routines.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param lambda parameter defining the amount of regularization
-         *
-         * param sigma_color parameter, that is similar to color space sigma in bilateralFilter.
-         *
-         * it should be 0.25. Setting it to 1.0 may lead to streaking artifacts.
-         *
-         *
-         * For more details about Fast Global Smoother parameters, see the original paper CITE: Min2014. However, please note that
-         * there are several differences. Lambda attenuation described in the paper is implemented a bit differently so do not
-         * expect the results to be identical to those from the paper; sigma_color values from the paper should be multiplied by 255.0 to
-         * achieve the same effect. Also, in case of image filtering where source and guide image are the same, authors
-         * propose to dynamically update the guide image after each iteration. To maximize the performance this feature
-         * was not implemented here.
-         * return automatically generated
+         @brief Factory method, create instance of FastGlobalSmootherFilter and execute the initialization routines.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param lambda parameter defining the amount of regularization
+         
+         @param sigma_color parameter, that is similar to color space sigma in bilateralFilter.
+         
+         @param lambda_attenuation internal parameter, defining how much lambda decreases after each iteration. Normally,
+         it should be 0.25. Setting it to 1.0 may lead to streaking artifacts.
+         
+         @param num_iter number of iterations used for filtering, 3 is usually enough.
+         
+         For more details about Fast Global Smoother parameters, see the original paper @cite Min2014. However, please note that
+         there are several differences. Lambda attenuation described in the paper is implemented a bit differently so do not
+         expect the results to be identical to those from the paper; sigma_color values from the paper should be multiplied by 255.0 to
+         achieve the same effect. Also, in case of image filtering where source and guide image are the same, authors
+         propose to dynamically update the guide image after each iteration. To maximize the performance this feature
+         was not implemented here.
          */
         public static FastGlobalSmootherFilter createFastGlobalSmootherFilter(Mat guide, double lambda, double sigma_color)
         {
@@ -2319,23 +2490,23 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Simple one-line Fast Global Smoother filter call. If you have multiple images to filter with the same
-         * guide then use FastGlobalSmootherFilter interface to avoid extra computations.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
-         *
-         * param dst destination image.
-         *
-         * param lambda parameter defining the amount of regularization
-         *
-         * param sigma_color parameter, that is similar to color space sigma in bilateralFilter.
-         *
-         * param lambda_attenuation internal parameter, defining how much lambda decreases after each iteration. Normally,
-         * it should be 0.25. Setting it to 1.0 may lead to streaking artifacts.
-         *
-         * param num_iter number of iterations used for filtering, 3 is usually enough.
+         @brief Simple one-line Fast Global Smoother filter call. If you have multiple images to filter with the same
+         guide then use FastGlobalSmootherFilter interface to avoid extra computations.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
+         
+         @param dst destination image.
+         
+         @param lambda parameter defining the amount of regularization
+         
+         @param sigma_color parameter, that is similar to color space sigma in bilateralFilter.
+         
+         @param lambda_attenuation internal parameter, defining how much lambda decreases after each iteration. Normally,
+         it should be 0.25. Setting it to 1.0 may lead to streaking artifacts.
+         
+         @param num_iter number of iterations used for filtering, 3 is usually enough.
          */
         public static void fastGlobalSmootherFilter(Mat guide, Mat src, Mat dst, double lambda, double sigma_color, double lambda_attenuation, int num_iter)
         {
@@ -2349,22 +2520,23 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Simple one-line Fast Global Smoother filter call. If you have multiple images to filter with the same
-         * guide then use FastGlobalSmootherFilter interface to avoid extra computations.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
-         *
-         * param dst destination image.
-         *
-         * param lambda parameter defining the amount of regularization
-         *
-         * param sigma_color parameter, that is similar to color space sigma in bilateralFilter.
-         *
-         * param lambda_attenuation internal parameter, defining how much lambda decreases after each iteration. Normally,
-         * it should be 0.25. Setting it to 1.0 may lead to streaking artifacts.
-         *
+         @brief Simple one-line Fast Global Smoother filter call. If you have multiple images to filter with the same
+         guide then use FastGlobalSmootherFilter interface to avoid extra computations.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
+         
+         @param dst destination image.
+         
+         @param lambda parameter defining the amount of regularization
+         
+         @param sigma_color parameter, that is similar to color space sigma in bilateralFilter.
+         
+         @param lambda_attenuation internal parameter, defining how much lambda decreases after each iteration. Normally,
+         it should be 0.25. Setting it to 1.0 may lead to streaking artifacts.
+         
+         @param num_iter number of iterations used for filtering, 3 is usually enough.
          */
         public static void fastGlobalSmootherFilter(Mat guide, Mat src, Mat dst, double lambda, double sigma_color, double lambda_attenuation)
         {
@@ -2378,21 +2550,23 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Simple one-line Fast Global Smoother filter call. If you have multiple images to filter with the same
-         * guide then use FastGlobalSmootherFilter interface to avoid extra computations.
-         *
-         * param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
-         *
-         * param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
-         *
-         * param dst destination image.
-         *
-         * param lambda parameter defining the amount of regularization
-         *
-         * param sigma_color parameter, that is similar to color space sigma in bilateralFilter.
-         *
-         * it should be 0.25. Setting it to 1.0 may lead to streaking artifacts.
-         *
+         @brief Simple one-line Fast Global Smoother filter call. If you have multiple images to filter with the same
+         guide then use FastGlobalSmootherFilter interface to avoid extra computations.
+         
+         @param guide image serving as guide for filtering. It should have 8-bit depth and either 1 or 3 channels.
+         
+         @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
+         
+         @param dst destination image.
+         
+         @param lambda parameter defining the amount of regularization
+         
+         @param sigma_color parameter, that is similar to color space sigma in bilateralFilter.
+         
+         @param lambda_attenuation internal parameter, defining how much lambda decreases after each iteration. Normally,
+         it should be 0.25. Setting it to 1.0 may lead to streaking artifacts.
+         
+         @param num_iter number of iterations used for filtering, 3 is usually enough.
          */
         public static void fastGlobalSmootherFilter(Mat guide, Mat src, Mat dst, double lambda, double sigma_color)
         {
@@ -2411,17 +2585,17 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Global image smoothing via L0 gradient minimization.
-         *
-         * param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point depth.
-         *
-         * param dst destination image.
-         *
-         * param lambda parameter defining the smooth term weight.
-         *
-         * param kappa parameter defining the increasing factor of the weight of the gradient data term.
-         *
-         * For more details about L0 Smoother, see the original paper CITE: xu2011image.
+         @brief Global image smoothing via L0 gradient minimization.
+         
+         @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point depth.
+         
+         @param dst destination image.
+         
+         @param lambda parameter defining the smooth term weight.
+         
+         @param kappa parameter defining the increasing factor of the weight of the gradient data term.
+         
+         For more details about L0 Smoother, see the original paper @cite xu2011image.
          */
         public static void l0Smooth(Mat src, Mat dst, double lambda, double kappa)
         {
@@ -2434,16 +2608,17 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Global image smoothing via L0 gradient minimization.
-         *
-         * param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point depth.
-         *
-         * param dst destination image.
-         *
-         * param lambda parameter defining the smooth term weight.
-         *
-         *
-         * For more details about L0 Smoother, see the original paper CITE: xu2011image.
+         @brief Global image smoothing via L0 gradient minimization.
+         
+         @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point depth.
+         
+         @param dst destination image.
+         
+         @param lambda parameter defining the smooth term weight.
+         
+         @param kappa parameter defining the increasing factor of the weight of the gradient data term.
+         
+         For more details about L0 Smoother, see the original paper @cite xu2011image.
          */
         public static void l0Smooth(Mat src, Mat dst, double lambda)
         {
@@ -2456,15 +2631,17 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Global image smoothing via L0 gradient minimization.
-         *
-         * param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point depth.
-         *
-         * param dst destination image.
-         *
-         *
-         *
-         * For more details about L0 Smoother, see the original paper CITE: xu2011image.
+         @brief Global image smoothing via L0 gradient minimization.
+         
+         @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point depth.
+         
+         @param dst destination image.
+         
+         @param lambda parameter defining the smooth term weight.
+         
+         @param kappa parameter defining the increasing factor of the weight of the gradient data term.
+         
+         For more details about L0 Smoother, see the original paper @cite xu2011image.
          */
         public static void l0Smooth(Mat src, Mat dst)
         {
@@ -2482,19 +2659,19 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Computes the estimated covariance matrix of an image using the sliding
-         * window forumlation.
-         *
-         * param src The source image. Input image must be of a complex type.
-         * param dst The destination estimated covariance matrix. Output matrix will be size (windowRows*windowCols, windowRows*windowCols).
-         * param windowRows The number of rows in the window.
-         * param windowCols The number of cols in the window.
-         * The window size parameters control the accuracy of the estimation.
-         * The sliding window moves over the entire image from the top-left corner
-         * to the bottom right corner. Each location of the window represents a sample.
-         * If the window is the size of the image, then this gives the exact covariance matrix.
-         * For all other cases, the sizes of the window will impact the number of samples
-         * and the number of elements in the estimated covariance matrix.
+         @brief Computes the estimated covariance matrix of an image using the sliding
+         window forumlation.
+         
+         @param src The source image. Input image must be of a complex type.
+         @param dst The destination estimated covariance matrix. Output matrix will be size (windowRows*windowCols, windowRows*windowCols).
+         @param windowRows The number of rows in the window.
+         @param windowCols The number of cols in the window.
+         The window size parameters control the accuracy of the estimation.
+         The sliding window moves over the entire image from the top-left corner
+         to the bottom right corner. Each location of the window represents a sample.
+         If the window is the size of the image, then this gives the exact covariance matrix.
+         For all other cases, the sizes of the window will impact the number of samples
+         and the number of elements in the estimated covariance matrix.
          */
         public static void covarianceEstimation(Mat src, Mat dst, int windowRows, int windowCols)
         {
@@ -2512,16 +2689,16 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Calculates 2D Fast Hough transform of an image.
+         * @brief   Calculates 2D Fast Hough transform of an image.
+         * @param   dst         The destination image, result of transformation.
+         * @param   src         The source (input) image.
+         * @param   dstMatDepth The depth of destination image
+         * @param   op          The operation to be applied, see cv::HoughOp
+         * @param   angleRange  The part of Hough space to calculate, see cv::AngleRangeOption
+         * @param   makeSkew    Specifies to do or not to do image skewing, see cv::HoughDeskewOption
          *
          * The function calculates the fast Hough transform for full, half or quarter
          * range of angles.
-         * param src automatically generated
-         * param dst automatically generated
-         * param dstMatDepth automatically generated
-         * param angleRange automatically generated
-         * param op automatically generated
-         * param makeSkew automatically generated
          */
         public static void FastHoughTransform(Mat src, Mat dst, int dstMatDepth, int angleRange, int op, int makeSkew)
         {
@@ -2534,15 +2711,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Calculates 2D Fast Hough transform of an image.
+         * @brief   Calculates 2D Fast Hough transform of an image.
+         * @param   dst         The destination image, result of transformation.
+         * @param   src         The source (input) image.
+         * @param   dstMatDepth The depth of destination image
+         * @param   op          The operation to be applied, see cv::HoughOp
+         * @param   angleRange  The part of Hough space to calculate, see cv::AngleRangeOption
+         * @param   makeSkew    Specifies to do or not to do image skewing, see cv::HoughDeskewOption
          *
          * The function calculates the fast Hough transform for full, half or quarter
          * range of angles.
-         * param src automatically generated
-         * param dst automatically generated
-         * param dstMatDepth automatically generated
-         * param angleRange automatically generated
-         * param op automatically generated
          */
         public static void FastHoughTransform(Mat src, Mat dst, int dstMatDepth, int angleRange, int op)
         {
@@ -2555,14 +2733,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Calculates 2D Fast Hough transform of an image.
+         * @brief   Calculates 2D Fast Hough transform of an image.
+         * @param   dst         The destination image, result of transformation.
+         * @param   src         The source (input) image.
+         * @param   dstMatDepth The depth of destination image
+         * @param   op          The operation to be applied, see cv::HoughOp
+         * @param   angleRange  The part of Hough space to calculate, see cv::AngleRangeOption
+         * @param   makeSkew    Specifies to do or not to do image skewing, see cv::HoughDeskewOption
          *
          * The function calculates the fast Hough transform for full, half or quarter
          * range of angles.
-         * param src automatically generated
-         * param dst automatically generated
-         * param dstMatDepth automatically generated
-         * param angleRange automatically generated
          */
         public static void FastHoughTransform(Mat src, Mat dst, int dstMatDepth, int angleRange)
         {
@@ -2575,13 +2755,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Calculates 2D Fast Hough transform of an image.
+         * @brief   Calculates 2D Fast Hough transform of an image.
+         * @param   dst         The destination image, result of transformation.
+         * @param   src         The source (input) image.
+         * @param   dstMatDepth The depth of destination image
+         * @param   op          The operation to be applied, see cv::HoughOp
+         * @param   angleRange  The part of Hough space to calculate, see cv::AngleRangeOption
+         * @param   makeSkew    Specifies to do or not to do image skewing, see cv::HoughDeskewOption
          *
          * The function calculates the fast Hough transform for full, half or quarter
          * range of angles.
-         * param src automatically generated
-         * param dst automatically generated
-         * param dstMatDepth automatically generated
          */
         public static void FastHoughTransform(Mat src, Mat dst, int dstMatDepth)
         {
@@ -2606,17 +2789,16 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Creates a smart pointer to a FastLineDetector object and initializes it
-         *
-         * param length_threshold    Segment shorter than this will be discarded
-         * param distance_threshold  A point placed from a hypothesis line
-         *                            segment farther than this will be regarded as an outlier
-         * param canny_th1           First threshold for hysteresis procedure in Canny()
-         * param canny_th2           Second threshold for hysteresis procedure in Canny()
-         * param canny_aperture_size Aperturesize for the sobel operator in Canny().
-         *                            If zero, Canny() is not applied and the input image is taken as an edge image.
-         * param do_merge            If true, incremental merging of segments will be performed
-         * return automatically generated
+         @brief Creates a smart pointer to a FastLineDetector object and initializes it
+         
+         @param length_threshold    Segment shorter than this will be discarded
+         @param distance_threshold  A point placed from a hypothesis line
+                                    segment farther than this will be regarded as an outlier
+         @param canny_th1           First threshold for hysteresis procedure in Canny()
+         @param canny_th2           Second threshold for hysteresis procedure in Canny()
+         @param canny_aperture_size Aperturesize for the sobel operator in Canny().
+                                    If zero, Canny() is not applied and the input image is taken as an edge image.
+         @param do_merge            If true, incremental merging of segments will be performed
          */
         public static FastLineDetector createFastLineDetector(int length_threshold, float distance_threshold, double canny_th1, double canny_th2, int canny_aperture_size, bool do_merge)
         {
@@ -2628,16 +2810,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a smart pointer to a FastLineDetector object and initializes it
-         *
-         * param length_threshold    Segment shorter than this will be discarded
-         * param distance_threshold  A point placed from a hypothesis line
-         *                            segment farther than this will be regarded as an outlier
-         * param canny_th1           First threshold for hysteresis procedure in Canny()
-         * param canny_th2           Second threshold for hysteresis procedure in Canny()
-         * param canny_aperture_size Aperturesize for the sobel operator in Canny().
-         *                            If zero, Canny() is not applied and the input image is taken as an edge image.
-         * return automatically generated
+         @brief Creates a smart pointer to a FastLineDetector object and initializes it
+         
+         @param length_threshold    Segment shorter than this will be discarded
+         @param distance_threshold  A point placed from a hypothesis line
+                                    segment farther than this will be regarded as an outlier
+         @param canny_th1           First threshold for hysteresis procedure in Canny()
+         @param canny_th2           Second threshold for hysteresis procedure in Canny()
+         @param canny_aperture_size Aperturesize for the sobel operator in Canny().
+                                    If zero, Canny() is not applied and the input image is taken as an edge image.
+         @param do_merge            If true, incremental merging of segments will be performed
          */
         public static FastLineDetector createFastLineDetector(int length_threshold, float distance_threshold, double canny_th1, double canny_th2, int canny_aperture_size)
         {
@@ -2649,15 +2831,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a smart pointer to a FastLineDetector object and initializes it
-         *
-         * param length_threshold    Segment shorter than this will be discarded
-         * param distance_threshold  A point placed from a hypothesis line
-         *                            segment farther than this will be regarded as an outlier
-         * param canny_th1           First threshold for hysteresis procedure in Canny()
-         * param canny_th2           Second threshold for hysteresis procedure in Canny()
-         *                            If zero, Canny() is not applied and the input image is taken as an edge image.
-         * return automatically generated
+         @brief Creates a smart pointer to a FastLineDetector object and initializes it
+         
+         @param length_threshold    Segment shorter than this will be discarded
+         @param distance_threshold  A point placed from a hypothesis line
+                                    segment farther than this will be regarded as an outlier
+         @param canny_th1           First threshold for hysteresis procedure in Canny()
+         @param canny_th2           Second threshold for hysteresis procedure in Canny()
+         @param canny_aperture_size Aperturesize for the sobel operator in Canny().
+                                    If zero, Canny() is not applied and the input image is taken as an edge image.
+         @param do_merge            If true, incremental merging of segments will be performed
          */
         public static FastLineDetector createFastLineDetector(int length_threshold, float distance_threshold, double canny_th1, double canny_th2)
         {
@@ -2669,14 +2852,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a smart pointer to a FastLineDetector object and initializes it
-         *
-         * param length_threshold    Segment shorter than this will be discarded
-         * param distance_threshold  A point placed from a hypothesis line
-         *                            segment farther than this will be regarded as an outlier
-         * param canny_th1           First threshold for hysteresis procedure in Canny()
-         *                            If zero, Canny() is not applied and the input image is taken as an edge image.
-         * return automatically generated
+         @brief Creates a smart pointer to a FastLineDetector object and initializes it
+         
+         @param length_threshold    Segment shorter than this will be discarded
+         @param distance_threshold  A point placed from a hypothesis line
+                                    segment farther than this will be regarded as an outlier
+         @param canny_th1           First threshold for hysteresis procedure in Canny()
+         @param canny_th2           Second threshold for hysteresis procedure in Canny()
+         @param canny_aperture_size Aperturesize for the sobel operator in Canny().
+                                    If zero, Canny() is not applied and the input image is taken as an edge image.
+         @param do_merge            If true, incremental merging of segments will be performed
          */
         public static FastLineDetector createFastLineDetector(int length_threshold, float distance_threshold, double canny_th1)
         {
@@ -2688,13 +2873,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a smart pointer to a FastLineDetector object and initializes it
-         *
-         * param length_threshold    Segment shorter than this will be discarded
-         * param distance_threshold  A point placed from a hypothesis line
-         *                            segment farther than this will be regarded as an outlier
-         *                            If zero, Canny() is not applied and the input image is taken as an edge image.
-         * return automatically generated
+         @brief Creates a smart pointer to a FastLineDetector object and initializes it
+         
+         @param length_threshold    Segment shorter than this will be discarded
+         @param distance_threshold  A point placed from a hypothesis line
+                                    segment farther than this will be regarded as an outlier
+         @param canny_th1           First threshold for hysteresis procedure in Canny()
+         @param canny_th2           Second threshold for hysteresis procedure in Canny()
+         @param canny_aperture_size Aperturesize for the sobel operator in Canny().
+                                    If zero, Canny() is not applied and the input image is taken as an edge image.
+         @param do_merge            If true, incremental merging of segments will be performed
          */
         public static FastLineDetector createFastLineDetector(int length_threshold, float distance_threshold)
         {
@@ -2706,12 +2894,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a smart pointer to a FastLineDetector object and initializes it
-         *
-         * param length_threshold    Segment shorter than this will be discarded
-         *                            segment farther than this will be regarded as an outlier
-         *                            If zero, Canny() is not applied and the input image is taken as an edge image.
-         * return automatically generated
+         @brief Creates a smart pointer to a FastLineDetector object and initializes it
+         
+         @param length_threshold    Segment shorter than this will be discarded
+         @param distance_threshold  A point placed from a hypothesis line
+                                    segment farther than this will be regarded as an outlier
+         @param canny_th1           First threshold for hysteresis procedure in Canny()
+         @param canny_th2           Second threshold for hysteresis procedure in Canny()
+         @param canny_aperture_size Aperturesize for the sobel operator in Canny().
+                                    If zero, Canny() is not applied and the input image is taken as an edge image.
+         @param do_merge            If true, incremental merging of segments will be performed
          */
         public static FastLineDetector createFastLineDetector(int length_threshold)
         {
@@ -2723,11 +2915,16 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a smart pointer to a FastLineDetector object and initializes it
-         *
-         *                            segment farther than this will be regarded as an outlier
-         *                            If zero, Canny() is not applied and the input image is taken as an edge image.
-         * return automatically generated
+         @brief Creates a smart pointer to a FastLineDetector object and initializes it
+         
+         @param length_threshold    Segment shorter than this will be discarded
+         @param distance_threshold  A point placed from a hypothesis line
+                                    segment farther than this will be regarded as an outlier
+         @param canny_th1           First threshold for hysteresis procedure in Canny()
+         @param canny_th2           Second threshold for hysteresis procedure in Canny()
+         @param canny_aperture_size Aperturesize for the sobel operator in Canny().
+                                    If zero, Canny() is not applied and the input image is taken as an edge image.
+         @param do_merge            If true, incremental merging of segments will be performed
          */
         public static FastLineDetector createFastLineDetector()
         {
@@ -2740,19 +2937,120 @@ namespace OpenCVForUnity.XimgprocModule
 
 
         //
+        // C++:  void cv::ximgproc::findEllipses(Mat image, Mat& ellipses, float scoreThreshold = 0.7f, float reliabilityThreshold = 0.5f, float centerDistanceThreshold = 0.05f)
+        //
+
+        /**
+         @brief Finds ellipses fastly in an image using projective invariant pruning.
+         *
+         * The function detects ellipses in images using projective invariant pruning.
+         * For more details about this implementation, please see @cite jia2017fast
+         * Jia, Qi et al, (2017).
+         * A Fast Ellipse Detector using Projective Invariant Pruning. IEEE Transactions on Image Processing.
+         *
+         @param image input image, could be gray or color.
+         @param ellipses output vector of found ellipses. each vector is encoded as five float $x, y, a, b, radius, score$.
+         @param scoreThreshold float, the threshold of ellipse score.
+         @param reliabilityThreshold float, the threshold of reliability.
+         @param centerDistanceThreshold float, the threshold of center distance.
+         */
+        public static void findEllipses(Mat image, Mat ellipses, float scoreThreshold, float reliabilityThreshold, float centerDistanceThreshold)
+        {
+            if (image != null) image.ThrowIfDisposed();
+            if (ellipses != null) ellipses.ThrowIfDisposed();
+
+            ximgproc_Ximgproc_findEllipses_10(image.nativeObj, ellipses.nativeObj, scoreThreshold, reliabilityThreshold, centerDistanceThreshold);
+
+
+        }
+
+        /**
+         @brief Finds ellipses fastly in an image using projective invariant pruning.
+         *
+         * The function detects ellipses in images using projective invariant pruning.
+         * For more details about this implementation, please see @cite jia2017fast
+         * Jia, Qi et al, (2017).
+         * A Fast Ellipse Detector using Projective Invariant Pruning. IEEE Transactions on Image Processing.
+         *
+         @param image input image, could be gray or color.
+         @param ellipses output vector of found ellipses. each vector is encoded as five float $x, y, a, b, radius, score$.
+         @param scoreThreshold float, the threshold of ellipse score.
+         @param reliabilityThreshold float, the threshold of reliability.
+         @param centerDistanceThreshold float, the threshold of center distance.
+         */
+        public static void findEllipses(Mat image, Mat ellipses, float scoreThreshold, float reliabilityThreshold)
+        {
+            if (image != null) image.ThrowIfDisposed();
+            if (ellipses != null) ellipses.ThrowIfDisposed();
+
+            ximgproc_Ximgproc_findEllipses_11(image.nativeObj, ellipses.nativeObj, scoreThreshold, reliabilityThreshold);
+
+
+        }
+
+        /**
+         @brief Finds ellipses fastly in an image using projective invariant pruning.
+         *
+         * The function detects ellipses in images using projective invariant pruning.
+         * For more details about this implementation, please see @cite jia2017fast
+         * Jia, Qi et al, (2017).
+         * A Fast Ellipse Detector using Projective Invariant Pruning. IEEE Transactions on Image Processing.
+         *
+         @param image input image, could be gray or color.
+         @param ellipses output vector of found ellipses. each vector is encoded as five float $x, y, a, b, radius, score$.
+         @param scoreThreshold float, the threshold of ellipse score.
+         @param reliabilityThreshold float, the threshold of reliability.
+         @param centerDistanceThreshold float, the threshold of center distance.
+         */
+        public static void findEllipses(Mat image, Mat ellipses, float scoreThreshold)
+        {
+            if (image != null) image.ThrowIfDisposed();
+            if (ellipses != null) ellipses.ThrowIfDisposed();
+
+            ximgproc_Ximgproc_findEllipses_12(image.nativeObj, ellipses.nativeObj, scoreThreshold);
+
+
+        }
+
+        /**
+         @brief Finds ellipses fastly in an image using projective invariant pruning.
+         *
+         * The function detects ellipses in images using projective invariant pruning.
+         * For more details about this implementation, please see @cite jia2017fast
+         * Jia, Qi et al, (2017).
+         * A Fast Ellipse Detector using Projective Invariant Pruning. IEEE Transactions on Image Processing.
+         *
+         @param image input image, could be gray or color.
+         @param ellipses output vector of found ellipses. each vector is encoded as five float $x, y, a, b, radius, score$.
+         @param scoreThreshold float, the threshold of ellipse score.
+         @param reliabilityThreshold float, the threshold of reliability.
+         @param centerDistanceThreshold float, the threshold of center distance.
+         */
+        public static void findEllipses(Mat image, Mat ellipses)
+        {
+            if (image != null) image.ThrowIfDisposed();
+            if (ellipses != null) ellipses.ThrowIfDisposed();
+
+            ximgproc_Ximgproc_findEllipses_13(image.nativeObj, ellipses.nativeObj);
+
+
+        }
+
+
+        //
         // C++:  void cv::ximgproc::fourierDescriptor(Mat src, Mat& dst, int nbElt = -1, int nbFD = -1)
         //
 
         /**
-         * Fourier descriptors for planed closed curves
-         *
-         * For more details about this implementation, please see CITE: PersoonFu1977
-         *
-         *
-         * param src automatically generated
-         * param dst automatically generated
-         * param nbElt automatically generated
-         * param nbFD automatically generated
+         * @brief   Fourier descriptors for planed closed curves
+             *
+             * For more details about this implementation, please see @cite PersoonFu1977
+             *
+             * @param   src   contour type vector&lt;Point&gt; , vector&lt;Point2f&gt;  or vector&lt;Point2d&gt;
+             * @param   dst   Mat of type CV_64FC2 and nbElt rows A VERIFIER
+             * @param   nbElt number of rows in dst or getOptimalDFTSize rows if nbElt=-1
+             * @param   nbFD number of FD return in dst dst = [FD(1...nbFD/2) FD(nbFD/2-nbElt+1...:nbElt)]
+             *
          */
         public static void fourierDescriptor(Mat src, Mat dst, int nbElt, int nbFD)
         {
@@ -2765,14 +3063,15 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Fourier descriptors for planed closed curves
-         *
-         * For more details about this implementation, please see CITE: PersoonFu1977
-         *
-         *
-         * param src automatically generated
-         * param dst automatically generated
-         * param nbElt automatically generated
+         * @brief   Fourier descriptors for planed closed curves
+             *
+             * For more details about this implementation, please see @cite PersoonFu1977
+             *
+             * @param   src   contour type vector&lt;Point&gt; , vector&lt;Point2f&gt;  or vector&lt;Point2d&gt;
+             * @param   dst   Mat of type CV_64FC2 and nbElt rows A VERIFIER
+             * @param   nbElt number of rows in dst or getOptimalDFTSize rows if nbElt=-1
+             * @param   nbFD number of FD return in dst dst = [FD(1...nbFD/2) FD(nbFD/2-nbElt+1...:nbElt)]
+             *
          */
         public static void fourierDescriptor(Mat src, Mat dst, int nbElt)
         {
@@ -2785,13 +3084,15 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Fourier descriptors for planed closed curves
-         *
-         * For more details about this implementation, please see CITE: PersoonFu1977
-         *
-         *
-         * param src automatically generated
-         * param dst automatically generated
+         * @brief   Fourier descriptors for planed closed curves
+             *
+             * For more details about this implementation, please see @cite PersoonFu1977
+             *
+             * @param   src   contour type vector&lt;Point&gt; , vector&lt;Point2f&gt;  or vector&lt;Point2d&gt;
+             * @param   dst   Mat of type CV_64FC2 and nbElt rows A VERIFIER
+             * @param   nbElt number of rows in dst or getOptimalDFTSize rows if nbElt=-1
+             * @param   nbFD number of FD return in dst dst = [FD(1...nbFD/2) FD(nbFD/2-nbElt+1...:nbElt)]
+             *
          */
         public static void fourierDescriptor(Mat src, Mat dst)
         {
@@ -2809,13 +3110,13 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * transform a contour
-         *
-         *
-         * param src automatically generated
-         * param t automatically generated
-         * param dst automatically generated
-         * param fdContour automatically generated
+         * @brief   transform a contour
+             *
+             * @param   src   contour or Fourier Descriptors if fd is true
+             * @param   t   transform Mat given by estimateTransformation
+             * @param   dst   Mat of type CV_64FC2 and nbElt rows
+             * @param   fdContour true src are Fourier Descriptors. fdContour false src is a contour
+             *
          */
         public static void transformFD(Mat src, Mat t, Mat dst, bool fdContour)
         {
@@ -2829,12 +3130,13 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * transform a contour
-         *
-         *
-         * param src automatically generated
-         * param t automatically generated
-         * param dst automatically generated
+         * @brief   transform a contour
+             *
+             * @param   src   contour or Fourier Descriptors if fd is true
+             * @param   t   transform Mat given by estimateTransformation
+             * @param   dst   Mat of type CV_64FC2 and nbElt rows
+             * @param   fdContour true src are Fourier Descriptors. fdContour false src is a contour
+             *
          */
         public static void transformFD(Mat src, Mat t, Mat dst)
         {
@@ -2853,12 +3155,12 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Contour sampling .
-         *
-         *
-         * param src automatically generated
-         * param _out automatically generated
-         * param nbElt automatically generated
+         * @brief   Contour sampling .
+             *
+             * @param   src   contour type vector&lt;Point&gt; , vector&lt;Point2f&gt;  or vector&lt;Point2d&gt;
+             * @param   out   Mat of type CV_64FC2 and nbElt rows
+             * @param   nbElt number of points in out contour
+             *
          */
         public static void contourSampling(Mat src, Mat _out, int nbElt)
         {
@@ -2876,11 +3178,10 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * create ContourFitting algorithm object
-         *
-         * param ctr number of Fourier descriptors equal to number of contour points after resampling.
-         * param fd Contour defining second shape (Target).
-         * return automatically generated
+         * @brief create ContourFitting algorithm object
+             *
+             * @param ctr number of Fourier descriptors equal to number of contour points after resampling.
+             * @param fd Contour defining second shape (Target).
          */
         public static ContourFitting createContourFitting(int ctr, int fd)
         {
@@ -2892,10 +3193,10 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * create ContourFitting algorithm object
-         *
-         * param ctr number of Fourier descriptors equal to number of contour points after resampling.
-         * return automatically generated
+         * @brief create ContourFitting algorithm object
+             *
+             * @param ctr number of Fourier descriptors equal to number of contour points after resampling.
+             * @param fd Contour defining second shape (Target).
          */
         public static ContourFitting createContourFitting(int ctr)
         {
@@ -2907,9 +3208,10 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * create ContourFitting algorithm object
-         *
-         * return automatically generated
+         * @brief create ContourFitting algorithm object
+             *
+             * @param ctr number of Fourier descriptors equal to number of contour points after resampling.
+             * @param fd Contour defining second shape (Target).
          */
         public static ContourFitting createContourFitting()
         {
@@ -2926,20 +3228,19 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Class implementing the LSC (Linear Spectral Clustering) superpixels
-         *
-         * param image Image to segment
-         * param region_size Chooses an average superpixel size measured in pixels
-         * param ratio Chooses the enforcement of superpixel compactness factor of superpixel
-         *
-         * The function initializes a SuperpixelLSC object for the input image. It sets the parameters of
-         * superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
-         * computing iterations over the given image. An example of LSC is ilustrated in the following picture.
-         * For enanched results it is recommended for color images to preprocess image with little gaussian blur
-         * with a small 3 x 3 kernel and additional conversion into CieLAB color space.
-         *
-         * ![image](pics/superpixels_lsc.png)
-         * return automatically generated
+         @brief Class implementing the LSC (Linear Spectral Clustering) superpixels
+         
+         @param image Image to segment
+         @param region_size Chooses an average superpixel size measured in pixels
+         @param ratio Chooses the enforcement of superpixel compactness factor of superpixel
+         
+         The function initializes a SuperpixelLSC object for the input image. It sets the parameters of
+         superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
+         computing iterations over the given image. An example of LSC is ilustrated in the following picture.
+         For enanched results it is recommended for color images to preprocess image with little gaussian blur
+         with a small 3 x 3 kernel and additional conversion into CieLAB color space.
+         
+         ![image](pics/superpixels_lsc.png)
          */
         public static SuperpixelLSC createSuperpixelLSC(Mat image, int region_size, float ratio)
         {
@@ -2951,19 +3252,19 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Class implementing the LSC (Linear Spectral Clustering) superpixels
-         *
-         * param image Image to segment
-         * param region_size Chooses an average superpixel size measured in pixels
-         *
-         * The function initializes a SuperpixelLSC object for the input image. It sets the parameters of
-         * superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
-         * computing iterations over the given image. An example of LSC is ilustrated in the following picture.
-         * For enanched results it is recommended for color images to preprocess image with little gaussian blur
-         * with a small 3 x 3 kernel and additional conversion into CieLAB color space.
-         *
-         * ![image](pics/superpixels_lsc.png)
-         * return automatically generated
+         @brief Class implementing the LSC (Linear Spectral Clustering) superpixels
+         
+         @param image Image to segment
+         @param region_size Chooses an average superpixel size measured in pixels
+         @param ratio Chooses the enforcement of superpixel compactness factor of superpixel
+         
+         The function initializes a SuperpixelLSC object for the input image. It sets the parameters of
+         superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
+         computing iterations over the given image. An example of LSC is ilustrated in the following picture.
+         For enanched results it is recommended for color images to preprocess image with little gaussian blur
+         with a small 3 x 3 kernel and additional conversion into CieLAB color space.
+         
+         ![image](pics/superpixels_lsc.png)
          */
         public static SuperpixelLSC createSuperpixelLSC(Mat image, int region_size)
         {
@@ -2975,18 +3276,19 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Class implementing the LSC (Linear Spectral Clustering) superpixels
-         *
-         * param image Image to segment
-         *
-         * The function initializes a SuperpixelLSC object for the input image. It sets the parameters of
-         * superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
-         * computing iterations over the given image. An example of LSC is ilustrated in the following picture.
-         * For enanched results it is recommended for color images to preprocess image with little gaussian blur
-         * with a small 3 x 3 kernel and additional conversion into CieLAB color space.
-         *
-         * ![image](pics/superpixels_lsc.png)
-         * return automatically generated
+         @brief Class implementing the LSC (Linear Spectral Clustering) superpixels
+         
+         @param image Image to segment
+         @param region_size Chooses an average superpixel size measured in pixels
+         @param ratio Chooses the enforcement of superpixel compactness factor of superpixel
+         
+         The function initializes a SuperpixelLSC object for the input image. It sets the parameters of
+         superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
+         computing iterations over the given image. An example of LSC is ilustrated in the following picture.
+         For enanched results it is recommended for color images to preprocess image with little gaussian blur
+         with a small 3 x 3 kernel and additional conversion into CieLAB color space.
+         
+         ![image](pics/superpixels_lsc.png)
          */
         public static SuperpixelLSC createSuperpixelLSC(Mat image)
         {
@@ -3002,6 +3304,9 @@ namespace OpenCVForUnity.XimgprocModule
         // C++:  void cv::ximgproc::PeiLinNormalization(Mat I, Mat& T)
         //
 
+        /**
+         @overload
+         */
         public static void PeiLinNormalization(Mat I, Mat T)
         {
             if (I != null) I.ThrowIfDisposed();
@@ -3014,39 +3319,300 @@ namespace OpenCVForUnity.XimgprocModule
 
 
         //
+        // C++:  void cv::ximgproc::RadonTransform(Mat src, Mat& dst, double theta = 1, double start_angle = 0, double end_angle = 180, bool crop = false, bool norm = false)
+        //
+
+        /**
+         * @brief   Calculate Radon Transform of an image.
+         * @param   src         The source (input) image.
+         * @param   dst         The destination image, result of transformation.
+         * @param   theta       Angle resolution of the transform in degrees.
+         * @param   start_angle Start angle of the transform in degrees.
+         * @param   end_angle   End angle of the transform in degrees.
+         * @param   crop        Crop the source image into a circle.
+         * @param   norm        Normalize the output Mat to grayscale and convert type to CV_8U
+         *
+         * This function calculates the Radon Transform of a given image in any range.
+         * See https://engineering.purdue.edu/~malcolm/pct/CTI_Ch03.pdf for detail.
+         * If the input type is CV_8U, the output will be CV_32S.
+         * If the input type is CV_32F or CV_64F, the output will be CV_64F
+         * The output size will be num_of_integral x src_diagonal_length.
+         * If crop is selected, the input image will be crop into square then circle,
+         * and output size will be num_of_integral x min_edge.
+         *
+         */
+        public static void RadonTransform(Mat src, Mat dst, double theta, double start_angle, double end_angle, bool crop, bool norm)
+        {
+            if (src != null) src.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
+
+            ximgproc_Ximgproc_RadonTransform_10(src.nativeObj, dst.nativeObj, theta, start_angle, end_angle, crop, norm);
+
+
+        }
+
+        /**
+         * @brief   Calculate Radon Transform of an image.
+         * @param   src         The source (input) image.
+         * @param   dst         The destination image, result of transformation.
+         * @param   theta       Angle resolution of the transform in degrees.
+         * @param   start_angle Start angle of the transform in degrees.
+         * @param   end_angle   End angle of the transform in degrees.
+         * @param   crop        Crop the source image into a circle.
+         * @param   norm        Normalize the output Mat to grayscale and convert type to CV_8U
+         *
+         * This function calculates the Radon Transform of a given image in any range.
+         * See https://engineering.purdue.edu/~malcolm/pct/CTI_Ch03.pdf for detail.
+         * If the input type is CV_8U, the output will be CV_32S.
+         * If the input type is CV_32F or CV_64F, the output will be CV_64F
+         * The output size will be num_of_integral x src_diagonal_length.
+         * If crop is selected, the input image will be crop into square then circle,
+         * and output size will be num_of_integral x min_edge.
+         *
+         */
+        public static void RadonTransform(Mat src, Mat dst, double theta, double start_angle, double end_angle, bool crop)
+        {
+            if (src != null) src.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
+
+            ximgproc_Ximgproc_RadonTransform_11(src.nativeObj, dst.nativeObj, theta, start_angle, end_angle, crop);
+
+
+        }
+
+        /**
+         * @brief   Calculate Radon Transform of an image.
+         * @param   src         The source (input) image.
+         * @param   dst         The destination image, result of transformation.
+         * @param   theta       Angle resolution of the transform in degrees.
+         * @param   start_angle Start angle of the transform in degrees.
+         * @param   end_angle   End angle of the transform in degrees.
+         * @param   crop        Crop the source image into a circle.
+         * @param   norm        Normalize the output Mat to grayscale and convert type to CV_8U
+         *
+         * This function calculates the Radon Transform of a given image in any range.
+         * See https://engineering.purdue.edu/~malcolm/pct/CTI_Ch03.pdf for detail.
+         * If the input type is CV_8U, the output will be CV_32S.
+         * If the input type is CV_32F or CV_64F, the output will be CV_64F
+         * The output size will be num_of_integral x src_diagonal_length.
+         * If crop is selected, the input image will be crop into square then circle,
+         * and output size will be num_of_integral x min_edge.
+         *
+         */
+        public static void RadonTransform(Mat src, Mat dst, double theta, double start_angle, double end_angle)
+        {
+            if (src != null) src.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
+
+            ximgproc_Ximgproc_RadonTransform_12(src.nativeObj, dst.nativeObj, theta, start_angle, end_angle);
+
+
+        }
+
+        /**
+         * @brief   Calculate Radon Transform of an image.
+         * @param   src         The source (input) image.
+         * @param   dst         The destination image, result of transformation.
+         * @param   theta       Angle resolution of the transform in degrees.
+         * @param   start_angle Start angle of the transform in degrees.
+         * @param   end_angle   End angle of the transform in degrees.
+         * @param   crop        Crop the source image into a circle.
+         * @param   norm        Normalize the output Mat to grayscale and convert type to CV_8U
+         *
+         * This function calculates the Radon Transform of a given image in any range.
+         * See https://engineering.purdue.edu/~malcolm/pct/CTI_Ch03.pdf for detail.
+         * If the input type is CV_8U, the output will be CV_32S.
+         * If the input type is CV_32F or CV_64F, the output will be CV_64F
+         * The output size will be num_of_integral x src_diagonal_length.
+         * If crop is selected, the input image will be crop into square then circle,
+         * and output size will be num_of_integral x min_edge.
+         *
+         */
+        public static void RadonTransform(Mat src, Mat dst, double theta, double start_angle)
+        {
+            if (src != null) src.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
+
+            ximgproc_Ximgproc_RadonTransform_13(src.nativeObj, dst.nativeObj, theta, start_angle);
+
+
+        }
+
+        /**
+         * @brief   Calculate Radon Transform of an image.
+         * @param   src         The source (input) image.
+         * @param   dst         The destination image, result of transformation.
+         * @param   theta       Angle resolution of the transform in degrees.
+         * @param   start_angle Start angle of the transform in degrees.
+         * @param   end_angle   End angle of the transform in degrees.
+         * @param   crop        Crop the source image into a circle.
+         * @param   norm        Normalize the output Mat to grayscale and convert type to CV_8U
+         *
+         * This function calculates the Radon Transform of a given image in any range.
+         * See https://engineering.purdue.edu/~malcolm/pct/CTI_Ch03.pdf for detail.
+         * If the input type is CV_8U, the output will be CV_32S.
+         * If the input type is CV_32F or CV_64F, the output will be CV_64F
+         * The output size will be num_of_integral x src_diagonal_length.
+         * If crop is selected, the input image will be crop into square then circle,
+         * and output size will be num_of_integral x min_edge.
+         *
+         */
+        public static void RadonTransform(Mat src, Mat dst, double theta)
+        {
+            if (src != null) src.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
+
+            ximgproc_Ximgproc_RadonTransform_14(src.nativeObj, dst.nativeObj, theta);
+
+
+        }
+
+        /**
+         * @brief   Calculate Radon Transform of an image.
+         * @param   src         The source (input) image.
+         * @param   dst         The destination image, result of transformation.
+         * @param   theta       Angle resolution of the transform in degrees.
+         * @param   start_angle Start angle of the transform in degrees.
+         * @param   end_angle   End angle of the transform in degrees.
+         * @param   crop        Crop the source image into a circle.
+         * @param   norm        Normalize the output Mat to grayscale and convert type to CV_8U
+         *
+         * This function calculates the Radon Transform of a given image in any range.
+         * See https://engineering.purdue.edu/~malcolm/pct/CTI_Ch03.pdf for detail.
+         * If the input type is CV_8U, the output will be CV_32S.
+         * If the input type is CV_32F or CV_64F, the output will be CV_64F
+         * The output size will be num_of_integral x src_diagonal_length.
+         * If crop is selected, the input image will be crop into square then circle,
+         * and output size will be num_of_integral x min_edge.
+         *
+         */
+        public static void RadonTransform(Mat src, Mat dst)
+        {
+            if (src != null) src.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
+
+            ximgproc_Ximgproc_RadonTransform_15(src.nativeObj, dst.nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  Ptr_ScanSegment cv::ximgproc::createScanSegment(int image_width, int image_height, int num_superpixels, int slices = 8, bool merge_small = true)
+        //
+
+        /**
+         @brief Initializes a ScanSegment object.
+         
+         The function initializes a ScanSegment object for the input image. It stores the parameters of
+         the image: image_width and image_height. It also sets the parameters of the F-DBSCAN superpixel
+         algorithm, which are: num_superpixels, threads, and merge_small.
+         
+         @param image_width Image width.
+         @param image_height Image height.
+         @param num_superpixels Desired number of superpixels. Note that the actual number may be smaller
+         due to restrictions (depending on the image size). Use getNumberOfSuperpixels() to
+         get the actual number.
+         @param slices Number of processing threads for parallelisation. Setting -1 uses the maximum number
+         of threads. In practice, four threads is enough for smaller images and eight threads for larger ones.
+         @param merge_small merge small segments to give the desired number of superpixels. Processing is
+         much faster without merging, but many small segments will be left in the image.
+         */
+        public static ScanSegment createScanSegment(int image_width, int image_height, int num_superpixels, int slices, bool merge_small)
+        {
+
+
+            return ScanSegment.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(ximgproc_Ximgproc_createScanSegment_10(image_width, image_height, num_superpixels, slices, merge_small)));
+
+
+        }
+
+        /**
+         @brief Initializes a ScanSegment object.
+         
+         The function initializes a ScanSegment object for the input image. It stores the parameters of
+         the image: image_width and image_height. It also sets the parameters of the F-DBSCAN superpixel
+         algorithm, which are: num_superpixels, threads, and merge_small.
+         
+         @param image_width Image width.
+         @param image_height Image height.
+         @param num_superpixels Desired number of superpixels. Note that the actual number may be smaller
+         due to restrictions (depending on the image size). Use getNumberOfSuperpixels() to
+         get the actual number.
+         @param slices Number of processing threads for parallelisation. Setting -1 uses the maximum number
+         of threads. In practice, four threads is enough for smaller images and eight threads for larger ones.
+         @param merge_small merge small segments to give the desired number of superpixels. Processing is
+         much faster without merging, but many small segments will be left in the image.
+         */
+        public static ScanSegment createScanSegment(int image_width, int image_height, int num_superpixels, int slices)
+        {
+
+
+            return ScanSegment.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(ximgproc_Ximgproc_createScanSegment_11(image_width, image_height, num_superpixels, slices)));
+
+
+        }
+
+        /**
+         @brief Initializes a ScanSegment object.
+         
+         The function initializes a ScanSegment object for the input image. It stores the parameters of
+         the image: image_width and image_height. It also sets the parameters of the F-DBSCAN superpixel
+         algorithm, which are: num_superpixels, threads, and merge_small.
+         
+         @param image_width Image width.
+         @param image_height Image height.
+         @param num_superpixels Desired number of superpixels. Note that the actual number may be smaller
+         due to restrictions (depending on the image size). Use getNumberOfSuperpixels() to
+         get the actual number.
+         @param slices Number of processing threads for parallelisation. Setting -1 uses the maximum number
+         of threads. In practice, four threads is enough for smaller images and eight threads for larger ones.
+         @param merge_small merge small segments to give the desired number of superpixels. Processing is
+         much faster without merging, but many small segments will be left in the image.
+         */
+        public static ScanSegment createScanSegment(int image_width, int image_height, int num_superpixels)
+        {
+
+
+            return ScanSegment.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(ximgproc_Ximgproc_createScanSegment_12(image_width, image_height, num_superpixels)));
+
+
+        }
+
+
+        //
         // C++:  Ptr_SuperpixelSEEDS cv::ximgproc::createSuperpixelSEEDS(int image_width, int image_height, int image_channels, int num_superpixels, int num_levels, int prior = 2, int histogram_bins = 5, bool double_step = false)
         //
 
         /**
-         * Initializes a SuperpixelSEEDS object.
-         *
-         * param image_width Image width.
-         * param image_height Image height.
-         * param image_channels Number of channels of the image.
-         * param num_superpixels Desired number of superpixels. Note that the actual number may be smaller
-         * due to restrictions (depending on the image size and num_levels). Use getNumberOfSuperpixels() to
-         * get the actual number.
-         * param num_levels Number of block levels. The more levels, the more accurate is the segmentation,
-         * but needs more memory and CPU time.
-         * param prior enable 3x3 shape smoothing term if &gt;0. A larger value leads to smoother shapes. prior
-         * must be in the range [0, 5].
-         * param histogram_bins Number of histogram bins.
-         * param double_step If true, iterate each block level twice for higher accuracy.
-         *
-         * The function initializes a SuperpixelSEEDS object for the input image. It stores the parameters of
-         * the image: image_width, image_height and image_channels. It also sets the parameters of the SEEDS
-         * superpixel algorithm, which are: num_superpixels, num_levels, use_prior, histogram_bins and
-         * double_step.
-         *
-         * The number of levels in num_levels defines the amount of block levels that the algorithm use in the
-         * optimization. The initialization is a grid, in which the superpixels are equally distributed through
-         * the width and the height of the image. The larger blocks correspond to the superpixel size, and the
-         * levels with smaller blocks are formed by dividing the larger blocks into 2 x 2 blocks of pixels,
-         * recursively until the smaller block level. An example of initialization of 4 block levels is
-         * illustrated in the following figure.
-         *
-         * ![image](pics/superpixels_blocks.png)
-         * return automatically generated
+         @brief Initializes a SuperpixelSEEDS object.
+         
+         @param image_width Image width.
+         @param image_height Image height.
+         @param image_channels Number of channels of the image.
+         @param num_superpixels Desired number of superpixels. Note that the actual number may be smaller
+         due to restrictions (depending on the image size and num_levels). Use getNumberOfSuperpixels() to
+         get the actual number.
+         @param num_levels Number of block levels. The more levels, the more accurate is the segmentation,
+         but needs more memory and CPU time.
+         @param prior enable 3x3 shape smoothing term if &gt;0. A larger value leads to smoother shapes. prior
+         must be in the range [0, 5].
+         @param histogram_bins Number of histogram bins.
+         @param double_step If true, iterate each block level twice for higher accuracy.
+         
+         The function initializes a SuperpixelSEEDS object for the input image. It stores the parameters of
+         the image: image_width, image_height and image_channels. It also sets the parameters of the SEEDS
+         superpixel algorithm, which are: num_superpixels, num_levels, use_prior, histogram_bins and
+         double_step.
+         
+         The number of levels in num_levels defines the amount of block levels that the algorithm use in the
+         optimization. The initialization is a grid, in which the superpixels are equally distributed through
+         the width and the height of the image. The larger blocks correspond to the superpixel size, and the
+         levels with smaller blocks are formed by dividing the larger blocks into 2 x 2 blocks of pixels,
+         recursively until the smaller block level. An example of initialization of 4 block levels is
+         illustrated in the following figure.
+         
+         ![image](pics/superpixels_blocks.png)
          */
         public static SuperpixelSEEDS createSuperpixelSEEDS(int image_width, int image_height, int image_channels, int num_superpixels, int num_levels, int prior, int histogram_bins, bool double_step)
         {
@@ -3058,34 +3624,34 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Initializes a SuperpixelSEEDS object.
-         *
-         * param image_width Image width.
-         * param image_height Image height.
-         * param image_channels Number of channels of the image.
-         * param num_superpixels Desired number of superpixels. Note that the actual number may be smaller
-         * due to restrictions (depending on the image size and num_levels). Use getNumberOfSuperpixels() to
-         * get the actual number.
-         * param num_levels Number of block levels. The more levels, the more accurate is the segmentation,
-         * but needs more memory and CPU time.
-         * param prior enable 3x3 shape smoothing term if &gt;0. A larger value leads to smoother shapes. prior
-         * must be in the range [0, 5].
-         * param histogram_bins Number of histogram bins.
-         *
-         * The function initializes a SuperpixelSEEDS object for the input image. It stores the parameters of
-         * the image: image_width, image_height and image_channels. It also sets the parameters of the SEEDS
-         * superpixel algorithm, which are: num_superpixels, num_levels, use_prior, histogram_bins and
-         * double_step.
-         *
-         * The number of levels in num_levels defines the amount of block levels that the algorithm use in the
-         * optimization. The initialization is a grid, in which the superpixels are equally distributed through
-         * the width and the height of the image. The larger blocks correspond to the superpixel size, and the
-         * levels with smaller blocks are formed by dividing the larger blocks into 2 x 2 blocks of pixels,
-         * recursively until the smaller block level. An example of initialization of 4 block levels is
-         * illustrated in the following figure.
-         *
-         * ![image](pics/superpixels_blocks.png)
-         * return automatically generated
+         @brief Initializes a SuperpixelSEEDS object.
+         
+         @param image_width Image width.
+         @param image_height Image height.
+         @param image_channels Number of channels of the image.
+         @param num_superpixels Desired number of superpixels. Note that the actual number may be smaller
+         due to restrictions (depending on the image size and num_levels). Use getNumberOfSuperpixels() to
+         get the actual number.
+         @param num_levels Number of block levels. The more levels, the more accurate is the segmentation,
+         but needs more memory and CPU time.
+         @param prior enable 3x3 shape smoothing term if &gt;0. A larger value leads to smoother shapes. prior
+         must be in the range [0, 5].
+         @param histogram_bins Number of histogram bins.
+         @param double_step If true, iterate each block level twice for higher accuracy.
+         
+         The function initializes a SuperpixelSEEDS object for the input image. It stores the parameters of
+         the image: image_width, image_height and image_channels. It also sets the parameters of the SEEDS
+         superpixel algorithm, which are: num_superpixels, num_levels, use_prior, histogram_bins and
+         double_step.
+         
+         The number of levels in num_levels defines the amount of block levels that the algorithm use in the
+         optimization. The initialization is a grid, in which the superpixels are equally distributed through
+         the width and the height of the image. The larger blocks correspond to the superpixel size, and the
+         levels with smaller blocks are formed by dividing the larger blocks into 2 x 2 blocks of pixels,
+         recursively until the smaller block level. An example of initialization of 4 block levels is
+         illustrated in the following figure.
+         
+         ![image](pics/superpixels_blocks.png)
          */
         public static SuperpixelSEEDS createSuperpixelSEEDS(int image_width, int image_height, int image_channels, int num_superpixels, int num_levels, int prior, int histogram_bins)
         {
@@ -3097,33 +3663,34 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Initializes a SuperpixelSEEDS object.
-         *
-         * param image_width Image width.
-         * param image_height Image height.
-         * param image_channels Number of channels of the image.
-         * param num_superpixels Desired number of superpixels. Note that the actual number may be smaller
-         * due to restrictions (depending on the image size and num_levels). Use getNumberOfSuperpixels() to
-         * get the actual number.
-         * param num_levels Number of block levels. The more levels, the more accurate is the segmentation,
-         * but needs more memory and CPU time.
-         * param prior enable 3x3 shape smoothing term if &gt;0. A larger value leads to smoother shapes. prior
-         * must be in the range [0, 5].
-         *
-         * The function initializes a SuperpixelSEEDS object for the input image. It stores the parameters of
-         * the image: image_width, image_height and image_channels. It also sets the parameters of the SEEDS
-         * superpixel algorithm, which are: num_superpixels, num_levels, use_prior, histogram_bins and
-         * double_step.
-         *
-         * The number of levels in num_levels defines the amount of block levels that the algorithm use in the
-         * optimization. The initialization is a grid, in which the superpixels are equally distributed through
-         * the width and the height of the image. The larger blocks correspond to the superpixel size, and the
-         * levels with smaller blocks are formed by dividing the larger blocks into 2 x 2 blocks of pixels,
-         * recursively until the smaller block level. An example of initialization of 4 block levels is
-         * illustrated in the following figure.
-         *
-         * ![image](pics/superpixels_blocks.png)
-         * return automatically generated
+         @brief Initializes a SuperpixelSEEDS object.
+         
+         @param image_width Image width.
+         @param image_height Image height.
+         @param image_channels Number of channels of the image.
+         @param num_superpixels Desired number of superpixels. Note that the actual number may be smaller
+         due to restrictions (depending on the image size and num_levels). Use getNumberOfSuperpixels() to
+         get the actual number.
+         @param num_levels Number of block levels. The more levels, the more accurate is the segmentation,
+         but needs more memory and CPU time.
+         @param prior enable 3x3 shape smoothing term if &gt;0. A larger value leads to smoother shapes. prior
+         must be in the range [0, 5].
+         @param histogram_bins Number of histogram bins.
+         @param double_step If true, iterate each block level twice for higher accuracy.
+         
+         The function initializes a SuperpixelSEEDS object for the input image. It stores the parameters of
+         the image: image_width, image_height and image_channels. It also sets the parameters of the SEEDS
+         superpixel algorithm, which are: num_superpixels, num_levels, use_prior, histogram_bins and
+         double_step.
+         
+         The number of levels in num_levels defines the amount of block levels that the algorithm use in the
+         optimization. The initialization is a grid, in which the superpixels are equally distributed through
+         the width and the height of the image. The larger blocks correspond to the superpixel size, and the
+         levels with smaller blocks are formed by dividing the larger blocks into 2 x 2 blocks of pixels,
+         recursively until the smaller block level. An example of initialization of 4 block levels is
+         illustrated in the following figure.
+         
+         ![image](pics/superpixels_blocks.png)
          */
         public static SuperpixelSEEDS createSuperpixelSEEDS(int image_width, int image_height, int image_channels, int num_superpixels, int num_levels, int prior)
         {
@@ -3135,32 +3702,34 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Initializes a SuperpixelSEEDS object.
-         *
-         * param image_width Image width.
-         * param image_height Image height.
-         * param image_channels Number of channels of the image.
-         * param num_superpixels Desired number of superpixels. Note that the actual number may be smaller
-         * due to restrictions (depending on the image size and num_levels). Use getNumberOfSuperpixels() to
-         * get the actual number.
-         * param num_levels Number of block levels. The more levels, the more accurate is the segmentation,
-         * but needs more memory and CPU time.
-         * must be in the range [0, 5].
-         *
-         * The function initializes a SuperpixelSEEDS object for the input image. It stores the parameters of
-         * the image: image_width, image_height and image_channels. It also sets the parameters of the SEEDS
-         * superpixel algorithm, which are: num_superpixels, num_levels, use_prior, histogram_bins and
-         * double_step.
-         *
-         * The number of levels in num_levels defines the amount of block levels that the algorithm use in the
-         * optimization. The initialization is a grid, in which the superpixels are equally distributed through
-         * the width and the height of the image. The larger blocks correspond to the superpixel size, and the
-         * levels with smaller blocks are formed by dividing the larger blocks into 2 x 2 blocks of pixels,
-         * recursively until the smaller block level. An example of initialization of 4 block levels is
-         * illustrated in the following figure.
-         *
-         * ![image](pics/superpixels_blocks.png)
-         * return automatically generated
+         @brief Initializes a SuperpixelSEEDS object.
+         
+         @param image_width Image width.
+         @param image_height Image height.
+         @param image_channels Number of channels of the image.
+         @param num_superpixels Desired number of superpixels. Note that the actual number may be smaller
+         due to restrictions (depending on the image size and num_levels). Use getNumberOfSuperpixels() to
+         get the actual number.
+         @param num_levels Number of block levels. The more levels, the more accurate is the segmentation,
+         but needs more memory and CPU time.
+         @param prior enable 3x3 shape smoothing term if &gt;0. A larger value leads to smoother shapes. prior
+         must be in the range [0, 5].
+         @param histogram_bins Number of histogram bins.
+         @param double_step If true, iterate each block level twice for higher accuracy.
+         
+         The function initializes a SuperpixelSEEDS object for the input image. It stores the parameters of
+         the image: image_width, image_height and image_channels. It also sets the parameters of the SEEDS
+         superpixel algorithm, which are: num_superpixels, num_levels, use_prior, histogram_bins and
+         double_step.
+         
+         The number of levels in num_levels defines the amount of block levels that the algorithm use in the
+         optimization. The initialization is a grid, in which the superpixels are equally distributed through
+         the width and the height of the image. The larger blocks correspond to the superpixel size, and the
+         levels with smaller blocks are formed by dividing the larger blocks into 2 x 2 blocks of pixels,
+         recursively until the smaller block level. An example of initialization of 4 block levels is
+         illustrated in the following figure.
+         
+         ![image](pics/superpixels_blocks.png)
          */
         public static SuperpixelSEEDS createSuperpixelSEEDS(int image_width, int image_height, int image_channels, int num_superpixels, int num_levels)
         {
@@ -3177,11 +3746,10 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Creates a graph based segmentor
-         *                         param sigma The sigma parameter, used to smooth image
-         *                         param k The k parameter of the algorythm
-         *                         param min_size The minimum size of segments
-         * return automatically generated
+         @brief Creates a graph based segmentor
+                                 @param sigma The sigma parameter, used to smooth image
+                                 @param k The k parameter of the algorythm
+                                 @param min_size The minimum size of segments
          */
         public static GraphSegmentation createGraphSegmentation(double sigma, float k, int min_size)
         {
@@ -3193,10 +3761,10 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a graph based segmentor
-         *                         param sigma The sigma parameter, used to smooth image
-         *                         param k The k parameter of the algorythm
-         * return automatically generated
+         @brief Creates a graph based segmentor
+                                 @param sigma The sigma parameter, used to smooth image
+                                 @param k The k parameter of the algorythm
+                                 @param min_size The minimum size of segments
          */
         public static GraphSegmentation createGraphSegmentation(double sigma, float k)
         {
@@ -3208,9 +3776,10 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a graph based segmentor
-         *                         param sigma The sigma parameter, used to smooth image
-         * return automatically generated
+         @brief Creates a graph based segmentor
+                                 @param sigma The sigma parameter, used to smooth image
+                                 @param k The k parameter of the algorythm
+                                 @param min_size The minimum size of segments
          */
         public static GraphSegmentation createGraphSegmentation(double sigma)
         {
@@ -3222,8 +3791,10 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Creates a graph based segmentor
-         * return automatically generated
+         @brief Creates a graph based segmentor
+                                 @param sigma The sigma parameter, used to smooth image
+                                 @param k The k parameter of the algorythm
+                                 @param min_size The minimum size of segments
          */
         public static GraphSegmentation createGraphSegmentation()
         {
@@ -3240,8 +3811,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Create a new color-based strategy
-         * return automatically generated
+         @brief Create a new color-based strategy
          */
         public static SelectiveSearchSegmentationStrategyColor createSelectiveSearchSegmentationStrategyColor()
         {
@@ -3258,8 +3828,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Create a new size-based strategy
-         * return automatically generated
+         @brief Create a new size-based strategy
          */
         public static SelectiveSearchSegmentationStrategySize createSelectiveSearchSegmentationStrategySize()
         {
@@ -3276,8 +3845,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Create a new size-based strategy
-         * return automatically generated
+         @brief Create a new size-based strategy
          */
         public static SelectiveSearchSegmentationStrategyTexture createSelectiveSearchSegmentationStrategyTexture()
         {
@@ -3294,8 +3862,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Create a new fill-based strategy
-         * return automatically generated
+         @brief Create a new fill-based strategy
          */
         public static SelectiveSearchSegmentationStrategyFill createSelectiveSearchSegmentationStrategyFill()
         {
@@ -3312,8 +3879,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Create a new multiple strategy
-         * return automatically generated
+         @brief Create a new multiple strategy
          */
         public static SelectiveSearchSegmentationStrategyMultiple createSelectiveSearchSegmentationStrategyMultiple()
         {
@@ -3330,9 +3896,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Create a new multiple strategy and set one subtrategy
-         *                         param s1 The first strategy
-         * return automatically generated
+         @brief Create a new multiple strategy and set one subtrategy
+                                 @param s1 The first strategy
          */
         public static SelectiveSearchSegmentationStrategyMultiple createSelectiveSearchSegmentationStrategyMultiple(SelectiveSearchSegmentationStrategy s1)
         {
@@ -3349,10 +3914,9 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Create a new multiple strategy and set two subtrategies, with equal weights
-         *                         param s1 The first strategy
-         *                         param s2 The second strategy
-         * return automatically generated
+         @brief Create a new multiple strategy and set two subtrategies, with equal weights
+                                 @param s1 The first strategy
+                                 @param s2 The second strategy
          */
         public static SelectiveSearchSegmentationStrategyMultiple createSelectiveSearchSegmentationStrategyMultiple(SelectiveSearchSegmentationStrategy s1, SelectiveSearchSegmentationStrategy s2)
         {
@@ -3370,11 +3934,10 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Create a new multiple strategy and set three subtrategies, with equal weights
-         *                         param s1 The first strategy
-         *                         param s2 The second strategy
-         *                         param s3 The third strategy
-         * return automatically generated
+         @brief Create a new multiple strategy and set three subtrategies, with equal weights
+                                 @param s1 The first strategy
+                                 @param s2 The second strategy
+                                 @param s3 The third strategy
          */
         public static SelectiveSearchSegmentationStrategyMultiple createSelectiveSearchSegmentationStrategyMultiple(SelectiveSearchSegmentationStrategy s1, SelectiveSearchSegmentationStrategy s2, SelectiveSearchSegmentationStrategy s3)
         {
@@ -3393,12 +3956,11 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Create a new multiple strategy and set four subtrategies, with equal weights
-         *                         param s1 The first strategy
-         *                         param s2 The second strategy
-         *                         param s3 The third strategy
-         *                         param s4 The forth strategy
-         * return automatically generated
+         @brief Create a new multiple strategy and set four subtrategies, with equal weights
+                                 @param s1 The first strategy
+                                 @param s2 The second strategy
+                                 @param s3 The third strategy
+                                 @param s4 The forth strategy
          */
         public static SelectiveSearchSegmentationStrategyMultiple createSelectiveSearchSegmentationStrategyMultiple(SelectiveSearchSegmentationStrategy s1, SelectiveSearchSegmentationStrategy s2, SelectiveSearchSegmentationStrategy s3, SelectiveSearchSegmentationStrategy s4)
         {
@@ -3418,8 +3980,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Create a new SelectiveSearchSegmentation class.
-         * return automatically generated
+         @brief Create a new SelectiveSearchSegmentation class.
          */
         public static SelectiveSearchSegmentation createSelectiveSearchSegmentation()
         {
@@ -3436,23 +3997,22 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Initialize a SuperpixelSLIC object
-         *
-         * param image Image to segment
-         * param algorithm Chooses the algorithm variant to use:
-         * SLIC segments image using a desired region_size, and in addition SLICO will optimize using adaptive compactness factor,
-         * while MSLIC will optimize using manifold methods resulting in more content-sensitive superpixels.
-         * param region_size Chooses an average superpixel size measured in pixels
-         * param ruler Chooses the enforcement of superpixel smoothness factor of superpixel
-         *
-         * The function initializes a SuperpixelSLIC object for the input image. It sets the parameters of choosed
-         * superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
-         * computing iterations over the given image. For enanched results it is recommended for color images to
-         * preprocess image with little gaussian blur using a small 3 x 3 kernel and additional conversion into
-         * CieLAB color space. An example of SLIC versus SLICO and MSLIC is ilustrated in the following picture.
-         *
-         * ![image](pics/superpixels_slic.png)
-         * return automatically generated
+         @brief Initialize a SuperpixelSLIC object
+         
+         @param image Image to segment
+         @param algorithm Chooses the algorithm variant to use:
+         SLIC segments image using a desired region_size, and in addition SLICO will optimize using adaptive compactness factor,
+         while MSLIC will optimize using manifold methods resulting in more content-sensitive superpixels.
+         @param region_size Chooses an average superpixel size measured in pixels
+         @param ruler Chooses the enforcement of superpixel smoothness factor of superpixel
+         
+         The function initializes a SuperpixelSLIC object for the input image. It sets the parameters of choosed
+         superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
+         computing iterations over the given image. For enanched results it is recommended for color images to
+         preprocess image with little gaussian blur using a small 3 x 3 kernel and additional conversion into
+         CieLAB color space. An example of SLIC versus SLICO and MSLIC is ilustrated in the following picture.
+         
+         ![image](pics/superpixels_slic.png)
          */
         public static SuperpixelSLIC createSuperpixelSLIC(Mat image, int algorithm, int region_size, float ruler)
         {
@@ -3464,22 +4024,22 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Initialize a SuperpixelSLIC object
-         *
-         * param image Image to segment
-         * param algorithm Chooses the algorithm variant to use:
-         * SLIC segments image using a desired region_size, and in addition SLICO will optimize using adaptive compactness factor,
-         * while MSLIC will optimize using manifold methods resulting in more content-sensitive superpixels.
-         * param region_size Chooses an average superpixel size measured in pixels
-         *
-         * The function initializes a SuperpixelSLIC object for the input image. It sets the parameters of choosed
-         * superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
-         * computing iterations over the given image. For enanched results it is recommended for color images to
-         * preprocess image with little gaussian blur using a small 3 x 3 kernel and additional conversion into
-         * CieLAB color space. An example of SLIC versus SLICO and MSLIC is ilustrated in the following picture.
-         *
-         * ![image](pics/superpixels_slic.png)
-         * return automatically generated
+         @brief Initialize a SuperpixelSLIC object
+         
+         @param image Image to segment
+         @param algorithm Chooses the algorithm variant to use:
+         SLIC segments image using a desired region_size, and in addition SLICO will optimize using adaptive compactness factor,
+         while MSLIC will optimize using manifold methods resulting in more content-sensitive superpixels.
+         @param region_size Chooses an average superpixel size measured in pixels
+         @param ruler Chooses the enforcement of superpixel smoothness factor of superpixel
+         
+         The function initializes a SuperpixelSLIC object for the input image. It sets the parameters of choosed
+         superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
+         computing iterations over the given image. For enanched results it is recommended for color images to
+         preprocess image with little gaussian blur using a small 3 x 3 kernel and additional conversion into
+         CieLAB color space. An example of SLIC versus SLICO and MSLIC is ilustrated in the following picture.
+         
+         ![image](pics/superpixels_slic.png)
          */
         public static SuperpixelSLIC createSuperpixelSLIC(Mat image, int algorithm, int region_size)
         {
@@ -3491,21 +4051,22 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Initialize a SuperpixelSLIC object
-         *
-         * param image Image to segment
-         * param algorithm Chooses the algorithm variant to use:
-         * SLIC segments image using a desired region_size, and in addition SLICO will optimize using adaptive compactness factor,
-         * while MSLIC will optimize using manifold methods resulting in more content-sensitive superpixels.
-         *
-         * The function initializes a SuperpixelSLIC object for the input image. It sets the parameters of choosed
-         * superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
-         * computing iterations over the given image. For enanched results it is recommended for color images to
-         * preprocess image with little gaussian blur using a small 3 x 3 kernel and additional conversion into
-         * CieLAB color space. An example of SLIC versus SLICO and MSLIC is ilustrated in the following picture.
-         *
-         * ![image](pics/superpixels_slic.png)
-         * return automatically generated
+         @brief Initialize a SuperpixelSLIC object
+         
+         @param image Image to segment
+         @param algorithm Chooses the algorithm variant to use:
+         SLIC segments image using a desired region_size, and in addition SLICO will optimize using adaptive compactness factor,
+         while MSLIC will optimize using manifold methods resulting in more content-sensitive superpixels.
+         @param region_size Chooses an average superpixel size measured in pixels
+         @param ruler Chooses the enforcement of superpixel smoothness factor of superpixel
+         
+         The function initializes a SuperpixelSLIC object for the input image. It sets the parameters of choosed
+         superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
+         computing iterations over the given image. For enanched results it is recommended for color images to
+         preprocess image with little gaussian blur using a small 3 x 3 kernel and additional conversion into
+         CieLAB color space. An example of SLIC versus SLICO and MSLIC is ilustrated in the following picture.
+         
+         ![image](pics/superpixels_slic.png)
          */
         public static SuperpixelSLIC createSuperpixelSLIC(Mat image, int algorithm)
         {
@@ -3517,20 +4078,22 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Initialize a SuperpixelSLIC object
-         *
-         * param image Image to segment
-         * SLIC segments image using a desired region_size, and in addition SLICO will optimize using adaptive compactness factor,
-         * while MSLIC will optimize using manifold methods resulting in more content-sensitive superpixels.
-         *
-         * The function initializes a SuperpixelSLIC object for the input image. It sets the parameters of choosed
-         * superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
-         * computing iterations over the given image. For enanched results it is recommended for color images to
-         * preprocess image with little gaussian blur using a small 3 x 3 kernel and additional conversion into
-         * CieLAB color space. An example of SLIC versus SLICO and MSLIC is ilustrated in the following picture.
-         *
-         * ![image](pics/superpixels_slic.png)
-         * return automatically generated
+         @brief Initialize a SuperpixelSLIC object
+         
+         @param image Image to segment
+         @param algorithm Chooses the algorithm variant to use:
+         SLIC segments image using a desired region_size, and in addition SLICO will optimize using adaptive compactness factor,
+         while MSLIC will optimize using manifold methods resulting in more content-sensitive superpixels.
+         @param region_size Chooses an average superpixel size measured in pixels
+         @param ruler Chooses the enforcement of superpixel smoothness factor of superpixel
+         
+         The function initializes a SuperpixelSLIC object for the input image. It sets the parameters of choosed
+         superpixel algorithm, which are: region_size and ruler. It preallocate some buffers for future
+         computing iterations over the given image. For enanched results it is recommended for color images to
+         preprocess image with little gaussian blur using a small 3 x 3 kernel and additional conversion into
+         CieLAB color space. An example of SLIC versus SLICO and MSLIC is ilustrated in the following picture.
+         
+         ![image](pics/superpixels_slic.png)
          */
         public static SuperpixelSLIC createSuperpixelSLIC(Mat image)
         {
@@ -3547,9 +4110,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Factory method that creates an instance of the
-         * EdgeAwareInterpolator.
-         * return automatically generated
+         @brief Factory method that creates an instance of the
+         EdgeAwareInterpolator.
          */
         public static EdgeAwareInterpolator createEdgeAwareInterpolator()
         {
@@ -3566,9 +4128,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Factory method that creates an instance of the
-         * RICInterpolator.
-         * return automatically generated
+         @brief Factory method that creates an instance of the
+         RICInterpolator.
          */
         public static RICInterpolator createRICInterpolator()
         {
@@ -3622,20 +4183,20 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Applies weighted median filter to an image.
+         * @brief   Applies weighted median filter to an image.
          *
-         * For more details about this implementation, please see CITE: zhang2014100+
+         * For more details about this implementation, please see @cite zhang2014100+
          *
-         * the pixel will be ignored when maintaining the joint-histogram. This is useful for applications like optical flow occlusion handling.
+         * @param   joint       Joint 8-bit, 1-channel or 3-channel image.
+         * @param   src         Source 8-bit or floating-point, 1-channel or 3-channel image.
+         * @param   dst         Destination image.
+         * @param   r           Radius of filtering kernel, should be a positive integer.
+         * @param   sigma       Filter range standard deviation for the joint image.
+         * @param   weightType  weightType The type of weight definition, see WMFWeightType
+         * @param   mask        A 0-1 mask that has the same size with I. This mask is used to ignore the effect of some pixels. If the pixel value on mask is 0,
+         *                           the pixel will be ignored when maintaining the joint-histogram. This is useful for applications like optical flow occlusion handling.
          *
-         * SEE: medianBlur, jointBilateralFilter
-         * param joint automatically generated
-         * param src automatically generated
-         * param dst automatically generated
-         * param r automatically generated
-         * param sigma automatically generated
-         * param weightType automatically generated
-         * param mask automatically generated
+         * @sa medianBlur, jointBilateralFilter
          */
         public static void weightedMedianFilter(Mat joint, Mat src, Mat dst, int r, double sigma, int weightType, Mat mask)
         {
@@ -3650,19 +4211,20 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Applies weighted median filter to an image.
+         * @brief   Applies weighted median filter to an image.
          *
-         * For more details about this implementation, please see CITE: zhang2014100+
+         * For more details about this implementation, please see @cite zhang2014100+
          *
-         * the pixel will be ignored when maintaining the joint-histogram. This is useful for applications like optical flow occlusion handling.
+         * @param   joint       Joint 8-bit, 1-channel or 3-channel image.
+         * @param   src         Source 8-bit or floating-point, 1-channel or 3-channel image.
+         * @param   dst         Destination image.
+         * @param   r           Radius of filtering kernel, should be a positive integer.
+         * @param   sigma       Filter range standard deviation for the joint image.
+         * @param   weightType  weightType The type of weight definition, see WMFWeightType
+         * @param   mask        A 0-1 mask that has the same size with I. This mask is used to ignore the effect of some pixels. If the pixel value on mask is 0,
+         *                           the pixel will be ignored when maintaining the joint-histogram. This is useful for applications like optical flow occlusion handling.
          *
-         * SEE: medianBlur, jointBilateralFilter
-         * param joint automatically generated
-         * param src automatically generated
-         * param dst automatically generated
-         * param r automatically generated
-         * param sigma automatically generated
-         * param weightType automatically generated
+         * @sa medianBlur, jointBilateralFilter
          */
         public static void weightedMedianFilter(Mat joint, Mat src, Mat dst, int r, double sigma, int weightType)
         {
@@ -3676,18 +4238,20 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Applies weighted median filter to an image.
+         * @brief   Applies weighted median filter to an image.
          *
-         * For more details about this implementation, please see CITE: zhang2014100+
+         * For more details about this implementation, please see @cite zhang2014100+
          *
-         * the pixel will be ignored when maintaining the joint-histogram. This is useful for applications like optical flow occlusion handling.
+         * @param   joint       Joint 8-bit, 1-channel or 3-channel image.
+         * @param   src         Source 8-bit or floating-point, 1-channel or 3-channel image.
+         * @param   dst         Destination image.
+         * @param   r           Radius of filtering kernel, should be a positive integer.
+         * @param   sigma       Filter range standard deviation for the joint image.
+         * @param   weightType  weightType The type of weight definition, see WMFWeightType
+         * @param   mask        A 0-1 mask that has the same size with I. This mask is used to ignore the effect of some pixels. If the pixel value on mask is 0,
+         *                           the pixel will be ignored when maintaining the joint-histogram. This is useful for applications like optical flow occlusion handling.
          *
-         * SEE: medianBlur, jointBilateralFilter
-         * param joint automatically generated
-         * param src automatically generated
-         * param dst automatically generated
-         * param r automatically generated
-         * param sigma automatically generated
+         * @sa medianBlur, jointBilateralFilter
          */
         public static void weightedMedianFilter(Mat joint, Mat src, Mat dst, int r, double sigma)
         {
@@ -3701,17 +4265,20 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Applies weighted median filter to an image.
+         * @brief   Applies weighted median filter to an image.
          *
-         * For more details about this implementation, please see CITE: zhang2014100+
+         * For more details about this implementation, please see @cite zhang2014100+
          *
-         * the pixel will be ignored when maintaining the joint-histogram. This is useful for applications like optical flow occlusion handling.
+         * @param   joint       Joint 8-bit, 1-channel or 3-channel image.
+         * @param   src         Source 8-bit or floating-point, 1-channel or 3-channel image.
+         * @param   dst         Destination image.
+         * @param   r           Radius of filtering kernel, should be a positive integer.
+         * @param   sigma       Filter range standard deviation for the joint image.
+         * @param   weightType  weightType The type of weight definition, see WMFWeightType
+         * @param   mask        A 0-1 mask that has the same size with I. This mask is used to ignore the effect of some pixels. If the pixel value on mask is 0,
+         *                           the pixel will be ignored when maintaining the joint-histogram. This is useful for applications like optical flow occlusion handling.
          *
-         * SEE: medianBlur, jointBilateralFilter
-         * param joint automatically generated
-         * param src automatically generated
-         * param dst automatically generated
-         * param r automatically generated
+         * @sa medianBlur, jointBilateralFilter
          */
         public static void weightedMedianFilter(Mat joint, Mat src, Mat dst, int r)
         {
@@ -3867,15 +4434,19 @@ namespace OpenCVForUnity.XimgprocModule
         [DllImport(LIBNAME)]
         private static extern void ximgproc_Ximgproc_dtFilter_12(IntPtr guide_nativeObj, IntPtr src_nativeObj, IntPtr dst_nativeObj, double sigmaSpatial, double sigmaColor);
 
-        // C++:  Ptr_GuidedFilter cv::ximgproc::createGuidedFilter(Mat guide, int radius, double eps)
+        // C++:  Ptr_GuidedFilter cv::ximgproc::createGuidedFilter(Mat guide, int radius, double eps, double scale = 1.0)
         [DllImport(LIBNAME)]
-        private static extern IntPtr ximgproc_Ximgproc_createGuidedFilter_10(IntPtr guide_nativeObj, int radius, double eps);
+        private static extern IntPtr ximgproc_Ximgproc_createGuidedFilter_10(IntPtr guide_nativeObj, int radius, double eps, double scale);
+        [DllImport(LIBNAME)]
+        private static extern IntPtr ximgproc_Ximgproc_createGuidedFilter_11(IntPtr guide_nativeObj, int radius, double eps);
 
-        // C++:  void cv::ximgproc::guidedFilter(Mat guide, Mat src, Mat& dst, int radius, double eps, int dDepth = -1)
+        // C++:  void cv::ximgproc::guidedFilter(Mat guide, Mat src, Mat& dst, int radius, double eps, int dDepth = -1, double scale = 1.0)
         [DllImport(LIBNAME)]
-        private static extern void ximgproc_Ximgproc_guidedFilter_10(IntPtr guide_nativeObj, IntPtr src_nativeObj, IntPtr dst_nativeObj, int radius, double eps, int dDepth);
+        private static extern void ximgproc_Ximgproc_guidedFilter_10(IntPtr guide_nativeObj, IntPtr src_nativeObj, IntPtr dst_nativeObj, int radius, double eps, int dDepth, double scale);
         [DllImport(LIBNAME)]
-        private static extern void ximgproc_Ximgproc_guidedFilter_11(IntPtr guide_nativeObj, IntPtr src_nativeObj, IntPtr dst_nativeObj, int radius, double eps);
+        private static extern void ximgproc_Ximgproc_guidedFilter_11(IntPtr guide_nativeObj, IntPtr src_nativeObj, IntPtr dst_nativeObj, int radius, double eps, int dDepth);
+        [DllImport(LIBNAME)]
+        private static extern void ximgproc_Ximgproc_guidedFilter_12(IntPtr guide_nativeObj, IntPtr src_nativeObj, IntPtr dst_nativeObj, int radius, double eps);
 
         // C++:  Ptr_AdaptiveManifoldFilter cv::ximgproc::createAMFilter(double sigma_s, double sigma_r, bool adjust_outliers = false)
         [DllImport(LIBNAME)]
@@ -4001,6 +4572,16 @@ namespace OpenCVForUnity.XimgprocModule
         [DllImport(LIBNAME)]
         private static extern IntPtr ximgproc_Ximgproc_createFastLineDetector_16();
 
+        // C++:  void cv::ximgproc::findEllipses(Mat image, Mat& ellipses, float scoreThreshold = 0.7f, float reliabilityThreshold = 0.5f, float centerDistanceThreshold = 0.05f)
+        [DllImport(LIBNAME)]
+        private static extern void ximgproc_Ximgproc_findEllipses_10(IntPtr image_nativeObj, IntPtr ellipses_nativeObj, float scoreThreshold, float reliabilityThreshold, float centerDistanceThreshold);
+        [DllImport(LIBNAME)]
+        private static extern void ximgproc_Ximgproc_findEllipses_11(IntPtr image_nativeObj, IntPtr ellipses_nativeObj, float scoreThreshold, float reliabilityThreshold);
+        [DllImport(LIBNAME)]
+        private static extern void ximgproc_Ximgproc_findEllipses_12(IntPtr image_nativeObj, IntPtr ellipses_nativeObj, float scoreThreshold);
+        [DllImport(LIBNAME)]
+        private static extern void ximgproc_Ximgproc_findEllipses_13(IntPtr image_nativeObj, IntPtr ellipses_nativeObj);
+
         // C++:  void cv::ximgproc::fourierDescriptor(Mat src, Mat& dst, int nbElt = -1, int nbFD = -1)
         [DllImport(LIBNAME)]
         private static extern void ximgproc_Ximgproc_fourierDescriptor_10(IntPtr src_nativeObj, IntPtr dst_nativeObj, int nbElt, int nbFD);
@@ -4038,6 +4619,28 @@ namespace OpenCVForUnity.XimgprocModule
         // C++:  void cv::ximgproc::PeiLinNormalization(Mat I, Mat& T)
         [DllImport(LIBNAME)]
         private static extern void ximgproc_Ximgproc_PeiLinNormalization_10(IntPtr I_nativeObj, IntPtr T_nativeObj);
+
+        // C++:  void cv::ximgproc::RadonTransform(Mat src, Mat& dst, double theta = 1, double start_angle = 0, double end_angle = 180, bool crop = false, bool norm = false)
+        [DllImport(LIBNAME)]
+        private static extern void ximgproc_Ximgproc_RadonTransform_10(IntPtr src_nativeObj, IntPtr dst_nativeObj, double theta, double start_angle, double end_angle, [MarshalAs(UnmanagedType.U1)] bool crop, [MarshalAs(UnmanagedType.U1)] bool norm);
+        [DllImport(LIBNAME)]
+        private static extern void ximgproc_Ximgproc_RadonTransform_11(IntPtr src_nativeObj, IntPtr dst_nativeObj, double theta, double start_angle, double end_angle, [MarshalAs(UnmanagedType.U1)] bool crop);
+        [DllImport(LIBNAME)]
+        private static extern void ximgproc_Ximgproc_RadonTransform_12(IntPtr src_nativeObj, IntPtr dst_nativeObj, double theta, double start_angle, double end_angle);
+        [DllImport(LIBNAME)]
+        private static extern void ximgproc_Ximgproc_RadonTransform_13(IntPtr src_nativeObj, IntPtr dst_nativeObj, double theta, double start_angle);
+        [DllImport(LIBNAME)]
+        private static extern void ximgproc_Ximgproc_RadonTransform_14(IntPtr src_nativeObj, IntPtr dst_nativeObj, double theta);
+        [DllImport(LIBNAME)]
+        private static extern void ximgproc_Ximgproc_RadonTransform_15(IntPtr src_nativeObj, IntPtr dst_nativeObj);
+
+        // C++:  Ptr_ScanSegment cv::ximgproc::createScanSegment(int image_width, int image_height, int num_superpixels, int slices = 8, bool merge_small = true)
+        [DllImport(LIBNAME)]
+        private static extern IntPtr ximgproc_Ximgproc_createScanSegment_10(int image_width, int image_height, int num_superpixels, int slices, [MarshalAs(UnmanagedType.U1)] bool merge_small);
+        [DllImport(LIBNAME)]
+        private static extern IntPtr ximgproc_Ximgproc_createScanSegment_11(int image_width, int image_height, int num_superpixels, int slices);
+        [DllImport(LIBNAME)]
+        private static extern IntPtr ximgproc_Ximgproc_createScanSegment_12(int image_width, int image_height, int num_superpixels);
 
         // C++:  Ptr_SuperpixelSEEDS cv::ximgproc::createSuperpixelSEEDS(int image_width, int image_height, int image_channels, int num_superpixels, int num_levels, int prior = 2, int histogram_bins = 5, bool double_step = false)
         [DllImport(LIBNAME)]

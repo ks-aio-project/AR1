@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class GuidedFilter
     /**
-     * Interface for realizations of Guided Filter.
-     *
-     * For more details about this filter see CITE: Kaiming10 .
+     @brief Interface for realizations of (Fast) Guided Filter.
+     
+     For more details about this filter see @cite Kaiming10 @cite Kaiming15 .
      */
 
     public class GuidedFilter : Algorithm
@@ -50,14 +50,14 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Apply Guided Filter to the filtering image.
-         *
-         *     param src filtering image with any numbers of channels.
-         *
-         *     param dst output image.
-         *
-         *     param dDepth optional depth of the output image. dDepth can be set to -1, which will be equivalent
-         *     to src.depth().
+         @brief Apply (Fast) Guided Filter to the filtering image.
+         
+             @param src filtering image with any numbers of channels.
+         
+             @param dst output image.
+         
+             @param dDepth optional depth of the output image. dDepth can be set to -1, which will be equivalent
+             to src.depth().
          */
         public void filter(Mat src, Mat dst, int dDepth)
         {
@@ -71,13 +71,14 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Apply Guided Filter to the filtering image.
-         *
-         *     param src filtering image with any numbers of channels.
-         *
-         *     param dst output image.
-         *
-         *     to src.depth().
+         @brief Apply (Fast) Guided Filter to the filtering image.
+         
+             @param src filtering image with any numbers of channels.
+         
+             @param dst output image.
+         
+             @param dDepth optional depth of the output image. dDepth can be set to -1, which will be equivalent
+             to src.depth().
          */
         public void filter(Mat src, Mat dst)
         {

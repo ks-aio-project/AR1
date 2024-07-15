@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.PlotModule
 
     // C++: class Plot2d
     /**
-     *  plot Plot function for Mat data
+     @defgroup plot Plot function for Mat data
      */
 
     public class Plot2d : Algorithm
@@ -118,10 +118,10 @@ namespace OpenCVForUnity.PlotModule
         //
 
         /**
-         * Switches data visualization mode
-         *
-         * param _needPlotLine if true then neighbour plot points will be connected by lines.
-         * In other case data will be plotted as a set of standalone points.
+         * @brief Switches data visualization mode
+                      *
+                      * @param _needPlotLine if true then neighbour plot points will be connected by lines.
+                      * In other case data will be plotted as a set of standalone points.
          */
         public void setNeedPlotLine(bool _needPlotLine)
         {
@@ -278,9 +278,9 @@ namespace OpenCVForUnity.PlotModule
         //
 
         /**
-         * Sets the index of a point which coordinates will be printed on the top left corner of the plot (if ShowText flag is true).
-         *
-         * param pointIdx index of the required point in data array.
+         * @brief Sets the index of a point which coordinates will be printed on the top left corner of the plot (if ShowText flag is true).
+                      *
+                      * @param pointIdx index of the required point in data array.
          */
         public void setPointIdxToPrint(int pointIdx)
         {
@@ -312,11 +312,10 @@ namespace OpenCVForUnity.PlotModule
         //
 
         /**
-         * Creates Plot2d object
-         *
-         * param data \(1xN\) or \(Nx1\) matrix containing \(Y\) values of points to plot. \(X\) values
-         * will be equal to indexes of correspondind elements in data matrix.
-         * return automatically generated
+         * @brief Creates Plot2d object
+                      *
+                      * @param data \f$1xN\f$ or \f$Nx1\f$ matrix containing \f$Y\f$ values of points to plot. \f$X\f$ values
+                      * will be equal to indexes of correspondind elements in data matrix.
          */
         public static Plot2d create(Mat data)
         {
@@ -333,11 +332,10 @@ namespace OpenCVForUnity.PlotModule
         //
 
         /**
-         * Creates Plot2d object
-         *
-         * param dataX \(1xN\) or \(Nx1\) matrix \(X\) values of points to plot.
-         * param dataY \(1xN\) or \(Nx1\) matrix containing \(Y\) values of points to plot.
-         * return automatically generated
+         * @brief Creates Plot2d object
+                      *
+                      * @param dataX \f$1xN\f$ or \f$Nx1\f$ matrix \f$X\f$ values of points to plot.
+                      * @param dataY \f$1xN\f$ or \f$Nx1\f$ matrix containing \f$Y\f$ values of points to plot.
          */
         public static Plot2d create(Mat dataX, Mat dataY)
         {

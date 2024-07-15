@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.XphotoModule
 
     // C++: class WhiteBalancer
     /**
-     * The base class for auto white balance algorithms.
+     @brief The base class for auto white balance algorithms.
      */
 
     public class WhiteBalancer : Algorithm
@@ -48,11 +48,11 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * Applies white balancing to the input image
-         *
-         *     param src Input image
-         *     param dst White balancing result
-         *     SEE: cvtColor, equalizeHist
+         @brief Applies white balancing to the input image
+         
+             @param src Input image
+             @param dst White balancing result
+             @sa cvtColor, equalizeHist
          */
         public void balanceWhite(Mat src, Mat dst)
         {

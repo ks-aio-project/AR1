@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.Features2dModule
 
     // C++: class Feature2D
     /**
-     * Abstract base class for 2D image feature detectors and descriptor extractors
+     @brief Abstract base class for 2D image feature detectors and descriptor extractors
      */
 
     public class Feature2D : Algorithm
@@ -48,13 +48,13 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Detects keypoints in an image (first variant) or image set (second variant).
-         *
-         *     param image Image.
-         *     param keypoints The detected keypoints. In the second variant of the method keypoints[i] is a set
-         *     of keypoints detected in images[i] .
-         *     param mask Mask specifying where to look for keypoints (optional). It must be a 8-bit integer
-         *     matrix with non-zero values in the region of interest.
+         @brief Detects keypoints in an image (first variant) or image set (second variant).
+         
+             @param image Image.
+             @param keypoints The detected keypoints. In the second variant of the method keypoints[i] is a set
+             of keypoints detected in images[i] .
+             @param mask Mask specifying where to look for keypoints (optional). It must be a 8-bit integer
+             matrix with non-zero values in the region of interest.
          */
         public void detect(Mat image, MatOfKeyPoint keypoints, Mat mask)
         {
@@ -69,12 +69,13 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * Detects keypoints in an image (first variant) or image set (second variant).
-         *
-         *     param image Image.
-         *     param keypoints The detected keypoints. In the second variant of the method keypoints[i] is a set
-         *     of keypoints detected in images[i] .
-         *     matrix with non-zero values in the region of interest.
+         @brief Detects keypoints in an image (first variant) or image set (second variant).
+         
+             @param image Image.
+             @param keypoints The detected keypoints. In the second variant of the method keypoints[i] is a set
+             of keypoints detected in images[i] .
+             @param mask Mask specifying where to look for keypoints (optional). It must be a 8-bit integer
+             matrix with non-zero values in the region of interest.
          */
         public void detect(Mat image, MatOfKeyPoint keypoints)
         {
@@ -93,12 +94,12 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         *
-         *     param images Image set.
-         *     param keypoints The detected keypoints. In the second variant of the method keypoints[i] is a set
-         *     of keypoints detected in images[i] .
-         *     param masks Masks for each input image specifying where to look for keypoints (optional).
-         *     masks[i] is a mask for images[i].
+         @overload
+             @param images Image set.
+             @param keypoints The detected keypoints. In the second variant of the method keypoints[i] is a set
+             of keypoints detected in images[i] .
+             @param masks Masks for each input image specifying where to look for keypoints (optional).
+             masks[i] is a mask for images[i].
          */
         public void detect(List<Mat> images, List<MatOfKeyPoint> keypoints, List<Mat> masks)
         {
@@ -113,11 +114,12 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         *
-         *     param images Image set.
-         *     param keypoints The detected keypoints. In the second variant of the method keypoints[i] is a set
-         *     of keypoints detected in images[i] .
-         *     masks[i] is a mask for images[i].
+         @overload
+             @param images Image set.
+             @param keypoints The detected keypoints. In the second variant of the method keypoints[i] is a set
+             of keypoints detected in images[i] .
+             @param masks Masks for each input image specifying where to look for keypoints (optional).
+             masks[i] is a mask for images[i].
          */
         public void detect(List<Mat> images, List<MatOfKeyPoint> keypoints)
         {
@@ -136,16 +138,16 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Computes the descriptors for a set of keypoints detected in an image (first variant) or image set
-         *     (second variant).
-         *
-         *     param image Image.
-         *     param keypoints Input collection of keypoints. Keypoints for which a descriptor cannot be
-         *     computed are removed. Sometimes new keypoints can be added, for example: SIFT duplicates keypoint
-         *     with several dominant orientations (for each orientation).
-         *     param descriptors Computed descriptors. In the second variant of the method descriptors[i] are
-         *     descriptors computed for a keypoints[i]. Row j is the keypoints (or keypoints[i]) is the
-         *     descriptor for keypoint j-th keypoint.
+         @brief Computes the descriptors for a set of keypoints detected in an image (first variant) or image set
+             (second variant).
+         
+             @param image Image.
+             @param keypoints Input collection of keypoints. Keypoints for which a descriptor cannot be
+             computed are removed. Sometimes new keypoints can be added, for example: SIFT duplicates keypoint
+             with several dominant orientations (for each orientation).
+             @param descriptors Computed descriptors. In the second variant of the method descriptors[i] are
+             descriptors computed for a keypoints[i]. Row j is the keypoints (or keypoints[i]) is the
+             descriptor for keypoint j-th keypoint.
          */
         public void compute(Mat image, MatOfKeyPoint keypoints, Mat descriptors)
         {
@@ -165,15 +167,15 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         *
-         *
-         *     param images Image set.
-         *     param keypoints Input collection of keypoints. Keypoints for which a descriptor cannot be
-         *     computed are removed. Sometimes new keypoints can be added, for example: SIFT duplicates keypoint
-         *     with several dominant orientations (for each orientation).
-         *     param descriptors Computed descriptors. In the second variant of the method descriptors[i] are
-         *     descriptors computed for a keypoints[i]. Row j is the keypoints (or keypoints[i]) is the
-         *     descriptor for keypoint j-th keypoint.
+         @overload
+         
+             @param images Image set.
+             @param keypoints Input collection of keypoints. Keypoints for which a descriptor cannot be
+             computed are removed. Sometimes new keypoints can be added, for example: SIFT duplicates keypoint
+             with several dominant orientations (for each orientation).
+             @param descriptors Computed descriptors. In the second variant of the method descriptors[i] are
+             descriptors computed for a keypoints[i]. Row j is the keypoints (or keypoints[i]) is the
+             descriptor for keypoint j-th keypoint.
          */
         public void compute(List<Mat> images, List<MatOfKeyPoint> keypoints, List<Mat> descriptors)
         {
@@ -196,12 +198,7 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Detects keypoints and computes the descriptors
-         * param image automatically generated
-         * param mask automatically generated
-         * param keypoints automatically generated
-         * param descriptors automatically generated
-         * param useProvidedKeypoints automatically generated
+         Detects keypoints and computes the descriptors
          */
         public void detectAndCompute(Mat image, Mat mask, MatOfKeyPoint keypoints, Mat descriptors, bool useProvidedKeypoints)
         {
@@ -217,11 +214,7 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * Detects keypoints and computes the descriptors
-         * param image automatically generated
-         * param mask automatically generated
-         * param keypoints automatically generated
-         * param descriptors automatically generated
+         Detects keypoints and computes the descriptors
          */
         public void detectAndCompute(Mat image, Mat mask, MatOfKeyPoint keypoints, Mat descriptors)
         {
@@ -343,10 +336,10 @@ namespace OpenCVForUnity.Features2dModule
 
 
         //
-        // C++:  void cv::Feature2D::write(Ptr_FileStorage fs, String name = String())
+        // C++:  void cv::Feature2D::write(FileStorage fs, String name)
         //
 
-        // Unknown type 'Ptr_FileStorage' (I), skipping the function
+        // Unknown type 'FileStorage' (I), skipping the function
 
 
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR

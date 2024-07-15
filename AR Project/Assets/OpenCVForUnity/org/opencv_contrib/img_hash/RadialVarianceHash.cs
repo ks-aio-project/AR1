@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.Img_hashModule
 
     // C++: class RadialVarianceHash
     /**
-     * Image hash based on Radon transform.
-     *
-     * See CITE: tang2012perceptual for details.
+     @brief Image hash based on Radon transform.
+     
+     See @cite tang2012perceptual for details.
      */
 
     public class RadialVarianceHash : ImgHashBase

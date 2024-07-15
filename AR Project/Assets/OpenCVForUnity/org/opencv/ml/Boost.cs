@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.MlModule
 
     // C++: class Boost
     /**
-     * Boosted tree classifier derived from DTrees
-     *
-     * SEE: REF: ml_intro_boost
+     @brief Boosted tree classifier derived from DTrees
+     
+     @sa @ref ml_intro_boost
      */
 
     public class Boost : DTrees
@@ -55,8 +55,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setBoostType
-         * return automatically generated
+         @see setBoostType
          */
         public int getBoostType()
         {
@@ -73,8 +72,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getBoostType SEE: getBoostType
-         * param val automatically generated
+         @copybrief getBoostType @see getBoostType
          */
         public void setBoostType(int val)
         {
@@ -91,8 +89,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setWeakCount
-         * return automatically generated
+         @see setWeakCount
          */
         public int getWeakCount()
         {
@@ -109,8 +106,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getWeakCount SEE: getWeakCount
-         * param val automatically generated
+         @copybrief getWeakCount @see getWeakCount
          */
         public void setWeakCount(int val)
         {
@@ -127,8 +123,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setWeightTrimRate
-         * return automatically generated
+         @see setWeightTrimRate
          */
         public double getWeightTrimRate()
         {
@@ -145,8 +140,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getWeightTrimRate SEE: getWeightTrimRate
-         * param val automatically generated
+         @copybrief getWeightTrimRate @see getWeightTrimRate
          */
         public void setWeightTrimRate(double val)
         {
@@ -163,9 +157,8 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Creates the empty model.
-         * Use StatModel::train to train the model, Algorithm::load&lt;Boost&gt;(filename) to load the pre-trained model.
-         * return automatically generated
+         Creates the empty model.
+         Use StatModel::train to train the model, Algorithm::load&lt;Boost&gt;(filename) to load the pre-trained model.
          */
         public static new Boost create()
         {
@@ -182,15 +175,14 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Loads and creates a serialized Boost from a file
-         *
-         * Use Boost::save to serialize and store an RTree to disk.
-         * Load the Boost from this file again, by calling this function with the path to the file.
-         * Optionally specify the node for the file containing the classifier
-         *
-         * param filepath path to serialized Boost
-         * param nodeName name of node containing the classifier
-         * return automatically generated
+         @brief Loads and creates a serialized Boost from a file
+              *
+              * Use Boost::save to serialize and store an RTree to disk.
+              * Load the Boost from this file again, by calling this function with the path to the file.
+              * Optionally specify the node for the file containing the classifier
+              *
+              * @param filepath path to serialized Boost
+              * @param nodeName name of node containing the classifier
          */
         public static new Boost load(string filepath, string nodeName)
         {
@@ -202,14 +194,14 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Loads and creates a serialized Boost from a file
-         *
-         * Use Boost::save to serialize and store an RTree to disk.
-         * Load the Boost from this file again, by calling this function with the path to the file.
-         * Optionally specify the node for the file containing the classifier
-         *
-         * param filepath path to serialized Boost
-         * return automatically generated
+         @brief Loads and creates a serialized Boost from a file
+              *
+              * Use Boost::save to serialize and store an RTree to disk.
+              * Load the Boost from this file again, by calling this function with the path to the file.
+              * Optionally specify the node for the file containing the classifier
+              *
+              * @param filepath path to serialized Boost
+              * @param nodeName name of node containing the classifier
          */
         public static new Boost load(string filepath)
         {

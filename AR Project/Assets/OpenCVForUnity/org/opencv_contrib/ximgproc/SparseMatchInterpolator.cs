@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,8 +10,8 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class SparseMatchInterpolator
     /**
-     * Main interface for all filters, that take sparse matches as an
-     * input and produce a dense per-pixel matching (optical flow) as an output.
+     @brief Main interface for all filters, that take sparse matches as an
+     input and produce a dense per-pixel matching (optical flow) as an output.
      */
 
     public class SparseMatchInterpolator : Algorithm
@@ -49,19 +49,19 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Interpolate input sparse matches.
-         *
-         *     param from_image first of the two matched images, 8-bit single-channel or three-channel.
-         *
-         *     param from_points points of the from_image for which there are correspondences in the
-         *     to_image (Point2f vector or Mat of depth CV_32F)
-         *
-         *     param to_image second of the two matched images, 8-bit single-channel or three-channel.
-         *
-         *     param to_points points in the to_image corresponding to from_points
-         *     (Point2f vector or Mat of depth CV_32F)
-         *
-         *     param dense_flow output dense matching (two-channel CV_32F image)
+         @brief Interpolate input sparse matches.
+         
+             @param from_image first of the two matched images, 8-bit single-channel or three-channel.
+         
+             @param from_points points of the from_image for which there are correspondences in the
+             to_image (Point2f vector or Mat of depth CV_32F)
+         
+             @param to_image second of the two matched images, 8-bit single-channel or three-channel.
+         
+             @param to_points points in the to_image corresponding to from_points
+             (Point2f vector or Mat of depth CV_32F)
+         
+             @param dense_flow output dense matching (two-channel CV_32F image)
          */
         public void interpolate(Mat from_image, Mat from_points, Mat to_image, Mat to_points, Mat dense_flow)
         {

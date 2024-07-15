@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,15 +10,15 @@ namespace OpenCVForUnity.Features2dModule
 {
     // C++: class BOWImgDescriptorExtractor
     /**
-     * Class to compute an image descriptor using the *bag of visual words*.
-     *
-     * Such a computation consists of the following steps:
-     *
-     * 1.  Compute descriptors for a given image and its keypoints set.
-     * 2.  Find the nearest visual words from the vocabulary for each keypoint descriptor.
-     * 3.  Compute the bag-of-words image descriptor as is a normalized histogram of vocabulary words
-     * encountered in the image. The i-th bin of the histogram is a frequency of i-th word of the
-     * vocabulary in the given image.
+     @brief Class to compute an image descriptor using the *bag of visual words*.
+     
+     Such a computation consists of the following steps:
+     
+     1.  Compute descriptors for a given image and its keypoints set.
+     2.  Find the nearest visual words from the vocabulary for each keypoint descriptor.
+     3.  Compute the bag-of-words image descriptor as is a normalized histogram of vocabulary words
+     encountered in the image. The i-th bin of the histogram is a frequency of i-th word of the
+     vocabulary in the given image.
      */
 
     public class BOWImgDescriptorExtractor : DisposableOpenCVObject
@@ -55,10 +55,26 @@ namespace OpenCVForUnity.Features2dModule
         public static BOWImgDescriptorExtractor __fromPtr__(IntPtr addr) { return new BOWImgDescriptorExtractor(addr); }
 
         //
-        // C++:   cv::BOWImgDescriptorExtractor::BOWImgDescriptorExtractor(Ptr_DescriptorExtractor dextractor, Ptr_DescriptorMatcher dmatcher)
+        // C++:   cv::BOWImgDescriptorExtractor::BOWImgDescriptorExtractor(Ptr_Feature2D dextractor, Ptr_DescriptorMatcher dmatcher)
         //
 
-        // Unknown type 'Ptr_DescriptorExtractor' (I), skipping the function
+        /**
+         @brief The constructor.
+         
+             @param dextractor Descriptor extractor that is used to compute descriptors for an input image and
+             its keypoints.
+             @param dmatcher Descriptor matcher that is used to find the nearest word of the trained vocabulary
+             for each keypoint descriptor of the image.
+         */
+        public BOWImgDescriptorExtractor(Feature2D dextractor, DescriptorMatcher dmatcher)
+        {
+            if (dextractor != null) dextractor.ThrowIfDisposed();
+            if (dmatcher != null) dmatcher.ThrowIfDisposed();
+
+            nativeObj = DisposableObject.ThrowIfNullIntPtr(features2d_BOWImgDescriptorExtractor_BOWImgDescriptorExtractor_10(dextractor.getNativeObjAddr(), dmatcher.getNativeObjAddr()));
+
+
+        }
 
 
         //
@@ -66,10 +82,10 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Sets a visual vocabulary.
-         *
-         *     param vocabulary Vocabulary (can be trained using the inheritor of BOWTrainer ). Each row of the
-         *     vocabulary is a visual word (cluster center).
+         @brief Sets a visual vocabulary.
+         
+             @param vocabulary Vocabulary (can be trained using the inheritor of BOWTrainer ). Each row of the
+             vocabulary is a visual word (cluster center).
          */
         public void setVocabulary(Mat vocabulary)
         {
@@ -87,8 +103,7 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Returns the set vocabulary.
-         * return automatically generated
+         @brief Returns the set vocabulary.
          */
         public Mat getVocabulary()
         {
@@ -105,12 +120,12 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         *
-         *     param imgDescriptor Computed output image descriptor.
-         *     pointIdxsOfClusters[i] are keypoint indices that belong to the i -th cluster (word of vocabulary)
-         *     returned if it is non-zero.
-         * param image automatically generated
-         * param keypoints automatically generated
+         @overload
+             @param keypointDescriptors Computed descriptors to match with vocabulary.
+             @param imgDescriptor Computed output image descriptor.
+             @param pointIdxsOfClusters Indices of keypoints that belong to the cluster. This means that
+             pointIdxsOfClusters[i] are keypoint indices that belong to the i -th cluster (word of vocabulary)
+             returned if it is non-zero.
          */
         public void compute(Mat image, MatOfKeyPoint keypoints, Mat imgDescriptor)
         {
@@ -130,8 +145,7 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Returns an image descriptor size if the vocabulary is set. Otherwise, it returns 0.
-         * return automatically generated
+         @brief Returns an image descriptor size if the vocabulary is set. Otherwise, it returns 0.
          */
         public int descriptorSize()
         {
@@ -148,8 +162,7 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Returns an image descriptor type.
-         * return automatically generated
+         @brief Returns an image descriptor type.
          */
         public int descriptorType()
         {
@@ -168,6 +181,10 @@ namespace OpenCVForUnity.Features2dModule
 #endif
 
 
+
+        // C++:   cv::BOWImgDescriptorExtractor::BOWImgDescriptorExtractor(Ptr_Feature2D dextractor, Ptr_DescriptorMatcher dmatcher)
+        [DllImport(LIBNAME)]
+        private static extern IntPtr features2d_BOWImgDescriptorExtractor_BOWImgDescriptorExtractor_10(IntPtr dextractor_nativeObj, IntPtr dmatcher_nativeObj);
 
         // C++:  void cv::BOWImgDescriptorExtractor::setVocabulary(Mat vocabulary)
         [DllImport(LIBNAME)]

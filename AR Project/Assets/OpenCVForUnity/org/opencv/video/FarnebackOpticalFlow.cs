@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.VideoModule
 
     // C++: class FarnebackOpticalFlow
     /**
-     * Class computing a dense optical flow using the Gunnar Farneback's algorithm.
+     @brief Class computing a dense optical flow using the Gunnar Farneback's algorithm.
      */
 
     public class FarnebackOpticalFlow : DenseOpticalFlow

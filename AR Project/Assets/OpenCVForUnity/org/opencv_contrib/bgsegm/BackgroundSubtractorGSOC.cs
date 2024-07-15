@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using OpenCVForUnity.VideoModule;
@@ -11,9 +11,9 @@ namespace OpenCVForUnity.BgsegmModule
 
     // C++: class BackgroundSubtractorGSOC
     /**
-     * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
-     *
-     * This algorithm demonstrates better performance on CDNET 2014 dataset compared to other algorithms in OpenCV.
+     @brief Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+     
+     This algorithm demonstrates better performance on CDNET 2014 dataset compared to other algorithms in OpenCV.
      */
 
     public class BackgroundSubtractorGSOC : BackgroundSubtractor

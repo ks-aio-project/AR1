@@ -1,4 +1,6 @@
-﻿using System;
+using OpenCVForUnity.UnityUtils;
+using OpenCVForUnity.UtilsModule;
+using System;
 using System.Collections.Generic;
 
 namespace OpenCVForUnity.CoreModule
@@ -60,7 +62,22 @@ namespace OpenCVForUnity.CoreModule
                 return;
             int num = a.Length / _channels;
             alloc(num);
-            put(0, 0, a); //TODO: check ret val!
+
+            if (isContinuous())
+            {
+                MatUtils.copyToMat<int>(a, this);
+            }
+            else
+            {
+                if (dims() <= 2)
+                {
+                    MatUtils.copyToMat<int>(a, this);
+                }
+                else
+                {
+                    put(0, 0, a); //TODO: check ret val!
+                }
+            }
         }
 
         public int[] toArray()
@@ -71,7 +88,22 @@ namespace OpenCVForUnity.CoreModule
             int[] a = new int[num * _channels];
             if (num == 0)
                 return a;
-            get(0, 0, a); //TODO: check ret val!
+
+            if (isContinuous())
+            {
+                MatUtils.copyFromMat<int>(this, a);
+            }
+            else
+            {
+                if (dims() <= 2)
+                {
+                    MatUtils.copyFromMat<int>(this, a);
+                }
+                else
+                {
+                    get(0, 0, a); //TODO: check ret val!
+                }
+            }
             return a;
         }
 
@@ -79,20 +111,26 @@ namespace OpenCVForUnity.CoreModule
         {
             if (lb == null || lb.Count == 0)
                 return;
-            int[] ab = lb.ToArray();//TODO:@check
-            int[] a = new int[ab.Length];
-            for (int i = 0; i < ab.Length; i++)
-                a[i] = ab[i];
-            fromArray(a);
+
+            int num = lb.Count / _channels;
+            alloc(num);
+
+            Converters.List_int_to_Mat(lb, this, num, CvType.CV_32SC4);
         }
 
         public List<int> toList()
         {
-            int[] a = toArray();
-            int[] ab = new int[a.Length];//TODO:@check
-            for (int i = 0; i < a.Length; i++)
-                ab[i] = a[i];
-            return new List<int>(ab);
+            int num = checkVector(_channels, _depth);
+            if (num < 0)
+                throw new CvException("Native Mat has unexpected type or size: " + ToString());
+
+            List<int> a = new List<int>(num);
+            for (int i = 0; i < num; i++)
+            {
+                a.Add(0);
+            }
+            Converters.Mat_to_List_int(this, a, num, CvType.CV_32SC4);
+            return a;
         }
     }
 }

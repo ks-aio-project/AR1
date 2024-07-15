@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,15 +10,15 @@ namespace OpenCVForUnity.VideoModule
 
     // C++: class VariationalRefinement
     /**
-     * Variational optical flow refinement
-     *
-     * This class implements variational refinement of the input flow field, i.e.
-     * it uses input flow to initialize the minimization of the following functional:
-     * \(E(U) = \int_{\Omega} \delta \Psi(E_I) + \gamma \Psi(E_G) + \alpha \Psi(E_S) \),
-     * where \(E_I,E_G,E_S\) are color constancy, gradient constancy and smoothness terms
-     * respectively. \(\Psi(s^2)=\sqrt{s^2+\epsilon^2}\) is a robust penalizer to limit the
-     * influence of outliers. A complete formulation and a description of the minimization
-     * procedure can be found in CITE: Brox2004
+     @brief Variational optical flow refinement
+     
+     This class implements variational refinement of the input flow field, i.e.
+     it uses input flow to initialize the minimization of the following functional:
+     \f$$E(U) = \int_{\Omega} \delta \Psi(E_I) + \gamma \Psi(E_G) + \alpha \Psi(E_S) \f$$,
+     where \f$$E_I,E_G,E_S\f$$ are color constancy, gradient constancy and smoothness terms
+     respectively. \f$$\Psi(s^2)=\sqrt{s^2+\epsilon^2}\f$$ is a robust penalizer to limit the
+     influence of outliers. A complete formulation and a description of the minimization
+     procedure can be found in @cite Brox2004
      */
 
     public class VariationalRefinement : DenseOpticalFlow
@@ -56,12 +56,8 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * REF: calc function overload to handle separate horizontal (u) and vertical (v) flow components
-         * (to avoid extra splits/merges)
-         * param I0 automatically generated
-         * param I1 automatically generated
-         * param flow_u automatically generated
-         * param flow_v automatically generated
+         @brief @ref calc function overload to handle separate horizontal (u) and vertical (v) flow components
+         (to avoid extra splits/merges)
          */
         public void calcUV(Mat I0, Mat I1, Mat flow_u, Mat flow_v)
         {
@@ -82,9 +78,8 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Number of outer (fixed-point) iterations in the minimization procedure.
-         * SEE: setFixedPointIterations
-         * return automatically generated
+         @brief Number of outer (fixed-point) iterations in the minimization procedure.
+         @see setFixedPointIterations
          */
         public int getFixedPointIterations()
         {
@@ -101,8 +96,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getFixedPointIterations SEE: getFixedPointIterations
-         * param val automatically generated
+         @copybrief getFixedPointIterations @see getFixedPointIterations
          */
         public void setFixedPointIterations(int val)
         {
@@ -119,10 +113,9 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Number of inner successive over-relaxation (SOR) iterations
-         *         in the minimization procedure to solve the respective linear system.
-         * SEE: setSorIterations
-         * return automatically generated
+         @brief Number of inner successive over-relaxation (SOR) iterations
+                 in the minimization procedure to solve the respective linear system.
+         @see setSorIterations
          */
         public int getSorIterations()
         {
@@ -139,8 +132,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getSorIterations SEE: getSorIterations
-         * param val automatically generated
+         @copybrief getSorIterations @see getSorIterations
          */
         public void setSorIterations(int val)
         {
@@ -157,9 +149,8 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Relaxation factor in SOR
-         * SEE: setOmega
-         * return automatically generated
+         @brief Relaxation factor in SOR
+         @see setOmega
          */
         public float getOmega()
         {
@@ -176,8 +167,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getOmega SEE: getOmega
-         * param val automatically generated
+         @copybrief getOmega @see getOmega
          */
         public void setOmega(float val)
         {
@@ -194,9 +184,8 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Weight of the smoothness term
-         * SEE: setAlpha
-         * return automatically generated
+         @brief Weight of the smoothness term
+         @see setAlpha
          */
         public float getAlpha()
         {
@@ -213,8 +202,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getAlpha SEE: getAlpha
-         * param val automatically generated
+         @copybrief getAlpha @see getAlpha
          */
         public void setAlpha(float val)
         {
@@ -231,9 +219,8 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Weight of the color constancy term
-         * SEE: setDelta
-         * return automatically generated
+         @brief Weight of the color constancy term
+         @see setDelta
          */
         public float getDelta()
         {
@@ -250,8 +237,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getDelta SEE: getDelta
-         * param val automatically generated
+         @copybrief getDelta @see getDelta
          */
         public void setDelta(float val)
         {
@@ -268,9 +254,8 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Weight of the gradient constancy term
-         * SEE: setGamma
-         * return automatically generated
+         @brief Weight of the gradient constancy term
+         @see setGamma
          */
         public float getGamma()
         {
@@ -287,8 +272,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *  getGamma SEE: getGamma
-         * param val automatically generated
+         @copybrief getGamma @see getGamma
          */
         public void setGamma(float val)
         {
@@ -301,12 +285,46 @@ namespace OpenCVForUnity.VideoModule
 
 
         //
+        // C++:  float cv::VariationalRefinement::getEpsilon()
+        //
+
+        /**
+         @brief Norm value shift for robust penalizer
+         @see setEpsilon
+         */
+        public float getEpsilon()
+        {
+            ThrowIfDisposed();
+
+            return video_VariationalRefinement_getEpsilon_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::VariationalRefinement::setEpsilon(float val)
+        //
+
+        /**
+         @copybrief getEpsilon @see getEpsilon
+         */
+        public void setEpsilon(float val)
+        {
+            ThrowIfDisposed();
+
+            video_VariationalRefinement_setEpsilon_10(nativeObj, val);
+
+
+        }
+
+
+        //
         // C++: static Ptr_VariationalRefinement cv::VariationalRefinement::create()
         //
 
         /**
-         * Creates an instance of VariationalRefinement
-         * return automatically generated
+         @brief Creates an instance of VariationalRefinement
          */
         public static VariationalRefinement create()
         {
@@ -377,6 +395,14 @@ namespace OpenCVForUnity.VideoModule
         // C++:  void cv::VariationalRefinement::setGamma(float val)
         [DllImport(LIBNAME)]
         private static extern void video_VariationalRefinement_setGamma_10(IntPtr nativeObj, float val);
+
+        // C++:  float cv::VariationalRefinement::getEpsilon()
+        [DllImport(LIBNAME)]
+        private static extern float video_VariationalRefinement_getEpsilon_10(IntPtr nativeObj);
+
+        // C++:  void cv::VariationalRefinement::setEpsilon(float val)
+        [DllImport(LIBNAME)]
+        private static extern void video_VariationalRefinement_setEpsilon_10(IntPtr nativeObj, float val);
 
         // C++: static Ptr_VariationalRefinement cv::VariationalRefinement::create()
         [DllImport(LIBNAME)]

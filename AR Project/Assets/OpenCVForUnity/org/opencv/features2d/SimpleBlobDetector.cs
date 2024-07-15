@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,48 +10,36 @@ namespace OpenCVForUnity.Features2dModule
 
     // C++: class SimpleBlobDetector
     /**
-     * Class for extracting blobs from an image. :
-     *
-     * The class implements a simple algorithm for extracting blobs from an image:
-     *
-     * 1.  Convert the source image to binary images by applying thresholding with several thresholds from
-     *     minThreshold (inclusive) to maxThreshold (exclusive) with distance thresholdStep between
-     *     neighboring thresholds.
-     * 2.  Extract connected components from every binary image by findContours and calculate their
-     *     centers.
-     * 3.  Group centers from several binary images by their coordinates. Close centers form one group that
-     *     corresponds to one blob, which is controlled by the minDistBetweenBlobs parameter.
-     * 4.  From the groups, estimate final centers of blobs and their radiuses and return as locations and
-     *     sizes of keypoints.
-     *
-     * This class performs several filtrations of returned blobs. You should set filterBy\* to true/false
-     * to turn on/off corresponding filtration. Available filtrations:
-     *
-     * <ul>
-     *   <li>
-     *    <b>By color</b>. This filter compares the intensity of a binary image at the center of a blob to
-     * blobColor. If they differ, the blob is filtered out. Use blobColor = 0 to extract dark blobs
-     * and blobColor = 255 to extract light blobs.
-     *   </li>
-     *   <li>
-     *    <b>By area</b>. Extracted blobs have an area between minArea (inclusive) and maxArea (exclusive).
-     *   </li>
-     *   <li>
-     *    <b>By circularity</b>. Extracted blobs have circularity
-     * (\(\frac{4*\pi*Area}{perimeter * perimeter}\)) between minCircularity (inclusive) and
-     * maxCircularity (exclusive).
-     *   </li>
-     *   <li>
-     *    <b>By ratio of the minimum inertia to maximum inertia</b>. Extracted blobs have this ratio
-     * between minInertiaRatio (inclusive) and maxInertiaRatio (exclusive).
-     *   </li>
-     *   <li>
-     *    <b>By convexity</b>. Extracted blobs have convexity (area / area of blob convex hull) between
-     * minConvexity (inclusive) and maxConvexity (exclusive).
-     *   </li>
-     * </ul>
-     *
-     * Default values of parameters are tuned to extract dark circular blobs.
+     @brief Class for extracting blobs from an image. :
+     
+     The class implements a simple algorithm for extracting blobs from an image:
+     
+     1.  Convert the source image to binary images by applying thresholding with several thresholds from
+         minThreshold (inclusive) to maxThreshold (exclusive) with distance thresholdStep between
+         neighboring thresholds.
+     2.  Extract connected components from every binary image by findContours and calculate their
+         centers.
+     3.  Group centers from several binary images by their coordinates. Close centers form one group that
+         corresponds to one blob, which is controlled by the minDistBetweenBlobs parameter.
+     4.  From the groups, estimate final centers of blobs and their radiuses and return as locations and
+         sizes of keypoints.
+     
+     This class performs several filtrations of returned blobs. You should set filterBy\* to true/false
+     to turn on/off corresponding filtration. Available filtrations:
+     
+     -   **By color**. This filter compares the intensity of a binary image at the center of a blob to
+     blobColor. If they differ, the blob is filtered out. Use blobColor = 0 to extract dark blobs
+     and blobColor = 255 to extract light blobs.
+     -   **By area**. Extracted blobs have an area between minArea (inclusive) and maxArea (exclusive).
+     -   **By circularity**. Extracted blobs have circularity
+     (\f$$\frac{4*\pi*Area}{perimeter * perimeter}\f$$) between minCircularity (inclusive) and
+     maxCircularity (exclusive).
+     -   **By ratio of the minimum inertia to maximum inertia**. Extracted blobs have this ratio
+     between minInertiaRatio (inclusive) and maxInertiaRatio (exclusive).
+     -   **By convexity**. Extracted blobs have convexity (area / area of blob convex hull) between
+     minConvexity (inclusive) and maxConvexity (exclusive).
+     
+     Default values of parameters are tuned to extract dark circular blobs.
      */
 
     public class SimpleBlobDetector : Feature2D
@@ -108,6 +96,35 @@ namespace OpenCVForUnity.Features2dModule
 
 
         //
+        // C++:  void cv::SimpleBlobDetector::setParams(SimpleBlobDetector_Params _params)
+        //
+
+        public void setParams(SimpleBlobDetector_Params _params)
+        {
+            ThrowIfDisposed();
+            if (_params != null) _params.ThrowIfDisposed();
+
+            features2d_SimpleBlobDetector_setParams_10(nativeObj, _params.nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  SimpleBlobDetector_Params cv::SimpleBlobDetector::getParams()
+        //
+
+        public SimpleBlobDetector_Params getParams()
+        {
+            ThrowIfDisposed();
+
+            return new SimpleBlobDetector_Params(DisposableObject.ThrowIfNullIntPtr(features2d_SimpleBlobDetector_getParams_10(nativeObj)));
+
+
+        }
+
+
+        //
         // C++:  String cv::SimpleBlobDetector::getDefaultName()
         //
 
@@ -117,6 +134,20 @@ namespace OpenCVForUnity.Features2dModule
 
             string retVal = Marshal.PtrToStringAnsi(DisposableObject.ThrowIfNullIntPtr(features2d_SimpleBlobDetector_getDefaultName_10(nativeObj)));
 
+            return retVal;
+        }
+
+
+        //
+        // C++:  vector_vector_Point cv::SimpleBlobDetector::getBlobContours()
+        //
+
+        public List<MatOfPoint> getBlobContours()
+        {
+            ThrowIfDisposed();
+            List<MatOfPoint> retVal = new List<MatOfPoint>();
+            Mat retValMat = new Mat(DisposableObject.ThrowIfNullIntPtr(features2d_SimpleBlobDetector_getBlobContours_10(nativeObj)));
+            Converters.Mat_to_vector_vector_Point(retValMat, retVal);
             return retVal;
         }
 
@@ -135,9 +166,21 @@ namespace OpenCVForUnity.Features2dModule
         [DllImport(LIBNAME)]
         private static extern IntPtr features2d_SimpleBlobDetector_create_11();
 
+        // C++:  void cv::SimpleBlobDetector::setParams(SimpleBlobDetector_Params _params)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_SimpleBlobDetector_setParams_10(IntPtr nativeObj, IntPtr _params_nativeObj);
+
+        // C++:  SimpleBlobDetector_Params cv::SimpleBlobDetector::getParams()
+        [DllImport(LIBNAME)]
+        private static extern IntPtr features2d_SimpleBlobDetector_getParams_10(IntPtr nativeObj);
+
         // C++:  String cv::SimpleBlobDetector::getDefaultName()
         [DllImport(LIBNAME)]
         private static extern IntPtr features2d_SimpleBlobDetector_getDefaultName_10(IntPtr nativeObj);
+
+        // C++:  vector_vector_Point cv::SimpleBlobDetector::getBlobContours()
+        [DllImport(LIBNAME)]
+        private static extern IntPtr features2d_SimpleBlobDetector_getBlobContours_10(IntPtr nativeObj);
 
         // native support for java finalize()
         [DllImport(LIBNAME)]

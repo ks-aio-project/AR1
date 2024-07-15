@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,12 +11,12 @@ namespace OpenCVForUnity.TextModule
 
     // C++: class TextDetectorCNN
     /**
-     * TextDetectorCNN class provides the functionallity of text bounding box detection.
-     *  This class is representing to find bounding boxes of text words given an input image.
-     *  This class uses OpenCV dnn module to load pre-trained model described in CITE: LiaoSBWL17.
-     *  The original repository with the modified SSD Caffe version: https://github.com/MhLiao/TextBoxes.
-     *  Model can be downloaded from [DropBox](https://www.dropbox.com/s/g8pjzv2de9gty8g/TextBoxes_icdar13.caffemodel?dl=0).
-     *  Modified .prototxt file with the model description can be found in {code opencv_contrib/modules/text/samples/textbox.prototxt}.
+     @brief TextDetectorCNN class provides the functionallity of text bounding box detection.
+      This class is representing to find bounding boxes of text words given an input image.
+      This class uses OpenCV dnn module to load pre-trained model described in @cite LiaoSBWL17.
+      The original repository with the modified SSD Caffe version: https://github.com/MhLiao/TextBoxes.
+      Model can be downloaded from [DropBox](https://www.dropbox.com/s/g8pjzv2de9gty8g/TextBoxes_icdar13.caffemodel?dl=0).
+      Modified .prototxt file with the model description can be found in `opencv_contrib/modules/text/samples/textbox.prototxt`.
      */
 
     public class TextDetectorCNN : TextDetector
@@ -54,11 +54,11 @@ namespace OpenCVForUnity.TextModule
         //
 
         /**
-         *
-         *
-         *     param inputImage an image expected to be a CV_U8C3 of any size
-         *     param Bbox a vector of Rect that will store the detected word bounding box
-         *     param confidence a vector of float that will be updated with the confidence the classifier has for the selected bounding box
+         @overload
+         
+             @param inputImage an image expected to be a CV_U8C3 of any size
+             @param Bbox a vector of Rect that will store the detected word bounding box
+             @param confidence a vector of float that will be updated with the confidence the classifier has for the selected bounding box
          */
         public override void detect(Mat inputImage, MatOfRect Bbox, MatOfFloat confidence)
         {
@@ -78,6 +78,9 @@ namespace OpenCVForUnity.TextModule
         // C++: static Ptr_TextDetectorCNN cv::text::TextDetectorCNN::create(String modelArchFilename, String modelWeightsFilename)
         //
 
+        /**
+         @overload
+         */
         public static TextDetectorCNN create(string modelArchFilename, string modelWeightsFilename)
         {
 
@@ -110,4 +113,5 @@ namespace OpenCVForUnity.TextModule
 
     }
 }
+
 #endif

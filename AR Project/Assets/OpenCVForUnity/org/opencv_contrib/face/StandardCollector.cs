@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.FaceModule
 
     // C++: class StandardCollector
     /**
-     * Default predict collector
-     *
-     * Trace minimal distance with treshhold checking (that is default behavior for most predict logic)
+     @brief Default predict collector
+     
+     Trace minimal distance with treshhold checking (that is default behavior for most predict logic)
      */
 
     public class StandardCollector : PredictCollector
@@ -50,8 +50,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * Returns label with minimal distance
-         * return automatically generated
+         @brief Returns label with minimal distance
          */
         public int getMinLabel()
         {
@@ -68,8 +67,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * Returns minimal distance value
-         * return automatically generated
+         @brief Returns minimal distance value
          */
         public double getMinDist()
         {
@@ -93,9 +91,8 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * Static constructor
-         *     param threshold set threshold
-         * return automatically generated
+         @brief Static constructor
+             @param threshold set threshold
          */
         public static StandardCollector create(double threshold)
         {
@@ -107,8 +104,8 @@ namespace OpenCVForUnity.FaceModule
         }
 
         /**
-         * Static constructor
-         * return automatically generated
+         @brief Static constructor
+             @param threshold set threshold
          */
         public static StandardCollector create()
         {

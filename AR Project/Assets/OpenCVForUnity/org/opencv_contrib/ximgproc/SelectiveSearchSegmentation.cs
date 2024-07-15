@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,8 +10,8 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class SelectiveSearchSegmentation
     /**
-     * Selective search segmentation algorithm
-     *                         The class implements the algorithm described in CITE: uijlings2013selective.
+     @brief Selective search segmentation algorithm
+                             The class implements the algorithm described in @cite uijlings2013selective.
      */
 
     public class SelectiveSearchSegmentation : Algorithm
@@ -49,8 +49,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Set a image used by switch* functions to initialize the class
-         *                                 param img The image
+         @brief Set a image used by switch* functions to initialize the class
+                                         @param img The image
          */
         public void setBaseImage(Mat img)
         {
@@ -68,9 +68,9 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Initialize the class with the 'Single stragegy' parameters describled in CITE: uijlings2013selective.
-         *                                 param k The k parameter for the graph segmentation
-         *                                 param sigma The sigma parameter for the graph segmentation
+         @brief Initialize the class with the 'Single stragegy' parameters describled in @cite uijlings2013selective.
+                                         @param k The k parameter for the graph segmentation
+                                         @param sigma The sigma parameter for the graph segmentation
          */
         public void switchToSingleStrategy(int k, float sigma)
         {
@@ -82,8 +82,9 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Initialize the class with the 'Single stragegy' parameters describled in CITE: uijlings2013selective.
-         *                                 param k The k parameter for the graph segmentation
+         @brief Initialize the class with the 'Single stragegy' parameters describled in @cite uijlings2013selective.
+                                         @param k The k parameter for the graph segmentation
+                                         @param sigma The sigma parameter for the graph segmentation
          */
         public void switchToSingleStrategy(int k)
         {
@@ -95,7 +96,9 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Initialize the class with the 'Single stragegy' parameters describled in CITE: uijlings2013selective.
+         @brief Initialize the class with the 'Single stragegy' parameters describled in @cite uijlings2013selective.
+                                         @param k The k parameter for the graph segmentation
+                                         @param sigma The sigma parameter for the graph segmentation
          */
         public void switchToSingleStrategy()
         {
@@ -112,10 +115,10 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Initialize the class with the 'Selective search fast' parameters describled in CITE: uijlings2013selective.
-         *                                 param base_k The k parameter for the first graph segmentation
-         *                                 param inc_k The increment of the k parameter for all graph segmentations
-         *                                 param sigma The sigma parameter for the graph segmentation
+         @brief Initialize the class with the 'Selective search fast' parameters describled in @cite uijlings2013selective.
+                                         @param base_k The k parameter for the first graph segmentation
+                                         @param inc_k The increment of the k parameter for all graph segmentations
+                                         @param sigma The sigma parameter for the graph segmentation
          */
         public void switchToSelectiveSearchFast(int base_k, int inc_k, float sigma)
         {
@@ -127,9 +130,10 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Initialize the class with the 'Selective search fast' parameters describled in CITE: uijlings2013selective.
-         *                                 param base_k The k parameter for the first graph segmentation
-         *                                 param inc_k The increment of the k parameter for all graph segmentations
+         @brief Initialize the class with the 'Selective search fast' parameters describled in @cite uijlings2013selective.
+                                         @param base_k The k parameter for the first graph segmentation
+                                         @param inc_k The increment of the k parameter for all graph segmentations
+                                         @param sigma The sigma parameter for the graph segmentation
          */
         public void switchToSelectiveSearchFast(int base_k, int inc_k)
         {
@@ -141,8 +145,10 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Initialize the class with the 'Selective search fast' parameters describled in CITE: uijlings2013selective.
-         *                                 param base_k The k parameter for the first graph segmentation
+         @brief Initialize the class with the 'Selective search fast' parameters describled in @cite uijlings2013selective.
+                                         @param base_k The k parameter for the first graph segmentation
+                                         @param inc_k The increment of the k parameter for all graph segmentations
+                                         @param sigma The sigma parameter for the graph segmentation
          */
         public void switchToSelectiveSearchFast(int base_k)
         {
@@ -154,7 +160,10 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Initialize the class with the 'Selective search fast' parameters describled in CITE: uijlings2013selective.
+         @brief Initialize the class with the 'Selective search fast' parameters describled in @cite uijlings2013selective.
+                                         @param base_k The k parameter for the first graph segmentation
+                                         @param inc_k The increment of the k parameter for all graph segmentations
+                                         @param sigma The sigma parameter for the graph segmentation
          */
         public void switchToSelectiveSearchFast()
         {
@@ -171,10 +180,10 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Initialize the class with the 'Selective search fast' parameters describled in CITE: uijlings2013selective.
-         *                                 param base_k The k parameter for the first graph segmentation
-         *                                 param inc_k The increment of the k parameter for all graph segmentations
-         *                                 param sigma The sigma parameter for the graph segmentation
+         @brief Initialize the class with the 'Selective search fast' parameters describled in @cite uijlings2013selective.
+                                         @param base_k The k parameter for the first graph segmentation
+                                         @param inc_k The increment of the k parameter for all graph segmentations
+                                         @param sigma The sigma parameter for the graph segmentation
          */
         public void switchToSelectiveSearchQuality(int base_k, int inc_k, float sigma)
         {
@@ -186,9 +195,10 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Initialize the class with the 'Selective search fast' parameters describled in CITE: uijlings2013selective.
-         *                                 param base_k The k parameter for the first graph segmentation
-         *                                 param inc_k The increment of the k parameter for all graph segmentations
+         @brief Initialize the class with the 'Selective search fast' parameters describled in @cite uijlings2013selective.
+                                         @param base_k The k parameter for the first graph segmentation
+                                         @param inc_k The increment of the k parameter for all graph segmentations
+                                         @param sigma The sigma parameter for the graph segmentation
          */
         public void switchToSelectiveSearchQuality(int base_k, int inc_k)
         {
@@ -200,8 +210,10 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Initialize the class with the 'Selective search fast' parameters describled in CITE: uijlings2013selective.
-         *                                 param base_k The k parameter for the first graph segmentation
+         @brief Initialize the class with the 'Selective search fast' parameters describled in @cite uijlings2013selective.
+                                         @param base_k The k parameter for the first graph segmentation
+                                         @param inc_k The increment of the k parameter for all graph segmentations
+                                         @param sigma The sigma parameter for the graph segmentation
          */
         public void switchToSelectiveSearchQuality(int base_k)
         {
@@ -213,7 +225,10 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Initialize the class with the 'Selective search fast' parameters describled in CITE: uijlings2013selective.
+         @brief Initialize the class with the 'Selective search fast' parameters describled in @cite uijlings2013selective.
+                                         @param base_k The k parameter for the first graph segmentation
+                                         @param inc_k The increment of the k parameter for all graph segmentations
+                                         @param sigma The sigma parameter for the graph segmentation
          */
         public void switchToSelectiveSearchQuality()
         {
@@ -230,8 +245,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Add a new image in the list of images to process.
-         *                                 param img The image
+         @brief Add a new image in the list of images to process.
+                                         @param img The image
          */
         public void addImage(Mat img)
         {
@@ -249,7 +264,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Clear the list of images to process
+         @brief Clear the list of images to process
          */
         public void clearImages()
         {
@@ -266,8 +281,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Add a new graph segmentation in the list of graph segementations to process.
-         *                                 param g The graph segmentation
+         @brief Add a new graph segmentation in the list of graph segementations to process.
+                                         @param g The graph segmentation
          */
         public void addGraphSegmentation(GraphSegmentation g)
         {
@@ -285,7 +300,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Clear the list of graph segmentations to process;
+         @brief Clear the list of graph segmentations to process;
          */
         public void clearGraphSegmentations()
         {
@@ -302,8 +317,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Add a new strategy in the list of strategy to process.
-         *                                 param s The strategy
+         @brief Add a new strategy in the list of strategy to process.
+                                         @param s The strategy
          */
         public void addStrategy(SelectiveSearchSegmentationStrategy s)
         {
@@ -321,7 +336,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Clear the list of strategy to process;
+         @brief Clear the list of strategy to process;
          */
         public void clearStrategies()
         {
@@ -338,8 +353,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Based on all images, graph segmentations and stragies, computes all possible rects and return them
-         *                                 param rects The list of rects. The first ones are more relevents than the lasts ones.
+         @brief Based on all images, graph segmentations and stragies, computes all possible rects and return them
+                                         @param rects The list of rects. The first ones are more relevents than the lasts ones.
          */
         public void process(MatOfRect rects)
         {

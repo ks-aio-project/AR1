@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,10 +10,10 @@ namespace OpenCVForUnity.PhotoModule
 
     // C++: class MergeRobertson
     /**
-     * The resulting HDR image is calculated as weighted average of the exposures considering exposure
-     * values and camera response.
-     *
-     * For more information see CITE: RB99 .
+     @brief The resulting HDR image is calculated as weighted average of the exposures considering exposure
+     values and camera response.
+     
+     For more information see @cite RB99 .
      */
 
     public class MergeRobertson : MergeExposures

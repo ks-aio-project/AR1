@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.MlModule
 
     // C++: class NormalBayesClassifier
     /**
-     * Bayes classifier for normally distributed data.
-     *
-     * SEE: REF: ml_intro_bayes
+     @brief Bayes classifier for normally distributed data.
+     
+     @sa @ref ml_intro_bayes
      */
 
     public class NormalBayesClassifier : StatModel
@@ -50,18 +50,13 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Predicts the response for sample(s).
-         *
-         *     The method estimates the most probable classes for input vectors. Input vectors (one or more)
-         *     are stored as rows of the matrix inputs. In case of multiple input vectors, there should be one
-         *     output vector outputs. The predicted class for a single input vector is returned by the method.
-         *     The vector outputProbs contains the output probabilities corresponding to each element of
-         *     result.
-         * param inputs automatically generated
-         * param outputs automatically generated
-         * param outputProbs automatically generated
-         * param flags automatically generated
-         * return automatically generated
+         @brief Predicts the response for sample(s).
+         
+             The method estimates the most probable classes for input vectors. Input vectors (one or more)
+             are stored as rows of the matrix inputs. In case of multiple input vectors, there should be one
+             output vector outputs. The predicted class for a single input vector is returned by the method.
+             The vector outputProbs contains the output probabilities corresponding to each element of
+             result.
          */
         public float predictProb(Mat inputs, Mat outputs, Mat outputProbs, int flags)
         {
@@ -76,17 +71,13 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Predicts the response for sample(s).
-         *
-         *     The method estimates the most probable classes for input vectors. Input vectors (one or more)
-         *     are stored as rows of the matrix inputs. In case of multiple input vectors, there should be one
-         *     output vector outputs. The predicted class for a single input vector is returned by the method.
-         *     The vector outputProbs contains the output probabilities corresponding to each element of
-         *     result.
-         * param inputs automatically generated
-         * param outputs automatically generated
-         * param outputProbs automatically generated
-         * return automatically generated
+         @brief Predicts the response for sample(s).
+         
+             The method estimates the most probable classes for input vectors. Input vectors (one or more)
+             are stored as rows of the matrix inputs. In case of multiple input vectors, there should be one
+             output vector outputs. The predicted class for a single input vector is returned by the method.
+             The vector outputProbs contains the output probabilities corresponding to each element of
+             result.
          */
         public float predictProb(Mat inputs, Mat outputs, Mat outputProbs)
         {
@@ -106,9 +97,8 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Creates empty model
-         * Use StatModel::train to train the model after creation.
-         * return automatically generated
+         Creates empty model
+         Use StatModel::train to train the model after creation.
          */
         public static NormalBayesClassifier create()
         {
@@ -125,15 +115,14 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Loads and creates a serialized NormalBayesClassifier from a file
-         *
-         * Use NormalBayesClassifier::save to serialize and store an NormalBayesClassifier to disk.
-         * Load the NormalBayesClassifier from this file again, by calling this function with the path to the file.
-         * Optionally specify the node for the file containing the classifier
-         *
-         * param filepath path to serialized NormalBayesClassifier
-         * param nodeName name of node containing the classifier
-         * return automatically generated
+         @brief Loads and creates a serialized NormalBayesClassifier from a file
+              *
+              * Use NormalBayesClassifier::save to serialize and store an NormalBayesClassifier to disk.
+              * Load the NormalBayesClassifier from this file again, by calling this function with the path to the file.
+              * Optionally specify the node for the file containing the classifier
+              *
+              * @param filepath path to serialized NormalBayesClassifier
+              * @param nodeName name of node containing the classifier
          */
         public static NormalBayesClassifier load(string filepath, string nodeName)
         {
@@ -145,14 +134,14 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Loads and creates a serialized NormalBayesClassifier from a file
-         *
-         * Use NormalBayesClassifier::save to serialize and store an NormalBayesClassifier to disk.
-         * Load the NormalBayesClassifier from this file again, by calling this function with the path to the file.
-         * Optionally specify the node for the file containing the classifier
-         *
-         * param filepath path to serialized NormalBayesClassifier
-         * return automatically generated
+         @brief Loads and creates a serialized NormalBayesClassifier from a file
+              *
+              * Use NormalBayesClassifier::save to serialize and store an NormalBayesClassifier to disk.
+              * Load the NormalBayesClassifier from this file again, by calling this function with the path to the file.
+              * Optionally specify the node for the file containing the classifier
+              *
+              * @param filepath path to serialized NormalBayesClassifier
+              * @param nodeName name of node containing the classifier
          */
         public static NormalBayesClassifier load(string filepath)
         {

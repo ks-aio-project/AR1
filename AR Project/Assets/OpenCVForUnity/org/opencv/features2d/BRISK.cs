@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.Features2dModule
 
     // C++: class BRISK
     /**
-     * Class implementing the BRISK keypoint detector and descriptor extractor, described in CITE: LCS11 .
+     @brief Class implementing the BRISK keypoint detector and descriptor extractor, described in @cite LCS11 .
      */
 
     public class BRISK : Feature2D
@@ -48,13 +48,12 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * The BRISK constructor
-         *
-         *     param thresh AGAST detection threshold score.
-         *     param octaves detection octaves. Use 0 to do single scale.
-         *     param patternScale apply this scale to the pattern used for sampling the neighbourhood of a
-         *     keypoint.
-         * return automatically generated
+         @brief The BRISK constructor
+         
+             @param thresh AGAST detection threshold score.
+             @param octaves detection octaves. Use 0 to do single scale.
+             @param patternScale apply this scale to the pattern used for sampling the neighbourhood of a
+             keypoint.
          */
         public static BRISK create(int thresh, int octaves, float patternScale)
         {
@@ -66,12 +65,12 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The BRISK constructor
-         *
-         *     param thresh AGAST detection threshold score.
-         *     param octaves detection octaves. Use 0 to do single scale.
-         *     keypoint.
-         * return automatically generated
+         @brief The BRISK constructor
+         
+             @param thresh AGAST detection threshold score.
+             @param octaves detection octaves. Use 0 to do single scale.
+             @param patternScale apply this scale to the pattern used for sampling the neighbourhood of a
+             keypoint.
          */
         public static BRISK create(int thresh, int octaves)
         {
@@ -83,11 +82,12 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The BRISK constructor
-         *
-         *     param thresh AGAST detection threshold score.
-         *     keypoint.
-         * return automatically generated
+         @brief The BRISK constructor
+         
+             @param thresh AGAST detection threshold score.
+             @param octaves detection octaves. Use 0 to do single scale.
+             @param patternScale apply this scale to the pattern used for sampling the neighbourhood of a
+             keypoint.
          */
         public static BRISK create(int thresh)
         {
@@ -99,10 +99,12 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The BRISK constructor
-         *
-         *     keypoint.
-         * return automatically generated
+         @brief The BRISK constructor
+         
+             @param thresh AGAST detection threshold score.
+             @param octaves detection octaves. Use 0 to do single scale.
+             @param patternScale apply this scale to the pattern used for sampling the neighbourhood of a
+             keypoint.
          */
         public static BRISK create()
         {
@@ -119,18 +121,17 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * The BRISK constructor for a custom pattern
-         *
-         *     param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
-         *     keypoint scale 1).
-         *     param numberList defines the number of sampling points on the sampling circle. Must be the same
-         *     size as radiusList..
-         *     param dMax threshold for the short pairings used for descriptor formation (in pixels for keypoint
-         *     scale 1).
-         *     param dMin threshold for the long pairings used for orientation determination (in pixels for
-         *     keypoint scale 1).
-         * param indexChange index remapping of the bits.
-         * return automatically generated
+         @brief The BRISK constructor for a custom pattern
+         
+             @param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
+             keypoint scale 1).
+             @param numberList defines the number of sampling points on the sampling circle. Must be the same
+             size as radiusList..
+             @param dMax threshold for the short pairings used for descriptor formation (in pixels for keypoint
+             scale 1).
+             @param dMin threshold for the long pairings used for orientation determination (in pixels for
+             keypoint scale 1).
+         @param indexChange index remapping of the bits.
          */
         public static BRISK create(MatOfFloat radiusList, MatOfInt numberList, float dMax, float dMin, MatOfInt indexChange)
         {
@@ -146,17 +147,17 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The BRISK constructor for a custom pattern
-         *
-         *     param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
-         *     keypoint scale 1).
-         *     param numberList defines the number of sampling points on the sampling circle. Must be the same
-         *     size as radiusList..
-         *     param dMax threshold for the short pairings used for descriptor formation (in pixels for keypoint
-         *     scale 1).
-         *     param dMin threshold for the long pairings used for orientation determination (in pixels for
-         *     keypoint scale 1).
-         * return automatically generated
+         @brief The BRISK constructor for a custom pattern
+         
+             @param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
+             keypoint scale 1).
+             @param numberList defines the number of sampling points on the sampling circle. Must be the same
+             size as radiusList..
+             @param dMax threshold for the short pairings used for descriptor formation (in pixels for keypoint
+             scale 1).
+             @param dMin threshold for the long pairings used for orientation determination (in pixels for
+             keypoint scale 1).
+         @param indexChange index remapping of the bits.
          */
         public static BRISK create(MatOfFloat radiusList, MatOfInt numberList, float dMax, float dMin)
         {
@@ -170,16 +171,17 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The BRISK constructor for a custom pattern
-         *
-         *     param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
-         *     keypoint scale 1).
-         *     param numberList defines the number of sampling points on the sampling circle. Must be the same
-         *     size as radiusList..
-         *     param dMax threshold for the short pairings used for descriptor formation (in pixels for keypoint
-         *     scale 1).
-         *     keypoint scale 1).
-         * return automatically generated
+         @brief The BRISK constructor for a custom pattern
+         
+             @param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
+             keypoint scale 1).
+             @param numberList defines the number of sampling points on the sampling circle. Must be the same
+             size as radiusList..
+             @param dMax threshold for the short pairings used for descriptor formation (in pixels for keypoint
+             scale 1).
+             @param dMin threshold for the long pairings used for orientation determination (in pixels for
+             keypoint scale 1).
+         @param indexChange index remapping of the bits.
          */
         public static BRISK create(MatOfFloat radiusList, MatOfInt numberList, float dMax)
         {
@@ -193,15 +195,17 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The BRISK constructor for a custom pattern
-         *
-         *     param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
-         *     keypoint scale 1).
-         *     param numberList defines the number of sampling points on the sampling circle. Must be the same
-         *     size as radiusList..
-         *     scale 1).
-         *     keypoint scale 1).
-         * return automatically generated
+         @brief The BRISK constructor for a custom pattern
+         
+             @param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
+             keypoint scale 1).
+             @param numberList defines the number of sampling points on the sampling circle. Must be the same
+             size as radiusList..
+             @param dMax threshold for the short pairings used for descriptor formation (in pixels for keypoint
+             scale 1).
+             @param dMin threshold for the long pairings used for orientation determination (in pixels for
+             keypoint scale 1).
+         @param indexChange index remapping of the bits.
          */
         public static BRISK create(MatOfFloat radiusList, MatOfInt numberList)
         {
@@ -220,20 +224,19 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * The BRISK constructor for a custom pattern, detection threshold and octaves
-         *
-         *     param thresh AGAST detection threshold score.
-         *     param octaves detection octaves. Use 0 to do single scale.
-         *     param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
-         *     keypoint scale 1).
-         *     param numberList defines the number of sampling points on the sampling circle. Must be the same
-         *     size as radiusList..
-         *     param dMax threshold for the short pairings used for descriptor formation (in pixels for keypoint
-         *     scale 1).
-         *     param dMin threshold for the long pairings used for orientation determination (in pixels for
-         *     keypoint scale 1).
-         * param indexChange index remapping of the bits.
-         * return automatically generated
+         @brief The BRISK constructor for a custom pattern, detection threshold and octaves
+         
+             @param thresh AGAST detection threshold score.
+             @param octaves detection octaves. Use 0 to do single scale.
+             @param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
+             keypoint scale 1).
+             @param numberList defines the number of sampling points on the sampling circle. Must be the same
+             size as radiusList..
+             @param dMax threshold for the short pairings used for descriptor formation (in pixels for keypoint
+             scale 1).
+             @param dMin threshold for the long pairings used for orientation determination (in pixels for
+             keypoint scale 1).
+         @param indexChange index remapping of the bits.
          */
         public static BRISK create(int thresh, int octaves, MatOfFloat radiusList, MatOfInt numberList, float dMax, float dMin, MatOfInt indexChange)
         {
@@ -249,19 +252,19 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The BRISK constructor for a custom pattern, detection threshold and octaves
-         *
-         *     param thresh AGAST detection threshold score.
-         *     param octaves detection octaves. Use 0 to do single scale.
-         *     param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
-         *     keypoint scale 1).
-         *     param numberList defines the number of sampling points on the sampling circle. Must be the same
-         *     size as radiusList..
-         *     param dMax threshold for the short pairings used for descriptor formation (in pixels for keypoint
-         *     scale 1).
-         *     param dMin threshold for the long pairings used for orientation determination (in pixels for
-         *     keypoint scale 1).
-         * return automatically generated
+         @brief The BRISK constructor for a custom pattern, detection threshold and octaves
+         
+             @param thresh AGAST detection threshold score.
+             @param octaves detection octaves. Use 0 to do single scale.
+             @param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
+             keypoint scale 1).
+             @param numberList defines the number of sampling points on the sampling circle. Must be the same
+             size as radiusList..
+             @param dMax threshold for the short pairings used for descriptor formation (in pixels for keypoint
+             scale 1).
+             @param dMin threshold for the long pairings used for orientation determination (in pixels for
+             keypoint scale 1).
+         @param indexChange index remapping of the bits.
          */
         public static BRISK create(int thresh, int octaves, MatOfFloat radiusList, MatOfInt numberList, float dMax, float dMin)
         {
@@ -275,18 +278,19 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The BRISK constructor for a custom pattern, detection threshold and octaves
-         *
-         *     param thresh AGAST detection threshold score.
-         *     param octaves detection octaves. Use 0 to do single scale.
-         *     param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
-         *     keypoint scale 1).
-         *     param numberList defines the number of sampling points on the sampling circle. Must be the same
-         *     size as radiusList..
-         *     param dMax threshold for the short pairings used for descriptor formation (in pixels for keypoint
-         *     scale 1).
-         *     keypoint scale 1).
-         * return automatically generated
+         @brief The BRISK constructor for a custom pattern, detection threshold and octaves
+         
+             @param thresh AGAST detection threshold score.
+             @param octaves detection octaves. Use 0 to do single scale.
+             @param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
+             keypoint scale 1).
+             @param numberList defines the number of sampling points on the sampling circle. Must be the same
+             size as radiusList..
+             @param dMax threshold for the short pairings used for descriptor formation (in pixels for keypoint
+             scale 1).
+             @param dMin threshold for the long pairings used for orientation determination (in pixels for
+             keypoint scale 1).
+         @param indexChange index remapping of the bits.
          */
         public static BRISK create(int thresh, int octaves, MatOfFloat radiusList, MatOfInt numberList, float dMax)
         {
@@ -300,17 +304,19 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The BRISK constructor for a custom pattern, detection threshold and octaves
-         *
-         *     param thresh AGAST detection threshold score.
-         *     param octaves detection octaves. Use 0 to do single scale.
-         *     param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
-         *     keypoint scale 1).
-         *     param numberList defines the number of sampling points on the sampling circle. Must be the same
-         *     size as radiusList..
-         *     scale 1).
-         *     keypoint scale 1).
-         * return automatically generated
+         @brief The BRISK constructor for a custom pattern, detection threshold and octaves
+         
+             @param thresh AGAST detection threshold score.
+             @param octaves detection octaves. Use 0 to do single scale.
+             @param radiusList defines the radii (in pixels) where the samples around a keypoint are taken (for
+             keypoint scale 1).
+             @param numberList defines the number of sampling points on the sampling circle. Must be the same
+             size as radiusList..
+             @param dMax threshold for the short pairings used for descriptor formation (in pixels for keypoint
+             scale 1).
+             @param dMin threshold for the long pairings used for orientation determination (in pixels for
+             keypoint scale 1).
+         @param indexChange index remapping of the bits.
          */
         public static BRISK create(int thresh, int octaves, MatOfFloat radiusList, MatOfInt numberList)
         {
@@ -343,8 +349,8 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Set detection threshold.
-         *     param threshold AGAST detection threshold score.
+         @brief Set detection threshold.
+             @param threshold AGAST detection threshold score.
          */
         public void setThreshold(int threshold)
         {
@@ -375,8 +381,8 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Set detection octaves.
-         *     param octaves detection octaves. Use 0 to do single scale.
+         @brief Set detection octaves.
+             @param octaves detection octaves. Use 0 to do single scale.
          */
         public void setOctaves(int octaves)
         {
@@ -397,6 +403,39 @@ namespace OpenCVForUnity.Features2dModule
             ThrowIfDisposed();
 
             return features2d_BRISK_getOctaves_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::BRISK::setPatternScale(float patternScale)
+        //
+
+        /**
+         @brief Set detection patternScale.
+             @param patternScale apply this scale to the pattern used for sampling the neighbourhood of a
+             keypoint.
+         */
+        public void setPatternScale(float patternScale)
+        {
+            ThrowIfDisposed();
+
+            features2d_BRISK_setPatternScale_10(nativeObj, patternScale);
+
+
+        }
+
+
+        //
+        // C++:  float cv::BRISK::getPatternScale()
+        //
+
+        public float getPatternScale()
+        {
+            ThrowIfDisposed();
+
+            return features2d_BRISK_getPatternScale_10(nativeObj);
 
 
         }
@@ -459,6 +498,14 @@ namespace OpenCVForUnity.Features2dModule
         // C++:  int cv::BRISK::getOctaves()
         [DllImport(LIBNAME)]
         private static extern int features2d_BRISK_getOctaves_10(IntPtr nativeObj);
+
+        // C++:  void cv::BRISK::setPatternScale(float patternScale)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_BRISK_setPatternScale_10(IntPtr nativeObj, float patternScale);
+
+        // C++:  float cv::BRISK::getPatternScale()
+        [DllImport(LIBNAME)]
+        private static extern float features2d_BRISK_getPatternScale_10(IntPtr nativeObj);
 
         // native support for java finalize()
         [DllImport(LIBNAME)]

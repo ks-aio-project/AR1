@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.FaceModule
 
     // C++: class BIF
     /**
-     * Implementation of bio-inspired features (BIF) from the paper:
-     * Guo, Guodong, et al. "Human age estimation using bio-inspired features."
-     * Computer Vision and Pattern Recognition, 2009. CVPR 2009.
+     Implementation of bio-inspired features (BIF) from the paper:
+      *  Guo, Guodong, et al. "Human age estimation using bio-inspired features."
+      *  Computer Vision and Pattern Recognition, 2009. CVPR 2009.
      */
 
     public class BIF : Algorithm
@@ -50,7 +50,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * return The number of filter bands used for computing BIF.
+         @returns The number of filter bands used for computing BIF.
          */
         public int getNumBands()
         {
@@ -67,7 +67,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * return The number of image rotations.
+         @returns The number of image rotations.
          */
         public int getNumRotations()
         {
@@ -84,9 +84,9 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * Computes features sby input image.
-         * param image Input image (CV_32FC1).
-         * param features Feature vector (CV_32FC1).
+         Computes features sby input image.
+              *  @param image Input image (CV_32FC1).
+              *  @param features Feature vector (CV_32FC1).
          */
         public void compute(Mat image, Mat features)
         {
@@ -105,9 +105,9 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * param num_bands The number of filter bands (&lt;=8) used for computing BIF.
-         * param num_rotations The number of image rotations for computing BIF.
-         * return Object for computing BIF.
+         * @param num_bands The number of filter bands (&lt;=8) used for computing BIF.
+              * @param num_rotations The number of image rotations for computing BIF.
+              * @returns Object for computing BIF.
          */
         public static BIF create(int num_bands, int num_rotations)
         {
@@ -119,8 +119,9 @@ namespace OpenCVForUnity.FaceModule
         }
 
         /**
-         * param num_bands The number of filter bands (&lt;=8) used for computing BIF.
-         * return Object for computing BIF.
+         * @param num_bands The number of filter bands (&lt;=8) used for computing BIF.
+              * @param num_rotations The number of image rotations for computing BIF.
+              * @returns Object for computing BIF.
          */
         public static BIF create(int num_bands)
         {
@@ -132,7 +133,9 @@ namespace OpenCVForUnity.FaceModule
         }
 
         /**
-         * return Object for computing BIF.
+         * @param num_bands The number of filter bands (&lt;=8) used for computing BIF.
+              * @param num_rotations The number of image rotations for computing BIF.
+              * @returns Object for computing BIF.
          */
         public static BIF create()
         {

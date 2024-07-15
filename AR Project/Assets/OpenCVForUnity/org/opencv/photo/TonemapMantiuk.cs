@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,11 +10,11 @@ namespace OpenCVForUnity.PhotoModule
 
     // C++: class TonemapMantiuk
     /**
-     * This algorithm transforms image to contrast using gradients on all levels of gaussian pyramid,
-     * transforms contrast values to HVS response and scales the response. After this the image is
-     * reconstructed from new contrast values.
-     *
-     * For more information see CITE: MM06 .
+     @brief This algorithm transforms image to contrast using gradients on all levels of gaussian pyramid,
+     transforms contrast values to HVS response and scales the response. After this the image is
+     reconstructed from new contrast values.
+     
+     For more information see @cite MM06 .
      */
 
     public class TonemapMantiuk : Tonemap

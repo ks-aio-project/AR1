@@ -1,4 +1,5 @@
-﻿using System;
+using OpenCVForUnity.UtilsModule;
+using System;
 using System.Collections.Generic;
 
 namespace OpenCVForUnity.CoreModule
@@ -60,16 +61,8 @@ namespace OpenCVForUnity.CoreModule
                 return;
             int num = a.Length;
             alloc(num);
-            int[] buff = new int[num * _channels];
-            for (int i = 0; i < num; i++)
-            {
-                Rect r = a[i];
-                buff[_channels * i + 0] = (int)r.x;
-                buff[_channels * i + 1] = (int)r.y;
-                buff[_channels * i + 2] = (int)r.width;
-                buff[_channels * i + 3] = (int)r.height;
-            }
-            put(0, 0, buff); //TODO: check ret val!
+
+            Converters.Array_Rect_to_Mat(a, this, num);
         }
 
         public Rect[] toArray()
@@ -78,24 +71,38 @@ namespace OpenCVForUnity.CoreModule
             Rect[] a = new Rect[num];
             if (num == 0)
                 return a;
-            int[] buff = new int[num * _channels];
-            get(0, 0, buff); //TODO: check ret val!
-            for (int i = 0; i < num; i++)
-                a[i] = new Rect(buff[i * _channels], buff[i * _channels + 1], buff[i * _channels + 2], buff[i * _channels + 3]);
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                a[i] = new Rect();
+            }
+            Converters.Mat_to_Array_Rect(this, a, num);
             return a;
         }
 
         public void fromList(List<Rect> lr)
         {
-            //                      Rect[] ap = lr.toArray (new Rect[0]);
-            Rect[] ap = lr.ToArray();
-            fromArray(ap);
+            if (lr == null || lr.Count == 0)
+                return;
+            int num = lr.Count;
+            alloc(num);
+
+            Converters.List_Rect_to_Mat(lr, this, num);
         }
 
         public List<Rect> toList()
         {
-            Rect[] ar = toArray();
-            return new List<Rect>(ar);
+            int num = (int)total();
+            List<Rect> a = new List<Rect>(num);
+            if (num == 0)
+                return a;
+
+            for (int i = 0; i < num; i++)
+            {
+                a.Add(new Rect());
+            }
+            Converters.Mat_to_List_Rect(this, a, num);
+            return a;
         }
     }
 }

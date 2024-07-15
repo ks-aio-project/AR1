@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -27,31 +27,25 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Restores the selected region in an image using the region neighborhood.
-         *
-         * param src Input 8-bit, 16-bit unsigned or 32-bit float 1-channel or 8-bit 3-channel image.
-         * param inpaintMask Inpainting mask, 8-bit 1-channel image. Non-zero pixels indicate the area that
-         * needs to be inpainted.
-         * param dst Output image with the same size and type as src .
-         * param inpaintRadius Radius of a circular neighborhood of each point inpainted that is considered
-         * by the algorithm.
-         * param flags Inpainting method that could be cv::INPAINT_NS or cv::INPAINT_TELEA
-         *
-         * The function reconstructs the selected image area from the pixel near the area boundary. The
-         * function may be used to remove dust and scratches from a scanned photo, or to remove undesirable
-         * objects from still images or video. See &lt;http://en.wikipedia.org/wiki/Inpainting&gt; for more details.
-         *
-         * <b>Note:</b>
-         * <ul>
-         *   <li>
-         *       An example using the inpainting technique can be found at
-         *         opencv_source_code/samples/cpp/inpaint.cpp
-         *   </li>
-         *   <li>
-         *       (Python) An example using the inpainting technique can be found at
-         *         opencv_source_code/samples/python/inpaint.py
-         *   </li>
-         * </ul>
+         @brief Restores the selected region in an image using the region neighborhood.
+         
+         @param src Input 8-bit, 16-bit unsigned or 32-bit float 1-channel or 8-bit 3-channel image.
+         @param inpaintMask Inpainting mask, 8-bit 1-channel image. Non-zero pixels indicate the area that
+         needs to be inpainted.
+         @param dst Output image with the same size and type as src .
+         @param inpaintRadius Radius of a circular neighborhood of each point inpainted that is considered
+         by the algorithm.
+         @param flags Inpainting method that could be cv::INPAINT_NS or cv::INPAINT_TELEA
+         
+         The function reconstructs the selected image area from the pixel near the area boundary. The
+         function may be used to remove dust and scratches from a scanned photo, or to remove undesirable
+         objects from still images or video. See &lt;http://en.wikipedia.org/wiki/Inpainting&gt; for more details.
+         
+         @note
+            -   An example using the inpainting technique can be found at
+                 opencv_source_code/samples/cpp/inpaint.cpp
+            -   (Python) An example using the inpainting technique can be found at
+                 opencv_source_code/samples/python/inpaint.py
          */
         public static void inpaint(Mat src, Mat inpaintMask, Mat dst, double inpaintRadius, int flags)
         {
@@ -70,25 +64,25 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Perform image denoising using Non-local Means Denoising algorithm
-         * &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
-         * optimizations. Noise expected to be a gaussian white noise
-         *
-         * param src Input 8-bit 1-channel, 2-channel, 3-channel or 4-channel image.
-         * param dst Output image with the same size and type as src .
-         * param templateWindowSize Size in pixels of the template patch that is used to compute weights.
-         * Should be odd. Recommended value 7 pixels
-         * param searchWindowSize Size in pixels of the window that is used to compute weighted average for
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         * removes image details, smaller h value preserves details but also preserves some noise
-         *
-         * This function expected to be applied to grayscale images. For colored images look at
-         * fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
-         * image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
-         * image to CIELAB colorspace and then separately denoise L and AB components with different h
-         * parameter.
+         @brief Perform image denoising using Non-local Means Denoising algorithm
+         &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
+         optimizations. Noise expected to be a gaussian white noise
+         
+         @param src Input 8-bit 1-channel, 2-channel, 3-channel or 4-channel image.
+         @param dst Output image with the same size and type as src .
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+         removes image details, smaller h value preserves details but also preserves some noise
+         
+         This function expected to be applied to grayscale images. For colored images look at
+         fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
+         image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
+         image to CIELAB colorspace and then separately denoise L and AB components with different h
+         parameter.
          */
         public static void fastNlMeansDenoising(Mat src, Mat dst, float h, int templateWindowSize, int searchWindowSize)
         {
@@ -101,24 +95,25 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Perform image denoising using Non-local Means Denoising algorithm
-         * &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
-         * optimizations. Noise expected to be a gaussian white noise
-         *
-         * param src Input 8-bit 1-channel, 2-channel, 3-channel or 4-channel image.
-         * param dst Output image with the same size and type as src .
-         * param templateWindowSize Size in pixels of the template patch that is used to compute weights.
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         * removes image details, smaller h value preserves details but also preserves some noise
-         *
-         * This function expected to be applied to grayscale images. For colored images look at
-         * fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
-         * image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
-         * image to CIELAB colorspace and then separately denoise L and AB components with different h
-         * parameter.
+         @brief Perform image denoising using Non-local Means Denoising algorithm
+         &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
+         optimizations. Noise expected to be a gaussian white noise
+         
+         @param src Input 8-bit 1-channel, 2-channel, 3-channel or 4-channel image.
+         @param dst Output image with the same size and type as src .
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+         removes image details, smaller h value preserves details but also preserves some noise
+         
+         This function expected to be applied to grayscale images. For colored images look at
+         fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
+         image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
+         image to CIELAB colorspace and then separately denoise L and AB components with different h
+         parameter.
          */
         public static void fastNlMeansDenoising(Mat src, Mat dst, float h, int templateWindowSize)
         {
@@ -131,23 +126,25 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Perform image denoising using Non-local Means Denoising algorithm
-         * &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
-         * optimizations. Noise expected to be a gaussian white noise
-         *
-         * param src Input 8-bit 1-channel, 2-channel, 3-channel or 4-channel image.
-         * param dst Output image with the same size and type as src .
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         * removes image details, smaller h value preserves details but also preserves some noise
-         *
-         * This function expected to be applied to grayscale images. For colored images look at
-         * fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
-         * image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
-         * image to CIELAB colorspace and then separately denoise L and AB components with different h
-         * parameter.
+         @brief Perform image denoising using Non-local Means Denoising algorithm
+         &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
+         optimizations. Noise expected to be a gaussian white noise
+         
+         @param src Input 8-bit 1-channel, 2-channel, 3-channel or 4-channel image.
+         @param dst Output image with the same size and type as src .
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+         removes image details, smaller h value preserves details but also preserves some noise
+         
+         This function expected to be applied to grayscale images. For colored images look at
+         fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
+         image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
+         image to CIELAB colorspace and then separately denoise L and AB components with different h
+         parameter.
          */
         public static void fastNlMeansDenoising(Mat src, Mat dst, float h)
         {
@@ -160,22 +157,25 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Perform image denoising using Non-local Means Denoising algorithm
-         * &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
-         * optimizations. Noise expected to be a gaussian white noise
-         *
-         * param src Input 8-bit 1-channel, 2-channel, 3-channel or 4-channel image.
-         * param dst Output image with the same size and type as src .
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * removes image details, smaller h value preserves details but also preserves some noise
-         *
-         * This function expected to be applied to grayscale images. For colored images look at
-         * fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
-         * image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
-         * image to CIELAB colorspace and then separately denoise L and AB components with different h
-         * parameter.
+         @brief Perform image denoising using Non-local Means Denoising algorithm
+         &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
+         optimizations. Noise expected to be a gaussian white noise
+         
+         @param src Input 8-bit 1-channel, 2-channel, 3-channel or 4-channel image.
+         @param dst Output image with the same size and type as src .
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+         removes image details, smaller h value preserves details but also preserves some noise
+         
+         This function expected to be applied to grayscale images. For colored images look at
+         fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
+         image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
+         image to CIELAB colorspace and then separately denoise L and AB components with different h
+         parameter.
          */
         public static void fastNlMeansDenoising(Mat src, Mat dst)
         {
@@ -193,29 +193,29 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Perform image denoising using Non-local Means Denoising algorithm
-         * &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
-         * optimizations. Noise expected to be a gaussian white noise
-         *
-         * param src Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
-         * 2-channel, 3-channel or 4-channel image.
-         * param dst Output image with the same size and type as src .
-         * param templateWindowSize Size in pixels of the template patch that is used to compute weights.
-         * Should be odd. Recommended value 7 pixels
-         * param searchWindowSize Size in pixels of the window that is used to compute weighted average for
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Array of parameters regulating filter strength, either one
-         * parameter applied to all channels or one per channel in dst. Big h value
-         * perfectly removes noise but also removes image details, smaller h
-         * value preserves details but also preserves some noise
-         * param normType Type of norm used for weight calculation. Can be either NORM_L2 or NORM_L1
-         *
-         * This function expected to be applied to grayscale images. For colored images look at
-         * fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
-         * image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
-         * image to CIELAB colorspace and then separately denoise L and AB components with different h
-         * parameter.
+         @brief Perform image denoising using Non-local Means Denoising algorithm
+         &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
+         optimizations. Noise expected to be a gaussian white noise
+         
+         @param src Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
+         2-channel, 3-channel or 4-channel image.
+         @param dst Output image with the same size and type as src .
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Array of parameters regulating filter strength, either one
+         parameter applied to all channels or one per channel in dst. Big h value
+         perfectly removes noise but also removes image details, smaller h
+         value preserves details but also preserves some noise
+         @param normType Type of norm used for weight calculation. Can be either NORM_L2 or NORM_L1
+         
+         This function expected to be applied to grayscale images. For colored images look at
+         fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
+         image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
+         image to CIELAB colorspace and then separately denoise L and AB components with different h
+         parameter.
          */
         public static void fastNlMeansDenoising(Mat src, Mat dst, MatOfFloat h, int templateWindowSize, int searchWindowSize, int normType)
         {
@@ -229,28 +229,29 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Perform image denoising using Non-local Means Denoising algorithm
-         * &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
-         * optimizations. Noise expected to be a gaussian white noise
-         *
-         * param src Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
-         * 2-channel, 3-channel or 4-channel image.
-         * param dst Output image with the same size and type as src .
-         * param templateWindowSize Size in pixels of the template patch that is used to compute weights.
-         * Should be odd. Recommended value 7 pixels
-         * param searchWindowSize Size in pixels of the window that is used to compute weighted average for
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Array of parameters regulating filter strength, either one
-         * parameter applied to all channels or one per channel in dst. Big h value
-         * perfectly removes noise but also removes image details, smaller h
-         * value preserves details but also preserves some noise
-         *
-         * This function expected to be applied to grayscale images. For colored images look at
-         * fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
-         * image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
-         * image to CIELAB colorspace and then separately denoise L and AB components with different h
-         * parameter.
+         @brief Perform image denoising using Non-local Means Denoising algorithm
+         &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
+         optimizations. Noise expected to be a gaussian white noise
+         
+         @param src Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
+         2-channel, 3-channel or 4-channel image.
+         @param dst Output image with the same size and type as src .
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Array of parameters regulating filter strength, either one
+         parameter applied to all channels or one per channel in dst. Big h value
+         perfectly removes noise but also removes image details, smaller h
+         value preserves details but also preserves some noise
+         @param normType Type of norm used for weight calculation. Can be either NORM_L2 or NORM_L1
+         
+         This function expected to be applied to grayscale images. For colored images look at
+         fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
+         image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
+         image to CIELAB colorspace and then separately denoise L and AB components with different h
+         parameter.
          */
         public static void fastNlMeansDenoising(Mat src, Mat dst, MatOfFloat h, int templateWindowSize, int searchWindowSize)
         {
@@ -264,27 +265,29 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Perform image denoising using Non-local Means Denoising algorithm
-         * &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
-         * optimizations. Noise expected to be a gaussian white noise
-         *
-         * param src Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
-         * 2-channel, 3-channel or 4-channel image.
-         * param dst Output image with the same size and type as src .
-         * param templateWindowSize Size in pixels of the template patch that is used to compute weights.
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Array of parameters regulating filter strength, either one
-         * parameter applied to all channels or one per channel in dst. Big h value
-         * perfectly removes noise but also removes image details, smaller h
-         * value preserves details but also preserves some noise
-         *
-         * This function expected to be applied to grayscale images. For colored images look at
-         * fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
-         * image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
-         * image to CIELAB colorspace and then separately denoise L and AB components with different h
-         * parameter.
+         @brief Perform image denoising using Non-local Means Denoising algorithm
+         &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
+         optimizations. Noise expected to be a gaussian white noise
+         
+         @param src Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
+         2-channel, 3-channel or 4-channel image.
+         @param dst Output image with the same size and type as src .
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Array of parameters regulating filter strength, either one
+         parameter applied to all channels or one per channel in dst. Big h value
+         perfectly removes noise but also removes image details, smaller h
+         value preserves details but also preserves some noise
+         @param normType Type of norm used for weight calculation. Can be either NORM_L2 or NORM_L1
+         
+         This function expected to be applied to grayscale images. For colored images look at
+         fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
+         image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
+         image to CIELAB colorspace and then separately denoise L and AB components with different h
+         parameter.
          */
         public static void fastNlMeansDenoising(Mat src, Mat dst, MatOfFloat h, int templateWindowSize)
         {
@@ -298,26 +301,29 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Perform image denoising using Non-local Means Denoising algorithm
-         * &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
-         * optimizations. Noise expected to be a gaussian white noise
-         *
-         * param src Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
-         * 2-channel, 3-channel or 4-channel image.
-         * param dst Output image with the same size and type as src .
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Array of parameters regulating filter strength, either one
-         * parameter applied to all channels or one per channel in dst. Big h value
-         * perfectly removes noise but also removes image details, smaller h
-         * value preserves details but also preserves some noise
-         *
-         * This function expected to be applied to grayscale images. For colored images look at
-         * fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
-         * image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
-         * image to CIELAB colorspace and then separately denoise L and AB components with different h
-         * parameter.
+         @brief Perform image denoising using Non-local Means Denoising algorithm
+         &lt;http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/&gt; with several computational
+         optimizations. Noise expected to be a gaussian white noise
+         
+         @param src Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
+         2-channel, 3-channel or 4-channel image.
+         @param dst Output image with the same size and type as src .
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Array of parameters regulating filter strength, either one
+         parameter applied to all channels or one per channel in dst. Big h value
+         perfectly removes noise but also removes image details, smaller h
+         value preserves details but also preserves some noise
+         @param normType Type of norm used for weight calculation. Can be either NORM_L2 or NORM_L1
+         
+         This function expected to be applied to grayscale images. For colored images look at
+         fastNlMeansDenoisingColored. Advanced usage of this functions can be manual denoising of colored
+         image in different colorspaces. Such approach is used in fastNlMeansDenoisingColored by converting
+         image to CIELAB colorspace and then separately denoise L and AB components with different h
+         parameter.
          */
         public static void fastNlMeansDenoising(Mat src, Mat dst, MatOfFloat h)
         {
@@ -336,23 +342,23 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Modification of fastNlMeansDenoising function for colored images
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Output image with the same size and type as src .
-         * param templateWindowSize Size in pixels of the template patch that is used to compute weights.
-         * Should be odd. Recommended value 7 pixels
-         * param searchWindowSize Size in pixels of the window that is used to compute weighted average for
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
-         * removes noise but also removes image details, smaller h value preserves details but also preserves
-         * some noise
-         * param hColor The same as h but for color components. For most images value equals 10
-         * will be enough to remove colored noise and do not distort colors
-         *
-         * The function converts image to CIELAB colorspace and then separately denoise L and AB components
-         * with given h parameters using fastNlMeansDenoising function.
+         @brief Modification of fastNlMeansDenoising function for colored images
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Output image with the same size and type as src .
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
+         removes noise but also removes image details, smaller h value preserves details but also preserves
+         some noise
+         @param hColor The same as h but for color components. For most images value equals 10
+         will be enough to remove colored noise and do not distort colors
+         
+         The function converts image to CIELAB colorspace and then separately denoise L and AB components
+         with given h parameters using fastNlMeansDenoising function.
          */
         public static void fastNlMeansDenoisingColored(Mat src, Mat dst, float h, float hColor, int templateWindowSize, int searchWindowSize)
         {
@@ -365,22 +371,23 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Modification of fastNlMeansDenoising function for colored images
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Output image with the same size and type as src .
-         * param templateWindowSize Size in pixels of the template patch that is used to compute weights.
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
-         * removes noise but also removes image details, smaller h value preserves details but also preserves
-         * some noise
-         * param hColor The same as h but for color components. For most images value equals 10
-         * will be enough to remove colored noise and do not distort colors
-         *
-         * The function converts image to CIELAB colorspace and then separately denoise L and AB components
-         * with given h parameters using fastNlMeansDenoising function.
+         @brief Modification of fastNlMeansDenoising function for colored images
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Output image with the same size and type as src .
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
+         removes noise but also removes image details, smaller h value preserves details but also preserves
+         some noise
+         @param hColor The same as h but for color components. For most images value equals 10
+         will be enough to remove colored noise and do not distort colors
+         
+         The function converts image to CIELAB colorspace and then separately denoise L and AB components
+         with given h parameters using fastNlMeansDenoising function.
          */
         public static void fastNlMeansDenoisingColored(Mat src, Mat dst, float h, float hColor, int templateWindowSize)
         {
@@ -393,21 +400,23 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Modification of fastNlMeansDenoising function for colored images
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Output image with the same size and type as src .
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
-         * removes noise but also removes image details, smaller h value preserves details but also preserves
-         * some noise
-         * param hColor The same as h but for color components. For most images value equals 10
-         * will be enough to remove colored noise and do not distort colors
-         *
-         * The function converts image to CIELAB colorspace and then separately denoise L and AB components
-         * with given h parameters using fastNlMeansDenoising function.
+         @brief Modification of fastNlMeansDenoising function for colored images
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Output image with the same size and type as src .
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
+         removes noise but also removes image details, smaller h value preserves details but also preserves
+         some noise
+         @param hColor The same as h but for color components. For most images value equals 10
+         will be enough to remove colored noise and do not distort colors
+         
+         The function converts image to CIELAB colorspace and then separately denoise L and AB components
+         with given h parameters using fastNlMeansDenoising function.
          */
         public static void fastNlMeansDenoisingColored(Mat src, Mat dst, float h, float hColor)
         {
@@ -420,20 +429,23 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Modification of fastNlMeansDenoising function for colored images
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Output image with the same size and type as src .
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
-         * removes noise but also removes image details, smaller h value preserves details but also preserves
-         * some noise
-         * will be enough to remove colored noise and do not distort colors
-         *
-         * The function converts image to CIELAB colorspace and then separately denoise L and AB components
-         * with given h parameters using fastNlMeansDenoising function.
+         @brief Modification of fastNlMeansDenoising function for colored images
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Output image with the same size and type as src .
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
+         removes noise but also removes image details, smaller h value preserves details but also preserves
+         some noise
+         @param hColor The same as h but for color components. For most images value equals 10
+         will be enough to remove colored noise and do not distort colors
+         
+         The function converts image to CIELAB colorspace and then separately denoise L and AB components
+         with given h parameters using fastNlMeansDenoising function.
          */
         public static void fastNlMeansDenoisingColored(Mat src, Mat dst, float h)
         {
@@ -446,19 +458,23 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Modification of fastNlMeansDenoising function for colored images
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Output image with the same size and type as src .
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * removes noise but also removes image details, smaller h value preserves details but also preserves
-         * some noise
-         * will be enough to remove colored noise and do not distort colors
-         *
-         * The function converts image to CIELAB colorspace and then separately denoise L and AB components
-         * with given h parameters using fastNlMeansDenoising function.
+         @brief Modification of fastNlMeansDenoising function for colored images
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Output image with the same size and type as src .
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
+         removes noise but also removes image details, smaller h value preserves details but also preserves
+         some noise
+         @param hColor The same as h but for color components. For most images value equals 10
+         will be enough to remove colored noise and do not distort colors
+         
+         The function converts image to CIELAB colorspace and then separately denoise L and AB components
+         with given h parameters using fastNlMeansDenoising function.
          */
         public static void fastNlMeansDenoisingColored(Mat src, Mat dst)
         {
@@ -476,28 +492,28 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
-         * captured in small period of time. For example video. This version of the function is for grayscale
-         * images or for manual manipulation with colorspaces. For more details see
-         * &lt;http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.131.6394&gt;
-         *
-         * param srcImgs Input 8-bit 1-channel, 2-channel, 3-channel or
-         * 4-channel images sequence. All images should have the same type and
-         * size.
-         * param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
-         * param temporalWindowSize Number of surrounding images to use for target image denoising. Should
-         * be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
-         * imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
-         * srcImgs[imgToDenoiseIndex] image.
-         * param dst Output image with the same size and type as srcImgs images.
-         * param templateWindowSize Size in pixels of the template patch that is used to compute weights.
-         * Should be odd. Recommended value 7 pixels
-         * param searchWindowSize Size in pixels of the window that is used to compute weighted average for
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Parameter regulating filter strength. Bigger h value
-         * perfectly removes noise but also removes image details, smaller h
-         * value preserves details but also preserves some noise
+         @brief Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
+         captured in small period of time. For example video. This version of the function is for grayscale
+         images or for manual manipulation with colorspaces. See @cite Buades2005DenoisingIS for more details
+         (open access [here](https://static.aminer.org/pdf/PDF/000/317/196/spatio_temporal_wiener_filtering_of_image_sequences_using_a_parametric.pdf)).
+         
+         @param srcImgs Input 8-bit 1-channel, 2-channel, 3-channel or
+         4-channel images sequence. All images should have the same type and
+         size.
+         @param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
+         @param temporalWindowSize Number of surrounding images to use for target image denoising. Should
+         be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
+         imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
+         srcImgs[imgToDenoiseIndex] image.
+         @param dst Output image with the same size and type as srcImgs images.
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength. Bigger h value
+         perfectly removes noise but also removes image details, smaller h
+         value preserves details but also preserves some noise
          */
         public static void fastNlMeansDenoisingMulti(List<Mat> srcImgs, Mat dst, int imgToDenoiseIndex, int temporalWindowSize, float h, int templateWindowSize, int searchWindowSize)
         {
@@ -509,27 +525,28 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
-         * captured in small period of time. For example video. This version of the function is for grayscale
-         * images or for manual manipulation with colorspaces. For more details see
-         * &lt;http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.131.6394&gt;
-         *
-         * param srcImgs Input 8-bit 1-channel, 2-channel, 3-channel or
-         * 4-channel images sequence. All images should have the same type and
-         * size.
-         * param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
-         * param temporalWindowSize Number of surrounding images to use for target image denoising. Should
-         * be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
-         * imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
-         * srcImgs[imgToDenoiseIndex] image.
-         * param dst Output image with the same size and type as srcImgs images.
-         * param templateWindowSize Size in pixels of the template patch that is used to compute weights.
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Parameter regulating filter strength. Bigger h value
-         * perfectly removes noise but also removes image details, smaller h
-         * value preserves details but also preserves some noise
+         @brief Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
+         captured in small period of time. For example video. This version of the function is for grayscale
+         images or for manual manipulation with colorspaces. See @cite Buades2005DenoisingIS for more details
+         (open access [here](https://static.aminer.org/pdf/PDF/000/317/196/spatio_temporal_wiener_filtering_of_image_sequences_using_a_parametric.pdf)).
+         
+         @param srcImgs Input 8-bit 1-channel, 2-channel, 3-channel or
+         4-channel images sequence. All images should have the same type and
+         size.
+         @param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
+         @param temporalWindowSize Number of surrounding images to use for target image denoising. Should
+         be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
+         imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
+         srcImgs[imgToDenoiseIndex] image.
+         @param dst Output image with the same size and type as srcImgs images.
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength. Bigger h value
+         perfectly removes noise but also removes image details, smaller h
+         value preserves details but also preserves some noise
          */
         public static void fastNlMeansDenoisingMulti(List<Mat> srcImgs, Mat dst, int imgToDenoiseIndex, int temporalWindowSize, float h, int templateWindowSize)
         {
@@ -541,26 +558,28 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
-         * captured in small period of time. For example video. This version of the function is for grayscale
-         * images or for manual manipulation with colorspaces. For more details see
-         * &lt;http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.131.6394&gt;
-         *
-         * param srcImgs Input 8-bit 1-channel, 2-channel, 3-channel or
-         * 4-channel images sequence. All images should have the same type and
-         * size.
-         * param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
-         * param temporalWindowSize Number of surrounding images to use for target image denoising. Should
-         * be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
-         * imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
-         * srcImgs[imgToDenoiseIndex] image.
-         * param dst Output image with the same size and type as srcImgs images.
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Parameter regulating filter strength. Bigger h value
-         * perfectly removes noise but also removes image details, smaller h
-         * value preserves details but also preserves some noise
+         @brief Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
+         captured in small period of time. For example video. This version of the function is for grayscale
+         images or for manual manipulation with colorspaces. See @cite Buades2005DenoisingIS for more details
+         (open access [here](https://static.aminer.org/pdf/PDF/000/317/196/spatio_temporal_wiener_filtering_of_image_sequences_using_a_parametric.pdf)).
+         
+         @param srcImgs Input 8-bit 1-channel, 2-channel, 3-channel or
+         4-channel images sequence. All images should have the same type and
+         size.
+         @param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
+         @param temporalWindowSize Number of surrounding images to use for target image denoising. Should
+         be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
+         imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
+         srcImgs[imgToDenoiseIndex] image.
+         @param dst Output image with the same size and type as srcImgs images.
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength. Bigger h value
+         perfectly removes noise but also removes image details, smaller h
+         value preserves details but also preserves some noise
          */
         public static void fastNlMeansDenoisingMulti(List<Mat> srcImgs, Mat dst, int imgToDenoiseIndex, int temporalWindowSize, float h)
         {
@@ -572,25 +591,28 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
-         * captured in small period of time. For example video. This version of the function is for grayscale
-         * images or for manual manipulation with colorspaces. For more details see
-         * &lt;http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.131.6394&gt;
-         *
-         * param srcImgs Input 8-bit 1-channel, 2-channel, 3-channel or
-         * 4-channel images sequence. All images should have the same type and
-         * size.
-         * param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
-         * param temporalWindowSize Number of surrounding images to use for target image denoising. Should
-         * be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
-         * imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
-         * srcImgs[imgToDenoiseIndex] image.
-         * param dst Output image with the same size and type as srcImgs images.
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * perfectly removes noise but also removes image details, smaller h
-         * value preserves details but also preserves some noise
+         @brief Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
+         captured in small period of time. For example video. This version of the function is for grayscale
+         images or for manual manipulation with colorspaces. See @cite Buades2005DenoisingIS for more details
+         (open access [here](https://static.aminer.org/pdf/PDF/000/317/196/spatio_temporal_wiener_filtering_of_image_sequences_using_a_parametric.pdf)).
+         
+         @param srcImgs Input 8-bit 1-channel, 2-channel, 3-channel or
+         4-channel images sequence. All images should have the same type and
+         size.
+         @param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
+         @param temporalWindowSize Number of surrounding images to use for target image denoising. Should
+         be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
+         imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
+         srcImgs[imgToDenoiseIndex] image.
+         @param dst Output image with the same size and type as srcImgs images.
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength. Bigger h value
+         perfectly removes noise but also removes image details, smaller h
+         value preserves details but also preserves some noise
          */
         public static void fastNlMeansDenoisingMulti(List<Mat> srcImgs, Mat dst, int imgToDenoiseIndex, int temporalWindowSize)
         {
@@ -607,30 +629,30 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
-         * captured in small period of time. For example video. This version of the function is for grayscale
-         * images or for manual manipulation with colorspaces. For more details see
-         * &lt;http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.131.6394&gt;
-         *
-         * param srcImgs Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
-         * 2-channel, 3-channel or 4-channel images sequence. All images should
-         * have the same type and size.
-         * param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
-         * param temporalWindowSize Number of surrounding images to use for target image denoising. Should
-         * be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
-         * imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
-         * srcImgs[imgToDenoiseIndex] image.
-         * param dst Output image with the same size and type as srcImgs images.
-         * param templateWindowSize Size in pixels of the template patch that is used to compute weights.
-         * Should be odd. Recommended value 7 pixels
-         * param searchWindowSize Size in pixels of the window that is used to compute weighted average for
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Array of parameters regulating filter strength, either one
-         * parameter applied to all channels or one per channel in dst. Big h value
-         * perfectly removes noise but also removes image details, smaller h
-         * value preserves details but also preserves some noise
-         * param normType Type of norm used for weight calculation. Can be either NORM_L2 or NORM_L1
+         @brief Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
+         captured in small period of time. For example video. This version of the function is for grayscale
+         images or for manual manipulation with colorspaces. See @cite Buades2005DenoisingIS for more details
+         (open access [here](https://static.aminer.org/pdf/PDF/000/317/196/spatio_temporal_wiener_filtering_of_image_sequences_using_a_parametric.pdf)).
+         
+         @param srcImgs Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
+         2-channel, 3-channel or 4-channel images sequence. All images should
+         have the same type and size.
+         @param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
+         @param temporalWindowSize Number of surrounding images to use for target image denoising. Should
+         be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
+         imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
+         srcImgs[imgToDenoiseIndex] image.
+         @param dst Output image with the same size and type as srcImgs images.
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Array of parameters regulating filter strength, either one
+         parameter applied to all channels or one per channel in dst. Big h value
+         perfectly removes noise but also removes image details, smaller h
+         value preserves details but also preserves some noise
+         @param normType Type of norm used for weight calculation. Can be either NORM_L2 or NORM_L1
          */
         public static void fastNlMeansDenoisingMulti(List<Mat> srcImgs, Mat dst, int imgToDenoiseIndex, int temporalWindowSize, MatOfFloat h, int templateWindowSize, int searchWindowSize, int normType)
         {
@@ -644,29 +666,30 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
-         * captured in small period of time. For example video. This version of the function is for grayscale
-         * images or for manual manipulation with colorspaces. For more details see
-         * &lt;http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.131.6394&gt;
-         *
-         * param srcImgs Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
-         * 2-channel, 3-channel or 4-channel images sequence. All images should
-         * have the same type and size.
-         * param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
-         * param temporalWindowSize Number of surrounding images to use for target image denoising. Should
-         * be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
-         * imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
-         * srcImgs[imgToDenoiseIndex] image.
-         * param dst Output image with the same size and type as srcImgs images.
-         * param templateWindowSize Size in pixels of the template patch that is used to compute weights.
-         * Should be odd. Recommended value 7 pixels
-         * param searchWindowSize Size in pixels of the window that is used to compute weighted average for
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Array of parameters regulating filter strength, either one
-         * parameter applied to all channels or one per channel in dst. Big h value
-         * perfectly removes noise but also removes image details, smaller h
-         * value preserves details but also preserves some noise
+         @brief Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
+         captured in small period of time. For example video. This version of the function is for grayscale
+         images or for manual manipulation with colorspaces. See @cite Buades2005DenoisingIS for more details
+         (open access [here](https://static.aminer.org/pdf/PDF/000/317/196/spatio_temporal_wiener_filtering_of_image_sequences_using_a_parametric.pdf)).
+         
+         @param srcImgs Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
+         2-channel, 3-channel or 4-channel images sequence. All images should
+         have the same type and size.
+         @param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
+         @param temporalWindowSize Number of surrounding images to use for target image denoising. Should
+         be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
+         imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
+         srcImgs[imgToDenoiseIndex] image.
+         @param dst Output image with the same size and type as srcImgs images.
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Array of parameters regulating filter strength, either one
+         parameter applied to all channels or one per channel in dst. Big h value
+         perfectly removes noise but also removes image details, smaller h
+         value preserves details but also preserves some noise
+         @param normType Type of norm used for weight calculation. Can be either NORM_L2 or NORM_L1
          */
         public static void fastNlMeansDenoisingMulti(List<Mat> srcImgs, Mat dst, int imgToDenoiseIndex, int temporalWindowSize, MatOfFloat h, int templateWindowSize, int searchWindowSize)
         {
@@ -680,28 +703,30 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
-         * captured in small period of time. For example video. This version of the function is for grayscale
-         * images or for manual manipulation with colorspaces. For more details see
-         * &lt;http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.131.6394&gt;
-         *
-         * param srcImgs Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
-         * 2-channel, 3-channel or 4-channel images sequence. All images should
-         * have the same type and size.
-         * param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
-         * param temporalWindowSize Number of surrounding images to use for target image denoising. Should
-         * be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
-         * imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
-         * srcImgs[imgToDenoiseIndex] image.
-         * param dst Output image with the same size and type as srcImgs images.
-         * param templateWindowSize Size in pixels of the template patch that is used to compute weights.
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Array of parameters regulating filter strength, either one
-         * parameter applied to all channels or one per channel in dst. Big h value
-         * perfectly removes noise but also removes image details, smaller h
-         * value preserves details but also preserves some noise
+         @brief Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
+         captured in small period of time. For example video. This version of the function is for grayscale
+         images or for manual manipulation with colorspaces. See @cite Buades2005DenoisingIS for more details
+         (open access [here](https://static.aminer.org/pdf/PDF/000/317/196/spatio_temporal_wiener_filtering_of_image_sequences_using_a_parametric.pdf)).
+         
+         @param srcImgs Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
+         2-channel, 3-channel or 4-channel images sequence. All images should
+         have the same type and size.
+         @param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
+         @param temporalWindowSize Number of surrounding images to use for target image denoising. Should
+         be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
+         imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
+         srcImgs[imgToDenoiseIndex] image.
+         @param dst Output image with the same size and type as srcImgs images.
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Array of parameters regulating filter strength, either one
+         parameter applied to all channels or one per channel in dst. Big h value
+         perfectly removes noise but also removes image details, smaller h
+         value preserves details but also preserves some noise
+         @param normType Type of norm used for weight calculation. Can be either NORM_L2 or NORM_L1
          */
         public static void fastNlMeansDenoisingMulti(List<Mat> srcImgs, Mat dst, int imgToDenoiseIndex, int temporalWindowSize, MatOfFloat h, int templateWindowSize)
         {
@@ -715,27 +740,30 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
-         * captured in small period of time. For example video. This version of the function is for grayscale
-         * images or for manual manipulation with colorspaces. For more details see
-         * &lt;http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.131.6394&gt;
-         *
-         * param srcImgs Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
-         * 2-channel, 3-channel or 4-channel images sequence. All images should
-         * have the same type and size.
-         * param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
-         * param temporalWindowSize Number of surrounding images to use for target image denoising. Should
-         * be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
-         * imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
-         * srcImgs[imgToDenoiseIndex] image.
-         * param dst Output image with the same size and type as srcImgs images.
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Array of parameters regulating filter strength, either one
-         * parameter applied to all channels or one per channel in dst. Big h value
-         * perfectly removes noise but also removes image details, smaller h
-         * value preserves details but also preserves some noise
+         @brief Modification of fastNlMeansDenoising function for images sequence where consecutive images have been
+         captured in small period of time. For example video. This version of the function is for grayscale
+         images or for manual manipulation with colorspaces. See @cite Buades2005DenoisingIS for more details
+         (open access [here](https://static.aminer.org/pdf/PDF/000/317/196/spatio_temporal_wiener_filtering_of_image_sequences_using_a_parametric.pdf)).
+         
+         @param srcImgs Input 8-bit or 16-bit (only with NORM_L1) 1-channel,
+         2-channel, 3-channel or 4-channel images sequence. All images should
+         have the same type and size.
+         @param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
+         @param temporalWindowSize Number of surrounding images to use for target image denoising. Should
+         be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
+         imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
+         srcImgs[imgToDenoiseIndex] image.
+         @param dst Output image with the same size and type as srcImgs images.
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Array of parameters regulating filter strength, either one
+         parameter applied to all channels or one per channel in dst. Big h value
+         perfectly removes noise but also removes image details, smaller h
+         value preserves details but also preserves some noise
+         @param normType Type of norm used for weight calculation. Can be either NORM_L2 or NORM_L1
          */
         public static void fastNlMeansDenoisingMulti(List<Mat> srcImgs, Mat dst, int imgToDenoiseIndex, int temporalWindowSize, MatOfFloat h)
         {
@@ -754,28 +782,28 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Modification of fastNlMeansDenoisingMulti function for colored images sequences
-         *
-         * param srcImgs Input 8-bit 3-channel images sequence. All images should have the same type and
-         * size.
-         * param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
-         * param temporalWindowSize Number of surrounding images to use for target image denoising. Should
-         * be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
-         * imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
-         * srcImgs[imgToDenoiseIndex] image.
-         * param dst Output image with the same size and type as srcImgs images.
-         * param templateWindowSize Size in pixels of the template patch that is used to compute weights.
-         * Should be odd. Recommended value 7 pixels
-         * param searchWindowSize Size in pixels of the window that is used to compute weighted average for
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
-         * removes noise but also removes image details, smaller h value preserves details but also preserves
-         * some noise.
-         * param hColor The same as h but for color components.
-         *
-         * The function converts images to CIELAB colorspace and then separately denoise L and AB components
-         * with given h parameters using fastNlMeansDenoisingMulti function.
+         @brief Modification of fastNlMeansDenoisingMulti function for colored images sequences
+         
+         @param srcImgs Input 8-bit 3-channel images sequence. All images should have the same type and
+         size.
+         @param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
+         @param temporalWindowSize Number of surrounding images to use for target image denoising. Should
+         be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
+         imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
+         srcImgs[imgToDenoiseIndex] image.
+         @param dst Output image with the same size and type as srcImgs images.
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
+         removes noise but also removes image details, smaller h value preserves details but also preserves
+         some noise.
+         @param hColor The same as h but for color components.
+         
+         The function converts images to CIELAB colorspace and then separately denoise L and AB components
+         with given h parameters using fastNlMeansDenoisingMulti function.
          */
         public static void fastNlMeansDenoisingColoredMulti(List<Mat> srcImgs, Mat dst, int imgToDenoiseIndex, int temporalWindowSize, float h, float hColor, int templateWindowSize, int searchWindowSize)
         {
@@ -787,27 +815,28 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Modification of fastNlMeansDenoisingMulti function for colored images sequences
-         *
-         * param srcImgs Input 8-bit 3-channel images sequence. All images should have the same type and
-         * size.
-         * param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
-         * param temporalWindowSize Number of surrounding images to use for target image denoising. Should
-         * be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
-         * imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
-         * srcImgs[imgToDenoiseIndex] image.
-         * param dst Output image with the same size and type as srcImgs images.
-         * param templateWindowSize Size in pixels of the template patch that is used to compute weights.
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
-         * removes noise but also removes image details, smaller h value preserves details but also preserves
-         * some noise.
-         * param hColor The same as h but for color components.
-         *
-         * The function converts images to CIELAB colorspace and then separately denoise L and AB components
-         * with given h parameters using fastNlMeansDenoisingMulti function.
+         @brief Modification of fastNlMeansDenoisingMulti function for colored images sequences
+         
+         @param srcImgs Input 8-bit 3-channel images sequence. All images should have the same type and
+         size.
+         @param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
+         @param temporalWindowSize Number of surrounding images to use for target image denoising. Should
+         be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
+         imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
+         srcImgs[imgToDenoiseIndex] image.
+         @param dst Output image with the same size and type as srcImgs images.
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
+         removes noise but also removes image details, smaller h value preserves details but also preserves
+         some noise.
+         @param hColor The same as h but for color components.
+         
+         The function converts images to CIELAB colorspace and then separately denoise L and AB components
+         with given h parameters using fastNlMeansDenoisingMulti function.
          */
         public static void fastNlMeansDenoisingColoredMulti(List<Mat> srcImgs, Mat dst, int imgToDenoiseIndex, int temporalWindowSize, float h, float hColor, int templateWindowSize)
         {
@@ -819,26 +848,28 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Modification of fastNlMeansDenoisingMulti function for colored images sequences
-         *
-         * param srcImgs Input 8-bit 3-channel images sequence. All images should have the same type and
-         * size.
-         * param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
-         * param temporalWindowSize Number of surrounding images to use for target image denoising. Should
-         * be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
-         * imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
-         * srcImgs[imgToDenoiseIndex] image.
-         * param dst Output image with the same size and type as srcImgs images.
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
-         * removes noise but also removes image details, smaller h value preserves details but also preserves
-         * some noise.
-         * param hColor The same as h but for color components.
-         *
-         * The function converts images to CIELAB colorspace and then separately denoise L and AB components
-         * with given h parameters using fastNlMeansDenoisingMulti function.
+         @brief Modification of fastNlMeansDenoisingMulti function for colored images sequences
+         
+         @param srcImgs Input 8-bit 3-channel images sequence. All images should have the same type and
+         size.
+         @param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
+         @param temporalWindowSize Number of surrounding images to use for target image denoising. Should
+         be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
+         imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
+         srcImgs[imgToDenoiseIndex] image.
+         @param dst Output image with the same size and type as srcImgs images.
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
+         removes noise but also removes image details, smaller h value preserves details but also preserves
+         some noise.
+         @param hColor The same as h but for color components.
+         
+         The function converts images to CIELAB colorspace and then separately denoise L and AB components
+         with given h parameters using fastNlMeansDenoisingMulti function.
          */
         public static void fastNlMeansDenoisingColoredMulti(List<Mat> srcImgs, Mat dst, int imgToDenoiseIndex, int temporalWindowSize, float h, float hColor)
         {
@@ -850,25 +881,28 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Modification of fastNlMeansDenoisingMulti function for colored images sequences
-         *
-         * param srcImgs Input 8-bit 3-channel images sequence. All images should have the same type and
-         * size.
-         * param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
-         * param temporalWindowSize Number of surrounding images to use for target image denoising. Should
-         * be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
-         * imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
-         * srcImgs[imgToDenoiseIndex] image.
-         * param dst Output image with the same size and type as srcImgs images.
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
-         * removes noise but also removes image details, smaller h value preserves details but also preserves
-         * some noise.
-         *
-         * The function converts images to CIELAB colorspace and then separately denoise L and AB components
-         * with given h parameters using fastNlMeansDenoisingMulti function.
+         @brief Modification of fastNlMeansDenoisingMulti function for colored images sequences
+         
+         @param srcImgs Input 8-bit 3-channel images sequence. All images should have the same type and
+         size.
+         @param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
+         @param temporalWindowSize Number of surrounding images to use for target image denoising. Should
+         be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
+         imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
+         srcImgs[imgToDenoiseIndex] image.
+         @param dst Output image with the same size and type as srcImgs images.
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
+         removes noise but also removes image details, smaller h value preserves details but also preserves
+         some noise.
+         @param hColor The same as h but for color components.
+         
+         The function converts images to CIELAB colorspace and then separately denoise L and AB components
+         with given h parameters using fastNlMeansDenoisingMulti function.
          */
         public static void fastNlMeansDenoisingColoredMulti(List<Mat> srcImgs, Mat dst, int imgToDenoiseIndex, int temporalWindowSize, float h)
         {
@@ -880,24 +914,28 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Modification of fastNlMeansDenoisingMulti function for colored images sequences
-         *
-         * param srcImgs Input 8-bit 3-channel images sequence. All images should have the same type and
-         * size.
-         * param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
-         * param temporalWindowSize Number of surrounding images to use for target image denoising. Should
-         * be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
-         * imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
-         * srcImgs[imgToDenoiseIndex] image.
-         * param dst Output image with the same size and type as srcImgs images.
-         * Should be odd. Recommended value 7 pixels
-         * given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
-         * denoising time. Recommended value 21 pixels
-         * removes noise but also removes image details, smaller h value preserves details but also preserves
-         * some noise.
-         *
-         * The function converts images to CIELAB colorspace and then separately denoise L and AB components
-         * with given h parameters using fastNlMeansDenoisingMulti function.
+         @brief Modification of fastNlMeansDenoisingMulti function for colored images sequences
+         
+         @param srcImgs Input 8-bit 3-channel images sequence. All images should have the same type and
+         size.
+         @param imgToDenoiseIndex Target image to denoise index in srcImgs sequence
+         @param temporalWindowSize Number of surrounding images to use for target image denoising. Should
+         be odd. Images from imgToDenoiseIndex - temporalWindowSize / 2 to
+         imgToDenoiseIndex - temporalWindowSize / 2 from srcImgs will be used to denoise
+         srcImgs[imgToDenoiseIndex] image.
+         @param dst Output image with the same size and type as srcImgs images.
+         @param templateWindowSize Size in pixels of the template patch that is used to compute weights.
+         Should be odd. Recommended value 7 pixels
+         @param searchWindowSize Size in pixels of the window that is used to compute weighted average for
+         given pixel. Should be odd. Affect performance linearly: greater searchWindowsSize - greater
+         denoising time. Recommended value 21 pixels
+         @param h Parameter regulating filter strength for luminance component. Bigger h value perfectly
+         removes noise but also removes image details, smaller h value preserves details but also preserves
+         some noise.
+         @param hColor The same as h but for color components.
+         
+         The function converts images to CIELAB colorspace and then separately denoise L and AB components
+         with given h parameters using fastNlMeansDenoisingMulti function.
          */
         public static void fastNlMeansDenoisingColoredMulti(List<Mat> srcImgs, Mat dst, int imgToDenoiseIndex, int temporalWindowSize)
         {
@@ -914,42 +952,42 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Primal-dual algorithm is an algorithm for solving special types of variational problems (that is,
-         * finding a function to minimize some functional). As the image denoising, in particular, may be seen
-         * as the variational problem, primal-dual algorithm then can be used to perform denoising and this is
-         * exactly what is implemented.
-         *
-         * It should be noted, that this implementation was taken from the July 2013 blog entry
-         * CITE: MA13 , which also contained (slightly more general) ready-to-use source code on Python.
-         * Subsequently, that code was rewritten on C++ with the usage of openCV by Vadim Pisarevsky at the end
-         * of July 2013 and finally it was slightly adapted by later authors.
-         *
-         * Although the thorough discussion and justification of the algorithm involved may be found in
-         * CITE: ChambolleEtAl, it might make sense to skim over it here, following CITE: MA13 . To begin
-         * with, we consider the 1-byte gray-level images as the functions from the rectangular domain of
-         * pixels (it may be seen as set
-         * \(\left\{(x,y)\in\mathbb{N}\times\mathbb{N}\mid 1\leq x\leq n,\;1\leq y\leq m\right\}\) for some
-         * \(m,\;n\in\mathbb{N}\)) into \(\{0,1,\dots,255\}\). We shall denote the noised images as \(f_i\) and with
-         * this view, given some image \(x\) of the same size, we may measure how bad it is by the formula
-         *
-         * \(\left\|\left\|\nabla x\right\|\right\| + \lambda\sum_i\left\|\left\|x-f_i\right\|\right\|\)
-         *
-         * \(\|\|\cdot\|\|\) here denotes \(L_2\)-norm and as you see, the first addend states that we want our
-         * image to be smooth (ideally, having zero gradient, thus being constant) and the second states that
-         * we want our result to be close to the observations we've got. If we treat \(x\) as a function, this is
-         * exactly the functional what we seek to minimize and here the Primal-Dual algorithm comes into play.
-         *
-         * param observations This array should contain one or more noised versions of the image that is to
-         * be restored.
-         * param result Here the denoised image will be stored. There is no need to do pre-allocation of
-         * storage space, as it will be automatically allocated, if necessary.
-         * param lambda Corresponds to \(\lambda\) in the formulas above. As it is enlarged, the smooth
-         * (blurred) images are treated more favorably than detailed (but maybe more noised) ones. Roughly
-         * speaking, as it becomes smaller, the result will be more blur but more sever outliers will be
-         * removed.
-         * param niters Number of iterations that the algorithm will run. Of course, as more iterations as
-         * better, but it is hard to quantitatively refine this statement, so just use the default and
-         * increase it if the results are poor.
+         @brief Primal-dual algorithm is an algorithm for solving special types of variational problems (that is,
+         finding a function to minimize some functional). As the image denoising, in particular, may be seen
+         as the variational problem, primal-dual algorithm then can be used to perform denoising and this is
+         exactly what is implemented.
+         
+         It should be noted, that this implementation was taken from the July 2013 blog entry
+         @cite MA13 , which also contained (slightly more general) ready-to-use source code on Python.
+         Subsequently, that code was rewritten on C++ with the usage of openCV by Vadim Pisarevsky at the end
+         of July 2013 and finally it was slightly adapted by later authors.
+         
+         Although the thorough discussion and justification of the algorithm involved may be found in
+         @cite ChambolleEtAl, it might make sense to skim over it here, following @cite MA13 . To begin
+         with, we consider the 1-byte gray-level images as the functions from the rectangular domain of
+         pixels (it may be seen as set
+         \f$\left\{(x,y)\in\mathbb{N}\times\mathbb{N}\mid 1\leq x\leq n,\;1\leq y\leq m\right\}\f$ for some
+         \f$m,\;n\in\mathbb{N}\f$) into \f$\{0,1,\dots,255\}\f$. We shall denote the noised images as \f$f_i\f$ and with
+         this view, given some image \f$x\f$ of the same size, we may measure how bad it is by the formula
+         
+         \f[\left\|\left\|\nabla x\right\|\right\| + \lambda\sum_i\left\|\left\|x-f_i\right\|\right\|\f]
+         
+         \f$\|\|\cdot\|\|\f$ here denotes \f$L_2\f$-norm and as you see, the first addend states that we want our
+         image to be smooth (ideally, having zero gradient, thus being constant) and the second states that
+         we want our result to be close to the observations we've got. If we treat \f$x\f$ as a function, this is
+         exactly the functional what we seek to minimize and here the Primal-Dual algorithm comes into play.
+         
+         @param observations This array should contain one or more noised versions of the image that is to
+         be restored.
+         @param result Here the denoised image will be stored. There is no need to do pre-allocation of
+         storage space, as it will be automatically allocated, if necessary.
+         @param lambda Corresponds to \f$\lambda\f$ in the formulas above. As it is enlarged, the smooth
+         (blurred) images are treated more favorably than detailed (but maybe more noised) ones. Roughly
+         speaking, as it becomes smaller, the result will be more blur but more sever outliers will be
+         removed.
+         @param niters Number of iterations that the algorithm will run. Of course, as more iterations as
+         better, but it is hard to quantitatively refine this statement, so just use the default and
+         increase it if the results are poor.
          */
         public static void denoise_TVL1(List<Mat> observations, Mat result, double lambda, int niters)
         {
@@ -961,41 +999,42 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Primal-dual algorithm is an algorithm for solving special types of variational problems (that is,
-         * finding a function to minimize some functional). As the image denoising, in particular, may be seen
-         * as the variational problem, primal-dual algorithm then can be used to perform denoising and this is
-         * exactly what is implemented.
-         *
-         * It should be noted, that this implementation was taken from the July 2013 blog entry
-         * CITE: MA13 , which also contained (slightly more general) ready-to-use source code on Python.
-         * Subsequently, that code was rewritten on C++ with the usage of openCV by Vadim Pisarevsky at the end
-         * of July 2013 and finally it was slightly adapted by later authors.
-         *
-         * Although the thorough discussion and justification of the algorithm involved may be found in
-         * CITE: ChambolleEtAl, it might make sense to skim over it here, following CITE: MA13 . To begin
-         * with, we consider the 1-byte gray-level images as the functions from the rectangular domain of
-         * pixels (it may be seen as set
-         * \(\left\{(x,y)\in\mathbb{N}\times\mathbb{N}\mid 1\leq x\leq n,\;1\leq y\leq m\right\}\) for some
-         * \(m,\;n\in\mathbb{N}\)) into \(\{0,1,\dots,255\}\). We shall denote the noised images as \(f_i\) and with
-         * this view, given some image \(x\) of the same size, we may measure how bad it is by the formula
-         *
-         * \(\left\|\left\|\nabla x\right\|\right\| + \lambda\sum_i\left\|\left\|x-f_i\right\|\right\|\)
-         *
-         * \(\|\|\cdot\|\|\) here denotes \(L_2\)-norm and as you see, the first addend states that we want our
-         * image to be smooth (ideally, having zero gradient, thus being constant) and the second states that
-         * we want our result to be close to the observations we've got. If we treat \(x\) as a function, this is
-         * exactly the functional what we seek to minimize and here the Primal-Dual algorithm comes into play.
-         *
-         * param observations This array should contain one or more noised versions of the image that is to
-         * be restored.
-         * param result Here the denoised image will be stored. There is no need to do pre-allocation of
-         * storage space, as it will be automatically allocated, if necessary.
-         * param lambda Corresponds to \(\lambda\) in the formulas above. As it is enlarged, the smooth
-         * (blurred) images are treated more favorably than detailed (but maybe more noised) ones. Roughly
-         * speaking, as it becomes smaller, the result will be more blur but more sever outliers will be
-         * removed.
-         * better, but it is hard to quantitatively refine this statement, so just use the default and
-         * increase it if the results are poor.
+         @brief Primal-dual algorithm is an algorithm for solving special types of variational problems (that is,
+         finding a function to minimize some functional). As the image denoising, in particular, may be seen
+         as the variational problem, primal-dual algorithm then can be used to perform denoising and this is
+         exactly what is implemented.
+         
+         It should be noted, that this implementation was taken from the July 2013 blog entry
+         @cite MA13 , which also contained (slightly more general) ready-to-use source code on Python.
+         Subsequently, that code was rewritten on C++ with the usage of openCV by Vadim Pisarevsky at the end
+         of July 2013 and finally it was slightly adapted by later authors.
+         
+         Although the thorough discussion and justification of the algorithm involved may be found in
+         @cite ChambolleEtAl, it might make sense to skim over it here, following @cite MA13 . To begin
+         with, we consider the 1-byte gray-level images as the functions from the rectangular domain of
+         pixels (it may be seen as set
+         \f$\left\{(x,y)\in\mathbb{N}\times\mathbb{N}\mid 1\leq x\leq n,\;1\leq y\leq m\right\}\f$ for some
+         \f$m,\;n\in\mathbb{N}\f$) into \f$\{0,1,\dots,255\}\f$. We shall denote the noised images as \f$f_i\f$ and with
+         this view, given some image \f$x\f$ of the same size, we may measure how bad it is by the formula
+         
+         \f[\left\|\left\|\nabla x\right\|\right\| + \lambda\sum_i\left\|\left\|x-f_i\right\|\right\|\f]
+         
+         \f$\|\|\cdot\|\|\f$ here denotes \f$L_2\f$-norm and as you see, the first addend states that we want our
+         image to be smooth (ideally, having zero gradient, thus being constant) and the second states that
+         we want our result to be close to the observations we've got. If we treat \f$x\f$ as a function, this is
+         exactly the functional what we seek to minimize and here the Primal-Dual algorithm comes into play.
+         
+         @param observations This array should contain one or more noised versions of the image that is to
+         be restored.
+         @param result Here the denoised image will be stored. There is no need to do pre-allocation of
+         storage space, as it will be automatically allocated, if necessary.
+         @param lambda Corresponds to \f$\lambda\f$ in the formulas above. As it is enlarged, the smooth
+         (blurred) images are treated more favorably than detailed (but maybe more noised) ones. Roughly
+         speaking, as it becomes smaller, the result will be more blur but more sever outliers will be
+         removed.
+         @param niters Number of iterations that the algorithm will run. Of course, as more iterations as
+         better, but it is hard to quantitatively refine this statement, so just use the default and
+         increase it if the results are poor.
          */
         public static void denoise_TVL1(List<Mat> observations, Mat result, double lambda)
         {
@@ -1007,40 +1046,42 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Primal-dual algorithm is an algorithm for solving special types of variational problems (that is,
-         * finding a function to minimize some functional). As the image denoising, in particular, may be seen
-         * as the variational problem, primal-dual algorithm then can be used to perform denoising and this is
-         * exactly what is implemented.
-         *
-         * It should be noted, that this implementation was taken from the July 2013 blog entry
-         * CITE: MA13 , which also contained (slightly more general) ready-to-use source code on Python.
-         * Subsequently, that code was rewritten on C++ with the usage of openCV by Vadim Pisarevsky at the end
-         * of July 2013 and finally it was slightly adapted by later authors.
-         *
-         * Although the thorough discussion and justification of the algorithm involved may be found in
-         * CITE: ChambolleEtAl, it might make sense to skim over it here, following CITE: MA13 . To begin
-         * with, we consider the 1-byte gray-level images as the functions from the rectangular domain of
-         * pixels (it may be seen as set
-         * \(\left\{(x,y)\in\mathbb{N}\times\mathbb{N}\mid 1\leq x\leq n,\;1\leq y\leq m\right\}\) for some
-         * \(m,\;n\in\mathbb{N}\)) into \(\{0,1,\dots,255\}\). We shall denote the noised images as \(f_i\) and with
-         * this view, given some image \(x\) of the same size, we may measure how bad it is by the formula
-         *
-         * \(\left\|\left\|\nabla x\right\|\right\| + \lambda\sum_i\left\|\left\|x-f_i\right\|\right\|\)
-         *
-         * \(\|\|\cdot\|\|\) here denotes \(L_2\)-norm and as you see, the first addend states that we want our
-         * image to be smooth (ideally, having zero gradient, thus being constant) and the second states that
-         * we want our result to be close to the observations we've got. If we treat \(x\) as a function, this is
-         * exactly the functional what we seek to minimize and here the Primal-Dual algorithm comes into play.
-         *
-         * param observations This array should contain one or more noised versions of the image that is to
-         * be restored.
-         * param result Here the denoised image will be stored. There is no need to do pre-allocation of
-         * storage space, as it will be automatically allocated, if necessary.
-         * (blurred) images are treated more favorably than detailed (but maybe more noised) ones. Roughly
-         * speaking, as it becomes smaller, the result will be more blur but more sever outliers will be
-         * removed.
-         * better, but it is hard to quantitatively refine this statement, so just use the default and
-         * increase it if the results are poor.
+         @brief Primal-dual algorithm is an algorithm for solving special types of variational problems (that is,
+         finding a function to minimize some functional). As the image denoising, in particular, may be seen
+         as the variational problem, primal-dual algorithm then can be used to perform denoising and this is
+         exactly what is implemented.
+         
+         It should be noted, that this implementation was taken from the July 2013 blog entry
+         @cite MA13 , which also contained (slightly more general) ready-to-use source code on Python.
+         Subsequently, that code was rewritten on C++ with the usage of openCV by Vadim Pisarevsky at the end
+         of July 2013 and finally it was slightly adapted by later authors.
+         
+         Although the thorough discussion and justification of the algorithm involved may be found in
+         @cite ChambolleEtAl, it might make sense to skim over it here, following @cite MA13 . To begin
+         with, we consider the 1-byte gray-level images as the functions from the rectangular domain of
+         pixels (it may be seen as set
+         \f$\left\{(x,y)\in\mathbb{N}\times\mathbb{N}\mid 1\leq x\leq n,\;1\leq y\leq m\right\}\f$ for some
+         \f$m,\;n\in\mathbb{N}\f$) into \f$\{0,1,\dots,255\}\f$. We shall denote the noised images as \f$f_i\f$ and with
+         this view, given some image \f$x\f$ of the same size, we may measure how bad it is by the formula
+         
+         \f[\left\|\left\|\nabla x\right\|\right\| + \lambda\sum_i\left\|\left\|x-f_i\right\|\right\|\f]
+         
+         \f$\|\|\cdot\|\|\f$ here denotes \f$L_2\f$-norm and as you see, the first addend states that we want our
+         image to be smooth (ideally, having zero gradient, thus being constant) and the second states that
+         we want our result to be close to the observations we've got. If we treat \f$x\f$ as a function, this is
+         exactly the functional what we seek to minimize and here the Primal-Dual algorithm comes into play.
+         
+         @param observations This array should contain one or more noised versions of the image that is to
+         be restored.
+         @param result Here the denoised image will be stored. There is no need to do pre-allocation of
+         storage space, as it will be automatically allocated, if necessary.
+         @param lambda Corresponds to \f$\lambda\f$ in the formulas above. As it is enlarged, the smooth
+         (blurred) images are treated more favorably than detailed (but maybe more noised) ones. Roughly
+         speaking, as it becomes smaller, the result will be more blur but more sever outliers will be
+         removed.
+         @param niters Number of iterations that the algorithm will run. Of course, as more iterations as
+         better, but it is hard to quantitatively refine this statement, so just use the default and
+         increase it if the results are poor.
          */
         public static void denoise_TVL1(List<Mat> observations, Mat result)
         {
@@ -1057,12 +1098,11 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Creates simple linear mapper with gamma correction
-         *
-         * param gamma positive value for gamma correction. Gamma value of 1.0 implies no correction, gamma
-         * equal to 2.2f is suitable for most displays.
-         * Generally gamma &gt; 1 brightens the image and gamma &lt; 1 darkens it.
-         * return automatically generated
+         @brief Creates simple linear mapper with gamma correction
+         
+         @param gamma positive value for gamma correction. Gamma value of 1.0 implies no correction, gamma
+         equal to 2.2f is suitable for most displays.
+         Generally gamma &gt; 1 brightens the image and gamma &lt; 1 darkens it.
          */
         public static Tonemap createTonemap(float gamma)
         {
@@ -1074,11 +1114,11 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates simple linear mapper with gamma correction
-         *
-         * equal to 2.2f is suitable for most displays.
-         * Generally gamma &gt; 1 brightens the image and gamma &lt; 1 darkens it.
-         * return automatically generated
+         @brief Creates simple linear mapper with gamma correction
+         
+         @param gamma positive value for gamma correction. Gamma value of 1.0 implies no correction, gamma
+         equal to 2.2f is suitable for most displays.
+         Generally gamma &gt; 1 brightens the image and gamma &lt; 1 darkens it.
          */
         public static Tonemap createTonemap()
         {
@@ -1095,14 +1135,13 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Creates TonemapDrago object
-         *
-         * param gamma gamma value for gamma correction. See createTonemap
-         * param saturation positive saturation enhancement value. 1.0 preserves saturation, values greater
-         * than 1 increase saturation and values less than 1 decrease it.
-         * param bias value for bias function in [0, 1] range. Values from 0.7 to 0.9 usually give best
-         * results, default value is 0.85.
-         * return automatically generated
+         @brief Creates TonemapDrago object
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param saturation positive saturation enhancement value. 1.0 preserves saturation, values greater
+         than 1 increase saturation and values less than 1 decrease it.
+         @param bias value for bias function in [0, 1] range. Values from 0.7 to 0.9 usually give best
+         results, default value is 0.85.
          */
         public static TonemapDrago createTonemapDrago(float gamma, float saturation, float bias)
         {
@@ -1114,13 +1153,13 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates TonemapDrago object
-         *
-         * param gamma gamma value for gamma correction. See createTonemap
-         * param saturation positive saturation enhancement value. 1.0 preserves saturation, values greater
-         * than 1 increase saturation and values less than 1 decrease it.
-         * results, default value is 0.85.
-         * return automatically generated
+         @brief Creates TonemapDrago object
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param saturation positive saturation enhancement value. 1.0 preserves saturation, values greater
+         than 1 increase saturation and values less than 1 decrease it.
+         @param bias value for bias function in [0, 1] range. Values from 0.7 to 0.9 usually give best
+         results, default value is 0.85.
          */
         public static TonemapDrago createTonemapDrago(float gamma, float saturation)
         {
@@ -1132,12 +1171,13 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates TonemapDrago object
-         *
-         * param gamma gamma value for gamma correction. See createTonemap
-         * than 1 increase saturation and values less than 1 decrease it.
-         * results, default value is 0.85.
-         * return automatically generated
+         @brief Creates TonemapDrago object
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param saturation positive saturation enhancement value. 1.0 preserves saturation, values greater
+         than 1 increase saturation and values less than 1 decrease it.
+         @param bias value for bias function in [0, 1] range. Values from 0.7 to 0.9 usually give best
+         results, default value is 0.85.
          */
         public static TonemapDrago createTonemapDrago(float gamma)
         {
@@ -1149,11 +1189,13 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates TonemapDrago object
-         *
-         * than 1 increase saturation and values less than 1 decrease it.
-         * results, default value is 0.85.
-         * return automatically generated
+         @brief Creates TonemapDrago object
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param saturation positive saturation enhancement value. 1.0 preserves saturation, values greater
+         than 1 increase saturation and values less than 1 decrease it.
+         @param bias value for bias function in [0, 1] range. Values from 0.7 to 0.9 usually give best
+         results, default value is 0.85.
          */
         public static TonemapDrago createTonemapDrago()
         {
@@ -1170,15 +1212,14 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Creates TonemapReinhard object
-         *
-         * param gamma gamma value for gamma correction. See createTonemap
-         * param intensity result intensity in [-8, 8] range. Greater intensity produces brighter results.
-         * param light_adapt light adaptation in [0, 1] range. If 1 adaptation is based only on pixel
-         * value, if 0 it's global, otherwise it's a weighted mean of this two cases.
-         * param color_adapt chromatic adaptation in [0, 1] range. If 1 channels are treated independently,
-         * if 0 adaptation level is the same for each channel.
-         * return automatically generated
+         @brief Creates TonemapReinhard object
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param intensity result intensity in [-8, 8] range. Greater intensity produces brighter results.
+         @param light_adapt light adaptation in [0, 1] range. If 1 adaptation is based only on pixel
+         value, if 0 it's global, otherwise it's a weighted mean of this two cases.
+         @param color_adapt chromatic adaptation in [0, 1] range. If 1 channels are treated independently,
+         if 0 adaptation level is the same for each channel.
          */
         public static TonemapReinhard createTonemapReinhard(float gamma, float intensity, float light_adapt, float color_adapt)
         {
@@ -1190,14 +1231,14 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates TonemapReinhard object
-         *
-         * param gamma gamma value for gamma correction. See createTonemap
-         * param intensity result intensity in [-8, 8] range. Greater intensity produces brighter results.
-         * param light_adapt light adaptation in [0, 1] range. If 1 adaptation is based only on pixel
-         * value, if 0 it's global, otherwise it's a weighted mean of this two cases.
-         * if 0 adaptation level is the same for each channel.
-         * return automatically generated
+         @brief Creates TonemapReinhard object
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param intensity result intensity in [-8, 8] range. Greater intensity produces brighter results.
+         @param light_adapt light adaptation in [0, 1] range. If 1 adaptation is based only on pixel
+         value, if 0 it's global, otherwise it's a weighted mean of this two cases.
+         @param color_adapt chromatic adaptation in [0, 1] range. If 1 channels are treated independently,
+         if 0 adaptation level is the same for each channel.
          */
         public static TonemapReinhard createTonemapReinhard(float gamma, float intensity, float light_adapt)
         {
@@ -1209,13 +1250,14 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates TonemapReinhard object
-         *
-         * param gamma gamma value for gamma correction. See createTonemap
-         * param intensity result intensity in [-8, 8] range. Greater intensity produces brighter results.
-         * value, if 0 it's global, otherwise it's a weighted mean of this two cases.
-         * if 0 adaptation level is the same for each channel.
-         * return automatically generated
+         @brief Creates TonemapReinhard object
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param intensity result intensity in [-8, 8] range. Greater intensity produces brighter results.
+         @param light_adapt light adaptation in [0, 1] range. If 1 adaptation is based only on pixel
+         value, if 0 it's global, otherwise it's a weighted mean of this two cases.
+         @param color_adapt chromatic adaptation in [0, 1] range. If 1 channels are treated independently,
+         if 0 adaptation level is the same for each channel.
          */
         public static TonemapReinhard createTonemapReinhard(float gamma, float intensity)
         {
@@ -1227,12 +1269,14 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates TonemapReinhard object
-         *
-         * param gamma gamma value for gamma correction. See createTonemap
-         * value, if 0 it's global, otherwise it's a weighted mean of this two cases.
-         * if 0 adaptation level is the same for each channel.
-         * return automatically generated
+         @brief Creates TonemapReinhard object
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param intensity result intensity in [-8, 8] range. Greater intensity produces brighter results.
+         @param light_adapt light adaptation in [0, 1] range. If 1 adaptation is based only on pixel
+         value, if 0 it's global, otherwise it's a weighted mean of this two cases.
+         @param color_adapt chromatic adaptation in [0, 1] range. If 1 channels are treated independently,
+         if 0 adaptation level is the same for each channel.
          */
         public static TonemapReinhard createTonemapReinhard(float gamma)
         {
@@ -1244,11 +1288,14 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates TonemapReinhard object
-         *
-         * value, if 0 it's global, otherwise it's a weighted mean of this two cases.
-         * if 0 adaptation level is the same for each channel.
-         * return automatically generated
+         @brief Creates TonemapReinhard object
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param intensity result intensity in [-8, 8] range. Greater intensity produces brighter results.
+         @param light_adapt light adaptation in [0, 1] range. If 1 adaptation is based only on pixel
+         value, if 0 it's global, otherwise it's a weighted mean of this two cases.
+         @param color_adapt chromatic adaptation in [0, 1] range. If 1 channels are treated independently,
+         if 0 adaptation level is the same for each channel.
          */
         public static TonemapReinhard createTonemapReinhard()
         {
@@ -1265,13 +1312,12 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Creates TonemapMantiuk object
-         *
-         * param gamma gamma value for gamma correction. See createTonemap
-         * param scale contrast scale factor. HVS response is multiplied by this parameter, thus compressing
-         * dynamic range. Values from 0.6 to 0.9 produce best results.
-         * param saturation saturation enhancement value. See createTonemapDrago
-         * return automatically generated
+         @brief Creates TonemapMantiuk object
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param scale contrast scale factor. HVS response is multiplied by this parameter, thus compressing
+         dynamic range. Values from 0.6 to 0.9 produce best results.
+         @param saturation saturation enhancement value. See createTonemapDrago
          */
         public static TonemapMantiuk createTonemapMantiuk(float gamma, float scale, float saturation)
         {
@@ -1283,12 +1329,12 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates TonemapMantiuk object
-         *
-         * param gamma gamma value for gamma correction. See createTonemap
-         * param scale contrast scale factor. HVS response is multiplied by this parameter, thus compressing
-         * dynamic range. Values from 0.6 to 0.9 produce best results.
-         * return automatically generated
+         @brief Creates TonemapMantiuk object
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param scale contrast scale factor. HVS response is multiplied by this parameter, thus compressing
+         dynamic range. Values from 0.6 to 0.9 produce best results.
+         @param saturation saturation enhancement value. See createTonemapDrago
          */
         public static TonemapMantiuk createTonemapMantiuk(float gamma, float scale)
         {
@@ -1300,11 +1346,12 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates TonemapMantiuk object
-         *
-         * param gamma gamma value for gamma correction. See createTonemap
-         * dynamic range. Values from 0.6 to 0.9 produce best results.
-         * return automatically generated
+         @brief Creates TonemapMantiuk object
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param scale contrast scale factor. HVS response is multiplied by this parameter, thus compressing
+         dynamic range. Values from 0.6 to 0.9 produce best results.
+         @param saturation saturation enhancement value. See createTonemapDrago
          */
         public static TonemapMantiuk createTonemapMantiuk(float gamma)
         {
@@ -1316,10 +1363,12 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates TonemapMantiuk object
-         *
-         * dynamic range. Values from 0.6 to 0.9 produce best results.
-         * return automatically generated
+         @brief Creates TonemapMantiuk object
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param scale contrast scale factor. HVS response is multiplied by this parameter, thus compressing
+         dynamic range. Values from 0.6 to 0.9 produce best results.
+         @param saturation saturation enhancement value. See createTonemapDrago
          */
         public static TonemapMantiuk createTonemapMantiuk()
         {
@@ -1336,14 +1385,13 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Creates AlignMTB object
-         *
-         * param max_bits logarithm to the base 2 of maximal shift in each dimension. Values of 5 and 6 are
-         * usually good enough (31 and 63 pixels shift respectively).
-         * param exclude_range range for exclusion bitmap that is constructed to suppress noise around the
-         * median value.
-         * param cut if true cuts images, otherwise fills the new regions with zeros.
-         * return automatically generated
+         @brief Creates AlignMTB object
+         
+         @param max_bits logarithm to the base 2 of maximal shift in each dimension. Values of 5 and 6 are
+         usually good enough (31 and 63 pixels shift respectively).
+         @param exclude_range range for exclusion bitmap that is constructed to suppress noise around the
+         median value.
+         @param cut if true cuts images, otherwise fills the new regions with zeros.
          */
         public static AlignMTB createAlignMTB(int max_bits, int exclude_range, bool cut)
         {
@@ -1355,13 +1403,13 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates AlignMTB object
-         *
-         * param max_bits logarithm to the base 2 of maximal shift in each dimension. Values of 5 and 6 are
-         * usually good enough (31 and 63 pixels shift respectively).
-         * param exclude_range range for exclusion bitmap that is constructed to suppress noise around the
-         * median value.
-         * return automatically generated
+         @brief Creates AlignMTB object
+         
+         @param max_bits logarithm to the base 2 of maximal shift in each dimension. Values of 5 and 6 are
+         usually good enough (31 and 63 pixels shift respectively).
+         @param exclude_range range for exclusion bitmap that is constructed to suppress noise around the
+         median value.
+         @param cut if true cuts images, otherwise fills the new regions with zeros.
          */
         public static AlignMTB createAlignMTB(int max_bits, int exclude_range)
         {
@@ -1373,12 +1421,13 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates AlignMTB object
-         *
-         * param max_bits logarithm to the base 2 of maximal shift in each dimension. Values of 5 and 6 are
-         * usually good enough (31 and 63 pixels shift respectively).
-         * median value.
-         * return automatically generated
+         @brief Creates AlignMTB object
+         
+         @param max_bits logarithm to the base 2 of maximal shift in each dimension. Values of 5 and 6 are
+         usually good enough (31 and 63 pixels shift respectively).
+         @param exclude_range range for exclusion bitmap that is constructed to suppress noise around the
+         median value.
+         @param cut if true cuts images, otherwise fills the new regions with zeros.
          */
         public static AlignMTB createAlignMTB(int max_bits)
         {
@@ -1390,11 +1439,13 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates AlignMTB object
-         *
-         * usually good enough (31 and 63 pixels shift respectively).
-         * median value.
-         * return automatically generated
+         @brief Creates AlignMTB object
+         
+         @param max_bits logarithm to the base 2 of maximal shift in each dimension. Values of 5 and 6 are
+         usually good enough (31 and 63 pixels shift respectively).
+         @param exclude_range range for exclusion bitmap that is constructed to suppress noise around the
+         median value.
+         @param cut if true cuts images, otherwise fills the new regions with zeros.
          */
         public static AlignMTB createAlignMTB()
         {
@@ -1411,14 +1462,13 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Creates CalibrateDebevec object
-         *
-         * param samples number of pixel locations to use
-         * param lambda smoothness term weight. Greater values produce smoother results, but can alter the
-         * response.
-         * param random if true sample pixel locations are chosen at random, otherwise they form a
-         * rectangular grid.
-         * return automatically generated
+         @brief Creates CalibrateDebevec object
+         
+         @param samples number of pixel locations to use
+         @param lambda smoothness term weight. Greater values produce smoother results, but can alter the
+         response.
+         @param random if true sample pixel locations are chosen at random, otherwise they form a
+         rectangular grid.
          */
         public static CalibrateDebevec createCalibrateDebevec(int samples, float lambda, bool random)
         {
@@ -1430,13 +1480,13 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates CalibrateDebevec object
-         *
-         * param samples number of pixel locations to use
-         * param lambda smoothness term weight. Greater values produce smoother results, but can alter the
-         * response.
-         * rectangular grid.
-         * return automatically generated
+         @brief Creates CalibrateDebevec object
+         
+         @param samples number of pixel locations to use
+         @param lambda smoothness term weight. Greater values produce smoother results, but can alter the
+         response.
+         @param random if true sample pixel locations are chosen at random, otherwise they form a
+         rectangular grid.
          */
         public static CalibrateDebevec createCalibrateDebevec(int samples, float lambda)
         {
@@ -1448,12 +1498,13 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates CalibrateDebevec object
-         *
-         * param samples number of pixel locations to use
-         * response.
-         * rectangular grid.
-         * return automatically generated
+         @brief Creates CalibrateDebevec object
+         
+         @param samples number of pixel locations to use
+         @param lambda smoothness term weight. Greater values produce smoother results, but can alter the
+         response.
+         @param random if true sample pixel locations are chosen at random, otherwise they form a
+         rectangular grid.
          */
         public static CalibrateDebevec createCalibrateDebevec(int samples)
         {
@@ -1465,11 +1516,13 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates CalibrateDebevec object
-         *
-         * response.
-         * rectangular grid.
-         * return automatically generated
+         @brief Creates CalibrateDebevec object
+         
+         @param samples number of pixel locations to use
+         @param lambda smoothness term weight. Greater values produce smoother results, but can alter the
+         response.
+         @param random if true sample pixel locations are chosen at random, otherwise they form a
+         rectangular grid.
          */
         public static CalibrateDebevec createCalibrateDebevec()
         {
@@ -1486,11 +1539,10 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Creates CalibrateRobertson object
-         *
-         * param max_iter maximal number of Gauss-Seidel solver iterations.
-         * param threshold target difference between results of two successive steps of the minimization.
-         * return automatically generated
+         @brief Creates CalibrateRobertson object
+         
+         @param max_iter maximal number of Gauss-Seidel solver iterations.
+         @param threshold target difference between results of two successive steps of the minimization.
          */
         public static CalibrateRobertson createCalibrateRobertson(int max_iter, float threshold)
         {
@@ -1502,10 +1554,10 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates CalibrateRobertson object
-         *
-         * param max_iter maximal number of Gauss-Seidel solver iterations.
-         * return automatically generated
+         @brief Creates CalibrateRobertson object
+         
+         @param max_iter maximal number of Gauss-Seidel solver iterations.
+         @param threshold target difference between results of two successive steps of the minimization.
          */
         public static CalibrateRobertson createCalibrateRobertson(int max_iter)
         {
@@ -1517,9 +1569,10 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates CalibrateRobertson object
-         *
-         * return automatically generated
+         @brief Creates CalibrateRobertson object
+         
+         @param max_iter maximal number of Gauss-Seidel solver iterations.
+         @param threshold target difference between results of two successive steps of the minimization.
          */
         public static CalibrateRobertson createCalibrateRobertson()
         {
@@ -1536,8 +1589,7 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Creates MergeDebevec object
-         * return automatically generated
+         @brief Creates MergeDebevec object
          */
         public static MergeDebevec createMergeDebevec()
         {
@@ -1554,12 +1606,11 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Creates MergeMertens object
-         *
-         * param contrast_weight contrast measure weight. See MergeMertens.
-         * param saturation_weight saturation measure weight
-         * param exposure_weight well-exposedness measure weight
-         * return automatically generated
+         @brief Creates MergeMertens object
+         
+         @param contrast_weight contrast measure weight. See MergeMertens.
+         @param saturation_weight saturation measure weight
+         @param exposure_weight well-exposedness measure weight
          */
         public static MergeMertens createMergeMertens(float contrast_weight, float saturation_weight, float exposure_weight)
         {
@@ -1571,11 +1622,11 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates MergeMertens object
-         *
-         * param contrast_weight contrast measure weight. See MergeMertens.
-         * param saturation_weight saturation measure weight
-         * return automatically generated
+         @brief Creates MergeMertens object
+         
+         @param contrast_weight contrast measure weight. See MergeMertens.
+         @param saturation_weight saturation measure weight
+         @param exposure_weight well-exposedness measure weight
          */
         public static MergeMertens createMergeMertens(float contrast_weight, float saturation_weight)
         {
@@ -1587,10 +1638,11 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates MergeMertens object
-         *
-         * param contrast_weight contrast measure weight. See MergeMertens.
-         * return automatically generated
+         @brief Creates MergeMertens object
+         
+         @param contrast_weight contrast measure weight. See MergeMertens.
+         @param saturation_weight saturation measure weight
+         @param exposure_weight well-exposedness measure weight
          */
         public static MergeMertens createMergeMertens(float contrast_weight)
         {
@@ -1602,9 +1654,11 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Creates MergeMertens object
-         *
-         * return automatically generated
+         @brief Creates MergeMertens object
+         
+         @param contrast_weight contrast measure weight. See MergeMertens.
+         @param saturation_weight saturation measure weight
+         @param exposure_weight well-exposedness measure weight
          */
         public static MergeMertens createMergeMertens()
         {
@@ -1621,8 +1675,7 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Creates MergeRobertson object
-         * return automatically generated
+         @brief Creates MergeRobertson object
          */
         public static MergeRobertson createMergeRobertson()
         {
@@ -1639,15 +1692,15 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Transforms a color image to a grayscale image. It is a basic tool in digital printing, stylized
-         * black-and-white photograph rendering, and in many single channel image processing applications
-         * CITE: CL12 .
-         *
-         * param src Input 8-bit 3-channel image.
-         * param grayscale Output 8-bit 1-channel image.
-         * param color_boost Output 8-bit 3-channel image.
-         *
-         * This function is to be applied on color images.
+         @brief Transforms a color image to a grayscale image. It is a basic tool in digital printing, stylized
+         black-and-white photograph rendering, and in many single channel image processing applications
+         @cite CL12 .
+         
+         @param src Input 8-bit 3-channel image.
+         @param grayscale Output 8-bit 1-channel image.
+         @param color_boost Output 8-bit 3-channel image.
+         
+         This function is to be applied on color images.
          */
         public static void decolor(Mat src, Mat grayscale, Mat color_boost)
         {
@@ -1666,18 +1719,18 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Image editing tasks concern either global changes (color/intensity corrections, filters,
-         * deformations) or local changes concerned to a selection. Here we are interested in achieving local
-         * changes, ones that are restricted to a region manually selected (ROI), in a seamless and effortless
-         * manner. The extent of the changes ranges from slight distortions to complete replacement by novel
-         * content CITE: PM03 .
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Input 8-bit 3-channel image.
-         * param mask Input 8-bit 1 or 3-channel image.
-         * param p Point in dst image where object is placed.
-         * param blend Output image with the same size and type as dst.
-         * param flags Cloning method that could be cv::NORMAL_CLONE, cv::MIXED_CLONE or cv::MONOCHROME_TRANSFER
+         @brief Image editing tasks concern either global changes (color/intensity corrections, filters,
+         deformations) or local changes concerned to a selection. Here we are interested in achieving local
+         changes, ones that are restricted to a region manually selected (ROI), in a seamless and effortless
+         manner. The extent of the changes ranges from slight distortions to complete replacement by novel
+         content @cite PM03 .
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Input 8-bit 3-channel image.
+         @param mask Input 8-bit 1 or 3-channel image.
+         @param p Point in dst image where object is placed.
+         @param blend Output image with the same size and type as dst.
+         @param flags Cloning method that could be cv::NORMAL_CLONE, cv::MIXED_CLONE or cv::MONOCHROME_TRANSFER
          */
         public static void seamlessClone(Mat src, Mat dst, Mat mask, Point p, Mat blend, int flags)
         {
@@ -1697,17 +1750,17 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Given an original color image, two differently colored versions of this image can be mixed
-         * seamlessly.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param mask Input 8-bit 1 or 3-channel image.
-         * param dst Output image with the same size and type as src .
-         * param red_mul R-channel multiply factor.
-         * param green_mul G-channel multiply factor.
-         * param blue_mul B-channel multiply factor.
-         *
-         * Multiplication factor is between .5 to 2.5.
+         @brief Given an original color image, two differently colored versions of this image can be mixed
+         seamlessly.
+         
+         @param src Input 8-bit 3-channel image.
+         @param mask Input 8-bit 1 or 3-channel image.
+         @param dst Output image with the same size and type as src .
+         @param red_mul R-channel multiply factor.
+         @param green_mul G-channel multiply factor.
+         @param blue_mul B-channel multiply factor.
+         
+         Multiplication factor is between .5 to 2.5.
          */
         public static void colorChange(Mat src, Mat mask, Mat dst, float red_mul, float green_mul, float blue_mul)
         {
@@ -1721,16 +1774,17 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Given an original color image, two differently colored versions of this image can be mixed
-         * seamlessly.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param mask Input 8-bit 1 or 3-channel image.
-         * param dst Output image with the same size and type as src .
-         * param red_mul R-channel multiply factor.
-         * param green_mul G-channel multiply factor.
-         *
-         * Multiplication factor is between .5 to 2.5.
+         @brief Given an original color image, two differently colored versions of this image can be mixed
+         seamlessly.
+         
+         @param src Input 8-bit 3-channel image.
+         @param mask Input 8-bit 1 or 3-channel image.
+         @param dst Output image with the same size and type as src .
+         @param red_mul R-channel multiply factor.
+         @param green_mul G-channel multiply factor.
+         @param blue_mul B-channel multiply factor.
+         
+         Multiplication factor is between .5 to 2.5.
          */
         public static void colorChange(Mat src, Mat mask, Mat dst, float red_mul, float green_mul)
         {
@@ -1744,15 +1798,17 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Given an original color image, two differently colored versions of this image can be mixed
-         * seamlessly.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param mask Input 8-bit 1 or 3-channel image.
-         * param dst Output image with the same size and type as src .
-         * param red_mul R-channel multiply factor.
-         *
-         * Multiplication factor is between .5 to 2.5.
+         @brief Given an original color image, two differently colored versions of this image can be mixed
+         seamlessly.
+         
+         @param src Input 8-bit 3-channel image.
+         @param mask Input 8-bit 1 or 3-channel image.
+         @param dst Output image with the same size and type as src .
+         @param red_mul R-channel multiply factor.
+         @param green_mul G-channel multiply factor.
+         @param blue_mul B-channel multiply factor.
+         
+         Multiplication factor is between .5 to 2.5.
          */
         public static void colorChange(Mat src, Mat mask, Mat dst, float red_mul)
         {
@@ -1766,14 +1822,17 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Given an original color image, two differently colored versions of this image can be mixed
-         * seamlessly.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param mask Input 8-bit 1 or 3-channel image.
-         * param dst Output image with the same size and type as src .
-         *
-         * Multiplication factor is between .5 to 2.5.
+         @brief Given an original color image, two differently colored versions of this image can be mixed
+         seamlessly.
+         
+         @param src Input 8-bit 3-channel image.
+         @param mask Input 8-bit 1 or 3-channel image.
+         @param dst Output image with the same size and type as src .
+         @param red_mul R-channel multiply factor.
+         @param green_mul G-channel multiply factor.
+         @param blue_mul B-channel multiply factor.
+         
+         Multiplication factor is between .5 to 2.5.
          */
         public static void colorChange(Mat src, Mat mask, Mat dst)
         {
@@ -1792,16 +1851,16 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Applying an appropriate non-linear transformation to the gradient field inside the selection and
-         * then integrating back with a Poisson solver, modifies locally the apparent illumination of an image.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param mask Input 8-bit 1 or 3-channel image.
-         * param dst Output image with the same size and type as src.
-         * param alpha Value ranges between 0-2.
-         * param beta Value ranges between 0-2.
-         *
-         * This is useful to highlight under-exposed foreground objects or to reduce specular reflections.
+         @brief Applying an appropriate non-linear transformation to the gradient field inside the selection and
+         then integrating back with a Poisson solver, modifies locally the apparent illumination of an image.
+         
+         @param src Input 8-bit 3-channel image.
+         @param mask Input 8-bit 1 or 3-channel image.
+         @param dst Output image with the same size and type as src.
+         @param alpha Value ranges between 0-2.
+         @param beta Value ranges between 0-2.
+         
+         This is useful to highlight under-exposed foreground objects or to reduce specular reflections.
          */
         public static void illuminationChange(Mat src, Mat mask, Mat dst, float alpha, float beta)
         {
@@ -1815,15 +1874,16 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Applying an appropriate non-linear transformation to the gradient field inside the selection and
-         * then integrating back with a Poisson solver, modifies locally the apparent illumination of an image.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param mask Input 8-bit 1 or 3-channel image.
-         * param dst Output image with the same size and type as src.
-         * param alpha Value ranges between 0-2.
-         *
-         * This is useful to highlight under-exposed foreground objects or to reduce specular reflections.
+         @brief Applying an appropriate non-linear transformation to the gradient field inside the selection and
+         then integrating back with a Poisson solver, modifies locally the apparent illumination of an image.
+         
+         @param src Input 8-bit 3-channel image.
+         @param mask Input 8-bit 1 or 3-channel image.
+         @param dst Output image with the same size and type as src.
+         @param alpha Value ranges between 0-2.
+         @param beta Value ranges between 0-2.
+         
+         This is useful to highlight under-exposed foreground objects or to reduce specular reflections.
          */
         public static void illuminationChange(Mat src, Mat mask, Mat dst, float alpha)
         {
@@ -1837,14 +1897,16 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Applying an appropriate non-linear transformation to the gradient field inside the selection and
-         * then integrating back with a Poisson solver, modifies locally the apparent illumination of an image.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param mask Input 8-bit 1 or 3-channel image.
-         * param dst Output image with the same size and type as src.
-         *
-         * This is useful to highlight under-exposed foreground objects or to reduce specular reflections.
+         @brief Applying an appropriate non-linear transformation to the gradient field inside the selection and
+         then integrating back with a Poisson solver, modifies locally the apparent illumination of an image.
+         
+         @param src Input 8-bit 3-channel image.
+         @param mask Input 8-bit 1 or 3-channel image.
+         @param dst Output image with the same size and type as src.
+         @param alpha Value ranges between 0-2.
+         @param beta Value ranges between 0-2.
+         
+         This is useful to highlight under-exposed foreground objects or to reduce specular reflections.
          */
         public static void illuminationChange(Mat src, Mat mask, Mat dst)
         {
@@ -1863,20 +1925,20 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * By retaining only the gradients at edge locations, before integrating with the Poisson solver, one
-         * washes out the texture of the selected region, giving its contents a flat aspect. Here Canny Edge %Detector is used.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param mask Input 8-bit 1 or 3-channel image.
-         * param dst Output image with the same size and type as src.
-         * param low_threshold %Range from 0 to 100.
-         * param high_threshold Value &gt; 100.
-         * param kernel_size The size of the Sobel kernel to be used.
-         *
-         * <b>Note:</b>
-         * The algorithm assumes that the color of the source image is close to that of the destination. This
-         * assumption means that when the colors don't match, the source image color gets tinted toward the
-         * color of the destination image.
+         @brief By retaining only the gradients at edge locations, before integrating with the Poisson solver, one
+         washes out the texture of the selected region, giving its contents a flat aspect. Here Canny Edge %Detector is used.
+         
+         @param src Input 8-bit 3-channel image.
+         @param mask Input 8-bit 1 or 3-channel image.
+         @param dst Output image with the same size and type as src.
+         @param low_threshold %Range from 0 to 100.
+         @param high_threshold Value &gt; 100.
+         @param kernel_size The size of the Sobel kernel to be used.
+         
+         @note
+         The algorithm assumes that the color of the source image is close to that of the destination. This
+         assumption means that when the colors don't match, the source image color gets tinted toward the
+         color of the destination image.
          */
         public static void textureFlattening(Mat src, Mat mask, Mat dst, float low_threshold, float high_threshold, int kernel_size)
         {
@@ -1890,19 +1952,20 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * By retaining only the gradients at edge locations, before integrating with the Poisson solver, one
-         * washes out the texture of the selected region, giving its contents a flat aspect. Here Canny Edge %Detector is used.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param mask Input 8-bit 1 or 3-channel image.
-         * param dst Output image with the same size and type as src.
-         * param low_threshold %Range from 0 to 100.
-         * param high_threshold Value &gt; 100.
-         *
-         * <b>Note:</b>
-         * The algorithm assumes that the color of the source image is close to that of the destination. This
-         * assumption means that when the colors don't match, the source image color gets tinted toward the
-         * color of the destination image.
+         @brief By retaining only the gradients at edge locations, before integrating with the Poisson solver, one
+         washes out the texture of the selected region, giving its contents a flat aspect. Here Canny Edge %Detector is used.
+         
+         @param src Input 8-bit 3-channel image.
+         @param mask Input 8-bit 1 or 3-channel image.
+         @param dst Output image with the same size and type as src.
+         @param low_threshold %Range from 0 to 100.
+         @param high_threshold Value &gt; 100.
+         @param kernel_size The size of the Sobel kernel to be used.
+         
+         @note
+         The algorithm assumes that the color of the source image is close to that of the destination. This
+         assumption means that when the colors don't match, the source image color gets tinted toward the
+         color of the destination image.
          */
         public static void textureFlattening(Mat src, Mat mask, Mat dst, float low_threshold, float high_threshold)
         {
@@ -1916,18 +1979,20 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * By retaining only the gradients at edge locations, before integrating with the Poisson solver, one
-         * washes out the texture of the selected region, giving its contents a flat aspect. Here Canny Edge %Detector is used.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param mask Input 8-bit 1 or 3-channel image.
-         * param dst Output image with the same size and type as src.
-         * param low_threshold %Range from 0 to 100.
-         *
-         * <b>Note:</b>
-         * The algorithm assumes that the color of the source image is close to that of the destination. This
-         * assumption means that when the colors don't match, the source image color gets tinted toward the
-         * color of the destination image.
+         @brief By retaining only the gradients at edge locations, before integrating with the Poisson solver, one
+         washes out the texture of the selected region, giving its contents a flat aspect. Here Canny Edge %Detector is used.
+         
+         @param src Input 8-bit 3-channel image.
+         @param mask Input 8-bit 1 or 3-channel image.
+         @param dst Output image with the same size and type as src.
+         @param low_threshold %Range from 0 to 100.
+         @param high_threshold Value &gt; 100.
+         @param kernel_size The size of the Sobel kernel to be used.
+         
+         @note
+         The algorithm assumes that the color of the source image is close to that of the destination. This
+         assumption means that when the colors don't match, the source image color gets tinted toward the
+         color of the destination image.
          */
         public static void textureFlattening(Mat src, Mat mask, Mat dst, float low_threshold)
         {
@@ -1941,17 +2006,20 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * By retaining only the gradients at edge locations, before integrating with the Poisson solver, one
-         * washes out the texture of the selected region, giving its contents a flat aspect. Here Canny Edge %Detector is used.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param mask Input 8-bit 1 or 3-channel image.
-         * param dst Output image with the same size and type as src.
-         *
-         * <b>Note:</b>
-         * The algorithm assumes that the color of the source image is close to that of the destination. This
-         * assumption means that when the colors don't match, the source image color gets tinted toward the
-         * color of the destination image.
+         @brief By retaining only the gradients at edge locations, before integrating with the Poisson solver, one
+         washes out the texture of the selected region, giving its contents a flat aspect. Here Canny Edge %Detector is used.
+         
+         @param src Input 8-bit 3-channel image.
+         @param mask Input 8-bit 1 or 3-channel image.
+         @param dst Output image with the same size and type as src.
+         @param low_threshold %Range from 0 to 100.
+         @param high_threshold Value &gt; 100.
+         @param kernel_size The size of the Sobel kernel to be used.
+         
+         @note
+         The algorithm assumes that the color of the source image is close to that of the destination. This
+         assumption means that when the colors don't match, the source image color gets tinted toward the
+         color of the destination image.
          */
         public static void textureFlattening(Mat src, Mat mask, Mat dst)
         {
@@ -1970,14 +2038,14 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Filtering is the fundamental operation in image and video processing. Edge-preserving smoothing
-         * filters are used in many different applications CITE: EM11 .
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Output 8-bit 3-channel image.
-         * param flags Edge preserving filters: cv::RECURS_FILTER or cv::NORMCONV_FILTER
-         * param sigma_s %Range between 0 to 200.
-         * param sigma_r %Range between 0 to 1.
+         @brief Filtering is the fundamental operation in image and video processing. Edge-preserving smoothing
+         filters are used in many different applications @cite EM11 .
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Output 8-bit 3-channel image.
+         @param flags Edge preserving filters: cv::RECURS_FILTER or cv::NORMCONV_FILTER
+         @param sigma_s %Range between 0 to 200.
+         @param sigma_r %Range between 0 to 1.
          */
         public static void edgePreservingFilter(Mat src, Mat dst, int flags, float sigma_s, float sigma_r)
         {
@@ -1990,13 +2058,14 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Filtering is the fundamental operation in image and video processing. Edge-preserving smoothing
-         * filters are used in many different applications CITE: EM11 .
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Output 8-bit 3-channel image.
-         * param flags Edge preserving filters: cv::RECURS_FILTER or cv::NORMCONV_FILTER
-         * param sigma_s %Range between 0 to 200.
+         @brief Filtering is the fundamental operation in image and video processing. Edge-preserving smoothing
+         filters are used in many different applications @cite EM11 .
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Output 8-bit 3-channel image.
+         @param flags Edge preserving filters: cv::RECURS_FILTER or cv::NORMCONV_FILTER
+         @param sigma_s %Range between 0 to 200.
+         @param sigma_r %Range between 0 to 1.
          */
         public static void edgePreservingFilter(Mat src, Mat dst, int flags, float sigma_s)
         {
@@ -2009,12 +2078,14 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Filtering is the fundamental operation in image and video processing. Edge-preserving smoothing
-         * filters are used in many different applications CITE: EM11 .
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Output 8-bit 3-channel image.
-         * param flags Edge preserving filters: cv::RECURS_FILTER or cv::NORMCONV_FILTER
+         @brief Filtering is the fundamental operation in image and video processing. Edge-preserving smoothing
+         filters are used in many different applications @cite EM11 .
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Output 8-bit 3-channel image.
+         @param flags Edge preserving filters: cv::RECURS_FILTER or cv::NORMCONV_FILTER
+         @param sigma_s %Range between 0 to 200.
+         @param sigma_r %Range between 0 to 1.
          */
         public static void edgePreservingFilter(Mat src, Mat dst, int flags)
         {
@@ -2027,11 +2098,14 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Filtering is the fundamental operation in image and video processing. Edge-preserving smoothing
-         * filters are used in many different applications CITE: EM11 .
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Output 8-bit 3-channel image.
+         @brief Filtering is the fundamental operation in image and video processing. Edge-preserving smoothing
+         filters are used in many different applications @cite EM11 .
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Output 8-bit 3-channel image.
+         @param flags Edge preserving filters: cv::RECURS_FILTER or cv::NORMCONV_FILTER
+         @param sigma_s %Range between 0 to 200.
+         @param sigma_r %Range between 0 to 1.
          */
         public static void edgePreservingFilter(Mat src, Mat dst)
         {
@@ -2049,12 +2123,12 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * This filter enhances the details of a particular image.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Output image with the same size and type as src.
-         * param sigma_s %Range between 0 to 200.
-         * param sigma_r %Range between 0 to 1.
+         @brief This filter enhances the details of a particular image.
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Output image with the same size and type as src.
+         @param sigma_s %Range between 0 to 200.
+         @param sigma_r %Range between 0 to 1.
          */
         public static void detailEnhance(Mat src, Mat dst, float sigma_s, float sigma_r)
         {
@@ -2067,11 +2141,12 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * This filter enhances the details of a particular image.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Output image with the same size and type as src.
-         * param sigma_s %Range between 0 to 200.
+         @brief This filter enhances the details of a particular image.
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Output image with the same size and type as src.
+         @param sigma_s %Range between 0 to 200.
+         @param sigma_r %Range between 0 to 1.
          */
         public static void detailEnhance(Mat src, Mat dst, float sigma_s)
         {
@@ -2084,10 +2159,12 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * This filter enhances the details of a particular image.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Output image with the same size and type as src.
+         @brief This filter enhances the details of a particular image.
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Output image with the same size and type as src.
+         @param sigma_s %Range between 0 to 200.
+         @param sigma_r %Range between 0 to 1.
          */
         public static void detailEnhance(Mat src, Mat dst)
         {
@@ -2105,14 +2182,14 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Pencil-like non-photorealistic line drawing
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst1 Output 8-bit 1-channel image.
-         * param dst2 Output image with the same size and type as src.
-         * param sigma_s %Range between 0 to 200.
-         * param sigma_r %Range between 0 to 1.
-         * param shade_factor %Range between 0 to 0.1.
+         @brief Pencil-like non-photorealistic line drawing
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst1 Output 8-bit 1-channel image.
+         @param dst2 Output image with the same size and type as src.
+         @param sigma_s %Range between 0 to 200.
+         @param sigma_r %Range between 0 to 1.
+         @param shade_factor %Range between 0 to 0.1.
          */
         public static void pencilSketch(Mat src, Mat dst1, Mat dst2, float sigma_s, float sigma_r, float shade_factor)
         {
@@ -2126,13 +2203,14 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Pencil-like non-photorealistic line drawing
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst1 Output 8-bit 1-channel image.
-         * param dst2 Output image with the same size and type as src.
-         * param sigma_s %Range between 0 to 200.
-         * param sigma_r %Range between 0 to 1.
+         @brief Pencil-like non-photorealistic line drawing
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst1 Output 8-bit 1-channel image.
+         @param dst2 Output image with the same size and type as src.
+         @param sigma_s %Range between 0 to 200.
+         @param sigma_r %Range between 0 to 1.
+         @param shade_factor %Range between 0 to 0.1.
          */
         public static void pencilSketch(Mat src, Mat dst1, Mat dst2, float sigma_s, float sigma_r)
         {
@@ -2146,12 +2224,14 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Pencil-like non-photorealistic line drawing
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst1 Output 8-bit 1-channel image.
-         * param dst2 Output image with the same size and type as src.
-         * param sigma_s %Range between 0 to 200.
+         @brief Pencil-like non-photorealistic line drawing
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst1 Output 8-bit 1-channel image.
+         @param dst2 Output image with the same size and type as src.
+         @param sigma_s %Range between 0 to 200.
+         @param sigma_r %Range between 0 to 1.
+         @param shade_factor %Range between 0 to 0.1.
          */
         public static void pencilSketch(Mat src, Mat dst1, Mat dst2, float sigma_s)
         {
@@ -2165,11 +2245,14 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Pencil-like non-photorealistic line drawing
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst1 Output 8-bit 1-channel image.
-         * param dst2 Output image with the same size and type as src.
+         @brief Pencil-like non-photorealistic line drawing
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst1 Output 8-bit 1-channel image.
+         @param dst2 Output image with the same size and type as src.
+         @param sigma_s %Range between 0 to 200.
+         @param sigma_r %Range between 0 to 1.
+         @param shade_factor %Range between 0 to 0.1.
          */
         public static void pencilSketch(Mat src, Mat dst1, Mat dst2)
         {
@@ -2188,14 +2271,14 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Stylization aims to produce digital imagery with a wide variety of effects not focused on
-         * photorealism. Edge-aware filters are ideal for stylization, as they can abstract regions of low
-         * contrast while preserving, or enhancing, high-contrast features.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Output image with the same size and type as src.
-         * param sigma_s %Range between 0 to 200.
-         * param sigma_r %Range between 0 to 1.
+         @brief Stylization aims to produce digital imagery with a wide variety of effects not focused on
+         photorealism. Edge-aware filters are ideal for stylization, as they can abstract regions of low
+         contrast while preserving, or enhancing, high-contrast features.
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Output image with the same size and type as src.
+         @param sigma_s %Range between 0 to 200.
+         @param sigma_r %Range between 0 to 1.
          */
         public static void stylization(Mat src, Mat dst, float sigma_s, float sigma_r)
         {
@@ -2208,13 +2291,14 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Stylization aims to produce digital imagery with a wide variety of effects not focused on
-         * photorealism. Edge-aware filters are ideal for stylization, as they can abstract regions of low
-         * contrast while preserving, or enhancing, high-contrast features.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Output image with the same size and type as src.
-         * param sigma_s %Range between 0 to 200.
+         @brief Stylization aims to produce digital imagery with a wide variety of effects not focused on
+         photorealism. Edge-aware filters are ideal for stylization, as they can abstract regions of low
+         contrast while preserving, or enhancing, high-contrast features.
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Output image with the same size and type as src.
+         @param sigma_s %Range between 0 to 200.
+         @param sigma_r %Range between 0 to 1.
          */
         public static void stylization(Mat src, Mat dst, float sigma_s)
         {
@@ -2227,12 +2311,14 @@ namespace OpenCVForUnity.PhotoModule
         }
 
         /**
-         * Stylization aims to produce digital imagery with a wide variety of effects not focused on
-         * photorealism. Edge-aware filters are ideal for stylization, as they can abstract regions of low
-         * contrast while preserving, or enhancing, high-contrast features.
-         *
-         * param src Input 8-bit 3-channel image.
-         * param dst Output image with the same size and type as src.
+         @brief Stylization aims to produce digital imagery with a wide variety of effects not focused on
+         photorealism. Edge-aware filters are ideal for stylization, as they can abstract regions of low
+         contrast while preserving, or enhancing, high-contrast features.
+         
+         @param src Input 8-bit 3-channel image.
+         @param dst Output image with the same size and type as src.
+         @param sigma_s %Range between 0 to 200.
+         @param sigma_r %Range between 0 to 1.
          */
         public static void stylization(Mat src, Mat dst)
         {
@@ -2243,6 +2329,27 @@ namespace OpenCVForUnity.PhotoModule
 
 
         }
+
+
+        //
+        // C++:  void cv::cuda::nonLocalMeans(GpuMat src, GpuMat& dst, float h, int search_window = 21, int block_size = 7, int borderMode = BORDER_DEFAULT, Stream stream = Stream::Null())
+        //
+
+        // Unknown type 'GpuMat' (I), skipping the function
+
+
+        //
+        // C++:  void cv::cuda::fastNlMeansDenoising(GpuMat src, GpuMat& dst, float h, int search_window = 21, int block_size = 7, Stream stream = Stream::Null())
+        //
+
+        // Unknown type 'GpuMat' (I), skipping the function
+
+
+        //
+        // C++:  void cv::cuda::fastNlMeansDenoisingColored(GpuMat src, GpuMat& dst, float h_luminance, float photo_render, int search_window = 21, int block_size = 7, Stream stream = Stream::Null())
+        //
+
+        // Unknown type 'GpuMat' (I), skipping the function
 
 
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR

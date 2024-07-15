@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -46,9 +46,8 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Constructor
-         *     param parameters DaSiamRPN parameters TrackerDaSiamRPN::Params
-         * return automatically generated
+         @brief Constructor
+             @param parameters DaSiamRPN parameters TrackerDaSiamRPN::Params
          */
         public static TrackerDaSiamRPN create(TrackerDaSiamRPN_Params parameters)
         {
@@ -60,8 +59,8 @@ namespace OpenCVForUnity.VideoModule
         }
 
         /**
-         * Constructor
-         * return automatically generated
+         @brief Constructor
+             @param parameters DaSiamRPN parameters TrackerDaSiamRPN::Params
          */
         public static TrackerDaSiamRPN create()
         {
@@ -78,8 +77,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Return tracking score
-         * return automatically generated
+         @brief Return tracking score
          */
         public float getTrackingScore()
         {

@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,8 +10,8 @@ namespace OpenCVForUnity.DnnModule
 {
     // C++: class DictValue
     /**
-     * This struct stores the scalar value (or array) of one of the following type: double, cv::String or int64.
-     * TODO: Maybe int64 is useless because double type exactly stores at least 2^52 integers.
+     @brief This struct stores the scalar value (or array) of one of the following type: double, cv::String or int64.
+      *  @todo Maybe int64 is useless because double type exactly stores at least 2^52 integers.
      */
 
     public class DictValue : DisposableOpenCVObject
@@ -259,4 +259,5 @@ namespace OpenCVForUnity.DnnModule
 
     }
 }
+
 #endif

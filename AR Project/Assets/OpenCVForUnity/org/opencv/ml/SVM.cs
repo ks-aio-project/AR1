@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.MlModule
 
     // C++: class SVM
     /**
-     * Support Vector Machines.
-     *
-     * SEE: REF: ml_intro_svm
+     @brief Support Vector Machines.
+     
+     @sa @ref ml_intro_svm
      */
 
     public class SVM : StatModel
@@ -71,8 +71,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setType
-         * return automatically generated
+         @see setType
          */
         public int getType()
         {
@@ -89,8 +88,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getType SEE: getType
-         * param val automatically generated
+         @copybrief getType @see getType
          */
         public void setType(int val)
         {
@@ -107,8 +105,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setGamma
-         * return automatically generated
+         @see setGamma
          */
         public double getGamma()
         {
@@ -125,8 +122,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getGamma SEE: getGamma
-         * param val automatically generated
+         @copybrief getGamma @see getGamma
          */
         public void setGamma(double val)
         {
@@ -143,8 +139,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setCoef0
-         * return automatically generated
+         @see setCoef0
          */
         public double getCoef0()
         {
@@ -161,8 +156,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getCoef0 SEE: getCoef0
-         * param val automatically generated
+         @copybrief getCoef0 @see getCoef0
          */
         public void setCoef0(double val)
         {
@@ -179,8 +173,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setDegree
-         * return automatically generated
+         @see setDegree
          */
         public double getDegree()
         {
@@ -197,8 +190,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getDegree SEE: getDegree
-         * param val automatically generated
+         @copybrief getDegree @see getDegree
          */
         public void setDegree(double val)
         {
@@ -215,8 +207,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setC
-         * return automatically generated
+         @see setC
          */
         public double getC()
         {
@@ -233,8 +224,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getC SEE: getC
-         * param val automatically generated
+         @copybrief getC @see getC
          */
         public void setC(double val)
         {
@@ -251,8 +241,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setNu
-         * return automatically generated
+         @see setNu
          */
         public double getNu()
         {
@@ -269,8 +258,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getNu SEE: getNu
-         * param val automatically generated
+         @copybrief getNu @see getNu
          */
         public void setNu(double val)
         {
@@ -287,8 +275,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setP
-         * return automatically generated
+         @see setP
          */
         public double getP()
         {
@@ -305,8 +292,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getP SEE: getP
-         * param val automatically generated
+         @copybrief getP @see getP
          */
         public void setP(double val)
         {
@@ -323,8 +309,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setClassWeights
-         * return automatically generated
+         @see setClassWeights
          */
         public Mat getClassWeights()
         {
@@ -341,8 +326,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getClassWeights SEE: getClassWeights
-         * param val automatically generated
+         @copybrief getClassWeights @see getClassWeights
          */
         public void setClassWeights(Mat val)
         {
@@ -360,8 +344,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setTermCriteria
-         * return automatically generated
+         @see setTermCriteria
          */
         public TermCriteria getTermCriteria()
         {
@@ -380,8 +363,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getTermCriteria SEE: getTermCriteria
-         * param val automatically generated
+         @copybrief getTermCriteria @see getTermCriteria
          */
         public void setTermCriteria(TermCriteria val)
         {
@@ -398,9 +380,8 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Type of a %SVM kernel.
-         * See SVM::KernelTypes. Default value is SVM::RBF.
-         * return automatically generated
+         Type of a %SVM kernel.
+         See SVM::KernelTypes. Default value is SVM::RBF.
          */
         public int getKernelType()
         {
@@ -417,9 +398,8 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Initialize with one of predefined kernels.
-         * See SVM::KernelTypes.
-         * param kernelType automatically generated
+         Initialize with one of predefined kernels.
+         See SVM::KernelTypes.
          */
         public void setKernel(int kernelType)
         {
@@ -436,34 +416,33 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Trains an %SVM with optimal parameters
-         *
-         *     param samples training samples
-         *     param layout See ml::SampleTypes.
-         *     param responses vector of responses associated with the training samples.
-         *     param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
-         *         subset is used to test the model, the others form the train set. So, the %SVM algorithm is
-         *     param Cgrid grid for C
-         *     param gammaGrid grid for gamma
-         *     param pGrid grid for p
-         *     param nuGrid grid for nu
-         *     param coeffGrid grid for coeff
-         *     param degreeGrid grid for degree
-         *     param balanced If true and the problem is 2-class classification then the method creates more
-         *         balanced cross-validation subsets that is proportions between classes in subsets are close
-         *         to such proportion in the whole train dataset.
-         *
-         *     The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
-         *     nu, coef0, degree. Parameters are considered optimal when the cross-validation
-         *     estimate of the test set error is minimal.
-         *
-         *     This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
-         *     offers rudimentary parameter options.
-         *
-         *     This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
-         *     regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
-         *     the usual %SVM with parameters specified in params is executed.
-         * return automatically generated
+         @brief Trains an %SVM with optimal parameters
+         
+             @param samples training samples
+             @param layout See ml::SampleTypes.
+             @param responses vector of responses associated with the training samples.
+             @param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
+                 subset is used to test the model, the others form the train set. So, the %SVM algorithm is
+             @param Cgrid grid for C
+             @param gammaGrid grid for gamma
+             @param pGrid grid for p
+             @param nuGrid grid for nu
+             @param coeffGrid grid for coeff
+             @param degreeGrid grid for degree
+             @param balanced If true and the problem is 2-class classification then the method creates more
+                 balanced cross-validation subsets that is proportions between classes in subsets are close
+                 to such proportion in the whole train dataset.
+         
+             The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
+             nu, coef0, degree. Parameters are considered optimal when the cross-validation
+             estimate of the test set error is minimal.
+         
+             This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
+             offers rudimentary parameter options.
+         
+             This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
+             regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
+             the usual %SVM with parameters specified in params is executed.
          */
         public bool trainAuto(Mat samples, int layout, Mat responses, int kFold, ParamGrid Cgrid, ParamGrid gammaGrid, ParamGrid pGrid, ParamGrid nuGrid, ParamGrid coeffGrid, ParamGrid degreeGrid, bool balanced)
         {
@@ -483,33 +462,33 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Trains an %SVM with optimal parameters
-         *
-         *     param samples training samples
-         *     param layout See ml::SampleTypes.
-         *     param responses vector of responses associated with the training samples.
-         *     param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
-         *         subset is used to test the model, the others form the train set. So, the %SVM algorithm is
-         *     param Cgrid grid for C
-         *     param gammaGrid grid for gamma
-         *     param pGrid grid for p
-         *     param nuGrid grid for nu
-         *     param coeffGrid grid for coeff
-         *     param degreeGrid grid for degree
-         *         balanced cross-validation subsets that is proportions between classes in subsets are close
-         *         to such proportion in the whole train dataset.
-         *
-         *     The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
-         *     nu, coef0, degree. Parameters are considered optimal when the cross-validation
-         *     estimate of the test set error is minimal.
-         *
-         *     This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
-         *     offers rudimentary parameter options.
-         *
-         *     This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
-         *     regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
-         *     the usual %SVM with parameters specified in params is executed.
-         * return automatically generated
+         @brief Trains an %SVM with optimal parameters
+         
+             @param samples training samples
+             @param layout See ml::SampleTypes.
+             @param responses vector of responses associated with the training samples.
+             @param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
+                 subset is used to test the model, the others form the train set. So, the %SVM algorithm is
+             @param Cgrid grid for C
+             @param gammaGrid grid for gamma
+             @param pGrid grid for p
+             @param nuGrid grid for nu
+             @param coeffGrid grid for coeff
+             @param degreeGrid grid for degree
+             @param balanced If true and the problem is 2-class classification then the method creates more
+                 balanced cross-validation subsets that is proportions between classes in subsets are close
+                 to such proportion in the whole train dataset.
+         
+             The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
+             nu, coef0, degree. Parameters are considered optimal when the cross-validation
+             estimate of the test set error is minimal.
+         
+             This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
+             offers rudimentary parameter options.
+         
+             This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
+             regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
+             the usual %SVM with parameters specified in params is executed.
          */
         public bool trainAuto(Mat samples, int layout, Mat responses, int kFold, ParamGrid Cgrid, ParamGrid gammaGrid, ParamGrid pGrid, ParamGrid nuGrid, ParamGrid coeffGrid, ParamGrid degreeGrid)
         {
@@ -529,32 +508,33 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Trains an %SVM with optimal parameters
-         *
-         *     param samples training samples
-         *     param layout See ml::SampleTypes.
-         *     param responses vector of responses associated with the training samples.
-         *     param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
-         *         subset is used to test the model, the others form the train set. So, the %SVM algorithm is
-         *     param Cgrid grid for C
-         *     param gammaGrid grid for gamma
-         *     param pGrid grid for p
-         *     param nuGrid grid for nu
-         *     param coeffGrid grid for coeff
-         *         balanced cross-validation subsets that is proportions between classes in subsets are close
-         *         to such proportion in the whole train dataset.
-         *
-         *     The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
-         *     nu, coef0, degree. Parameters are considered optimal when the cross-validation
-         *     estimate of the test set error is minimal.
-         *
-         *     This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
-         *     offers rudimentary parameter options.
-         *
-         *     This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
-         *     regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
-         *     the usual %SVM with parameters specified in params is executed.
-         * return automatically generated
+         @brief Trains an %SVM with optimal parameters
+         
+             @param samples training samples
+             @param layout See ml::SampleTypes.
+             @param responses vector of responses associated with the training samples.
+             @param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
+                 subset is used to test the model, the others form the train set. So, the %SVM algorithm is
+             @param Cgrid grid for C
+             @param gammaGrid grid for gamma
+             @param pGrid grid for p
+             @param nuGrid grid for nu
+             @param coeffGrid grid for coeff
+             @param degreeGrid grid for degree
+             @param balanced If true and the problem is 2-class classification then the method creates more
+                 balanced cross-validation subsets that is proportions between classes in subsets are close
+                 to such proportion in the whole train dataset.
+         
+             The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
+             nu, coef0, degree. Parameters are considered optimal when the cross-validation
+             estimate of the test set error is minimal.
+         
+             This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
+             offers rudimentary parameter options.
+         
+             This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
+             regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
+             the usual %SVM with parameters specified in params is executed.
          */
         public bool trainAuto(Mat samples, int layout, Mat responses, int kFold, ParamGrid Cgrid, ParamGrid gammaGrid, ParamGrid pGrid, ParamGrid nuGrid, ParamGrid coeffGrid)
         {
@@ -573,31 +553,33 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Trains an %SVM with optimal parameters
-         *
-         *     param samples training samples
-         *     param layout See ml::SampleTypes.
-         *     param responses vector of responses associated with the training samples.
-         *     param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
-         *         subset is used to test the model, the others form the train set. So, the %SVM algorithm is
-         *     param Cgrid grid for C
-         *     param gammaGrid grid for gamma
-         *     param pGrid grid for p
-         *     param nuGrid grid for nu
-         *         balanced cross-validation subsets that is proportions between classes in subsets are close
-         *         to such proportion in the whole train dataset.
-         *
-         *     The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
-         *     nu, coef0, degree. Parameters are considered optimal when the cross-validation
-         *     estimate of the test set error is minimal.
-         *
-         *     This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
-         *     offers rudimentary parameter options.
-         *
-         *     This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
-         *     regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
-         *     the usual %SVM with parameters specified in params is executed.
-         * return automatically generated
+         @brief Trains an %SVM with optimal parameters
+         
+             @param samples training samples
+             @param layout See ml::SampleTypes.
+             @param responses vector of responses associated with the training samples.
+             @param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
+                 subset is used to test the model, the others form the train set. So, the %SVM algorithm is
+             @param Cgrid grid for C
+             @param gammaGrid grid for gamma
+             @param pGrid grid for p
+             @param nuGrid grid for nu
+             @param coeffGrid grid for coeff
+             @param degreeGrid grid for degree
+             @param balanced If true and the problem is 2-class classification then the method creates more
+                 balanced cross-validation subsets that is proportions between classes in subsets are close
+                 to such proportion in the whole train dataset.
+         
+             The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
+             nu, coef0, degree. Parameters are considered optimal when the cross-validation
+             estimate of the test set error is minimal.
+         
+             This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
+             offers rudimentary parameter options.
+         
+             This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
+             regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
+             the usual %SVM with parameters specified in params is executed.
          */
         public bool trainAuto(Mat samples, int layout, Mat responses, int kFold, ParamGrid Cgrid, ParamGrid gammaGrid, ParamGrid pGrid, ParamGrid nuGrid)
         {
@@ -615,30 +597,33 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Trains an %SVM with optimal parameters
-         *
-         *     param samples training samples
-         *     param layout See ml::SampleTypes.
-         *     param responses vector of responses associated with the training samples.
-         *     param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
-         *         subset is used to test the model, the others form the train set. So, the %SVM algorithm is
-         *     param Cgrid grid for C
-         *     param gammaGrid grid for gamma
-         *     param pGrid grid for p
-         *         balanced cross-validation subsets that is proportions between classes in subsets are close
-         *         to such proportion in the whole train dataset.
-         *
-         *     The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
-         *     nu, coef0, degree. Parameters are considered optimal when the cross-validation
-         *     estimate of the test set error is minimal.
-         *
-         *     This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
-         *     offers rudimentary parameter options.
-         *
-         *     This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
-         *     regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
-         *     the usual %SVM with parameters specified in params is executed.
-         * return automatically generated
+         @brief Trains an %SVM with optimal parameters
+         
+             @param samples training samples
+             @param layout See ml::SampleTypes.
+             @param responses vector of responses associated with the training samples.
+             @param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
+                 subset is used to test the model, the others form the train set. So, the %SVM algorithm is
+             @param Cgrid grid for C
+             @param gammaGrid grid for gamma
+             @param pGrid grid for p
+             @param nuGrid grid for nu
+             @param coeffGrid grid for coeff
+             @param degreeGrid grid for degree
+             @param balanced If true and the problem is 2-class classification then the method creates more
+                 balanced cross-validation subsets that is proportions between classes in subsets are close
+                 to such proportion in the whole train dataset.
+         
+             The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
+             nu, coef0, degree. Parameters are considered optimal when the cross-validation
+             estimate of the test set error is minimal.
+         
+             This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
+             offers rudimentary parameter options.
+         
+             This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
+             regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
+             the usual %SVM with parameters specified in params is executed.
          */
         public bool trainAuto(Mat samples, int layout, Mat responses, int kFold, ParamGrid Cgrid, ParamGrid gammaGrid, ParamGrid pGrid)
         {
@@ -655,29 +640,33 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Trains an %SVM with optimal parameters
-         *
-         *     param samples training samples
-         *     param layout See ml::SampleTypes.
-         *     param responses vector of responses associated with the training samples.
-         *     param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
-         *         subset is used to test the model, the others form the train set. So, the %SVM algorithm is
-         *     param Cgrid grid for C
-         *     param gammaGrid grid for gamma
-         *         balanced cross-validation subsets that is proportions between classes in subsets are close
-         *         to such proportion in the whole train dataset.
-         *
-         *     The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
-         *     nu, coef0, degree. Parameters are considered optimal when the cross-validation
-         *     estimate of the test set error is minimal.
-         *
-         *     This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
-         *     offers rudimentary parameter options.
-         *
-         *     This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
-         *     regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
-         *     the usual %SVM with parameters specified in params is executed.
-         * return automatically generated
+         @brief Trains an %SVM with optimal parameters
+         
+             @param samples training samples
+             @param layout See ml::SampleTypes.
+             @param responses vector of responses associated with the training samples.
+             @param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
+                 subset is used to test the model, the others form the train set. So, the %SVM algorithm is
+             @param Cgrid grid for C
+             @param gammaGrid grid for gamma
+             @param pGrid grid for p
+             @param nuGrid grid for nu
+             @param coeffGrid grid for coeff
+             @param degreeGrid grid for degree
+             @param balanced If true and the problem is 2-class classification then the method creates more
+                 balanced cross-validation subsets that is proportions between classes in subsets are close
+                 to such proportion in the whole train dataset.
+         
+             The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
+             nu, coef0, degree. Parameters are considered optimal when the cross-validation
+             estimate of the test set error is minimal.
+         
+             This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
+             offers rudimentary parameter options.
+         
+             This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
+             regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
+             the usual %SVM with parameters specified in params is executed.
          */
         public bool trainAuto(Mat samples, int layout, Mat responses, int kFold, ParamGrid Cgrid, ParamGrid gammaGrid)
         {
@@ -693,28 +682,33 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Trains an %SVM with optimal parameters
-         *
-         *     param samples training samples
-         *     param layout See ml::SampleTypes.
-         *     param responses vector of responses associated with the training samples.
-         *     param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
-         *         subset is used to test the model, the others form the train set. So, the %SVM algorithm is
-         *     param Cgrid grid for C
-         *         balanced cross-validation subsets that is proportions between classes in subsets are close
-         *         to such proportion in the whole train dataset.
-         *
-         *     The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
-         *     nu, coef0, degree. Parameters are considered optimal when the cross-validation
-         *     estimate of the test set error is minimal.
-         *
-         *     This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
-         *     offers rudimentary parameter options.
-         *
-         *     This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
-         *     regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
-         *     the usual %SVM with parameters specified in params is executed.
-         * return automatically generated
+         @brief Trains an %SVM with optimal parameters
+         
+             @param samples training samples
+             @param layout See ml::SampleTypes.
+             @param responses vector of responses associated with the training samples.
+             @param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
+                 subset is used to test the model, the others form the train set. So, the %SVM algorithm is
+             @param Cgrid grid for C
+             @param gammaGrid grid for gamma
+             @param pGrid grid for p
+             @param nuGrid grid for nu
+             @param coeffGrid grid for coeff
+             @param degreeGrid grid for degree
+             @param balanced If true and the problem is 2-class classification then the method creates more
+                 balanced cross-validation subsets that is proportions between classes in subsets are close
+                 to such proportion in the whole train dataset.
+         
+             The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
+             nu, coef0, degree. Parameters are considered optimal when the cross-validation
+             estimate of the test set error is minimal.
+         
+             This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
+             offers rudimentary parameter options.
+         
+             This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
+             regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
+             the usual %SVM with parameters specified in params is executed.
          */
         public bool trainAuto(Mat samples, int layout, Mat responses, int kFold, ParamGrid Cgrid)
         {
@@ -729,27 +723,33 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Trains an %SVM with optimal parameters
-         *
-         *     param samples training samples
-         *     param layout See ml::SampleTypes.
-         *     param responses vector of responses associated with the training samples.
-         *     param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
-         *         subset is used to test the model, the others form the train set. So, the %SVM algorithm is
-         *         balanced cross-validation subsets that is proportions between classes in subsets are close
-         *         to such proportion in the whole train dataset.
-         *
-         *     The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
-         *     nu, coef0, degree. Parameters are considered optimal when the cross-validation
-         *     estimate of the test set error is minimal.
-         *
-         *     This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
-         *     offers rudimentary parameter options.
-         *
-         *     This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
-         *     regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
-         *     the usual %SVM with parameters specified in params is executed.
-         * return automatically generated
+         @brief Trains an %SVM with optimal parameters
+         
+             @param samples training samples
+             @param layout See ml::SampleTypes.
+             @param responses vector of responses associated with the training samples.
+             @param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
+                 subset is used to test the model, the others form the train set. So, the %SVM algorithm is
+             @param Cgrid grid for C
+             @param gammaGrid grid for gamma
+             @param pGrid grid for p
+             @param nuGrid grid for nu
+             @param coeffGrid grid for coeff
+             @param degreeGrid grid for degree
+             @param balanced If true and the problem is 2-class classification then the method creates more
+                 balanced cross-validation subsets that is proportions between classes in subsets are close
+                 to such proportion in the whole train dataset.
+         
+             The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
+             nu, coef0, degree. Parameters are considered optimal when the cross-validation
+             estimate of the test set error is minimal.
+         
+             This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
+             offers rudimentary parameter options.
+         
+             This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
+             regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
+             the usual %SVM with parameters specified in params is executed.
          */
         public bool trainAuto(Mat samples, int layout, Mat responses, int kFold)
         {
@@ -763,26 +763,33 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Trains an %SVM with optimal parameters
-         *
-         *     param samples training samples
-         *     param layout See ml::SampleTypes.
-         *     param responses vector of responses associated with the training samples.
-         *         subset is used to test the model, the others form the train set. So, the %SVM algorithm is
-         *         balanced cross-validation subsets that is proportions between classes in subsets are close
-         *         to such proportion in the whole train dataset.
-         *
-         *     The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
-         *     nu, coef0, degree. Parameters are considered optimal when the cross-validation
-         *     estimate of the test set error is minimal.
-         *
-         *     This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
-         *     offers rudimentary parameter options.
-         *
-         *     This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
-         *     regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
-         *     the usual %SVM with parameters specified in params is executed.
-         * return automatically generated
+         @brief Trains an %SVM with optimal parameters
+         
+             @param samples training samples
+             @param layout See ml::SampleTypes.
+             @param responses vector of responses associated with the training samples.
+             @param kFold Cross-validation parameter. The training set is divided into kFold subsets. One
+                 subset is used to test the model, the others form the train set. So, the %SVM algorithm is
+             @param Cgrid grid for C
+             @param gammaGrid grid for gamma
+             @param pGrid grid for p
+             @param nuGrid grid for nu
+             @param coeffGrid grid for coeff
+             @param degreeGrid grid for degree
+             @param balanced If true and the problem is 2-class classification then the method creates more
+                 balanced cross-validation subsets that is proportions between classes in subsets are close
+                 to such proportion in the whole train dataset.
+         
+             The method trains the %SVM model automatically by choosing the optimal parameters C, gamma, p,
+             nu, coef0, degree. Parameters are considered optimal when the cross-validation
+             estimate of the test set error is minimal.
+         
+             This function only makes use of SVM::getDefaultGrid for parameter optimization and thus only
+             offers rudimentary parameter options.
+         
+             This function works for the classification (SVM::C_SVC or SVM::NU_SVC) as well as for the
+             regression (SVM::EPS_SVR or SVM::NU_SVR). If it is SVM::ONE_CLASS, no optimization is made and
+             the usual %SVM with parameters specified in params is executed.
          */
         public bool trainAuto(Mat samples, int layout, Mat responses)
         {
@@ -801,11 +808,10 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Retrieves all the support vectors
-         *
-         *     The method returns all the support vectors as a floating-point matrix, where support vectors are
-         *     stored as matrix rows.
-         * return automatically generated
+         @brief Retrieves all the support vectors
+         
+             The method returns all the support vectors as a floating-point matrix, where support vectors are
+             stored as matrix rows.
          */
         public Mat getSupportVectors()
         {
@@ -822,12 +828,11 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Retrieves all the uncompressed support vectors of a linear %SVM
-         *
-         *     The method returns all the uncompressed support vectors of a linear %SVM that the compressed
-         *     support vector, used for prediction, was derived from. They are returned in a floating-point
-         *     matrix, where the support vectors are stored as matrix rows.
-         * return automatically generated
+         @brief Retrieves all the uncompressed support vectors of a linear %SVM
+         
+             The method returns all the uncompressed support vectors of a linear %SVM that the compressed
+             support vector, used for prediction, was derived from. They are returned in a floating-point
+             matrix, where the support vectors are stored as matrix rows.
          */
         public Mat getUncompressedSupportVectors()
         {
@@ -844,21 +849,20 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Retrieves the decision function
-         *
-         *     param i the index of the decision function. If the problem solved is regression, 1-class or
-         *         2-class classification, then there will be just one decision function and the index should
-         *         always be 0. Otherwise, in the case of N-class classification, there will be \(N(N-1)/2\)
-         *         decision functions.
-         *     param alpha the optional output vector for weights, corresponding to different support vectors.
-         *         In the case of linear %SVM all the alpha's will be 1's.
-         *     param svidx the optional output vector of indices of support vectors within the matrix of
-         *         support vectors (which can be retrieved by SVM::getSupportVectors). In the case of linear
-         *         %SVM each decision function consists of a single "compressed" support vector.
-         *
-         *     The method returns rho parameter of the decision function, a scalar subtracted from the weighted
-         *     sum of kernel responses.
-         * return automatically generated
+         @brief Retrieves the decision function
+         
+             @param i the index of the decision function. If the problem solved is regression, 1-class or
+                 2-class classification, then there will be just one decision function and the index should
+                 always be 0. Otherwise, in the case of N-class classification, there will be \f$N(N-1)/2\f$
+                 decision functions.
+             @param alpha the optional output vector for weights, corresponding to different support vectors.
+                 In the case of linear %SVM all the alpha's will be 1's.
+             @param svidx the optional output vector of indices of support vectors within the matrix of
+                 support vectors (which can be retrieved by SVM::getSupportVectors). In the case of linear
+                 %SVM each decision function consists of a single "compressed" support vector.
+         
+             The method returns rho parameter of the decision function, a scalar subtracted from the weighted
+             sum of kernel responses.
          */
         public double getDecisionFunction(int i, Mat alpha, Mat svidx)
         {
@@ -877,14 +881,13 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Generates a grid for %SVM parameters.
-         *
-         *     param param_id %SVM parameters IDs that must be one of the SVM::ParamTypes. The grid is
-         *     generated for the parameter with this ID.
-         *
-         *     The function generates a grid pointer for the specified parameter of the %SVM algorithm.
-         *     The grid may be passed to the function SVM::trainAuto.
-         * return automatically generated
+         @brief Generates a grid for %SVM parameters.
+         
+             @param param_id %SVM parameters IDs that must be one of the SVM::ParamTypes. The grid is
+             generated for the parameter with this ID.
+         
+             The function generates a grid pointer for the specified parameter of the %SVM algorithm.
+             The grid may be passed to the function SVM::trainAuto.
          */
         public static ParamGrid getDefaultGridPtr(int param_id)
         {
@@ -901,10 +904,9 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Creates empty model.
-         *     Use StatModel::train to train the model. Since %SVM has several parameters, you may want to
-         * find the best parameters for your problem, it can be done with SVM::trainAuto.
-         * return automatically generated
+         Creates empty model.
+             Use StatModel::train to train the model. Since %SVM has several parameters, you may want to
+         find the best parameters for your problem, it can be done with SVM::trainAuto.
          */
         public static SVM create()
         {
@@ -921,13 +923,12 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Loads and creates a serialized svm from a file
-         *
-         * Use SVM::save to serialize and store an SVM to disk.
-         * Load the SVM from this file again, by calling this function with the path to the file.
-         *
-         * param filepath path to serialized svm
-         * return automatically generated
+         @brief Loads and creates a serialized svm from a file
+              *
+              * Use SVM::save to serialize and store an SVM to disk.
+              * Load the SVM from this file again, by calling this function with the path to the file.
+              *
+              * @param filepath path to serialized svm
          */
         public static SVM load(string filepath)
         {

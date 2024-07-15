@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,10 +10,10 @@ namespace OpenCVForUnity.Features2dModule
 {
     // C++: class BOWTrainer
     /**
-     * Abstract base class for training the *bag of visual words* vocabulary from a set of descriptors.
-     *
-     * For details, see, for example, *Visual Categorization with Bags of Keypoints* by Gabriella Csurka,
-     * Christopher R. Dance, Lixin Fan, Jutta Willamowski, Cedric Bray, 2004. :
+     @brief Abstract base class for training the *bag of visual words* vocabulary from a set of descriptors.
+     
+     For details, see, for example, *Visual Categorization with Bags of Keypoints* by Gabriella Csurka,
+     Christopher R. Dance, Lixin Fan, Jutta Willamowski, Cedric Bray, 2004. :
      */
 
     public class BOWTrainer : DisposableOpenCVObject
@@ -54,12 +54,12 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Adds descriptors to a training set.
-         *
-         *     param descriptors Descriptors to add to a training set. Each row of the descriptors matrix is a
-         *     descriptor.
-         *
-         *     The training set is clustered using clustermethod to construct the vocabulary.
+         @brief Adds descriptors to a training set.
+         
+             @param descriptors Descriptors to add to a training set. Each row of the descriptors matrix is a
+             descriptor.
+         
+             The training set is clustered using clustermethod to construct the vocabulary.
          */
         public void add(Mat descriptors)
         {
@@ -77,8 +77,7 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Returns a training set of descriptors.
-         * return automatically generated
+         @brief Returns a training set of descriptors.
          */
         public List<Mat> getDescriptors()
         {
@@ -95,8 +94,7 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Returns the count of all descriptors stored in the training set.
-         * return automatically generated
+         @brief Returns the count of all descriptors stored in the training set.
          */
         public int descriptorsCount()
         {
@@ -126,6 +124,9 @@ namespace OpenCVForUnity.Features2dModule
         // C++:  Mat cv::BOWTrainer::cluster()
         //
 
+        /**
+         @overload
+         */
         public virtual Mat cluster()
         {
             ThrowIfDisposed();
@@ -141,15 +142,14 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Clusters train descriptors.
-         *
-         *     param descriptors Descriptors to cluster. Each row of the descriptors matrix is a descriptor.
-         *     Descriptors are not added to the inner train descriptor set.
-         *
-         *     The vocabulary consists of cluster centers. So, this method returns the vocabulary. In the first
-         *     variant of the method, train descriptors stored in the object are clustered. In the second variant,
-         *     input descriptors are clustered.
-         * return automatically generated
+         @brief Clusters train descriptors.
+         
+             @param descriptors Descriptors to cluster. Each row of the descriptors matrix is a descriptor.
+             Descriptors are not added to the inner train descriptor set.
+         
+             The vocabulary consists of cluster centers. So, this method returns the vocabulary. In the first
+             variant of the method, train descriptors stored in the object are clustered. In the second variant,
+             input descriptors are clustered.
          */
         public virtual Mat cluster(Mat descriptors)
         {

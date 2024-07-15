@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.PhotoModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,14 +11,14 @@ namespace OpenCVForUnity.XphotoModule
 
     // C++: class TonemapDurand
     /**
-     * This algorithm decomposes image into two layers: base layer and detail layer using bilateral filter
-     * and compresses contrast of the base layer thus preserving all the details.
-     *
-     * This implementation uses regular bilateral filter from OpenCV.
-     *
-     * Saturation enhancement is possible as in cv::TonemapDrago.
-     *
-     * For more information see CITE: DD02 .
+     @brief This algorithm decomposes image into two layers: base layer and detail layer using bilateral filter
+     and compresses contrast of the base layer thus preserving all the details.
+     
+     This implementation uses regular bilateral filter from OpenCV.
+     
+     Saturation enhancement is possible as in cv::TonemapDrago.
+     
+     For more information see @cite DD02 .
      */
 
     public class TonemapDurand : Tonemap

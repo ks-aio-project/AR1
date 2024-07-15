@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -28,42 +28,42 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dstStep1 Output image of the first step of BM3D with the same size and type as src.
-         *         param dstStep2 Output image of the second step of BM3D with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param groupSize Maximum size of the 3D group for collaborative filtering.
-         *         param slidingStep Sliding step to process every next reference block.
-         *         param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         param normType Norm used to calculate distance between blocks. L2 is slower than L1
-         *         but yields more accurate results.
-         *         param step Step of BM3D to be executed. Possible variants are: step 1, step 2, both steps.
-         *         param transformType Type of the orthogonal transform used in collaborative filtering step.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dstStep1 Output image of the first step of BM3D with the same size and type as src.
+                 @param dstStep2 Output image of the second step of BM3D with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Possible variants are: step 1, step 2, both steps.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dstStep1, Mat dstStep2, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1, int blockMatchingStep2, int groupSize, int slidingStep, float beta, int normType, int step, int transformType)
         {
@@ -77,41 +77,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dstStep1 Output image of the first step of BM3D with the same size and type as src.
-         *         param dstStep2 Output image of the second step of BM3D with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param groupSize Maximum size of the 3D group for collaborative filtering.
-         *         param slidingStep Sliding step to process every next reference block.
-         *         param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         param normType Norm used to calculate distance between blocks. L2 is slower than L1
-         *         but yields more accurate results.
-         *         param step Step of BM3D to be executed. Possible variants are: step 1, step 2, both steps.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dstStep1 Output image of the first step of BM3D with the same size and type as src.
+                 @param dstStep2 Output image of the second step of BM3D with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Possible variants are: step 1, step 2, both steps.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dstStep1, Mat dstStep2, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1, int blockMatchingStep2, int groupSize, int slidingStep, float beta, int normType, int step)
         {
@@ -125,40 +126,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dstStep1 Output image of the first step of BM3D with the same size and type as src.
-         *         param dstStep2 Output image of the second step of BM3D with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param groupSize Maximum size of the 3D group for collaborative filtering.
-         *         param slidingStep Sliding step to process every next reference block.
-         *         param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         param normType Norm used to calculate distance between blocks. L2 is slower than L1
-         *         but yields more accurate results.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dstStep1 Output image of the first step of BM3D with the same size and type as src.
+                 @param dstStep2 Output image of the second step of BM3D with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Possible variants are: step 1, step 2, both steps.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dstStep1, Mat dstStep2, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1, int blockMatchingStep2, int groupSize, int slidingStep, float beta, int normType)
         {
@@ -172,39 +175,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dstStep1 Output image of the first step of BM3D with the same size and type as src.
-         *         param dstStep2 Output image of the second step of BM3D with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param groupSize Maximum size of the 3D group for collaborative filtering.
-         *         param slidingStep Sliding step to process every next reference block.
-         *         param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dstStep1 Output image of the first step of BM3D with the same size and type as src.
+                 @param dstStep2 Output image of the second step of BM3D with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Possible variants are: step 1, step 2, both steps.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dstStep1, Mat dstStep2, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1, int blockMatchingStep2, int groupSize, int slidingStep, float beta)
         {
@@ -218,38 +224,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dstStep1 Output image of the first step of BM3D with the same size and type as src.
-         *         param dstStep2 Output image of the second step of BM3D with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param groupSize Maximum size of the 3D group for collaborative filtering.
-         *         param slidingStep Sliding step to process every next reference block.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dstStep1 Output image of the first step of BM3D with the same size and type as src.
+                 @param dstStep2 Output image of the second step of BM3D with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Possible variants are: step 1, step 2, both steps.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dstStep1, Mat dstStep2, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1, int blockMatchingStep2, int groupSize, int slidingStep)
         {
@@ -263,37 +273,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dstStep1 Output image of the first step of BM3D with the same size and type as src.
-         *         param dstStep2 Output image of the second step of BM3D with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param groupSize Maximum size of the 3D group for collaborative filtering.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dstStep1 Output image of the first step of BM3D with the same size and type as src.
+                 @param dstStep2 Output image of the second step of BM3D with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Possible variants are: step 1, step 2, both steps.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dstStep1, Mat dstStep2, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1, int blockMatchingStep2, int groupSize)
         {
@@ -307,36 +322,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dstStep1 Output image of the first step of BM3D with the same size and type as src.
-         *         param dstStep2 Output image of the second step of BM3D with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dstStep1 Output image of the first step of BM3D with the same size and type as src.
+                 @param dstStep2 Output image of the second step of BM3D with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Possible variants are: step 1, step 2, both steps.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dstStep1, Mat dstStep2, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1, int blockMatchingStep2)
         {
@@ -350,35 +371,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dstStep1 Output image of the first step of BM3D with the same size and type as src.
-         *         param dstStep2 Output image of the second step of BM3D with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dstStep1 Output image of the first step of BM3D with the same size and type as src.
+                 @param dstStep2 Output image of the second step of BM3D with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Possible variants are: step 1, step 2, both steps.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dstStep1, Mat dstStep2, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1)
         {
@@ -392,34 +420,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dstStep1 Output image of the first step of BM3D with the same size and type as src.
-         *         param dstStep2 Output image of the second step of BM3D with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dstStep1 Output image of the first step of BM3D with the same size and type as src.
+                 @param dstStep2 Output image of the second step of BM3D with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Possible variants are: step 1, step 2, both steps.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dstStep1, Mat dstStep2, float h, int templateWindowSize, int searchWindowSize)
         {
@@ -433,33 +469,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dstStep1 Output image of the first step of BM3D with the same size and type as src.
-         *         param dstStep2 Output image of the second step of BM3D with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dstStep1 Output image of the first step of BM3D with the same size and type as src.
+                 @param dstStep2 Output image of the second step of BM3D with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Possible variants are: step 1, step 2, both steps.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dstStep1, Mat dstStep2, float h, int templateWindowSize)
         {
@@ -473,32 +518,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dstStep1 Output image of the first step of BM3D with the same size and type as src.
-         *         param dstStep2 Output image of the second step of BM3D with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         Should be power of 2.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dstStep1 Output image of the first step of BM3D with the same size and type as src.
+                 @param dstStep2 Output image of the second step of BM3D with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Possible variants are: step 1, step 2, both steps.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dstStep1, Mat dstStep2, float h)
         {
@@ -512,31 +567,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dstStep1 Output image of the first step of BM3D with the same size and type as src.
-         *         param dstStep2 Output image of the second step of BM3D with the same size and type as src.
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         Should be power of 2.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dstStep1 Output image of the first step of BM3D with the same size and type as src.
+                 @param dstStep2 Output image of the second step of BM3D with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Possible variants are: step 1, step 2, both steps.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dstStep1, Mat dstStep2)
         {
@@ -555,42 +621,42 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dst Output image with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param groupSize Maximum size of the 3D group for collaborative filtering.
-         *         param slidingStep Sliding step to process every next reference block.
-         *         param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         param normType Norm used to calculate distance between blocks. L2 is slower than L1
-         *         but yields more accurate results.
-         *         param step Step of BM3D to be executed. Allowed are only BM3D_STEP1 and BM3D_STEPALL.
-         *         BM3D_STEP2 is not allowed as it requires basic estimate to be present.
-         *         param transformType Type of the orthogonal transform used in collaborative filtering step.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dst Output image with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Allowed are only BM3D_STEP1 and BM3D_STEPALL.
+                 BM3D_STEP2 is not allowed as it requires basic estimate to be present.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dst, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1, int blockMatchingStep2, int groupSize, int slidingStep, float beta, int normType, int step, int transformType)
         {
@@ -603,41 +669,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dst Output image with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param groupSize Maximum size of the 3D group for collaborative filtering.
-         *         param slidingStep Sliding step to process every next reference block.
-         *         param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         param normType Norm used to calculate distance between blocks. L2 is slower than L1
-         *         but yields more accurate results.
-         *         param step Step of BM3D to be executed. Allowed are only BM3D_STEP1 and BM3D_STEPALL.
-         *         BM3D_STEP2 is not allowed as it requires basic estimate to be present.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dst Output image with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Allowed are only BM3D_STEP1 and BM3D_STEPALL.
+                 BM3D_STEP2 is not allowed as it requires basic estimate to be present.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dst, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1, int blockMatchingStep2, int groupSize, int slidingStep, float beta, int normType, int step)
         {
@@ -650,40 +717,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dst Output image with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param groupSize Maximum size of the 3D group for collaborative filtering.
-         *         param slidingStep Sliding step to process every next reference block.
-         *         param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         param normType Norm used to calculate distance between blocks. L2 is slower than L1
-         *         but yields more accurate results.
-         *         BM3D_STEP2 is not allowed as it requires basic estimate to be present.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dst Output image with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Allowed are only BM3D_STEP1 and BM3D_STEPALL.
+                 BM3D_STEP2 is not allowed as it requires basic estimate to be present.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dst, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1, int blockMatchingStep2, int groupSize, int slidingStep, float beta, int normType)
         {
@@ -696,39 +765,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dst Output image with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param groupSize Maximum size of the 3D group for collaborative filtering.
-         *         param slidingStep Sliding step to process every next reference block.
-         *         param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         BM3D_STEP2 is not allowed as it requires basic estimate to be present.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dst Output image with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Allowed are only BM3D_STEP1 and BM3D_STEPALL.
+                 BM3D_STEP2 is not allowed as it requires basic estimate to be present.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dst, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1, int blockMatchingStep2, int groupSize, int slidingStep, float beta)
         {
@@ -741,38 +813,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dst Output image with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param groupSize Maximum size of the 3D group for collaborative filtering.
-         *         param slidingStep Sliding step to process every next reference block.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         BM3D_STEP2 is not allowed as it requires basic estimate to be present.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dst Output image with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Allowed are only BM3D_STEP1 and BM3D_STEPALL.
+                 BM3D_STEP2 is not allowed as it requires basic estimate to be present.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dst, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1, int blockMatchingStep2, int groupSize, int slidingStep)
         {
@@ -785,37 +861,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dst Output image with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param groupSize Maximum size of the 3D group for collaborative filtering.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         BM3D_STEP2 is not allowed as it requires basic estimate to be present.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dst Output image with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Allowed are only BM3D_STEP1 and BM3D_STEPALL.
+                 BM3D_STEP2 is not allowed as it requires basic estimate to be present.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dst, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1, int blockMatchingStep2, int groupSize)
         {
@@ -828,36 +909,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dst Output image with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         BM3D_STEP2 is not allowed as it requires basic estimate to be present.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dst Output image with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Allowed are only BM3D_STEP1 and BM3D_STEPALL.
+                 BM3D_STEP2 is not allowed as it requires basic estimate to be present.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dst, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1, int blockMatchingStep2)
         {
@@ -870,35 +957,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dst Output image with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         BM3D_STEP2 is not allowed as it requires basic estimate to be present.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dst Output image with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Allowed are only BM3D_STEP1 and BM3D_STEPALL.
+                 BM3D_STEP2 is not allowed as it requires basic estimate to be present.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dst, float h, int templateWindowSize, int searchWindowSize, int blockMatchingStep1)
         {
@@ -911,34 +1005,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dst Output image with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         param searchWindowSize Size in pixels of the window that is used to perform block-matching.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         BM3D_STEP2 is not allowed as it requires basic estimate to be present.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dst Output image with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Allowed are only BM3D_STEP1 and BM3D_STEPALL.
+                 BM3D_STEP2 is not allowed as it requires basic estimate to be present.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dst, float h, int templateWindowSize, int searchWindowSize)
         {
@@ -951,33 +1053,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dst Output image with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         param templateWindowSize Size in pixels of the template patch that is used for block-matching.
-         *         Should be power of 2.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         BM3D_STEP2 is not allowed as it requires basic estimate to be present.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dst Output image with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Allowed are only BM3D_STEP1 and BM3D_STEPALL.
+                 BM3D_STEP2 is not allowed as it requires basic estimate to be present.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dst, float h, int templateWindowSize)
         {
@@ -990,32 +1101,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dst Output image with the same size and type as src.
-         *         param h Parameter regulating filter strength. Big h value perfectly removes noise but also
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         Should be power of 2.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         BM3D_STEP2 is not allowed as it requires basic estimate to be present.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dst Output image with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Allowed are only BM3D_STEP1 and BM3D_STEPALL.
+                 BM3D_STEP2 is not allowed as it requires basic estimate to be present.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dst, float h)
         {
@@ -1028,31 +1149,42 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Performs image denoising using the Block-Matching and 3D-filtering algorithm
-         *         &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
-         *         optimizations. Noise expected to be a gaussian white noise.
-         *
-         *         param src Input 8-bit or 16-bit 1-channel image.
-         *         param dst Output image with the same size and type as src.
-         *         removes image details, smaller h value preserves details but also preserves some noise.
-         *         Should be power of 2.
-         *         Affect performance linearly: greater searchWindowsSize - greater denoising time.
-         *         Must be larger than templateWindowSize.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         i.e. maximum distance for which two blocks are considered similar.
-         *         Value expressed in euclidean distance.
-         *         window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
-         *         set beta to zero.
-         *         but yields more accurate results.
-         *         BM3D_STEP2 is not allowed as it requires basic estimate to be present.
-         *         Currently only Haar transform is supported.
-         *
-         *         This function expected to be applied to grayscale images. Advanced usage of this function
-         *         can be manual denoising of colored image in different colorspaces.
-         *
-         *         SEE:
-         *         fastNlMeansDenoising
+         @brief Performs image denoising using the Block-Matching and 3D-filtering algorithm
+                 &lt;http://www.cs.tut.fi/~foi/GCF-BM3D/BM3D_TIP_2007.pdf&gt; with several computational
+                 optimizations. Noise expected to be a gaussian white noise.
+         
+                 @param src Input 8-bit or 16-bit 1-channel image.
+                 @param dst Output image with the same size and type as src.
+                 @param h Parameter regulating filter strength. Big h value perfectly removes noise but also
+                 removes image details, smaller h value preserves details but also preserves some noise.
+                 @param templateWindowSize Size in pixels of the template patch that is used for block-matching.
+                 Should be power of 2.
+                 @param searchWindowSize Size in pixels of the window that is used to perform block-matching.
+                 Affect performance linearly: greater searchWindowsSize - greater denoising time.
+                 Must be larger than templateWindowSize.
+                 @param blockMatchingStep1 Block matching threshold for the first step of BM3D (hard thresholding),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param blockMatchingStep2 Block matching threshold for the second step of BM3D (Wiener filtering),
+                 i.e. maximum distance for which two blocks are considered similar.
+                 Value expressed in euclidean distance.
+                 @param groupSize Maximum size of the 3D group for collaborative filtering.
+                 @param slidingStep Sliding step to process every next reference block.
+                 @param beta Kaiser window parameter that affects the sidelobe attenuation of the transform of the
+                 window. Kaiser window is used in order to reduce border effects. To prevent usage of the window,
+                 set beta to zero.
+                 @param normType Norm used to calculate distance between blocks. L2 is slower than L1
+                 but yields more accurate results.
+                 @param step Step of BM3D to be executed. Allowed are only BM3D_STEP1 and BM3D_STEPALL.
+                 BM3D_STEP2 is not allowed as it requires basic estimate to be present.
+                 @param transformType Type of the orthogonal transform used in collaborative filtering step.
+                 Currently only Haar transform is supported.
+         
+                 This function expected to be applied to grayscale images. Advanced usage of this function
+                 can be manual denoising of colored image in different colorspaces.
+         
+                 @sa
+                 fastNlMeansDenoising
          */
         public static void bm3dDenoising(Mat src, Mat dst)
         {
@@ -1070,16 +1202,16 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * The function implements simple dct-based denoising
-         *
-         *     &lt;http://www.ipol.im/pub/art/2011/ys-dct/&gt;.
-         *     param src source image
-         *     param dst destination image
-         *     param sigma expected noise standard deviation
-         *     param psize size of block side where dct is computed
-         *
-         *     SEE:
-         *        fastNlMeansDenoising
+         @brief The function implements simple dct-based denoising
+         
+             &lt;http://www.ipol.im/pub/art/2011/ys-dct/&gt;.
+             @param src source image
+             @param dst destination image
+             @param sigma expected noise standard deviation
+             @param psize size of block side where dct is computed
+         
+             @sa
+                fastNlMeansDenoising
          */
         public static void dctDenoising(Mat src, Mat dst, double sigma, int psize)
         {
@@ -1092,15 +1224,16 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * The function implements simple dct-based denoising
-         *
-         *     &lt;http://www.ipol.im/pub/art/2011/ys-dct/&gt;.
-         *     param src source image
-         *     param dst destination image
-         *     param sigma expected noise standard deviation
-         *
-         *     SEE:
-         *        fastNlMeansDenoising
+         @brief The function implements simple dct-based denoising
+         
+             &lt;http://www.ipol.im/pub/art/2011/ys-dct/&gt;.
+             @param src source image
+             @param dst destination image
+             @param sigma expected noise standard deviation
+             @param psize size of block side where dct is computed
+         
+             @sa
+                fastNlMeansDenoising
          */
         public static void dctDenoising(Mat src, Mat dst, double sigma)
         {
@@ -1118,26 +1251,20 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * The function implements different single-image inpainting algorithms.
-         *
-         *     See the original papers CITE: He2012 (Shiftmap) or CITE: GenserPCS2018 and CITE: SeilerTIP2015 (FSR) for details.
-         *
-         *     param src source image
-         * <ul>
-         *   <li>
-         *      #INPAINT_SHIFTMAP: it could be of any type and any number of channels from 1 to 4. In case of
-         *     3- and 4-channels images the function expect them in CIELab colorspace or similar one, where first
-         *     color component shows intensity, while second and third shows colors. Nonetheless you can try any
-         *     colorspaces.
-         *   </li>
-         *   <li>
-         *      #INPAINT_FSR_BEST or #INPAINT_FSR_FAST: 1-channel grayscale or 3-channel BGR image.
-         *     param mask mask (#CV_8UC1), where non-zero pixels indicate valid image area, while zero pixels
-         *     indicate area to be inpainted
-         *     param dst destination image
-         *     param algorithmType see xphoto::InpaintTypes
-         *   </li>
-         * </ul>
+         @brief The function implements different single-image inpainting algorithms.
+         
+             See the original papers @cite He2012 (Shiftmap) or @cite GenserPCS2018 and @cite SeilerTIP2015 (FSR) for details.
+         
+             @param src source image
+             - #INPAINT_SHIFTMAP: it could be of any type and any number of channels from 1 to 4. In case of
+             3- and 4-channels images the function expect them in CIELab colorspace or similar one, where first
+             color component shows intensity, while second and third shows colors. Nonetheless you can try any
+             colorspaces.
+             - #INPAINT_FSR_BEST or #INPAINT_FSR_FAST: 1-channel grayscale or 3-channel BGR image.
+             @param mask mask (#CV_8UC1), where non-zero pixels indicate valid image area, while zero pixels
+             indicate area to be inpainted
+             @param dst destination image
+             @param algorithmType see xphoto::InpaintTypes
          */
         public static void inpaint(Mat src, Mat mask, Mat dst, int algorithmType)
         {
@@ -1156,13 +1283,13 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * oilPainting
-         * See the book CITE: Holzmann1988 for details.
-         * param src Input three-channel or one channel image (either CV_8UC3 or CV_8UC1)
-         * param dst Output image of the same size and type as src.
-         * param size neighbouring size is 2-size+1
-         * param dynRatio image is divided by dynRatio before histogram processing
-         * param code automatically generated
+         @brief oilPainting
+         See the book @cite Holzmann1988 for details.
+         @param src Input three-channel or one channel image (either CV_8UC3 or CV_8UC1)
+         @param dst Output image of the same size and type as src.
+         @param size neighbouring size is 2-size+1
+         @param dynRatio image is divided by dynRatio before histogram processing
+         @param code	color space conversion code(see ColorConversionCodes). Histogram will used only first plane
          */
         public static void oilPainting(Mat src, Mat dst, int size, int dynRatio, int code)
         {
@@ -1180,12 +1307,12 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * oilPainting
-         * See the book CITE: Holzmann1988 for details.
-         * param src Input three-channel or one channel image (either CV_8UC3 or CV_8UC1)
-         * param dst Output image of the same size and type as src.
-         * param size neighbouring size is 2-size+1
-         * param dynRatio image is divided by dynRatio before histogram processing
+         @brief oilPainting
+         See the book @cite Holzmann1988 for details.
+         @param src Input three-channel or one channel image (either CV_8UC3 or CV_8UC1)
+         @param dst Output image of the same size and type as src.
+         @param size neighbouring size is 2-size+1
+         @param dynRatio image is divided by dynRatio before histogram processing
          */
         public static void oilPainting(Mat src, Mat dst, int size, int dynRatio)
         {
@@ -1203,17 +1330,16 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * Creates TonemapDurand object
-         *
-         * You need to set the OPENCV_ENABLE_NONFREE option in cmake to use those. Use them at your own risk.
-         *
-         * param gamma gamma value for gamma correction. See createTonemap
-         * param contrast resulting contrast on logarithmic scale, i. e. log(max / min), where max and min
-         * are maximum and minimum luminance values of the resulting image.
-         * param saturation saturation enhancement value. See createTonemapDrago
-         * param sigma_color bilateral filter sigma in color space
-         * param sigma_space bilateral filter sigma in coordinate space
-         * return automatically generated
+         @brief Creates TonemapDurand object
+         
+         You need to set the OPENCV_ENABLE_NONFREE option in cmake to use those. Use them at your own risk.
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param contrast resulting contrast on logarithmic scale, i. e. log(max / min), where max and min
+         are maximum and minimum luminance values of the resulting image.
+         @param saturation saturation enhancement value. See createTonemapDrago
+         @param sigma_color bilateral filter sigma in color space
+         @param sigma_space bilateral filter sigma in coordinate space
          */
         public static TonemapDurand createTonemapDurand(float gamma, float contrast, float saturation, float sigma_color, float sigma_space)
         {
@@ -1225,16 +1351,16 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Creates TonemapDurand object
-         *
-         * You need to set the OPENCV_ENABLE_NONFREE option in cmake to use those. Use them at your own risk.
-         *
-         * param gamma gamma value for gamma correction. See createTonemap
-         * param contrast resulting contrast on logarithmic scale, i. e. log(max / min), where max and min
-         * are maximum and minimum luminance values of the resulting image.
-         * param saturation saturation enhancement value. See createTonemapDrago
-         * param sigma_color bilateral filter sigma in color space
-         * return automatically generated
+         @brief Creates TonemapDurand object
+         
+         You need to set the OPENCV_ENABLE_NONFREE option in cmake to use those. Use them at your own risk.
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param contrast resulting contrast on logarithmic scale, i. e. log(max / min), where max and min
+         are maximum and minimum luminance values of the resulting image.
+         @param saturation saturation enhancement value. See createTonemapDrago
+         @param sigma_color bilateral filter sigma in color space
+         @param sigma_space bilateral filter sigma in coordinate space
          */
         public static TonemapDurand createTonemapDurand(float gamma, float contrast, float saturation, float sigma_color)
         {
@@ -1246,15 +1372,16 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Creates TonemapDurand object
-         *
-         * You need to set the OPENCV_ENABLE_NONFREE option in cmake to use those. Use them at your own risk.
-         *
-         * param gamma gamma value for gamma correction. See createTonemap
-         * param contrast resulting contrast on logarithmic scale, i. e. log(max / min), where max and min
-         * are maximum and minimum luminance values of the resulting image.
-         * param saturation saturation enhancement value. See createTonemapDrago
-         * return automatically generated
+         @brief Creates TonemapDurand object
+         
+         You need to set the OPENCV_ENABLE_NONFREE option in cmake to use those. Use them at your own risk.
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param contrast resulting contrast on logarithmic scale, i. e. log(max / min), where max and min
+         are maximum and minimum luminance values of the resulting image.
+         @param saturation saturation enhancement value. See createTonemapDrago
+         @param sigma_color bilateral filter sigma in color space
+         @param sigma_space bilateral filter sigma in coordinate space
          */
         public static TonemapDurand createTonemapDurand(float gamma, float contrast, float saturation)
         {
@@ -1266,14 +1393,16 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Creates TonemapDurand object
-         *
-         * You need to set the OPENCV_ENABLE_NONFREE option in cmake to use those. Use them at your own risk.
-         *
-         * param gamma gamma value for gamma correction. See createTonemap
-         * param contrast resulting contrast on logarithmic scale, i. e. log(max / min), where max and min
-         * are maximum and minimum luminance values of the resulting image.
-         * return automatically generated
+         @brief Creates TonemapDurand object
+         
+         You need to set the OPENCV_ENABLE_NONFREE option in cmake to use those. Use them at your own risk.
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param contrast resulting contrast on logarithmic scale, i. e. log(max / min), where max and min
+         are maximum and minimum luminance values of the resulting image.
+         @param saturation saturation enhancement value. See createTonemapDrago
+         @param sigma_color bilateral filter sigma in color space
+         @param sigma_space bilateral filter sigma in coordinate space
          */
         public static TonemapDurand createTonemapDurand(float gamma, float contrast)
         {
@@ -1285,13 +1414,16 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Creates TonemapDurand object
-         *
-         * You need to set the OPENCV_ENABLE_NONFREE option in cmake to use those. Use them at your own risk.
-         *
-         * param gamma gamma value for gamma correction. See createTonemap
-         * are maximum and minimum luminance values of the resulting image.
-         * return automatically generated
+         @brief Creates TonemapDurand object
+         
+         You need to set the OPENCV_ENABLE_NONFREE option in cmake to use those. Use them at your own risk.
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param contrast resulting contrast on logarithmic scale, i. e. log(max / min), where max and min
+         are maximum and minimum luminance values of the resulting image.
+         @param saturation saturation enhancement value. See createTonemapDrago
+         @param sigma_color bilateral filter sigma in color space
+         @param sigma_space bilateral filter sigma in coordinate space
          */
         public static TonemapDurand createTonemapDurand(float gamma)
         {
@@ -1303,12 +1435,16 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Creates TonemapDurand object
-         *
-         * You need to set the OPENCV_ENABLE_NONFREE option in cmake to use those. Use them at your own risk.
-         *
-         * are maximum and minimum luminance values of the resulting image.
-         * return automatically generated
+         @brief Creates TonemapDurand object
+         
+         You need to set the OPENCV_ENABLE_NONFREE option in cmake to use those. Use them at your own risk.
+         
+         @param gamma gamma value for gamma correction. See createTonemap
+         @param contrast resulting contrast on logarithmic scale, i. e. log(max / min), where max and min
+         are maximum and minimum luminance values of the resulting image.
+         @param saturation saturation enhancement value. See createTonemapDrago
+         @param sigma_color bilateral filter sigma in color space
+         @param sigma_space bilateral filter sigma in coordinate space
          */
         public static TonemapDurand createTonemapDurand()
         {
@@ -1325,8 +1461,7 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * Creates an instance of SimpleWB
-         * return automatically generated
+         @brief Creates an instance of SimpleWB
          */
         public static SimpleWB createSimpleWB()
         {
@@ -1343,8 +1478,7 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * Creates an instance of GrayworldWB
-         * return automatically generated
+         @brief Creates an instance of GrayworldWB
          */
         public static GrayworldWB createGrayworldWB()
         {
@@ -1361,10 +1495,9 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * Creates an instance of LearningBasedWB
-         *
-         * param path_to_model Path to a .yml file with the model. If not specified, the default model is used
-         * return automatically generated
+         @brief Creates an instance of LearningBasedWB
+         
+         @param path_to_model Path to a .yml file with the model. If not specified, the default model is used
          */
         public static LearningBasedWB createLearningBasedWB(string path_to_model)
         {
@@ -1376,9 +1509,9 @@ namespace OpenCVForUnity.XphotoModule
         }
 
         /**
-         * Creates an instance of LearningBasedWB
-         *
-         * return automatically generated
+         @brief Creates an instance of LearningBasedWB
+         
+         @param path_to_model Path to a .yml file with the model. If not specified, the default model is used
          */
         public static LearningBasedWB createLearningBasedWB()
         {
@@ -1395,14 +1528,14 @@ namespace OpenCVForUnity.XphotoModule
         //
 
         /**
-         * Implements an efficient fixed-point approximation for applying channel gains, which is
-         *     the last step of multiple white balance algorithms.
-         *
-         * param src Input three-channel image in the BGR color space (either CV_8UC3 or CV_16UC3)
-         * param dst Output image of the same size and type as src.
-         * param gainB gain for the B channel
-         * param gainG gain for the G channel
-         * param gainR gain for the R channel
+         @brief Implements an efficient fixed-point approximation for applying channel gains, which is
+             the last step of multiple white balance algorithms.
+         
+         @param src Input three-channel image in the BGR color space (either CV_8UC3 or CV_16UC3)
+         @param dst Output image of the same size and type as src.
+         @param gainB gain for the B channel
+         @param gainG gain for the G channel
+         @param gainR gain for the R channel
          */
         public static void applyChannelGains(Mat src, Mat dst, float gainB, float gainG, float gainR)
         {

@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,26 +10,18 @@ namespace OpenCVForUnity.BioinspiredModule
 
     // C++: class TransientAreasSegmentationModule
     /**
-     * class which provides a transient/moving areas segmentation module
-     *
-     * perform a locally adapted segmentation by using the retina magno input data Based on Alexandre
-     * BENOIT thesis: "Le système visuel humain au secours de la vision par ordinateur"
-     *
-     * 3 spatio temporal filters are used:
-     * <ul>
-     *   <li>
-     *  a first one which filters the noise and local variations of the input motion energy
-     *   </li>
-     *   <li>
-     *  a second (more powerfull low pass spatial filter) which gives the neighborhood motion energy the
-     * segmentation consists in the comparison of these both outputs, if the local motion energy is higher
-     * to the neighborhood otion energy, then the area is considered as moving and is segmented
-     *   </li>
-     *   <li>
-     *  a stronger third low pass filter helps decision by providing a smooth information about the
-     * "motion context" in a wider area
-     *   </li>
-     * </ul>
+     @brief class which provides a transient/moving areas segmentation module
+     
+     perform a locally adapted segmentation by using the retina magno input data Based on Alexandre
+     BENOIT thesis: "Le système visuel humain au secours de la vision par ordinateur"
+     
+     3 spatio temporal filters are used:
+     - a first one which filters the noise and local variations of the input motion energy
+     - a second (more powerfull low pass spatial filter) which gives the neighborhood motion energy the
+     segmentation consists in the comparison of these both outputs, if the local motion energy is higher
+     to the neighborhood otion energy, then the area is considered as moving and is segmented
+     - a stronger third low pass filter helps decision by providing a smooth information about the
+     "motion context" in a wider area
      */
 
     public class TransientAreasSegmentationModule : Algorithm
@@ -67,8 +59,7 @@ namespace OpenCVForUnity.BioinspiredModule
         //
 
         /**
-         * return the sze of the manage input and output images
-         * return automatically generated
+         @brief return the sze of the manage input and output images
          */
         public Size getSize()
         {
@@ -87,18 +78,12 @@ namespace OpenCVForUnity.BioinspiredModule
         //
 
         /**
-         * try to open an XML segmentation parameters file to adjust current segmentation instance setup
-         *
-         * <ul>
-         *   <li>
-         *      if the xml file does not exist, then default setup is applied
-         *   </li>
-         *   <li>
-         *      warning, Exceptions are thrown if read XML file is not valid
-         *     param segmentationParameterFile : the parameters filename
-         *     param applyDefaultSetupOnFailure : set to true if an error must be thrown on error
-         *   </li>
-         * </ul>
+         @brief try to open an XML segmentation parameters file to adjust current segmentation instance setup
+         
+             - if the xml file does not exist, then default setup is applied
+             - warning, Exceptions are thrown if read XML file is not valid
+             @param segmentationParameterFile : the parameters filename
+             @param applyDefaultSetupOnFailure : set to true if an error must be thrown on error
          */
         public void setup(string segmentationParameterFile, bool applyDefaultSetupOnFailure)
         {
@@ -110,17 +95,12 @@ namespace OpenCVForUnity.BioinspiredModule
         }
 
         /**
-         * try to open an XML segmentation parameters file to adjust current segmentation instance setup
-         *
-         * <ul>
-         *   <li>
-         *      if the xml file does not exist, then default setup is applied
-         *   </li>
-         *   <li>
-         *      warning, Exceptions are thrown if read XML file is not valid
-         *     param segmentationParameterFile : the parameters filename
-         *   </li>
-         * </ul>
+         @brief try to open an XML segmentation parameters file to adjust current segmentation instance setup
+         
+             - if the xml file does not exist, then default setup is applied
+             - warning, Exceptions are thrown if read XML file is not valid
+             @param segmentationParameterFile : the parameters filename
+             @param applyDefaultSetupOnFailure : set to true if an error must be thrown on error
          */
         public void setup(string segmentationParameterFile)
         {
@@ -132,16 +112,12 @@ namespace OpenCVForUnity.BioinspiredModule
         }
 
         /**
-         * try to open an XML segmentation parameters file to adjust current segmentation instance setup
-         *
-         * <ul>
-         *   <li>
-         *      if the xml file does not exist, then default setup is applied
-         *   </li>
-         *   <li>
-         *      warning, Exceptions are thrown if read XML file is not valid
-         *   </li>
-         * </ul>
+         @brief try to open an XML segmentation parameters file to adjust current segmentation instance setup
+         
+             - if the xml file does not exist, then default setup is applied
+             - warning, Exceptions are thrown if read XML file is not valid
+             @param segmentationParameterFile : the parameters filename
+             @param applyDefaultSetupOnFailure : set to true if an error must be thrown on error
          */
         public void setup()
         {
@@ -158,8 +134,8 @@ namespace OpenCVForUnity.BioinspiredModule
         //
 
         /**
-         * parameters setup display method
-         *     return a string which contains formatted parameters information
+         @brief parameters setup display method
+             @return a string which contains formatted parameters information
          */
         public string printSetup()
         {
@@ -176,8 +152,8 @@ namespace OpenCVForUnity.BioinspiredModule
         //
 
         /**
-         * write xml/yml formated parameters information
-         *     param fs : the filename of the xml file that will be open and writen with formatted parameters information
+         @brief write xml/yml formated parameters information
+             @param fs : the filename of the xml file that will be open and writen with formatted parameters information
          */
         public void write(string fs)
         {
@@ -194,9 +170,9 @@ namespace OpenCVForUnity.BioinspiredModule
         //
 
         /**
-         * main processing method, get result using methods getSegmentationPicture()
-         *     param inputToSegment : the image to process, it must match the instance buffer size !
-         *     param channelIndex : the channel to process in case of multichannel images
+         @brief main processing method, get result using methods getSegmentationPicture()
+             @param inputToSegment : the image to process, it must match the instance buffer size !
+             @param channelIndex : the channel to process in case of multichannel images
          */
         public void run(Mat inputToSegment, int channelIndex)
         {
@@ -209,8 +185,9 @@ namespace OpenCVForUnity.BioinspiredModule
         }
 
         /**
-         * main processing method, get result using methods getSegmentationPicture()
-         *     param inputToSegment : the image to process, it must match the instance buffer size !
+         @brief main processing method, get result using methods getSegmentationPicture()
+             @param inputToSegment : the image to process, it must match the instance buffer size !
+             @param channelIndex : the channel to process in case of multichannel images
          */
         public void run(Mat inputToSegment)
         {
@@ -228,9 +205,8 @@ namespace OpenCVForUnity.BioinspiredModule
         //
 
         /**
-         * access function
-         *     return the last segmentation result: a boolean picture which is resampled between 0 and 255 for a display purpose
-         * param transientAreas automatically generated
+         @brief access function
+             return the last segmentation result: a boolean picture which is resampled between 0 and 255 for a display purpose
          */
         public void getSegmentationPicture(Mat transientAreas)
         {
@@ -248,7 +224,7 @@ namespace OpenCVForUnity.BioinspiredModule
         //
 
         /**
-         * cleans all the buffers of the instance
+         @brief cleans all the buffers of the instance
          */
         public void clearAllBuffers()
         {
@@ -265,9 +241,8 @@ namespace OpenCVForUnity.BioinspiredModule
         //
 
         /**
-         * allocator
-         *     param inputSize : size of the images input to segment (output will be the same size)
-         * return automatically generated
+         @brief allocator
+             @param inputSize : size of the images input to segment (output will be the same size)
          */
         public static TransientAreasSegmentationModule create(Size inputSize)
         {

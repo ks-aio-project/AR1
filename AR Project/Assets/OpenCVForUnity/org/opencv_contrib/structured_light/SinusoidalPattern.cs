@@ -1,4 +1,4 @@
-﻿#if !UNITY_WEBGL
+#if !UNITY_WEBGL
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,10 +11,10 @@ namespace OpenCVForUnity.Structured_lightModule
 
     // C++: class SinusoidalPattern
     /**
-     * Class implementing Fourier transform profilometry (FTP) , phase-shifting profilometry (PSP)
-     * and Fourier-assisted phase-shifting profilometry (FAPS) based on CITE: faps.
-     *
-     * This class generates sinusoidal patterns that can be used with FTP, PSP and FAPS.
+     * @brief Class implementing Fourier transform profilometry (FTP) , phase-shifting profilometry (PSP)
+      * and Fourier-assisted phase-shifting profilometry (FAPS) based on @cite faps.
+     
+      * This class generates sinusoidal patterns that can be used with FTP, PSP and FAPS.
      */
 
     public class SinusoidalPattern : StructuredLightPattern
@@ -52,10 +52,9 @@ namespace OpenCVForUnity.Structured_lightModule
         //
 
         /**
-         * Constructor.
-         * param parameters SinusoidalPattern parameters SinusoidalPattern::Params: width, height of the projector and patterns parameters.
-         *
-         * return automatically generated
+         * @brief Constructor.
+              * @param parameters SinusoidalPattern parameters SinusoidalPattern::Params: width, height of the projector and patterns parameters.
+              *
          */
         public static SinusoidalPattern create(SinusoidalPattern_Params parameters)
         {
@@ -67,9 +66,9 @@ namespace OpenCVForUnity.Structured_lightModule
         }
 
         /**
-         * Constructor.
-         *
-         * return automatically generated
+         * @brief Constructor.
+              * @param parameters SinusoidalPattern parameters SinusoidalPattern::Params: width, height of the projector and patterns parameters.
+              *
          */
         public static SinusoidalPattern create()
         {
@@ -86,11 +85,11 @@ namespace OpenCVForUnity.Structured_lightModule
         //
 
         /**
-         * Compute a wrapped phase map from sinusoidal patterns.
-         * param patternImages Input data to compute the wrapped phase map.
-         * param wrappedPhaseMap Wrapped phase map obtained through one of the three methods.
-         * param shadowMask Mask used to discard shadow regions.
-         * param fundamental Fundamental matrix used to compute epipolar lines and ease the matching step.
+         * @brief Compute a wrapped phase map from sinusoidal patterns.
+              * @param patternImages Input data to compute the wrapped phase map.
+              * @param wrappedPhaseMap Wrapped phase map obtained through one of the three methods.
+              * @param shadowMask Mask used to discard shadow regions.
+              * @param fundamental Fundamental matrix used to compute epipolar lines and ease the matching step.
          */
         public void computePhaseMap(List<Mat> patternImages, Mat wrappedPhaseMap, Mat shadowMask, Mat fundamental)
         {
@@ -105,10 +104,11 @@ namespace OpenCVForUnity.Structured_lightModule
         }
 
         /**
-         * Compute a wrapped phase map from sinusoidal patterns.
-         * param patternImages Input data to compute the wrapped phase map.
-         * param wrappedPhaseMap Wrapped phase map obtained through one of the three methods.
-         * param shadowMask Mask used to discard shadow regions.
+         * @brief Compute a wrapped phase map from sinusoidal patterns.
+              * @param patternImages Input data to compute the wrapped phase map.
+              * @param wrappedPhaseMap Wrapped phase map obtained through one of the three methods.
+              * @param shadowMask Mask used to discard shadow regions.
+              * @param fundamental Fundamental matrix used to compute epipolar lines and ease the matching step.
          */
         public void computePhaseMap(List<Mat> patternImages, Mat wrappedPhaseMap, Mat shadowMask)
         {
@@ -122,9 +122,11 @@ namespace OpenCVForUnity.Structured_lightModule
         }
 
         /**
-         * Compute a wrapped phase map from sinusoidal patterns.
-         * param patternImages Input data to compute the wrapped phase map.
-         * param wrappedPhaseMap Wrapped phase map obtained through one of the three methods.
+         * @brief Compute a wrapped phase map from sinusoidal patterns.
+              * @param patternImages Input data to compute the wrapped phase map.
+              * @param wrappedPhaseMap Wrapped phase map obtained through one of the three methods.
+              * @param shadowMask Mask used to discard shadow regions.
+              * @param fundamental Fundamental matrix used to compute epipolar lines and ease the matching step.
          */
         public void computePhaseMap(List<Mat> patternImages, Mat wrappedPhaseMap)
         {
@@ -142,11 +144,11 @@ namespace OpenCVForUnity.Structured_lightModule
         //
 
         /**
-         * Unwrap the wrapped phase map to remove phase ambiguities.
-         * param wrappedPhaseMap The wrapped phase map computed from the pattern.
-         * param unwrappedPhaseMap The unwrapped phase map used to find correspondences between the two devices.
-         * param camSize Resolution of the camera.
-         * param shadowMask Mask used to discard shadow regions.
+         * @brief Unwrap the wrapped phase map to remove phase ambiguities.
+              * @param wrappedPhaseMap The wrapped phase map computed from the pattern.
+              * @param unwrappedPhaseMap The unwrapped phase map used to find correspondences between the two devices.
+              * @param camSize Resolution of the camera.
+              * @param shadowMask Mask used to discard shadow regions.
          */
         public void unwrapPhaseMap(Mat wrappedPhaseMap, Mat unwrappedPhaseMap, Size camSize, Mat shadowMask)
         {
@@ -161,10 +163,11 @@ namespace OpenCVForUnity.Structured_lightModule
         }
 
         /**
-         * Unwrap the wrapped phase map to remove phase ambiguities.
-         * param wrappedPhaseMap The wrapped phase map computed from the pattern.
-         * param unwrappedPhaseMap The unwrapped phase map used to find correspondences between the two devices.
-         * param camSize Resolution of the camera.
+         * @brief Unwrap the wrapped phase map to remove phase ambiguities.
+              * @param wrappedPhaseMap The wrapped phase map computed from the pattern.
+              * @param unwrappedPhaseMap The unwrapped phase map used to find correspondences between the two devices.
+              * @param camSize Resolution of the camera.
+              * @param shadowMask Mask used to discard shadow regions.
          */
         public void unwrapPhaseMap(Mat wrappedPhaseMap, Mat unwrappedPhaseMap, Size camSize)
         {
@@ -183,10 +186,10 @@ namespace OpenCVForUnity.Structured_lightModule
         //
 
         /**
-         * Find correspondences between the two devices thanks to unwrapped phase maps.
-         * param projUnwrappedPhaseMap Projector's unwrapped phase map.
-         * param camUnwrappedPhaseMap Camera's unwrapped phase map.
-         * param matches Images used to display correspondences map.
+         * @brief Find correspondences between the two devices thanks to unwrapped phase maps.
+              * @param projUnwrappedPhaseMap Projector's unwrapped phase map.
+              * @param camUnwrappedPhaseMap Camera's unwrapped phase map.
+              * @param matches Images used to display correspondences map.
          */
         public void findProCamMatches(Mat projUnwrappedPhaseMap, Mat camUnwrappedPhaseMap, List<Mat> matches)
         {
@@ -206,10 +209,10 @@ namespace OpenCVForUnity.Structured_lightModule
         //
 
         /**
-         * compute the data modulation term.
-         * param patternImages captured images with projected patterns.
-         * param dataModulationTerm Mat where the data modulation term is saved.
-         * param shadowMask Mask used to discard shadow regions.
+         * @brief compute the data modulation term.
+              * @param patternImages captured images with projected patterns.
+              * @param dataModulationTerm Mat where the data modulation term is saved.
+              * @param shadowMask Mask used to discard shadow regions.
          */
         public void computeDataModulationTerm(List<Mat> patternImages, Mat dataModulationTerm, Mat shadowMask)
         {
@@ -265,4 +268,5 @@ namespace OpenCVForUnity.Structured_lightModule
 
     }
 }
+
 #endif

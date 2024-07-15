@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "AR Project.sln"
+    "dotnet.defaultSolution": "AR Test1.sln"
 }

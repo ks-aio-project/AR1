@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,13 +10,13 @@ namespace OpenCVForUnity.VideoModule
 {
     // C++: class KalmanFilter
     /**
-     * Kalman filter class.
-     *
-     * The class implements a standard Kalman filter &lt;http://en.wikipedia.org/wiki/Kalman_filter&gt;,
-     * CITE: Welch95 . However, you can modify transitionMatrix, controlMatrix, and measurementMatrix to get
-     * an extended Kalman filter functionality.
-     * <b>Note:</b> In C API when CvKalman\* kalmanFilter structure is not needed anymore, it should be released
-     * with cvReleaseKalman(&amp;kalmanFilter)
+     @brief Kalman filter class.
+     
+     The class implements a standard Kalman filter &lt;http://en.wikipedia.org/wiki/Kalman_filter&gt;,
+     @cite Welch95 . However, you can modify transitionMatrix, controlMatrix, and measurementMatrix to get
+     an extended Kalman filter functionality.
+     @note In C API when CvKalman\* kalmanFilter structure is not needed anymore, it should be released
+     with cvReleaseKalman(&amp;kalmanFilter)
      */
 
     public class KalmanFilter : DisposableOpenCVObject
@@ -71,11 +71,11 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         *
-         *     param dynamParams Dimensionality of the state.
-         *     param measureParams Dimensionality of the measurement.
-         *     param controlParams Dimensionality of the control vector.
-         *     param type Type of the created matrices that should be CV_32F or CV_64F.
+         @overload
+             @param dynamParams Dimensionality of the state.
+             @param measureParams Dimensionality of the measurement.
+             @param controlParams Dimensionality of the control vector.
+             @param type Type of the created matrices that should be CV_32F or CV_64F.
          */
         public KalmanFilter(int dynamParams, int measureParams, int controlParams, int type)
         {
@@ -87,10 +87,11 @@ namespace OpenCVForUnity.VideoModule
         }
 
         /**
-         *
-         *     param dynamParams Dimensionality of the state.
-         *     param measureParams Dimensionality of the measurement.
-         *     param controlParams Dimensionality of the control vector.
+         @overload
+             @param dynamParams Dimensionality of the state.
+             @param measureParams Dimensionality of the measurement.
+             @param controlParams Dimensionality of the control vector.
+             @param type Type of the created matrices that should be CV_32F or CV_64F.
          */
         public KalmanFilter(int dynamParams, int measureParams, int controlParams)
         {
@@ -102,9 +103,11 @@ namespace OpenCVForUnity.VideoModule
         }
 
         /**
-         *
-         *     param dynamParams Dimensionality of the state.
-         *     param measureParams Dimensionality of the measurement.
+         @overload
+             @param dynamParams Dimensionality of the state.
+             @param measureParams Dimensionality of the measurement.
+             @param controlParams Dimensionality of the control vector.
+             @param type Type of the created matrices that should be CV_32F or CV_64F.
          */
         public KalmanFilter(int dynamParams, int measureParams)
         {
@@ -121,10 +124,9 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Computes a predicted state.
-         *
-         *     param control The optional input control
-         * return automatically generated
+         @brief Computes a predicted state.
+         
+             @param control The optional input control
          */
         public Mat predict(Mat control)
         {
@@ -137,9 +139,9 @@ namespace OpenCVForUnity.VideoModule
         }
 
         /**
-         * Computes a predicted state.
-         *
-         * return automatically generated
+         @brief Computes a predicted state.
+         
+             @param control The optional input control
          */
         public Mat predict()
         {
@@ -156,10 +158,9 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Updates the predicted state from the measurement.
-         *
-         *     param measurement The measured system parameters
-         * return automatically generated
+         @brief Updates the predicted state from the measurement.
+         
+             @param measurement The measured system parameters
          */
         public Mat correct(Mat measurement)
         {

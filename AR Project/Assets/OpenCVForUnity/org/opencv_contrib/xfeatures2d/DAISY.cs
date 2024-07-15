@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.Features2dModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,20 +11,20 @@ namespace OpenCVForUnity.Xfeatures2dModule
 
     // C++: class DAISY
     /**
-     * Class implementing DAISY descriptor, described in CITE: Tola10
-     *
-     * radius radius of the descriptor at the initial scale
-     * q_radius amount of radial range division quantity
-     * q_theta amount of angular range division quantity
-     * q_hist amount of gradient orientations range division quantity
-     * norm choose descriptors normalization type, where
-     * DAISY::NRM_NONE will not do any normalization (default),
-     * DAISY::NRM_PARTIAL mean that histograms are normalized independently for L2 norm equal to 1.0,
-     * DAISY::NRM_FULL mean that descriptors are normalized for L2 norm equal to 1.0,
-     * DAISY::NRM_SIFT mean that descriptors are normalized for L2 norm equal to 1.0 but no individual one is bigger than 0.154 as in SIFT
-     * H optional 3x3 homography matrix used to warp the grid of daisy but sampling keypoints remains unwarped on image
-     * interpolation switch to disable interpolation for speed improvement at minor quality loss
-     * use_orientation sample patterns using keypoints orientation, disabled by default.
+     @brief Class implementing DAISY descriptor, described in @cite Tola10
+     
+     radius radius of the descriptor at the initial scale
+     q_radius amount of radial range division quantity
+     q_theta amount of angular range division quantity
+     q_hist amount of gradient orientations range division quantity
+     norm choose descriptors normalization type, where
+     DAISY::NRM_NONE will not do any normalization (default),
+     DAISY::NRM_PARTIAL mean that histograms are normalized independently for L2 norm equal to 1.0,
+     DAISY::NRM_FULL mean that descriptors are normalized for L2 norm equal to 1.0,
+     DAISY::NRM_SIFT mean that descriptors are normalized for L2 norm equal to 1.0 but no individual one is bigger than 0.154 as in SIFT
+     H optional 3x3 homography matrix used to warp the grid of daisy but sampling keypoints remains unwarped on image
+     interpolation switch to disable interpolation for speed improvement at minor quality loss
+     use_orientation sample patterns using keypoints orientation, disabled by default.
      */
 
     public class DAISY : Feature2D
@@ -139,6 +139,245 @@ namespace OpenCVForUnity.Xfeatures2dModule
         }
 
 
+        //
+        // C++:  void cv::xfeatures2d::DAISY::setRadius(float radius)
+        //
+
+        public void setRadius(float radius)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_DAISY_setRadius_10(nativeObj, radius);
+
+
+        }
+
+
+        //
+        // C++:  float cv::xfeatures2d::DAISY::getRadius()
+        //
+
+        public float getRadius()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_DAISY_getRadius_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::DAISY::setQRadius(int q_radius)
+        //
+
+        public void setQRadius(int q_radius)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_DAISY_setQRadius_10(nativeObj, q_radius);
+
+
+        }
+
+
+        //
+        // C++:  int cv::xfeatures2d::DAISY::getQRadius()
+        //
+
+        public int getQRadius()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_DAISY_getQRadius_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::DAISY::setQTheta(int q_theta)
+        //
+
+        public void setQTheta(int q_theta)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_DAISY_setQTheta_10(nativeObj, q_theta);
+
+
+        }
+
+
+        //
+        // C++:  int cv::xfeatures2d::DAISY::getQTheta()
+        //
+
+        public int getQTheta()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_DAISY_getQTheta_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::DAISY::setQHist(int q_hist)
+        //
+
+        public void setQHist(int q_hist)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_DAISY_setQHist_10(nativeObj, q_hist);
+
+
+        }
+
+
+        //
+        // C++:  int cv::xfeatures2d::DAISY::getQHist()
+        //
+
+        public int getQHist()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_DAISY_getQHist_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::DAISY::setNorm(int norm)
+        //
+
+        public void setNorm(int norm)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_DAISY_setNorm_10(nativeObj, norm);
+
+
+        }
+
+
+        //
+        // C++:  int cv::xfeatures2d::DAISY::getNorm()
+        //
+
+        public int getNorm()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_DAISY_getNorm_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::DAISY::setH(Mat H)
+        //
+
+        public void setH(Mat H)
+        {
+            ThrowIfDisposed();
+            if (H != null) H.ThrowIfDisposed();
+
+            xfeatures2d_DAISY_setH_10(nativeObj, H.nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  Mat cv::xfeatures2d::DAISY::getH()
+        //
+
+        public Mat getH()
+        {
+            ThrowIfDisposed();
+
+            return new Mat(DisposableObject.ThrowIfNullIntPtr(xfeatures2d_DAISY_getH_10(nativeObj)));
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::DAISY::setInterpolation(bool interpolation)
+        //
+
+        public void setInterpolation(bool interpolation)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_DAISY_setInterpolation_10(nativeObj, interpolation);
+
+
+        }
+
+
+        //
+        // C++:  bool cv::xfeatures2d::DAISY::getInterpolation()
+        //
+
+        public bool getInterpolation()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_DAISY_getInterpolation_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::DAISY::setUseOrientation(bool use_orientation)
+        //
+
+        public void setUseOrientation(bool use_orientation)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_DAISY_setUseOrientation_10(nativeObj, use_orientation);
+
+
+        }
+
+
+        //
+        // C++:  bool cv::xfeatures2d::DAISY::getUseOrientation()
+        //
+
+        public bool getUseOrientation()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_DAISY_getUseOrientation_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  String cv::xfeatures2d::DAISY::getDefaultName()
+        //
+
+        public override string getDefaultName()
+        {
+            ThrowIfDisposed();
+
+            string retVal = Marshal.PtrToStringAnsi(DisposableObject.ThrowIfNullIntPtr(xfeatures2d_DAISY_getDefaultName_10(nativeObj)));
+
+            return retVal;
+        }
+
+
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         const string LIBNAME = "__Internal";
 #else
@@ -164,6 +403,76 @@ namespace OpenCVForUnity.Xfeatures2dModule
         private static extern IntPtr xfeatures2d_DAISY_create_17(float radius);
         [DllImport(LIBNAME)]
         private static extern IntPtr xfeatures2d_DAISY_create_18();
+
+        // C++:  void cv::xfeatures2d::DAISY::setRadius(float radius)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_DAISY_setRadius_10(IntPtr nativeObj, float radius);
+
+        // C++:  float cv::xfeatures2d::DAISY::getRadius()
+        [DllImport(LIBNAME)]
+        private static extern float xfeatures2d_DAISY_getRadius_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::DAISY::setQRadius(int q_radius)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_DAISY_setQRadius_10(IntPtr nativeObj, int q_radius);
+
+        // C++:  int cv::xfeatures2d::DAISY::getQRadius()
+        [DllImport(LIBNAME)]
+        private static extern int xfeatures2d_DAISY_getQRadius_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::DAISY::setQTheta(int q_theta)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_DAISY_setQTheta_10(IntPtr nativeObj, int q_theta);
+
+        // C++:  int cv::xfeatures2d::DAISY::getQTheta()
+        [DllImport(LIBNAME)]
+        private static extern int xfeatures2d_DAISY_getQTheta_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::DAISY::setQHist(int q_hist)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_DAISY_setQHist_10(IntPtr nativeObj, int q_hist);
+
+        // C++:  int cv::xfeatures2d::DAISY::getQHist()
+        [DllImport(LIBNAME)]
+        private static extern int xfeatures2d_DAISY_getQHist_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::DAISY::setNorm(int norm)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_DAISY_setNorm_10(IntPtr nativeObj, int norm);
+
+        // C++:  int cv::xfeatures2d::DAISY::getNorm()
+        [DllImport(LIBNAME)]
+        private static extern int xfeatures2d_DAISY_getNorm_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::DAISY::setH(Mat H)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_DAISY_setH_10(IntPtr nativeObj, IntPtr H_nativeObj);
+
+        // C++:  Mat cv::xfeatures2d::DAISY::getH()
+        [DllImport(LIBNAME)]
+        private static extern IntPtr xfeatures2d_DAISY_getH_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::DAISY::setInterpolation(bool interpolation)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_DAISY_setInterpolation_10(IntPtr nativeObj, [MarshalAs(UnmanagedType.U1)] bool interpolation);
+
+        // C++:  bool cv::xfeatures2d::DAISY::getInterpolation()
+        [DllImport(LIBNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+        private static extern bool xfeatures2d_DAISY_getInterpolation_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::DAISY::setUseOrientation(bool use_orientation)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_DAISY_setUseOrientation_10(IntPtr nativeObj, [MarshalAs(UnmanagedType.U1)] bool use_orientation);
+
+        // C++:  bool cv::xfeatures2d::DAISY::getUseOrientation()
+        [DllImport(LIBNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+        private static extern bool xfeatures2d_DAISY_getUseOrientation_10(IntPtr nativeObj);
+
+        // C++:  String cv::xfeatures2d::DAISY::getDefaultName()
+        [DllImport(LIBNAME)]
+        private static extern IntPtr xfeatures2d_DAISY_getDefaultName_10(IntPtr nativeObj);
 
         // native support for java finalize()
         [DllImport(LIBNAME)]

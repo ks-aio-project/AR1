@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,20 +10,20 @@ namespace OpenCVForUnity.Xfeatures2dModule
 
     // C++: class TBMR
     /**
-     * Class implementing the Tree Based Morse Regions (TBMR) as described in
-     * CITE: Najman2014 extended with scaled extraction ability.
-     *
-     * min_area prune areas smaller than minArea
-     * max_area_relative prune areas bigger than maxArea = max_area_relative *
-     * input_image_size
-     * scale_factor scale factor for scaled extraction.
-     * n_scales number of applications of the scale factor (octaves).
-     *
-     * <b>Note:</b> This algorithm is based on Component Tree (Min/Max) as well as MSER but
-     * uses a Morse-theory approach to extract features.
-     *
-     * Features are ellipses (similar to MSER, however a MSER feature can never be a
-     * TBMR feature and vice versa).
+     @brief Class implementing the Tree Based Morse Regions (TBMR) as described in
+     @cite Najman2014 extended with scaled extraction ability.
+     
+     min_area prune areas smaller than minArea
+     max_area_relative prune areas bigger than maxArea = max_area_relative *
+     input_image_size
+     scale_factor scale factor for scaled extraction.
+     n_scales number of applications of the scale factor (octaves).
+     
+     @note This algorithm is based on Component Tree (Min/Max) as well as MSER but
+     uses a Morse-theory approach to extract features.
+     
+     Features are ellipses (similar to MSER, however a MSER feature can never be a
+     TBMR feature and vice versa).
      */
 
     public class TBMR : AffineFeature2D

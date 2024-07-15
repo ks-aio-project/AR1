@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.MlModule
 
     // C++: class EM
     /**
-     * The class implements the Expectation Maximization algorithm.
-     *
-     * SEE: REF: ml_intro_em
+     @brief The class implements the Expectation Maximization algorithm.
+     
+     @sa @ref ml_intro_em
      */
 
     public class EM : StatModel
@@ -61,8 +61,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setClustersNumber
-         * return automatically generated
+         @see setClustersNumber
          */
         public int getClustersNumber()
         {
@@ -79,8 +78,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getClustersNumber SEE: getClustersNumber
-         * param val automatically generated
+         @copybrief getClustersNumber @see getClustersNumber
          */
         public void setClustersNumber(int val)
         {
@@ -97,8 +95,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setCovarianceMatrixType
-         * return automatically generated
+         @see setCovarianceMatrixType
          */
         public int getCovarianceMatrixType()
         {
@@ -115,8 +112,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getCovarianceMatrixType SEE: getCovarianceMatrixType
-         * param val automatically generated
+         @copybrief getCovarianceMatrixType @see getCovarianceMatrixType
          */
         public void setCovarianceMatrixType(int val)
         {
@@ -133,8 +129,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setTermCriteria
-         * return automatically generated
+         @see setTermCriteria
          */
         public TermCriteria getTermCriteria()
         {
@@ -153,8 +148,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getTermCriteria SEE: getTermCriteria
-         * param val automatically generated
+         @copybrief getTermCriteria @see getTermCriteria
          */
         public void setTermCriteria(TermCriteria val)
         {
@@ -171,10 +165,9 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns weights of the mixtures
-         *
-         *     Returns vector with the number of elements equal to the number of mixtures.
-         * return automatically generated
+         @brief Returns weights of the mixtures
+         
+             Returns vector with the number of elements equal to the number of mixtures.
          */
         public Mat getWeights()
         {
@@ -191,11 +184,10 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns the cluster centers (means of the Gaussian mixture)
-         *
-         *     Returns matrix with the number of rows equal to the number of mixtures and number of columns
-         *     equal to the space dimensionality.
-         * return automatically generated
+         @brief Returns the cluster centers (means of the Gaussian mixture)
+         
+             Returns matrix with the number of rows equal to the number of mixtures and number of columns
+             equal to the space dimensionality.
          */
         public Mat getMeans()
         {
@@ -212,11 +204,10 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns covariation matrices
-         *
-         *     Returns vector of covariation matrices. Number of matrices is the number of gaussian mixtures,
-         *     each matrix is a square floating-point matrix NxN, where N is the space dimensionality.
-         * param covs automatically generated
+         @brief Returns covariation matrices
+         
+             Returns vector of covariation matrices. Number of matrices is the number of gaussian mixtures,
+             each matrix is a square floating-point matrix NxN, where N is the space dimensionality.
          */
         public void getCovs(List<Mat> covs)
         {
@@ -234,13 +225,12 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns posterior probabilities for the provided samples
-         *
-         *     param samples The input samples, floating-point matrix
-         *     param results The optional output \( nSamples \times nClusters\) matrix of results. It contains
-         *     posterior probabilities for each sample from the input
-         *     param flags This parameter will be ignored
-         * return automatically generated
+         @brief Returns posterior probabilities for the provided samples
+         
+             @param samples The input samples, floating-point matrix
+             @param results The optional output \f$ nSamples \times nClusters\f$ matrix of results. It contains
+             posterior probabilities for each sample from the input
+             @param flags This parameter will be ignored
          */
         public override float predict(Mat samples, Mat results, int flags)
         {
@@ -254,12 +244,12 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Returns posterior probabilities for the provided samples
-         *
-         *     param samples The input samples, floating-point matrix
-         *     param results The optional output \( nSamples \times nClusters\) matrix of results. It contains
-         *     posterior probabilities for each sample from the input
-         * return automatically generated
+         @brief Returns posterior probabilities for the provided samples
+         
+             @param samples The input samples, floating-point matrix
+             @param results The optional output \f$ nSamples \times nClusters\f$ matrix of results. It contains
+             posterior probabilities for each sample from the input
+             @param flags This parameter will be ignored
          */
         public override float predict(Mat samples, Mat results)
         {
@@ -273,11 +263,12 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Returns posterior probabilities for the provided samples
-         *
-         *     param samples The input samples, floating-point matrix
-         *     posterior probabilities for each sample from the input
-         * return automatically generated
+         @brief Returns posterior probabilities for the provided samples
+         
+             @param samples The input samples, floating-point matrix
+             @param results The optional output \f$ nSamples \times nClusters\f$ matrix of results. It contains
+             posterior probabilities for each sample from the input
+             @param flags This parameter will be ignored
          */
         public override float predict(Mat samples)
         {
@@ -295,18 +286,17 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns a likelihood logarithm value and an index of the most probable mixture component
-         *     for the given sample.
-         *
-         *     param sample A sample for classification. It should be a one-channel matrix of
-         *         \(1 \times dims\) or \(dims \times 1\) size.
-         *     param probs Optional output matrix that contains posterior probabilities of each component
-         *         given the sample. It has \(1 \times nclusters\) size and CV_64FC1 type.
-         *
-         *     The method returns a two-element double vector. Zero element is a likelihood logarithm value for
-         *     the sample. First element is an index of the most probable mixture component for the given
-         *     sample.
-         * return automatically generated
+         @brief Returns a likelihood logarithm value and an index of the most probable mixture component
+             for the given sample.
+         
+             @param sample A sample for classification. It should be a one-channel matrix of
+                 \f$1 \times dims\f$ or \f$dims \times 1\f$ size.
+             @param probs Optional output matrix that contains posterior probabilities of each component
+                 given the sample. It has \f$1 \times nclusters\f$ size and CV_64FC1 type.
+         
+             The method returns a two-element double vector. Zero element is a likelihood logarithm value for
+             the sample. First element is an index of the most probable mixture component for the given
+             sample.
          */
         public double[] predict2(Mat sample, Mat probs)
         {
@@ -326,34 +316,33 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Estimate the Gaussian mixture parameters from a samples set.
-         *
-         *     This variation starts with Expectation step. Initial values of the model parameters will be
-         *     estimated by the k-means algorithm.
-         *
-         *     Unlike many of the ML models, %EM is an unsupervised learning algorithm and it does not take
-         *     responses (class labels or function values) as input. Instead, it computes the *Maximum
-         *     Likelihood Estimate* of the Gaussian mixture parameters from an input sample set, stores all the
-         *     parameters inside the structure: \(p_{i,k}\) in probs, \(a_k\) in means , \(S_k\) in
-         *     covs[k], \(\pi_k\) in weights , and optionally computes the output "class label" for each
-         *     sample: \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most
-         *     probable mixture component for each sample).
-         *
-         *     The trained model can be used further for prediction, just like any other classifier. The
-         *     trained model is similar to the NormalBayesClassifier.
-         *
-         *     param samples Samples from which the Gaussian mixture model will be estimated. It should be a
-         *         one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
-         *         it will be converted to the inner matrix of such type for the further computing.
-         *     param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
-         *         each sample. It has \(nsamples \times 1\) size and CV_64FC1 type.
-         *     param labels The optional output "class label" for each sample:
-         *         \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most probable
-         *         mixture component for each sample). It has \(nsamples \times 1\) size and CV_32SC1 type.
-         *     param probs The optional output matrix that contains posterior probabilities of each Gaussian
-         *         mixture component given the each sample. It has \(nsamples \times nclusters\) size and
-         *         CV_64FC1 type.
-         * return automatically generated
+         @brief Estimate the Gaussian mixture parameters from a samples set.
+         
+             This variation starts with Expectation step. Initial values of the model parameters will be
+             estimated by the k-means algorithm.
+         
+             Unlike many of the ML models, %EM is an unsupervised learning algorithm and it does not take
+             responses (class labels or function values) as input. Instead, it computes the *Maximum
+             Likelihood Estimate* of the Gaussian mixture parameters from an input sample set, stores all the
+             parameters inside the structure: \f$p_{i,k}\f$ in probs, \f$a_k\f$ in means , \f$S_k\f$ in
+             covs[k], \f$\pi_k\f$ in weights , and optionally computes the output "class label" for each
+             sample: \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most
+             probable mixture component for each sample).
+         
+             The trained model can be used further for prediction, just like any other classifier. The
+             trained model is similar to the NormalBayesClassifier.
+         
+             @param samples Samples from which the Gaussian mixture model will be estimated. It should be a
+                 one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
+                 it will be converted to the inner matrix of such type for the further computing.
+             @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
+                 each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
+             @param labels The optional output "class label" for each sample:
+                 \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable
+                 mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
+             @param probs The optional output matrix that contains posterior probabilities of each Gaussian
+                 mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and
+                 CV_64FC1 type.
          */
         public bool trainEM(Mat samples, Mat logLikelihoods, Mat labels, Mat probs)
         {
@@ -369,33 +358,33 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Estimate the Gaussian mixture parameters from a samples set.
-         *
-         *     This variation starts with Expectation step. Initial values of the model parameters will be
-         *     estimated by the k-means algorithm.
-         *
-         *     Unlike many of the ML models, %EM is an unsupervised learning algorithm and it does not take
-         *     responses (class labels or function values) as input. Instead, it computes the *Maximum
-         *     Likelihood Estimate* of the Gaussian mixture parameters from an input sample set, stores all the
-         *     parameters inside the structure: \(p_{i,k}\) in probs, \(a_k\) in means , \(S_k\) in
-         *     covs[k], \(\pi_k\) in weights , and optionally computes the output "class label" for each
-         *     sample: \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most
-         *     probable mixture component for each sample).
-         *
-         *     The trained model can be used further for prediction, just like any other classifier. The
-         *     trained model is similar to the NormalBayesClassifier.
-         *
-         *     param samples Samples from which the Gaussian mixture model will be estimated. It should be a
-         *         one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
-         *         it will be converted to the inner matrix of such type for the further computing.
-         *     param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
-         *         each sample. It has \(nsamples \times 1\) size and CV_64FC1 type.
-         *     param labels The optional output "class label" for each sample:
-         *         \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most probable
-         *         mixture component for each sample). It has \(nsamples \times 1\) size and CV_32SC1 type.
-         *         mixture component given the each sample. It has \(nsamples \times nclusters\) size and
-         *         CV_64FC1 type.
-         * return automatically generated
+         @brief Estimate the Gaussian mixture parameters from a samples set.
+         
+             This variation starts with Expectation step. Initial values of the model parameters will be
+             estimated by the k-means algorithm.
+         
+             Unlike many of the ML models, %EM is an unsupervised learning algorithm and it does not take
+             responses (class labels or function values) as input. Instead, it computes the *Maximum
+             Likelihood Estimate* of the Gaussian mixture parameters from an input sample set, stores all the
+             parameters inside the structure: \f$p_{i,k}\f$ in probs, \f$a_k\f$ in means , \f$S_k\f$ in
+             covs[k], \f$\pi_k\f$ in weights , and optionally computes the output "class label" for each
+             sample: \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most
+             probable mixture component for each sample).
+         
+             The trained model can be used further for prediction, just like any other classifier. The
+             trained model is similar to the NormalBayesClassifier.
+         
+             @param samples Samples from which the Gaussian mixture model will be estimated. It should be a
+                 one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
+                 it will be converted to the inner matrix of such type for the further computing.
+             @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
+                 each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
+             @param labels The optional output "class label" for each sample:
+                 \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable
+                 mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
+             @param probs The optional output matrix that contains posterior probabilities of each Gaussian
+                 mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and
+                 CV_64FC1 type.
          */
         public bool trainEM(Mat samples, Mat logLikelihoods, Mat labels)
         {
@@ -410,32 +399,33 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Estimate the Gaussian mixture parameters from a samples set.
-         *
-         *     This variation starts with Expectation step. Initial values of the model parameters will be
-         *     estimated by the k-means algorithm.
-         *
-         *     Unlike many of the ML models, %EM is an unsupervised learning algorithm and it does not take
-         *     responses (class labels or function values) as input. Instead, it computes the *Maximum
-         *     Likelihood Estimate* of the Gaussian mixture parameters from an input sample set, stores all the
-         *     parameters inside the structure: \(p_{i,k}\) in probs, \(a_k\) in means , \(S_k\) in
-         *     covs[k], \(\pi_k\) in weights , and optionally computes the output "class label" for each
-         *     sample: \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most
-         *     probable mixture component for each sample).
-         *
-         *     The trained model can be used further for prediction, just like any other classifier. The
-         *     trained model is similar to the NormalBayesClassifier.
-         *
-         *     param samples Samples from which the Gaussian mixture model will be estimated. It should be a
-         *         one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
-         *         it will be converted to the inner matrix of such type for the further computing.
-         *     param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
-         *         each sample. It has \(nsamples \times 1\) size and CV_64FC1 type.
-         *         \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most probable
-         *         mixture component for each sample). It has \(nsamples \times 1\) size and CV_32SC1 type.
-         *         mixture component given the each sample. It has \(nsamples \times nclusters\) size and
-         *         CV_64FC1 type.
-         * return automatically generated
+         @brief Estimate the Gaussian mixture parameters from a samples set.
+         
+             This variation starts with Expectation step. Initial values of the model parameters will be
+             estimated by the k-means algorithm.
+         
+             Unlike many of the ML models, %EM is an unsupervised learning algorithm and it does not take
+             responses (class labels or function values) as input. Instead, it computes the *Maximum
+             Likelihood Estimate* of the Gaussian mixture parameters from an input sample set, stores all the
+             parameters inside the structure: \f$p_{i,k}\f$ in probs, \f$a_k\f$ in means , \f$S_k\f$ in
+             covs[k], \f$\pi_k\f$ in weights , and optionally computes the output "class label" for each
+             sample: \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most
+             probable mixture component for each sample).
+         
+             The trained model can be used further for prediction, just like any other classifier. The
+             trained model is similar to the NormalBayesClassifier.
+         
+             @param samples Samples from which the Gaussian mixture model will be estimated. It should be a
+                 one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
+                 it will be converted to the inner matrix of such type for the further computing.
+             @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
+                 each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
+             @param labels The optional output "class label" for each sample:
+                 \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable
+                 mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
+             @param probs The optional output matrix that contains posterior probabilities of each Gaussian
+                 mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and
+                 CV_64FC1 type.
          */
         public bool trainEM(Mat samples, Mat logLikelihoods)
         {
@@ -449,31 +439,33 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Estimate the Gaussian mixture parameters from a samples set.
-         *
-         *     This variation starts with Expectation step. Initial values of the model parameters will be
-         *     estimated by the k-means algorithm.
-         *
-         *     Unlike many of the ML models, %EM is an unsupervised learning algorithm and it does not take
-         *     responses (class labels or function values) as input. Instead, it computes the *Maximum
-         *     Likelihood Estimate* of the Gaussian mixture parameters from an input sample set, stores all the
-         *     parameters inside the structure: \(p_{i,k}\) in probs, \(a_k\) in means , \(S_k\) in
-         *     covs[k], \(\pi_k\) in weights , and optionally computes the output "class label" for each
-         *     sample: \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most
-         *     probable mixture component for each sample).
-         *
-         *     The trained model can be used further for prediction, just like any other classifier. The
-         *     trained model is similar to the NormalBayesClassifier.
-         *
-         *     param samples Samples from which the Gaussian mixture model will be estimated. It should be a
-         *         one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
-         *         it will be converted to the inner matrix of such type for the further computing.
-         *         each sample. It has \(nsamples \times 1\) size and CV_64FC1 type.
-         *         \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most probable
-         *         mixture component for each sample). It has \(nsamples \times 1\) size and CV_32SC1 type.
-         *         mixture component given the each sample. It has \(nsamples \times nclusters\) size and
-         *         CV_64FC1 type.
-         * return automatically generated
+         @brief Estimate the Gaussian mixture parameters from a samples set.
+         
+             This variation starts with Expectation step. Initial values of the model parameters will be
+             estimated by the k-means algorithm.
+         
+             Unlike many of the ML models, %EM is an unsupervised learning algorithm and it does not take
+             responses (class labels or function values) as input. Instead, it computes the *Maximum
+             Likelihood Estimate* of the Gaussian mixture parameters from an input sample set, stores all the
+             parameters inside the structure: \f$p_{i,k}\f$ in probs, \f$a_k\f$ in means , \f$S_k\f$ in
+             covs[k], \f$\pi_k\f$ in weights , and optionally computes the output "class label" for each
+             sample: \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most
+             probable mixture component for each sample).
+         
+             The trained model can be used further for prediction, just like any other classifier. The
+             trained model is similar to the NormalBayesClassifier.
+         
+             @param samples Samples from which the Gaussian mixture model will be estimated. It should be a
+                 one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
+                 it will be converted to the inner matrix of such type for the further computing.
+             @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
+                 each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
+             @param labels The optional output "class label" for each sample:
+                 \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable
+                 mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
+             @param probs The optional output matrix that contains posterior probabilities of each Gaussian
+                 mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and
+                 CV_64FC1 type.
          */
         public bool trainEM(Mat samples)
         {
@@ -491,33 +483,32 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Estimate the Gaussian mixture parameters from a samples set.
-         *
-         *     This variation starts with Expectation step. You need to provide initial means \(a_k\) of
-         *     mixture components. Optionally you can pass initial weights \(\pi_k\) and covariance matrices
-         *     \(S_k\) of mixture components.
-         *
-         *     param samples Samples from which the Gaussian mixture model will be estimated. It should be a
-         *         one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
-         *         it will be converted to the inner matrix of such type for the further computing.
-         *     param means0 Initial means \(a_k\) of mixture components. It is a one-channel matrix of
-         *         \(nclusters \times dims\) size. If the matrix does not have CV_64F type it will be
-         *         converted to the inner matrix of such type for the further computing.
-         *     param covs0 The vector of initial covariance matrices \(S_k\) of mixture components. Each of
-         *         covariance matrices is a one-channel matrix of \(dims \times dims\) size. If the matrices
-         *         do not have CV_64F type they will be converted to the inner matrices of such type for the
-         *         further computing.
-         *     param weights0 Initial weights \(\pi_k\) of mixture components. It should be a one-channel
-         *         floating-point matrix with \(1 \times nclusters\) or \(nclusters \times 1\) size.
-         *     param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
-         *         each sample. It has \(nsamples \times 1\) size and CV_64FC1 type.
-         *     param labels The optional output "class label" for each sample:
-         *         \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most probable
-         *         mixture component for each sample). It has \(nsamples \times 1\) size and CV_32SC1 type.
-         *     param probs The optional output matrix that contains posterior probabilities of each Gaussian
-         *         mixture component given the each sample. It has \(nsamples \times nclusters\) size and
-         *         CV_64FC1 type.
-         * return automatically generated
+         @brief Estimate the Gaussian mixture parameters from a samples set.
+         
+             This variation starts with Expectation step. You need to provide initial means \f$a_k\f$ of
+             mixture components. Optionally you can pass initial weights \f$\pi_k\f$ and covariance matrices
+             \f$S_k\f$ of mixture components.
+         
+             @param samples Samples from which the Gaussian mixture model will be estimated. It should be a
+                 one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
+                 it will be converted to the inner matrix of such type for the further computing.
+             @param means0 Initial means \f$a_k\f$ of mixture components. It is a one-channel matrix of
+                 \f$nclusters \times dims\f$ size. If the matrix does not have CV_64F type it will be
+                 converted to the inner matrix of such type for the further computing.
+             @param covs0 The vector of initial covariance matrices \f$S_k\f$ of mixture components. Each of
+                 covariance matrices is a one-channel matrix of \f$dims \times dims\f$ size. If the matrices
+                 do not have CV_64F type they will be converted to the inner matrices of such type for the
+                 further computing.
+             @param weights0 Initial weights \f$\pi_k\f$ of mixture components. It should be a one-channel
+                 floating-point matrix with \f$1 \times nclusters\f$ or \f$nclusters \times 1\f$ size.
+             @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
+                 each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
+             @param labels The optional output "class label" for each sample:
+                 \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable
+                 mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
+             @param probs The optional output matrix that contains posterior probabilities of each Gaussian
+                 mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and
+                 CV_64FC1 type.
          */
         public bool trainE(Mat samples, Mat means0, Mat covs0, Mat weights0, Mat logLikelihoods, Mat labels, Mat probs)
         {
@@ -536,32 +527,32 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Estimate the Gaussian mixture parameters from a samples set.
-         *
-         *     This variation starts with Expectation step. You need to provide initial means \(a_k\) of
-         *     mixture components. Optionally you can pass initial weights \(\pi_k\) and covariance matrices
-         *     \(S_k\) of mixture components.
-         *
-         *     param samples Samples from which the Gaussian mixture model will be estimated. It should be a
-         *         one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
-         *         it will be converted to the inner matrix of such type for the further computing.
-         *     param means0 Initial means \(a_k\) of mixture components. It is a one-channel matrix of
-         *         \(nclusters \times dims\) size. If the matrix does not have CV_64F type it will be
-         *         converted to the inner matrix of such type for the further computing.
-         *     param covs0 The vector of initial covariance matrices \(S_k\) of mixture components. Each of
-         *         covariance matrices is a one-channel matrix of \(dims \times dims\) size. If the matrices
-         *         do not have CV_64F type they will be converted to the inner matrices of such type for the
-         *         further computing.
-         *     param weights0 Initial weights \(\pi_k\) of mixture components. It should be a one-channel
-         *         floating-point matrix with \(1 \times nclusters\) or \(nclusters \times 1\) size.
-         *     param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
-         *         each sample. It has \(nsamples \times 1\) size and CV_64FC1 type.
-         *     param labels The optional output "class label" for each sample:
-         *         \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most probable
-         *         mixture component for each sample). It has \(nsamples \times 1\) size and CV_32SC1 type.
-         *         mixture component given the each sample. It has \(nsamples \times nclusters\) size and
-         *         CV_64FC1 type.
-         * return automatically generated
+         @brief Estimate the Gaussian mixture parameters from a samples set.
+         
+             This variation starts with Expectation step. You need to provide initial means \f$a_k\f$ of
+             mixture components. Optionally you can pass initial weights \f$\pi_k\f$ and covariance matrices
+             \f$S_k\f$ of mixture components.
+         
+             @param samples Samples from which the Gaussian mixture model will be estimated. It should be a
+                 one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
+                 it will be converted to the inner matrix of such type for the further computing.
+             @param means0 Initial means \f$a_k\f$ of mixture components. It is a one-channel matrix of
+                 \f$nclusters \times dims\f$ size. If the matrix does not have CV_64F type it will be
+                 converted to the inner matrix of such type for the further computing.
+             @param covs0 The vector of initial covariance matrices \f$S_k\f$ of mixture components. Each of
+                 covariance matrices is a one-channel matrix of \f$dims \times dims\f$ size. If the matrices
+                 do not have CV_64F type they will be converted to the inner matrices of such type for the
+                 further computing.
+             @param weights0 Initial weights \f$\pi_k\f$ of mixture components. It should be a one-channel
+                 floating-point matrix with \f$1 \times nclusters\f$ or \f$nclusters \times 1\f$ size.
+             @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
+                 each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
+             @param labels The optional output "class label" for each sample:
+                 \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable
+                 mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
+             @param probs The optional output matrix that contains posterior probabilities of each Gaussian
+                 mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and
+                 CV_64FC1 type.
          */
         public bool trainE(Mat samples, Mat means0, Mat covs0, Mat weights0, Mat logLikelihoods, Mat labels)
         {
@@ -579,31 +570,32 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Estimate the Gaussian mixture parameters from a samples set.
-         *
-         *     This variation starts with Expectation step. You need to provide initial means \(a_k\) of
-         *     mixture components. Optionally you can pass initial weights \(\pi_k\) and covariance matrices
-         *     \(S_k\) of mixture components.
-         *
-         *     param samples Samples from which the Gaussian mixture model will be estimated. It should be a
-         *         one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
-         *         it will be converted to the inner matrix of such type for the further computing.
-         *     param means0 Initial means \(a_k\) of mixture components. It is a one-channel matrix of
-         *         \(nclusters \times dims\) size. If the matrix does not have CV_64F type it will be
-         *         converted to the inner matrix of such type for the further computing.
-         *     param covs0 The vector of initial covariance matrices \(S_k\) of mixture components. Each of
-         *         covariance matrices is a one-channel matrix of \(dims \times dims\) size. If the matrices
-         *         do not have CV_64F type they will be converted to the inner matrices of such type for the
-         *         further computing.
-         *     param weights0 Initial weights \(\pi_k\) of mixture components. It should be a one-channel
-         *         floating-point matrix with \(1 \times nclusters\) or \(nclusters \times 1\) size.
-         *     param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
-         *         each sample. It has \(nsamples \times 1\) size and CV_64FC1 type.
-         *         \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most probable
-         *         mixture component for each sample). It has \(nsamples \times 1\) size and CV_32SC1 type.
-         *         mixture component given the each sample. It has \(nsamples \times nclusters\) size and
-         *         CV_64FC1 type.
-         * return automatically generated
+         @brief Estimate the Gaussian mixture parameters from a samples set.
+         
+             This variation starts with Expectation step. You need to provide initial means \f$a_k\f$ of
+             mixture components. Optionally you can pass initial weights \f$\pi_k\f$ and covariance matrices
+             \f$S_k\f$ of mixture components.
+         
+             @param samples Samples from which the Gaussian mixture model will be estimated. It should be a
+                 one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
+                 it will be converted to the inner matrix of such type for the further computing.
+             @param means0 Initial means \f$a_k\f$ of mixture components. It is a one-channel matrix of
+                 \f$nclusters \times dims\f$ size. If the matrix does not have CV_64F type it will be
+                 converted to the inner matrix of such type for the further computing.
+             @param covs0 The vector of initial covariance matrices \f$S_k\f$ of mixture components. Each of
+                 covariance matrices is a one-channel matrix of \f$dims \times dims\f$ size. If the matrices
+                 do not have CV_64F type they will be converted to the inner matrices of such type for the
+                 further computing.
+             @param weights0 Initial weights \f$\pi_k\f$ of mixture components. It should be a one-channel
+                 floating-point matrix with \f$1 \times nclusters\f$ or \f$nclusters \times 1\f$ size.
+             @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
+                 each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
+             @param labels The optional output "class label" for each sample:
+                 \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable
+                 mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
+             @param probs The optional output matrix that contains posterior probabilities of each Gaussian
+                 mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and
+                 CV_64FC1 type.
          */
         public bool trainE(Mat samples, Mat means0, Mat covs0, Mat weights0, Mat logLikelihoods)
         {
@@ -620,30 +612,32 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Estimate the Gaussian mixture parameters from a samples set.
-         *
-         *     This variation starts with Expectation step. You need to provide initial means \(a_k\) of
-         *     mixture components. Optionally you can pass initial weights \(\pi_k\) and covariance matrices
-         *     \(S_k\) of mixture components.
-         *
-         *     param samples Samples from which the Gaussian mixture model will be estimated. It should be a
-         *         one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
-         *         it will be converted to the inner matrix of such type for the further computing.
-         *     param means0 Initial means \(a_k\) of mixture components. It is a one-channel matrix of
-         *         \(nclusters \times dims\) size. If the matrix does not have CV_64F type it will be
-         *         converted to the inner matrix of such type for the further computing.
-         *     param covs0 The vector of initial covariance matrices \(S_k\) of mixture components. Each of
-         *         covariance matrices is a one-channel matrix of \(dims \times dims\) size. If the matrices
-         *         do not have CV_64F type they will be converted to the inner matrices of such type for the
-         *         further computing.
-         *     param weights0 Initial weights \(\pi_k\) of mixture components. It should be a one-channel
-         *         floating-point matrix with \(1 \times nclusters\) or \(nclusters \times 1\) size.
-         *         each sample. It has \(nsamples \times 1\) size and CV_64FC1 type.
-         *         \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most probable
-         *         mixture component for each sample). It has \(nsamples \times 1\) size and CV_32SC1 type.
-         *         mixture component given the each sample. It has \(nsamples \times nclusters\) size and
-         *         CV_64FC1 type.
-         * return automatically generated
+         @brief Estimate the Gaussian mixture parameters from a samples set.
+         
+             This variation starts with Expectation step. You need to provide initial means \f$a_k\f$ of
+             mixture components. Optionally you can pass initial weights \f$\pi_k\f$ and covariance matrices
+             \f$S_k\f$ of mixture components.
+         
+             @param samples Samples from which the Gaussian mixture model will be estimated. It should be a
+                 one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
+                 it will be converted to the inner matrix of such type for the further computing.
+             @param means0 Initial means \f$a_k\f$ of mixture components. It is a one-channel matrix of
+                 \f$nclusters \times dims\f$ size. If the matrix does not have CV_64F type it will be
+                 converted to the inner matrix of such type for the further computing.
+             @param covs0 The vector of initial covariance matrices \f$S_k\f$ of mixture components. Each of
+                 covariance matrices is a one-channel matrix of \f$dims \times dims\f$ size. If the matrices
+                 do not have CV_64F type they will be converted to the inner matrices of such type for the
+                 further computing.
+             @param weights0 Initial weights \f$\pi_k\f$ of mixture components. It should be a one-channel
+                 floating-point matrix with \f$1 \times nclusters\f$ or \f$nclusters \times 1\f$ size.
+             @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
+                 each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
+             @param labels The optional output "class label" for each sample:
+                 \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable
+                 mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
+             @param probs The optional output matrix that contains posterior probabilities of each Gaussian
+                 mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and
+                 CV_64FC1 type.
          */
         public bool trainE(Mat samples, Mat means0, Mat covs0, Mat weights0)
         {
@@ -659,29 +653,32 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Estimate the Gaussian mixture parameters from a samples set.
-         *
-         *     This variation starts with Expectation step. You need to provide initial means \(a_k\) of
-         *     mixture components. Optionally you can pass initial weights \(\pi_k\) and covariance matrices
-         *     \(S_k\) of mixture components.
-         *
-         *     param samples Samples from which the Gaussian mixture model will be estimated. It should be a
-         *         one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
-         *         it will be converted to the inner matrix of such type for the further computing.
-         *     param means0 Initial means \(a_k\) of mixture components. It is a one-channel matrix of
-         *         \(nclusters \times dims\) size. If the matrix does not have CV_64F type it will be
-         *         converted to the inner matrix of such type for the further computing.
-         *     param covs0 The vector of initial covariance matrices \(S_k\) of mixture components. Each of
-         *         covariance matrices is a one-channel matrix of \(dims \times dims\) size. If the matrices
-         *         do not have CV_64F type they will be converted to the inner matrices of such type for the
-         *         further computing.
-         *         floating-point matrix with \(1 \times nclusters\) or \(nclusters \times 1\) size.
-         *         each sample. It has \(nsamples \times 1\) size and CV_64FC1 type.
-         *         \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most probable
-         *         mixture component for each sample). It has \(nsamples \times 1\) size and CV_32SC1 type.
-         *         mixture component given the each sample. It has \(nsamples \times nclusters\) size and
-         *         CV_64FC1 type.
-         * return automatically generated
+         @brief Estimate the Gaussian mixture parameters from a samples set.
+         
+             This variation starts with Expectation step. You need to provide initial means \f$a_k\f$ of
+             mixture components. Optionally you can pass initial weights \f$\pi_k\f$ and covariance matrices
+             \f$S_k\f$ of mixture components.
+         
+             @param samples Samples from which the Gaussian mixture model will be estimated. It should be a
+                 one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
+                 it will be converted to the inner matrix of such type for the further computing.
+             @param means0 Initial means \f$a_k\f$ of mixture components. It is a one-channel matrix of
+                 \f$nclusters \times dims\f$ size. If the matrix does not have CV_64F type it will be
+                 converted to the inner matrix of such type for the further computing.
+             @param covs0 The vector of initial covariance matrices \f$S_k\f$ of mixture components. Each of
+                 covariance matrices is a one-channel matrix of \f$dims \times dims\f$ size. If the matrices
+                 do not have CV_64F type they will be converted to the inner matrices of such type for the
+                 further computing.
+             @param weights0 Initial weights \f$\pi_k\f$ of mixture components. It should be a one-channel
+                 floating-point matrix with \f$1 \times nclusters\f$ or \f$nclusters \times 1\f$ size.
+             @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
+                 each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
+             @param labels The optional output "class label" for each sample:
+                 \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable
+                 mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
+             @param probs The optional output matrix that contains posterior probabilities of each Gaussian
+                 mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and
+                 CV_64FC1 type.
          */
         public bool trainE(Mat samples, Mat means0, Mat covs0)
         {
@@ -696,28 +693,32 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Estimate the Gaussian mixture parameters from a samples set.
-         *
-         *     This variation starts with Expectation step. You need to provide initial means \(a_k\) of
-         *     mixture components. Optionally you can pass initial weights \(\pi_k\) and covariance matrices
-         *     \(S_k\) of mixture components.
-         *
-         *     param samples Samples from which the Gaussian mixture model will be estimated. It should be a
-         *         one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
-         *         it will be converted to the inner matrix of such type for the further computing.
-         *     param means0 Initial means \(a_k\) of mixture components. It is a one-channel matrix of
-         *         \(nclusters \times dims\) size. If the matrix does not have CV_64F type it will be
-         *         converted to the inner matrix of such type for the further computing.
-         *         covariance matrices is a one-channel matrix of \(dims \times dims\) size. If the matrices
-         *         do not have CV_64F type they will be converted to the inner matrices of such type for the
-         *         further computing.
-         *         floating-point matrix with \(1 \times nclusters\) or \(nclusters \times 1\) size.
-         *         each sample. It has \(nsamples \times 1\) size and CV_64FC1 type.
-         *         \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most probable
-         *         mixture component for each sample). It has \(nsamples \times 1\) size and CV_32SC1 type.
-         *         mixture component given the each sample. It has \(nsamples \times nclusters\) size and
-         *         CV_64FC1 type.
-         * return automatically generated
+         @brief Estimate the Gaussian mixture parameters from a samples set.
+         
+             This variation starts with Expectation step. You need to provide initial means \f$a_k\f$ of
+             mixture components. Optionally you can pass initial weights \f$\pi_k\f$ and covariance matrices
+             \f$S_k\f$ of mixture components.
+         
+             @param samples Samples from which the Gaussian mixture model will be estimated. It should be a
+                 one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
+                 it will be converted to the inner matrix of such type for the further computing.
+             @param means0 Initial means \f$a_k\f$ of mixture components. It is a one-channel matrix of
+                 \f$nclusters \times dims\f$ size. If the matrix does not have CV_64F type it will be
+                 converted to the inner matrix of such type for the further computing.
+             @param covs0 The vector of initial covariance matrices \f$S_k\f$ of mixture components. Each of
+                 covariance matrices is a one-channel matrix of \f$dims \times dims\f$ size. If the matrices
+                 do not have CV_64F type they will be converted to the inner matrices of such type for the
+                 further computing.
+             @param weights0 Initial weights \f$\pi_k\f$ of mixture components. It should be a one-channel
+                 floating-point matrix with \f$1 \times nclusters\f$ or \f$nclusters \times 1\f$ size.
+             @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
+                 each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
+             @param labels The optional output "class label" for each sample:
+                 \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable
+                 mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
+             @param probs The optional output matrix that contains posterior probabilities of each Gaussian
+                 mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and
+                 CV_64FC1 type.
          */
         public bool trainE(Mat samples, Mat means0)
         {
@@ -736,24 +737,23 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Estimate the Gaussian mixture parameters from a samples set.
-         *
-         *     This variation starts with Maximization step. You need to provide initial probabilities
-         *     \(p_{i,k}\) to use this option.
-         *
-         *     param samples Samples from which the Gaussian mixture model will be estimated. It should be a
-         *         one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
-         *         it will be converted to the inner matrix of such type for the further computing.
-         *     param probs0 the probabilities
-         *     param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
-         *         each sample. It has \(nsamples \times 1\) size and CV_64FC1 type.
-         *     param labels The optional output "class label" for each sample:
-         *         \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most probable
-         *         mixture component for each sample). It has \(nsamples \times 1\) size and CV_32SC1 type.
-         *     param probs The optional output matrix that contains posterior probabilities of each Gaussian
-         *         mixture component given the each sample. It has \(nsamples \times nclusters\) size and
-         *         CV_64FC1 type.
-         * return automatically generated
+         @brief Estimate the Gaussian mixture parameters from a samples set.
+         
+             This variation starts with Maximization step. You need to provide initial probabilities
+             \f$p_{i,k}\f$ to use this option.
+         
+             @param samples Samples from which the Gaussian mixture model will be estimated. It should be a
+                 one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
+                 it will be converted to the inner matrix of such type for the further computing.
+             @param probs0 the probabilities
+             @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
+                 each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
+             @param labels The optional output "class label" for each sample:
+                 \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable
+                 mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
+             @param probs The optional output matrix that contains posterior probabilities of each Gaussian
+                 mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and
+                 CV_64FC1 type.
          */
         public bool trainM(Mat samples, Mat probs0, Mat logLikelihoods, Mat labels, Mat probs)
         {
@@ -770,23 +770,23 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Estimate the Gaussian mixture parameters from a samples set.
-         *
-         *     This variation starts with Maximization step. You need to provide initial probabilities
-         *     \(p_{i,k}\) to use this option.
-         *
-         *     param samples Samples from which the Gaussian mixture model will be estimated. It should be a
-         *         one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
-         *         it will be converted to the inner matrix of such type for the further computing.
-         *     param probs0 the probabilities
-         *     param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
-         *         each sample. It has \(nsamples \times 1\) size and CV_64FC1 type.
-         *     param labels The optional output "class label" for each sample:
-         *         \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most probable
-         *         mixture component for each sample). It has \(nsamples \times 1\) size and CV_32SC1 type.
-         *         mixture component given the each sample. It has \(nsamples \times nclusters\) size and
-         *         CV_64FC1 type.
-         * return automatically generated
+         @brief Estimate the Gaussian mixture parameters from a samples set.
+         
+             This variation starts with Maximization step. You need to provide initial probabilities
+             \f$p_{i,k}\f$ to use this option.
+         
+             @param samples Samples from which the Gaussian mixture model will be estimated. It should be a
+                 one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
+                 it will be converted to the inner matrix of such type for the further computing.
+             @param probs0 the probabilities
+             @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
+                 each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
+             @param labels The optional output "class label" for each sample:
+                 \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable
+                 mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
+             @param probs The optional output matrix that contains posterior probabilities of each Gaussian
+                 mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and
+                 CV_64FC1 type.
          */
         public bool trainM(Mat samples, Mat probs0, Mat logLikelihoods, Mat labels)
         {
@@ -802,22 +802,23 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Estimate the Gaussian mixture parameters from a samples set.
-         *
-         *     This variation starts with Maximization step. You need to provide initial probabilities
-         *     \(p_{i,k}\) to use this option.
-         *
-         *     param samples Samples from which the Gaussian mixture model will be estimated. It should be a
-         *         one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
-         *         it will be converted to the inner matrix of such type for the further computing.
-         *     param probs0 the probabilities
-         *     param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
-         *         each sample. It has \(nsamples \times 1\) size and CV_64FC1 type.
-         *         \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most probable
-         *         mixture component for each sample). It has \(nsamples \times 1\) size and CV_32SC1 type.
-         *         mixture component given the each sample. It has \(nsamples \times nclusters\) size and
-         *         CV_64FC1 type.
-         * return automatically generated
+         @brief Estimate the Gaussian mixture parameters from a samples set.
+         
+             This variation starts with Maximization step. You need to provide initial probabilities
+             \f$p_{i,k}\f$ to use this option.
+         
+             @param samples Samples from which the Gaussian mixture model will be estimated. It should be a
+                 one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
+                 it will be converted to the inner matrix of such type for the further computing.
+             @param probs0 the probabilities
+             @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
+                 each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
+             @param labels The optional output "class label" for each sample:
+                 \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable
+                 mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
+             @param probs The optional output matrix that contains posterior probabilities of each Gaussian
+                 mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and
+                 CV_64FC1 type.
          */
         public bool trainM(Mat samples, Mat probs0, Mat logLikelihoods)
         {
@@ -832,21 +833,23 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Estimate the Gaussian mixture parameters from a samples set.
-         *
-         *     This variation starts with Maximization step. You need to provide initial probabilities
-         *     \(p_{i,k}\) to use this option.
-         *
-         *     param samples Samples from which the Gaussian mixture model will be estimated. It should be a
-         *         one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
-         *         it will be converted to the inner matrix of such type for the further computing.
-         *     param probs0 the probabilities
-         *         each sample. It has \(nsamples \times 1\) size and CV_64FC1 type.
-         *         \(\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\) (indices of the most probable
-         *         mixture component for each sample). It has \(nsamples \times 1\) size and CV_32SC1 type.
-         *         mixture component given the each sample. It has \(nsamples \times nclusters\) size and
-         *         CV_64FC1 type.
-         * return automatically generated
+         @brief Estimate the Gaussian mixture parameters from a samples set.
+         
+             This variation starts with Maximization step. You need to provide initial probabilities
+             \f$p_{i,k}\f$ to use this option.
+         
+             @param samples Samples from which the Gaussian mixture model will be estimated. It should be a
+                 one-channel matrix, each row of which is a sample. If the matrix does not have CV_64F type
+                 it will be converted to the inner matrix of such type for the further computing.
+             @param probs0 the probabilities
+             @param logLikelihoods The optional output matrix that contains a likelihood logarithm value for
+                 each sample. It has \f$nsamples \times 1\f$ size and CV_64FC1 type.
+             @param labels The optional output "class label" for each sample:
+                 \f$\texttt{labels}_i=\texttt{arg max}_k(p_{i,k}), i=1..N\f$ (indices of the most probable
+                 mixture component for each sample). It has \f$nsamples \times 1\f$ size and CV_32SC1 type.
+             @param probs The optional output matrix that contains posterior probabilities of each Gaussian
+                 mixture component given the each sample. It has \f$nsamples \times nclusters\f$ size and
+                 CV_64FC1 type.
          */
         public bool trainM(Mat samples, Mat probs0)
         {
@@ -865,10 +868,9 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Creates empty %EM model.
-         *     The model should be trained then using StatModel::train(traindata, flags) method. Alternatively, you
-         *     can use one of the EM::train\* methods or load it from file using Algorithm::load&lt;EM&gt;(filename).
-         * return automatically generated
+         Creates empty %EM model.
+             The model should be trained then using StatModel::train(traindata, flags) method. Alternatively, you
+             can use one of the EM::train\* methods or load it from file using Algorithm::load&lt;EM&gt;(filename).
          */
         public static EM create()
         {
@@ -885,15 +887,14 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Loads and creates a serialized EM from a file
-         *
-         * Use EM::save to serialize and store an EM to disk.
-         * Load the EM from this file again, by calling this function with the path to the file.
-         * Optionally specify the node for the file containing the classifier
-         *
-         * param filepath path to serialized EM
-         * param nodeName name of node containing the classifier
-         * return automatically generated
+         @brief Loads and creates a serialized EM from a file
+              *
+              * Use EM::save to serialize and store an EM to disk.
+              * Load the EM from this file again, by calling this function with the path to the file.
+              * Optionally specify the node for the file containing the classifier
+              *
+              * @param filepath path to serialized EM
+              * @param nodeName name of node containing the classifier
          */
         public static EM load(string filepath, string nodeName)
         {
@@ -905,14 +906,14 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Loads and creates a serialized EM from a file
-         *
-         * Use EM::save to serialize and store an EM to disk.
-         * Load the EM from this file again, by calling this function with the path to the file.
-         * Optionally specify the node for the file containing the classifier
-         *
-         * param filepath path to serialized EM
-         * return automatically generated
+         @brief Loads and creates a serialized EM from a file
+              *
+              * Use EM::save to serialize and store an EM to disk.
+              * Load the EM from this file again, by calling this function with the path to the file.
+              * Optionally specify the node for the file containing the classifier
+              *
+              * @param filepath path to serialized EM
+              * @param nodeName name of node containing the classifier
          */
         public static EM load(string filepath)
         {

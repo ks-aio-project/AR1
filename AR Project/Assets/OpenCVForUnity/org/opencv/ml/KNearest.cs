@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.MlModule
 
     // C++: class KNearest
     /**
-     * The class implements K-Nearest Neighbors model
-     *
-     * SEE: REF: ml_intro_knn
+     @brief The class implements K-Nearest Neighbors model
+     
+     @sa @ref ml_intro_knn
      */
 
     public class KNearest : StatModel
@@ -53,8 +53,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setDefaultK
-         * return automatically generated
+         @see setDefaultK
          */
         public int getDefaultK()
         {
@@ -71,8 +70,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getDefaultK SEE: getDefaultK
-         * param val automatically generated
+         @copybrief getDefaultK @see getDefaultK
          */
         public void setDefaultK(int val)
         {
@@ -89,8 +87,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setIsClassifier
-         * return automatically generated
+         @see setIsClassifier
          */
         public bool getIsClassifier()
         {
@@ -107,8 +104,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getIsClassifier SEE: getIsClassifier
-         * param val automatically generated
+         @copybrief getIsClassifier @see getIsClassifier
          */
         public void setIsClassifier(bool val)
         {
@@ -125,8 +121,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setEmax
-         * return automatically generated
+         @see setEmax
          */
         public int getEmax()
         {
@@ -143,8 +138,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getEmax SEE: getEmax
-         * param val automatically generated
+         @copybrief getEmax @see getEmax
          */
         public void setEmax(int val)
         {
@@ -161,8 +155,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setAlgorithmType
-         * return automatically generated
+         @see setAlgorithmType
          */
         public int getAlgorithmType()
         {
@@ -179,8 +172,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getAlgorithmType SEE: getAlgorithmType
-         * param val automatically generated
+         @copybrief getAlgorithmType @see getAlgorithmType
          */
         public void setAlgorithmType(int val)
         {
@@ -197,32 +189,31 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Finds the neighbors and predicts responses for input vectors.
-         *
-         *     param samples Input samples stored by rows. It is a single-precision floating-point matrix of
-         *         {code &lt;number_of_samples&gt; * k} size.
-         *     param k Number of used nearest neighbors. Should be greater than 1.
-         *     param results Vector with results of prediction (regression or classification) for each input
-         *         sample. It is a single-precision floating-point vector with {code &lt;number_of_samples&gt;} elements.
-         *     param neighborResponses Optional output values for corresponding neighbors. It is a single-
-         *         precision floating-point matrix of {code &lt;number_of_samples&gt; * k} size.
-         *     param dist Optional output distances from the input vectors to the corresponding neighbors. It
-         *         is a single-precision floating-point matrix of {code &lt;number_of_samples&gt; * k} size.
-         *
-         *     For each input vector (a row of the matrix samples), the method finds the k nearest neighbors.
-         *     In case of regression, the predicted result is a mean value of the particular vector's neighbor
-         *     responses. In case of classification, the class is determined by voting.
-         *
-         *     For each input vector, the neighbors are sorted by their distances to the vector.
-         *
-         *     In case of C++ interface you can use output pointers to empty matrices and the function will
-         *     allocate memory itself.
-         *
-         *     If only a single input vector is passed, all output matrices are optional and the predicted
-         *     value is returned by the method.
-         *
-         *     The function is parallelized with the TBB library.
-         * return automatically generated
+         @brief Finds the neighbors and predicts responses for input vectors.
+         
+             @param samples Input samples stored by rows. It is a single-precision floating-point matrix of
+                 `&lt;number_of_samples&gt; * k` size.
+             @param k Number of used nearest neighbors. Should be greater than 1.
+             @param results Vector with results of prediction (regression or classification) for each input
+                 sample. It is a single-precision floating-point vector with `&lt;number_of_samples&gt;` elements.
+             @param neighborResponses Optional output values for corresponding neighbors. It is a single-
+                 precision floating-point matrix of `&lt;number_of_samples&gt; * k` size.
+             @param dist Optional output distances from the input vectors to the corresponding neighbors. It
+                 is a single-precision floating-point matrix of `&lt;number_of_samples&gt; * k` size.
+         
+             For each input vector (a row of the matrix samples), the method finds the k nearest neighbors.
+             In case of regression, the predicted result is a mean value of the particular vector's neighbor
+             responses. In case of classification, the class is determined by voting.
+         
+             For each input vector, the neighbors are sorted by their distances to the vector.
+         
+             In case of C++ interface you can use output pointers to empty matrices and the function will
+             allocate memory itself.
+         
+             If only a single input vector is passed, all output matrices are optional and the predicted
+             value is returned by the method.
+         
+             The function is parallelized with the TBB library.
          */
         public float findNearest(Mat samples, int k, Mat results, Mat neighborResponses, Mat dist)
         {
@@ -238,31 +229,31 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Finds the neighbors and predicts responses for input vectors.
-         *
-         *     param samples Input samples stored by rows. It is a single-precision floating-point matrix of
-         *         {code &lt;number_of_samples&gt; * k} size.
-         *     param k Number of used nearest neighbors. Should be greater than 1.
-         *     param results Vector with results of prediction (regression or classification) for each input
-         *         sample. It is a single-precision floating-point vector with {code &lt;number_of_samples&gt;} elements.
-         *     param neighborResponses Optional output values for corresponding neighbors. It is a single-
-         *         precision floating-point matrix of {code &lt;number_of_samples&gt; * k} size.
-         *         is a single-precision floating-point matrix of {code &lt;number_of_samples&gt; * k} size.
-         *
-         *     For each input vector (a row of the matrix samples), the method finds the k nearest neighbors.
-         *     In case of regression, the predicted result is a mean value of the particular vector's neighbor
-         *     responses. In case of classification, the class is determined by voting.
-         *
-         *     For each input vector, the neighbors are sorted by their distances to the vector.
-         *
-         *     In case of C++ interface you can use output pointers to empty matrices and the function will
-         *     allocate memory itself.
-         *
-         *     If only a single input vector is passed, all output matrices are optional and the predicted
-         *     value is returned by the method.
-         *
-         *     The function is parallelized with the TBB library.
-         * return automatically generated
+         @brief Finds the neighbors and predicts responses for input vectors.
+         
+             @param samples Input samples stored by rows. It is a single-precision floating-point matrix of
+                 `&lt;number_of_samples&gt; * k` size.
+             @param k Number of used nearest neighbors. Should be greater than 1.
+             @param results Vector with results of prediction (regression or classification) for each input
+                 sample. It is a single-precision floating-point vector with `&lt;number_of_samples&gt;` elements.
+             @param neighborResponses Optional output values for corresponding neighbors. It is a single-
+                 precision floating-point matrix of `&lt;number_of_samples&gt; * k` size.
+             @param dist Optional output distances from the input vectors to the corresponding neighbors. It
+                 is a single-precision floating-point matrix of `&lt;number_of_samples&gt; * k` size.
+         
+             For each input vector (a row of the matrix samples), the method finds the k nearest neighbors.
+             In case of regression, the predicted result is a mean value of the particular vector's neighbor
+             responses. In case of classification, the class is determined by voting.
+         
+             For each input vector, the neighbors are sorted by their distances to the vector.
+         
+             In case of C++ interface you can use output pointers to empty matrices and the function will
+             allocate memory itself.
+         
+             If only a single input vector is passed, all output matrices are optional and the predicted
+             value is returned by the method.
+         
+             The function is parallelized with the TBB library.
          */
         public float findNearest(Mat samples, int k, Mat results, Mat neighborResponses)
         {
@@ -277,30 +268,31 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Finds the neighbors and predicts responses for input vectors.
-         *
-         *     param samples Input samples stored by rows. It is a single-precision floating-point matrix of
-         *         {code &lt;number_of_samples&gt; * k} size.
-         *     param k Number of used nearest neighbors. Should be greater than 1.
-         *     param results Vector with results of prediction (regression or classification) for each input
-         *         sample. It is a single-precision floating-point vector with {code &lt;number_of_samples&gt;} elements.
-         *         precision floating-point matrix of {code &lt;number_of_samples&gt; * k} size.
-         *         is a single-precision floating-point matrix of {code &lt;number_of_samples&gt; * k} size.
-         *
-         *     For each input vector (a row of the matrix samples), the method finds the k nearest neighbors.
-         *     In case of regression, the predicted result is a mean value of the particular vector's neighbor
-         *     responses. In case of classification, the class is determined by voting.
-         *
-         *     For each input vector, the neighbors are sorted by their distances to the vector.
-         *
-         *     In case of C++ interface you can use output pointers to empty matrices and the function will
-         *     allocate memory itself.
-         *
-         *     If only a single input vector is passed, all output matrices are optional and the predicted
-         *     value is returned by the method.
-         *
-         *     The function is parallelized with the TBB library.
-         * return automatically generated
+         @brief Finds the neighbors and predicts responses for input vectors.
+         
+             @param samples Input samples stored by rows. It is a single-precision floating-point matrix of
+                 `&lt;number_of_samples&gt; * k` size.
+             @param k Number of used nearest neighbors. Should be greater than 1.
+             @param results Vector with results of prediction (regression or classification) for each input
+                 sample. It is a single-precision floating-point vector with `&lt;number_of_samples&gt;` elements.
+             @param neighborResponses Optional output values for corresponding neighbors. It is a single-
+                 precision floating-point matrix of `&lt;number_of_samples&gt; * k` size.
+             @param dist Optional output distances from the input vectors to the corresponding neighbors. It
+                 is a single-precision floating-point matrix of `&lt;number_of_samples&gt; * k` size.
+         
+             For each input vector (a row of the matrix samples), the method finds the k nearest neighbors.
+             In case of regression, the predicted result is a mean value of the particular vector's neighbor
+             responses. In case of classification, the class is determined by voting.
+         
+             For each input vector, the neighbors are sorted by their distances to the vector.
+         
+             In case of C++ interface you can use output pointers to empty matrices and the function will
+             allocate memory itself.
+         
+             If only a single input vector is passed, all output matrices are optional and the predicted
+             value is returned by the method.
+         
+             The function is parallelized with the TBB library.
          */
         public float findNearest(Mat samples, int k, Mat results)
         {
@@ -319,10 +311,9 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Creates the empty model
-         *
-         *     The static method creates empty %KNearest classifier. It should be then trained using StatModel::train method.
-         * return automatically generated
+         @brief Creates the empty model
+         
+             The static method creates empty %KNearest classifier. It should be then trained using StatModel::train method.
          */
         public static KNearest create()
         {
@@ -339,13 +330,12 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Loads and creates a serialized knearest from a file
-         *
-         * Use KNearest::save to serialize and store an KNearest to disk.
-         * Load the KNearest from this file again, by calling this function with the path to the file.
-         *
-         * param filepath path to serialized KNearest
-         * return automatically generated
+         @brief Loads and creates a serialized knearest from a file
+              *
+              * Use KNearest::save to serialize and store an KNearest to disk.
+              * Load the KNearest from this file again, by calling this function with the path to the file.
+              *
+              * @param filepath path to serialized KNearest
          */
         public static KNearest load(string filepath)
         {

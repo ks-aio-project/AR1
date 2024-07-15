@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,10 +10,10 @@ namespace OpenCVForUnity.Img_hashModule
 
     // C++: class AverageHash
     /**
-     * Computes average hash value of the input image
-     *
-     * This is a fast image hashing algorithm, but only work on simple case. For more details, please
-     * refer to CITE: lookslikeit
+     @brief Computes average hash value of the input image
+     
+     This is a fast image hashing algorithm, but only work on simple case. For more details, please
+     refer to @cite lookslikeit
      */
 
     public class AverageHash : ImgHashBase

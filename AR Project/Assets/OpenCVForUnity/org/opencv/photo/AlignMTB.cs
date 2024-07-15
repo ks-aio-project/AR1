@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,14 +10,14 @@ namespace OpenCVForUnity.PhotoModule
 
     // C++: class AlignMTB
     /**
-     * This algorithm converts images to median threshold bitmaps (1 for pixels brighter than median
-     * luminance and 0 otherwise) and than aligns the resulting bitmaps using bit operations.
-     *
-     * It is invariant to exposure, so exposure values and camera response are not necessary.
-     *
-     * In this implementation new image regions are filled with zeros.
-     *
-     * For more information see CITE: GW03 .
+     @brief This algorithm converts images to median threshold bitmaps (1 for pixels brighter than median
+     luminance and 0 otherwise) and than aligns the resulting bitmaps using bit operations.
+     
+     It is invariant to exposure, so exposure values and camera response are not necessary.
+     
+     In this implementation new image regions are filled with zeros.
+     
+     For more information see @cite GW03 .
      */
 
     public class AlignMTB : AlignExposures
@@ -72,10 +72,10 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Short version of process, that doesn't take extra arguments.
-         *
-         *     param src vector of input images
-         *     param dst vector of aligned images
+         @brief Short version of process, that doesn't take extra arguments.
+         
+             @param src vector of input images
+             @param dst vector of aligned images
          */
         public void process(List<Mat> src, List<Mat> dst)
         {
@@ -93,12 +93,11 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Calculates shift between two images, i. e. how to shift the second image to correspond it with the
-         *     first.
-         *
-         *     param img0 first image
-         *     param img1 second image
-         * return automatically generated
+         @brief Calculates shift between two images, i. e. how to shift the second image to correspond it with the
+             first.
+         
+             @param img0 first image
+             @param img1 second image
          */
         public Point calculateShift(Mat img0, Mat img1)
         {
@@ -119,11 +118,11 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Helper function, that shift Mat filling new regions with zeros.
-         *
-         *     param src input image
-         *     param dst result image
-         *     param shift shift value
+         @brief Helper function, that shift Mat filling new regions with zeros.
+         
+             @param src input image
+             @param dst result image
+             @param shift shift value
          */
         public void shiftMat(Mat src, Mat dst, Point shift)
         {
@@ -142,11 +141,11 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Computes median threshold and exclude bitmaps of given image.
-         *
-         *     param img input image
-         *     param tb median threshold bitmap
-         *     param eb exclude bitmap
+         @brief Computes median threshold and exclude bitmaps of given image.
+         
+             @param img input image
+             @param tb median threshold bitmap
+             @param eb exclude bitmap
          */
         public void computeBitmaps(Mat img, Mat tb, Mat eb)
         {

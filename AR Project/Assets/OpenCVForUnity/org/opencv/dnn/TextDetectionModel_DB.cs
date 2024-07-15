@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,17 +11,17 @@ namespace OpenCVForUnity.DnnModule
 
     // C++: class TextDetectionModel_DB
     /**
-     * This class represents high-level API for text detection DL networks compatible with DB model.
-     *
-     * Related publications: CITE: liao2020real
-     * Paper: https://arxiv.org/abs/1911.08947
-     * For more information about the hyper-parameters setting, please refer to https://github.com/MhLiao/DB
-     *
-     * Configurable parameters:
-     * - (float) binaryThreshold - The threshold of the binary map. It is usually set to 0.3.
-     * - (float) polygonThreshold - The threshold of text polygons. It is usually set to 0.5, 0.6, and 0.7. Default is 0.5f
-     * - (double) unclipRatio - The unclip ratio of the detected text region, which determines the output size. It is usually set to 2.0.
-     * - (int) maxCandidates - The max number of the output results.
+     @brief This class represents high-level API for text detection DL networks compatible with DB model.
+      *
+      * Related publications: @cite liao2020real
+      * Paper: https://arxiv.org/abs/1911.08947
+      * For more information about the hyper-parameters setting, please refer to https://github.com/MhLiao/DB
+      *
+      * Configurable parameters:
+      * - (float) binaryThreshold - The threshold of the binary map. It is usually set to 0.3.
+      * - (float) polygonThreshold - The threshold of text polygons. It is usually set to 0.5, 0.6, and 0.7. Default is 0.5f
+      * - (double) unclipRatio - The unclip ratio of the detected text region, which determines the output size. It is usually set to 2.0.
+      * - (int) maxCandidates - The max number of the output results.
      */
 
     public class TextDetectionModel_DB : TextDetectionModel
@@ -59,8 +59,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Create text detection algorithm from deep learning network.
-         * param network Net object.
+         * @brief Create text detection algorithm from deep learning network.
+              * @param[in] network Net object.
          */
         public TextDetectionModel_DB(Net network) :
             base(DisposableObject.ThrowIfNullIntPtr(dnn_TextDetectionModel_1DB_TextDetectionModel_1DB_10(network.nativeObj)))
@@ -76,10 +76,10 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Create text detection model from network represented in one of the supported formats.
-         * An order of {code model} and {code config} arguments does not matter.
-         * param model Binary file contains trained weights.
-         * param config Text file contains network configuration.
+         * @brief Create text detection model from network represented in one of the supported formats.
+              * An order of @p model and @p config arguments does not matter.
+              * @param[in] model Binary file contains trained weights.
+              * @param[in] config Text file contains network configuration.
          */
         public TextDetectionModel_DB(string model, string config) :
             base(DisposableObject.ThrowIfNullIntPtr(dnn_TextDetectionModel_1DB_TextDetectionModel_1DB_11(model, config)))
@@ -90,9 +90,10 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Create text detection model from network represented in one of the supported formats.
-         * An order of {code model} and {code config} arguments does not matter.
-         * param model Binary file contains trained weights.
+         * @brief Create text detection model from network represented in one of the supported formats.
+              * An order of @p model and @p config arguments does not matter.
+              * @param[in] model Binary file contains trained weights.
+              * @param[in] config Text file contains network configuration.
          */
         public TextDetectionModel_DB(string model) :
             base(DisposableObject.ThrowIfNullIntPtr(dnn_TextDetectionModel_1DB_TextDetectionModel_1DB_12(model)))
@@ -271,4 +272,5 @@ namespace OpenCVForUnity.DnnModule
 
     }
 }
+
 #endif

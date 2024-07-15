@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class FastGlobalSmootherFilter
     /**
-     * Interface for implementations of Fast Global Smoother filter.
-     *
-     * For more details about this filter see CITE: Min2014 and CITE: Farbman2008 .
+     @brief Interface for implementations of Fast Global Smoother filter.
+     
+     For more details about this filter see @cite Min2014 and @cite Farbman2008 .
      */
 
     public class FastGlobalSmootherFilter : Algorithm
@@ -50,11 +50,11 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Apply smoothing operation to the source image.
-         *
-         *     param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
-         *
-         *     param dst destination image.
+         @brief Apply smoothing operation to the source image.
+         
+             @param src source image for filtering with unsigned 8-bit or signed 16-bit or floating-point 32-bit depth and up to 4 channels.
+         
+             @param dst destination image.
          */
         public void filter(Mat src, Mat dst)
         {

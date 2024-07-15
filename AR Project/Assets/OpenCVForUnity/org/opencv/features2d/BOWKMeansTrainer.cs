@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.Features2dModule
 
     // C++: class BOWKMeansTrainer
     /**
-     * kmeans -based class to train visual vocabulary using the *bag of visual words* approach. :
+     @brief kmeans -based class to train visual vocabulary using the *bag of visual words* approach. :
      */
 
     public class BOWKMeansTrainer : BOWTrainer
@@ -48,13 +48,9 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * The constructor.
-         *
-         *     SEE: cv::kmeans
-         * param clusterCount automatically generated
-         * param termcrit automatically generated
-         * param attempts automatically generated
-         * param flags automatically generated
+         @brief The constructor.
+         
+             @see cv::kmeans
          */
         public BOWKMeansTrainer(int clusterCount, TermCriteria termcrit, int attempts, int flags) :
             base(DisposableObject.ThrowIfNullIntPtr(features2d_BOWKMeansTrainer_BOWKMeansTrainer_10(clusterCount, termcrit.type, termcrit.maxCount, termcrit.epsilon, attempts, flags)))
@@ -65,12 +61,9 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The constructor.
-         *
-         *     SEE: cv::kmeans
-         * param clusterCount automatically generated
-         * param termcrit automatically generated
-         * param attempts automatically generated
+         @brief The constructor.
+         
+             @see cv::kmeans
          */
         public BOWKMeansTrainer(int clusterCount, TermCriteria termcrit, int attempts) :
             base(DisposableObject.ThrowIfNullIntPtr(features2d_BOWKMeansTrainer_BOWKMeansTrainer_11(clusterCount, termcrit.type, termcrit.maxCount, termcrit.epsilon, attempts)))
@@ -81,11 +74,9 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The constructor.
-         *
-         *     SEE: cv::kmeans
-         * param clusterCount automatically generated
-         * param termcrit automatically generated
+         @brief The constructor.
+         
+             @see cv::kmeans
          */
         public BOWKMeansTrainer(int clusterCount, TermCriteria termcrit) :
             base(DisposableObject.ThrowIfNullIntPtr(features2d_BOWKMeansTrainer_BOWKMeansTrainer_12(clusterCount, termcrit.type, termcrit.maxCount, termcrit.epsilon)))
@@ -96,10 +87,9 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The constructor.
-         *
-         *     SEE: cv::kmeans
-         * param clusterCount automatically generated
+         @brief The constructor.
+         
+             @see cv::kmeans
          */
         public BOWKMeansTrainer(int clusterCount) :
             base(DisposableObject.ThrowIfNullIntPtr(features2d_BOWKMeansTrainer_BOWKMeansTrainer_13(clusterCount)))

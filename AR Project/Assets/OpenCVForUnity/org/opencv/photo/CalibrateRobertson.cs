@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,10 +10,10 @@ namespace OpenCVForUnity.PhotoModule
 
     // C++: class CalibrateRobertson
     /**
-     * Inverse camera response function is extracted for each brightness value by minimizing an objective
-     * function as linear system. This algorithm uses all image pixels.
-     *
-     * For more information see CITE: RB99 .
+     @brief Inverse camera response function is extracted for each brightness value by minimizing an objective
+     function as linear system. This algorithm uses all image pixels.
+     
+     For more information see @cite RB99 .
      */
 
     public class CalibrateRobertson : CalibrateCRF

@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class EdgeBoxes
     /**
-     * Class implementing EdgeBoxes algorithm from CITE: ZitnickECCV14edgeBoxes :
+     @brief Class implementing EdgeBoxes algorithm from @cite ZitnickECCV14edgeBoxes :
      */
 
     public class EdgeBoxes : Algorithm
@@ -48,12 +48,12 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Returns array containing proposal boxes.
-         *
-         *     param edge_map edge image.
-         *     param orientation_map orientation map.
-         *     param boxes proposal boxes.
-         *     param scores of the proposal boxes, provided a vector of float types.
+         @brief Returns array containing proposal boxes.
+         
+             @param edge_map edge image.
+             @param orientation_map orientation map.
+             @param boxes proposal boxes.
+             @param scores of the proposal boxes, provided a vector of float types.
          */
         public void getBoundingBoxes(Mat edge_map, Mat orientation_map, MatOfRect boxes, Mat scores)
         {
@@ -69,11 +69,12 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Returns array containing proposal boxes.
-         *
-         *     param edge_map edge image.
-         *     param orientation_map orientation map.
-         *     param boxes proposal boxes.
+         @brief Returns array containing proposal boxes.
+         
+             @param edge_map edge image.
+             @param orientation_map orientation map.
+             @param boxes proposal boxes.
+             @param scores of the proposal boxes, provided a vector of float types.
          */
         public void getBoundingBoxes(Mat edge_map, Mat orientation_map, MatOfRect boxes)
         {
@@ -93,8 +94,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Returns the step size of sliding window search.
-         * return automatically generated
+         @brief Returns the step size of sliding window search.
          */
         public float getAlpha()
         {
@@ -111,8 +111,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets the step size of sliding window search.
-         * param value automatically generated
+         @brief Sets the step size of sliding window search.
          */
         public void setAlpha(float value)
         {
@@ -129,8 +128,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Returns the nms threshold for object proposals.
-         * return automatically generated
+         @brief Returns the nms threshold for object proposals.
          */
         public float getBeta()
         {
@@ -147,8 +145,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets the nms threshold for object proposals.
-         * param value automatically generated
+         @brief Sets the nms threshold for object proposals.
          */
         public void setBeta(float value)
         {
@@ -165,8 +162,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Returns adaptation rate for nms threshold.
-         * return automatically generated
+         @brief Returns adaptation rate for nms threshold.
          */
         public float getEta()
         {
@@ -183,8 +179,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets the adaptation rate for nms threshold.
-         * param value automatically generated
+         @brief Sets the adaptation rate for nms threshold.
          */
         public void setEta(float value)
         {
@@ -201,8 +196,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Returns the min score of boxes to detect.
-         * return automatically generated
+         @brief Returns the min score of boxes to detect.
          */
         public float getMinScore()
         {
@@ -219,8 +213,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets the min score of boxes to detect.
-         * param value automatically generated
+         @brief Sets the min score of boxes to detect.
          */
         public void setMinScore(float value)
         {
@@ -237,8 +230,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Returns the max number of boxes to detect.
-         * return automatically generated
+         @brief Returns the max number of boxes to detect.
          */
         public int getMaxBoxes()
         {
@@ -255,8 +247,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets max number of boxes to detect.
-         * param value automatically generated
+         @brief Sets max number of boxes to detect.
          */
         public void setMaxBoxes(int value)
         {
@@ -273,8 +264,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Returns the edge min magnitude.
-         * return automatically generated
+         @brief Returns the edge min magnitude.
          */
         public float getEdgeMinMag()
         {
@@ -291,8 +281,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets the edge min magnitude.
-         * param value automatically generated
+         @brief Sets the edge min magnitude.
          */
         public void setEdgeMinMag(float value)
         {
@@ -309,8 +298,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Returns the edge merge threshold.
-         * return automatically generated
+         @brief Returns the edge merge threshold.
          */
         public float getEdgeMergeThr()
         {
@@ -327,8 +315,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets the edge merge threshold.
-         * param value automatically generated
+         @brief Sets the edge merge threshold.
          */
         public void setEdgeMergeThr(float value)
         {
@@ -345,8 +332,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Returns the cluster min magnitude.
-         * return automatically generated
+         @brief Returns the cluster min magnitude.
          */
         public float getClusterMinMag()
         {
@@ -363,8 +349,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets the cluster min magnitude.
-         * param value automatically generated
+         @brief Sets the cluster min magnitude.
          */
         public void setClusterMinMag(float value)
         {
@@ -381,8 +366,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Returns the max aspect ratio of boxes.
-         * return automatically generated
+         @brief Returns the max aspect ratio of boxes.
          */
         public float getMaxAspectRatio()
         {
@@ -399,8 +383,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets the max aspect ratio of boxes.
-         * param value automatically generated
+         @brief Sets the max aspect ratio of boxes.
          */
         public void setMaxAspectRatio(float value)
         {
@@ -417,8 +400,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Returns the minimum area of boxes.
-         * return automatically generated
+         @brief Returns the minimum area of boxes.
          */
         public float getMinBoxArea()
         {
@@ -435,8 +417,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets the minimum area of boxes.
-         * param value automatically generated
+         @brief Sets the minimum area of boxes.
          */
         public void setMinBoxArea(float value)
         {
@@ -453,8 +434,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Returns the affinity sensitivity.
-         * return automatically generated
+         @brief Returns the affinity sensitivity.
          */
         public float getGamma()
         {
@@ -471,8 +451,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets the affinity sensitivity
-         * param value automatically generated
+         @brief Sets the affinity sensitivity
          */
         public void setGamma(float value)
         {
@@ -489,8 +468,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Returns the scale sensitivity.
-         * return automatically generated
+         @brief Returns the scale sensitivity.
          */
         public float getKappa()
         {
@@ -507,8 +485,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets the scale sensitivity.
-         * param value automatically generated
+         @brief Sets the scale sensitivity.
          */
         public void setKappa(float value)
         {

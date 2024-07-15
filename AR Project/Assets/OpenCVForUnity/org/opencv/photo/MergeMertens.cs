@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,16 +10,16 @@ namespace OpenCVForUnity.PhotoModule
 
     // C++: class MergeMertens
     /**
-     * Pixels are weighted using contrast, saturation and well-exposedness measures, than images are
-     * combined using laplacian pyramids.
-     *
-     * The resulting image weight is constructed as weighted average of contrast, saturation and
-     * well-exposedness measures.
-     *
-     * The resulting image doesn't require tonemapping and can be converted to 8-bit image by multiplying
-     * by 255, but it's recommended to apply gamma correction and/or linear tonemapping.
-     *
-     * For more information see CITE: MK07 .
+     @brief Pixels are weighted using contrast, saturation and well-exposedness measures, than images are
+     combined using laplacian pyramids.
+     
+     The resulting image weight is constructed as weighted average of contrast, saturation and
+     well-exposedness measures.
+     
+     The resulting image doesn't require tonemapping and can be converted to 8-bit image by multiplying
+     by 255, but it's recommended to apply gamma correction and/or linear tonemapping.
+     
+     For more information see @cite MK07 .
      */
 
     public class MergeMertens : MergeExposures
@@ -74,10 +74,10 @@ namespace OpenCVForUnity.PhotoModule
         //
 
         /**
-         * Short version of process, that doesn't take extra arguments.
-         *
-         *     param src vector of input images
-         *     param dst result image
+         @brief Short version of process, that doesn't take extra arguments.
+         
+             @param src vector of input images
+             @param dst result image
          */
         public void process(List<Mat> src, Mat dst)
         {

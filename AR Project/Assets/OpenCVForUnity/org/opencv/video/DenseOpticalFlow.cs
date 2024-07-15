@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.VideoModule
 
     // C++: class DenseOpticalFlow
     /**
-     * Base class for dense optical flow algorithms
+     Base class for dense optical flow algorithms
      */
 
     public class DenseOpticalFlow : Algorithm
@@ -48,11 +48,11 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Calculates an optical flow.
-         *
-         *     param I0 first 8-bit single-channel input image.
-         *     param I1 second input image of the same size and the same type as prev.
-         *     param flow computed flow image that has the same size as prev and type CV_32FC2.
+         @brief Calculates an optical flow.
+         
+             @param I0 first 8-bit single-channel input image.
+             @param I1 second input image of the same size and the same type as prev.
+             @param flow computed flow image that has the same size as prev and type CV_32FC2.
          */
         public void calc(Mat I0, Mat I1, Mat flow)
         {
@@ -72,7 +72,7 @@ namespace OpenCVForUnity.VideoModule
         //
 
         /**
-         * Releases all inner buffers.
+         @brief Releases all inner buffers.
          */
         public void collectGarbage()
         {

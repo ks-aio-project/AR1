@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,14 +10,14 @@ namespace OpenCVForUnity.MlModule
 {
     // C++: class TrainData
     /**
-     * Class encapsulating training data.
-     *
-     * Please note that the class only specifies the interface of training data, but not implementation.
-     * All the statistical model classes in _ml_ module accepts Ptr&lt;TrainData&gt; as parameter. In other
-     * words, you can create your own class derived from TrainData and pass smart pointer to the instance
-     * of this class into StatModel::train.
-     *
-     * SEE: REF: ml_intro_data
+     @brief Class encapsulating training data.
+     
+     Please note that the class only specifies the interface of training data, but not implementation.
+     All the statistical model classes in _ml_ module accepts Ptr&lt;TrainData&gt; as parameter. In other
+     words, you can create your own class derived from TrainData and pass smart pointer to the instance
+     of this class into StatModel::train.
+     
+     @sa @ref ml_intro_data
      */
 
     public class TrainData : DisposableOpenCVObject
@@ -185,18 +185,17 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns matrix of train samples
-         *
-         *     param layout The requested layout. If it's different from the initial one, the matrix is
-         *         transposed. See ml::SampleTypes.
-         *     param compressSamples if true, the function returns only the training samples (specified by
-         *         sampleIdx)
-         *     param compressVars if true, the function returns the shorter training samples, containing only
-         *         the active variables.
-         *
-         *     In current implementation the function tries to avoid physical data copying and returns the
-         *     matrix stored inside TrainData (unless the transposition or compression is needed).
-         * return automatically generated
+         @brief Returns matrix of train samples
+         
+             @param layout The requested layout. If it's different from the initial one, the matrix is
+                 transposed. See ml::SampleTypes.
+             @param compressSamples if true, the function returns only the training samples (specified by
+                 sampleIdx)
+             @param compressVars if true, the function returns the shorter training samples, containing only
+                 the active variables.
+         
+             In current implementation the function tries to avoid physical data copying and returns the
+             matrix stored inside TrainData (unless the transposition or compression is needed).
          */
         public Mat getTrainSamples(int layout, bool compressSamples, bool compressVars)
         {
@@ -208,17 +207,17 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Returns matrix of train samples
-         *
-         *     param layout The requested layout. If it's different from the initial one, the matrix is
-         *         transposed. See ml::SampleTypes.
-         *     param compressSamples if true, the function returns only the training samples (specified by
-         *         sampleIdx)
-         *         the active variables.
-         *
-         *     In current implementation the function tries to avoid physical data copying and returns the
-         *     matrix stored inside TrainData (unless the transposition or compression is needed).
-         * return automatically generated
+         @brief Returns matrix of train samples
+         
+             @param layout The requested layout. If it's different from the initial one, the matrix is
+                 transposed. See ml::SampleTypes.
+             @param compressSamples if true, the function returns only the training samples (specified by
+                 sampleIdx)
+             @param compressVars if true, the function returns the shorter training samples, containing only
+                 the active variables.
+         
+             In current implementation the function tries to avoid physical data copying and returns the
+             matrix stored inside TrainData (unless the transposition or compression is needed).
          */
         public Mat getTrainSamples(int layout, bool compressSamples)
         {
@@ -230,16 +229,17 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Returns matrix of train samples
-         *
-         *     param layout The requested layout. If it's different from the initial one, the matrix is
-         *         transposed. See ml::SampleTypes.
-         *         sampleIdx)
-         *         the active variables.
-         *
-         *     In current implementation the function tries to avoid physical data copying and returns the
-         *     matrix stored inside TrainData (unless the transposition or compression is needed).
-         * return automatically generated
+         @brief Returns matrix of train samples
+         
+             @param layout The requested layout. If it's different from the initial one, the matrix is
+                 transposed. See ml::SampleTypes.
+             @param compressSamples if true, the function returns only the training samples (specified by
+                 sampleIdx)
+             @param compressVars if true, the function returns the shorter training samples, containing only
+                 the active variables.
+         
+             In current implementation the function tries to avoid physical data copying and returns the
+             matrix stored inside TrainData (unless the transposition or compression is needed).
          */
         public Mat getTrainSamples(int layout)
         {
@@ -251,15 +251,17 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Returns matrix of train samples
-         *
-         *         transposed. See ml::SampleTypes.
-         *         sampleIdx)
-         *         the active variables.
-         *
-         *     In current implementation the function tries to avoid physical data copying and returns the
-         *     matrix stored inside TrainData (unless the transposition or compression is needed).
-         * return automatically generated
+         @brief Returns matrix of train samples
+         
+             @param layout The requested layout. If it's different from the initial one, the matrix is
+                 transposed. See ml::SampleTypes.
+             @param compressSamples if true, the function returns only the training samples (specified by
+                 sampleIdx)
+             @param compressVars if true, the function returns the shorter training samples, containing only
+                 the active variables.
+         
+             In current implementation the function tries to avoid physical data copying and returns the
+             matrix stored inside TrainData (unless the transposition or compression is needed).
          */
         public Mat getTrainSamples()
         {
@@ -276,11 +278,10 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns the vector of responses
-         *
-         *     The function returns ordered or the original categorical responses. Usually it's used in
-         *     regression algorithms.
-         * return automatically generated
+         @brief Returns the vector of responses
+         
+             The function returns ordered or the original categorical responses. Usually it's used in
+             regression algorithms.
          */
         public Mat getTrainResponses()
         {
@@ -297,12 +298,11 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns the vector of normalized categorical responses
-         *
-         *     The function returns vector of responses. Each response is integer from {code 0} to `&lt;number of
-         *     classes&gt;-1`. The actual label value can be retrieved then from the class label vector, see
-         *     TrainData::getClassLabels.
-         * return automatically generated
+         @brief Returns the vector of normalized categorical responses
+         
+             The function returns vector of responses. Each response is integer from `0` to `&lt;number of
+             classes&gt;-1`. The actual label value can be retrieved then from the class label vector, see
+             TrainData::getClassLabels.
          */
         public Mat getTrainNormCatResponses()
         {
@@ -544,10 +544,9 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns the vector of class labels
-         *
-         *     The function returns vector of unique labels occurred in the responses.
-         * return automatically generated
+         @brief Returns the vector of class labels
+         
+             The function returns vector of unique labels occurred in the responses.
          */
         public Mat getClassLabels()
         {
@@ -592,10 +591,8 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Splits the training data into the training and test parts
-         *     SEE: TrainData::setTrainTestSplitRatio
-         * param count automatically generated
-         * param shuffle automatically generated
+         @brief Splits the training data into the training and test parts
+             @sa TrainData::setTrainTestSplitRatio
          */
         public void setTrainTestSplit(int count, bool shuffle)
         {
@@ -607,9 +604,8 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Splits the training data into the training and test parts
-         *     SEE: TrainData::setTrainTestSplitRatio
-         * param count automatically generated
+         @brief Splits the training data into the training and test parts
+             @sa TrainData::setTrainTestSplitRatio
          */
         public void setTrainTestSplit(int count)
         {
@@ -626,15 +622,13 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Splits the training data into the training and test parts
-         *
-         *     The function selects a subset of specified relative size and then returns it as the training
-         *     set. If the function is not called, all the data is used for training. Please, note that for
-         *     each of TrainData::getTrain\* there is corresponding TrainData::getTest\*, so that the test
-         *     subset can be retrieved and processed as well.
-         *     SEE: TrainData::setTrainTestSplit
-         * param ratio automatically generated
-         * param shuffle automatically generated
+         @brief Splits the training data into the training and test parts
+         
+             The function selects a subset of specified relative size and then returns it as the training
+             set. If the function is not called, all the data is used for training. Please, note that for
+             each of TrainData::getTrain\* there is corresponding TrainData::getTest\*, so that the test
+             subset can be retrieved and processed as well.
+             @sa TrainData::setTrainTestSplit
          */
         public void setTrainTestSplitRatio(double ratio, bool shuffle)
         {
@@ -646,14 +640,13 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Splits the training data into the training and test parts
-         *
-         *     The function selects a subset of specified relative size and then returns it as the training
-         *     set. If the function is not called, all the data is used for training. Please, note that for
-         *     each of TrainData::getTrain\* there is corresponding TrainData::getTest\*, so that the test
-         *     subset can be retrieved and processed as well.
-         *     SEE: TrainData::setTrainTestSplit
-         * param ratio automatically generated
+         @brief Splits the training data into the training and test parts
+         
+             The function selects a subset of specified relative size and then returns it as the training
+             set. If the function is not called, all the data is used for training. Please, note that for
+             each of TrainData::getTrain\* there is corresponding TrainData::getTest\*, so that the test
+             subset can be retrieved and processed as well.
+             @sa TrainData::setTrainTestSplit
          */
         public void setTrainTestSplitRatio(double ratio)
         {
@@ -684,8 +677,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns matrix of test samples
-         * return automatically generated
+         @brief Returns matrix of test samples
          */
         public Mat getTestSamples()
         {
@@ -702,8 +694,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns vector of symbolic names captured in loadFromCSV()
-         * param names automatically generated
+         @brief Returns vector of symbolic names captured in loadFromCSV()
          */
         public void getNames(List<string> names)
         {
@@ -720,10 +711,9 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Extract from 1D vector elements specified by passed indexes.
-         *     param vec input vector (supported types: CV_32S, CV_32F, CV_64F)
-         *     param idx 1D index vector
-         * return automatically generated
+         @brief Extract from 1D vector elements specified by passed indexes.
+             @param vec input vector (supported types: CV_32S, CV_32F, CV_64F)
+             @param idx 1D index vector
          */
         public static Mat getSubVector(Mat vec, Mat idx)
         {
@@ -741,11 +731,10 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Extract from matrix rows/cols specified by passed indexes.
-         *     param matrix input matrix (supported types: CV_32S, CV_32F, CV_64F)
-         *     param idx 1D index vector
-         *     param layout specifies to extract rows (cv::ml::ROW_SAMPLES) or to extract columns (cv::ml::COL_SAMPLES)
-         * return automatically generated
+         @brief Extract from matrix rows/cols specified by passed indexes.
+             @param matrix input matrix (supported types: CV_32S, CV_32F, CV_64F)
+             @param idx 1D index vector
+             @param layout specifies to extract rows (cv::ml::ROW_SAMPLES) or to extract columns (cv::ml::COL_SAMPLES)
          */
         public static Mat getSubMatrix(Mat matrix, Mat idx, int layout)
         {
@@ -763,25 +752,24 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Creates training data from in-memory arrays.
-         *
-         *     param samples matrix of samples. It should have CV_32F type.
-         *     param layout see ml::SampleTypes.
-         *     param responses matrix of responses. If the responses are scalar, they should be stored as a
-         *         single row or as a single column. The matrix should have type CV_32F or CV_32S (in the
-         *         former case the responses are considered as ordered by default; in the latter case - as
-         *         categorical)
-         *     param varIdx vector specifying which variables to use for training. It can be an integer vector
-         *         (CV_32S) containing 0-based variable indices or byte vector (CV_8U) containing a mask of
-         *         active variables.
-         *     param sampleIdx vector specifying which samples to use for training. It can be an integer
-         *         vector (CV_32S) containing 0-based sample indices or byte vector (CV_8U) containing a mask
-         *         of training samples.
-         *     param sampleWeights optional vector with weights for each sample. It should have CV_32F type.
-         *     param varType optional vector of type CV_8U and size `&lt;number_of_variables_in_samples&gt; +
-         *         &lt;number_of_variables_in_responses&gt;`, containing types of each input and output variable. See
-         *         ml::VariableTypes.
-         * return automatically generated
+         @brief Creates training data from in-memory arrays.
+         
+             @param samples matrix of samples. It should have CV_32F type.
+             @param layout see ml::SampleTypes.
+             @param responses matrix of responses. If the responses are scalar, they should be stored as a
+                 single row or as a single column. The matrix should have type CV_32F or CV_32S (in the
+                 former case the responses are considered as ordered by default; in the latter case - as
+                 categorical)
+             @param varIdx vector specifying which variables to use for training. It can be an integer vector
+                 (CV_32S) containing 0-based variable indices or byte vector (CV_8U) containing a mask of
+                 active variables.
+             @param sampleIdx vector specifying which samples to use for training. It can be an integer
+                 vector (CV_32S) containing 0-based sample indices or byte vector (CV_8U) containing a mask
+                 of training samples.
+             @param sampleWeights optional vector with weights for each sample. It should have CV_32F type.
+             @param varType optional vector of type CV_8U and size `&lt;number_of_variables_in_samples&gt; +
+                 &lt;number_of_variables_in_responses&gt;`, containing types of each input and output variable. See
+                 ml::VariableTypes.
          */
         public static TrainData create(Mat samples, int layout, Mat responses, Mat varIdx, Mat sampleIdx, Mat sampleWeights, Mat varType)
         {
@@ -798,24 +786,24 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Creates training data from in-memory arrays.
-         *
-         *     param samples matrix of samples. It should have CV_32F type.
-         *     param layout see ml::SampleTypes.
-         *     param responses matrix of responses. If the responses are scalar, they should be stored as a
-         *         single row or as a single column. The matrix should have type CV_32F or CV_32S (in the
-         *         former case the responses are considered as ordered by default; in the latter case - as
-         *         categorical)
-         *     param varIdx vector specifying which variables to use for training. It can be an integer vector
-         *         (CV_32S) containing 0-based variable indices or byte vector (CV_8U) containing a mask of
-         *         active variables.
-         *     param sampleIdx vector specifying which samples to use for training. It can be an integer
-         *         vector (CV_32S) containing 0-based sample indices or byte vector (CV_8U) containing a mask
-         *         of training samples.
-         *     param sampleWeights optional vector with weights for each sample. It should have CV_32F type.
-         *         &lt;number_of_variables_in_responses&gt;`, containing types of each input and output variable. See
-         *         ml::VariableTypes.
-         * return automatically generated
+         @brief Creates training data from in-memory arrays.
+         
+             @param samples matrix of samples. It should have CV_32F type.
+             @param layout see ml::SampleTypes.
+             @param responses matrix of responses. If the responses are scalar, they should be stored as a
+                 single row or as a single column. The matrix should have type CV_32F or CV_32S (in the
+                 former case the responses are considered as ordered by default; in the latter case - as
+                 categorical)
+             @param varIdx vector specifying which variables to use for training. It can be an integer vector
+                 (CV_32S) containing 0-based variable indices or byte vector (CV_8U) containing a mask of
+                 active variables.
+             @param sampleIdx vector specifying which samples to use for training. It can be an integer
+                 vector (CV_32S) containing 0-based sample indices or byte vector (CV_8U) containing a mask
+                 of training samples.
+             @param sampleWeights optional vector with weights for each sample. It should have CV_32F type.
+             @param varType optional vector of type CV_8U and size `&lt;number_of_variables_in_samples&gt; +
+                 &lt;number_of_variables_in_responses&gt;`, containing types of each input and output variable. See
+                 ml::VariableTypes.
          */
         public static TrainData create(Mat samples, int layout, Mat responses, Mat varIdx, Mat sampleIdx, Mat sampleWeights)
         {
@@ -831,23 +819,24 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Creates training data from in-memory arrays.
-         *
-         *     param samples matrix of samples. It should have CV_32F type.
-         *     param layout see ml::SampleTypes.
-         *     param responses matrix of responses. If the responses are scalar, they should be stored as a
-         *         single row or as a single column. The matrix should have type CV_32F or CV_32S (in the
-         *         former case the responses are considered as ordered by default; in the latter case - as
-         *         categorical)
-         *     param varIdx vector specifying which variables to use for training. It can be an integer vector
-         *         (CV_32S) containing 0-based variable indices or byte vector (CV_8U) containing a mask of
-         *         active variables.
-         *     param sampleIdx vector specifying which samples to use for training. It can be an integer
-         *         vector (CV_32S) containing 0-based sample indices or byte vector (CV_8U) containing a mask
-         *         of training samples.
-         *         &lt;number_of_variables_in_responses&gt;`, containing types of each input and output variable. See
-         *         ml::VariableTypes.
-         * return automatically generated
+         @brief Creates training data from in-memory arrays.
+         
+             @param samples matrix of samples. It should have CV_32F type.
+             @param layout see ml::SampleTypes.
+             @param responses matrix of responses. If the responses are scalar, they should be stored as a
+                 single row or as a single column. The matrix should have type CV_32F or CV_32S (in the
+                 former case the responses are considered as ordered by default; in the latter case - as
+                 categorical)
+             @param varIdx vector specifying which variables to use for training. It can be an integer vector
+                 (CV_32S) containing 0-based variable indices or byte vector (CV_8U) containing a mask of
+                 active variables.
+             @param sampleIdx vector specifying which samples to use for training. It can be an integer
+                 vector (CV_32S) containing 0-based sample indices or byte vector (CV_8U) containing a mask
+                 of training samples.
+             @param sampleWeights optional vector with weights for each sample. It should have CV_32F type.
+             @param varType optional vector of type CV_8U and size `&lt;number_of_variables_in_samples&gt; +
+                 &lt;number_of_variables_in_responses&gt;`, containing types of each input and output variable. See
+                 ml::VariableTypes.
          */
         public static TrainData create(Mat samples, int layout, Mat responses, Mat varIdx, Mat sampleIdx)
         {
@@ -862,22 +851,24 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Creates training data from in-memory arrays.
-         *
-         *     param samples matrix of samples. It should have CV_32F type.
-         *     param layout see ml::SampleTypes.
-         *     param responses matrix of responses. If the responses are scalar, they should be stored as a
-         *         single row or as a single column. The matrix should have type CV_32F or CV_32S (in the
-         *         former case the responses are considered as ordered by default; in the latter case - as
-         *         categorical)
-         *     param varIdx vector specifying which variables to use for training. It can be an integer vector
-         *         (CV_32S) containing 0-based variable indices or byte vector (CV_8U) containing a mask of
-         *         active variables.
-         *         vector (CV_32S) containing 0-based sample indices or byte vector (CV_8U) containing a mask
-         *         of training samples.
-         *         &lt;number_of_variables_in_responses&gt;`, containing types of each input and output variable. See
-         *         ml::VariableTypes.
-         * return automatically generated
+         @brief Creates training data from in-memory arrays.
+         
+             @param samples matrix of samples. It should have CV_32F type.
+             @param layout see ml::SampleTypes.
+             @param responses matrix of responses. If the responses are scalar, they should be stored as a
+                 single row or as a single column. The matrix should have type CV_32F or CV_32S (in the
+                 former case the responses are considered as ordered by default; in the latter case - as
+                 categorical)
+             @param varIdx vector specifying which variables to use for training. It can be an integer vector
+                 (CV_32S) containing 0-based variable indices or byte vector (CV_8U) containing a mask of
+                 active variables.
+             @param sampleIdx vector specifying which samples to use for training. It can be an integer
+                 vector (CV_32S) containing 0-based sample indices or byte vector (CV_8U) containing a mask
+                 of training samples.
+             @param sampleWeights optional vector with weights for each sample. It should have CV_32F type.
+             @param varType optional vector of type CV_8U and size `&lt;number_of_variables_in_samples&gt; +
+                 &lt;number_of_variables_in_responses&gt;`, containing types of each input and output variable. See
+                 ml::VariableTypes.
          */
         public static TrainData create(Mat samples, int layout, Mat responses, Mat varIdx)
         {
@@ -891,21 +882,24 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Creates training data from in-memory arrays.
-         *
-         *     param samples matrix of samples. It should have CV_32F type.
-         *     param layout see ml::SampleTypes.
-         *     param responses matrix of responses. If the responses are scalar, they should be stored as a
-         *         single row or as a single column. The matrix should have type CV_32F or CV_32S (in the
-         *         former case the responses are considered as ordered by default; in the latter case - as
-         *         categorical)
-         *         (CV_32S) containing 0-based variable indices or byte vector (CV_8U) containing a mask of
-         *         active variables.
-         *         vector (CV_32S) containing 0-based sample indices or byte vector (CV_8U) containing a mask
-         *         of training samples.
-         *         &lt;number_of_variables_in_responses&gt;`, containing types of each input and output variable. See
-         *         ml::VariableTypes.
-         * return automatically generated
+         @brief Creates training data from in-memory arrays.
+         
+             @param samples matrix of samples. It should have CV_32F type.
+             @param layout see ml::SampleTypes.
+             @param responses matrix of responses. If the responses are scalar, they should be stored as a
+                 single row or as a single column. The matrix should have type CV_32F or CV_32S (in the
+                 former case the responses are considered as ordered by default; in the latter case - as
+                 categorical)
+             @param varIdx vector specifying which variables to use for training. It can be an integer vector
+                 (CV_32S) containing 0-based variable indices or byte vector (CV_8U) containing a mask of
+                 active variables.
+             @param sampleIdx vector specifying which samples to use for training. It can be an integer
+                 vector (CV_32S) containing 0-based sample indices or byte vector (CV_8U) containing a mask
+                 of training samples.
+             @param sampleWeights optional vector with weights for each sample. It should have CV_32F type.
+             @param varType optional vector of type CV_8U and size `&lt;number_of_variables_in_samples&gt; +
+                 &lt;number_of_variables_in_responses&gt;`, containing types of each input and output variable. See
+                 ml::VariableTypes.
          */
         public static TrainData create(Mat samples, int layout, Mat responses)
         {

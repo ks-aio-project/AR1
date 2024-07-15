@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class DisparityWLSFilter
     /**
-     * Disparity map filter based on Weighted Least Squares filter (in form of Fast Global Smoother that
-     * is a lot faster than traditional Weighted Least Squares filter implementations) and optional use of
-     * left-right-consistency-based confidence to refine the results in half-occlusions and uniform areas.
+     @brief Disparity map filter based on Weighted Least Squares filter (in form of Fast Global Smoother that
+     is a lot faster than traditional Weighted Least Squares filter implementations) and optional use of
+     left-right-consistency-based confidence to refine the results in half-occlusions and uniform areas.
      */
 
     public class DisparityWLSFilter : DisparityFilter
@@ -50,9 +50,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Lambda is a parameter defining the amount of regularization during filtering. Larger values force
-         *     filtered disparity map edges to adhere more to source image edges. Typical value is 8000.
-         * return automatically generated
+         @brief Lambda is a parameter defining the amount of regularization during filtering. Larger values force
+             filtered disparity map edges to adhere more to source image edges. Typical value is 8000.
          */
         public double getLambda()
         {
@@ -69,8 +68,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * SEE: getLambda
-         * param _lambda automatically generated
+         @see getLambda
          */
         public void setLambda(double _lambda)
         {
@@ -87,10 +85,9 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * SigmaColor is a parameter defining how sensitive the filtering process is to source image edges.
-         *     Large values can lead to disparity leakage through low-contrast edges. Small values can make the filter too
-         *     sensitive to noise and textures in the source image. Typical values range from 0.8 to 2.0.
-         * return automatically generated
+         @brief SigmaColor is a parameter defining how sensitive the filtering process is to source image edges.
+             Large values can lead to disparity leakage through low-contrast edges. Small values can make the filter too
+             sensitive to noise and textures in the source image. Typical values range from 0.8 to 2.0.
          */
         public double getSigmaColor()
         {
@@ -107,8 +104,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * SEE: getSigmaColor
-         * param _sigma_color automatically generated
+         @see getSigmaColor
          */
         public void setSigmaColor(double _sigma_color)
         {
@@ -125,9 +121,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * LRCthresh is a threshold of disparity difference used in left-right-consistency check during
-         *     confidence map computation. The default value of 24 (1.5 pixels) is virtually always good enough.
-         * return automatically generated
+         @brief LRCthresh is a threshold of disparity difference used in left-right-consistency check during
+             confidence map computation. The default value of 24 (1.5 pixels) is virtually always good enough.
          */
         public int getLRCthresh()
         {
@@ -144,8 +139,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * SEE: getLRCthresh
-         * param _LRC_thresh automatically generated
+         @see getLRCthresh
          */
         public void setLRCthresh(int _LRC_thresh)
         {
@@ -162,9 +156,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * DepthDiscontinuityRadius is a parameter used in confidence computation. It defines the size of
-         *     low-confidence regions around depth discontinuities.
-         * return automatically generated
+         @brief DepthDiscontinuityRadius is a parameter used in confidence computation. It defines the size of
+             low-confidence regions around depth discontinuities.
          */
         public int getDepthDiscontinuityRadius()
         {
@@ -181,8 +174,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * SEE: getDepthDiscontinuityRadius
-         * param _disc_radius automatically generated
+         @see getDepthDiscontinuityRadius
          */
         public void setDepthDiscontinuityRadius(int _disc_radius)
         {
@@ -199,10 +191,9 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Get the confidence map that was used in the last filter call. It is a CV_32F one-channel image
-         *     with values ranging from 0.0 (totally untrusted regions of the raw disparity map) to 255.0 (regions containing
-         *     correct disparity values with a high degree of confidence).
-         * return automatically generated
+         @brief Get the confidence map that was used in the last filter call. It is a CV_32F one-channel image
+             with values ranging from 0.0 (totally untrusted regions of the raw disparity map) to 255.0 (regions containing
+             correct disparity values with a high degree of confidence).
          */
         public Mat getConfidenceMap()
         {
@@ -219,8 +210,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Get the ROI used in the last filter call
-         * return automatically generated
+         @brief Get the ROI used in the last filter call
          */
         public Rect getROI()
         {

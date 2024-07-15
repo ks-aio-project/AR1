@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,13 +10,13 @@ namespace OpenCVForUnity.TrackingModule
 
     // C++: class TrackerKCF
     /**
-     * the KCF (Kernelized Correlation Filter) tracker
-     *
-     * KCF is a novel tracking framework that utilizes properties of circulant matrix to enhance the processing speed.
-     * This tracking method is an implementation of CITE: KCF_ECCV which is extended to KCF with color-names features (CITE: KCF_CN).
-     * The original paper of KCF is available at &lt;http://www.robots.ox.ac.uk/~joao/publications/henriques_tpami2015.pdf&gt;
-     * as well as the matlab implementation. For more information about KCF with color-names features, please refer to
-     * &lt;http://www.cvl.isy.liu.se/research/objrec/visualtracking/colvistrack/index.html&gt;.
+     @brief the KCF (Kernelized Correlation Filter) tracker
+     
+      * KCF is a novel tracking framework that utilizes properties of circulant matrix to enhance the processing speed.
+      * This tracking method is an implementation of @cite KCF_ECCV which is extended to KCF with color-names features (@cite KCF_CN).
+      * The original paper of KCF is available at &lt;http://www.robots.ox.ac.uk/~joao/publications/henriques_tpami2015.pdf&gt;
+      * as well as the matlab implementation. For more information about KCF with color-names features, please refer to
+      * &lt;http://www.cvl.isy.liu.se/research/objrec/visualtracking/colvistrack/index.html&gt;.
      */
 
     public class legacy_TrackerKCF : legacy_Tracker
@@ -54,8 +54,8 @@ namespace OpenCVForUnity.TrackingModule
         //
 
         /**
-         * Constructor
-         * return automatically generated
+         @brief Constructor
+           @param parameters KCF parameters TrackerKCF::Params
          */
         public static legacy_TrackerKCF create()
         {

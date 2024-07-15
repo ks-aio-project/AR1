@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -46,8 +46,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * SEE: setGridX
-         * return automatically generated
+         @see setGridX
          */
         public int getGridX()
         {
@@ -64,8 +63,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         *  getGridX SEE: getGridX
-         * param val automatically generated
+         @copybrief getGridX @see getGridX
          */
         public void setGridX(int val)
         {
@@ -82,8 +80,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * SEE: setGridY
-         * return automatically generated
+         @see setGridY
          */
         public int getGridY()
         {
@@ -100,8 +97,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         *  getGridY SEE: getGridY
-         * param val automatically generated
+         @copybrief getGridY @see getGridY
          */
         public void setGridY(int val)
         {
@@ -118,8 +114,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * SEE: setRadius
-         * return automatically generated
+         @see setRadius
          */
         public int getRadius()
         {
@@ -136,8 +131,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         *  getRadius SEE: getRadius
-         * param val automatically generated
+         @copybrief getRadius @see getRadius
          */
         public void setRadius(int val)
         {
@@ -154,8 +148,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * SEE: setNeighbors
-         * return automatically generated
+         @see setNeighbors
          */
         public int getNeighbors()
         {
@@ -172,8 +165,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         *  getNeighbors SEE: getNeighbors
-         * param val automatically generated
+         @copybrief getNeighbors @see getNeighbors
          */
         public void setNeighbors(int val)
         {
@@ -190,8 +182,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * SEE: setThreshold
-         * return automatically generated
+         @see setThreshold
          */
         public double getThreshold()
         {
@@ -208,8 +199,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         *  getThreshold SEE: getThreshold
-         * param val automatically generated
+         @copybrief getThreshold @see getThreshold
          */
         public void setThreshold(double val)
         {
@@ -254,59 +244,36 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * param radius The radius used for building the Circular Local Binary Pattern. The greater the
-         *     radius, the smoother the image but more spatial information you can get.
-         *     param neighbors The number of sample points to build a Circular Local Binary Pattern from. An
-         *     appropriate value is to use {code 8} sample points. Keep in mind: the more sample points you include,
-         *     the higher the computational cost.
-         *     param grid_x The number of cells in the horizontal direction, 8 is a common value used in
-         *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
-         *     feature vector.
-         *     param grid_y The number of cells in the vertical direction, 8 is a common value used in
-         *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
-         *     feature vector.
-         *     param threshold The threshold applied in the prediction. If the distance to the nearest neighbor
-         *     is larger than the threshold, this method returns -1.
-         *
-         *     ### Notes:
-         *
-         * <ul>
-         *   <li>
-         *        The Circular Local Binary Patterns (used in training and prediction) expect the data given as
-         *         grayscale images, use cvtColor to convert between the color spaces.
-         *   </li>
-         *   <li>
-         *        This model supports updating.
-         *   </li>
-         * </ul>
-         *
-         *     ### Model internal data:
-         *
-         * <ul>
-         *   <li>
-         *        radius see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        neighbors see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        grid_x see LLBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        grid_y see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        threshold see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        histograms Local Binary Patterns Histograms calculated from the given training data (empty if
-         *         none was given).
-         *   </li>
-         *   <li>
-         *        labels Labels corresponding to the calculated Local Binary Patterns Histograms.
-         *   </li>
-         * </ul>
-         * return automatically generated
+         @param radius The radius used for building the Circular Local Binary Pattern. The greater the
+             radius, the smoother the image but more spatial information you can get.
+             @param neighbors The number of sample points to build a Circular Local Binary Pattern from. An
+             appropriate value is to use `8` sample points. Keep in mind: the more sample points you include,
+             the higher the computational cost.
+             @param grid_x The number of cells in the horizontal direction, 8 is a common value used in
+             publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+             feature vector.
+             @param grid_y The number of cells in the vertical direction, 8 is a common value used in
+             publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+             feature vector.
+             @param threshold The threshold applied in the prediction. If the distance to the nearest neighbor
+             is larger than the threshold, this method returns -1.
+         
+             ### Notes:
+         
+             -   The Circular Local Binary Patterns (used in training and prediction) expect the data given as
+                 grayscale images, use cvtColor to convert between the color spaces.
+             -   This model supports updating.
+         
+             ### Model internal data:
+         
+             -   radius see LBPHFaceRecognizer::create.
+             -   neighbors see LBPHFaceRecognizer::create.
+             -   grid_x see LLBPHFaceRecognizer::create.
+             -   grid_y see LBPHFaceRecognizer::create.
+             -   threshold see LBPHFaceRecognizer::create.
+             -   histograms Local Binary Patterns Histograms calculated from the given training data (empty if
+                 none was given).
+             -   labels Labels corresponding to the calculated Local Binary Patterns Histograms.
          */
         public static LBPHFaceRecognizer create(int radius, int neighbors, int grid_x, int grid_y, double threshold)
         {
@@ -318,58 +285,36 @@ namespace OpenCVForUnity.FaceModule
         }
 
         /**
-         * param radius The radius used for building the Circular Local Binary Pattern. The greater the
-         *     radius, the smoother the image but more spatial information you can get.
-         *     param neighbors The number of sample points to build a Circular Local Binary Pattern from. An
-         *     appropriate value is to use {code 8} sample points. Keep in mind: the more sample points you include,
-         *     the higher the computational cost.
-         *     param grid_x The number of cells in the horizontal direction, 8 is a common value used in
-         *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
-         *     feature vector.
-         *     param grid_y The number of cells in the vertical direction, 8 is a common value used in
-         *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
-         *     feature vector.
-         *     is larger than the threshold, this method returns -1.
-         *
-         *     ### Notes:
-         *
-         * <ul>
-         *   <li>
-         *        The Circular Local Binary Patterns (used in training and prediction) expect the data given as
-         *         grayscale images, use cvtColor to convert between the color spaces.
-         *   </li>
-         *   <li>
-         *        This model supports updating.
-         *   </li>
-         * </ul>
-         *
-         *     ### Model internal data:
-         *
-         * <ul>
-         *   <li>
-         *        radius see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        neighbors see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        grid_x see LLBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        grid_y see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        threshold see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        histograms Local Binary Patterns Histograms calculated from the given training data (empty if
-         *         none was given).
-         *   </li>
-         *   <li>
-         *        labels Labels corresponding to the calculated Local Binary Patterns Histograms.
-         *   </li>
-         * </ul>
-         * return automatically generated
+         @param radius The radius used for building the Circular Local Binary Pattern. The greater the
+             radius, the smoother the image but more spatial information you can get.
+             @param neighbors The number of sample points to build a Circular Local Binary Pattern from. An
+             appropriate value is to use `8` sample points. Keep in mind: the more sample points you include,
+             the higher the computational cost.
+             @param grid_x The number of cells in the horizontal direction, 8 is a common value used in
+             publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+             feature vector.
+             @param grid_y The number of cells in the vertical direction, 8 is a common value used in
+             publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+             feature vector.
+             @param threshold The threshold applied in the prediction. If the distance to the nearest neighbor
+             is larger than the threshold, this method returns -1.
+         
+             ### Notes:
+         
+             -   The Circular Local Binary Patterns (used in training and prediction) expect the data given as
+                 grayscale images, use cvtColor to convert between the color spaces.
+             -   This model supports updating.
+         
+             ### Model internal data:
+         
+             -   radius see LBPHFaceRecognizer::create.
+             -   neighbors see LBPHFaceRecognizer::create.
+             -   grid_x see LLBPHFaceRecognizer::create.
+             -   grid_y see LBPHFaceRecognizer::create.
+             -   threshold see LBPHFaceRecognizer::create.
+             -   histograms Local Binary Patterns Histograms calculated from the given training data (empty if
+                 none was given).
+             -   labels Labels corresponding to the calculated Local Binary Patterns Histograms.
          */
         public static LBPHFaceRecognizer create(int radius, int neighbors, int grid_x, int grid_y)
         {
@@ -381,57 +326,36 @@ namespace OpenCVForUnity.FaceModule
         }
 
         /**
-         * param radius The radius used for building the Circular Local Binary Pattern. The greater the
-         *     radius, the smoother the image but more spatial information you can get.
-         *     param neighbors The number of sample points to build a Circular Local Binary Pattern from. An
-         *     appropriate value is to use {code 8} sample points. Keep in mind: the more sample points you include,
-         *     the higher the computational cost.
-         *     param grid_x The number of cells in the horizontal direction, 8 is a common value used in
-         *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
-         *     feature vector.
-         *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
-         *     feature vector.
-         *     is larger than the threshold, this method returns -1.
-         *
-         *     ### Notes:
-         *
-         * <ul>
-         *   <li>
-         *        The Circular Local Binary Patterns (used in training and prediction) expect the data given as
-         *         grayscale images, use cvtColor to convert between the color spaces.
-         *   </li>
-         *   <li>
-         *        This model supports updating.
-         *   </li>
-         * </ul>
-         *
-         *     ### Model internal data:
-         *
-         * <ul>
-         *   <li>
-         *        radius see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        neighbors see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        grid_x see LLBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        grid_y see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        threshold see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        histograms Local Binary Patterns Histograms calculated from the given training data (empty if
-         *         none was given).
-         *   </li>
-         *   <li>
-         *        labels Labels corresponding to the calculated Local Binary Patterns Histograms.
-         *   </li>
-         * </ul>
-         * return automatically generated
+         @param radius The radius used for building the Circular Local Binary Pattern. The greater the
+             radius, the smoother the image but more spatial information you can get.
+             @param neighbors The number of sample points to build a Circular Local Binary Pattern from. An
+             appropriate value is to use `8` sample points. Keep in mind: the more sample points you include,
+             the higher the computational cost.
+             @param grid_x The number of cells in the horizontal direction, 8 is a common value used in
+             publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+             feature vector.
+             @param grid_y The number of cells in the vertical direction, 8 is a common value used in
+             publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+             feature vector.
+             @param threshold The threshold applied in the prediction. If the distance to the nearest neighbor
+             is larger than the threshold, this method returns -1.
+         
+             ### Notes:
+         
+             -   The Circular Local Binary Patterns (used in training and prediction) expect the data given as
+                 grayscale images, use cvtColor to convert between the color spaces.
+             -   This model supports updating.
+         
+             ### Model internal data:
+         
+             -   radius see LBPHFaceRecognizer::create.
+             -   neighbors see LBPHFaceRecognizer::create.
+             -   grid_x see LLBPHFaceRecognizer::create.
+             -   grid_y see LBPHFaceRecognizer::create.
+             -   threshold see LBPHFaceRecognizer::create.
+             -   histograms Local Binary Patterns Histograms calculated from the given training data (empty if
+                 none was given).
+             -   labels Labels corresponding to the calculated Local Binary Patterns Histograms.
          */
         public static LBPHFaceRecognizer create(int radius, int neighbors, int grid_x)
         {
@@ -443,56 +367,36 @@ namespace OpenCVForUnity.FaceModule
         }
 
         /**
-         * param radius The radius used for building the Circular Local Binary Pattern. The greater the
-         *     radius, the smoother the image but more spatial information you can get.
-         *     param neighbors The number of sample points to build a Circular Local Binary Pattern from. An
-         *     appropriate value is to use {code 8} sample points. Keep in mind: the more sample points you include,
-         *     the higher the computational cost.
-         *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
-         *     feature vector.
-         *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
-         *     feature vector.
-         *     is larger than the threshold, this method returns -1.
-         *
-         *     ### Notes:
-         *
-         * <ul>
-         *   <li>
-         *        The Circular Local Binary Patterns (used in training and prediction) expect the data given as
-         *         grayscale images, use cvtColor to convert between the color spaces.
-         *   </li>
-         *   <li>
-         *        This model supports updating.
-         *   </li>
-         * </ul>
-         *
-         *     ### Model internal data:
-         *
-         * <ul>
-         *   <li>
-         *        radius see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        neighbors see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        grid_x see LLBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        grid_y see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        threshold see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        histograms Local Binary Patterns Histograms calculated from the given training data (empty if
-         *         none was given).
-         *   </li>
-         *   <li>
-         *        labels Labels corresponding to the calculated Local Binary Patterns Histograms.
-         *   </li>
-         * </ul>
-         * return automatically generated
+         @param radius The radius used for building the Circular Local Binary Pattern. The greater the
+             radius, the smoother the image but more spatial information you can get.
+             @param neighbors The number of sample points to build a Circular Local Binary Pattern from. An
+             appropriate value is to use `8` sample points. Keep in mind: the more sample points you include,
+             the higher the computational cost.
+             @param grid_x The number of cells in the horizontal direction, 8 is a common value used in
+             publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+             feature vector.
+             @param grid_y The number of cells in the vertical direction, 8 is a common value used in
+             publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+             feature vector.
+             @param threshold The threshold applied in the prediction. If the distance to the nearest neighbor
+             is larger than the threshold, this method returns -1.
+         
+             ### Notes:
+         
+             -   The Circular Local Binary Patterns (used in training and prediction) expect the data given as
+                 grayscale images, use cvtColor to convert between the color spaces.
+             -   This model supports updating.
+         
+             ### Model internal data:
+         
+             -   radius see LBPHFaceRecognizer::create.
+             -   neighbors see LBPHFaceRecognizer::create.
+             -   grid_x see LLBPHFaceRecognizer::create.
+             -   grid_y see LBPHFaceRecognizer::create.
+             -   threshold see LBPHFaceRecognizer::create.
+             -   histograms Local Binary Patterns Histograms calculated from the given training data (empty if
+                 none was given).
+             -   labels Labels corresponding to the calculated Local Binary Patterns Histograms.
          */
         public static LBPHFaceRecognizer create(int radius, int neighbors)
         {
@@ -504,55 +408,36 @@ namespace OpenCVForUnity.FaceModule
         }
 
         /**
-         * param radius The radius used for building the Circular Local Binary Pattern. The greater the
-         *     radius, the smoother the image but more spatial information you can get.
-         *     appropriate value is to use {code 8} sample points. Keep in mind: the more sample points you include,
-         *     the higher the computational cost.
-         *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
-         *     feature vector.
-         *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
-         *     feature vector.
-         *     is larger than the threshold, this method returns -1.
-         *
-         *     ### Notes:
-         *
-         * <ul>
-         *   <li>
-         *        The Circular Local Binary Patterns (used in training and prediction) expect the data given as
-         *         grayscale images, use cvtColor to convert between the color spaces.
-         *   </li>
-         *   <li>
-         *        This model supports updating.
-         *   </li>
-         * </ul>
-         *
-         *     ### Model internal data:
-         *
-         * <ul>
-         *   <li>
-         *        radius see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        neighbors see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        grid_x see LLBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        grid_y see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        threshold see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        histograms Local Binary Patterns Histograms calculated from the given training data (empty if
-         *         none was given).
-         *   </li>
-         *   <li>
-         *        labels Labels corresponding to the calculated Local Binary Patterns Histograms.
-         *   </li>
-         * </ul>
-         * return automatically generated
+         @param radius The radius used for building the Circular Local Binary Pattern. The greater the
+             radius, the smoother the image but more spatial information you can get.
+             @param neighbors The number of sample points to build a Circular Local Binary Pattern from. An
+             appropriate value is to use `8` sample points. Keep in mind: the more sample points you include,
+             the higher the computational cost.
+             @param grid_x The number of cells in the horizontal direction, 8 is a common value used in
+             publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+             feature vector.
+             @param grid_y The number of cells in the vertical direction, 8 is a common value used in
+             publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+             feature vector.
+             @param threshold The threshold applied in the prediction. If the distance to the nearest neighbor
+             is larger than the threshold, this method returns -1.
+         
+             ### Notes:
+         
+             -   The Circular Local Binary Patterns (used in training and prediction) expect the data given as
+                 grayscale images, use cvtColor to convert between the color spaces.
+             -   This model supports updating.
+         
+             ### Model internal data:
+         
+             -   radius see LBPHFaceRecognizer::create.
+             -   neighbors see LBPHFaceRecognizer::create.
+             -   grid_x see LLBPHFaceRecognizer::create.
+             -   grid_y see LBPHFaceRecognizer::create.
+             -   threshold see LBPHFaceRecognizer::create.
+             -   histograms Local Binary Patterns Histograms calculated from the given training data (empty if
+                 none was given).
+             -   labels Labels corresponding to the calculated Local Binary Patterns Histograms.
          */
         public static LBPHFaceRecognizer create(int radius)
         {
@@ -564,54 +449,36 @@ namespace OpenCVForUnity.FaceModule
         }
 
         /**
-         *     radius, the smoother the image but more spatial information you can get.
-         *     appropriate value is to use {code 8} sample points. Keep in mind: the more sample points you include,
-         *     the higher the computational cost.
-         *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
-         *     feature vector.
-         *     publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
-         *     feature vector.
-         *     is larger than the threshold, this method returns -1.
-         *
-         *     ### Notes:
-         *
-         * <ul>
-         *   <li>
-         *        The Circular Local Binary Patterns (used in training and prediction) expect the data given as
-         *         grayscale images, use cvtColor to convert between the color spaces.
-         *   </li>
-         *   <li>
-         *        This model supports updating.
-         *   </li>
-         * </ul>
-         *
-         *     ### Model internal data:
-         *
-         * <ul>
-         *   <li>
-         *        radius see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        neighbors see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        grid_x see LLBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        grid_y see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        threshold see LBPHFaceRecognizer::create.
-         *   </li>
-         *   <li>
-         *        histograms Local Binary Patterns Histograms calculated from the given training data (empty if
-         *         none was given).
-         *   </li>
-         *   <li>
-         *        labels Labels corresponding to the calculated Local Binary Patterns Histograms.
-         *   </li>
-         * </ul>
-         * return automatically generated
+         @param radius The radius used for building the Circular Local Binary Pattern. The greater the
+             radius, the smoother the image but more spatial information you can get.
+             @param neighbors The number of sample points to build a Circular Local Binary Pattern from. An
+             appropriate value is to use `8` sample points. Keep in mind: the more sample points you include,
+             the higher the computational cost.
+             @param grid_x The number of cells in the horizontal direction, 8 is a common value used in
+             publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+             feature vector.
+             @param grid_y The number of cells in the vertical direction, 8 is a common value used in
+             publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+             feature vector.
+             @param threshold The threshold applied in the prediction. If the distance to the nearest neighbor
+             is larger than the threshold, this method returns -1.
+         
+             ### Notes:
+         
+             -   The Circular Local Binary Patterns (used in training and prediction) expect the data given as
+                 grayscale images, use cvtColor to convert between the color spaces.
+             -   This model supports updating.
+         
+             ### Model internal data:
+         
+             -   radius see LBPHFaceRecognizer::create.
+             -   neighbors see LBPHFaceRecognizer::create.
+             -   grid_x see LLBPHFaceRecognizer::create.
+             -   grid_y see LBPHFaceRecognizer::create.
+             -   threshold see LBPHFaceRecognizer::create.
+             -   histograms Local Binary Patterns Histograms calculated from the given training data (empty if
+                 none was given).
+             -   labels Labels corresponding to the calculated Local Binary Patterns Histograms.
          */
         public static LBPHFaceRecognizer create()
         {

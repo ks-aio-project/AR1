@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,12 +10,12 @@ namespace OpenCVForUnity.Xfeatures2dModule
 
     // C++: class PCTSignaturesSQFD
     /**
-     * Class implementing Signature Quadratic Form Distance (SQFD).
-     * SEE: Christian Beecks, Merih Seran Uysal, Thomas Seidl.
-     * Signature quadratic form distance.
-     * In Proceedings of the ACM International Conference on Image and Video Retrieval, pages 438-445.
-     * ACM, 2010.
-     * CITE: BeecksUS10
+     * @brief Class implementing Signature Quadratic Form Distance (SQFD).
+     * @see Christian Beecks, Merih Seran Uysal, Thomas Seidl.
+     *   Signature quadratic form distance.
+     *   In Proceedings of the ACM International Conference on Image and Video Retrieval, pages 438-445.
+     *   ACM, 2010.
+     * @cite BeecksUS10
      */
 
     public class PCTSignaturesSQFD : Algorithm
@@ -53,14 +53,13 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Creates the algorithm instance using selected distance function,
-         * similarity function and similarity function parameter.
-         * param distanceFunction Distance function selector. Default: L2
-         * Available: L0_25, L0_5, L1, L2, L2SQUARED, L5, L_INFINITY
-         * param similarityFunction Similarity function selector. Default: HEURISTIC
-         * Available: MINUS, GAUSSIAN, HEURISTIC
-         * param similarityParameter Parameter of the similarity function.
-         * return automatically generated
+         * @brief Creates the algorithm instance using selected distance function,
+             *       similarity function and similarity function parameter.
+             * @param distanceFunction Distance function selector. Default: L2
+             *       Available: L0_25, L0_5, L1, L2, L2SQUARED, L5, L_INFINITY
+             * @param similarityFunction Similarity function selector. Default: HEURISTIC
+             *       Available: MINUS, GAUSSIAN, HEURISTIC
+             * @param similarityParameter Parameter of the similarity function.
          */
         public static PCTSignaturesSQFD create(int distanceFunction, int similarityFunction, float similarityParameter)
         {
@@ -72,13 +71,13 @@ namespace OpenCVForUnity.Xfeatures2dModule
         }
 
         /**
-         * Creates the algorithm instance using selected distance function,
-         * similarity function and similarity function parameter.
-         * param distanceFunction Distance function selector. Default: L2
-         * Available: L0_25, L0_5, L1, L2, L2SQUARED, L5, L_INFINITY
-         * param similarityFunction Similarity function selector. Default: HEURISTIC
-         * Available: MINUS, GAUSSIAN, HEURISTIC
-         * return automatically generated
+         * @brief Creates the algorithm instance using selected distance function,
+             *       similarity function and similarity function parameter.
+             * @param distanceFunction Distance function selector. Default: L2
+             *       Available: L0_25, L0_5, L1, L2, L2SQUARED, L5, L_INFINITY
+             * @param similarityFunction Similarity function selector. Default: HEURISTIC
+             *       Available: MINUS, GAUSSIAN, HEURISTIC
+             * @param similarityParameter Parameter of the similarity function.
          */
         public static PCTSignaturesSQFD create(int distanceFunction, int similarityFunction)
         {
@@ -90,12 +89,13 @@ namespace OpenCVForUnity.Xfeatures2dModule
         }
 
         /**
-         * Creates the algorithm instance using selected distance function,
-         * similarity function and similarity function parameter.
-         * param distanceFunction Distance function selector. Default: L2
-         * Available: L0_25, L0_5, L1, L2, L2SQUARED, L5, L_INFINITY
-         * Available: MINUS, GAUSSIAN, HEURISTIC
-         * return automatically generated
+         * @brief Creates the algorithm instance using selected distance function,
+             *       similarity function and similarity function parameter.
+             * @param distanceFunction Distance function selector. Default: L2
+             *       Available: L0_25, L0_5, L1, L2, L2SQUARED, L5, L_INFINITY
+             * @param similarityFunction Similarity function selector. Default: HEURISTIC
+             *       Available: MINUS, GAUSSIAN, HEURISTIC
+             * @param similarityParameter Parameter of the similarity function.
          */
         public static PCTSignaturesSQFD create(int distanceFunction)
         {
@@ -107,11 +107,13 @@ namespace OpenCVForUnity.Xfeatures2dModule
         }
 
         /**
-         * Creates the algorithm instance using selected distance function,
-         * similarity function and similarity function parameter.
-         * Available: L0_25, L0_5, L1, L2, L2SQUARED, L5, L_INFINITY
-         * Available: MINUS, GAUSSIAN, HEURISTIC
-         * return automatically generated
+         * @brief Creates the algorithm instance using selected distance function,
+             *       similarity function and similarity function parameter.
+             * @param distanceFunction Distance function selector. Default: L2
+             *       Available: L0_25, L0_5, L1, L2, L2SQUARED, L5, L_INFINITY
+             * @param similarityFunction Similarity function selector. Default: HEURISTIC
+             *       Available: MINUS, GAUSSIAN, HEURISTIC
+             * @param similarityParameter Parameter of the similarity function.
          */
         public static PCTSignaturesSQFD create()
         {
@@ -128,10 +130,9 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Computes Signature Quadratic Form Distance of two signatures.
-         * param _signature0 The first signature.
-         * param _signature1 The second signature.
-         * return automatically generated
+         * @brief Computes Signature Quadratic Form Distance of two signatures.
+             * @param _signature0 The first signature.
+             * @param _signature1 The second signature.
          */
         public float computeQuadraticFormDistance(Mat _signature0, Mat _signature1)
         {
@@ -150,11 +151,11 @@ namespace OpenCVForUnity.Xfeatures2dModule
         //
 
         /**
-         * Computes Signature Quadratic Form Distance between the reference signature
-         * and each of the other image signatures.
-         * param sourceSignature The signature to measure distance of other signatures from.
-         * param imageSignatures Vector of signatures to measure distance from the source signature.
-         * param distances Output vector of measured distances.
+         * @brief Computes Signature Quadratic Form Distance between the reference signature
+             *       and each of the other image signatures.
+             * @param sourceSignature The signature to measure distance of other signatures from.
+             * @param imageSignatures Vector of signatures to measure distance from the source signature.
+             * @param distances Output vector of measured distances.
          */
         public void computeQuadraticFormDistances(Mat sourceSignature, List<Mat> imageSignatures, MatOfFloat distances)
         {

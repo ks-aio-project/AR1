@@ -1,4 +1,6 @@
-﻿using System;
+using OpenCVForUnity.UnityUtils;
+using OpenCVForUnity.UtilsModule;
+using System;
 using System.Collections.Generic;
 
 namespace OpenCVForUnity.CoreModule
@@ -67,7 +69,22 @@ namespace OpenCVForUnity.CoreModule
                 return;
             int num = a.Length / _channels;
             alloc(num);
-            put(0, 0, a); //TODO: check ret val!
+
+            if (isContinuous())
+            {
+                MatUtils.copyToMat<byte>(a, this);
+            }
+            else
+            {
+                if (dims() <= 2)
+                {
+                    MatUtils.copyToMat<byte>(a, this);
+                }
+                else
+                {
+                    put(0, 0, a); //TODO: check ret val!
+                }
+            }
         }
 
         public void fromArray(int offset, int length, params byte[] a)
@@ -93,7 +110,22 @@ namespace OpenCVForUnity.CoreModule
             byte[] a = new byte[num * _channels];
             if (num == 0)
                 return a;
-            get(0, 0, a); //TODO: check ret val!
+
+            if (isContinuous())
+            {
+                MatUtils.copyFromMat<byte>(this, a);
+            }
+            else
+            {
+                if (dims() <= 2)
+                {
+                    MatUtils.copyFromMat<byte>(this, a);
+                }
+                else
+                {
+                    get(0, 0, a); //TODO: check ret val!
+                }
+            }
             return a;
         }
 
@@ -102,15 +134,25 @@ namespace OpenCVForUnity.CoreModule
             if (lb == null || lb.Count == 0)
                 return;
 
-            byte[] a = lb.ToArray();
-            fromArray(a);
+            int num = lb.Count / _channels;
+            alloc(num);
 
+            Converters.List_uchar_to_Mat(lb, this, num);
         }
 
         public List<byte> toList()
         {
-            byte[] a = toArray();
-            return new List<byte>(a);
+            int num = checkVector(_channels, _depth);
+            if (num < 0)
+                throw new CvException("Native Mat has unexpected type or size: " + ToString());
+
+            List<byte> lb = new List<byte>(num);
+            for (int i = 0; i < num; i++)
+            {
+                lb.Add(0);
+            }
+            Converters.Mat_to_List_uchar(this, lb, num);
+            return lb;
         }
     }
 }

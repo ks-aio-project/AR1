@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,12 +11,12 @@ namespace OpenCVForUnity.DnnModule
 
     // C++: class DetectionModel
     /**
-     * This class represents high-level API for object detection networks.
-     *
-     * DetectionModel allows to set params for preprocessing input image.
-     * DetectionModel creates net from file with trained weights and config,
-     * sets preprocessing input, runs forward pass and return result detections.
-     * For DetectionModel SSD, Faster R-CNN, YOLO topologies are supported.
+     @brief This class represents high-level API for object detection networks.
+           *
+           * DetectionModel allows to set params for preprocessing input image.
+           * DetectionModel creates net from file with trained weights and config,
+           * sets preprocessing input, runs forward pass and return result detections.
+           * For DetectionModel SSD, Faster R-CNN, YOLO topologies are supported.
      */
 
     public class DetectionModel : Model
@@ -54,10 +54,10 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Create detection model from network represented in one of the supported formats.
-         * An order of {code model} and {code config} arguments does not matter.
-         * param model Binary file contains trained weights.
-         * param config Text file contains network configuration.
+         * @brief Create detection model from network represented in one of the supported formats.
+                   * An order of @p model and @p config arguments does not matter.
+                   * @param[in] model Binary file contains trained weights.
+                   * @param[in] config Text file contains network configuration.
          */
         public DetectionModel(string model, string config) :
             base(DisposableObject.ThrowIfNullIntPtr(dnn_DetectionModel_DetectionModel_10(model, config)))
@@ -68,9 +68,10 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Create detection model from network represented in one of the supported formats.
-         * An order of {code model} and {code config} arguments does not matter.
-         * param model Binary file contains trained weights.
+         * @brief Create detection model from network represented in one of the supported formats.
+                   * An order of @p model and @p config arguments does not matter.
+                   * @param[in] model Binary file contains trained weights.
+                   * @param[in] config Text file contains network configuration.
          */
         public DetectionModel(string model) :
             base(DisposableObject.ThrowIfNullIntPtr(dnn_DetectionModel_DetectionModel_11(model)))
@@ -86,8 +87,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Create model from deep learning network.
-         * param network Net object.
+         * @brief Create model from deep learning network.
+                   * @param[in] network Net object.
          */
         public DetectionModel(Net network) :
             base(DisposableObject.ThrowIfNullIntPtr(dnn_DetectionModel_DetectionModel_12(network.nativeObj)))
@@ -103,11 +104,10 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * nmsAcrossClasses defaults to false,
-         * such that when non max suppression is used during the detect() function, it will do so per-class.
-         * This function allows you to toggle this behaviour.
-         * param value The new value for nmsAcrossClasses
-         * return automatically generated
+         * @brief nmsAcrossClasses defaults to false,
+                   * such that when non max suppression is used during the detect() function, it will do so per-class.
+                   * This function allows you to toggle this behaviour.
+                   * @param[in] value The new value for nmsAcrossClasses
          */
         public DetectionModel setNmsAcrossClasses(bool value)
         {
@@ -124,9 +124,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Getter for nmsAcrossClasses. This variable defaults to false,
-         * such that when non max suppression is used during the detect() function, it will do so only per-class
-         * return automatically generated
+         * @brief Getter for nmsAcrossClasses. This variable defaults to false,
+                   * such that when non max suppression is used during the detect() function, it will do so only per-class
          */
         public bool getNmsAcrossClasses()
         {
@@ -143,13 +142,13 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Given the {code input} frame, create input blob, run net and return result detections.
-         * param classIds Class indexes in result detection.
-         * param confidences A set of corresponding confidences.
-         * param boxes A set of bounding boxes.
-         * param confThreshold A threshold used to filter boxes by confidences.
-         * param nmsThreshold A threshold used in non maximum suppression.
-         * param frame automatically generated
+         @brief Given the @p input frame, create input blob, run net and return result detections.
+                   *  @param[in]  frame  The input image.
+                   *  @param[out] classIds Class indexes in result detection.
+                   *  @param[out] confidences A set of corresponding confidences.
+                   *  @param[out] boxes A set of bounding boxes.
+                   *  @param[in] confThreshold A threshold used to filter boxes by confidences.
+                   *  @param[in] nmsThreshold A threshold used in non maximum suppression.
          */
         public void detect(Mat frame, MatOfInt classIds, MatOfFloat confidences, MatOfRect boxes, float confThreshold, float nmsThreshold)
         {
@@ -167,12 +166,13 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Given the {code input} frame, create input blob, run net and return result detections.
-         * param classIds Class indexes in result detection.
-         * param confidences A set of corresponding confidences.
-         * param boxes A set of bounding boxes.
-         * param confThreshold A threshold used to filter boxes by confidences.
-         * param frame automatically generated
+         @brief Given the @p input frame, create input blob, run net and return result detections.
+                   *  @param[in]  frame  The input image.
+                   *  @param[out] classIds Class indexes in result detection.
+                   *  @param[out] confidences A set of corresponding confidences.
+                   *  @param[out] boxes A set of bounding boxes.
+                   *  @param[in] confThreshold A threshold used to filter boxes by confidences.
+                   *  @param[in] nmsThreshold A threshold used in non maximum suppression.
          */
         public void detect(Mat frame, MatOfInt classIds, MatOfFloat confidences, MatOfRect boxes, float confThreshold)
         {
@@ -190,11 +190,13 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Given the {code input} frame, create input blob, run net and return result detections.
-         * param classIds Class indexes in result detection.
-         * param confidences A set of corresponding confidences.
-         * param boxes A set of bounding boxes.
-         * param frame automatically generated
+         @brief Given the @p input frame, create input blob, run net and return result detections.
+                   *  @param[in]  frame  The input image.
+                   *  @param[out] classIds Class indexes in result detection.
+                   *  @param[out] confidences A set of corresponding confidences.
+                   *  @param[out] boxes A set of bounding boxes.
+                   *  @param[in] confThreshold A threshold used to filter boxes by confidences.
+                   *  @param[in] nmsThreshold A threshold used in non maximum suppression.
          */
         public void detect(Mat frame, MatOfInt classIds, MatOfFloat confidences, MatOfRect boxes)
         {
@@ -253,4 +255,5 @@ namespace OpenCVForUnity.DnnModule
 
     }
 }
+
 #endif

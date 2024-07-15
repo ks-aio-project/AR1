@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,11 +11,11 @@ namespace OpenCVForUnity.DnnModule
 
     // C++: class TextDetectionModel_EAST
     /**
-     * This class represents high-level API for text detection DL networks compatible with EAST model.
-     *
-     * Configurable parameters:
-     * - (float) confThreshold - used to filter boxes by confidences, default: 0.5f
-     * - (float) nmsThreshold - used in non maximum suppression, default: 0.0f
+     @brief This class represents high-level API for text detection DL networks compatible with EAST model.
+      *
+      * Configurable parameters:
+      * - (float) confThreshold - used to filter boxes by confidences, default: 0.5f
+      * - (float) nmsThreshold - used in non maximum suppression, default: 0.0f
      */
 
     public class TextDetectionModel_EAST : TextDetectionModel
@@ -53,8 +53,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Create text detection algorithm from deep learning network
-         * param network Net object
+         * @brief Create text detection algorithm from deep learning network
+              * @param[in] network Net object
          */
         public TextDetectionModel_EAST(Net network) :
             base(DisposableObject.ThrowIfNullIntPtr(dnn_TextDetectionModel_1EAST_TextDetectionModel_1EAST_10(network.nativeObj)))
@@ -70,10 +70,10 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Create text detection model from network represented in one of the supported formats.
-         * An order of {code model} and {code config} arguments does not matter.
-         * param model Binary file contains trained weights.
-         * param config Text file contains network configuration.
+         * @brief Create text detection model from network represented in one of the supported formats.
+              * An order of @p model and @p config arguments does not matter.
+              * @param[in] model Binary file contains trained weights.
+              * @param[in] config Text file contains network configuration.
          */
         public TextDetectionModel_EAST(string model, string config) :
             base(DisposableObject.ThrowIfNullIntPtr(dnn_TextDetectionModel_1EAST_TextDetectionModel_1EAST_11(model, config)))
@@ -84,9 +84,10 @@ namespace OpenCVForUnity.DnnModule
         }
 
         /**
-         * Create text detection model from network represented in one of the supported formats.
-         * An order of {code model} and {code config} arguments does not matter.
-         * param model Binary file contains trained weights.
+         * @brief Create text detection model from network represented in one of the supported formats.
+              * An order of @p model and @p config arguments does not matter.
+              * @param[in] model Binary file contains trained weights.
+              * @param[in] config Text file contains network configuration.
          */
         public TextDetectionModel_EAST(string model) :
             base(DisposableObject.ThrowIfNullIntPtr(dnn_TextDetectionModel_1EAST_TextDetectionModel_1EAST_12(model)))
@@ -102,9 +103,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Set the detection confidence threshold
-         * param confThreshold A threshold used to filter boxes by confidences
-         * return automatically generated
+         * @brief Set the detection confidence threshold
+              * @param[in] confThreshold A threshold used to filter boxes by confidences
          */
         public TextDetectionModel_EAST setConfidenceThreshold(float confThreshold)
         {
@@ -121,8 +121,7 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Get the detection confidence threshold
-         * return automatically generated
+         * @brief Get the detection confidence threshold
          */
         public float getConfidenceThreshold()
         {
@@ -139,9 +138,8 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Set the detection NMS filter threshold
-         * param nmsThreshold A threshold used in non maximum suppression
-         * return automatically generated
+         * @brief Set the detection NMS filter threshold
+              * @param[in] nmsThreshold A threshold used in non maximum suppression
          */
         public TextDetectionModel_EAST setNMSThreshold(float nmsThreshold)
         {
@@ -158,8 +156,7 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Get the detection confidence threshold
-         * return automatically generated
+         * @brief Get the detection confidence threshold
          */
         public float getNMSThreshold()
         {
@@ -211,4 +208,5 @@ namespace OpenCVForUnity.DnnModule
 
     }
 }
+
 #endif

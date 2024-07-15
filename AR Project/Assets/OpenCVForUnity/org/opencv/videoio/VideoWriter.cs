@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.VideoioModule
 {
     // C++: class VideoWriter
     /**
-     * Video writer class.
-     *
-     * The class provides C++ API for writing video files or image sequences.
+     @brief Video writer class.
+     
+     The class provides C++ API for writing video files or image sequences.
      */
 
     public class VideoWriter : DisposableOpenCVObject
@@ -53,20 +53,12 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Default constructors
-         *
-         *     The constructors/functions initialize video writers.
-         * <ul>
-         *   <li>
-         *        On Linux FFMPEG is used to write videos;
-         *   </li>
-         *   <li>
-         *        On Windows FFMPEG or MSWF or DSHOW is used;
-         *   </li>
-         *   <li>
-         *        On MacOSX AVFoundation is used.
-         *   </li>
-         * </ul>
+         @brief Default constructors
+         
+             The constructors/functions initialize video writers.
+             -   On Linux FFMPEG is used to write videos;
+             -   On Windows FFMPEG or MSWF or DSHOW is used;
+             -   On MacOSX AVFoundation is used.
          */
         public VideoWriter()
         {
@@ -83,36 +75,31 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         *
-         *     param filename Name of the output video file.
-         *     param fourcc 4-character code of codec used to compress the frames. For example,
-         *     VideoWriter::fourcc('P','I','M','1') is a MPEG-1 codec, VideoWriter::fourcc('M','J','P','G') is a
-         *     motion-jpeg codec etc. List of codes can be obtained at [Video Codecs by
-         *     FOURCC](http://www.fourcc.org/codecs.php) page. FFMPEG backend with MP4 container natively uses
-         *     other values as fourcc code: see [ObjectType](http://mp4ra.org/#/codecs),
-         *     so you may receive a warning message from OpenCV about fourcc code conversion.
-         *     param fps Framerate of the created video stream.
-         *     param frameSize Size of the video frames.
-         *     param isColor If it is not zero, the encoder will expect and encode color frames, otherwise it
-         *     will work with grayscale frames.
-         *
-         *     <b>Tips</b>:
-         * <ul>
-         *   <li>
-         *      With some backends {code fourcc=-1} pops up the codec selection dialog from the system.
-         *   </li>
-         *   <li>
-         *      To save image sequence use a proper filename (eg. {code img_%02d.jpg}) and {code fourcc=0}
-         *       OR {code fps=0}. Use uncompressed image format (eg. {code img_%02d.BMP}) to save raw frames.
-         *   </li>
-         *   <li>
-         *      Most codecs are lossy. If you want lossless video file you need to use a lossless codecs
-         *       (eg. FFMPEG FFV1, Huffman HFYU, Lagarith LAGS, etc...)
-         *   </li>
-         *   <li>
-         *      If FFMPEG is enabled, using {code codec=0; fps=0;} you can create an uncompressed (raw) video file.
-         *   </li>
-         * </ul>
+         @overload
+             @param filename Name of the output video file.
+             @param fourcc 4-character code of codec used to compress the frames. For example,
+             VideoWriter::fourcc('P','I','M','1') is a MPEG-1 codec, VideoWriter::fourcc('M','J','P','G')
+             is a motion-jpeg codec etc. List of codes can be obtained at
+             [MSDN](https://docs.microsoft.com/en-us/windows/win32/medfound/video-fourccs) page
+             or with this [page](https://fourcc.org/codecs.php)
+             of the fourcc site for a more complete list). FFMPEG backend with MP4 container natively uses
+             other values as fourcc code: see [ObjectType](http://mp4ra.org/#/codecs),
+             so you may receive a warning message from OpenCV about fourcc code conversion.
+             @param fps Framerate of the created video stream.
+             @param frameSize Size of the video frames.
+             @param isColor If it is not zero, the encoder will expect and encode color frames, otherwise it
+             will work with grayscale frames.
+         
+             @b Tips:
+             - With some backends `fourcc=-1` pops up the codec selection dialog from the system.
+             - To save image sequence use a proper filename (eg. `img_%02d.jpg`) and `fourcc=0`
+               OR `fps=0`. Use uncompressed image format (eg. `img_%02d.BMP`) to save raw frames.
+             - Most codecs are lossy. If you want lossless video file you need to use a lossless codecs
+               (eg. FFMPEG FFV1, Huffman HFYU, Lagarith LAGS, etc...)
+             - If FFMPEG is enabled, using `codec=0; fps=0;` you can create an uncompressed (raw) video file.
+             - If FFMPEG is used, we allow frames of odd width or height, but in this case we truncate
+               the rightmost column/the bottom row. Probably, this should be handled more elegantly,
+               but some internal functions inside FFMPEG swscale require even width/height.
          */
         public VideoWriter(string filename, int fourcc, double fps, Size frameSize, bool isColor)
         {
@@ -124,35 +111,31 @@ namespace OpenCVForUnity.VideoioModule
         }
 
         /**
-         *
-         *     param filename Name of the output video file.
-         *     param fourcc 4-character code of codec used to compress the frames. For example,
-         *     VideoWriter::fourcc('P','I','M','1') is a MPEG-1 codec, VideoWriter::fourcc('M','J','P','G') is a
-         *     motion-jpeg codec etc. List of codes can be obtained at [Video Codecs by
-         *     FOURCC](http://www.fourcc.org/codecs.php) page. FFMPEG backend with MP4 container natively uses
-         *     other values as fourcc code: see [ObjectType](http://mp4ra.org/#/codecs),
-         *     so you may receive a warning message from OpenCV about fourcc code conversion.
-         *     param fps Framerate of the created video stream.
-         *     param frameSize Size of the video frames.
-         *     will work with grayscale frames.
-         *
-         *     <b>Tips</b>:
-         * <ul>
-         *   <li>
-         *      With some backends {code fourcc=-1} pops up the codec selection dialog from the system.
-         *   </li>
-         *   <li>
-         *      To save image sequence use a proper filename (eg. {code img_%02d.jpg}) and {code fourcc=0}
-         *       OR {code fps=0}. Use uncompressed image format (eg. {code img_%02d.BMP}) to save raw frames.
-         *   </li>
-         *   <li>
-         *      Most codecs are lossy. If you want lossless video file you need to use a lossless codecs
-         *       (eg. FFMPEG FFV1, Huffman HFYU, Lagarith LAGS, etc...)
-         *   </li>
-         *   <li>
-         *      If FFMPEG is enabled, using {code codec=0; fps=0;} you can create an uncompressed (raw) video file.
-         *   </li>
-         * </ul>
+         @overload
+             @param filename Name of the output video file.
+             @param fourcc 4-character code of codec used to compress the frames. For example,
+             VideoWriter::fourcc('P','I','M','1') is a MPEG-1 codec, VideoWriter::fourcc('M','J','P','G')
+             is a motion-jpeg codec etc. List of codes can be obtained at
+             [MSDN](https://docs.microsoft.com/en-us/windows/win32/medfound/video-fourccs) page
+             or with this [page](https://fourcc.org/codecs.php)
+             of the fourcc site for a more complete list). FFMPEG backend with MP4 container natively uses
+             other values as fourcc code: see [ObjectType](http://mp4ra.org/#/codecs),
+             so you may receive a warning message from OpenCV about fourcc code conversion.
+             @param fps Framerate of the created video stream.
+             @param frameSize Size of the video frames.
+             @param isColor If it is not zero, the encoder will expect and encode color frames, otherwise it
+             will work with grayscale frames.
+         
+             @b Tips:
+             - With some backends `fourcc=-1` pops up the codec selection dialog from the system.
+             - To save image sequence use a proper filename (eg. `img_%02d.jpg`) and `fourcc=0`
+               OR `fps=0`. Use uncompressed image format (eg. `img_%02d.BMP`) to save raw frames.
+             - Most codecs are lossy. If you want lossless video file you need to use a lossless codecs
+               (eg. FFMPEG FFV1, Huffman HFYU, Lagarith LAGS, etc...)
+             - If FFMPEG is enabled, using `codec=0; fps=0;` you can create an uncompressed (raw) video file.
+             - If FFMPEG is used, we allow frames of odd width or height, but in this case we truncate
+               the rightmost column/the bottom row. Probably, this should be handled more elegantly,
+               but some internal functions inside FFMPEG swscale require even width/height.
          */
         public VideoWriter(string filename, int fourcc, double fps, Size frameSize)
         {
@@ -169,15 +152,9 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         *
-         *     The {code apiPreference} parameter allows to specify API backends to use. Can be used to enforce a specific reader implementation
-         *     if multiple are available: e.g. cv::CAP_FFMPEG or cv::CAP_GSTREAMER.
-         * param filename automatically generated
-         * param apiPreference automatically generated
-         * param fourcc automatically generated
-         * param fps automatically generated
-         * param frameSize automatically generated
-         * param isColor automatically generated
+         @overload
+             The `apiPreference` parameter allows to specify API backends to use. Can be used to enforce a specific reader implementation
+             if multiple are available: e.g. cv::CAP_FFMPEG or cv::CAP_GSTREAMER.
          */
         public VideoWriter(string filename, int apiPreference, int fourcc, double fps, Size frameSize, bool isColor)
         {
@@ -189,14 +166,9 @@ namespace OpenCVForUnity.VideoioModule
         }
 
         /**
-         *
-         *     The {code apiPreference} parameter allows to specify API backends to use. Can be used to enforce a specific reader implementation
-         *     if multiple are available: e.g. cv::CAP_FFMPEG or cv::CAP_GSTREAMER.
-         * param filename automatically generated
-         * param apiPreference automatically generated
-         * param fourcc automatically generated
-         * param fps automatically generated
-         * param frameSize automatically generated
+         @overload
+             The `apiPreference` parameter allows to specify API backends to use. Can be used to enforce a specific reader implementation
+             if multiple are available: e.g. cv::CAP_FFMPEG or cv::CAP_GSTREAMER.
          */
         public VideoWriter(string filename, int apiPreference, int fourcc, double fps, Size frameSize)
         {
@@ -213,14 +185,9 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         *
-         * The {code params} parameter allows to specify extra encoder parameters encoded as pairs (paramId_1, paramValue_1, paramId_2, paramValue_2, ... .)
-         * see cv::VideoWriterProperties
-         * param filename automatically generated
-         * param fourcc automatically generated
-         * param fps automatically generated
-         * param frameSize automatically generated
-         * param _params automatically generated
+         @overload
+              * The `params` parameter allows to specify extra encoder parameters encoded as pairs (paramId_1, paramValue_1, paramId_2, paramValue_2, ... .)
+              * see cv::VideoWriterProperties
          */
         public VideoWriter(string filename, int fourcc, double fps, Size frameSize, MatOfInt _params)
         {
@@ -236,6 +203,9 @@ namespace OpenCVForUnity.VideoioModule
         // C++:   cv::VideoWriter::VideoWriter(String filename, int apiPreference, int fourcc, double fps, Size frameSize, vector_int _params)
         //
 
+        /**
+         @overload
+         */
         public VideoWriter(string filename, int apiPreference, int fourcc, double fps, Size frameSize, MatOfInt _params)
         {
             if (_params != null) _params.ThrowIfDisposed();
@@ -251,18 +221,13 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Initializes or reinitializes video writer.
-         *
-         *     The method opens video writer. Parameters are the same as in the constructor
-         *     VideoWriter::VideoWriter.
-         *     return {code true} if video writer has been successfully initialized
-         *
-         *     The method first calls VideoWriter::release to close the already opened file.
-         * param filename automatically generated
-         * param fourcc automatically generated
-         * param fps automatically generated
-         * param frameSize automatically generated
-         * param isColor automatically generated
+         @brief Initializes or reinitializes video writer.
+         
+             The method opens video writer. Parameters are the same as in the constructor
+             VideoWriter::VideoWriter.
+             @return `true` if video writer has been successfully initialized
+         
+             The method first calls VideoWriter::release to close the already opened file.
          */
         public bool open(string filename, int fourcc, double fps, Size frameSize, bool isColor)
         {
@@ -274,17 +239,13 @@ namespace OpenCVForUnity.VideoioModule
         }
 
         /**
-         * Initializes or reinitializes video writer.
-         *
-         *     The method opens video writer. Parameters are the same as in the constructor
-         *     VideoWriter::VideoWriter.
-         *     return {code true} if video writer has been successfully initialized
-         *
-         *     The method first calls VideoWriter::release to close the already opened file.
-         * param filename automatically generated
-         * param fourcc automatically generated
-         * param fps automatically generated
-         * param frameSize automatically generated
+         @brief Initializes or reinitializes video writer.
+         
+             The method opens video writer. Parameters are the same as in the constructor
+             VideoWriter::VideoWriter.
+             @return `true` if video writer has been successfully initialized
+         
+             The method first calls VideoWriter::release to close the already opened file.
          */
         public bool open(string filename, int fourcc, double fps, Size frameSize)
         {
@@ -300,6 +261,9 @@ namespace OpenCVForUnity.VideoioModule
         // C++:  bool cv::VideoWriter::open(String filename, int apiPreference, int fourcc, double fps, Size frameSize, bool isColor = true)
         //
 
+        /**
+         @overload
+         */
         public bool open(string filename, int apiPreference, int fourcc, double fps, Size frameSize, bool isColor)
         {
             ThrowIfDisposed();
@@ -309,6 +273,9 @@ namespace OpenCVForUnity.VideoioModule
 
         }
 
+        /**
+         @overload
+         */
         public bool open(string filename, int apiPreference, int fourcc, double fps, Size frameSize)
         {
             ThrowIfDisposed();
@@ -323,6 +290,9 @@ namespace OpenCVForUnity.VideoioModule
         // C++:  bool cv::VideoWriter::open(String filename, int fourcc, double fps, Size frameSize, vector_int _params)
         //
 
+        /**
+         @overload
+         */
         public bool open(string filename, int fourcc, double fps, Size frameSize, MatOfInt _params)
         {
             ThrowIfDisposed();
@@ -338,6 +308,9 @@ namespace OpenCVForUnity.VideoioModule
         // C++:  bool cv::VideoWriter::open(String filename, int apiPreference, int fourcc, double fps, Size frameSize, vector_int _params)
         //
 
+        /**
+         @overload
+         */
         public bool open(string filename, int apiPreference, int fourcc, double fps, Size frameSize, MatOfInt _params)
         {
             ThrowIfDisposed();
@@ -354,8 +327,7 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Returns true if video writer has been successfully initialized.
-         * return automatically generated
+         @brief Returns true if video writer has been successfully initialized.
          */
         public bool isOpened()
         {
@@ -372,10 +344,10 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Closes the video writer.
-         *
-         *     The method is automatically called by subsequent VideoWriter::open and by the VideoWriter
-         *     destructor.
+         @brief Closes the video writer.
+         
+             The method is automatically called by subsequent VideoWriter::open and by the VideoWriter
+             destructor.
          */
         public void release()
         {
@@ -392,12 +364,12 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Writes the next video frame
-         *
-         *     param image The written frame. In general, color images are expected in BGR format.
-         *
-         *     The function/method writes the specified image to video file. It must have the same size as has
-         *     been specified when opening the video writer.
+         @brief Writes the next video frame
+         
+             @param image The written frame. In general, color images are expected in BGR format.
+         
+             The function/method writes the specified image to video file. It must have the same size as has
+             been specified when opening the video writer.
          */
         public void write(Mat image)
         {
@@ -415,13 +387,13 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Sets a property in the VideoWriter.
-         *
-         *      param propId Property identifier from cv::VideoWriterProperties (eg. cv::VIDEOWRITER_PROP_QUALITY)
-         *      or one of REF: videoio_flags_others
-         *
-         *      param value Value of the property.
-         *      return  {code true} if the property is supported by the backend used by the VideoWriter instance.
+         @brief Sets a property in the VideoWriter.
+         
+              @param propId Property identifier from cv::VideoWriterProperties (eg. cv::VIDEOWRITER_PROP_QUALITY)
+              or one of @ref videoio_flags_others
+         
+              @param value Value of the property.
+              @return  `true` if the property is supported by the backend used by the VideoWriter instance.
          */
         public bool set(int propId, double value)
         {
@@ -438,13 +410,13 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Returns the specified VideoWriter property
-         *
-         *      param propId Property identifier from cv::VideoWriterProperties (eg. cv::VIDEOWRITER_PROP_QUALITY)
-         *      or one of REF: videoio_flags_others
-         *
-         *      return Value for the specified property. Value 0 is returned when querying a property that is
-         *      not supported by the backend used by the VideoWriter instance.
+         @brief Returns the specified VideoWriter property
+         
+              @param propId Property identifier from cv::VideoWriterProperties (eg. cv::VIDEOWRITER_PROP_QUALITY)
+              or one of @ref videoio_flags_others
+         
+              @return Value for the specified property. Value 0 is returned when querying a property that is
+              not supported by the backend used by the VideoWriter instance.
          */
         public double get(int propId)
         {
@@ -461,16 +433,12 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Concatenates 4 chars to a fourcc code
-         *
-         *     return a fourcc code
-         *
-         *     This static method constructs the fourcc code of the codec to be used in the constructor
-         *     VideoWriter::VideoWriter or VideoWriter::open.
-         * param c1 automatically generated
-         * param c2 automatically generated
-         * param c3 automatically generated
-         * param c4 automatically generated
+         @brief Concatenates 4 chars to a fourcc code
+         
+             @return a fourcc code
+         
+             This static method constructs the fourcc code of the codec to be used in the constructor
+             VideoWriter::VideoWriter or VideoWriter::open.
          */
         public static int fourcc(char c1, char c2, char c3, char c4)
         {
@@ -487,10 +455,9 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Returns used backend API name
-         *
-         *      <b>Note:</b> Stream should be opened.
-         * return automatically generated
+         @brief Returns used backend API name
+         
+              @note Stream should be opened.
          */
         public string getBackendName()
         {

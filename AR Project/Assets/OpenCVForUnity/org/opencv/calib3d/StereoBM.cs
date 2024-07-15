@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,8 +10,8 @@ namespace OpenCVForUnity.Calib3dModule
 
     // C++: class StereoBM
     /**
-     * Class for computing stereo correspondence using the block matching algorithm, introduced and
-     * contributed to OpenCV by K. Konolige.
+     @brief Class for computing stereo correspondence using the block matching algorithm, introduced and
+     contributed to OpenCV by K. Konolige.
      */
 
     public class StereoBM : StereoMatcher
@@ -280,19 +280,18 @@ namespace OpenCVForUnity.Calib3dModule
         //
 
         /**
-         * Creates StereoBM object
-         *
-         *     param numDisparities the disparity search range. For each pixel algorithm will find the best
-         *     disparity from 0 (default minimum disparity) to numDisparities. The search range can then be
-         *     shifted by changing the minimum disparity.
-         *     param blockSize the linear size of the blocks compared by the algorithm. The size should be odd
-         *     (as the block is centered at the current pixel). Larger block size implies smoother, though less
-         *     accurate disparity map. Smaller block size gives more detailed disparity map, but there is higher
-         *     chance for algorithm to find a wrong correspondence.
-         *
-         *     The function create StereoBM object. You can then call StereoBM::compute() to compute disparity for
-         *     a specific stereo pair.
-         * return automatically generated
+         @brief Creates StereoBM object
+         
+             @param numDisparities the disparity search range. For each pixel algorithm will find the best
+             disparity from 0 (default minimum disparity) to numDisparities. The search range can then be
+             shifted by changing the minimum disparity.
+             @param blockSize the linear size of the blocks compared by the algorithm. The size should be odd
+             (as the block is centered at the current pixel). Larger block size implies smoother, though less
+             accurate disparity map. Smaller block size gives more detailed disparity map, but there is higher
+             chance for algorithm to find a wrong correspondence.
+         
+             The function create StereoBM object. You can then call StereoBM::compute() to compute disparity for
+             a specific stereo pair.
          */
         public static StereoBM create(int numDisparities, int blockSize)
         {
@@ -304,18 +303,18 @@ namespace OpenCVForUnity.Calib3dModule
         }
 
         /**
-         * Creates StereoBM object
-         *
-         *     param numDisparities the disparity search range. For each pixel algorithm will find the best
-         *     disparity from 0 (default minimum disparity) to numDisparities. The search range can then be
-         *     shifted by changing the minimum disparity.
-         *     (as the block is centered at the current pixel). Larger block size implies smoother, though less
-         *     accurate disparity map. Smaller block size gives more detailed disparity map, but there is higher
-         *     chance for algorithm to find a wrong correspondence.
-         *
-         *     The function create StereoBM object. You can then call StereoBM::compute() to compute disparity for
-         *     a specific stereo pair.
-         * return automatically generated
+         @brief Creates StereoBM object
+         
+             @param numDisparities the disparity search range. For each pixel algorithm will find the best
+             disparity from 0 (default minimum disparity) to numDisparities. The search range can then be
+             shifted by changing the minimum disparity.
+             @param blockSize the linear size of the blocks compared by the algorithm. The size should be odd
+             (as the block is centered at the current pixel). Larger block size implies smoother, though less
+             accurate disparity map. Smaller block size gives more detailed disparity map, but there is higher
+             chance for algorithm to find a wrong correspondence.
+         
+             The function create StereoBM object. You can then call StereoBM::compute() to compute disparity for
+             a specific stereo pair.
          */
         public static StereoBM create(int numDisparities)
         {
@@ -327,17 +326,18 @@ namespace OpenCVForUnity.Calib3dModule
         }
 
         /**
-         * Creates StereoBM object
-         *
-         *     disparity from 0 (default minimum disparity) to numDisparities. The search range can then be
-         *     shifted by changing the minimum disparity.
-         *     (as the block is centered at the current pixel). Larger block size implies smoother, though less
-         *     accurate disparity map. Smaller block size gives more detailed disparity map, but there is higher
-         *     chance for algorithm to find a wrong correspondence.
-         *
-         *     The function create StereoBM object. You can then call StereoBM::compute() to compute disparity for
-         *     a specific stereo pair.
-         * return automatically generated
+         @brief Creates StereoBM object
+         
+             @param numDisparities the disparity search range. For each pixel algorithm will find the best
+             disparity from 0 (default minimum disparity) to numDisparities. The search range can then be
+             shifted by changing the minimum disparity.
+             @param blockSize the linear size of the blocks compared by the algorithm. The size should be odd
+             (as the block is centered at the current pixel). Larger block size implies smoother, though less
+             accurate disparity map. Smaller block size gives more detailed disparity map, but there is higher
+             chance for algorithm to find a wrong correspondence.
+         
+             The function create StereoBM object. You can then call StereoBM::compute() to compute disparity for
+             a specific stereo pair.
          */
         public static StereoBM create()
         {

@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,7 +10,7 @@ namespace OpenCVForUnity.Features2dModule
 
     // C++: class AgastFeatureDetector
     /**
-     * Wrapping class for feature detection using the AGAST method. :
+     @brief Wrapping class for feature detection using the AGAST method. :
      */
 
     public class AgastFeatureDetector : Feature2D

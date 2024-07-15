@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -46,8 +46,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * SEE: setNumComponents
-         * return automatically generated
+         @see setNumComponents
          */
         public int getNumComponents()
         {
@@ -64,8 +63,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         *  getNumComponents SEE: getNumComponents
-         * param val automatically generated
+         @copybrief getNumComponents @see getNumComponents
          */
         public void setNumComponents(int val)
         {
@@ -82,8 +80,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         * SEE: setThreshold
-         * return automatically generated
+         @see setThreshold
          */
         public double getThreshold()
         {
@@ -100,8 +97,7 @@ namespace OpenCVForUnity.FaceModule
         //
 
         /**
-         *  getThreshold SEE: getThreshold
-         * param val automatically generated
+         @copybrief getThreshold @see getThreshold
          */
         public void setThreshold(double val)
         {

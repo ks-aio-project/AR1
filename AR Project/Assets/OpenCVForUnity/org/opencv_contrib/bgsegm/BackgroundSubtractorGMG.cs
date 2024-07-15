@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using OpenCVForUnity.VideoModule;
@@ -11,13 +11,13 @@ namespace OpenCVForUnity.BgsegmModule
 
     // C++: class BackgroundSubtractorGMG
     /**
-     * Background Subtractor module based on the algorithm given in CITE: Gold2012 .
-     *
-     *  Takes a series of images and returns a sequence of mask (8UC1)
-     *  images of the same size, where 255 indicates Foreground and 0 represents Background.
-     *  This class implements an algorithm described in "Visual Tracking of Human Visitors under
-     *  Variable-Lighting Conditions for a Responsive Audio Art Installation," A. Godbehere,
-     *  A. Matsukawa, K. Goldberg, American Control Conference, Montreal, June 2012.
+     @brief Background Subtractor module based on the algorithm given in @cite Gold2012 .
+     
+      Takes a series of images and returns a sequence of mask (8UC1)
+      images of the same size, where 255 indicates Foreground and 0 represents Background.
+      This class implements an algorithm described in "Visual Tracking of Human Visitors under
+      Variable-Lighting Conditions for a Responsive Audio Art Installation," A. Godbehere,
+      A. Matsukawa, K. Goldberg, American Control Conference, Montreal, June 2012.
      */
 
     public class BackgroundSubtractorGMG : BackgroundSubtractor
@@ -55,8 +55,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Returns total number of distinct colors to maintain in histogram.
-         * return automatically generated
+         @brief Returns total number of distinct colors to maintain in histogram.
          */
         public int getMaxFeatures()
         {
@@ -73,8 +72,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Sets total number of distinct colors to maintain in histogram.
-         * param maxFeatures automatically generated
+         @brief Sets total number of distinct colors to maintain in histogram.
          */
         public void setMaxFeatures(int maxFeatures)
         {
@@ -91,11 +89,10 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Returns the learning rate of the algorithm.
-         *
-         *     It lies between 0.0 and 1.0. It determines how quickly features are "forgotten" from
-         *     histograms.
-         * return automatically generated
+         @brief Returns the learning rate of the algorithm.
+         
+             It lies between 0.0 and 1.0. It determines how quickly features are "forgotten" from
+             histograms.
          */
         public double getDefaultLearningRate()
         {
@@ -112,8 +109,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Sets the learning rate of the algorithm.
-         * param lr automatically generated
+         @brief Sets the learning rate of the algorithm.
          */
         public void setDefaultLearningRate(double lr)
         {
@@ -130,8 +126,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Returns the number of frames used to initialize background model.
-         * return automatically generated
+         @brief Returns the number of frames used to initialize background model.
          */
         public int getNumFrames()
         {
@@ -148,8 +143,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Sets the number of frames used to initialize background model.
-         * param nframes automatically generated
+         @brief Sets the number of frames used to initialize background model.
          */
         public void setNumFrames(int nframes)
         {
@@ -166,10 +160,9 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Returns the parameter used for quantization of color-space.
-         *
-         *     It is the number of discrete levels in each channel to be used in histograms.
-         * return automatically generated
+         @brief Returns the parameter used for quantization of color-space.
+         
+             It is the number of discrete levels in each channel to be used in histograms.
          */
         public int getQuantizationLevels()
         {
@@ -186,8 +179,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Sets the parameter used for quantization of color-space
-         * param nlevels automatically generated
+         @brief Sets the parameter used for quantization of color-space
          */
         public void setQuantizationLevels(int nlevels)
         {
@@ -204,8 +196,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Returns the prior probability that each individual pixel is a background pixel.
-         * return automatically generated
+         @brief Returns the prior probability that each individual pixel is a background pixel.
          */
         public double getBackgroundPrior()
         {
@@ -222,8 +213,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Sets the prior probability that each individual pixel is a background pixel.
-         * param bgprior automatically generated
+         @brief Sets the prior probability that each individual pixel is a background pixel.
          */
         public void setBackgroundPrior(double bgprior)
         {
@@ -240,8 +230,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Returns the kernel radius used for morphological operations
-         * return automatically generated
+         @brief Returns the kernel radius used for morphological operations
          */
         public int getSmoothingRadius()
         {
@@ -258,8 +247,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Sets the kernel radius used for morphological operations
-         * param radius automatically generated
+         @brief Sets the kernel radius used for morphological operations
          */
         public void setSmoothingRadius(int radius)
         {
@@ -276,10 +264,9 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Returns the value of decision threshold.
-         *
-         *     Decision value is the value above which pixel is determined to be FG.
-         * return automatically generated
+         @brief Returns the value of decision threshold.
+         
+             Decision value is the value above which pixel is determined to be FG.
          */
         public double getDecisionThreshold()
         {
@@ -296,8 +283,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Sets the value of decision threshold.
-         * param thresh automatically generated
+         @brief Sets the value of decision threshold.
          */
         public void setDecisionThreshold(double thresh)
         {
@@ -314,8 +300,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Returns the status of background model update
-         * return automatically generated
+         @brief Returns the status of background model update
          */
         public bool getUpdateBackgroundModel()
         {
@@ -332,8 +317,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Sets the status of background model update
-         * param update automatically generated
+         @brief Sets the status of background model update
          */
         public void setUpdateBackgroundModel(bool update)
         {
@@ -350,8 +334,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Returns the minimum value taken on by pixels in image sequence. Usually 0.
-         * return automatically generated
+         @brief Returns the minimum value taken on by pixels in image sequence. Usually 0.
          */
         public double getMinVal()
         {
@@ -368,8 +351,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Sets the minimum value taken on by pixels in image sequence.
-         * param val automatically generated
+         @brief Sets the minimum value taken on by pixels in image sequence.
          */
         public void setMinVal(double val)
         {
@@ -386,8 +368,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Returns the maximum value taken on by pixels in image sequence. e.g. 1.0 or 255.
-         * return automatically generated
+         @brief Returns the maximum value taken on by pixels in image sequence. e.g. 1.0 or 255.
          */
         public double getMaxVal()
         {
@@ -404,8 +385,7 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Sets the maximum value taken on by pixels in image sequence.
-         * param val automatically generated
+         @brief Sets the maximum value taken on by pixels in image sequence.
          */
         public void setMaxVal(double val)
         {

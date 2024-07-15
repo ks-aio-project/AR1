@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,33 +10,23 @@ namespace OpenCVForUnity.VideoioModule
 {
     // C++: class VideoCapture
     /**
-     * Class for video capturing from video files, image sequences or cameras.
-     *
-     * The class provides C++ API for capturing video from cameras or for reading video files and image sequences.
-     *
-     * Here is how the class can be used:
-     * INCLUDE: samples/cpp/videocapture_basic.cpp
-     *
-     * <b>Note:</b> In REF: videoio_c "C API" the black-box structure {code CvCapture} is used instead of %VideoCapture.
-     * <b>Note:</b>
-     * <ul>
-     *   <li>
-     *    (C++) A basic sample on using the %VideoCapture interface can be found at
-     *     {code OPENCV_SOURCE_CODE/samples/cpp/videocapture_starter.cpp}
-     *   </li>
-     *   <li>
-     *    (Python) A basic sample on using the %VideoCapture interface can be found at
-     *     {code OPENCV_SOURCE_CODE/samples/python/video.py}
-     *   </li>
-     *   <li>
-     *    (Python) A multi threaded video processing sample can be found at
-     *     {code OPENCV_SOURCE_CODE/samples/python/video_threaded.py}
-     *   </li>
-     *   <li>
-     *    (Python) %VideoCapture sample showcasing some features of the Video4Linux2 backend
-     *     {code OPENCV_SOURCE_CODE/samples/python/video_v4l2.py}
-     *   </li>
-     * </ul>
+     @brief Class for video capturing from video files, image sequences or cameras.
+     
+     The class provides C++ API for capturing video from cameras or for reading video files and image sequences.
+     
+     Here is how the class can be used:
+     @include samples/cpp/videocapture_basic.cpp
+     
+     @note In @ref videoio_c "C API" the black-box structure `CvCapture` is used instead of %VideoCapture.
+     @note
+     -   (C++) A basic sample on using the %VideoCapture interface can be found at
+         `OPENCV_SOURCE_CODE/samples/cpp/videocapture_starter.cpp`
+     -   (Python) A basic sample on using the %VideoCapture interface can be found at
+         `OPENCV_SOURCE_CODE/samples/python/video.py`
+     -   (Python) A multi threaded video processing sample can be found at
+         `OPENCV_SOURCE_CODE/samples/python/video_threaded.py`
+     -   (Python) %VideoCapture sample showcasing some features of the Video4Linux2 backend
+         `OPENCV_SOURCE_CODE/samples/python/video_v4l2.py`
      */
 
     public class VideoCapture : DisposableOpenCVObject
@@ -77,10 +67,10 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Default constructor
-         *     <b>Note:</b> In REF: videoio_c "C API", when you finished working with video, release CvCapture structure with
-         *     cvReleaseCapture(), or use Ptr&lt;CvCapture&gt; that calls cvReleaseCapture() automatically in the
-         *     destructor.
+         @brief Default constructor
+             @note In @ref videoio_c "C API", when you finished working with video, release CvCapture structure with
+             cvReleaseCapture(), or use Ptr&lt;CvCapture&gt; that calls cvReleaseCapture() automatically in the
+             destructor.
          */
         public VideoCapture()
         {
@@ -97,30 +87,20 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         *
-         *      Opens a video file or a capturing device or an IP video stream for video capturing with API Preference
-         *
-         *     param filename it can be:
-         * <ul>
-         *   <li>
-         *      name of video file (eg. {code video.avi})
-         *   </li>
-         *   <li>
-         *      or image sequence (eg. {code img_%02d.jpg}, which will read samples like {code img_00.jpg, img_01.jpg, img_02.jpg, ...})
-         *   </li>
-         *   <li>
-         *      or URL of video stream (eg. {code protocol://host:port/script_name?script_params|auth})
-         *   </li>
-         *   <li>
-         *      or GStreamer pipeline string in gst-launch tool format in case if GStreamer is used as backend
-         *       Note that each video stream or IP camera feed has its own URL scheme. Please refer to the
-         *       documentation of source stream to know the right URL.
-         *     param apiPreference preferred Capture API backends to use. Can be used to enforce a specific reader
-         *     implementation if multiple are available: e.g. cv::CAP_FFMPEG or cv::CAP_IMAGES or cv::CAP_DSHOW.
-         *   </li>
-         * </ul>
-         *
-         *     SEE: cv::VideoCaptureAPIs
+         @overload
+             @brief  Opens a video file or a capturing device or an IP video stream for video capturing with API Preference
+         
+             @param filename it can be:
+             - name of video file (eg. `video.avi`)
+             - or image sequence (eg. `img_%02d.jpg`, which will read samples like `img_00.jpg, img_01.jpg, img_02.jpg, ...`)
+             - or URL of video stream (eg. `protocol://host:port/script_name?script_params|auth`)
+             - or GStreamer pipeline string in gst-launch tool format in case if GStreamer is used as backend
+               Note that each video stream or IP camera feed has its own URL scheme. Please refer to the
+               documentation of source stream to know the right URL.
+             @param apiPreference preferred Capture API backends to use. Can be used to enforce a specific reader
+             implementation if multiple are available: e.g. cv::CAP_FFMPEG or cv::CAP_IMAGES or cv::CAP_DSHOW.
+         
+             @sa cv::VideoCaptureAPIs
          */
         public VideoCapture(string filename, int apiPreference)
         {
@@ -132,29 +112,20 @@ namespace OpenCVForUnity.VideoioModule
         }
 
         /**
-         *
-         *      Opens a video file or a capturing device or an IP video stream for video capturing with API Preference
-         *
-         *     param filename it can be:
-         * <ul>
-         *   <li>
-         *      name of video file (eg. {code video.avi})
-         *   </li>
-         *   <li>
-         *      or image sequence (eg. {code img_%02d.jpg}, which will read samples like {code img_00.jpg, img_01.jpg, img_02.jpg, ...})
-         *   </li>
-         *   <li>
-         *      or URL of video stream (eg. {code protocol://host:port/script_name?script_params|auth})
-         *   </li>
-         *   <li>
-         *      or GStreamer pipeline string in gst-launch tool format in case if GStreamer is used as backend
-         *       Note that each video stream or IP camera feed has its own URL scheme. Please refer to the
-         *       documentation of source stream to know the right URL.
-         *     implementation if multiple are available: e.g. cv::CAP_FFMPEG or cv::CAP_IMAGES or cv::CAP_DSHOW.
-         *   </li>
-         * </ul>
-         *
-         *     SEE: cv::VideoCaptureAPIs
+         @overload
+             @brief  Opens a video file or a capturing device or an IP video stream for video capturing with API Preference
+         
+             @param filename it can be:
+             - name of video file (eg. `video.avi`)
+             - or image sequence (eg. `img_%02d.jpg`, which will read samples like `img_00.jpg, img_01.jpg, img_02.jpg, ...`)
+             - or URL of video stream (eg. `protocol://host:port/script_name?script_params|auth`)
+             - or GStreamer pipeline string in gst-launch tool format in case if GStreamer is used as backend
+               Note that each video stream or IP camera feed has its own URL scheme. Please refer to the
+               documentation of source stream to know the right URL.
+             @param apiPreference preferred Capture API backends to use. Can be used to enforce a specific reader
+             implementation if multiple are available: e.g. cv::CAP_FFMPEG or cv::CAP_IMAGES or cv::CAP_DSHOW.
+         
+             @sa cv::VideoCaptureAPIs
          */
         public VideoCapture(string filename)
         {
@@ -171,14 +142,11 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         *
-         *     Opens a video file or a capturing device or an IP video stream for video capturing with API Preference and parameters
-         *
-         *     The {code params} parameter allows to specify extra parameters encoded as pairs {code (paramId_1, paramValue_1, paramId_2, paramValue_2, ...)}.
-         *     See cv::VideoCaptureProperties
-         * param filename automatically generated
-         * param apiPreference automatically generated
-         * param _params automatically generated
+         @overload
+             @brief Opens a video file or a capturing device or an IP video stream for video capturing with API Preference and parameters
+         
+             The `params` parameter allows to specify extra parameters encoded as pairs `(paramId_1, paramValue_1, paramId_2, paramValue_2, ...)`.
+             See cv::VideoCaptureProperties
          */
         public VideoCapture(string filename, int apiPreference, MatOfInt _params)
         {
@@ -195,15 +163,15 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         *
-         *      Opens a camera for video capturing
-         *
-         *     param index id of the video capturing device to open. To open default camera using default backend just pass 0.
-         *     (to backward compatibility usage of camera_id + domain_offset (CAP_*) is valid when apiPreference is CAP_ANY)
-         *     param apiPreference preferred Capture API backends to use. Can be used to enforce a specific reader
-         *     implementation if multiple are available: e.g. cv::CAP_DSHOW or cv::CAP_MSMF or cv::CAP_V4L.
-         *
-         *     SEE: cv::VideoCaptureAPIs
+         @overload
+             @brief  Opens a camera for video capturing
+         
+             @param index id of the video capturing device to open. To open default camera using default backend just pass 0.
+             (to backward compatibility usage of camera_id + domain_offset (CAP_*) is valid when apiPreference is CAP_ANY)
+             @param apiPreference preferred Capture API backends to use. Can be used to enforce a specific reader
+             implementation if multiple are available: e.g. cv::CAP_DSHOW or cv::CAP_MSMF or cv::CAP_V4L.
+         
+             @sa cv::VideoCaptureAPIs
          */
         public VideoCapture(int index, int apiPreference)
         {
@@ -215,14 +183,15 @@ namespace OpenCVForUnity.VideoioModule
         }
 
         /**
-         *
-         *      Opens a camera for video capturing
-         *
-         *     param index id of the video capturing device to open. To open default camera using default backend just pass 0.
-         *     (to backward compatibility usage of camera_id + domain_offset (CAP_*) is valid when apiPreference is CAP_ANY)
-         *     implementation if multiple are available: e.g. cv::CAP_DSHOW or cv::CAP_MSMF or cv::CAP_V4L.
-         *
-         *     SEE: cv::VideoCaptureAPIs
+         @overload
+             @brief  Opens a camera for video capturing
+         
+             @param index id of the video capturing device to open. To open default camera using default backend just pass 0.
+             (to backward compatibility usage of camera_id + domain_offset (CAP_*) is valid when apiPreference is CAP_ANY)
+             @param apiPreference preferred Capture API backends to use. Can be used to enforce a specific reader
+             implementation if multiple are available: e.g. cv::CAP_DSHOW or cv::CAP_MSMF or cv::CAP_V4L.
+         
+             @sa cv::VideoCaptureAPIs
          */
         public VideoCapture(int index)
         {
@@ -239,14 +208,11 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         *
-         *     Opens a camera for video capturing with API Preference and parameters
-         *
-         *     The {code params} parameter allows to specify extra parameters encoded as pairs {code (paramId_1, paramValue_1, paramId_2, paramValue_2, ...)}.
-         *     See cv::VideoCaptureProperties
-         * param index automatically generated
-         * param apiPreference automatically generated
-         * param _params automatically generated
+         @overload
+             @brief Opens a camera for video capturing with API Preference and parameters
+         
+             The `params` parameter allows to specify extra parameters encoded as pairs `(paramId_1, paramValue_1, paramId_2, paramValue_2, ...)`.
+             See cv::VideoCaptureProperties
          */
         public VideoCapture(int index, int apiPreference, MatOfInt _params)
         {
@@ -263,16 +229,14 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         *  Opens a video file or a capturing device or an IP video stream for video capturing.
-         *
-         *     
-         *
-         *     Parameters are same as the constructor VideoCapture(const String&amp; filename, int apiPreference = CAP_ANY)
-         *     return {code true} if the file has been successfully opened
-         *
-         *     The method first calls VideoCapture::release to close the already opened file or camera.
-         * param filename automatically generated
-         * param apiPreference automatically generated
+         @brief  Opens a video file or a capturing device or an IP video stream for video capturing.
+         
+             @overload
+         
+             Parameters are same as the constructor VideoCapture(const String&amp; filename, int apiPreference = CAP_ANY)
+             @return `true` if the file has been successfully opened
+         
+             The method first calls VideoCapture::release to close the already opened file or camera.
          */
         public bool open(string filename, int apiPreference)
         {
@@ -284,15 +248,14 @@ namespace OpenCVForUnity.VideoioModule
         }
 
         /**
-         *  Opens a video file or a capturing device or an IP video stream for video capturing.
-         *
-         *     
-         *
-         *     Parameters are same as the constructor VideoCapture(const String&amp; filename, int apiPreference = CAP_ANY)
-         *     return {code true} if the file has been successfully opened
-         *
-         *     The method first calls VideoCapture::release to close the already opened file or camera.
-         * param filename automatically generated
+         @brief  Opens a video file or a capturing device or an IP video stream for video capturing.
+         
+             @overload
+         
+             Parameters are same as the constructor VideoCapture(const String&amp; filename, int apiPreference = CAP_ANY)
+             @return `true` if the file has been successfully opened
+         
+             The method first calls VideoCapture::release to close the already opened file or camera.
          */
         public bool open(string filename)
         {
@@ -309,19 +272,16 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         *  Opens a camera for video capturing
-         *
-         *     
-         *
-         *     The {code params} parameter allows to specify extra parameters encoded as pairs {code (paramId_1, paramValue_1, paramId_2, paramValue_2, ...)}.
-         *     See cv::VideoCaptureProperties
-         *
-         *     return {code true} if the file has been successfully opened
-         *
-         *     The method first calls VideoCapture::release to close the already opened file or camera.
-         * param filename automatically generated
-         * param apiPreference automatically generated
-         * param _params automatically generated
+         @brief  Opens a video file or a capturing device or an IP video stream for video capturing with API Preference and parameters
+         
+             @overload
+         
+             The `params` parameter allows to specify extra parameters encoded as pairs `(paramId_1, paramValue_1, paramId_2, paramValue_2, ...)`.
+             See cv::VideoCaptureProperties
+         
+             @return `true` if the file has been successfully opened
+         
+             The method first calls VideoCapture::release to close the already opened file or camera.
          */
         public bool open(string filename, int apiPreference, MatOfInt _params)
         {
@@ -339,16 +299,14 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         *  Opens a camera for video capturing
-         *
-         *     
-         *
-         *     Parameters are same as the constructor VideoCapture(int index, int apiPreference = CAP_ANY)
-         *     return {code true} if the camera has been successfully opened.
-         *
-         *     The method first calls VideoCapture::release to close the already opened file or camera.
-         * param index automatically generated
-         * param apiPreference automatically generated
+         @brief  Opens a camera for video capturing
+         
+             @overload
+         
+             Parameters are same as the constructor VideoCapture(int index, int apiPreference = CAP_ANY)
+             @return `true` if the camera has been successfully opened.
+         
+             The method first calls VideoCapture::release to close the already opened file or camera.
          */
         public bool open(int index, int apiPreference)
         {
@@ -360,15 +318,14 @@ namespace OpenCVForUnity.VideoioModule
         }
 
         /**
-         *  Opens a camera for video capturing
-         *
-         *     
-         *
-         *     Parameters are same as the constructor VideoCapture(int index, int apiPreference = CAP_ANY)
-         *     return {code true} if the camera has been successfully opened.
-         *
-         *     The method first calls VideoCapture::release to close the already opened file or camera.
-         * param index automatically generated
+         @brief  Opens a camera for video capturing
+         
+             @overload
+         
+             Parameters are same as the constructor VideoCapture(int index, int apiPreference = CAP_ANY)
+             @return `true` if the camera has been successfully opened.
+         
+             The method first calls VideoCapture::release to close the already opened file or camera.
          */
         public bool open(int index)
         {
@@ -385,19 +342,16 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Returns true if video capturing has been initialized already.
-         *
-         *     
-         *
-         *     The {code params} parameter allows to specify extra parameters encoded as pairs {code (paramId_1, paramValue_1, paramId_2, paramValue_2, ...)}.
-         *     See cv::VideoCaptureProperties
-         *
-         *     return {code true} if the camera has been successfully opened.
-         *
-         *     The method first calls VideoCapture::release to close the already opened file or camera.
-         * param index automatically generated
-         * param apiPreference automatically generated
-         * param _params automatically generated
+         @brief  Opens a camera for video capturing with API Preference and parameters
+         
+             @overload
+         
+             The `params` parameter allows to specify extra parameters encoded as pairs `(paramId_1, paramValue_1, paramId_2, paramValue_2, ...)`.
+             See cv::VideoCaptureProperties
+         
+             @return `true` if the camera has been successfully opened.
+         
+             The method first calls VideoCapture::release to close the already opened file or camera.
          */
         public bool open(int index, int apiPreference, MatOfInt _params)
         {
@@ -415,11 +369,10 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Returns true if video capturing has been initialized already.
-         *
-         *     If the previous call to VideoCapture constructor or VideoCapture::open() succeeded, the method returns
-         *     true.
-         * return automatically generated
+         @brief Returns true if video capturing has been initialized already.
+         
+             If the previous call to VideoCapture constructor or VideoCapture::open() succeeded, the method returns
+             true.
          */
         public bool isOpened()
         {
@@ -436,12 +389,12 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Closes video file or capturing device.
-         *
-         *     The method is automatically called by subsequent VideoCapture::open and by VideoCapture
-         *     destructor.
-         *
-         *     The C function also deallocates memory and clears \*capture pointer.
+         @brief Closes video file or capturing device.
+         
+             The method is automatically called by subsequent VideoCapture::open and by VideoCapture
+             destructor.
+         
+             The C function also deallocates memory and clears \*capture pointer.
          */
         public void release()
         {
@@ -458,24 +411,24 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Grabs the next frame from video file or capturing device.
-         *
-         *     return {code true} (non-zero) in the case of success.
-         *
-         *     The method/function grabs the next frame from video file or camera and returns true (non-zero) in
-         *     the case of success.
-         *
-         *     The primary use of the function is in multi-camera environments, especially when the cameras do not
-         *     have hardware synchronization. That is, you call VideoCapture::grab() for each camera and after that
-         *     call the slower method VideoCapture::retrieve() to decode and get frame from each camera. This way
-         *     the overhead on demosaicing or motion jpeg decompression etc. is eliminated and the retrieved frames
-         *     from different cameras will be closer in time.
-         *
-         *     Also, when a connected camera is multi-head (for example, a stereo camera or a Kinect device), the
-         *     correct way of retrieving data from it is to call VideoCapture::grab() first and then call
-         *     VideoCapture::retrieve() one or more times with different values of the channel parameter.
-         *
-         *     REF: tutorial_kinect_openni
+         @brief Grabs the next frame from video file or capturing device.
+         
+             @return `true` (non-zero) in the case of success.
+         
+             The method/function grabs the next frame from video file or camera and returns true (non-zero) in
+             the case of success.
+         
+             The primary use of the function is in multi-camera environments, especially when the cameras do not
+             have hardware synchronization. That is, you call VideoCapture::grab() for each camera and after that
+             call the slower method VideoCapture::retrieve() to decode and get frame from each camera. This way
+             the overhead on demosaicing or motion jpeg decompression etc. is eliminated and the retrieved frames
+             from different cameras will be closer in time.
+         
+             Also, when a connected camera is multi-head (for example, a stereo camera or a Kinect device), the
+             correct way of retrieving data from it is to call VideoCapture::grab() first and then call
+             VideoCapture::retrieve() one or more times with different values of the channel parameter.
+         
+             @ref tutorial_kinect_openni
          */
         public bool grab()
         {
@@ -492,21 +445,21 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Decodes and returns the grabbed video frame.
-         *
-         *     param flag it could be a frame index or a driver specific flag
-         *     return {code false} if no frames has been grabbed
-         *
-         *     The method decodes and returns the just grabbed frame. If no frames has been grabbed
-         *     (camera has been disconnected, or there are no more frames in video file), the method returns false
-         *     and the function returns an empty image (with %cv::Mat, test it with Mat::empty()).
-         *
-         *     SEE: read()
-         *
-         *     <b>Note:</b> In REF: videoio_c "C API", functions cvRetrieveFrame() and cv.RetrieveFrame() return image stored inside the video
-         *     capturing structure. It is not allowed to modify or release the image! You can copy the frame using
-         *     cvCloneImage and then do whatever you want with the copy.
-         * param image automatically generated
+         @brief Decodes and returns the grabbed video frame.
+         
+             @param [out] image the video frame is returned here. If no frames has been grabbed the image will be empty.
+             @param flag it could be a frame index or a driver specific flag
+             @return `false` if no frames has been grabbed
+         
+             The method decodes and returns the just grabbed frame. If no frames has been grabbed
+             (camera has been disconnected, or there are no more frames in video file), the method returns false
+             and the function returns an empty image (with %cv::Mat, test it with Mat::empty()).
+         
+             @sa read()
+         
+             @note In @ref videoio_c "C API", functions cvRetrieveFrame() and cv.RetrieveFrame() return image stored inside the video
+             capturing structure. It is not allowed to modify or release the image! You can copy the frame using
+             cvCloneImage and then do whatever you want with the copy.
          */
         public bool retrieve(Mat image, int flag)
         {
@@ -519,20 +472,21 @@ namespace OpenCVForUnity.VideoioModule
         }
 
         /**
-         * Decodes and returns the grabbed video frame.
-         *
-         *     return {code false} if no frames has been grabbed
-         *
-         *     The method decodes and returns the just grabbed frame. If no frames has been grabbed
-         *     (camera has been disconnected, or there are no more frames in video file), the method returns false
-         *     and the function returns an empty image (with %cv::Mat, test it with Mat::empty()).
-         *
-         *     SEE: read()
-         *
-         *     <b>Note:</b> In REF: videoio_c "C API", functions cvRetrieveFrame() and cv.RetrieveFrame() return image stored inside the video
-         *     capturing structure. It is not allowed to modify or release the image! You can copy the frame using
-         *     cvCloneImage and then do whatever you want with the copy.
-         * param image automatically generated
+         @brief Decodes and returns the grabbed video frame.
+         
+             @param [out] image the video frame is returned here. If no frames has been grabbed the image will be empty.
+             @param flag it could be a frame index or a driver specific flag
+             @return `false` if no frames has been grabbed
+         
+             The method decodes and returns the just grabbed frame. If no frames has been grabbed
+             (camera has been disconnected, or there are no more frames in video file), the method returns false
+             and the function returns an empty image (with %cv::Mat, test it with Mat::empty()).
+         
+             @sa read()
+         
+             @note In @ref videoio_c "C API", functions cvRetrieveFrame() and cv.RetrieveFrame() return image stored inside the video
+             capturing structure. It is not allowed to modify or release the image! You can copy the frame using
+             cvCloneImage and then do whatever you want with the copy.
          */
         public bool retrieve(Mat image)
         {
@@ -550,19 +504,19 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Grabs, decodes and returns the next video frame.
-         *
-         *     return {code false} if no frames has been grabbed
-         *
-         *     The method/function combines VideoCapture::grab() and VideoCapture::retrieve() in one call. This is the
-         *     most convenient method for reading video files or capturing data from decode and returns the just
-         *     grabbed frame. If no frames has been grabbed (camera has been disconnected, or there are no more
-         *     frames in video file), the method returns false and the function returns empty image (with %cv::Mat, test it with Mat::empty()).
-         *
-         *     <b>Note:</b> In REF: videoio_c "C API", functions cvRetrieveFrame() and cv.RetrieveFrame() return image stored inside the video
-         *     capturing structure. It is not allowed to modify or release the image! You can copy the frame using
-         *     cvCloneImage and then do whatever you want with the copy.
-         * param image automatically generated
+         @brief Grabs, decodes and returns the next video frame.
+         
+             @param [out] image the video frame is returned here. If no frames has been grabbed the image will be empty.
+             @return `false` if no frames has been grabbed
+         
+             The method/function combines VideoCapture::grab() and VideoCapture::retrieve() in one call. This is the
+             most convenient method for reading video files or capturing data from decode and returns the just
+             grabbed frame. If no frames has been grabbed (camera has been disconnected, or there are no more
+             frames in video file), the method returns false and the function returns empty image (with %cv::Mat, test it with Mat::empty()).
+         
+             @note In @ref videoio_c "C API", functions cvRetrieveFrame() and cv.RetrieveFrame() return image stored inside the video
+             capturing structure. It is not allowed to modify or release the image! You can copy the frame using
+             cvCloneImage and then do whatever you want with the copy.
          */
         public bool read(Mat image)
         {
@@ -580,14 +534,14 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Sets a property in the VideoCapture.
-         *
-         *     param propId Property identifier from cv::VideoCaptureProperties (eg. cv::CAP_PROP_POS_MSEC, cv::CAP_PROP_POS_FRAMES, ...)
-         *     or one from REF: videoio_flags_others
-         *     param value Value of the property.
-         *     return {code true} if the property is supported by backend used by the VideoCapture instance.
-         *     <b>Note:</b> Even if it returns {code true} this doesn't ensure that the property
-         *     value has been accepted by the capture device. See note in VideoCapture::get()
+         @brief Sets a property in the VideoCapture.
+         
+             @param propId Property identifier from cv::VideoCaptureProperties (eg. cv::CAP_PROP_POS_MSEC, cv::CAP_PROP_POS_FRAMES, ...)
+             or one from @ref videoio_flags_others
+             @param value Value of the property.
+             @return `true` if the property is supported by backend used by the VideoCapture instance.
+             @note Even if it returns `true` this doesn't ensure that the property
+             value has been accepted by the capture device. See note in VideoCapture::get()
          */
         public bool set(int propId, double value)
         {
@@ -604,21 +558,21 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Returns the specified VideoCapture property
-         *
-         *     param propId Property identifier from cv::VideoCaptureProperties (eg. cv::CAP_PROP_POS_MSEC, cv::CAP_PROP_POS_FRAMES, ...)
-         *     or one from REF: videoio_flags_others
-         *     return Value for the specified property. Value 0 is returned when querying a property that is
-         *     not supported by the backend used by the VideoCapture instance.
-         *
-         *     <b>Note:</b> Reading / writing properties involves many layers. Some unexpected result might happens
-         *     along this chain.
-         *     <code>
-         *     VideoCapture -&gt; API Backend -&gt; Operating System -&gt; Device Driver -&gt; Device Hardware
-         *     </code>
-         *     The returned value might be different from what really used by the device or it could be encoded
-         *     using device dependent rules (eg. steps or percentage). Effective behaviour depends from device
-         *     driver and API Backend
+         @brief Returns the specified VideoCapture property
+         
+             @param propId Property identifier from cv::VideoCaptureProperties (eg. cv::CAP_PROP_POS_MSEC, cv::CAP_PROP_POS_FRAMES, ...)
+             or one from @ref videoio_flags_others
+             @return Value for the specified property. Value 0 is returned when querying a property that is
+             not supported by the backend used by the VideoCapture instance.
+         
+             @note Reading / writing properties involves many layers. Some unexpected result might happens
+             along this chain.
+             @code{.txt}
+             VideoCapture -&gt; API Backend -&gt; Operating System -&gt; Device Driver -&gt; Device Hardware
+             @endcode
+             The returned value might be different from what really used by the device or it could be encoded
+             using device dependent rules (eg. steps or percentage). Effective behaviour depends from device
+             driver and API Backend
          */
         public double get(int propId)
         {
@@ -635,10 +589,9 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Returns used backend API name
-         *
-         *      <b>Note:</b> Stream should be opened.
-         * return automatically generated
+         @brief Returns used backend API name
+         
+              @note Stream should be opened.
          */
         public string getBackendName()
         {
@@ -655,10 +608,9 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Switches exceptions mode
-         *
-         * methods raise exceptions if not successful instead of returning an error code
-         * param enable automatically generated
+         Switches exceptions mode
+              *
+              * methods raise exceptions if not successful instead of returning an error code
          */
         public void setExceptionMode(bool enable)
         {
@@ -682,6 +634,13 @@ namespace OpenCVForUnity.VideoioModule
 
 
         }
+
+
+        //
+        // C++: static bool cv::VideoCapture::waitAny(vector_VideoCapture streams, vector_int& readyIndex, int64 timeoutNs = 0)
+        //
+
+        // Unknown type 'vector_VideoCapture' (I), skipping the function
 
 
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR

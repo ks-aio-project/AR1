@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 using System;
 using System.Collections.Generic;
@@ -424,7 +424,7 @@ namespace OpenCVForUnity.CoreModule
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat">org.opencv.core.Mat</a>
      */
-    public class Mat : DisposableOpenCVObject
+    partial class Mat : DisposableOpenCVObject
     {
 
         // C++: enum
@@ -1929,6 +1929,7 @@ namespace OpenCVForUnity.CoreModule
          * Element-wise multiplication with scale factor
          * @param m operand with with which to perform element-wise multiplication
          * @param scale scale factor
+         * @return reference to a new Mat object
          */
         public Mat mul(Mat m, double scale)
         {
@@ -1943,6 +1944,7 @@ namespace OpenCVForUnity.CoreModule
         /**
         * Element-wise multiplication
         * @param m operand with with which to perform element-wise multiplication
+        * @return reference to a new Mat object
         */
         public Mat mul(Mat m)
         {
@@ -1958,6 +1960,7 @@ namespace OpenCVForUnity.CoreModule
         * Matrix multiplication
         * @param m operand with with which to perform matrix multiplication
         * @see Core#gemm(Mat, Mat, double, Mat, double, Mat, int)
+        * @return reference to a new Mat object
         */
         public Mat matMul(Mat m)
         {
@@ -2970,7 +2973,7 @@ namespace OpenCVForUnity.CoreModule
             if (data == null || length % CvType.channels(t) != 0)
                 throw new CvException(
                         "Provided data element number (" +
-                                (data == null ? 0 : data.Length) +
+                                (data == null ? 0 : length) +
                                 ") should be multiple of the Mat channels count (" +
                                 CvType.channels(t) + ")");
             if (CvType.depth(t) == CvType.CV_8U || CvType.depth(t) == CvType.CV_8S)
@@ -2990,7 +2993,7 @@ namespace OpenCVForUnity.CoreModule
             if (data == null || length % CvType.channels(t) != 0)
                 throw new CvException(
                         "Provided data element number (" +
-                                (data == null ? 0 : data.Length) +
+                                (data == null ? 0 : length) +
                                 ") should be multiple of the Mat channels count (" +
                                 CvType.channels(t) + ")");
             if (idx.Length != dims())
@@ -3632,288 +3635,43 @@ namespace OpenCVForUnity.CoreModule
         private static extern int core_Mat_nPutBwIdxOffset(IntPtr self, int[] idx, int length, int count, int offset, [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] byte[] data);
 
         [DllImport(LIBNAME)]
-        private static extern int core_Mat_nGetB(IntPtr self, int row, int col, int count, [In, Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] byte[] vals);
+        private static extern int core_Mat_nGetB(IntPtr self, int row, int col, int count, [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] byte[] vals);
 
         [DllImport(LIBNAME)]
-        private static extern int core_Mat_nGetBIdx(IntPtr self, int[] idx, int length, int count, [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] byte[] vals);
+        private static extern int core_Mat_nGetBIdx(IntPtr self, int[] idx, int length, int count, [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] byte[] vals);
 
         [DllImport(LIBNAME)]
-        private static extern int core_Mat_nGetS(IntPtr self, int row, int col, int count, [In, Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] short[] vals);
+        private static extern int core_Mat_nGetS(IntPtr self, int row, int col, int count, [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] short[] vals);
 
         [DllImport(LIBNAME)]
-        private static extern int core_Mat_nGetSIdx(IntPtr self, int[] idx, int length, int count, [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] short[] vals);
+        private static extern int core_Mat_nGetSIdx(IntPtr self, int[] idx, int length, int count, [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] short[] vals);
 
         [DllImport(LIBNAME)]
-        private static extern int core_Mat_nGetI(IntPtr self, int row, int col, int count, [In, Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] int[] vals);
+        private static extern int core_Mat_nGetI(IntPtr self, int row, int col, int count, [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] int[] vals);
 
         [DllImport(LIBNAME)]
-        private static extern int core_Mat_nGetIIdx(IntPtr self, int[] idx, int length, int count, [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] int[] vals);
+        private static extern int core_Mat_nGetIIdx(IntPtr self, int[] idx, int length, int count, [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] int[] vals);
 
         [DllImport(LIBNAME)]
-        private static extern int core_Mat_nGetF(IntPtr self, int row, int col, int count, [In, Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] float[] vals);
+        private static extern int core_Mat_nGetF(IntPtr self, int row, int col, int count, [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] float[] vals);
 
         [DllImport(LIBNAME)]
-        private static extern int core_Mat_nGetFIdx(IntPtr self, int[] idx, int length, int count, [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] float[] vals);
+        private static extern int core_Mat_nGetFIdx(IntPtr self, int[] idx, int length, int count, [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] float[] vals);
 
         [DllImport(LIBNAME)]
-        private static extern int core_Mat_nGetD(IntPtr self, int row, int col, int count, [In, Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] double[] vals);
+        private static extern int core_Mat_nGetD(IntPtr self, int row, int col, int count, [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] double[] vals);
 
         [DllImport(LIBNAME)]
-        private static extern int core_Mat_nGetDIdx(IntPtr self, int[] idx, int length, int count, [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] double[] vals);
+        private static extern int core_Mat_nGetDIdx(IntPtr self, int[] idx, int length, int count, [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] double[] vals);
 
         [DllImport(LIBNAME)]
-        private static extern int core_Mat_nGet(IntPtr self, int row, int col, int count, [In, Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] double[] vals);
+        private static extern int core_Mat_nGet(IntPtr self, int row, int col, int count, [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] double[] vals);
 
         [DllImport(LIBNAME)]
-        private static extern int core_Mat_nGetIdx(IntPtr self, int[] idx, int length, int count, [In, Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] double[] vals);
+        private static extern int core_Mat_nGetIdx(IntPtr self, int[] idx, int length, int count, [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] double[] vals);
 
         [DllImport(LIBNAME)]
         private static extern IntPtr core_Mat_nDump(IntPtr self);
 
-        //
-        #region Operators
-
-        // (here A, B stand for matrices ( Mat ), s for a scalar ( Scalar ), alpha for a real-valued scalar ( double ).)
-
-        #region Unary
-
-        #region -
-        // Negation.
-        // -A
-        public static Mat operator -(Mat a)
-        {
-            Mat m = new Mat();
-            Core.multiply(a, Scalar.all(-1), m);
-            return m;
-        }
-        #endregion
-
-        #region ~
-
-        // Bitwise not.
-        // ~A
-        public static Mat operator ~(Mat a)
-        {
-            Mat m = new Mat();
-            Core.bitwise_not(a, m);
-            return m;
-        }
-
-        #endregion
-
-        #endregion
-
-
-        #region Binary
-
-        #region +
-        // Addition.
-        // A + B, A + s, s + A
-        // A += A, A += s
-        public static Mat operator +(Mat a, Mat b)
-        {
-            Mat m = new Mat();
-            Core.add(a, b, m);
-            return m;
-        }
-
-        public static Mat operator +(Mat a, Scalar s)
-        {
-            Mat m = new Mat();
-            Core.add(a, s, m);
-            return m;
-        }
-
-        public static Mat operator +(Scalar s, Mat a)
-        {
-            Mat m = new Mat();
-            Core.add(a, s, m);
-            return m;
-        }
-        #endregion
-
-        #region -
-        // Subtraction.
-        // A - B, A - s, s - A
-        // A -= A, A -= s
-        public static Mat operator -(Mat a, Mat b)
-        {
-            Mat m = new Mat();
-            Core.subtract(a, b, m);
-            return m;
-        }
-
-        public static Mat operator -(Mat a, Scalar s)
-        {
-            Mat m = new Mat();
-            Core.subtract(a, s, m);
-            return m;
-        }
-
-        public static Mat operator -(Scalar s, Mat a)
-        {
-            Mat m = new Mat();
-            using (Mat b = new Mat(a.size(), a.type(), s))
-            {
-                Core.subtract(b, a, m);
-            }
-            return m;
-        }
-        #endregion
-
-        #region *
-        // Matrix multiplication.
-        // A * A
-        public static Mat operator *(Mat a, Mat b)
-        {
-            Mat m = new Mat();
-            Core.gemm(a, b, 1, new Mat(), 0, m);
-            return m;
-        }
-
-        // Scaling.
-        // A * alpha, alpha * A
-        public static Mat operator *(Mat a, double s)
-        {
-            Mat m = new Mat();
-            Core.multiply(a, Scalar.all(s), m);
-            return m;
-        }
-
-        public static Mat operator *(double s, Mat a)
-        {
-            Mat m = new Mat();
-            Core.multiply(a, Scalar.all(s), m);
-            return m;
-        }
-        #endregion
-
-        #region /
-        // Per-element multiplication and division.
-        // A / A, alpha / A
-        public static Mat operator /(Mat a, Mat b)
-        {
-            Mat m = new Mat();
-            Core.divide(a, b, m);
-            return m;
-        }
-
-        public static Mat operator /(double s, Mat a)
-        {
-            Mat m = new Mat();
-            using (Mat b = new Mat(a.size(), a.type(), Scalar.all(s)))
-            {
-                Core.divide(b, a, m);
-            }
-            return m;
-        }
-
-        // Scaling.
-        // A / alpha
-        public static Mat operator /(Mat a, double s)
-        {
-            Mat m = new Mat();
-            Core.divide(a, Scalar.all(s), m);
-            return m;
-        }
-        #endregion
-
-        #region &
-        // Bitwise and.
-        // A & A, A & s, s & A
-        public static Mat operator &(Mat a, Mat b)
-        {
-            Mat m = new Mat();
-            Core.bitwise_and(a, b, m);
-            return m;
-        }
-
-        public static Mat operator &(Mat a, Scalar s)
-        {
-            Mat m = new Mat();
-            using (Mat b = new Mat(a.size(), a.type(), s))
-            {
-                Core.bitwise_and(a, b, m);
-            }
-            return m;
-        }
-
-        public static Mat operator &(Scalar s, Mat a)
-        {
-            Mat m = new Mat();
-            using (Mat b = new Mat(a.size(), a.type(), s))
-            {
-                Core.bitwise_and(b, a, m);
-            }
-            return m;
-        }
-        #endregion
-
-        #region |
-        // Bitwise or.
-        // A | A, A | s, s | A
-        public static Mat operator |(Mat a, Mat b)
-        {
-            Mat m = new Mat();
-            Core.bitwise_or(a, b, m);
-            return m;
-        }
-
-        public static Mat operator |(Mat a, Scalar s)
-        {
-            Mat m = new Mat();
-            using (Mat b = new Mat(a.size(), a.type(), s))
-            {
-                Core.bitwise_or(a, b, m);
-            }
-            return m;
-        }
-
-        public static Mat operator |(Scalar s, Mat a)
-        {
-            Mat m = new Mat();
-            using (Mat b = new Mat(a.size(), a.type(), s))
-            {
-                Core.bitwise_or(b, a, m);
-            }
-            return m;
-        }
-        #endregion
-
-        #region ^
-        // Bitwise xor.
-        // A ^ A, A ^ s, s ^ A
-        public static Mat operator ^(Mat a, Mat b)
-        {
-            Mat m = new Mat();
-            Core.bitwise_xor(a, b, m);
-            return m;
-        }
-
-        public static Mat operator ^(Mat a, Scalar s)
-        {
-            Mat m = new Mat();
-            using (Mat b = new Mat(a.size(), a.type(), s))
-            {
-                Core.bitwise_xor(a, b, m);
-            }
-            return m;
-        }
-
-        public static Mat operator ^(Scalar s, Mat a)
-        {
-            Mat m = new Mat();
-            using (Mat b = new Mat(a.size(), a.type(), s))
-            {
-                Core.bitwise_xor(b, a, m);
-            }
-            return m;
-        }
-        #endregion
-
-        #endregion
-
-        #endregion
-        //
     }
 }

@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,10 +10,10 @@ namespace OpenCVForUnity.Features2dModule
 
     // C++: class DescriptorMatcher
     /**
-     * Abstract base class for matching keypoint descriptors.
-     *
-     * It has two groups of match methods: for matching descriptors of an image with another image or with
-     * an image set.
+     @brief Abstract base class for matching keypoint descriptors.
+     
+     It has two groups of match methods: for matching descriptors of an image with another image or with
+     an image set.
      */
 
     public class DescriptorMatcher : Algorithm
@@ -58,13 +58,13 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Adds descriptors to train a CPU(trainDescCollectionis) or GPU(utrainDescCollectionis) descriptor
-         *     collection.
-         *
-         *     If the collection is not empty, the new descriptors are added to existing train descriptors.
-         *
-         *     param descriptors Descriptors to add. Each descriptors[i] is a set of descriptors from the same
-         *     train image.
+         @brief Adds descriptors to train a CPU(trainDescCollectionis) or GPU(utrainDescCollectionis) descriptor
+             collection.
+         
+             If the collection is not empty, the new descriptors are added to existing train descriptors.
+         
+             @param descriptors Descriptors to add. Each descriptors[i] is a set of descriptors from the same
+             train image.
          */
         public void add(List<Mat> descriptors)
         {
@@ -81,8 +81,7 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Returns a constant link to the train descriptor collection trainDescCollection .
-         * return automatically generated
+         @brief Returns a constant link to the train descriptor collection trainDescCollection .
          */
         public List<Mat> getTrainDescriptors()
         {
@@ -99,7 +98,7 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Clears the train descriptor collections.
+         @brief Clears the train descriptor collections.
          */
         public override void clear()
         {
@@ -116,8 +115,7 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Returns true if there are no train descriptors in the both collections.
-         * return automatically generated
+         @brief Returns true if there are no train descriptors in the both collections.
          */
         public override bool empty()
         {
@@ -134,8 +132,7 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Returns true if the descriptor matcher supports masking permissible matches.
-         * return automatically generated
+         @brief Returns true if the descriptor matcher supports masking permissible matches.
          */
         public bool isMaskSupported()
         {
@@ -152,12 +149,12 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Trains a descriptor matcher
-         *
-         *     Trains a descriptor matcher (for example, the flann index). In all methods to match, the method
-         *     train() is run every time before matching. Some descriptor matchers (for example, BruteForceMatcher)
-         *     have an empty implementation of this method. Other matchers really train their inner structures (for
-         *     example, FlannBasedMatcher trains flann::Index ).
+         @brief Trains a descriptor matcher
+         
+             Trains a descriptor matcher (for example, the flann index). In all methods to match, the method
+             train() is run every time before matching. Some descriptor matchers (for example, BruteForceMatcher)
+             have an empty implementation of this method. Other matchers really train their inner structures (for
+             example, FlannBasedMatcher trains flann::Index ).
          */
         public void train()
         {
@@ -174,21 +171,21 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Finds the best match for each descriptor from a query set.
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
-         *     collection stored in the class object.
-         *     param matches Matches. If a query descriptor is masked out in mask , no match is added for this
-         *     descriptor. So, matches size may be smaller than the query descriptors count.
-         *     param mask Mask specifying permissible matches between an input query and train matrices of
-         *     descriptors.
-         *
-         *     In the first variant of this method, the train descriptors are passed as an input argument. In the
-         *     second variant of the method, train descriptors collection that was set by DescriptorMatcher::add is
-         *     used. Optional mask (or masks) can be passed to specify which query and training descriptors can be
-         *     matched. Namely, queryDescriptors[i] can be matched with trainDescriptors[j] only if
-         *     mask.at&lt;uchar&gt;(i,j) is non-zero.
+         @brief Finds the best match for each descriptor from a query set.
+         
+             @param queryDescriptors Query set of descriptors.
+             @param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
+             collection stored in the class object.
+             @param matches Matches. If a query descriptor is masked out in mask , no match is added for this
+             descriptor. So, matches size may be smaller than the query descriptors count.
+             @param mask Mask specifying permissible matches between an input query and train matrices of
+             descriptors.
+         
+             In the first variant of this method, the train descriptors are passed as an input argument. In the
+             second variant of the method, train descriptors collection that was set by DescriptorMatcher::add is
+             used. Optional mask (or masks) can be passed to specify which query and training descriptors can be
+             matched. Namely, queryDescriptors[i] can be matched with trainDescriptors[j] only if
+             mask.at&lt;uchar&gt;(i,j) is non-zero.
          */
         public void match(Mat queryDescriptors, Mat trainDescriptors, MatOfDMatch matches, Mat mask)
         {
@@ -204,20 +201,21 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * Finds the best match for each descriptor from a query set.
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
-         *     collection stored in the class object.
-         *     param matches Matches. If a query descriptor is masked out in mask , no match is added for this
-         *     descriptor. So, matches size may be smaller than the query descriptors count.
-         *     descriptors.
-         *
-         *     In the first variant of this method, the train descriptors are passed as an input argument. In the
-         *     second variant of the method, train descriptors collection that was set by DescriptorMatcher::add is
-         *     used. Optional mask (or masks) can be passed to specify which query and training descriptors can be
-         *     matched. Namely, queryDescriptors[i] can be matched with trainDescriptors[j] only if
-         *     mask.at&lt;uchar&gt;(i,j) is non-zero.
+         @brief Finds the best match for each descriptor from a query set.
+         
+             @param queryDescriptors Query set of descriptors.
+             @param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
+             collection stored in the class object.
+             @param matches Matches. If a query descriptor is masked out in mask , no match is added for this
+             descriptor. So, matches size may be smaller than the query descriptors count.
+             @param mask Mask specifying permissible matches between an input query and train matrices of
+             descriptors.
+         
+             In the first variant of this method, the train descriptors are passed as an input argument. In the
+             second variant of the method, train descriptors collection that was set by DescriptorMatcher::add is
+             used. Optional mask (or masks) can be passed to specify which query and training descriptors can be
+             matched. Namely, queryDescriptors[i] can be matched with trainDescriptors[j] only if
+             mask.at&lt;uchar&gt;(i,j) is non-zero.
          */
         public void match(Mat queryDescriptors, Mat trainDescriptors, MatOfDMatch matches)
         {
@@ -237,23 +235,23 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Finds the k best matches for each descriptor from a query set.
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
-         *     collection stored in the class object.
-         *     param mask Mask specifying permissible matches between an input query and train matrices of
-         *     descriptors.
-         *     param matches Matches. Each matches[i] is k or less matches for the same query descriptor.
-         *     param k Count of best matches found per each query descriptor or less if a query descriptor has
-         *     less than k possible matches in total.
-         *     param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
-         *     false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
-         *     the matches vector does not contain matches for fully masked-out query descriptors.
-         *
-         *     These extended variants of DescriptorMatcher::match methods find several best matches for each query
-         *     descriptor. The matches are returned in the distance increasing order. See DescriptorMatcher::match
-         *     for the details about query and train descriptors.
+         @brief Finds the k best matches for each descriptor from a query set.
+         
+             @param queryDescriptors Query set of descriptors.
+             @param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
+             collection stored in the class object.
+             @param mask Mask specifying permissible matches between an input query and train matrices of
+             descriptors.
+             @param matches Matches. Each matches[i] is k or less matches for the same query descriptor.
+             @param k Count of best matches found per each query descriptor or less if a query descriptor has
+             less than k possible matches in total.
+             @param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
+             false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
+             the matches vector does not contain matches for fully masked-out query descriptors.
+         
+             These extended variants of DescriptorMatcher::match methods find several best matches for each query
+             descriptor. The matches are returned in the distance increasing order. See DescriptorMatcher::match
+             for the details about query and train descriptors.
          */
         public void knnMatch(Mat queryDescriptors, Mat trainDescriptors, List<MatOfDMatch> matches, int k, Mat mask, bool compactResult)
         {
@@ -269,22 +267,23 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * Finds the k best matches for each descriptor from a query set.
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
-         *     collection stored in the class object.
-         *     param mask Mask specifying permissible matches between an input query and train matrices of
-         *     descriptors.
-         *     param matches Matches. Each matches[i] is k or less matches for the same query descriptor.
-         *     param k Count of best matches found per each query descriptor or less if a query descriptor has
-         *     less than k possible matches in total.
-         *     false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
-         *     the matches vector does not contain matches for fully masked-out query descriptors.
-         *
-         *     These extended variants of DescriptorMatcher::match methods find several best matches for each query
-         *     descriptor. The matches are returned in the distance increasing order. See DescriptorMatcher::match
-         *     for the details about query and train descriptors.
+         @brief Finds the k best matches for each descriptor from a query set.
+         
+             @param queryDescriptors Query set of descriptors.
+             @param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
+             collection stored in the class object.
+             @param mask Mask specifying permissible matches between an input query and train matrices of
+             descriptors.
+             @param matches Matches. Each matches[i] is k or less matches for the same query descriptor.
+             @param k Count of best matches found per each query descriptor or less if a query descriptor has
+             less than k possible matches in total.
+             @param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
+             false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
+             the matches vector does not contain matches for fully masked-out query descriptors.
+         
+             These extended variants of DescriptorMatcher::match methods find several best matches for each query
+             descriptor. The matches are returned in the distance increasing order. See DescriptorMatcher::match
+             for the details about query and train descriptors.
          */
         public void knnMatch(Mat queryDescriptors, Mat trainDescriptors, List<MatOfDMatch> matches, int k, Mat mask)
         {
@@ -300,21 +299,23 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * Finds the k best matches for each descriptor from a query set.
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
-         *     collection stored in the class object.
-         *     descriptors.
-         *     param matches Matches. Each matches[i] is k or less matches for the same query descriptor.
-         *     param k Count of best matches found per each query descriptor or less if a query descriptor has
-         *     less than k possible matches in total.
-         *     false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
-         *     the matches vector does not contain matches for fully masked-out query descriptors.
-         *
-         *     These extended variants of DescriptorMatcher::match methods find several best matches for each query
-         *     descriptor. The matches are returned in the distance increasing order. See DescriptorMatcher::match
-         *     for the details about query and train descriptors.
+         @brief Finds the k best matches for each descriptor from a query set.
+         
+             @param queryDescriptors Query set of descriptors.
+             @param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
+             collection stored in the class object.
+             @param mask Mask specifying permissible matches between an input query and train matrices of
+             descriptors.
+             @param matches Matches. Each matches[i] is k or less matches for the same query descriptor.
+             @param k Count of best matches found per each query descriptor or less if a query descriptor has
+             less than k possible matches in total.
+             @param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
+             false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
+             the matches vector does not contain matches for fully masked-out query descriptors.
+         
+             These extended variants of DescriptorMatcher::match methods find several best matches for each query
+             descriptor. The matches are returned in the distance increasing order. See DescriptorMatcher::match
+             for the details about query and train descriptors.
          */
         public void knnMatch(Mat queryDescriptors, Mat trainDescriptors, List<MatOfDMatch> matches, int k)
         {
@@ -334,24 +335,24 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * For each query descriptor, finds the training descriptors not farther than the specified distance.
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
-         *     collection stored in the class object.
-         *     param matches Found matches.
-         *     param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
-         *     false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
-         *     the matches vector does not contain matches for fully masked-out query descriptors.
-         *     param maxDistance Threshold for the distance between matched descriptors. Distance means here
-         *     metric distance (e.g. Hamming distance), not the distance between coordinates (which is measured
-         *     in Pixels)!
-         *     param mask Mask specifying permissible matches between an input query and train matrices of
-         *     descriptors.
-         *
-         *     For each query descriptor, the methods find such training descriptors that the distance between the
-         *     query descriptor and the training descriptor is equal or smaller than maxDistance. Found matches are
-         *     returned in the distance increasing order.
+         @brief For each query descriptor, finds the training descriptors not farther than the specified distance.
+         
+             @param queryDescriptors Query set of descriptors.
+             @param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
+             collection stored in the class object.
+             @param matches Found matches.
+             @param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
+             false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
+             the matches vector does not contain matches for fully masked-out query descriptors.
+             @param maxDistance Threshold for the distance between matched descriptors. Distance means here
+             metric distance (e.g. Hamming distance), not the distance between coordinates (which is measured
+             in Pixels)!
+             @param mask Mask specifying permissible matches between an input query and train matrices of
+             descriptors.
+         
+             For each query descriptor, the methods find such training descriptors that the distance between the
+             query descriptor and the training descriptor is equal or smaller than maxDistance. Found matches are
+             returned in the distance increasing order.
          */
         public void radiusMatch(Mat queryDescriptors, Mat trainDescriptors, List<MatOfDMatch> matches, float maxDistance, Mat mask, bool compactResult)
         {
@@ -367,23 +368,24 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * For each query descriptor, finds the training descriptors not farther than the specified distance.
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
-         *     collection stored in the class object.
-         *     param matches Found matches.
-         *     false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
-         *     the matches vector does not contain matches for fully masked-out query descriptors.
-         *     param maxDistance Threshold for the distance between matched descriptors. Distance means here
-         *     metric distance (e.g. Hamming distance), not the distance between coordinates (which is measured
-         *     in Pixels)!
-         *     param mask Mask specifying permissible matches between an input query and train matrices of
-         *     descriptors.
-         *
-         *     For each query descriptor, the methods find such training descriptors that the distance between the
-         *     query descriptor and the training descriptor is equal or smaller than maxDistance. Found matches are
-         *     returned in the distance increasing order.
+         @brief For each query descriptor, finds the training descriptors not farther than the specified distance.
+         
+             @param queryDescriptors Query set of descriptors.
+             @param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
+             collection stored in the class object.
+             @param matches Found matches.
+             @param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
+             false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
+             the matches vector does not contain matches for fully masked-out query descriptors.
+             @param maxDistance Threshold for the distance between matched descriptors. Distance means here
+             metric distance (e.g. Hamming distance), not the distance between coordinates (which is measured
+             in Pixels)!
+             @param mask Mask specifying permissible matches between an input query and train matrices of
+             descriptors.
+         
+             For each query descriptor, the methods find such training descriptors that the distance between the
+             query descriptor and the training descriptor is equal or smaller than maxDistance. Found matches are
+             returned in the distance increasing order.
          */
         public void radiusMatch(Mat queryDescriptors, Mat trainDescriptors, List<MatOfDMatch> matches, float maxDistance, Mat mask)
         {
@@ -399,22 +401,24 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * For each query descriptor, finds the training descriptors not farther than the specified distance.
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
-         *     collection stored in the class object.
-         *     param matches Found matches.
-         *     false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
-         *     the matches vector does not contain matches for fully masked-out query descriptors.
-         *     param maxDistance Threshold for the distance between matched descriptors. Distance means here
-         *     metric distance (e.g. Hamming distance), not the distance between coordinates (which is measured
-         *     in Pixels)!
-         *     descriptors.
-         *
-         *     For each query descriptor, the methods find such training descriptors that the distance between the
-         *     query descriptor and the training descriptor is equal or smaller than maxDistance. Found matches are
-         *     returned in the distance increasing order.
+         @brief For each query descriptor, finds the training descriptors not farther than the specified distance.
+         
+             @param queryDescriptors Query set of descriptors.
+             @param trainDescriptors Train set of descriptors. This set is not added to the train descriptors
+             collection stored in the class object.
+             @param matches Found matches.
+             @param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
+             false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
+             the matches vector does not contain matches for fully masked-out query descriptors.
+             @param maxDistance Threshold for the distance between matched descriptors. Distance means here
+             metric distance (e.g. Hamming distance), not the distance between coordinates (which is measured
+             in Pixels)!
+             @param mask Mask specifying permissible matches between an input query and train matrices of
+             descriptors.
+         
+             For each query descriptor, the methods find such training descriptors that the distance between the
+             query descriptor and the training descriptor is equal or smaller than maxDistance. Found matches are
+             returned in the distance increasing order.
          */
         public void radiusMatch(Mat queryDescriptors, Mat trainDescriptors, List<MatOfDMatch> matches, float maxDistance)
         {
@@ -434,12 +438,12 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param matches Matches. If a query descriptor is masked out in mask , no match is added for this
-         *     descriptor. So, matches size may be smaller than the query descriptors count.
-         *     param masks Set of masks. Each masks[i] specifies permissible matches between the input query
-         *     descriptors and stored train descriptors from the i-th image trainDescCollection[i].
+         @overload
+             @param queryDescriptors Query set of descriptors.
+             @param matches Matches. If a query descriptor is masked out in mask , no match is added for this
+             descriptor. So, matches size may be smaller than the query descriptors count.
+             @param masks Set of masks. Each masks[i] specifies permissible matches between the input query
+             descriptors and stored train descriptors from the i-th image trainDescCollection[i].
          */
         public void match(Mat queryDescriptors, MatOfDMatch matches, List<Mat> masks)
         {
@@ -454,11 +458,12 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param matches Matches. If a query descriptor is masked out in mask , no match is added for this
-         *     descriptor. So, matches size may be smaller than the query descriptors count.
-         *     descriptors and stored train descriptors from the i-th image trainDescCollection[i].
+         @overload
+             @param queryDescriptors Query set of descriptors.
+             @param matches Matches. If a query descriptor is masked out in mask , no match is added for this
+             descriptor. So, matches size may be smaller than the query descriptors count.
+             @param masks Set of masks. Each masks[i] specifies permissible matches between the input query
+             descriptors and stored train descriptors from the i-th image trainDescCollection[i].
          */
         public void match(Mat queryDescriptors, MatOfDMatch matches)
         {
@@ -477,16 +482,16 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param matches Matches. Each matches[i] is k or less matches for the same query descriptor.
-         *     param k Count of best matches found per each query descriptor or less if a query descriptor has
-         *     less than k possible matches in total.
-         *     param masks Set of masks. Each masks[i] specifies permissible matches between the input query
-         *     descriptors and stored train descriptors from the i-th image trainDescCollection[i].
-         *     param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
-         *     false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
-         *     the matches vector does not contain matches for fully masked-out query descriptors.
+         @overload
+             @param queryDescriptors Query set of descriptors.
+             @param matches Matches. Each matches[i] is k or less matches for the same query descriptor.
+             @param k Count of best matches found per each query descriptor or less if a query descriptor has
+             less than k possible matches in total.
+             @param masks Set of masks. Each masks[i] specifies permissible matches between the input query
+             descriptors and stored train descriptors from the i-th image trainDescCollection[i].
+             @param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
+             false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
+             the matches vector does not contain matches for fully masked-out query descriptors.
          */
         public void knnMatch(Mat queryDescriptors, List<MatOfDMatch> matches, int k, List<Mat> masks, bool compactResult)
         {
@@ -501,15 +506,16 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param matches Matches. Each matches[i] is k or less matches for the same query descriptor.
-         *     param k Count of best matches found per each query descriptor or less if a query descriptor has
-         *     less than k possible matches in total.
-         *     param masks Set of masks. Each masks[i] specifies permissible matches between the input query
-         *     descriptors and stored train descriptors from the i-th image trainDescCollection[i].
-         *     false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
-         *     the matches vector does not contain matches for fully masked-out query descriptors.
+         @overload
+             @param queryDescriptors Query set of descriptors.
+             @param matches Matches. Each matches[i] is k or less matches for the same query descriptor.
+             @param k Count of best matches found per each query descriptor or less if a query descriptor has
+             less than k possible matches in total.
+             @param masks Set of masks. Each masks[i] specifies permissible matches between the input query
+             descriptors and stored train descriptors from the i-th image trainDescCollection[i].
+             @param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
+             false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
+             the matches vector does not contain matches for fully masked-out query descriptors.
          */
         public void knnMatch(Mat queryDescriptors, List<MatOfDMatch> matches, int k, List<Mat> masks)
         {
@@ -524,14 +530,16 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param matches Matches. Each matches[i] is k or less matches for the same query descriptor.
-         *     param k Count of best matches found per each query descriptor or less if a query descriptor has
-         *     less than k possible matches in total.
-         *     descriptors and stored train descriptors from the i-th image trainDescCollection[i].
-         *     false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
-         *     the matches vector does not contain matches for fully masked-out query descriptors.
+         @overload
+             @param queryDescriptors Query set of descriptors.
+             @param matches Matches. Each matches[i] is k or less matches for the same query descriptor.
+             @param k Count of best matches found per each query descriptor or less if a query descriptor has
+             less than k possible matches in total.
+             @param masks Set of masks. Each masks[i] specifies permissible matches between the input query
+             descriptors and stored train descriptors from the i-th image trainDescCollection[i].
+             @param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
+             false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
+             the matches vector does not contain matches for fully masked-out query descriptors.
          */
         public void knnMatch(Mat queryDescriptors, List<MatOfDMatch> matches, int k)
         {
@@ -550,17 +558,17 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param matches Found matches.
-         *     param maxDistance Threshold for the distance between matched descriptors. Distance means here
-         *     metric distance (e.g. Hamming distance), not the distance between coordinates (which is measured
-         *     in Pixels)!
-         *     param masks Set of masks. Each masks[i] specifies permissible matches between the input query
-         *     descriptors and stored train descriptors from the i-th image trainDescCollection[i].
-         *     param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
-         *     false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
-         *     the matches vector does not contain matches for fully masked-out query descriptors.
+         @overload
+             @param queryDescriptors Query set of descriptors.
+             @param matches Found matches.
+             @param maxDistance Threshold for the distance between matched descriptors. Distance means here
+             metric distance (e.g. Hamming distance), not the distance between coordinates (which is measured
+             in Pixels)!
+             @param masks Set of masks. Each masks[i] specifies permissible matches between the input query
+             descriptors and stored train descriptors from the i-th image trainDescCollection[i].
+             @param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
+             false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
+             the matches vector does not contain matches for fully masked-out query descriptors.
          */
         public void radiusMatch(Mat queryDescriptors, List<MatOfDMatch> matches, float maxDistance, List<Mat> masks, bool compactResult)
         {
@@ -575,16 +583,17 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param matches Found matches.
-         *     param maxDistance Threshold for the distance between matched descriptors. Distance means here
-         *     metric distance (e.g. Hamming distance), not the distance between coordinates (which is measured
-         *     in Pixels)!
-         *     param masks Set of masks. Each masks[i] specifies permissible matches between the input query
-         *     descriptors and stored train descriptors from the i-th image trainDescCollection[i].
-         *     false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
-         *     the matches vector does not contain matches for fully masked-out query descriptors.
+         @overload
+             @param queryDescriptors Query set of descriptors.
+             @param matches Found matches.
+             @param maxDistance Threshold for the distance between matched descriptors. Distance means here
+             metric distance (e.g. Hamming distance), not the distance between coordinates (which is measured
+             in Pixels)!
+             @param masks Set of masks. Each masks[i] specifies permissible matches between the input query
+             descriptors and stored train descriptors from the i-th image trainDescCollection[i].
+             @param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
+             false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
+             the matches vector does not contain matches for fully masked-out query descriptors.
          */
         public void radiusMatch(Mat queryDescriptors, List<MatOfDMatch> matches, float maxDistance, List<Mat> masks)
         {
@@ -599,15 +608,17 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         *
-         *     param queryDescriptors Query set of descriptors.
-         *     param matches Found matches.
-         *     param maxDistance Threshold for the distance between matched descriptors. Distance means here
-         *     metric distance (e.g. Hamming distance), not the distance between coordinates (which is measured
-         *     in Pixels)!
-         *     descriptors and stored train descriptors from the i-th image trainDescCollection[i].
-         *     false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
-         *     the matches vector does not contain matches for fully masked-out query descriptors.
+         @overload
+             @param queryDescriptors Query set of descriptors.
+             @param matches Found matches.
+             @param maxDistance Threshold for the distance between matched descriptors. Distance means here
+             metric distance (e.g. Hamming distance), not the distance between coordinates (which is measured
+             in Pixels)!
+             @param masks Set of masks. Each masks[i] specifies permissible matches between the input query
+             descriptors and stored train descriptors from the i-th image trainDescCollection[i].
+             @param compactResult Parameter used when the mask (or masks) is not empty. If compactResult is
+             false, the matches vector has the same size as queryDescriptors rows. If compactResult is true,
+             the matches vector does not contain matches for fully masked-out query descriptors.
          */
         public void radiusMatch(Mat queryDescriptors, List<MatOfDMatch> matches, float maxDistance)
         {
@@ -661,12 +672,11 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Clones the matcher.
-         *
-         *     param emptyTrainData If emptyTrainData is false, the method creates a deep copy of the object,
-         *     that is, copies both parameters and train data. If emptyTrainData is true, the method creates an
-         *     object copy with the current parameters but with empty train data.
-         * return automatically generated
+         @brief Clones the matcher.
+         
+             @param emptyTrainData If emptyTrainData is false, the method creates a deep copy of the object,
+             that is, copies both parameters and train data. If emptyTrainData is true, the method creates an
+             object copy with the current parameters but with empty train data.
          */
         public DescriptorMatcher clone(bool emptyTrainData)
         {
@@ -678,11 +688,11 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * Clones the matcher.
-         *
-         *     that is, copies both parameters and train data. If emptyTrainData is true, the method creates an
-         *     object copy with the current parameters but with empty train data.
-         * return automatically generated
+         @brief Clones the matcher.
+         
+             @param emptyTrainData If emptyTrainData is false, the method creates a deep copy of the object,
+             that is, copies both parameters and train data. If emptyTrainData is true, the method creates an
+             object copy with the current parameters but with empty train data.
          */
         public DescriptorMatcher clone()
         {
@@ -699,29 +709,16 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * Creates a descriptor matcher of a given type with the default parameters (using default
-         *     constructor).
-         *
-         *     param descriptorMatcherType Descriptor matcher type. Now the following matcher types are
-         *     supported:
-         * <ul>
-         *   <li>
-         *        {code BruteForce} (it uses L2 )
-         *   </li>
-         *   <li>
-         *        {code BruteForce-L1}
-         *   </li>
-         *   <li>
-         *        {code BruteForce-Hamming}
-         *   </li>
-         *   <li>
-         *        {code BruteForce-Hamming(2)}
-         *   </li>
-         *   <li>
-         *        {code FlannBased}
-         *   </li>
-         * </ul>
-         * return automatically generated
+         @brief Creates a descriptor matcher of a given type with the default parameters (using default
+             constructor).
+         
+             @param descriptorMatcherType Descriptor matcher type. Now the following matcher types are
+             supported:
+             -   `BruteForce` (it uses L2 )
+             -   `BruteForce-L1`
+             -   `BruteForce-Hamming`
+             -   `BruteForce-Hamming(2)`
+             -   `FlannBased`
          */
         public static DescriptorMatcher create(string descriptorMatcherType)
         {
@@ -748,10 +745,10 @@ namespace OpenCVForUnity.Features2dModule
 
 
         //
-        // C++:  void cv::DescriptorMatcher::write(Ptr_FileStorage fs, String name = String())
+        // C++:  void cv::DescriptorMatcher::write(FileStorage fs, String name)
         //
 
-        // Unknown type 'Ptr_FileStorage' (I), skipping the function
+        // Unknown type 'FileStorage' (I), skipping the function
 
 
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR

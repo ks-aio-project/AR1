@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.Features2dModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,7 +11,7 @@ namespace OpenCVForUnity.Xfeatures2dModule
 
     // C++: class StarDetector
     /**
-     * The class implements the keypoint detector introduced by CITE: Agrawal08, synonym of StarDetector. :
+     @brief The class implements the keypoint detector introduced by @cite Agrawal08, synonym of StarDetector. :
      */
 
     public class StarDetector : Feature2D
@@ -103,6 +103,160 @@ namespace OpenCVForUnity.Xfeatures2dModule
         }
 
 
+        //
+        // C++:  void cv::xfeatures2d::StarDetector::setMaxSize(int _maxSize)
+        //
+
+        public void setMaxSize(int _maxSize)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_StarDetector_setMaxSize_10(nativeObj, _maxSize);
+
+
+        }
+
+
+        //
+        // C++:  int cv::xfeatures2d::StarDetector::getMaxSize()
+        //
+
+        public int getMaxSize()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_StarDetector_getMaxSize_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::StarDetector::setResponseThreshold(int _responseThreshold)
+        //
+
+        public void setResponseThreshold(int _responseThreshold)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_StarDetector_setResponseThreshold_10(nativeObj, _responseThreshold);
+
+
+        }
+
+
+        //
+        // C++:  int cv::xfeatures2d::StarDetector::getResponseThreshold()
+        //
+
+        public int getResponseThreshold()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_StarDetector_getResponseThreshold_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::StarDetector::setLineThresholdProjected(int _lineThresholdProjected)
+        //
+
+        public void setLineThresholdProjected(int _lineThresholdProjected)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_StarDetector_setLineThresholdProjected_10(nativeObj, _lineThresholdProjected);
+
+
+        }
+
+
+        //
+        // C++:  int cv::xfeatures2d::StarDetector::getLineThresholdProjected()
+        //
+
+        public int getLineThresholdProjected()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_StarDetector_getLineThresholdProjected_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::StarDetector::setLineThresholdBinarized(int _lineThresholdBinarized)
+        //
+
+        public void setLineThresholdBinarized(int _lineThresholdBinarized)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_StarDetector_setLineThresholdBinarized_10(nativeObj, _lineThresholdBinarized);
+
+
+        }
+
+
+        //
+        // C++:  int cv::xfeatures2d::StarDetector::getLineThresholdBinarized()
+        //
+
+        public int getLineThresholdBinarized()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_StarDetector_getLineThresholdBinarized_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::StarDetector::setSuppressNonmaxSize(int _suppressNonmaxSize)
+        //
+
+        public void setSuppressNonmaxSize(int _suppressNonmaxSize)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_StarDetector_setSuppressNonmaxSize_10(nativeObj, _suppressNonmaxSize);
+
+
+        }
+
+
+        //
+        // C++:  int cv::xfeatures2d::StarDetector::getSuppressNonmaxSize()
+        //
+
+        public int getSuppressNonmaxSize()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_StarDetector_getSuppressNonmaxSize_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  String cv::xfeatures2d::StarDetector::getDefaultName()
+        //
+
+        public override string getDefaultName()
+        {
+            ThrowIfDisposed();
+
+            string retVal = Marshal.PtrToStringAnsi(DisposableObject.ThrowIfNullIntPtr(xfeatures2d_StarDetector_getDefaultName_10(nativeObj)));
+
+            return retVal;
+        }
+
+
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         const string LIBNAME = "__Internal";
 #else
@@ -124,6 +278,50 @@ namespace OpenCVForUnity.Xfeatures2dModule
         private static extern IntPtr xfeatures2d_StarDetector_create_14(int maxSize);
         [DllImport(LIBNAME)]
         private static extern IntPtr xfeatures2d_StarDetector_create_15();
+
+        // C++:  void cv::xfeatures2d::StarDetector::setMaxSize(int _maxSize)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_StarDetector_setMaxSize_10(IntPtr nativeObj, int _maxSize);
+
+        // C++:  int cv::xfeatures2d::StarDetector::getMaxSize()
+        [DllImport(LIBNAME)]
+        private static extern int xfeatures2d_StarDetector_getMaxSize_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::StarDetector::setResponseThreshold(int _responseThreshold)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_StarDetector_setResponseThreshold_10(IntPtr nativeObj, int _responseThreshold);
+
+        // C++:  int cv::xfeatures2d::StarDetector::getResponseThreshold()
+        [DllImport(LIBNAME)]
+        private static extern int xfeatures2d_StarDetector_getResponseThreshold_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::StarDetector::setLineThresholdProjected(int _lineThresholdProjected)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_StarDetector_setLineThresholdProjected_10(IntPtr nativeObj, int _lineThresholdProjected);
+
+        // C++:  int cv::xfeatures2d::StarDetector::getLineThresholdProjected()
+        [DllImport(LIBNAME)]
+        private static extern int xfeatures2d_StarDetector_getLineThresholdProjected_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::StarDetector::setLineThresholdBinarized(int _lineThresholdBinarized)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_StarDetector_setLineThresholdBinarized_10(IntPtr nativeObj, int _lineThresholdBinarized);
+
+        // C++:  int cv::xfeatures2d::StarDetector::getLineThresholdBinarized()
+        [DllImport(LIBNAME)]
+        private static extern int xfeatures2d_StarDetector_getLineThresholdBinarized_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::StarDetector::setSuppressNonmaxSize(int _suppressNonmaxSize)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_StarDetector_setSuppressNonmaxSize_10(IntPtr nativeObj, int _suppressNonmaxSize);
+
+        // C++:  int cv::xfeatures2d::StarDetector::getSuppressNonmaxSize()
+        [DllImport(LIBNAME)]
+        private static extern int xfeatures2d_StarDetector_getSuppressNonmaxSize_10(IntPtr nativeObj);
+
+        // C++:  String cv::xfeatures2d::StarDetector::getDefaultName()
+        [DllImport(LIBNAME)]
+        private static extern IntPtr xfeatures2d_StarDetector_getDefaultName_10(IntPtr nativeObj);
 
         // native support for java finalize()
         [DllImport(LIBNAME)]

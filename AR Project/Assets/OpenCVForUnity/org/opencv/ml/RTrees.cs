@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,9 +10,9 @@ namespace OpenCVForUnity.MlModule
 
     // C++: class RTrees
     /**
-     * The class implements the random forest predictor.
-     *
-     * SEE: REF: ml_intro_rtrees
+     @brief The class implements the random forest predictor.
+     
+     @sa @ref ml_intro_rtrees
      */
 
     public class RTrees : DTrees
@@ -50,8 +50,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setCalculateVarImportance
-         * return automatically generated
+         @see setCalculateVarImportance
          */
         public bool getCalculateVarImportance()
         {
@@ -68,8 +67,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getCalculateVarImportance SEE: getCalculateVarImportance
-         * param val automatically generated
+         @copybrief getCalculateVarImportance @see getCalculateVarImportance
          */
         public void setCalculateVarImportance(bool val)
         {
@@ -86,8 +84,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setActiveVarCount
-         * return automatically generated
+         @see setActiveVarCount
          */
         public int getActiveVarCount()
         {
@@ -104,8 +101,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getActiveVarCount SEE: getActiveVarCount
-         * param val automatically generated
+         @copybrief getActiveVarCount @see getActiveVarCount
          */
         public void setActiveVarCount(int val)
         {
@@ -122,8 +118,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * SEE: setTermCriteria
-         * return automatically generated
+         @see setTermCriteria
          */
         public TermCriteria getTermCriteria()
         {
@@ -142,8 +137,7 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         *  getTermCriteria SEE: getTermCriteria
-         * param val automatically generated
+         @copybrief getTermCriteria @see getTermCriteria
          */
         public void setTermCriteria(TermCriteria val)
         {
@@ -160,11 +154,10 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns the variable importance array.
-         *     The method returns the variable importance vector, computed at the training stage when
-         *     CalculateVarImportance is set to true. If this flag was set to false, the empty matrix is
-         *     returned.
-         * return automatically generated
+         Returns the variable importance array.
+             The method returns the variable importance vector, computed at the training stage when
+             CalculateVarImportance is set to true. If this flag was set to false, the empty matrix is
+             returned.
          */
         public Mat getVarImportance()
         {
@@ -181,14 +174,14 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns the result of each individual tree in the forest.
-         *     In case the model is a regression problem, the method will return each of the trees'
-         *     results for each of the sample cases. If the model is a classifier, it will return
-         *     a Mat with samples + 1 rows, where the first row gives the class number and the
-         *     following rows return the votes each class had for each sample.
-         *         param samples Array containing the samples for which votes will be calculated.
-         *         param results Array where the result of the calculation will be written.
-         *         param flags Flags for defining the type of RTrees.
+         Returns the result of each individual tree in the forest.
+             In case the model is a regression problem, the method will return each of the trees'
+             results for each of the sample cases. If the model is a classifier, it will return
+             a Mat with samples + 1 rows, where the first row gives the class number and the
+             following rows return the votes each class had for each sample.
+                 @param samples Array containing the samples for which votes will be calculated.
+                 @param results Array where the result of the calculation will be written.
+                 @param flags Flags for defining the type of RTrees.
          */
         public void getVotes(Mat samples, Mat results, int flags)
         {
@@ -207,9 +200,8 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Returns the OOB error value, computed at the training stage when calcOOBError is set to true.
-         * If this flag was set to false, 0 is returned. The OOB error is also scaled by sample weighting.
-         * return automatically generated
+         Returns the OOB error value, computed at the training stage when calcOOBError is set to true.
+              * If this flag was set to false, 0 is returned. The OOB error is also scaled by sample weighting.
          */
         public double getOOBError()
         {
@@ -226,10 +218,9 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Creates the empty model.
-         *     Use StatModel::train to train the model, StatModel::train to create and train the model,
-         *     Algorithm::load to load the pre-trained model.
-         * return automatically generated
+         Creates the empty model.
+             Use StatModel::train to train the model, StatModel::train to create and train the model,
+             Algorithm::load to load the pre-trained model.
          */
         public static new RTrees create()
         {
@@ -246,15 +237,14 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Loads and creates a serialized RTree from a file
-         *
-         * Use RTree::save to serialize and store an RTree to disk.
-         * Load the RTree from this file again, by calling this function with the path to the file.
-         * Optionally specify the node for the file containing the classifier
-         *
-         * param filepath path to serialized RTree
-         * param nodeName name of node containing the classifier
-         * return automatically generated
+         @brief Loads and creates a serialized RTree from a file
+              *
+              * Use RTree::save to serialize and store an RTree to disk.
+              * Load the RTree from this file again, by calling this function with the path to the file.
+              * Optionally specify the node for the file containing the classifier
+              *
+              * @param filepath path to serialized RTree
+              * @param nodeName name of node containing the classifier
          */
         public static new RTrees load(string filepath, string nodeName)
         {
@@ -266,14 +256,14 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Loads and creates a serialized RTree from a file
-         *
-         * Use RTree::save to serialize and store an RTree to disk.
-         * Load the RTree from this file again, by calling this function with the path to the file.
-         * Optionally specify the node for the file containing the classifier
-         *
-         * param filepath path to serialized RTree
-         * return automatically generated
+         @brief Loads and creates a serialized RTree from a file
+              *
+              * Use RTree::save to serialize and store an RTree to disk.
+              * Load the RTree from this file again, by calling this function with the path to the file.
+              * Optionally specify the node for the file containing the classifier
+              *
+              * @param filepath path to serialized RTree
+              * @param nodeName name of node containing the classifier
          */
         public static new RTrees load(string filepath)
         {

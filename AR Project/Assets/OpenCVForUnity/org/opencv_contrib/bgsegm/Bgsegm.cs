@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using OpenCVForUnity.VideoModule;
@@ -22,14 +22,13 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Creates mixture-of-gaussian background subtractor
-         *
-         * param history Length of the history.
-         * param nmixtures Number of Gaussian mixtures.
-         * param backgroundRatio Background ratio.
-         * param noiseSigma Noise strength (standard deviation of the brightness or each color channel). 0
-         * means some automatic value.
-         * return automatically generated
+         @brief Creates mixture-of-gaussian background subtractor
+         
+         @param history Length of the history.
+         @param nmixtures Number of Gaussian mixtures.
+         @param backgroundRatio Background ratio.
+         @param noiseSigma Noise strength (standard deviation of the brightness or each color channel). 0
+         means some automatic value.
          */
         public static BackgroundSubtractorMOG createBackgroundSubtractorMOG(int history, int nmixtures, double backgroundRatio, double noiseSigma)
         {
@@ -41,13 +40,13 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates mixture-of-gaussian background subtractor
-         *
-         * param history Length of the history.
-         * param nmixtures Number of Gaussian mixtures.
-         * param backgroundRatio Background ratio.
-         * means some automatic value.
-         * return automatically generated
+         @brief Creates mixture-of-gaussian background subtractor
+         
+         @param history Length of the history.
+         @param nmixtures Number of Gaussian mixtures.
+         @param backgroundRatio Background ratio.
+         @param noiseSigma Noise strength (standard deviation of the brightness or each color channel). 0
+         means some automatic value.
          */
         public static BackgroundSubtractorMOG createBackgroundSubtractorMOG(int history, int nmixtures, double backgroundRatio)
         {
@@ -59,12 +58,13 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates mixture-of-gaussian background subtractor
-         *
-         * param history Length of the history.
-         * param nmixtures Number of Gaussian mixtures.
-         * means some automatic value.
-         * return automatically generated
+         @brief Creates mixture-of-gaussian background subtractor
+         
+         @param history Length of the history.
+         @param nmixtures Number of Gaussian mixtures.
+         @param backgroundRatio Background ratio.
+         @param noiseSigma Noise strength (standard deviation of the brightness or each color channel). 0
+         means some automatic value.
          */
         public static BackgroundSubtractorMOG createBackgroundSubtractorMOG(int history, int nmixtures)
         {
@@ -76,11 +76,13 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates mixture-of-gaussian background subtractor
-         *
-         * param history Length of the history.
-         * means some automatic value.
-         * return automatically generated
+         @brief Creates mixture-of-gaussian background subtractor
+         
+         @param history Length of the history.
+         @param nmixtures Number of Gaussian mixtures.
+         @param backgroundRatio Background ratio.
+         @param noiseSigma Noise strength (standard deviation of the brightness or each color channel). 0
+         means some automatic value.
          */
         public static BackgroundSubtractorMOG createBackgroundSubtractorMOG(int history)
         {
@@ -92,10 +94,13 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates mixture-of-gaussian background subtractor
-         *
-         * means some automatic value.
-         * return automatically generated
+         @brief Creates mixture-of-gaussian background subtractor
+         
+         @param history Length of the history.
+         @param nmixtures Number of Gaussian mixtures.
+         @param backgroundRatio Background ratio.
+         @param noiseSigma Noise strength (standard deviation of the brightness or each color channel). 0
+         means some automatic value.
          */
         public static BackgroundSubtractorMOG createBackgroundSubtractorMOG()
         {
@@ -112,11 +117,10 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Creates a GMG Background Subtractor
-         *
-         * param initializationFrames number of frames used to initialize the background models.
-         * param decisionThreshold Threshold value, above which it is marked foreground, else background.
-         * return automatically generated
+         @brief Creates a GMG Background Subtractor
+         
+         @param initializationFrames number of frames used to initialize the background models.
+         @param decisionThreshold Threshold value, above which it is marked foreground, else background.
          */
         public static BackgroundSubtractorGMG createBackgroundSubtractorGMG(int initializationFrames, double decisionThreshold)
         {
@@ -128,10 +132,10 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates a GMG Background Subtractor
-         *
-         * param initializationFrames number of frames used to initialize the background models.
-         * return automatically generated
+         @brief Creates a GMG Background Subtractor
+         
+         @param initializationFrames number of frames used to initialize the background models.
+         @param decisionThreshold Threshold value, above which it is marked foreground, else background.
          */
         public static BackgroundSubtractorGMG createBackgroundSubtractorGMG(int initializationFrames)
         {
@@ -143,9 +147,10 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates a GMG Background Subtractor
-         *
-         * return automatically generated
+         @brief Creates a GMG Background Subtractor
+         
+         @param initializationFrames number of frames used to initialize the background models.
+         @param decisionThreshold Threshold value, above which it is marked foreground, else background.
          */
         public static BackgroundSubtractorGMG createBackgroundSubtractorGMG()
         {
@@ -162,13 +167,12 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Creates a CNT Background Subtractor
-         *
-         * param minPixelStability number of frames with same pixel color to consider stable
-         * param useHistory determines if we're giving a pixel credit for being stable for a long time
-         * param maxPixelStability maximum allowed credit for a pixel in history
-         * param isParallel determines if we're parallelizing the algorithm
-         * return automatically generated
+         @brief Creates a CNT Background Subtractor
+         
+         @param minPixelStability number of frames with same pixel color to consider stable
+         @param useHistory determines if we're giving a pixel credit for being stable for a long time
+         @param maxPixelStability maximum allowed credit for a pixel in history
+         @param isParallel determines if we're parallelizing the algorithm
          */
         public static BackgroundSubtractorCNT createBackgroundSubtractorCNT(int minPixelStability, bool useHistory, int maxPixelStability, bool isParallel)
         {
@@ -180,12 +184,12 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates a CNT Background Subtractor
-         *
-         * param minPixelStability number of frames with same pixel color to consider stable
-         * param useHistory determines if we're giving a pixel credit for being stable for a long time
-         * param maxPixelStability maximum allowed credit for a pixel in history
-         * return automatically generated
+         @brief Creates a CNT Background Subtractor
+         
+         @param minPixelStability number of frames with same pixel color to consider stable
+         @param useHistory determines if we're giving a pixel credit for being stable for a long time
+         @param maxPixelStability maximum allowed credit for a pixel in history
+         @param isParallel determines if we're parallelizing the algorithm
          */
         public static BackgroundSubtractorCNT createBackgroundSubtractorCNT(int minPixelStability, bool useHistory, int maxPixelStability)
         {
@@ -197,11 +201,12 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates a CNT Background Subtractor
-         *
-         * param minPixelStability number of frames with same pixel color to consider stable
-         * param useHistory determines if we're giving a pixel credit for being stable for a long time
-         * return automatically generated
+         @brief Creates a CNT Background Subtractor
+         
+         @param minPixelStability number of frames with same pixel color to consider stable
+         @param useHistory determines if we're giving a pixel credit for being stable for a long time
+         @param maxPixelStability maximum allowed credit for a pixel in history
+         @param isParallel determines if we're parallelizing the algorithm
          */
         public static BackgroundSubtractorCNT createBackgroundSubtractorCNT(int minPixelStability, bool useHistory)
         {
@@ -213,10 +218,12 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates a CNT Background Subtractor
-         *
-         * param minPixelStability number of frames with same pixel color to consider stable
-         * return automatically generated
+         @brief Creates a CNT Background Subtractor
+         
+         @param minPixelStability number of frames with same pixel color to consider stable
+         @param useHistory determines if we're giving a pixel credit for being stable for a long time
+         @param maxPixelStability maximum allowed credit for a pixel in history
+         @param isParallel determines if we're parallelizing the algorithm
          */
         public static BackgroundSubtractorCNT createBackgroundSubtractorCNT(int minPixelStability)
         {
@@ -228,9 +235,12 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates a CNT Background Subtractor
-         *
-         * return automatically generated
+         @brief Creates a CNT Background Subtractor
+         
+         @param minPixelStability number of frames with same pixel color to consider stable
+         @param useHistory determines if we're giving a pixel credit for being stable for a long time
+         @param maxPixelStability maximum allowed credit for a pixel in history
+         @param isParallel determines if we're parallelizing the algorithm
          */
         public static BackgroundSubtractorCNT createBackgroundSubtractorCNT()
         {
@@ -247,22 +257,21 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Creates an instance of BackgroundSubtractorGSOC algorithm.
-         *
-         * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param replaceRate Probability of replacing the old sample - how fast the model will update itself.
-         * param propagationRate Probability of propagating to neighbors.
-         * param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
-         * param alpha Scale coefficient for threshold.
-         * param beta Bias coefficient for threshold.
-         * param blinkingSupressionDecay Blinking supression decay factor.
-         * param blinkingSupressionMultiplier Blinking supression multiplier.
-         * param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
-         * param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorGSOC algorithm.
+         
+         Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+         @param propagationRate Probability of propagating to neighbors.
+         @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+         @param alpha Scale coefficient for threshold.
+         @param beta Bias coefficient for threshold.
+         @param blinkingSupressionDecay Blinking supression decay factor.
+         @param blinkingSupressionMultiplier Blinking supression multiplier.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
          */
         public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha, float beta, float blinkingSupressionDecay, float blinkingSupressionMultiplier, float noiseRemovalThresholdFacBG, float noiseRemovalThresholdFacFG)
         {
@@ -274,21 +283,21 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorGSOC algorithm.
-         *
-         * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param replaceRate Probability of replacing the old sample - how fast the model will update itself.
-         * param propagationRate Probability of propagating to neighbors.
-         * param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
-         * param alpha Scale coefficient for threshold.
-         * param beta Bias coefficient for threshold.
-         * param blinkingSupressionDecay Blinking supression decay factor.
-         * param blinkingSupressionMultiplier Blinking supression multiplier.
-         * param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorGSOC algorithm.
+         
+         Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+         @param propagationRate Probability of propagating to neighbors.
+         @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+         @param alpha Scale coefficient for threshold.
+         @param beta Bias coefficient for threshold.
+         @param blinkingSupressionDecay Blinking supression decay factor.
+         @param blinkingSupressionMultiplier Blinking supression multiplier.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
          */
         public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha, float beta, float blinkingSupressionDecay, float blinkingSupressionMultiplier, float noiseRemovalThresholdFacBG)
         {
@@ -300,20 +309,21 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorGSOC algorithm.
-         *
-         * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param replaceRate Probability of replacing the old sample - how fast the model will update itself.
-         * param propagationRate Probability of propagating to neighbors.
-         * param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
-         * param alpha Scale coefficient for threshold.
-         * param beta Bias coefficient for threshold.
-         * param blinkingSupressionDecay Blinking supression decay factor.
-         * param blinkingSupressionMultiplier Blinking supression multiplier.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorGSOC algorithm.
+         
+         Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+         @param propagationRate Probability of propagating to neighbors.
+         @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+         @param alpha Scale coefficient for threshold.
+         @param beta Bias coefficient for threshold.
+         @param blinkingSupressionDecay Blinking supression decay factor.
+         @param blinkingSupressionMultiplier Blinking supression multiplier.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
          */
         public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha, float beta, float blinkingSupressionDecay, float blinkingSupressionMultiplier)
         {
@@ -325,19 +335,21 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorGSOC algorithm.
-         *
-         * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param replaceRate Probability of replacing the old sample - how fast the model will update itself.
-         * param propagationRate Probability of propagating to neighbors.
-         * param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
-         * param alpha Scale coefficient for threshold.
-         * param beta Bias coefficient for threshold.
-         * param blinkingSupressionDecay Blinking supression decay factor.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorGSOC algorithm.
+         
+         Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+         @param propagationRate Probability of propagating to neighbors.
+         @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+         @param alpha Scale coefficient for threshold.
+         @param beta Bias coefficient for threshold.
+         @param blinkingSupressionDecay Blinking supression decay factor.
+         @param blinkingSupressionMultiplier Blinking supression multiplier.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
          */
         public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha, float beta, float blinkingSupressionDecay)
         {
@@ -349,18 +361,21 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorGSOC algorithm.
-         *
-         * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param replaceRate Probability of replacing the old sample - how fast the model will update itself.
-         * param propagationRate Probability of propagating to neighbors.
-         * param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
-         * param alpha Scale coefficient for threshold.
-         * param beta Bias coefficient for threshold.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorGSOC algorithm.
+         
+         Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+         @param propagationRate Probability of propagating to neighbors.
+         @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+         @param alpha Scale coefficient for threshold.
+         @param beta Bias coefficient for threshold.
+         @param blinkingSupressionDecay Blinking supression decay factor.
+         @param blinkingSupressionMultiplier Blinking supression multiplier.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
          */
         public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha, float beta)
         {
@@ -372,17 +387,21 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorGSOC algorithm.
-         *
-         * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param replaceRate Probability of replacing the old sample - how fast the model will update itself.
-         * param propagationRate Probability of propagating to neighbors.
-         * param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
-         * param alpha Scale coefficient for threshold.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorGSOC algorithm.
+         
+         Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+         @param propagationRate Probability of propagating to neighbors.
+         @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+         @param alpha Scale coefficient for threshold.
+         @param beta Bias coefficient for threshold.
+         @param blinkingSupressionDecay Blinking supression decay factor.
+         @param blinkingSupressionMultiplier Blinking supression multiplier.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
          */
         public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold, float alpha)
         {
@@ -394,16 +413,21 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorGSOC algorithm.
-         *
-         * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param replaceRate Probability of replacing the old sample - how fast the model will update itself.
-         * param propagationRate Probability of propagating to neighbors.
-         * param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorGSOC algorithm.
+         
+         Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+         @param propagationRate Probability of propagating to neighbors.
+         @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+         @param alpha Scale coefficient for threshold.
+         @param beta Bias coefficient for threshold.
+         @param blinkingSupressionDecay Blinking supression decay factor.
+         @param blinkingSupressionMultiplier Blinking supression multiplier.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
          */
         public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate, int hitsThreshold)
         {
@@ -415,15 +439,21 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorGSOC algorithm.
-         *
-         * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param replaceRate Probability of replacing the old sample - how fast the model will update itself.
-         * param propagationRate Probability of propagating to neighbors.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorGSOC algorithm.
+         
+         Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+         @param propagationRate Probability of propagating to neighbors.
+         @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+         @param alpha Scale coefficient for threshold.
+         @param beta Bias coefficient for threshold.
+         @param blinkingSupressionDecay Blinking supression decay factor.
+         @param blinkingSupressionMultiplier Blinking supression multiplier.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
          */
         public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate, float propagationRate)
         {
@@ -435,14 +465,21 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorGSOC algorithm.
-         *
-         * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param replaceRate Probability of replacing the old sample - how fast the model will update itself.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorGSOC algorithm.
+         
+         Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+         @param propagationRate Probability of propagating to neighbors.
+         @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+         @param alpha Scale coefficient for threshold.
+         @param beta Bias coefficient for threshold.
+         @param blinkingSupressionDecay Blinking supression decay factor.
+         @param blinkingSupressionMultiplier Blinking supression multiplier.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
          */
         public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples, float replaceRate)
         {
@@ -454,13 +491,21 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorGSOC algorithm.
-         *
-         * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorGSOC algorithm.
+         
+         Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+         @param propagationRate Probability of propagating to neighbors.
+         @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+         @param alpha Scale coefficient for threshold.
+         @param beta Bias coefficient for threshold.
+         @param blinkingSupressionDecay Blinking supression decay factor.
+         @param blinkingSupressionMultiplier Blinking supression multiplier.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
          */
         public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc, int nSamples)
         {
@@ -472,12 +517,21 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorGSOC algorithm.
-         *
-         * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
-         *
-         * param mc Whether to use camera motion compensation.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorGSOC algorithm.
+         
+         Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+         @param propagationRate Probability of propagating to neighbors.
+         @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+         @param alpha Scale coefficient for threshold.
+         @param beta Bias coefficient for threshold.
+         @param blinkingSupressionDecay Blinking supression decay factor.
+         @param blinkingSupressionMultiplier Blinking supression multiplier.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
          */
         public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC(int mc)
         {
@@ -489,11 +543,21 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorGSOC algorithm.
-         *
-         * Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
-         *
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorGSOC algorithm.
+         
+         Implementation of the different yet better algorithm which is called GSOC, as it was implemented during GSOC and was not originated from any paper.
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param replaceRate Probability of replacing the old sample - how fast the model will update itself.
+         @param propagationRate Probability of propagating to neighbors.
+         @param hitsThreshold How many positives the sample must get before it will be considered as a possible replacement.
+         @param alpha Scale coefficient for threshold.
+         @param beta Bias coefficient for threshold.
+         @param blinkingSupressionDecay Blinking supression decay factor.
+         @param blinkingSupressionMultiplier Blinking supression multiplier.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
          */
         public static BackgroundSubtractorGSOC createBackgroundSubtractorGSOC()
         {
@@ -510,24 +574,23 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Creates an instance of BackgroundSubtractorLSBP algorithm.
-         *
-         * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param LSBPRadius LSBP descriptor radius.
-         * param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
-         * param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
-         * param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
-         * param Tdec Decrease step for T-values. See CITE: LGuo2016 for details.
-         * param Rscale Scale coefficient for threshold values.
-         * param Rincdec Increase/Decrease step for threshold values.
-         * param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
-         * param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
-         * param LSBPthreshold Threshold for LSBP binary string.
-         * param minCount Minimal number of matches for sample to be considered as foreground.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
+         
+         Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at @cite LGuo2016
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param LSBPRadius LSBP descriptor radius.
+         @param Tlower Lower bound for T-values. See @cite LGuo2016 for details.
+         @param Tupper Upper bound for T-values. See @cite LGuo2016 for details.
+         @param Tinc Increase step for T-values. See @cite LGuo2016 for details.
+         @param Tdec Decrease step for T-values. See @cite LGuo2016 for details.
+         @param Rscale Scale coefficient for threshold values.
+         @param Rincdec Increase/Decrease step for threshold values.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+         @param LSBPthreshold Threshold for LSBP binary string.
+         @param minCount Minimal number of matches for sample to be considered as foreground.
          */
         public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale, float Rincdec, float noiseRemovalThresholdFacBG, float noiseRemovalThresholdFacFG, int LSBPthreshold, int minCount)
         {
@@ -539,23 +602,23 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorLSBP algorithm.
-         *
-         * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param LSBPRadius LSBP descriptor radius.
-         * param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
-         * param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
-         * param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
-         * param Tdec Decrease step for T-values. See CITE: LGuo2016 for details.
-         * param Rscale Scale coefficient for threshold values.
-         * param Rincdec Increase/Decrease step for threshold values.
-         * param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
-         * param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
-         * param LSBPthreshold Threshold for LSBP binary string.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
+         
+         Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at @cite LGuo2016
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param LSBPRadius LSBP descriptor radius.
+         @param Tlower Lower bound for T-values. See @cite LGuo2016 for details.
+         @param Tupper Upper bound for T-values. See @cite LGuo2016 for details.
+         @param Tinc Increase step for T-values. See @cite LGuo2016 for details.
+         @param Tdec Decrease step for T-values. See @cite LGuo2016 for details.
+         @param Rscale Scale coefficient for threshold values.
+         @param Rincdec Increase/Decrease step for threshold values.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+         @param LSBPthreshold Threshold for LSBP binary string.
+         @param minCount Minimal number of matches for sample to be considered as foreground.
          */
         public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale, float Rincdec, float noiseRemovalThresholdFacBG, float noiseRemovalThresholdFacFG, int LSBPthreshold)
         {
@@ -567,22 +630,23 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorLSBP algorithm.
-         *
-         * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param LSBPRadius LSBP descriptor radius.
-         * param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
-         * param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
-         * param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
-         * param Tdec Decrease step for T-values. See CITE: LGuo2016 for details.
-         * param Rscale Scale coefficient for threshold values.
-         * param Rincdec Increase/Decrease step for threshold values.
-         * param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
-         * param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
+         
+         Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at @cite LGuo2016
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param LSBPRadius LSBP descriptor radius.
+         @param Tlower Lower bound for T-values. See @cite LGuo2016 for details.
+         @param Tupper Upper bound for T-values. See @cite LGuo2016 for details.
+         @param Tinc Increase step for T-values. See @cite LGuo2016 for details.
+         @param Tdec Decrease step for T-values. See @cite LGuo2016 for details.
+         @param Rscale Scale coefficient for threshold values.
+         @param Rincdec Increase/Decrease step for threshold values.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+         @param LSBPthreshold Threshold for LSBP binary string.
+         @param minCount Minimal number of matches for sample to be considered as foreground.
          */
         public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale, float Rincdec, float noiseRemovalThresholdFacBG, float noiseRemovalThresholdFacFG)
         {
@@ -594,21 +658,23 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorLSBP algorithm.
-         *
-         * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param LSBPRadius LSBP descriptor radius.
-         * param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
-         * param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
-         * param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
-         * param Tdec Decrease step for T-values. See CITE: LGuo2016 for details.
-         * param Rscale Scale coefficient for threshold values.
-         * param Rincdec Increase/Decrease step for threshold values.
-         * param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
+         
+         Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at @cite LGuo2016
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param LSBPRadius LSBP descriptor radius.
+         @param Tlower Lower bound for T-values. See @cite LGuo2016 for details.
+         @param Tupper Upper bound for T-values. See @cite LGuo2016 for details.
+         @param Tinc Increase step for T-values. See @cite LGuo2016 for details.
+         @param Tdec Decrease step for T-values. See @cite LGuo2016 for details.
+         @param Rscale Scale coefficient for threshold values.
+         @param Rincdec Increase/Decrease step for threshold values.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+         @param LSBPthreshold Threshold for LSBP binary string.
+         @param minCount Minimal number of matches for sample to be considered as foreground.
          */
         public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale, float Rincdec, float noiseRemovalThresholdFacBG)
         {
@@ -620,20 +686,23 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorLSBP algorithm.
-         *
-         * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param LSBPRadius LSBP descriptor radius.
-         * param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
-         * param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
-         * param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
-         * param Tdec Decrease step for T-values. See CITE: LGuo2016 for details.
-         * param Rscale Scale coefficient for threshold values.
-         * param Rincdec Increase/Decrease step for threshold values.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
+         
+         Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at @cite LGuo2016
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param LSBPRadius LSBP descriptor radius.
+         @param Tlower Lower bound for T-values. See @cite LGuo2016 for details.
+         @param Tupper Upper bound for T-values. See @cite LGuo2016 for details.
+         @param Tinc Increase step for T-values. See @cite LGuo2016 for details.
+         @param Tdec Decrease step for T-values. See @cite LGuo2016 for details.
+         @param Rscale Scale coefficient for threshold values.
+         @param Rincdec Increase/Decrease step for threshold values.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+         @param LSBPthreshold Threshold for LSBP binary string.
+         @param minCount Minimal number of matches for sample to be considered as foreground.
          */
         public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale, float Rincdec)
         {
@@ -645,19 +714,23 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorLSBP algorithm.
-         *
-         * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param LSBPRadius LSBP descriptor radius.
-         * param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
-         * param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
-         * param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
-         * param Tdec Decrease step for T-values. See CITE: LGuo2016 for details.
-         * param Rscale Scale coefficient for threshold values.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
+         
+         Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at @cite LGuo2016
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param LSBPRadius LSBP descriptor radius.
+         @param Tlower Lower bound for T-values. See @cite LGuo2016 for details.
+         @param Tupper Upper bound for T-values. See @cite LGuo2016 for details.
+         @param Tinc Increase step for T-values. See @cite LGuo2016 for details.
+         @param Tdec Decrease step for T-values. See @cite LGuo2016 for details.
+         @param Rscale Scale coefficient for threshold values.
+         @param Rincdec Increase/Decrease step for threshold values.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+         @param LSBPthreshold Threshold for LSBP binary string.
+         @param minCount Minimal number of matches for sample to be considered as foreground.
          */
         public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec, float Rscale)
         {
@@ -669,18 +742,23 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorLSBP algorithm.
-         *
-         * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param LSBPRadius LSBP descriptor radius.
-         * param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
-         * param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
-         * param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
-         * param Tdec Decrease step for T-values. See CITE: LGuo2016 for details.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
+         
+         Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at @cite LGuo2016
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param LSBPRadius LSBP descriptor radius.
+         @param Tlower Lower bound for T-values. See @cite LGuo2016 for details.
+         @param Tupper Upper bound for T-values. See @cite LGuo2016 for details.
+         @param Tinc Increase step for T-values. See @cite LGuo2016 for details.
+         @param Tdec Decrease step for T-values. See @cite LGuo2016 for details.
+         @param Rscale Scale coefficient for threshold values.
+         @param Rincdec Increase/Decrease step for threshold values.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+         @param LSBPthreshold Threshold for LSBP binary string.
+         @param minCount Minimal number of matches for sample to be considered as foreground.
          */
         public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc, float Tdec)
         {
@@ -692,17 +770,23 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorLSBP algorithm.
-         *
-         * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param LSBPRadius LSBP descriptor radius.
-         * param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
-         * param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
-         * param Tinc Increase step for T-values. See CITE: LGuo2016 for details.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
+         
+         Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at @cite LGuo2016
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param LSBPRadius LSBP descriptor radius.
+         @param Tlower Lower bound for T-values. See @cite LGuo2016 for details.
+         @param Tupper Upper bound for T-values. See @cite LGuo2016 for details.
+         @param Tinc Increase step for T-values. See @cite LGuo2016 for details.
+         @param Tdec Decrease step for T-values. See @cite LGuo2016 for details.
+         @param Rscale Scale coefficient for threshold values.
+         @param Rincdec Increase/Decrease step for threshold values.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+         @param LSBPthreshold Threshold for LSBP binary string.
+         @param minCount Minimal number of matches for sample to be considered as foreground.
          */
         public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper, float Tinc)
         {
@@ -714,16 +798,23 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorLSBP algorithm.
-         *
-         * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param LSBPRadius LSBP descriptor radius.
-         * param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
-         * param Tupper Upper bound for T-values. See CITE: LGuo2016 for details.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
+         
+         Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at @cite LGuo2016
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param LSBPRadius LSBP descriptor radius.
+         @param Tlower Lower bound for T-values. See @cite LGuo2016 for details.
+         @param Tupper Upper bound for T-values. See @cite LGuo2016 for details.
+         @param Tinc Increase step for T-values. See @cite LGuo2016 for details.
+         @param Tdec Decrease step for T-values. See @cite LGuo2016 for details.
+         @param Rscale Scale coefficient for threshold values.
+         @param Rincdec Increase/Decrease step for threshold values.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+         @param LSBPthreshold Threshold for LSBP binary string.
+         @param minCount Minimal number of matches for sample to be considered as foreground.
          */
         public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower, float Tupper)
         {
@@ -735,15 +826,23 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorLSBP algorithm.
-         *
-         * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param LSBPRadius LSBP descriptor radius.
-         * param Tlower Lower bound for T-values. See CITE: LGuo2016 for details.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
+         
+         Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at @cite LGuo2016
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param LSBPRadius LSBP descriptor radius.
+         @param Tlower Lower bound for T-values. See @cite LGuo2016 for details.
+         @param Tupper Upper bound for T-values. See @cite LGuo2016 for details.
+         @param Tinc Increase step for T-values. See @cite LGuo2016 for details.
+         @param Tdec Decrease step for T-values. See @cite LGuo2016 for details.
+         @param Rscale Scale coefficient for threshold values.
+         @param Rincdec Increase/Decrease step for threshold values.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+         @param LSBPthreshold Threshold for LSBP binary string.
+         @param minCount Minimal number of matches for sample to be considered as foreground.
          */
         public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius, float Tlower)
         {
@@ -755,14 +854,23 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorLSBP algorithm.
-         *
-         * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * param LSBPRadius LSBP descriptor radius.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
+         
+         Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at @cite LGuo2016
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param LSBPRadius LSBP descriptor radius.
+         @param Tlower Lower bound for T-values. See @cite LGuo2016 for details.
+         @param Tupper Upper bound for T-values. See @cite LGuo2016 for details.
+         @param Tinc Increase step for T-values. See @cite LGuo2016 for details.
+         @param Tdec Decrease step for T-values. See @cite LGuo2016 for details.
+         @param Rscale Scale coefficient for threshold values.
+         @param Rincdec Increase/Decrease step for threshold values.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+         @param LSBPthreshold Threshold for LSBP binary string.
+         @param minCount Minimal number of matches for sample to be considered as foreground.
          */
         public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples, int LSBPRadius)
         {
@@ -774,13 +882,23 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorLSBP algorithm.
-         *
-         * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
-         *
-         * param mc Whether to use camera motion compensation.
-         * param nSamples Number of samples to maintain at each point of the frame.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
+         
+         Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at @cite LGuo2016
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param LSBPRadius LSBP descriptor radius.
+         @param Tlower Lower bound for T-values. See @cite LGuo2016 for details.
+         @param Tupper Upper bound for T-values. See @cite LGuo2016 for details.
+         @param Tinc Increase step for T-values. See @cite LGuo2016 for details.
+         @param Tdec Decrease step for T-values. See @cite LGuo2016 for details.
+         @param Rscale Scale coefficient for threshold values.
+         @param Rincdec Increase/Decrease step for threshold values.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+         @param LSBPthreshold Threshold for LSBP binary string.
+         @param minCount Minimal number of matches for sample to be considered as foreground.
          */
         public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc, int nSamples)
         {
@@ -792,12 +910,23 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorLSBP algorithm.
-         *
-         * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
-         *
-         * param mc Whether to use camera motion compensation.
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
+         
+         Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at @cite LGuo2016
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param LSBPRadius LSBP descriptor radius.
+         @param Tlower Lower bound for T-values. See @cite LGuo2016 for details.
+         @param Tupper Upper bound for T-values. See @cite LGuo2016 for details.
+         @param Tinc Increase step for T-values. See @cite LGuo2016 for details.
+         @param Tdec Decrease step for T-values. See @cite LGuo2016 for details.
+         @param Rscale Scale coefficient for threshold values.
+         @param Rincdec Increase/Decrease step for threshold values.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+         @param LSBPthreshold Threshold for LSBP binary string.
+         @param minCount Minimal number of matches for sample to be considered as foreground.
          */
         public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP(int mc)
         {
@@ -809,11 +938,23 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of BackgroundSubtractorLSBP algorithm.
-         *
-         * Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at CITE: LGuo2016
-         *
-         * return automatically generated
+         @brief Creates an instance of BackgroundSubtractorLSBP algorithm.
+         
+         Background Subtraction using Local SVD Binary Pattern. More details about the algorithm can be found at @cite LGuo2016
+         
+         @param mc Whether to use camera motion compensation.
+         @param nSamples Number of samples to maintain at each point of the frame.
+         @param LSBPRadius LSBP descriptor radius.
+         @param Tlower Lower bound for T-values. See @cite LGuo2016 for details.
+         @param Tupper Upper bound for T-values. See @cite LGuo2016 for details.
+         @param Tinc Increase step for T-values. See @cite LGuo2016 for details.
+         @param Tdec Decrease step for T-values. See @cite LGuo2016 for details.
+         @param Rscale Scale coefficient for threshold values.
+         @param Rincdec Increase/Decrease step for threshold values.
+         @param noiseRemovalThresholdFacBG Strength of the noise removal for background points.
+         @param noiseRemovalThresholdFacFG Strength of the noise removal for foreground points.
+         @param LSBPthreshold Threshold for LSBP binary string.
+         @param minCount Minimal number of matches for sample to be considered as foreground.
          */
         public static BackgroundSubtractorLSBP createBackgroundSubtractorLSBP()
         {
@@ -830,15 +971,14 @@ namespace OpenCVForUnity.BgsegmModule
         //
 
         /**
-         * Creates an instance of SyntheticSequenceGenerator.
-         *
-         * param background Background image for object.
-         * param amplitude Amplitude of wave distortion applied to background.
-         * param wavelength Length of waves in distortion applied to background.
-         * param wavespeed How fast waves will move.
-         * param objspeed How fast object will fly over background.
-         * param _object automatically generated
-         * return automatically generated
+         @brief Creates an instance of SyntheticSequenceGenerator.
+         
+         @param background Background image for object.
+         @param object Object image which will move slowly over the background.
+         @param amplitude Amplitude of wave distortion applied to background.
+         @param wavelength Length of waves in distortion applied to background.
+         @param wavespeed How fast waves will move.
+         @param objspeed How fast object will fly over background.
          */
         public static SyntheticSequenceGenerator createSyntheticSequenceGenerator(Mat background, Mat _object, double amplitude, double wavelength, double wavespeed, double objspeed)
         {
@@ -851,14 +991,14 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of SyntheticSequenceGenerator.
-         *
-         * param background Background image for object.
-         * param amplitude Amplitude of wave distortion applied to background.
-         * param wavelength Length of waves in distortion applied to background.
-         * param wavespeed How fast waves will move.
-         * param _object automatically generated
-         * return automatically generated
+         @brief Creates an instance of SyntheticSequenceGenerator.
+         
+         @param background Background image for object.
+         @param object Object image which will move slowly over the background.
+         @param amplitude Amplitude of wave distortion applied to background.
+         @param wavelength Length of waves in distortion applied to background.
+         @param wavespeed How fast waves will move.
+         @param objspeed How fast object will fly over background.
          */
         public static SyntheticSequenceGenerator createSyntheticSequenceGenerator(Mat background, Mat _object, double amplitude, double wavelength, double wavespeed)
         {
@@ -871,13 +1011,14 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of SyntheticSequenceGenerator.
-         *
-         * param background Background image for object.
-         * param amplitude Amplitude of wave distortion applied to background.
-         * param wavelength Length of waves in distortion applied to background.
-         * param _object automatically generated
-         * return automatically generated
+         @brief Creates an instance of SyntheticSequenceGenerator.
+         
+         @param background Background image for object.
+         @param object Object image which will move slowly over the background.
+         @param amplitude Amplitude of wave distortion applied to background.
+         @param wavelength Length of waves in distortion applied to background.
+         @param wavespeed How fast waves will move.
+         @param objspeed How fast object will fly over background.
          */
         public static SyntheticSequenceGenerator createSyntheticSequenceGenerator(Mat background, Mat _object, double amplitude, double wavelength)
         {
@@ -890,12 +1031,14 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of SyntheticSequenceGenerator.
-         *
-         * param background Background image for object.
-         * param amplitude Amplitude of wave distortion applied to background.
-         * param _object automatically generated
-         * return automatically generated
+         @brief Creates an instance of SyntheticSequenceGenerator.
+         
+         @param background Background image for object.
+         @param object Object image which will move slowly over the background.
+         @param amplitude Amplitude of wave distortion applied to background.
+         @param wavelength Length of waves in distortion applied to background.
+         @param wavespeed How fast waves will move.
+         @param objspeed How fast object will fly over background.
          */
         public static SyntheticSequenceGenerator createSyntheticSequenceGenerator(Mat background, Mat _object, double amplitude)
         {
@@ -908,11 +1051,14 @@ namespace OpenCVForUnity.BgsegmModule
         }
 
         /**
-         * Creates an instance of SyntheticSequenceGenerator.
-         *
-         * param background Background image for object.
-         * param _object automatically generated
-         * return automatically generated
+         @brief Creates an instance of SyntheticSequenceGenerator.
+         
+         @param background Background image for object.
+         @param object Object image which will move slowly over the background.
+         @param amplitude Amplitude of wave distortion applied to background.
+         @param wavelength Length of waves in distortion applied to background.
+         @param wavespeed How fast waves will move.
+         @param objspeed How fast object will fly over background.
          */
         public static SyntheticSequenceGenerator createSyntheticSequenceGenerator(Mat background, Mat _object)
         {

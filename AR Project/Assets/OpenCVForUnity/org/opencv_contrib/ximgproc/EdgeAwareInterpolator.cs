@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,8 +10,8 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class EdgeAwareInterpolator
     /**
-     * Sparse match interpolation algorithm based on modified locally-weighted affine
-     * estimator from CITE: Revaud2015 and Fast Global Smoother as post-processing filter.
+     @brief Sparse match interpolation algorithm based on modified locally-weighted affine
+     estimator from @cite Revaud2015 and Fast Global Smoother as post-processing filter.
      */
 
     public class EdgeAwareInterpolator : SparseMatchInterpolator
@@ -49,13 +49,13 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Interface to provide a more elaborated cost map, i.e. edge map, for the edge-aware term.
-         * This implementation is based on a rather simple gradient-based edge map estimation.
-         * To used more complex edge map estimator (e.g. StructuredEdgeDetection that has been
-         * used in the original publication) that may lead to improved accuracies, the internal
-         * edge map estimation can be bypassed here.
-         * param _costMap a type CV_32FC1 Mat is required.
-         * SEE: cv::ximgproc::createSuperpixelSLIC
+         @brief Interface to provide a more elaborated cost map, i.e. edge map, for the edge-aware term.
+              *  This implementation is based on a rather simple gradient-based edge map estimation.
+              *  To used more complex edge map estimator (e.g. StructuredEdgeDetection that has been
+              *  used in the original publication) that may lead to improved accuracies, the internal
+              *  edge map estimation can be bypassed here.
+              *  @param _costMap a type CV_32FC1 Mat is required.
+              *  @see cv::ximgproc::createSuperpixelSLIC
          */
         public void setCostMap(Mat _costMap)
         {
@@ -73,10 +73,9 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * K is a number of nearest-neighbor matches considered, when fitting a locally affine
-         *     model. Usually it should be around 128. However, lower values would make the interpolation
-         *     noticeably faster.
-         * param _k automatically generated
+         @brief K is a number of nearest-neighbor matches considered, when fitting a locally affine
+             model. Usually it should be around 128. However, lower values would make the interpolation
+             noticeably faster.
          */
         public void setK(int _k)
         {
@@ -93,8 +92,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * SEE: setK
-         * return automatically generated
+         @see setK
          */
         public int getK()
         {
@@ -111,10 +109,9 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sigma is a parameter defining how fast the weights decrease in the locally-weighted affine
-         *     fitting. Higher values can help preserve fine details, lower values can help to get rid of noise in the
-         *     output flow.
-         * param _sigma automatically generated
+         @brief Sigma is a parameter defining how fast the weights decrease in the locally-weighted affine
+             fitting. Higher values can help preserve fine details, lower values can help to get rid of noise in the
+             output flow.
          */
         public void setSigma(float _sigma)
         {
@@ -131,8 +128,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * SEE: setSigma
-         * return automatically generated
+         @see setSigma
          */
         public float getSigma()
         {
@@ -149,9 +145,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Lambda is a parameter defining the weight of the edge-aware term in geodesic distance,
-         *     should be in the range of 0 to 1000.
-         * param _lambda automatically generated
+         @brief Lambda is a parameter defining the weight of the edge-aware term in geodesic distance,
+             should be in the range of 0 to 1000.
          */
         public void setLambda(float _lambda)
         {
@@ -168,8 +163,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * SEE: setLambda
-         * return automatically generated
+         @see setLambda
          */
         public float getLambda()
         {
@@ -186,9 +180,8 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets whether the fastGlobalSmootherFilter() post-processing is employed. It is turned on by
-         *     default.
-         * param _use_post_proc automatically generated
+         @brief Sets whether the fastGlobalSmootherFilter() post-processing is employed. It is turned on by
+             default.
          */
         public void setUsePostProcessing(bool _use_post_proc)
         {
@@ -205,8 +198,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * SEE: setUsePostProcessing
-         * return automatically generated
+         @see setUsePostProcessing
          */
         public bool getUsePostProcessing()
         {
@@ -223,8 +215,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Sets the respective fastGlobalSmootherFilter() parameter.
-         * param _lambda automatically generated
+         @brief Sets the respective fastGlobalSmootherFilter() parameter.
          */
         public void setFGSLambda(float _lambda)
         {
@@ -241,8 +232,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * SEE: setFGSLambda
-         * return automatically generated
+         @see setFGSLambda
          */
         public float getFGSLambda()
         {
@@ -259,8 +249,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * SEE: setFGSLambda
-         * param _sigma automatically generated
+         @see setFGSLambda
          */
         public void setFGSSigma(float _sigma)
         {
@@ -277,8 +266,7 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * SEE: setFGSLambda
-         * return automatically generated
+         @see setFGSLambda
          */
         public float getFGSSigma()
         {

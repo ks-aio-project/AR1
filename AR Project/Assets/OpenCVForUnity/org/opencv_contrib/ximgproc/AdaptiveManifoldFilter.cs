@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,37 +10,23 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class AdaptiveManifoldFilter
     /**
-     * Interface for Adaptive Manifold Filter realizations.
-     *
-     * For more details about this filter see CITE: Gastal12 and References_.
-     *
-     * Below listed optional parameters which may be set up with Algorithm::set function.
-     * <ul>
-     *   <li>
-     *    member double sigma_s = 16.0
-     * Spatial standard deviation.
-     *   </li>
-     *   <li>
-     *    member double sigma_r = 0.2
-     * Color space standard deviation.
-     *   </li>
-     *   <li>
-     *    member int tree_height = -1
-     * Height of the manifold tree (default = -1 : automatically computed).
-     *   </li>
-     *   <li>
-     *    member int num_pca_iterations = 1
-     * Number of iterations to computed the eigenvector.
-     *   </li>
-     *   <li>
-     *    member bool adjust_outliers = false
-     * Specify adjust outliers using Eq. 9 or not.
-     *   </li>
-     *   <li>
-     *    member bool use_RNG = true
-     * Specify use random number generator to compute eigenvector or not.
-     *   </li>
-     * </ul>
+     @brief Interface for Adaptive Manifold Filter realizations.
+     
+     For more details about this filter see @cite Gastal12 and References_.
+     
+     Below listed optional parameters which may be set up with Algorithm::set function.
+     -   member double sigma_s = 16.0
+     Spatial standard deviation.
+     -   member double sigma_r = 0.2
+     Color space standard deviation.
+     -   member int tree_height = -1
+     Height of the manifold tree (default = -1 : automatically computed).
+     -   member int num_pca_iterations = 1
+     Number of iterations to computed the eigenvector.
+     -   member bool adjust_outliers = false
+     Specify adjust outliers using Eq. 9 or not.
+     -   member bool use_RNG = true
+     Specify use random number generator to compute eigenvector or not.
      */
 
     public class AdaptiveManifoldFilter : Algorithm
@@ -78,13 +64,13 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Apply high-dimensional filtering using adaptive manifolds.
-         *
-         *     param src filtering image with any numbers of channels.
-         *
-         *     param dst output image.
-         *
-         *     param joint optional joint (also called as guided) image with any numbers of channels.
+         @brief Apply high-dimensional filtering using adaptive manifolds.
+         
+             @param src filtering image with any numbers of channels.
+         
+             @param dst output image.
+         
+             @param joint optional joint (also called as guided) image with any numbers of channels.
          */
         public void filter(Mat src, Mat dst, Mat joint)
         {
@@ -99,12 +85,13 @@ namespace OpenCVForUnity.XimgprocModule
         }
 
         /**
-         * Apply high-dimensional filtering using adaptive manifolds.
-         *
-         *     param src filtering image with any numbers of channels.
-         *
-         *     param dst output image.
-         *
+         @brief Apply high-dimensional filtering using adaptive manifolds.
+         
+             @param src filtering image with any numbers of channels.
+         
+             @param dst output image.
+         
+             @param joint optional joint (also called as guided) image with any numbers of channels.
          */
         public void filter(Mat src, Mat dst)
         {

@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,8 +10,8 @@ namespace OpenCVForUnity.XimgprocModule
 
     // C++: class SelectiveSearchSegmentationStrategySize
     /**
-     * Size-based strategy for the selective search segmentation algorithm
-     *                         The class is implemented from the algorithm described in CITE: uijlings2013selective.
+     @brief Size-based strategy for the selective search segmentation algorithm
+                             The class is implemented from the algorithm described in @cite uijlings2013selective.
      */
 
     public class SelectiveSearchSegmentationStrategySize : SelectiveSearchSegmentationStrategy

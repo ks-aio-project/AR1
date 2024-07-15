@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -11,7 +11,7 @@ namespace OpenCVForUnity.DnnModule
 
     // C++: class TextDetectionModel
     /**
-     * Base class for text detection networks
+     @brief Base class for text detection networks
      */
 
     public class TextDetectionModel : Model
@@ -49,23 +49,23 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Performs detection
-         *
-         * Given the input {code frame}, prepare network input, run network inference, post-process network output and return result detections.
-         *
-         * Each result is quadrangle's 4 points in this order:
-         * - bottom-left
-         * - top-left
-         * - top-right
-         * - bottom-right
-         *
-         * Use cv::getPerspectiveTransform function to retrive image region without perspective transformations.
-         *
-         * <b>Note:</b> If DL model doesn't support that kind of output then result may be derived from detectTextRectangles() output.
-         *
-         * param frame The input image
-         * param detections array with detections' quadrangles (4 points per result)
-         * param confidences array with detection confidences
+         @brief Performs detection
+              *
+              * Given the input @p frame, prepare network input, run network inference, post-process network output and return result detections.
+              *
+              * Each result is quadrangle's 4 points in this order:
+              * - bottom-left
+              * - top-left
+              * - top-right
+              * - bottom-right
+              *
+              * Use cv::getPerspectiveTransform function to retrieve image region without perspective transformations.
+              *
+              * @note If DL model doesn't support that kind of output then result may be derived from detectTextRectangles() output.
+              *
+              * @param[in] frame The input image
+              * @param[out] detections array with detections' quadrangles (4 points per result)
+              * @param[out] confidences array with detection confidences
          */
         public void detect(Mat frame, List<MatOfPoint> detections, MatOfFloat confidences)
         {
@@ -85,6 +85,9 @@ namespace OpenCVForUnity.DnnModule
         // C++:  void cv::dnn::TextDetectionModel::detect(Mat frame, vector_vector_Point& detections)
         //
 
+        /**
+         @overload
+         */
         public void detect(Mat frame, List<MatOfPoint> detections)
         {
             ThrowIfDisposed();
@@ -102,17 +105,17 @@ namespace OpenCVForUnity.DnnModule
         //
 
         /**
-         * Performs detection
-         *
-         * Given the input {code frame}, prepare network input, run network inference, post-process network output and return result detections.
-         *
-         * Each result is rotated rectangle.
-         *
-         * <b>Note:</b> Result may be inaccurate in case of strong perspective transformations.
-         *
-         * param frame the input image
-         * param detections array with detections' RotationRect results
-         * param confidences array with detection confidences
+         @brief Performs detection
+              *
+              * Given the input @p frame, prepare network input, run network inference, post-process network output and return result detections.
+              *
+              * Each result is rotated rectangle.
+              *
+              * @note Result may be inaccurate in case of strong perspective transformations.
+              *
+              * @param[in] frame the input image
+              * @param[out] detections array with detections' RotationRect results
+              * @param[out] confidences array with detection confidences
          */
         public void detectTextRectangles(Mat frame, MatOfRotatedRect detections, MatOfFloat confidences)
         {
@@ -132,6 +135,9 @@ namespace OpenCVForUnity.DnnModule
         // C++:  void cv::dnn::TextDetectionModel::detectTextRectangles(Mat frame, vector_RotatedRect& detections)
         //
 
+        /**
+         @overload
+         */
         public void detectTextRectangles(Mat frame, MatOfRotatedRect detections)
         {
             ThrowIfDisposed();
@@ -174,4 +180,5 @@ namespace OpenCVForUnity.DnnModule
 
     }
 }
+
 #endif

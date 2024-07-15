@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using OpenCVForUnity.VideoModule;
@@ -11,9 +11,9 @@ namespace OpenCVForUnity.BgsegmModule
 
     // C++: class BackgroundSubtractorMOG
     /**
-     * Gaussian Mixture-based Background/Foreground Segmentation Algorithm.
-     *
-     * The class implements the algorithm described in CITE: KB2001 .
+     @brief Gaussian Mixture-based Background/Foreground Segmentation Algorithm.
+     
+     The class implements the algorithm described in @cite KB2001 .
      */
 
     public class BackgroundSubtractorMOG : BackgroundSubtractor

@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -10,11 +10,11 @@ namespace OpenCVForUnity.Features2dModule
 
     // C++: class KAZE
     /**
-     * Class implementing the KAZE keypoint detector and descriptor extractor, described in CITE: ABD12 .
-     *
-     * <b>Note:</b> AKAZE descriptor can only be used with KAZE or AKAZE keypoints .. [ABD12] KAZE Features. Pablo
-     * F. Alcantarilla, Adrien Bartoli and Andrew J. Davison. In European Conference on Computer Vision
-     * (ECCV), Fiorenze, Italy, October 2012.
+     @brief Class implementing the KAZE keypoint detector and descriptor extractor, described in @cite ABD12 .
+     
+     @note AKAZE descriptor can only be used with KAZE or AKAZE keypoints .. [ABD12] KAZE Features. Pablo
+     F. Alcantarilla, Adrien Bartoli and Andrew J. Davison. In European Conference on Computer Vision
+     (ECCV), Fiorenze, Italy, October 2012.
      */
 
     public class KAZE : Feature2D
@@ -57,16 +57,15 @@ namespace OpenCVForUnity.Features2dModule
         //
 
         /**
-         * The KAZE constructor
-         *
-         *     param extended Set to enable extraction of extended (128-byte) descriptor.
-         *     param upright Set to enable use of upright descriptors (non rotation-invariant).
-         *     param threshold Detector response threshold to accept point
-         *     param nOctaves Maximum octave evolution of the image
-         *     param nOctaveLayers Default number of sublevels per scale level
-         *     param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
-         *     DIFF_CHARBONNIER
-         * return automatically generated
+         @brief The KAZE constructor
+         
+             @param extended Set to enable extraction of extended (128-byte) descriptor.
+             @param upright Set to enable use of upright descriptors (non rotation-invariant).
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
          */
         public static KAZE create(bool extended, bool upright, float threshold, int nOctaves, int nOctaveLayers, int diffusivity)
         {
@@ -78,15 +77,15 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The KAZE constructor
-         *
-         *     param extended Set to enable extraction of extended (128-byte) descriptor.
-         *     param upright Set to enable use of upright descriptors (non rotation-invariant).
-         *     param threshold Detector response threshold to accept point
-         *     param nOctaves Maximum octave evolution of the image
-         *     param nOctaveLayers Default number of sublevels per scale level
-         *     DIFF_CHARBONNIER
-         * return automatically generated
+         @brief The KAZE constructor
+         
+             @param extended Set to enable extraction of extended (128-byte) descriptor.
+             @param upright Set to enable use of upright descriptors (non rotation-invariant).
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
          */
         public static KAZE create(bool extended, bool upright, float threshold, int nOctaves, int nOctaveLayers)
         {
@@ -98,14 +97,15 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The KAZE constructor
-         *
-         *     param extended Set to enable extraction of extended (128-byte) descriptor.
-         *     param upright Set to enable use of upright descriptors (non rotation-invariant).
-         *     param threshold Detector response threshold to accept point
-         *     param nOctaves Maximum octave evolution of the image
-         *     DIFF_CHARBONNIER
-         * return automatically generated
+         @brief The KAZE constructor
+         
+             @param extended Set to enable extraction of extended (128-byte) descriptor.
+             @param upright Set to enable use of upright descriptors (non rotation-invariant).
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
          */
         public static KAZE create(bool extended, bool upright, float threshold, int nOctaves)
         {
@@ -117,13 +117,15 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The KAZE constructor
-         *
-         *     param extended Set to enable extraction of extended (128-byte) descriptor.
-         *     param upright Set to enable use of upright descriptors (non rotation-invariant).
-         *     param threshold Detector response threshold to accept point
-         *     DIFF_CHARBONNIER
-         * return automatically generated
+         @brief The KAZE constructor
+         
+             @param extended Set to enable extraction of extended (128-byte) descriptor.
+             @param upright Set to enable use of upright descriptors (non rotation-invariant).
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
          */
         public static KAZE create(bool extended, bool upright, float threshold)
         {
@@ -135,12 +137,15 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The KAZE constructor
-         *
-         *     param extended Set to enable extraction of extended (128-byte) descriptor.
-         *     param upright Set to enable use of upright descriptors (non rotation-invariant).
-         *     DIFF_CHARBONNIER
-         * return automatically generated
+         @brief The KAZE constructor
+         
+             @param extended Set to enable extraction of extended (128-byte) descriptor.
+             @param upright Set to enable use of upright descriptors (non rotation-invariant).
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
          */
         public static KAZE create(bool extended, bool upright)
         {
@@ -152,11 +157,15 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The KAZE constructor
-         *
-         *     param extended Set to enable extraction of extended (128-byte) descriptor.
-         *     DIFF_CHARBONNIER
-         * return automatically generated
+         @brief The KAZE constructor
+         
+             @param extended Set to enable extraction of extended (128-byte) descriptor.
+             @param upright Set to enable use of upright descriptors (non rotation-invariant).
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
          */
         public static KAZE create(bool extended)
         {
@@ -168,10 +177,15 @@ namespace OpenCVForUnity.Features2dModule
         }
 
         /**
-         * The KAZE constructor
-         *
-         *     DIFF_CHARBONNIER
-         * return automatically generated
+         @brief The KAZE constructor
+         
+             @param extended Set to enable extraction of extended (128-byte) descriptor.
+             @param upright Set to enable use of upright descriptors (non rotation-invariant).
+             @param threshold Detector response threshold to accept point
+             @param nOctaves Maximum octave evolution of the image
+             @param nOctaveLayers Default number of sublevels per scale level
+             @param diffusivity Diffusivity type. DIFF_PM_G1, DIFF_PM_G2, DIFF_WEICKERT or
+             DIFF_CHARBONNIER
          */
         public static KAZE create()
         {

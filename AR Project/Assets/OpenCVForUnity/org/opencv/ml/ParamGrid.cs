@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,10 +10,10 @@ namespace OpenCVForUnity.MlModule
 {
     // C++: class ParamGrid
     /**
-     * The structure represents the logarithmic grid range of statmodel parameters.
-     *
-     * It is used for optimizing statmodel accuracy by varying model parameters, the accuracy estimate
-     * being computed by cross-validation.
+     @brief The structure represents the logarithmic grid range of statmodel parameters.
+     
+     It is used for optimizing statmodel accuracy by varying model parameters, the accuracy estimate
+     being computed by cross-validation.
      */
 
     public class ParamGrid : DisposableOpenCVObject
@@ -54,12 +54,11 @@ namespace OpenCVForUnity.MlModule
         //
 
         /**
-         * Creates a ParamGrid Ptr that can be given to the %SVM::trainAuto method
-         *
-         *     param minVal minimum value of the parameter grid
-         *     param maxVal maximum value of the parameter grid
-         *     param logstep Logarithmic step for iterating the statmodel parameter
-         * return automatically generated
+         @brief Creates a ParamGrid Ptr that can be given to the %SVM::trainAuto method
+         
+             @param minVal minimum value of the parameter grid
+             @param maxVal maximum value of the parameter grid
+             @param logstep Logarithmic step for iterating the statmodel parameter
          */
         public static ParamGrid create(double minVal, double maxVal, double logstep)
         {
@@ -71,11 +70,11 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Creates a ParamGrid Ptr that can be given to the %SVM::trainAuto method
-         *
-         *     param minVal minimum value of the parameter grid
-         *     param maxVal maximum value of the parameter grid
-         * return automatically generated
+         @brief Creates a ParamGrid Ptr that can be given to the %SVM::trainAuto method
+         
+             @param minVal minimum value of the parameter grid
+             @param maxVal maximum value of the parameter grid
+             @param logstep Logarithmic step for iterating the statmodel parameter
          */
         public static ParamGrid create(double minVal, double maxVal)
         {
@@ -87,10 +86,11 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Creates a ParamGrid Ptr that can be given to the %SVM::trainAuto method
-         *
-         *     param minVal minimum value of the parameter grid
-         * return automatically generated
+         @brief Creates a ParamGrid Ptr that can be given to the %SVM::trainAuto method
+         
+             @param minVal minimum value of the parameter grid
+             @param maxVal maximum value of the parameter grid
+             @param logstep Logarithmic step for iterating the statmodel parameter
          */
         public static ParamGrid create(double minVal)
         {
@@ -102,9 +102,11 @@ namespace OpenCVForUnity.MlModule
         }
 
         /**
-         * Creates a ParamGrid Ptr that can be given to the %SVM::trainAuto method
-         *
-         * return automatically generated
+         @brief Creates a ParamGrid Ptr that can be given to the %SVM::trainAuto method
+         
+             @param minVal minimum value of the parameter grid
+             @param maxVal maximum value of the parameter grid
+             @param logstep Logarithmic step for iterating the statmodel parameter
          */
         public static ParamGrid create()
         {
