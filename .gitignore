@@ -2,12 +2,12 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/[Ll]ibrary/
+/AR Project/Library/
 /[Tt]emp/
-/[Oo]bj/
+/AR Project/Obj/
 /[Bb]uild/
 /[Bb]uilds/
-/[Ll]ogs/
+/AR Project/Logs
 /[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
