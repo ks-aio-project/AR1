@@ -6750,9 +6750,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bbd9e31866338944b4e47e5000243fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planeManager: {fileID: 0}
   trackedImageManager: {fileID: 608830361}
   arObjectPrefab: {fileID: 5953613740379191509, guid: cc93ed097c3831547989f55244823745,
     type: 3}
+  tmp: {fileID: 0}
+  spawnedObjectPrefabs: []
+  cubeMesh: {fileID: 0}
 --- !u!1 &1835809108 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2318766424490069697, guid: dae86721c71ee42018bbec0181a4e52e,

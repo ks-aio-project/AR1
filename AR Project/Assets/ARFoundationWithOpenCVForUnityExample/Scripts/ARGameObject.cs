@@ -24,6 +24,10 @@ namespace ARFoundationWithOpenCVForUnityExample
         private List<Vector3> pendingPositionList = new List<Vector3>();
         private List<Quaternion> pendingRotationList = new List<Quaternion>();
 
+        // KKS
+        public bool _init = false;
+        public GameObject anchor;
+
         /// <summary>
         /// When smoothing is enabled, the new pose will be filtered with current pose using lerp. Big sudden change of 6-DOF pose will be prohibited.
         /// </summary>

@@ -492,8 +492,17 @@ namespace ARFoundationWithOpenCVForUnityExample
             }
             else
             {
-                ARUtils.SetTransformFromMatrix(arGameObject.transform, ref ARM);
+                if(!arGameObject.GetComponent<ARGameObject>()._init)
+                {
+                    ARUtils.SetTransformFromMatrix(arGameObject.transform, ref ARM);
+                    arGameObject.GetComponent<ARGameObject>().anchor = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    arGameObject.GetComponent<ARGameObject>().anchor.transform.localScale = Vector3.one * 0.01f;
+                    arGameObject.transform.parent = arGameObject.GetComponent<ARGameObject>().anchor.transform;
+                    arGameObject.GetComponent<ARGameObject>()._init = true;
+                }
             }
+
+            Debug.Log($"KKS Test Distance : {Vector3.Distance(arGameObject.transform.position, Camera.main.transform.position)}");
         }
 
         private void ResetObjectTransform()
