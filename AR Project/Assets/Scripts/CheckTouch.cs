@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
-using static ObjectExplane;
 
 public class CheckTouch : MonoBehaviour
 {
@@ -16,41 +15,21 @@ public class CheckTouch : MonoBehaviour
 
     [SerializeField]
     private GameObject TextCanvas;
-
-    [SerializeField]
-    private GameObject testRoom;
-    
+        
     private List<ARRaycastHit> hitList = new List<ARRaycastHit>();
 
-    float cameraHeight;
+    private GameObject lastTouchObject;
+
+    public class User
+    {
+        public string userId;
+        public string id;
+        public string title;
+        public string body;
+    }
 
     void Update()
     {
-        if (arPlaneManager.trackables.count > 0)
-        {
-            // 가장 가까운 평면을 찾습니다.
-            ARPlane closestPlane = null;
-            float closestDistance = float.MaxValue;
-
-            foreach (var plane in arPlaneManager.trackables)
-            {
-                float distance = Vector3.Distance(Camera.main.transform.position, plane.transform.position);
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    closestPlane = plane;
-                }
-            }
-
-            if (closestPlane != null)
-            {
-                // 카메라의 높이를 계산합니다.
-                cameraHeight = Camera.main.transform.position.y - closestPlane.transform.position.y;
-                
-                Debug.Log($"Camera height from ground: {cameraHeight}");
-            }
-        }
-
         if (Input.touchCount > 0)
         {
             Debug.Log("KKS Touch");
@@ -66,11 +45,18 @@ public class CheckTouch : MonoBehaviour
                     if (hit.collider != null && hit.collider.CompareTag("Touchable"))
                     {
                         Debug.Log($"KKS Object Touch : {hit.collider.name}");
-                        Vector3 offset = new Vector3(0.1f, 0, 0);
+                        Vector3 offset = new Vector3(0, -0.3f, 0.1f);
 
                         TextCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "";
                         TextCanvas.transform.position = hit.collider.transform.position + offset;
 
+                        if(TextCanvas.activeSelf && hit.collider.gameObject == lastTouchObject)
+                        {
+                            TextCanvas.SetActive(false);
+                            return;
+                        }
+
+                        // 오브젝트 터치
                         switch (hit.collider.name)
                         {
                             case "air":
@@ -83,6 +69,7 @@ public class CheckTouch : MonoBehaviour
                                 Debug.Log($"KKS Light Touch");
                                 break;
                         }
+                        lastTouchObject = hit.collider.gameObject;
                         // 플레인과 동시 터치 방지
                         return;
                     }
@@ -90,10 +77,13 @@ public class CheckTouch : MonoBehaviour
 
                 if (raycastManager.Raycast(Input.GetTouch(0).position, hitList, TrackableType.PlaneWithinPolygon))
                 {
+                    // 플레인 터치
                     Debug.Log($"KKS Touch Ray Plane");
                     var hitPose = hitList[0].pose;
-                    GameObject obj = Instantiate(raycastManager.raycastPrefab, hitPose.position, hitPose.rotation);
-                    GameObject obj1 = Instantiate(testRoom, hitPose.position, hitPose.rotation);
+
+                    Vector3 spawnPosition = hit.point;
+
+                    GetComponent<ObjectsController>().CreateOrDestroy("room1", hitPose);
                 }
             }
         }
@@ -101,6 +91,7 @@ public class CheckTouch : MonoBehaviour
 
     public void GetRequestFun(string url)
     {
+        TextCanvas.SetActive(false);
         StartCoroutine(GetRequest(url));
     }
 
@@ -121,26 +112,20 @@ public class CheckTouch : MonoBehaviour
             }
             else
             {
+                TextCanvas.SetActive(true);
                 Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                if (webRequest.downloadHandler.text.Length > 20)
-                {
-                    User user = JsonUtility.FromJson<User>(webRequest.downloadHandler.text);
+                User user = JsonUtility.FromJson<User>(webRequest.downloadHandler.text);
 
-                    Debug.Log($"KKS web success / UserID : {user.userId} / ID : {user.id} / Title : {user.title} / Body : {user.body}");
-                    // 변환된 데이터 출력
+                Debug.Log($"KKS web success / UserID : {user.userId} / ID : {user.id} / Title : {user.title} / Body : {user.body}");
+                // 변환된 데이터 출력
 
-                    TextCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text = $"UserID : {user.userId}\n" +
-                        $"ID : {user.id}\n" +
-                        $"Title : {user.title}\n" +
-                        $"Body : {user.body}\n";
-                }
-                else
-                {
-                    User user = JsonUtility.FromJson<User>(webRequest.downloadHandler.text);
-
-                    Debug.Log($"KKS web success / UserID : {user.userId} / ID : {user.id} / Title : {user.title} / Body : {user.body}");
-                    TextCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text = webRequest.downloadHandler.text;
-                }
+                TextCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
+                    $"UserID : {user.userId}\n" +
+                    $"ID : {user.id}\n" +
+                    $"Title : {user.title}\n" +
+                    $"Body : {user.body}\n";
+                TextCanvas.transform.LookAt(Camera.main.transform);
+                TextCanvas.transform.Rotate(0, 180, 0);
             }
         }
     }
