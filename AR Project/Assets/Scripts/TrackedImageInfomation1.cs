@@ -49,16 +49,14 @@ public class TrackedImageInfomation1 : MonoBehaviour
         // 이미지 트래킹시
         if(trackedImage.referenceImage.name == "room1")
         {
-            Vector3 offset = new Vector3(1f, -1f, -3f);
+            Vector3 offset = new Vector3(5f, -1f, -0.5f);
             //GameObject obj = Instantiate(arObjectPrefab[0]);
 
-            float distanceFromCamera = 2.0f;
-
             Vector3 forwardDirection = Camera.main.transform.forward;
-            Vector3 spawnPosition = trackedImage.transform.position + forwardDirection * distanceFromCamera;
+            Vector3 spawnPosition = trackedImage.transform.position;
             GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
             spawnedObject.transform.position = spawnPosition;
-            spawnedObject.transform.position += offset;
+            spawnedObject.transform.position -= spawnedObject.transform.GetChild(0).position;
 
             createdPrefab = spawnedObject;
         }
