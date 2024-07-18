@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
+using TMPro;
 
 public class TrackedImageInfomation1 : MonoBehaviour
 {
@@ -9,6 +11,9 @@ public class TrackedImageInfomation1 : MonoBehaviour
     public GameObject[] arObjectPrefab;
 
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
+
+    GameObject createdPrefab;
+    public GameObject text;
 
     void OnEnable()
     {
@@ -36,17 +41,58 @@ public class TrackedImageInfomation1 : MonoBehaviour
         // 제거된 이미지에 대해 처리
         foreach (ARTrackedImage trackedImage in eventArgs.removed)
         {
-            // 트래킹에서 사라진 이미지는 처리하지 않음 (이미지의 상태가 업데이트되는 동안 위치를 유지할 것이므로)
         }
     }
 
     void CreateOrUpdateARObject(ARTrackedImage trackedImage)
     {
+        // 이미지 트래킹시
         if(trackedImage.referenceImage.name == "room1")
         {
-            Vector3 offset = new Vector3(0, -1f, 1.5f);
-            GameObject obj = Instantiate(arObjectPrefab[0]);
-            obj.transform.position = trackedImage.transform.position + offset;
+            Vector3 offset = new Vector3(1f, -1f, -3f);
+            //GameObject obj = Instantiate(arObjectPrefab[0]);
+
+            float distanceFromCamera = 2.0f;
+
+            Vector3 forwardDirection = Camera.main.transform.forward;
+            Vector3 spawnPosition = trackedImage.transform.position + forwardDirection * distanceFromCamera;
+            GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
+            spawnedObject.transform.position = spawnPosition;
+            spawnedObject.transform.position += offset;
+
+            createdPrefab = spawnedObject;
         }
+    }
+
+    public void OnBtnClick(GameObject btn)
+    {
+        if (createdPrefab)
+        {
+            switch (btn.name)
+            {
+                case "Button":
+                    createdPrefab.transform.Translate(-0.1f, 0, 0);
+                    break;
+                case "Button (1)":
+                    createdPrefab.transform.Translate(0, -0.1f, 0);
+                    break;
+                case "Button (2)":
+                    createdPrefab.transform.Translate(0, 0, -0.1f);
+                    break;
+                case "Button (3)":
+                    createdPrefab.transform.Translate(0.1f, 0, 0);
+                    break;
+                case "Button (4)":
+                    createdPrefab.transform.Translate(0, 0.1f, 0);
+                    break;
+                case "Button (5)":
+                    createdPrefab.transform.Translate(0, 0, 0.1f);
+                    break;
+            }
+        }
+        text.GetComponent<TextMeshProUGUI>().text = 
+            $"X: {createdPrefab.transform.position.x}\n" +
+            $"Y: {createdPrefab.transform.position.y}\n" +
+            $"Z: {createdPrefab.transform.position.z}";
     }
 }

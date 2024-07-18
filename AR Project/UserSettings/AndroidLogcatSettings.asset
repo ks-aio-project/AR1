@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "192.168.1.172:46229",
+    "m_SelectedDeviceId": "192.168.1.172:37065",
     "m_SelectedProcess": {
-        "deviceId": "192.168.1.172:46229",
+        "deviceId": "192.168.1.172:37065",
         "name": "com.unity.template.ar_mobile",
-        "processId": 24820,
+        "processId": 25157,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -300,6 +300,30 @@
             "deviceId": "192.168.1.172:46229",
             "name": "com.unity.template.ar_mobile",
             "processId": 24820,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:44355",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 1250,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:44355",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 2510,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:44355",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 13134,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:37065",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 25157,
             "exited": false
         }
     ],

@@ -63,28 +63,28 @@ public class CheckTouch : MonoBehaviour
                                 GetRequestFun("https://jsonplaceholder.typicode.com/posts/1");
                                 break;
                             case "tv":
-                                GetRequestFun("https://jsonplaceholder.typicode.com/posts");
+                                GetRequestFun("https://jsonplaceholder.typicode.com/posts/2");
                                 break;
                             case "light":
                                 Debug.Log($"KKS Light Touch");
                                 break;
                         }
-                        lastTouchObject = hit.collider.gameObject;
-                        // 플레인과 동시 터치 방지
-                        return;
+                        //lastTouchObject = hit.collider.gameObject;
+                        //// 플레인과 동시 터치 방지
+                        //return;
                     }
                 }
 
-                if (raycastManager.Raycast(Input.GetTouch(0).position, hitList, TrackableType.PlaneWithinPolygon))
-                {
-                    // 플레인 터치
-                    Debug.Log($"KKS Touch Ray Plane");
-                    var hitPose = hitList[0].pose;
+                //if (raycastManager.Raycast(Input.GetTouch(0).position, hitList, TrackableType.PlaneWithinPolygon))
+                //{
+                //    // 플레인 터치
+                //    Debug.Log($"KKS Touch Ray Plane");
+                //    var hitPose = hitList[0].pose;
 
-                    Vector3 spawnPosition = hit.point;
+                //    Vector3 spawnPosition = hit.point;
 
-                    GetComponent<ObjectsController>().CreateOrDestroy("room1", hitPose);
-                }
+                //    GetComponent<ObjectsController>().CreateOrDestroy("room1", hitPose);
+                //}
             }
         }
     }
