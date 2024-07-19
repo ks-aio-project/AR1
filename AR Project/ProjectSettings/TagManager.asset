@@ -8,6 +8,8 @@ TagManager:
   - Room1
   - FloorLight
   - ObjectCeiling
+  - PlacedObject
+  - UIButton
   layers:
   - Default
   - TransparentFX

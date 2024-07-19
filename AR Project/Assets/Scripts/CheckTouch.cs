@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using static UnityEngine.GraphicsBuffer;
 
 public class CheckTouch : MonoBehaviour
 {
@@ -124,8 +125,9 @@ public class CheckTouch : MonoBehaviour
                     $"ID : {user.id}\n" +
                     $"Title : {user.title}\n" +
                     $"Body : {user.body}\n";
-                TextCanvas.transform.LookAt(Camera.main.transform);
-                TextCanvas.transform.Rotate(0, 180, 0);
+                TextCanvas.transform.rotation = Quaternion.LookRotation(TextCanvas.transform.position - Camera.main.transform.position);
+
+                //TextCanvas.transform.Rotate(0, 180, 0);
             }
         }
     }

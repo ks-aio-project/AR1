@@ -4946,6 +4946,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placeableObjects:
   - {fileID: 8621301904683437612, guid: 065b2dfc6789e2b44a93172b1768d0e1, type: 3}
+  originalPlaceableObjects:
+  - {fileID: 8621301904683437612, guid: e0761a623aa29aa468cfe1ace9415ea5, type: 3}
+  ceiling: {fileID: 0}
 --- !u!1 &920969223
 GameObject:
   m_ObjectHideFlags: 0

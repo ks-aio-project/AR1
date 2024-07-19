@@ -48,7 +48,7 @@ public class TrackedImageInfomation1 : MonoBehaviour
     void CreateOrUpdateARObject(ARTrackedImage trackedImage)
     {
         // 이미지 트래킹시
-        if(trackedImage.referenceImage.name == "room1")
+        if (trackedImage.referenceImage.name == "room1")
         {
             Vector3 offset = new Vector3(3f, -1.5f, 0.5f);
             //GameObject obj = Instantiate(arObjectPrefab[0]);
