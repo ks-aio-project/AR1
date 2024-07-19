@@ -49,15 +49,14 @@ public class TrackedImageInfomation1 : MonoBehaviour
         // 이미지 트래킹시
         if(trackedImage.referenceImage.name == "room1")
         {
-            Vector3 offset = new Vector3(5f, -1f, -0.5f);
+            Vector3 offset = new Vector3(3f, -1.5f, 1f);
             //GameObject obj = Instantiate(arObjectPrefab[0]);
 
             Vector3 forwardDirection = Camera.main.transform.forward;
             Vector3 spawnPosition = trackedImage.transform.position;
             GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
-            spawnedObject.transform.position = spawnPosition;
-            spawnedObject.transform.position -= spawnedObject.transform.GetChild(0).position;
-
+            spawnedObject.transform.position = spawnPosition + offset;
+            spawnedObject.transform.Rotate(0f, 180f, 0f);
             createdPrefab = spawnedObject;
         }
     }
@@ -86,11 +85,34 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 case "Button (5)":
                     createdPrefab.transform.Translate(0, 0, 0.1f);
                     break;
+                case "btn 1":
+                    createdPrefab.transform.Rotate(1f, 0, 0);
+                    break;
+                case "btn 2":
+                    createdPrefab.transform.Rotate(-1f, 0, 0);
+                    break;
+                case "btn 3":
+                    createdPrefab.transform.Rotate(0, 1, 0);
+                    break;
+                case "btn 4":
+                    createdPrefab.transform.Rotate(0, -1, 0);
+                    break;
+                case "btn 5":
+                    createdPrefab.transform.Rotate(0, 0, 1);
+                    break;
+                case "btn 6":
+                    createdPrefab.transform.Rotate(0, 0, 0);
+                    break;
             }
         }
         text.GetComponent<TextMeshProUGUI>().text = 
+            $"Position\n" +
             $"X: {createdPrefab.transform.position.x}\n" +
             $"Y: {createdPrefab.transform.position.y}\n" +
-            $"Z: {createdPrefab.transform.position.z}";
+            $"Z: {createdPrefab.transform.position.z}\n" +
+            $"Rotation\n" +
+            $"X: {createdPrefab.transform.rotation.x}\n" +
+            $"Y: {createdPrefab.transform.rotation.y}\n" +
+            $"Z: {createdPrefab.transform.rotation.z}";
     }
 }
