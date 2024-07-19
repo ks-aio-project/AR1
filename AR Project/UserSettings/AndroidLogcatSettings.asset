@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "192.168.1.172:37065",
+    "m_SelectedDeviceId": "192.168.1.172:44131",
     "m_SelectedProcess": {
-        "deviceId": "192.168.1.172:37065",
+        "deviceId": "192.168.1.172:44131",
         "name": "com.unity.template.ar_mobile",
-        "processId": 25157,
+        "processId": 23867,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -325,6 +325,24 @@
             "name": "com.unity.template.ar_mobile",
             "processId": 25157,
             "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:35271",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 10335,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:44131",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 19525,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.172:44131",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 23867,
+            "exited": false
         }
     ],
     "m_Tags": {
@@ -408,5 +426,5 @@
             "exited": false
         }
     },
-    "m_AutoScroll": 2
+    "m_AutoScroll": 0
 }

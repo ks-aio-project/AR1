@@ -12,7 +12,8 @@ public class TrackedImageInfomation1 : MonoBehaviour
 
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
 
-    GameObject createdPrefab;
+    [HideInInspector]
+    public GameObject createdPrefab;
     public GameObject text;
 
     void OnEnable()
@@ -49,14 +50,14 @@ public class TrackedImageInfomation1 : MonoBehaviour
         // 이미지 트래킹시
         if(trackedImage.referenceImage.name == "room1")
         {
-            Vector3 offset = new Vector3(3f, -1.5f, 1f);
+            Vector3 offset = new Vector3(3f, -1.5f, 0.5f);
             //GameObject obj = Instantiate(arObjectPrefab[0]);
 
-            Vector3 forwardDirection = Camera.main.transform.forward;
             Vector3 spawnPosition = trackedImage.transform.position;
             GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
             spawnedObject.transform.position = spawnPosition + offset;
             spawnedObject.transform.Rotate(0f, 180f, 0f);
+
             createdPrefab = spawnedObject;
         }
     }
