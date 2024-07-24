@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class CreatePlaceObject : MonoBehaviour
 {
@@ -15,6 +18,10 @@ public class CreatePlaceObject : MonoBehaviour
     GameObject placeingObject;
 
     GameObject buttonCanvas;
+
+    int placeID = int.MaxValue;
+
+    public GameObject testTMP;
 
     void Update()
     {
@@ -30,21 +37,115 @@ public class CreatePlaceObject : MonoBehaviour
             if (touch.phase == TouchPhase.Began)
             {
                 Ray ray = Camera.main.ScreenPointToRay(touch.position);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
+                RaycastHit[] hits = Physics.RaycastAll(ray);
+                for (int i = 0; i < hits.Length; i++)
                 {
-                    // 수정해야함.
-                    // 터치시 버튼을 우선 수위로
-                    if(!hit.collider.CompareTag("UIButton"))
+                    if (placeMode && hits[i].collider.CompareTag("UIButton"))
                     {
-                        Vector3 newPosition = hit.point;
-                        newPosition.y = ceiling.transform.position.y; // y축 고정
-                        placeingObject.transform.position = newPosition;
+                        if (hits[i].collider.name == "Button_OK")
+                        {
+                            testTMP.GetComponent<TextMeshProUGUI>().text = "Button_OK";
+                            GameObject newPlaceObject = Instantiate(originalPlaceableObjects[placeID]);
+
+                            newPlaceObject.transform.position = placeingObject.transform.position;
+                            newPlaceObject.transform.rotation = placeingObject.transform.rotation;
+                            newPlaceObject.transform.localScale = placeingObject.transform.localScale;
+
+                            EndPlaceMode();
+                        }
+                        else if (hits[i].collider.name == "Button_Cancel")
+                        {
+                            testTMP.GetComponent<TextMeshProUGUI>().text = "Button_Cancel";
+                            EndPlaceMode();
+                        }
+                        else if (hits[i].collider.name == "Button_Rotate")
+                        {
+                            testTMP.GetComponent<TextMeshProUGUI>().text = "Button_Rotate";
+                            placeingObject.transform.Rotate(0, 0, 45);
+                            placeingObject.GetComponent<UIConnetor>().button_ok.transform.Rotate(0, 0, -45);
+                            placeingObject.GetComponent<UIConnetor>().button_cancel.transform.Rotate(0, 0, -45);
+                            placeingObject.GetComponent<UIConnetor>().button_rotation.transform.Rotate(0, 0, -45);
+                        }
+                        break;
+                    }
+                }
+
+                for (int i = 0; i < hits.Length; i++)
+                {
+                    if(placeID == 1)
+                    {
+                        Debug.Log($"KKS placeID is 1");
+                        if (hits[i].collider.name.Contains("Wall"))
+                        {
+                            testTMP.GetComponent<TextMeshProUGUI>().text = "placeID 1 & Touch Wall";
+                            Vector3 newPosition;
+                            switch (hits[i].collider.name)
+                            {
+                                case "Back Wall":
+                                    testTMP.GetComponent<TextMeshProUGUI>().text = $"hit : {hits[i].point}";
+                                    newPosition = hits[i].point;
+                                    newPosition.z = hits[i].collider.transform.position.z;
+                                    placeingObject.transform.position = newPosition;
+                                    placeingObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                                    break;
+                                case "Front Wall":
+                                    testTMP.GetComponent<TextMeshProUGUI>().text = $"hit : {hits[i].point}";
+                                    newPosition = hits[i].point;
+                                    newPosition.z = hits[i].collider.transform.position.z;
+                                    placeingObject.transform.position = newPosition;
+                                    placeingObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                                    break;
+                                case "Left Wall":
+                                    testTMP.GetComponent<TextMeshProUGUI>().text = $"hit : {hits[i].point}";
+                                    newPosition = hits[i].point;
+                                    newPosition.x = hits[i].collider.transform.position.x;
+                                    placeingObject.transform.position = newPosition;
+                                    placeingObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+                                    break;
+                                case "Right Wall":
+                                    testTMP.GetComponent<TextMeshProUGUI>().text = $"hit : {hits[i].point}";
+                                    newPosition = hits[i].point;
+                                    newPosition.x = hits[i].collider.transform.position.x;
+                                    placeingObject.transform.position = newPosition;
+                                    placeingObject.transform.rotation = Quaternion.Euler(0, 270, 0);
+                                    break;
+                            }
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (hits[i].collider.name == "Ceiling")
+                        {
+                            if (placeID == 2)
+                            {
+                                testTMP.GetComponent<TextMeshProUGUI>().text = "placeID 2 & Touch Ceiling";
+                                Vector3 newPosition = hits[i].point;
+                                newPosition.y = ceiling.transform.position.y; // y축 고정
+                                placeingObject.transform.position = newPosition;
+                            }
+                            else
+                            {
+                                testTMP.GetComponent<TextMeshProUGUI>().text = "placeID 0 & Touch Ceiling";
+                                Vector3 newPosition = hits[i].point;
+                                newPosition.y = ceiling.transform.position.y; // y축 고정
+                                placeingObject.transform.position = newPosition;
+                            }
+                            break;
+                        }
                     }
                 }
             }
         }
+    }
+
+    private void EndPlaceMode()
+    {
+        Destroy(placeingObject);
+        placeingObject = null;
+        buttonCanvas.SetActive(true);
+        placeMode = false;
+        placeID = int.MaxValue;
     }
 
     public void OnCreateButtonClick(GameObject btn)
@@ -64,16 +165,34 @@ public class CreatePlaceObject : MonoBehaviour
                     placeingObject = Instantiate(placeableObjects[0]);
                     placeingObject.transform.position = prefab.GetComponent<IndoorObject>().placeableObject.transform.position;
 
-                    placeingObject.GetComponent<UIConnetor>().button_ok.GetComponent<Button>().onClick.AddListener(() => ObjectPlace(0, "ok"));
-                    placeingObject.GetComponent<UIConnetor>().button_cancel.GetComponent<Button>().onClick.AddListener(() => ObjectPlace(0, "cancel"));
-                    //p1.transform.position += new Vector3(0, 0f, 0);
+                    testTMP.GetComponent<TextMeshProUGUI>().text = "placeID = 0";
+
+                    placeID = 0;
 
                     buttonCanvas.SetActive(false);
                     placeMode = true;
                     break;
                 case "obj2":
+                    placeingObject = Instantiate(placeableObjects[1]);
+                    placeingObject.transform.position = prefab.GetComponent<IndoorObject>().placeableObject.transform.position;
+
+                    testTMP.GetComponent<TextMeshProUGUI>().text = "placeID = 1";
+
+                    placeID = 1;
+
+                    buttonCanvas.SetActive(false);
+                    placeMode = true;
                     break;
                 case "obj3":
+                    placeingObject = Instantiate(placeableObjects[2]);
+                    placeingObject.transform.position = prefab.GetComponent<IndoorObject>().placeableObject.transform.position;
+
+                    testTMP.GetComponent<TextMeshProUGUI>().text = "placeID = 2";
+
+                    placeID = 2;
+
+                    buttonCanvas.SetActive(false);
+                    placeMode = true;
                     break;
                 case "obj4":
                     break;
@@ -81,12 +200,26 @@ public class CreatePlaceObject : MonoBehaviour
         }
     }
 
-    public void ObjectPlace(int id, string result)
+    private void ObjectControl(string value)
     {
-        switch(result)
+        switch (value)
+        {
+            case "rotate":
+                placeingObject.transform.Rotate(0, 0, 45);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// 배치, 취소 2개 항목을 위한 함수
+    /// </summary>
+    /// <param name="value">Ok / Cancel</param>
+    public void ObjectPlace(string value)
+    {
+        switch(value)
         {
             case "ok":
-                GameObject newPlaceObject = Instantiate(originalPlaceableObjects[id]);
+                GameObject newPlaceObject = Instantiate(originalPlaceableObjects[placeID]);
 
                 newPlaceObject.transform.position = placeingObject.transform.position;
                 newPlaceObject.transform.rotation = placeingObject.transform.rotation;
@@ -94,9 +227,12 @@ public class CreatePlaceObject : MonoBehaviour
                 break;
         }
 
+        EndPlaceMode();
         Destroy(placeingObject);
         placeingObject = null;
         buttonCanvas.SetActive(true);
         placeMode = false;
+
+        placeID = int.MaxValue;
     }
 }

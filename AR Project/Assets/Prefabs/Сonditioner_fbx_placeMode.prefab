@@ -3230,3 +3230,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button_ok: {fileID: 5802471159192073385}
   button_cancel: {fileID: 7736341960645660946}
+  button_rotation: {fileID: 0}

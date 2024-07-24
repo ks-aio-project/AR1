@@ -57,7 +57,6 @@ public class TrackedImageInfomation1 : MonoBehaviour
             GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
             spawnedObject.transform.position = spawnPosition + offset;
             spawnedObject.transform.Rotate(0f, 180f, 0f);
-
             createdPrefab = spawnedObject;
         }
     }
