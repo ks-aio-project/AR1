@@ -33,7 +33,6 @@ public class CheckTouch : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            Debug.Log("KKS Touch");
             Touch touch = Input.GetTouch(0);
 
             if (touch.phase == TouchPhase.Began)
@@ -45,7 +44,6 @@ public class CheckTouch : MonoBehaviour
                 {
                     if (hit.collider != null && hit.collider.CompareTag("Touchable"))
                     {
-                        Debug.Log($"KKS Object Touch : {hit.collider.name}");
                         Vector3 offset = new Vector3(0, -0.3f, 0.1f);
 
                         TextCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "";

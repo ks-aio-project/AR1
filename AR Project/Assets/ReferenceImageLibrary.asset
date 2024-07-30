@@ -27,3 +27,23 @@ MonoBehaviour:
     m_SpecifySize: 0
     m_Name: room1
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5568316335434831368
+      m_GuidHigh: 6584364597675232154
+    m_SerializedTextureGuid:
+      m_GuidLow: 1307202308955656707
+      m_GuidHigh: 7215550748735794794
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: distribution_box
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5255317092825685022
+      m_GuidHigh: 10883721450807478413
+    m_SerializedTextureGuid:
+      m_GuidLow: 17006935221417441989
+      m_GuidHigh: 16376923281190718345
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: distribution_box_mini
+    m_Texture: {fileID: 0}

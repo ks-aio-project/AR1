@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "192.168.1.172:41203",
+    "m_SelectedDeviceId": "R3CW20F7Y0V",
     "m_SelectedProcess": {
-        "deviceId": "192.168.1.172:41203",
+        "deviceId": "R3CW20F7Y0V",
         "name": "com.unity.template.ar_mobile",
-        "processId": 10817,
+        "processId": 14885,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -263,7 +263,31 @@
         {
             "deviceId": "R3CW20F7Y0V",
             "name": "com.unity.template.ar_mobile",
-            "processId": 20087,
+            "processId": 4437,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CW20F7Y0V",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 6406,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CW20F7Y0V",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 10235,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CW20F7Y0V",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 12775,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CW20F7Y0V",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 14885,
             "exited": false
         },
         {
@@ -355,6 +379,12 @@
             "name": "com.unity.template.ar_mobile",
             "processId": 10817,
             "exited": false
+        },
+        {
+            "deviceId": "192.168.1.172:44251",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 21926,
+            "exited": false
         }
     ],
     "m_Tags": {
@@ -411,7 +441,7 @@
         "AutoCapture": true
     },
     "m_FilterOptions": {
-        "m_Filter": "place",
+        "m_Filter": "kks",
         "m_UseRegularExpressions": false,
         "m_MatchCase": false
     },
