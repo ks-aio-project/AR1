@@ -7,9 +7,12 @@ public class Test1 : MonoBehaviour
 {
     bool trigger = false;
 
+    UIConnetor uiConnetor;
+
     private void Start()
     {
-        GetComponentInParent<UIConnetor>().pairs.Add(gameObject, trigger);
+        uiConnetor = GetComponentInParent<UIConnetor>();
+        uiConnetor.pairs.Add(gameObject, trigger);
     }
 
     private void OnTriggerStay(Collider other)
@@ -18,12 +21,7 @@ public class Test1 : MonoBehaviour
         {
             trigger = true;
 
-            if (GetComponentInParent<UIConnetor>().pairs.ContainsKey(gameObject))
-            {
-                GetComponentInParent<UIConnetor>().pairs[gameObject] = trigger;
-            }
-
-            Debug.Log($"KKS triggerStay : {gameObject.name} / {trigger} / other : {other.name}");
+            uiConnetor.pairs[gameObject] = trigger;
         }
     }
 
@@ -33,11 +31,7 @@ public class Test1 : MonoBehaviour
         {
             trigger = false;
 
-            if (GetComponentInParent<UIConnetor>().pairs.ContainsKey(gameObject))
-            {
-                GetComponentInParent<UIConnetor>().pairs[gameObject] = trigger;
-            }
-            Debug.Log($"KKS triggerExit : {gameObject.name} / {trigger} / other : {other.name}");
+            uiConnetor.pairs[gameObject] = trigger;
         }
     }
 }

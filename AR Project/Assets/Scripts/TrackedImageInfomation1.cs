@@ -62,10 +62,14 @@ public class TrackedImageInfomation1 : MonoBehaviour
         // 이미지 트래킹시
         if (trackedImage.referenceImage.name == "room1")
         {
+            if (currentTrackingObjectName == "room1")
+                return;
+
             if(createdPrefab != null)
             {
                 createdPrefab.SetActive(false);
             }
+
             Vector3 offset = new Vector3(2f, -1.5f, 0.5f);
             Vector3 spawnPosition = trackedImage.transform.position;
 
@@ -75,11 +79,14 @@ public class TrackedImageInfomation1 : MonoBehaviour
             createdPrefab = spawnedObject;
 
             placeListCanvas.SetActive(true);
-
+            
             currentTrackingObjectName = "room1";
         }
         else if(trackedImage.referenceImage.name == "distribution_box" || trackedImage.referenceImage.name == "distribution_box_mini")
         {
+            if (currentTrackingObjectName == "distribution_box")
+                return;
+
             if(createdPrefab != null)
             {
                 createdPrefab.SetActive(false);

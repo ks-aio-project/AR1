@@ -3,7 +3,7 @@
     "m_SelectedProcess": {
         "deviceId": "R3CW20F7Y0V",
         "name": "com.unity.template.ar_mobile",
-        "processId": 14885,
+        "processId": 11310,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -263,18 +263,6 @@
         {
             "deviceId": "R3CW20F7Y0V",
             "name": "com.unity.template.ar_mobile",
-            "processId": 4437,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
-            "processId": 6406,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
             "processId": 10235,
             "exited": true
         },
@@ -288,6 +276,36 @@
             "deviceId": "R3CW20F7Y0V",
             "name": "com.unity.template.ar_mobile",
             "processId": 14885,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CW20F7Y0V",
+            "name": "com.sec.android.app.launcher",
+            "processId": 5548,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CW20F7Y0V",
+            "name": "com.android.chrome",
+            "processId": 25517,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CW20F7Y0V",
+            "name": "android.process.media",
+            "processId": 10584,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CW20F7Y0V",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 6154,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CW20F7Y0V",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 11310,
             "exited": false
         },
         {
@@ -441,7 +459,7 @@
         "AutoCapture": true
     },
     "m_FilterOptions": {
-        "m_Filter": "kks",
+        "m_Filter": "",
         "m_UseRegularExpressions": false,
         "m_MatchCase": false
     },
