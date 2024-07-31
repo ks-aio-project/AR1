@@ -49,6 +49,7 @@ public class TrackedImageInfomation1 : MonoBehaviour
         // 업데이트된 이미지에 대해 처리
         foreach (ARTrackedImage trackedImage in eventArgs.updated)
         {
+            CreateOrUpdateARObject(trackedImage);
         }
 
         // 제거된 이미지에 대해 처리

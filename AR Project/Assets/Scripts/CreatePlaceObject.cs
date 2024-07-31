@@ -53,6 +53,12 @@ public class CreatePlaceObject : MonoBehaviour
         // 터치
         if (Input.touchCount > 0)
         {
+            // UI 터치시 반환
+            if(EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            {
+                return;
+            }
+
             Touch touch = Input.GetTouch(0);
 
             if (touch.phase == TouchPhase.Began)
@@ -60,6 +66,8 @@ public class CreatePlaceObject : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(touch.position);
                 RaycastHit[] hits = Physics.RaycastAll(ray);
                 bool touched = false;
+
+                // 배치모드일때
                 if(placeMode)
                 {
                     // 터치한 구간에 ui가 있을시 ui 우선 순위
@@ -67,6 +75,8 @@ public class CreatePlaceObject : MonoBehaviour
                     {
                         if (hits[i].collider.CompareTag("UIButton"))
                         {
+                            touched = true;
+
                             if (hits[i].collider.name == "Button_OK")
                             {
                                 GameObject newPlaceObject = Instantiate(originalPlaceableObjects[placeID]);
@@ -84,7 +94,6 @@ public class CreatePlaceObject : MonoBehaviour
                             }
                             else if (hits[i].collider.name == "Button_Rotate")
                             {
-                                touched = true;
                                 switch (placeID)
                                 {
                                     case 0:
@@ -101,6 +110,7 @@ public class CreatePlaceObject : MonoBehaviour
                     
                     if (touched) return;
 
+                    // 터치 구간에 UI가 없었을 경우
                     for (int i = 0; i < hits.Length; i++)
                     {
                         if (EventSystem.current.IsPointerOverGameObject() == false)
@@ -158,11 +168,7 @@ public class CreatePlaceObject : MonoBehaviour
                                     {
                                         Vector3 newPosition = hits[i].point;
                                         newPosition.y = ceiling.transform.position.y; // y축 고정
-                                        placeingObject.transform.position = newPosition;
-                                        if(!placeingObject.transform.GetComponent<UIConnetor>().isAble)
-                                        {
-                                            placeingObject.transform.position = previousPosition;
-                                        }
+                                        placeingObject.transform.position = newPosition;                                        
                                     }
                                     break;
                                 }
@@ -170,10 +176,10 @@ public class CreatePlaceObject : MonoBehaviour
                         }                        
                     }
                 }
+                // 배치 모드 아닐 때
                 else
                 {
                     Debug.Log("KKS 터치 배치모드 X");
-                    // 배치 모드 아닐 때
                     for (int i = 0; i < hits.Length; i++)
                     {
                         if (hits[i].collider.CompareTag("UIButton"))
@@ -183,6 +189,11 @@ public class CreatePlaceObject : MonoBehaviour
                                 placedNewObjects.Remove(hits[i].collider.transform.root.gameObject);
                                 Destroy(hits[i].collider.transform.root.gameObject);
                                 break;
+                            }
+
+                            if (hits[i].collider.name.Equals("CloseFloorPlan Button"))
+                            {
+                                imageCanvas.SetActive(false);
                             }
                         }
 
@@ -252,11 +263,6 @@ public class CreatePlaceObject : MonoBehaviour
         buttonCanvas.SetActive(true);
         placeMode = false;
         placeID = int.MaxValue;
-    }
-
-    public void OnClickCloseButton()
-    {
-        imageCanvas.SetActive(false);
     }
 
     /// <summary>

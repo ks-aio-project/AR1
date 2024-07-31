@@ -7,31 +7,39 @@ using System;
 
 public class TextShow : MonoBehaviour
 {
+    float distanceRange = 4f;
+    public List<GameObject> inputFields;
+
     public GameObject canvas;
     public GameObject tmp;
 
     int textIndex = 0;
 
-    public class User
+    public class ObjectIdentity
     {
         public string userId;
         public string id;
         public string title;
         public string body;
+
+        //public string objectID;
+        //public string companyID;
+        //public string asHistory;
+        //public string body;
     }
 
     void Update()
     {
         float distance = Vector3.Distance(Camera.main.transform.position, transform.position);
 
-        if (distance < 3f)
+        if (distance < distanceRange)
         {
             if (!canvas.activeSelf)
             {
                 GetRestAPICall();
             }
         }
-        else if (distance > 3f)
+        else if (distance > distanceRange)
         {
             canvas.SetActive(false);
         }
@@ -42,23 +50,29 @@ public class TextShow : MonoBehaviour
         switch (transform.name)
         {
             case "Air":
-                if (textIndex == 0)
+                switch(textIndex)
                 {
-                    GetRequestFun("https://jsonplaceholder.typicode.com/posts/1");
-                }
-                else
-                {
-                    GetRequestFun("https://jsonplaceholder.typicode.com/posts/2");
+                    case 0:
+                        GetRequestFun("https://jsonplaceholder.typicode.com/posts/1");
+                        break;
+                    case 1:
+                        GetRequestFun("https://jsonplaceholder.typicode.com/posts/2");
+                        break;
+                    case 2:
+                        break;
                 }
                 break;
             case "tv":
-                if (textIndex == 0)
+                switch (textIndex)
                 {
-                    GetRequestFun("https://jsonplaceholder.typicode.com/posts/3");
-                }
-                else
-                {
-                    GetRequestFun("https://jsonplaceholder.typicode.com/posts/4");
+                    case 0:
+                        GetRequestFun("https://jsonplaceholder.typicode.com/posts/1");
+                        break;
+                    case 1:
+                        GetRequestFun("https://jsonplaceholder.typicode.com/posts/2");
+                        break;
+                    case 2:
+                        break;
                 }
                 break;
         }
@@ -78,26 +92,46 @@ public class TextShow : MonoBehaviour
             string[] pages = uri.Split('/');
             int page = pages.Length - 1;
 
-            if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
+            if (webRequest.result == UnityWebRequest.Result.Success)
             {
-                //Debug.LogError(pages[page] + ": Error: " + webRequest.error);
-            }
-            else
-            {
-                Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                User user = JsonUtility.FromJson<User>(webRequest.downloadHandler.text);
+                ObjectIdentity Identity = JsonUtility.FromJson<ObjectIdentity>(webRequest.downloadHandler.text);
 
                 // 변환된 데이터 출력
                 canvas.SetActive(true);
                 canvas.transform.LookAt(Camera.main.transform);
                 canvas.transform.Rotate(0, 180, 0);
 
-                tmp.GetComponent<TextMeshProUGUI>().text =
-                    $"UserID : {user.userId}\n" +
-                    $"ID : {user.id}\n" +
-                    $"Title : {user.title}\n" +
-                    $"Body : {user.body}\n";
+                inputFields[0].GetComponent<TMP_InputField>().text = Identity.userId;
+                inputFields[1].GetComponent<TMP_InputField>().text = Identity.id;
+                inputFields[2].GetComponent<TMP_InputField>().text = Identity.title;
+                inputFields[3].GetComponent<TMP_InputField>().text = Identity.body;
             }
+
+            //if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
+            //{
+            //    //Debug.LogError(pages[page] + ": Error: " + webRequest.error);
+            //}
+            //else
+            //{
+            //    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+            //    ObjectIdentity Identity = JsonUtility.FromJson<ObjectIdentity>(webRequest.downloadHandler.text);
+
+            //    // 변환된 데이터 출력
+            //    canvas.SetActive(true);
+            //    canvas.transform.LookAt(Camera.main.transform);
+            //    canvas.transform.Rotate(0, 180, 0);
+
+            //    inputFields[0].GetComponent<TMP_InputField>().text = Identity.userId;
+            //    inputFields[1].GetComponent<TMP_InputField>().text = Identity.id;
+            //    inputFields[2].GetComponent<TMP_InputField>().text = Identity.title;
+            //    inputFields[3].GetComponent<TMP_InputField>().text = Identity.body;
+                
+            //    //tmp.GetComponent<TextMeshProUGUI>().text =
+            //    //    $"UserID : {Identity.userId}\n" +
+            //    //    $"ID : {Identity.id}\n" +
+            //    //    $"Title : {Identity.title}\n" +
+            //    //    $"Body : {Identity.body}\n";
+            //}
         }
     }
 

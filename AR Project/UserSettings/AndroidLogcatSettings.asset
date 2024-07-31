@@ -3,7 +3,7 @@
     "m_SelectedProcess": {
         "deviceId": "R3CW20F7Y0V",
         "name": "com.unity.template.ar_mobile",
-        "processId": 11310,
+        "processId": 27460,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -262,50 +262,38 @@
         },
         {
             "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
-            "processId": 10235,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
-            "processId": 12775,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
-            "processId": 14885,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
             "name": "com.sec.android.app.launcher",
             "processId": 5548,
             "exited": false
         },
         {
             "deviceId": "R3CW20F7Y0V",
-            "name": "com.android.chrome",
-            "processId": 25517,
+            "name": "com.unity.template.ar_mobile",
+            "processId": 16516,
             "exited": true
         },
         {
             "deviceId": "R3CW20F7Y0V",
-            "name": "android.process.media",
-            "processId": 10584,
-            "exited": false
+            "name": "com.unity.template.ar_mobile",
+            "processId": 23347,
+            "exited": true
         },
         {
             "deviceId": "R3CW20F7Y0V",
             "name": "com.unity.template.ar_mobile",
-            "processId": 6154,
-            "exited": false
+            "processId": 24392,
+            "exited": true
         },
         {
             "deviceId": "R3CW20F7Y0V",
             "name": "com.unity.template.ar_mobile",
-            "processId": 11310,
+            "processId": 25944,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CW20F7Y0V",
+            "name": "com.unity.template.ar_mobile",
+            "processId": 27460,
             "exited": false
         },
         {
