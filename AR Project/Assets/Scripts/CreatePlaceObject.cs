@@ -115,13 +115,15 @@ public class CreatePlaceObject : MonoBehaviour
                     {
                         if (EventSystem.current.IsPointerOverGameObject() == false)
                         {
+                            Vector3 previousPosition;
+                            Quaternion previousRotation;
+                            Vector3 newPosition;
                             if (placeID == 1)
                             {
                                 if (hits[i].collider.name.Contains("Wall"))
                                 {
-                                    Vector3 newPosition;
-                                    Vector3 previousPosition = placeingObject.transform.position;
-                                    Quaternion previousRotation = placeingObject.transform.rotation;
+                                    previousPosition = placeingObject.transform.position;
+                                    previousRotation = placeingObject.transform.rotation;
                                     switch (hits[i].collider.name)
                                     {
                                         case "Back Wall":
@@ -156,19 +158,19 @@ public class CreatePlaceObject : MonoBehaviour
                             {
                                 if (hits[i].collider.name == "Ceiling")
                                 {
-                                    Vector3 previousPosition = placeingObject.transform.position;
-                                    Quaternion previousRotation = placeingObject.transform.rotation;
+                                    previousPosition = placeingObject.transform.position;
+                                    previousRotation = placeingObject.transform.rotation;
                                     if (placeID == 2)
                                     {
-                                        Vector3 newPosition = hits[i].point;
+                                        newPosition = hits[i].point;
                                         newPosition.y = ceiling.transform.position.y; // y축 고정
                                         placeingObject.transform.position = newPosition;
                                     }
                                     else
                                     {
-                                        Vector3 newPosition = hits[i].point;
+                                        newPosition = hits[i].point;
                                         newPosition.y = ceiling.transform.position.y; // y축 고정
-                                        placeingObject.transform.position = newPosition;                                        
+                                        placeingObject.transform.position = newPosition;
                                     }
                                     break;
                                 }
@@ -194,6 +196,15 @@ public class CreatePlaceObject : MonoBehaviour
                             if (hits[i].collider.name.Equals("CloseFloorPlan Button"))
                             {
                                 imageCanvas.SetActive(false);
+                            }
+                        }
+
+                        if (hits[i].collider.CompareTag("Touchable"))
+                        {
+                            if (hits[i].collider.GetComponent<TextShow>())
+                            {
+                                hits[i].collider.GetComponent<TextShow>().SetVisible();
+                                break;
                             }
                         }
 

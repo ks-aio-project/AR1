@@ -4604,7 +4604,7 @@ GameObject:
   - component: {fileID: 7598874250518144547}
   m_Layer: 0
   m_Name: "\u0421onditioner_fbx_placeMode"
-  m_TagString: PlacedObject
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
