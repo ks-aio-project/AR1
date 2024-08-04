@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.5, y: 0.85}
-  m_SizeDelta: {x: 6, y: 6}
+  m_AnchoredPosition: {x: -0.5, y: 0.717}
+  m_SizeDelta: {x: 3, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5746593844359332397
 CanvasRenderer:
@@ -450,8 +450,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.5, y: 0.85}
-  m_SizeDelta: {x: 6, y: 6}
+  m_AnchoredPosition: {x: 0.5, y: 0.717}
+  m_SizeDelta: {x: 3, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2949940356932613198
 CanvasRenderer:
@@ -760,6 +760,8 @@ MonoBehaviour:
   button_ok: {fileID: 3455530894073470935}
   button_cancel: {fileID: 657334500109515027}
   button_rotation: {fileID: 0}
+  objs: []
+  isAble: 1
 --- !u!65 &3301419666432619331
 BoxCollider:
   m_ObjectHideFlags: 0

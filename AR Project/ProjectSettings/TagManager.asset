@@ -10,6 +10,7 @@ TagManager:
   - ObjectCeiling
   - PlacedObject
   - UIButton
+  - ObjectStatusButton
   layers:
   - Default
   - TransparentFX

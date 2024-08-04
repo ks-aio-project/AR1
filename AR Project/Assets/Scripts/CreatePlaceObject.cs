@@ -6,8 +6,11 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
+using Touch = UnityEngine.Touch;
 
 public class CreatePlaceObject : MonoBehaviour
 {
@@ -65,125 +68,24 @@ public class CreatePlaceObject : MonoBehaviour
             {
                 Ray ray = Camera.main.ScreenPointToRay(touch.position);
                 RaycastHit[] hits = Physics.RaycastAll(ray);
-                bool touched = false;
 
                 // 배치모드일때
-                if(placeMode)
-                {
-                    // 터치한 구간에 ui가 있을시 ui 우선 순위
-                    for (int i = 0; i < hits.Length; i++)
-                    {
-                        if (hits[i].collider.CompareTag("UIButton"))
-                        {
-                            touched = true;
-
-                            if (hits[i].collider.name == "Button_OK")
-                            {
-                                GameObject newPlaceObject = Instantiate(originalPlaceableObjects[placeID]);
-                                placedNewObjects.Add(newPlaceObject);
-
-                                newPlaceObject.transform.position = placeingObject.transform.position;
-                                newPlaceObject.transform.rotation = placeingObject.transform.rotation;
-                                newPlaceObject.transform.localScale = placeingObject.transform.localScale;
-
-                                EndPlaceMode();
-                            }
-                            else if (hits[i].collider.name == "Button_Cancel")
-                            {
-                                EndPlaceMode();
-                            }
-                            else if (hits[i].collider.name == "Button_Rotate")
-                            {
-                                switch (placeID)
-                                {
-                                    case 0:
-                                        placeingObject.transform.Rotate(0, 30, 0);
-                                        break;
-                                    case 2:
-                                        placeingObject.transform.Rotate(0, 0, 30);
-                                        break;
-                                }
-                            }
-                            break;
-                        }
-                    }
-                    
-                    if (touched) return;
-
-                    // 터치 구간에 UI가 없었을 경우
-                    for (int i = 0; i < hits.Length; i++)
-                    {
-                        if (EventSystem.current.IsPointerOverGameObject() == false)
-                        {
-                            Vector3 previousPosition;
-                            Quaternion previousRotation;
-                            Vector3 newPosition;
-                            if (placeID == 1)
-                            {
-                                if (hits[i].collider.name.Contains("Wall"))
-                                {
-                                    previousPosition = placeingObject.transform.position;
-                                    previousRotation = placeingObject.transform.rotation;
-                                    switch (hits[i].collider.name)
-                                    {
-                                        case "Back Wall":
-                                            newPosition = hits[i].point;
-                                            newPosition.z = hits[i].collider.transform.position.z;
-                                            placeingObject.transform.position = newPosition;
-                                            placeingObject.transform.rotation = Quaternion.Euler(0, 180, 0);
-                                            break;
-                                        case "Front Wall":
-                                            newPosition = hits[i].point;
-                                            newPosition.z = hits[i].collider.transform.position.z;
-                                            placeingObject.transform.position = newPosition;
-                                            placeingObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-                                            break;
-                                        case "Left Wall":
-                                            newPosition = hits[i].point;
-                                            newPosition.x = hits[i].collider.transform.position.x;
-                                            placeingObject.transform.position = newPosition;
-                                            placeingObject.transform.rotation = Quaternion.Euler(0, 90, 0);
-                                            break;
-                                        case "Right Wall":
-                                            newPosition = hits[i].point;
-                                            newPosition.x = hits[i].collider.transform.position.x;
-                                            placeingObject.transform.position = newPosition;
-                                            placeingObject.transform.rotation = Quaternion.Euler(0, 270, 0);
-                                            break;
-                                    }
-                                    break;
-                                }
-                            }
-                            else
-                            {
-                                if (hits[i].collider.name == "Ceiling")
-                                {
-                                    previousPosition = placeingObject.transform.position;
-                                    previousRotation = placeingObject.transform.rotation;
-                                    if (placeID == 2)
-                                    {
-                                        newPosition = hits[i].point;
-                                        newPosition.y = ceiling.transform.position.y; // y축 고정
-                                        placeingObject.transform.position = newPosition;
-                                    }
-                                    else
-                                    {
-                                        newPosition = hits[i].point;
-                                        newPosition.y = ceiling.transform.position.y; // y축 고정
-                                        placeingObject.transform.position = newPosition;
-                                    }
-                                    break;
-                                }
-                            }
-                        }                        
-                    }
-                }
+                PlaceModeTouch(hits);
                 // 배치 모드 아닐 때
-                else
+                if(!placeMode)
                 {
                     Debug.Log("KKS 터치 배치모드 X");
                     for (int i = 0; i < hits.Length; i++)
                     {
+                        for(int j = 0; j < hits.Length; j++)
+                        {
+                            if (hits[j].collider.CompareTag("ObjectStatusButton"))
+                            {
+                                hits[j].collider.transform.GetComponent<Button>().onClick.Invoke();
+                                return;
+                            }
+                        }
+
                         if (hits[i].collider.CompareTag("UIButton"))
                         {
                             if (hits[i].collider.name == "Button_Delete")
@@ -229,6 +131,8 @@ public class CreatePlaceObject : MonoBehaviour
                             Debug.Log("KKS 배전반 확인");
 
                             imageCanvas.SetActive(true);
+                            Vector3 offset = new Vector3(0, 0, -5.5f);
+                            imageCanvas.transform.position = Camera.main.transform.position + offset;
                             switch (hits[i].collider.name)
                             {
                                 case "distribution_box_1":
@@ -257,6 +161,122 @@ public class CreatePlaceObject : MonoBehaviour
                                     textTMP.text = "distribution_box_7";
                                     break;
                             }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void PlaceModeTouch(RaycastHit[] hits)
+    {
+        if (placeMode)
+        {
+            bool touched = false;
+            // 터치한 구간에 ui가 있을시 ui 우선 순위
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (hits[i].collider.CompareTag("UIButton"))
+                {
+                    touched = true;
+
+                    if (hits[i].collider.name == "Button_OK")
+                    {
+                        GameObject newPlaceObject = Instantiate(originalPlaceableObjects[placeID]);
+                        placedNewObjects.Add(newPlaceObject);
+
+                        newPlaceObject.transform.position = placeingObject.transform.position;
+                        newPlaceObject.transform.rotation = placeingObject.transform.rotation;
+                        newPlaceObject.transform.localScale = placeingObject.transform.localScale;
+                        newPlaceObject.transform.parent = GetComponent<TrackedImageInfomation1>().createdPrefab.transform;
+
+                        EndPlaceMode();
+                    }
+                    else if (hits[i].collider.name == "Button_Cancel")
+                    {
+                        EndPlaceMode();
+                    }
+                    else if (hits[i].collider.name == "Button_Rotate")
+                    {
+                        switch (placeID)
+                        {
+                            case 0:
+                                placeingObject.transform.Rotate(0, 30, 0);
+                                break;
+                            case 2:
+                                placeingObject.transform.Rotate(0, 0, 30);
+                                break;
+                        }
+                    }
+                    break;
+                }
+            }
+
+            if (touched) return;
+
+            // 터치 구간에 UI가 없었을 경우
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (EventSystem.current.IsPointerOverGameObject() == false)
+                {
+                    Vector3 previousPosition;
+                    Quaternion previousRotation;
+                    Vector3 newPosition;
+                    if (placeID == 1)
+                    {
+                        if (hits[i].collider.name.Contains("Wall"))
+                        {
+                            previousPosition = placeingObject.transform.position;
+                            previousRotation = placeingObject.transform.rotation;
+                            switch (hits[i].collider.name)
+                            {
+                                case "Back Wall":
+                                    newPosition = hits[i].point;
+                                    newPosition.z = hits[i].collider.transform.position.z;
+                                    placeingObject.transform.position = newPosition;
+                                    placeingObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                                    break;
+                                case "Front Wall":
+                                    newPosition = hits[i].point;
+                                    newPosition.z = hits[i].collider.transform.position.z;
+                                    placeingObject.transform.position = newPosition;
+                                    placeingObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                                    break;
+                                case "Left Wall":
+                                    newPosition = hits[i].point;
+                                    newPosition.x = hits[i].collider.transform.position.x;
+                                    placeingObject.transform.position = newPosition;
+                                    placeingObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+                                    break;
+                                case "Right Wall":
+                                    newPosition = hits[i].point;
+                                    newPosition.x = hits[i].collider.transform.position.x;
+                                    placeingObject.transform.position = newPosition;
+                                    placeingObject.transform.rotation = Quaternion.Euler(0, 270, 0);
+                                    break;
+                            }
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (hits[i].collider.name == "Ceiling")
+                        {
+                            previousPosition = placeingObject.transform.position;
+                            previousRotation = placeingObject.transform.rotation;
+                            if (placeID == 2)
+                            {
+                                newPosition = hits[i].point;
+                                newPosition.y = ceiling.transform.position.y; // y축 고정
+                                placeingObject.transform.position = newPosition;
+                            }
+                            else
+                            {
+                                newPosition = hits[i].point;
+                                newPosition.y = ceiling.transform.position.y; // y축 고정
+                                placeingObject.transform.position = newPosition;
+                            }
+                            break;
                         }
                     }
                 }

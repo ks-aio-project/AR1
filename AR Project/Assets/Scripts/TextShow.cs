@@ -127,70 +127,141 @@ public class TextShow : MonoBehaviour
 
             if (webRequest.result == UnityWebRequest.Result.Success)
             {
-                if(textIndex == 0)
+                if(transform.name == "Air")
                 {
-                    //TestIdentity Identity = JsonUtility.FromJson<TestIdentity>(webRequest.downloadHandler.text);
-                    TestIdentity test1 = new();
+                    if (textIndex == 0)
+                    {
+                        //TestIdentity Identity = JsonUtility.FromJson<TestIdentity>(webRequest.downloadHandler.text);
+                        TestIdentity test1 = new();
 
-                    test1.category = "냉난방기";
-                    test1.deviceName = "시스템 에어컨";
-                    test1.modelNmae = "삼성 시스템 에어컨";
-                    test1.useElecWeek = "2023. 08. 05";
+                        test1.category = "냉난방기";
+                        test1.deviceName = "시스템 에어컨";
+                        test1.modelNmae = "삼성 시스템 에어컨";
+                        test1.useElecWeek = "2023. 08. 05";
 
-                    string json = JsonUtility.ToJson(test1);
+                        string json = JsonUtility.ToJson(test1);
 
-                    TestIdentity Identity = JsonUtility.FromJson<TestIdentity>(json);
+                        TestIdentity Identity = JsonUtility.FromJson<TestIdentity>(json);
 
-                    // 변환된 데이터 출력
-                    canvas.SetActive(true);
-                    canvas.transform.LookAt(Camera.main.transform);
-                    canvas.transform.Rotate(0, 180, 0);
+                        // 변환된 데이터 출력
+                        canvas.SetActive(true);
+                        canvas.transform.LookAt(Camera.main.transform);
+                        canvas.transform.Rotate(0, 180, 0);
 
-                    defaultText.GetComponent<TextMeshProUGUI>().text =
-                        $"{Identity.category}\n" +
-                        $"장치명 : {Identity.deviceName}\n" +
-                        $"모델명 : {Identity.modelNmae}\n" +
-                        $"설치시기 : {Identity.useElecWeek}";
+                        defaultText.GetComponent<TextMeshProUGUI>().text =
+                            $"{Identity.category}\n" +
+                            $"장치명 : {Identity.deviceName}\n" +
+                            $"모델명 : {Identity.modelNmae}\n" +
+                            $"설치시기 : {Identity.useElecWeek}";
+                    }
+                    else if (textIndex == 1)
+                    {
+                        eventText.GetComponent<TextMeshProUGUI>().text =
+                            "Event 발생 이력 (최근 12주)\n" +
+                            "2023. 08. 05. 13:55 전원 ON\n" +
+                            "2023. 08. 05. 13:55 냉방모드\n" +
+                            "2023. 08. 05. 13:55 온도 조절 24도\n" +
+                            "2023. 08. 05. 13:55 온도 조절 23도\n" +
+                            "2023. 08. 05. 13:55 온도 조절 22도\n" +
+                            "2023. 08. 05. 13:55 온도 조절 21도\n" +
+                            "2023. 08. 05. 13:55 온도 조절 20도\n" +
+                            "2023. 08. 05. 13:55 온도 조절 19도\n" +
+                            "2023. 08. 05. 13:56 온도 조절 18도\n" +
+                            "2023. 08. 05. 17:45 전원 OFF\n" +
+                            "2023. 08. 06. 13:55 전원 ON\n" +
+                            "2023. 08. 06. 13:55 냉방모드\n" +
+                            "2023. 08. 06. 13:55 온도 조절 24도\n" +
+                            "2023. 08. 06. 13:55 온도 조절 23도\n" +
+                            "2023. 08. 06. 13:55 온도 조절 22도\n" +
+                            "2023. 08. 06. 13:55 온도 조절 21도\n" +
+                            "2023. 08. 06. 13:55 온도 조절 20도\n" +
+                            "2023. 08. 06. 13:55 온도 조절 19도\n" +
+                            "2023. 08. 06. 13:56 온도 조절 18도\n" +
+                            "2023. 08. 06. 17:45 전원 OFF";
+                    }
+                    else
+                    {
+                        ObjectIdentity Identity = JsonUtility.FromJson<ObjectIdentity>(webRequest.downloadHandler.text);
+
+                        // 변환된 데이터 출력
+                        canvas.SetActive(true);
+                        canvas.transform.LookAt(Camera.main.transform);
+                        canvas.transform.Rotate(0, 180, 0);
+
+                        inputFields[0].GetComponent<TMP_InputField>().text = Identity.userId;
+                        inputFields[1].GetComponent<TMP_InputField>().text = Identity.id;
+                        inputFields[2].GetComponent<TMP_InputField>().text = Identity.title;
+                        inputFields[3].GetComponent<TMP_InputField>().text = Identity.body;
+                    }
                 }
-                else if(textIndex == 1)
+                else if(transform.name == "tv")
                 {
-                    eventText.GetComponent<TextMeshProUGUI>().text =
-                        "Event 발생 이력 (최근 12주)\n" +
-                        "2023. 08. 05. 13:55 전원 ON\n" +
-                        "2023. 08. 05. 13:55 냉방모드\n" +
-                        "2023. 08. 05. 13:55 온도 조절 24도\n" +
-                        "2023. 08. 05. 13:55 온도 조절 23도\n" +
-                        "2023. 08. 05. 13:55 온도 조절 22도\n" +
-                        "2023. 08. 05. 13:55 온도 조절 21도\n" +
-                        "2023. 08. 05. 13:55 온도 조절 20도\n" +
-                        "2023. 08. 05. 13:55 온도 조절 19도\n" +
-                        "2023. 08. 05. 13:56 온도 조절 18도\n" +
-                        "2023. 08. 05. 17:45 전원 OFF\n" +
-                        "2023. 08. 06. 13:55 전원 ON\n" +
-                        "2023. 08. 06. 13:55 냉방모드\n" +
-                        "2023. 08. 06. 13:55 온도 조절 24도\n" +
-                        "2023. 08. 06. 13:55 온도 조절 23도\n" +
-                        "2023. 08. 06. 13:55 온도 조절 22도\n" +
-                        "2023. 08. 06. 13:55 온도 조절 21도\n" +
-                        "2023. 08. 06. 13:55 온도 조절 20도\n" +
-                        "2023. 08. 06. 13:55 온도 조절 19도\n" +
-                        "2023. 08. 06. 13:56 온도 조절 18도\n" +
-                        "2023. 08. 06. 17:45 전원 OFF";
-                }
-                else
-                {
-                    ObjectIdentity Identity = JsonUtility.FromJson<ObjectIdentity>(webRequest.downloadHandler.text);
+                    if (textIndex == 0)
+                    {
+                        //TestIdentity Identity = JsonUtility.FromJson<TestIdentity>(webRequest.downloadHandler.text);
+                        TestIdentity test1 = new();
 
-                    // 변환된 데이터 출력
-                    canvas.SetActive(true);
-                    canvas.transform.LookAt(Camera.main.transform);
-                    canvas.transform.Rotate(0, 180, 0);
+                        test1.category = "TV";
+                        test1.deviceName = "스마트 TV";
+                        test1.modelNmae = "삼성 스마트 TV";
+                        test1.useElecWeek = "2023. 08. 05";
 
-                    inputFields[0].GetComponent<TMP_InputField>().text = Identity.userId;
-                    inputFields[1].GetComponent<TMP_InputField>().text = Identity.id;
-                    inputFields[2].GetComponent<TMP_InputField>().text = Identity.title;
-                    inputFields[3].GetComponent<TMP_InputField>().text = Identity.body;
+                        string json = JsonUtility.ToJson(test1);
+
+                        TestIdentity Identity = JsonUtility.FromJson<TestIdentity>(json);
+
+                        // 변환된 데이터 출력
+                        canvas.SetActive(true);
+                        canvas.transform.LookAt(Camera.main.transform);
+                        canvas.transform.Rotate(0, 180, 0);
+
+                        defaultText.GetComponent<TextMeshProUGUI>().text =
+                            $"{Identity.category}\n" +
+                            $"장치명 : {Identity.deviceName}\n" +
+                            $"모델명 : {Identity.modelNmae}\n" +
+                            $"설치시기 : {Identity.useElecWeek}";
+                    }
+                    else if (textIndex == 1)
+                    {
+                        eventText.GetComponent<TextMeshProUGUI>().text =
+                            "Event 발생 이력 (최근 12주)\n" +
+                            "2023. 08. 05. 13:55 전원 ON\n" +
+                            "2023. 08. 05. 13:55 냉방모드\n" +
+                            "2023. 08. 05. 13:55 온도 조절 24도\n" +
+                            "2023. 08. 05. 13:55 온도 조절 23도\n" +
+                            "2023. 08. 05. 13:55 온도 조절 22도\n" +
+                            "2023. 08. 05. 13:55 온도 조절 21도\n" +
+                            "2023. 08. 05. 13:55 온도 조절 20도\n" +
+                            "2023. 08. 05. 13:55 온도 조절 19도\n" +
+                            "2023. 08. 05. 13:56 온도 조절 18도\n" +
+                            "2023. 08. 05. 17:45 전원 OFF\n" +
+                            "2023. 08. 06. 13:55 전원 ON\n" +
+                            "2023. 08. 06. 13:55 냉방모드\n" +
+                            "2023. 08. 06. 13:55 온도 조절 24도\n" +
+                            "2023. 08. 06. 13:55 온도 조절 23도\n" +
+                            "2023. 08. 06. 13:55 온도 조절 22도\n" +
+                            "2023. 08. 06. 13:55 온도 조절 21도\n" +
+                            "2023. 08. 06. 13:55 온도 조절 20도\n" +
+                            "2023. 08. 06. 13:55 온도 조절 19도\n" +
+                            "2023. 08. 06. 13:56 온도 조절 18도\n" +
+                            "2023. 08. 06. 17:45 전원 OFF";
+                    }
+                    else
+                    {
+                        ObjectIdentity Identity = JsonUtility.FromJson<ObjectIdentity>(webRequest.downloadHandler.text);
+
+                        // 변환된 데이터 출력
+                        canvas.SetActive(true);
+                        canvas.transform.LookAt(Camera.main.transform);
+                        canvas.transform.Rotate(0, 180, 0);
+
+                        inputFields[0].GetComponent<TMP_InputField>().text = Identity.userId;
+                        inputFields[1].GetComponent<TMP_InputField>().text = Identity.id;
+                        inputFields[2].GetComponent<TMP_InputField>().text = Identity.title;
+                        inputFields[3].GetComponent<TMP_InputField>().text = Identity.body;
+                    }
                 }
+
 
             }
 
@@ -256,6 +327,10 @@ public class TextShow : MonoBehaviour
             case 3:
                 button_as.GetComponent<Image>().color = Color.yellow;
                 asPanel.SetActive(true);
+                
+                DateTime today = DateTime.Now;
+                
+                asPanel.transform.GetChild(1).GetComponent<TMP_InputField>().text = today.ToString("yyyy-MM-dd");
                 break;
         }
     }

@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 0.6509804}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -979,7 +979,7 @@ GameObject:
   - component: {fileID: 2184513784754619883}
   m_Layer: 5
   m_Name: Button_air_as
-  m_TagString: Untagged
+  m_TagString: ObjectStatusButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1117,7 +1117,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Size: {x: 30, y: 30, z: 15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &730564113215074223
 GameObject:
@@ -1137,7 +1137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1645962785994399597
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1146,7 +1146,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730564113215074223}
   m_LocalRotation: {x: -0.00000014611093, y: 0.7071066, z: -0.70710695, w: -0.00000008429368}
-  m_LocalPosition: {x: 0, y: 0, z: -10.7}
+  m_LocalPosition: {x: 0, y: 0, z: -4.3}
   m_LocalScale: {x: 18.905174, y: 18.905174, z: 18.905174}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1162,7 +1162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.3, y: 4}
+  m_AnchoredPosition: {x: 0.3, y: 2.7}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8459586629161622627
@@ -1240,7 +1240,7 @@ GameObject:
   - component: {fileID: 5836129521252590154}
   - component: {fileID: 4188953249537505904}
   - component: {fileID: 1261315874308316527}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Front Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1331,8 +1331,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 0.99999994, z: 0.99999994}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.8445122, y: 0.8423933, z: 1}
+  m_Center: {x: -0.0011955779, y: 0.078803495, z: 0}
 --- !u!1 &823204649747931780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,7 +1615,7 @@ GameObject:
   - component: {fileID: 2025444906749042617}
   - component: {fileID: 8983544711043732957}
   - component: {fileID: 7634460273428817707}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Back Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1706,8 +1706,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 0.99999994, z: 0.99999994}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.78416175, y: 0.8562456, z: 1}
+  m_Center: {x: 0.00740957, y: 0.07187747, z: 0}
 --- !u!1 &1029942439250772048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,7 +1933,7 @@ GameObject:
   - component: {fileID: 5867652439292905441}
   - component: {fileID: 3218450993978688354}
   - component: {fileID: 3197144138901558328}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2024,8 +2024,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.99999994, z: 1}
-  m_Center: {x: 0, y: 0.00000005960464, z: 0}
+  m_Size: {x: 1, y: 0.99999994, z: 0.72032154}
+  m_Center: {x: 0, y: 0.000000045794618, z: -0.034490604}
 --- !u!1 &1386724690680481066
 GameObject:
   m_ObjectHideFlags: 0
@@ -2901,7 +2901,7 @@ MonoBehaviour:
   m_Text: 
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
   m_RichText: 1
   m_GlobalFontAsset: {fileID: 11400000, guid: fe506f965dfd991439191b2cc78431f1, type: 2}
   m_OnFocusSelectAll: 1
@@ -3206,7 +3206,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843144986174788965}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.48}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3239,7 +3239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4219,7 +4219,7 @@ GameObject:
   - component: {fileID: 613968423327806098}
   m_Layer: 5
   m_Name: Button_tv_event
-  m_TagString: Untagged
+  m_TagString: ObjectStatusButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4326,7 +4326,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6819440824024626564}
+      - m_Target: {fileID: 4236571028494450427}
         m_TargetAssemblyTypeName: TextShow, Assembly-CSharp
         m_MethodName: ChangeTextIndex
         m_Mode: 3
@@ -4357,7 +4357,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Size: {x: 30, y: 30, z: 15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2259616913894574745
 GameObject:
@@ -4371,7 +4371,7 @@ GameObject:
   - component: {fileID: 616615740605303157}
   - component: {fileID: 8648154984508763897}
   - component: {fileID: 1875048250396450703}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ceiling
   m_TagString: ObjectCeiling
   m_Icon: {fileID: 0}
@@ -4462,8 +4462,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 0.22032934, z: 1}
-  m_Center: {x: 0, y: 0.11016467, z: 0}
+  m_Size: {x: 0.8477822, y: 0.22032934, z: 0.8742981}
+  m_Center: {x: -0.007838426, y: 0.11016467, z: 0.0047531542}
 --- !u!1 &2340773397972688754
 GameObject:
   m_ObjectHideFlags: 0
@@ -5536,7 +5536,7 @@ MonoBehaviour:
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 2
-  m_HideMobileInput: 0
+  m_HideMobileInput: 1
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
@@ -5577,7 +5577,7 @@ MonoBehaviour:
   m_GlobalFontAsset: {fileID: 11400000, guid: fe506f965dfd991439191b2cc78431f1, type: 2}
   m_OnFocusSelectAll: 1
   m_ResetOnDeActivation: 1
-  m_RestoreOriginalTextOnEscape: 1
+  m_RestoreOriginalTextOnEscape: 0
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
@@ -5938,7 +5938,7 @@ MonoBehaviour:
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
-  m_HideMobileInput: 0
+  m_HideMobileInput: 1
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
@@ -5979,7 +5979,7 @@ MonoBehaviour:
   m_GlobalFontAsset: {fileID: 11400000, guid: fe506f965dfd991439191b2cc78431f1, type: 2}
   m_OnFocusSelectAll: 1
   m_ResetOnDeActivation: 1
-  m_RestoreOriginalTextOnEscape: 1
+  m_RestoreOriginalTextOnEscape: 0
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
@@ -6295,7 +6295,7 @@ GameObject:
   - component: {fileID: 4546920747158482555}
   m_Layer: 5
   m_Name: Button_tv_as
-  m_TagString: Untagged
+  m_TagString: ObjectStatusButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6402,7 +6402,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6819440824024626564}
+      - m_Target: {fileID: 4236571028494450427}
         m_TargetAssemblyTypeName: TextShow, Assembly-CSharp
         m_MethodName: ChangeTextIndex
         m_Mode: 3
@@ -6433,7 +6433,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Size: {x: 30, y: 30, z: 15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3278196360987964418
 GameObject:
@@ -6525,7 +6525,7 @@ GameObject:
   - component: {fileID: 7037467272532476724}
   m_Layer: 5
   m_Name: Button_tv_explane
-  m_TagString: Untagged
+  m_TagString: ObjectStatusButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6632,7 +6632,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6819440824024626564}
+      - m_Target: {fileID: 4236571028494450427}
         m_TargetAssemblyTypeName: TextShow, Assembly-CSharp
         m_MethodName: ChangeTextIndex
         m_Mode: 3
@@ -6663,7 +6663,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Size: {x: 30, y: 30, z: 15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3314005490394625539
 GameObject:
@@ -7931,7 +7931,7 @@ GameObject:
   - component: {fileID: 1480352898646818009}
   m_Layer: 5
   m_Name: Button_tv_history
-  m_TagString: Untagged
+  m_TagString: ObjectStatusButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8038,7 +8038,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6819440824024626564}
+      - m_Target: {fileID: 4236571028494450427}
         m_TargetAssemblyTypeName: TextShow, Assembly-CSharp
         m_MethodName: ChangeTextIndex
         m_Mode: 3
@@ -8069,7 +8069,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Size: {x: 30, y: 30, z: 15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4380020900955730590
 GameObject:
@@ -8132,7 +8132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8470,7 +8470,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 409007052076123781}
   m_HandleRect: {fileID: 3928825228748952245}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -8626,7 +8626,7 @@ GameObject:
   - component: {fileID: 8749685094864704264}
   m_Layer: 5
   m_Name: Button_air_explane
-  m_TagString: Untagged
+  m_TagString: ObjectStatusButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8764,7 +8764,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Size: {x: 30, y: 30, z: 15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4742331689771968345
 GameObject:
@@ -8792,7 +8792,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4742331689771968345}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.48}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9503,7 +9503,7 @@ MonoBehaviour:
   m_Text: 
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
   m_RichText: 1
   m_GlobalFontAsset: {fileID: 11400000, guid: fe506f965dfd991439191b2cc78431f1, type: 2}
   m_OnFocusSelectAll: 1
@@ -9752,7 +9752,7 @@ GameObject:
   - component: {fileID: 917203866054233583}
   m_Layer: 5
   m_Name: Button_air_event
-  m_TagString: Untagged
+  m_TagString: ObjectStatusButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9890,7 +9890,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Size: {x: 30, y: 30, z: 15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5343970725044384832
 GameObject:
@@ -9910,7 +9910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6948176627450122596
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10224,7 +10224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0.0000333786}
+  m_AnchoredPosition: {x: -0.0005538222, y: -0.0002186483}
   m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2298449136102063370
@@ -10493,7 +10493,7 @@ MonoBehaviour:
   m_Text: 
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
   m_RichText: 1
   m_GlobalFontAsset: {fileID: 11400000, guid: fe506f965dfd991439191b2cc78431f1, type: 2}
   m_OnFocusSelectAll: 1
@@ -11110,7 +11110,7 @@ MonoBehaviour:
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
-  m_HideMobileInput: 0
+  m_HideMobileInput: 1
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
@@ -11151,7 +11151,7 @@ MonoBehaviour:
   m_GlobalFontAsset: {fileID: 11400000, guid: fe506f965dfd991439191b2cc78431f1, type: 2}
   m_OnFocusSelectAll: 1
   m_ResetOnDeActivation: 1
-  m_RestoreOriginalTextOnEscape: 1
+  m_RestoreOriginalTextOnEscape: 0
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
@@ -11607,7 +11607,7 @@ GameObject:
   - component: {fileID: 8235605408082303421}
   - component: {fileID: 4353053257344787875}
   - component: {fileID: 3434992199887152523}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11698,8 +11698,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.99999994, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.76434535, z: 0.8745735}
+  m_Center: {x: 0, y: 0.11782761, z: -0.012576035}
 --- !u!1 &6845204692488192762
 GameObject:
   m_ObjectHideFlags: 0
@@ -11715,7 +11715,7 @@ GameObject:
   - component: {fileID: 4133811635178429381}
   m_Layer: 5
   m_Name: Button_air_history
-  m_TagString: Untagged
+  m_TagString: ObjectStatusButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11853,7 +11853,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Size: {x: 30, y: 30, z: 15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6990738415073205172
 GameObject:
@@ -13118,7 +13118,7 @@ MonoBehaviour:
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
-  m_HideMobileInput: 0
+  m_HideMobileInput: 1
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
@@ -13159,7 +13159,7 @@ MonoBehaviour:
   m_GlobalFontAsset: {fileID: 11400000, guid: fe506f965dfd991439191b2cc78431f1, type: 2}
   m_OnFocusSelectAll: 1
   m_ResetOnDeActivation: 1
-  m_RestoreOriginalTextOnEscape: 1
+  m_RestoreOriginalTextOnEscape: 0
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
@@ -13449,7 +13449,7 @@ MonoBehaviour:
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
-  m_HideMobileInput: 0
+  m_HideMobileInput: 1
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
@@ -13490,7 +13490,7 @@ MonoBehaviour:
   m_GlobalFontAsset: {fileID: 11400000, guid: fe506f965dfd991439191b2cc78431f1, type: 2}
   m_OnFocusSelectAll: 1
   m_ResetOnDeActivation: 1
-  m_RestoreOriginalTextOnEscape: 1
+  m_RestoreOriginalTextOnEscape: 0
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
@@ -13624,7 +13624,7 @@ MonoBehaviour:
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 2
-  m_HideMobileInput: 0
+  m_HideMobileInput: 1
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
@@ -13665,7 +13665,7 @@ MonoBehaviour:
   m_GlobalFontAsset: {fileID: 11400000, guid: fe506f965dfd991439191b2cc78431f1, type: 2}
   m_OnFocusSelectAll: 1
   m_ResetOnDeActivation: 1
-  m_RestoreOriginalTextOnEscape: 1
+  m_RestoreOriginalTextOnEscape: 0
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
@@ -14332,7 +14332,7 @@ GameObject:
   - component: {fileID: 4859771885191298737}
   - component: {fileID: 3687710630010812060}
   - component: {fileID: 5766492583471049396}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 1Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14682,7 +14682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14925,7 +14925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 0.85882354}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15425,7 +15425,7 @@ MonoBehaviour:
   m_Text: 
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
   m_RichText: 1
   m_GlobalFontAsset: {fileID: 11400000, guid: fe506f965dfd991439191b2cc78431f1, type: 2}
   m_OnFocusSelectAll: 1

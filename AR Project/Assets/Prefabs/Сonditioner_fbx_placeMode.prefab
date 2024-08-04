@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 564727605519042187}
   - component: {fileID: 1561688693533804088}
   m_Layer: 0
-  m_Name: Side2
+  m_Name: Side4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -464,8 +464,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: 0.5}
-  m_SizeDelta: {x: 6, y: 6}
+  m_AnchoredPosition: {x: -1, y: 0.473}
+  m_SizeDelta: {x: 3, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8546647517907008772
 CanvasRenderer:
@@ -1051,7 +1051,7 @@ GameObject:
   - component: {fileID: 3683186000249393288}
   - component: {fileID: 1886263320659382574}
   m_Layer: 0
-  m_Name: Side1 (2)
+  m_Name: Side3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1146,7 +1146,7 @@ GameObject:
   - component: {fileID: 2337545928528846789}
   - component: {fileID: 4486964291100640892}
   m_Layer: 0
-  m_Name: Side1 (1)
+  m_Name: Side2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1957,7 +1957,7 @@ GameObject:
   - component: {fileID: 4440102167907960394}
   - component: {fileID: 1317157924193525515}
   m_Layer: 0
-  m_Name: Side4
+  m_Name: Side10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2189,7 +2189,7 @@ GameObject:
   - component: {fileID: 4063584833949408692}
   - component: {fileID: 4854260960088210683}
   m_Layer: 0
-  m_Name: Side2 (1)
+  m_Name: Side5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2284,7 +2284,7 @@ GameObject:
   - component: {fileID: 3038484148455055472}
   - component: {fileID: 4307686861563917447}
   m_Layer: 0
-  m_Name: Side3
+  m_Name: Side7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2628,7 +2628,7 @@ GameObject:
   - component: {fileID: 4097343282967141254}
   - component: {fileID: 7433618624500650536}
   m_Layer: 0
-  m_Name: Side4 (2)
+  m_Name: Side12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2806,7 +2806,7 @@ GameObject:
   - component: {fileID: 4497561427175226093}
   - component: {fileID: 1243381441394798454}
   m_Layer: 0
-  m_Name: Side4 (1)
+  m_Name: Side11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2901,7 +2901,7 @@ GameObject:
   - component: {fileID: 4961777557159586989}
   - component: {fileID: 7324967637720581438}
   m_Layer: 0
-  m_Name: Side3 (2)
+  m_Name: Side9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3020,8 +3020,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 0.5}
-  m_SizeDelta: {x: 6, y: 6}
+  m_AnchoredPosition: {x: 1, y: 0.473}
+  m_SizeDelta: {x: 3, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2865085434609438376
 CanvasRenderer:
@@ -3772,7 +3772,7 @@ GameObject:
   - component: {fileID: 6619456891575036054}
   - component: {fileID: 4115821996411184401}
   m_Layer: 0
-  m_Name: Side2 (2)
+  m_Name: Side6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4057,8 +4057,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.5}
-  m_SizeDelta: {x: 6, y: 6}
+  m_AnchoredPosition: {x: 0, y: 0.473}
+  m_SizeDelta: {x: 3, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2646394076809463712
 CanvasRenderer:
@@ -4260,7 +4260,7 @@ GameObject:
   - component: {fileID: 4033240416662077307}
   - component: {fileID: 7549715889171952125}
   m_Layer: 0
-  m_Name: Side3 (1)
+  m_Name: Side8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
