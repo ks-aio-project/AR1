@@ -3,7 +3,7 @@
     "m_SelectedProcess": {
         "deviceId": "R3CW20F7Y0V",
         "name": "kr.allione.ar_mobile",
-        "processId": 24220,
+        "processId": 21208,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -269,12 +269,6 @@
         {
             "deviceId": "R3CW20F7Y0V",
             "name": "com.unity.template.ar_mobile",
-            "processId": 27087,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
             "processId": 28182,
             "exited": true
         },
@@ -294,6 +288,12 @@
             "deviceId": "R3CW20F7Y0V",
             "name": "kr.allione.ar_mobile",
             "processId": 24220,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CW20F7Y0V",
+            "name": "kr.allione.ar_mobile",
+            "processId": 21208,
             "exited": false
         },
         {

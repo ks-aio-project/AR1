@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
@@ -30,7 +31,6 @@ public class CreatePlaceObject : MonoBehaviour
     // 생성된 오브젝트 리셋 기능이 생길 수 있음에 대비해 리스트에 추가
     List<GameObject> placedNewObjects = new List<GameObject>();
 
-    public TextMeshProUGUI textTMP;
     public GameObject imageCanvas;
     public List<Texture> imageList;
 
@@ -138,30 +138,47 @@ public class CreatePlaceObject : MonoBehaviour
                             imageCanvas.transform.position = Camera.main.transform.position + GlobalVariable.Instance.imageCanvas_offset;
                             switch (hits[i].collider.name)
                             {
-                                case "distribution_box_1":
+                                case "distribution_box_101":
                                     imageCanvas.GetComponentInChildren<RawImage>(true).texture = imageList[0];
-                                    textTMP.text = "distribution_box_1";
                                     break;
-                                case "distribution_box_2":
+                                case "distribution_box_102":
                                     imageCanvas.GetComponentInChildren<RawImage>(true).texture = imageList[1];
-                                    textTMP.text = "distribution_box_2";
                                     break;
-                                case "distribution_box_3":
+                                case "distribution_box_103":
                                     imageCanvas.GetComponentInChildren<RawImage>(true).texture = imageList[2];
-                                    textTMP.text = "distribution_box_3";
                                     break;
-                                case "distribution_box_4":
+                                case "distribution_box_104":
                                     imageCanvas.GetComponentInChildren<RawImage>(true).texture = imageList[3];
-                                    textTMP.text = "distribution_box_4";
                                     break;
-                                case "distribution_box_5":
-                                    textTMP.text = "distribution_box_5";
+                                case "distribution_box_105":
+                                    imageCanvas.GetComponentInChildren<RawImage>(true).texture = imageList[0];
                                     break;
-                                case "distribution_box_6":
-                                    textTMP.text = "distribution_box_6";
+                                case "distribution_box_106":
+                                    imageCanvas.GetComponentInChildren<RawImage>(true).texture = imageList[1];
                                     break;
-                                case "distribution_box_7":
-                                    textTMP.text = "distribution_box_7";
+                                case "distribution_box_107":
+                                    imageCanvas.GetComponentInChildren<RawImage>(true).texture = imageList[2];
+                                    break;
+                                case "distribution_box_201":
+                                    imageCanvas.GetComponentInChildren<RawImage>(true).texture = imageList[3];
+                                    break;
+                                case "distribution_box_202":
+                                    imageCanvas.GetComponentInChildren<RawImage>(true).texture = imageList[0];
+                                    break;
+                                case "distribution_box_203":
+                                    imageCanvas.GetComponentInChildren<RawImage>(true).texture = imageList[1];
+                                    break;
+                                case "distribution_box_204":
+                                    imageCanvas.GetComponentInChildren<RawImage>(true).texture = imageList[2];
+                                    break;
+                                case "distribution_box_205":
+                                    imageCanvas.GetComponentInChildren<RawImage>(true).texture = imageList[3];
+                                    break;
+                                case "distribution_box_206":
+                                    imageCanvas.GetComponentInChildren<RawImage>(true).texture = imageList[0];
+                                    break;
+                                case "distribution_box_207":
+                                    imageCanvas.GetComponentInChildren<RawImage>(true).texture = imageList[1];
                                     break;
                             }
                         }
