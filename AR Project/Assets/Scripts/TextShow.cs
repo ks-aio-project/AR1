@@ -346,6 +346,7 @@ public class TextShow : MonoBehaviour
                 
                 DateTime today = DateTime.Now;
                 
+                // 오늘 날짜 바로 입력
                 asPanel.transform.GetChild(1).GetComponent<TMP_InputField>().text = today.ToString("yyyy-MM-dd");
                 break;
         }

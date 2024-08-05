@@ -36,9 +36,16 @@ public class WelcomeWindow : EditorWindow
     {
         // 팝업창의 내용을 작성합니다.
         GUILayout.Label("AR Project", EditorStyles.boldLabel);
-        GUILayout.Label("이 창이 나타나지 않게 하려면 Editor 폴더내 WelcomeWindow.cs를 삭제", EditorStyles.wordWrappedLabel);
-        GUILayout.Label("빌드시 Active Input Handling가 Both이고, Input System Package를 사용하라고 나타나면 무시 할 것.", EditorStyles.wordWrappedLabel);
-        GUILayout.Label("인풋타입은 반드시 Both여야함", EditorStyles.wordWrappedLabel);
+        GUILayout.Label("이 창이 나타나지 않게 하려면 Editor 폴더내 WelcomeWindow.cs를 삭제\n" +
+            "빌드시 인풋 타입에 대한 다이얼로그가 나오면 '예'\n" +
+            "인풋타입은 반드시 Both여야함\n" +
+            "인식할 이미지의 정보는 Assets/ReferenceImageLibrary에 있음.\n" +
+            "전반적인 코드는 ImageTrackObject오브젝트를 확인" +
+            "TrackedImageInfomation1.cs에서 이미지가 인식되었을 때, 특정 오브젝트 생성\n" +
+            "그 외 부가적인 설정 및 터치인식 등은 CreatePlaceObject.cs에서 관리\n" +
+            "Scripts/Global/GlobalVariable.cs는 전역 변수를 담고 있는 스크립트\n" +
+            "각 Prefab별로 코드를 가지고 있는 경우가 있음.\n" +
+            "Scripts/TextShow.cs에서 각종 기기들의 정보들을 표현함.", EditorStyles.wordWrappedLabel);
 
         if (GUILayout.Button("Close"))
         {

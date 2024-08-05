@@ -167,8 +167,8 @@ MonoBehaviour:
     y: 0
     width: 916
     height: 450
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -193,8 +193,8 @@ MonoBehaviour:
     y: 450
     width: 916
     height: 489
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -245,8 +245,8 @@ MonoBehaviour:
     y: 0
     width: 473
     height: 564
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 126
+  controlID: 131
   draggingID: 0
 --- !u!114 &13
 MonoBehaviour:
@@ -323,8 +323,8 @@ MonoBehaviour:
     y: 0
     width: 531
     height: 564
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -349,8 +349,8 @@ MonoBehaviour:
     y: 564
     width: 531
     height: 375
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -707,7 +707,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 48, y: 10}
+      snapOffset: {x: 48, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: UnityEditor.SceneViewCameraOverlay
@@ -741,7 +741,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: -0.08499983, y: 0.89469993, z: 5}
     speed: 2
-    m_Value: {x: -0.0012474752, y: -0.36492634, z: 1.0208955}
+    m_Value: {x: -0.08499983, y: 0.89469993, z: 5}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -789,11 +789,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.06744952, y: 0.0050930744, z: -0.00040423623, w: 0.9977632}
     speed: 2
-    m_Value: {x: 0.038984995, y: -0.015882526, z: 0.0005299452, w: 0.9991135}
+    m_Value: {x: 0.06744592, y: 0.0050928025, z: -0.00040421463, w: 0.99770993}
   m_Size:
     m_Target: 1.5329685
     speed: 2
-    m_Value: 0.8660254
+    m_Value: 1.5329685
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -957,7 +957,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: e265fdff9a66fdffc66ffdfff07effffa87fffffa488fffffc94ffffb495ffffe09effff0eb3ffffc6b3fffff2bcffff0ed3ffffc6d3fffff2dcffff1afbffff6aa600008caa0000dcf10000fef50000
+      m_ExpandedIDs: e44bffff9c4cffffc855ffff26fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1027,7 +1027,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1035,16 +1035,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scripts
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\admin\Documents\GitHub\AR1\AR Project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 7c8e0000
-    m_LastClickedID: 36476
-    m_ExpandedIDs: 00000000a28c000000ca9a3bffffff7f
+    m_SelectedIDs: 7c8f0000
+    m_LastClickedID: 36732
+    m_ExpandedIDs: 000000009c8d00007c8f000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1072,7 +1072,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a28c0000
+    m_ExpandedIDs: 000000009c8d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1103,15 +1103,15 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 147d0000027d00008a77000074990000f6d50100727c000092130100ca3b01008a830000827c000000000000ee2e0200
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: distribution_box_0729
-      m_OriginalName: distribution_box_0729
+      m_Name: TextShow
+      m_OriginalName: TextShow
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 31810
+      m_UserData: 16900
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -1170,7 +1170,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 107
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

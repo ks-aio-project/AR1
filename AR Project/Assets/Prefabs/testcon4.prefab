@@ -3644,7 +3644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC2E0\uACE0\uC77C\uC790"
+  m_text: ex)2024-05-24
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fe506f965dfd991439191b2cc78431f1, type: 2}
   m_sharedMaterial: {fileID: -5365158207619578136, guid: fe506f965dfd991439191b2cc78431f1,
@@ -9910,7 +9910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6948176627450122596
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15064,7 +15064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5381440256362750329
 Transform:
   m_ObjectHideFlags: 0
