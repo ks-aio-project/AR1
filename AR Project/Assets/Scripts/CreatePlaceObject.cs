@@ -34,6 +34,8 @@ public class CreatePlaceObject : MonoBehaviour
     public GameObject imageCanvas;
     public List<Texture> imageList;
 
+
+
     /// <summary>
     /// 생성된 오브젝트 모두 파괴 (리셋)
     /// </summary>
@@ -97,7 +99,8 @@ public class CreatePlaceObject : MonoBehaviour
 
                             if (hits[i].collider.name.Equals("CloseFloorPlan Button"))
                             {
-                                imageCanvas.SetActive(false);
+                                OnClickCloseImageCanvasButton(false);
+                                //imageCanvas.SetActive(false);
                             }
                         }
 
@@ -130,9 +133,9 @@ public class CreatePlaceObject : MonoBehaviour
                         {
                             Debug.Log("KKS 배전반 확인");
 
-                            imageCanvas.SetActive(true);
-                            Vector3 offset = new Vector3(0, 0, -5.5f);
-                            imageCanvas.transform.position = Camera.main.transform.position + offset;
+                            OnClickCloseImageCanvasButton(true);
+                            //imageCanvas.SetActive(true);
+                            imageCanvas.transform.position = Camera.main.transform.position + GlobalVariable.Instance.imageCanvas_offset;
                             switch (hits[i].collider.name)
                             {
                                 case "distribution_box_1":
@@ -282,6 +285,11 @@ public class CreatePlaceObject : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void OnClickCloseImageCanvasButton(bool value)
+    {
+        imageCanvas.SetActive(value);
     }
 
     /// <summary>

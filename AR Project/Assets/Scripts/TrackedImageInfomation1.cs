@@ -87,23 +87,21 @@ public class TrackedImageInfomation1 : MonoBehaviour
             if (currentTrackingObjectName == "room1")
                 return;
 
-            if(createdPrefab != null)
+            if (createdPrefab != null)
             {
                 //Destroy(createdPrefab);
                 createdPrefab.SetActive(false);
             }
 
-            Vector3 offset = new Vector3(2f, -1.25f, 0.5f);
-            // 원본 Vector3 offset = new Vector3(2f, -1.5f, 0.5f);
-            Vector3 spawnPosition = trackedImage.transform.position;
+            Vector3 spawnPosition = Camera.main.transform.position + GlobalVariable.Instance.room_offset;
 
             GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
-            // 원본 spawnedObject.transform.position = spawnPosition + offset;
-            spawnedObject.transform.position = Camera.main.transform.position + offset;
+            spawnedObject.transform.position = spawnPosition;
             spawnedObject.transform.Rotate(0f, 180f, 0f);
             createdPrefab = spawnedObject;
 
-            placeListCanvas.SetActive(true);
+            // 2차년도 부분
+            //placeListCanvas.SetActive(true);
 
             currentTrackingObjectName = "room1";
         }
@@ -114,18 +112,16 @@ public class TrackedImageInfomation1 : MonoBehaviour
             if (currentTrackingObjectName == "distribution_box")
                 return;
 
-            if(createdPrefab != null)
+            if (createdPrefab != null)
             {
                 //Destroy(createdPrefab);
                 createdPrefab.SetActive(false);
             }
 
-            Vector3 offset = new Vector3(0f, 0f, -5f);
-            Vector3 spawnPosition = Camera.main.transform.position + offset;
+            Vector3 spawnPosition = Camera.main.transform.position + GlobalVariable.Instance.distribution_box_offset;
 
             GameObject spawnedObject = Instantiate(arObjectPrefab[1]);
             spawnedObject.transform.position = spawnPosition;
-            //spawnedObject.transform.Rotate(0f, 0f, 0f);
             createdPrefab = spawnedObject;
 
             placeListCanvas.SetActive(false);

@@ -48,6 +48,13 @@ public class TextShow : MonoBehaviour
         public string eventHistory;
     }
 
+    public class ASHistory
+    {
+        public string nameNumber;
+        public string brandName;
+        public string ASHistorys;
+    }
+
     public void SetVisible()
     {
         isVisible = !isVisible;
@@ -181,17 +188,26 @@ public class TextShow : MonoBehaviour
                     }
                     else
                     {
-                        ObjectIdentity Identity = JsonUtility.FromJson<ObjectIdentity>(webRequest.downloadHandler.text);
+                        ASHistory test1 = new();
+
+                        test1.nameNumber = "삼성 시스템 에어컨 / A301-1";
+                        test1.brandName = "삼성";
+                        test1.ASHistorys = "2024-08-01 시원하지 않음 - 냉매 충전\n" +
+                            "2024-08-02 수리 되지 않음 - 재수리\n" +
+                            "2024-08-03 작동 안됨 에러코드 E407 - 실외기 압력 측정 센서 문제";
+
+                        string json = JsonUtility.ToJson(test1);
+
+                        ASHistory Identity = JsonUtility.FromJson<ASHistory>(json);
 
                         // 변환된 데이터 출력
                         canvas.SetActive(true);
                         canvas.transform.LookAt(Camera.main.transform);
                         canvas.transform.Rotate(0, 180, 0);
 
-                        inputFields[0].GetComponent<TMP_InputField>().text = Identity.userId;
-                        inputFields[1].GetComponent<TMP_InputField>().text = Identity.id;
-                        inputFields[2].GetComponent<TMP_InputField>().text = Identity.title;
-                        inputFields[3].GetComponent<TMP_InputField>().text = Identity.body;
+                        inputFields[0].GetComponent<TMP_InputField>().text = Identity.nameNumber;
+                        inputFields[1].GetComponent<TMP_InputField>().text = Identity.brandName;
+                        inputFields[2].GetComponent<TMP_InputField>().text = Identity.ASHistorys;
                     }
                 }
                 else if(transform.name == "tv")

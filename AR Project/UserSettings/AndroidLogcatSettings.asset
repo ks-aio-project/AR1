@@ -2,8 +2,8 @@
     "m_SelectedDeviceId": "R3CW20F7Y0V",
     "m_SelectedProcess": {
         "deviceId": "R3CW20F7Y0V",
-        "name": "com.unity.template.ar_mobile",
-        "processId": 28182,
+        "name": "kr.allione.ar_mobile",
+        "processId": 24220,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -269,85 +269,31 @@
         {
             "deviceId": "R3CW20F7Y0V",
             "name": "com.unity.template.ar_mobile",
-            "processId": 3431,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
-            "processId": 13000,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
-            "processId": 20344,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
-            "processId": 21173,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
-            "processId": 23253,
-            "exited": false
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
-            "processId": 25724,
-            "exited": false
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
-            "processId": 27212,
-            "exited": false
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
-            "processId": 29843,
-            "exited": false
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
-            "processId": 25717,
-            "exited": false
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
-            "processId": 4260,
-            "exited": false
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
-            "processId": 10835,
-            "exited": false
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
-            "processId": 14061,
-            "exited": false
-        },
-        {
-            "deviceId": "R3CW20F7Y0V",
-            "name": "com.unity.template.ar_mobile",
             "processId": 27087,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R3CW20F7Y0V",
             "name": "com.unity.template.ar_mobile",
             "processId": 28182,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CW20F7Y0V",
+            "name": "kr.allione.ar_mobile",
+            "processId": 18537,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CW20F7Y0V",
+            "name": "kr.allione.ar_mobile",
+            "processId": 7684,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CW20F7Y0V",
+            "name": "kr.allione.ar_mobile",
+            "processId": 24220,
             "exited": false
         },
         {
@@ -501,7 +447,7 @@
         "AutoCapture": true
     },
     "m_FilterOptions": {
-        "m_Filter": "",
+        "m_Filter": "kks",
         "m_UseRegularExpressions": false,
         "m_MatchCase": false
     },
