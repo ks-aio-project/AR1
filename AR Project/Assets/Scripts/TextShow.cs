@@ -12,7 +12,7 @@ using Image = UnityEngine.UI.Image;
 
 public class TextShow : MonoBehaviour
 {
-    float distanceRange = 5f;
+    //float distanceRange = 5f;
     public List<GameObject> inputFields;
 
     public GameObject canvas;

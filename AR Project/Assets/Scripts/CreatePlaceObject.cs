@@ -35,6 +35,7 @@ public class CreatePlaceObject : MonoBehaviour
     public List<Texture> imageList;
 
 
+    public TextMeshProUGUI testText;
 
     /// <summary>
     /// 생성된 오브젝트 모두 파괴 (리셋)

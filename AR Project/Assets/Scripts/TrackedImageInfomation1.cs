@@ -21,6 +21,8 @@ public class TrackedImageInfomation1 : MonoBehaviour
 
     bool delay;
 
+    public Vector3 trackedPosition = new();
+    public Quaternion trackedRotation = new();
     private void Start()
     {
         if(placeListCanvas == null)
@@ -79,54 +81,69 @@ public class TrackedImageInfomation1 : MonoBehaviour
 
     void CreateOrUpdateARObject(ARTrackedImage trackedImage)
     {
+        Vector3 cameraForward = Camera.main.transform.forward; // 현재 카메라가 바라보는 방향
+
+        // 카메라가 바라보는 가장 가까운 축을 찾음
+        float angleToX = Vector3.Angle(cameraForward, Vector3.right);
+        float angleToY = Vector3.Angle(cameraForward, Vector3.up);
+        float angleToZ = Vector3.Angle(cameraForward, Vector3.forward);
+
         // 이미지 트래킹시
         if (trackedImage.referenceImage.name == "room1")
         {
-            StartCoroutineTrackingDelay();
-
-            if (currentTrackingObjectName == "room1")
-                return;
-
-            if (createdPrefab != null)
+            // 0807
+            if(trackedImage.trackingState == TrackingState.Tracking)
             {
-                //Destroy(createdPrefab);
-                createdPrefab.SetActive(false);
+                if (currentTrackingObjectName == "room1")
+                    return;
+
+                if (createdPrefab != null)
+                {
+                    //Destroy(createdPrefab);
+                    createdPrefab.SetActive(false);
+                }
+
+                trackedPosition = trackedImage.transform.position;
+                GetComponent<CreatePlaceObject>().testText.text = $"camera : {Camera.main.transform.position}\n" +
+                    $"image : {trackedImage.transform.position}";
+                Vector3 spawnPosition = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
+
+                GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
+                spawnedObject.transform.position = spawnPosition;
+                spawnedObject.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
+
+                createdPrefab = spawnedObject;
+
+                // 2차년도 부분
+                //placeListCanvas.SetActive(true);
+
+                currentTrackingObjectName = "room1";
             }
-
-            Vector3 spawnPosition = Camera.main.transform.position + GlobalVariable.Instance.room_offset;
-
-            GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
-            spawnedObject.transform.position = spawnPosition;
-            spawnedObject.transform.Rotate(0f, 180f, 0f);
-            createdPrefab = spawnedObject;
-
-            // 2차년도 부분
-            //placeListCanvas.SetActive(true);
-
-            currentTrackingObjectName = "room1";
-        }
-        else if(trackedImage.referenceImage.name == "distribution_box")
-        {
-            StartCoroutineTrackingDelay();
-
-            if (currentTrackingObjectName == "distribution_box")
-                return;
-
-            if (createdPrefab != null)
+            else if (trackedImage.referenceImage.name == "distribution_box" || trackedImage.referenceImage.name == "distribution_box1" || trackedImage.referenceImage.name == "distribution_box2")
             {
-                //Destroy(createdPrefab);
-                createdPrefab.SetActive(false);
+                StartCoroutineTrackingDelay();
+
+                if (currentTrackingObjectName == "distribution_box")
+                    return;
+
+                if (createdPrefab != null)
+                {
+                    //Destroy(createdPrefab);
+                    createdPrefab.SetActive(false);
+                }
+
+                //Vector3 spawnPosition = Camera.main.transform.position + GlobalVariable.Instance.distribution_box_offset;
+                Vector3 spawnPosition = trackedImage.transform.position + GlobalVariable.Instance.distribution_box_offset;
+
+                GameObject spawnedObject = Instantiate(arObjectPrefab[1]);
+                //spawnedObject.transform.rotation = Quaternion.identity;
+                spawnedObject.transform.position = spawnPosition;
+                createdPrefab = spawnedObject;
+
+                placeListCanvas.SetActive(false);
+
+                currentTrackingObjectName = "distribution_box";
             }
-
-            Vector3 spawnPosition = Camera.main.transform.position + GlobalVariable.Instance.distribution_box_offset;
-
-            GameObject spawnedObject = Instantiate(arObjectPrefab[1]);
-            spawnedObject.transform.position = spawnPosition;
-            createdPrefab = spawnedObject;
-
-            placeListCanvas.SetActive(false);
-
-            currentTrackingObjectName = "distribution_box";
         }
     }
 }

@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "R3CW20F7Y0V",
+    "m_SelectedDeviceId": "192.168.1.194:44175",
     "m_SelectedProcess": {
-        "deviceId": "R3CW20F7Y0V",
+        "deviceId": "192.168.1.194:44175",
         "name": "kr.allione.ar_mobile",
-        "processId": 21208,
+        "processId": 14825,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -391,6 +391,18 @@
             "name": "com.unity.template.ar_mobile",
             "processId": 21926,
             "exited": false
+        },
+        {
+            "deviceId": "192.168.1.194:44175",
+            "name": "kr.allione.ar_mobile",
+            "processId": 14333,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.194:44175",
+            "name": "kr.allione.ar_mobile",
+            "processId": 14825,
+            "exited": false
         }
     ],
     "m_Tags": {
@@ -447,7 +459,7 @@
         "AutoCapture": true
     },
     "m_FilterOptions": {
-        "m_Filter": "kks",
+        "m_Filter": "",
         "m_UseRegularExpressions": false,
         "m_MatchCase": false
     },
@@ -474,5 +486,5 @@
             "exited": false
         }
     },
-    "m_AutoScroll": 0
+    "m_AutoScroll": 2
 }
