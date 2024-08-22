@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using TMPro;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class TrackedImageInfomation1 : MonoBehaviour
 {
@@ -19,18 +20,99 @@ public class TrackedImageInfomation1 : MonoBehaviour
     [HideInInspector]
     public string currentTrackingObjectName;
 
+    [HideInInspector]
+    public string currentForward = "";
+
     bool delay;
 
     public Vector3 trackedPosition = new();
     public Quaternion trackedRotation = new();
+
+    List<GameObject> objs = new();
+
+
     private void Start()
     {
-        if(placeListCanvas == null)
+        GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        obj.transform.localScale = new Vector3(0.1f, 0.5f, 0.5f);
+        obj.name = "+x";
+        obj.GetComponent<Renderer>().enabled = false;
+        objs.Add(obj);
+
+        obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        obj.transform.localScale = new Vector3(0.1f, 0.5f, 0.5f);
+        obj.name = "-x";
+        obj.GetComponent<Renderer>().enabled = false;
+        objs.Add(obj);
+
+        obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        obj.transform.localScale = new Vector3(0.5f, 0.1f, 0.5f);
+        obj.name = "+y";
+        obj.GetComponent<Renderer>().enabled = false;
+        objs.Add(obj);
+
+        obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        obj.transform.localScale = new Vector3(0.5f, 0.1f, 0.5f);
+        obj.name = "-y";
+        obj.GetComponent<Renderer>().enabled = false;
+        objs.Add(obj);
+
+        obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        obj.transform.localScale = new Vector3(0.5f, 0.5f, 0.1f);
+        obj.name = "+z";
+        obj.GetComponent<Renderer>().enabled = false;
+        objs.Add(obj);
+
+        obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        obj.transform.localScale = new Vector3(0.5f, 0.5f, 0.1f);
+        obj.name = "-z";
+        obj.GetComponent<Renderer>().enabled = false;
+        objs.Add(obj);
+
+        Input.compass.enabled = true; // 나침반
+
+        if (placeListCanvas == null)
         {
             Debug.LogError("placeCanvas 미 할당");
         }
 
         placeListCanvas.SetActive(false);
+    }
+    private void Update()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            currentForward = hit.transform.name;
+            Debug.Log($"currentForward : {currentForward}");
+        }
+
+        foreach (GameObject i in objs)
+        {
+            switch (i.name)
+            {
+                case "+x":
+                    i.transform.position = Camera.main.transform.position + new Vector3(0.25f, 0, 0);
+                    break;
+                case "-x":
+                    i.transform.position = Camera.main.transform.position + new Vector3(-0.25f, 0, 0);
+                    break;
+                case "+y":
+                    i.transform.position = Camera.main.transform.position + new Vector3(0, 0.25f, 0);
+                    break;
+                case "-y":
+                    i.transform.position = Camera.main.transform.position + new Vector3(0, -0.25f, 0);
+                    break;
+                case "+z":
+                    i.transform.position = Camera.main.transform.position + new Vector3(0, 0, 0.25f);
+                    break;
+                case "-z":
+                    i.transform.position = Camera.main.transform.position + new Vector3(0, 0, -0.25f);
+                    break;
+            }
+        }
     }
 
     void OnEnable()
@@ -79,38 +161,67 @@ public class TrackedImageInfomation1 : MonoBehaviour
         StartCoroutine(TrackingDelay());
     }
 
+    void CurrentForwardRotation(string _forward, string image_name, GameObject obj)
+    {
+        if(image_name.Equals("room1"))
+        {
+            switch (_forward)
+            {
+                case "+x":
+                    obj.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n180";
+                    break;
+                case "-x":
+                    obj.transform.rotation = Quaternion.Euler(0, -180, 0);
+                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n-180";
+                    break;
+                case "+y":
+                    obj.transform.rotation = Quaternion.Euler(0, 135, 0);
+                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n135";
+                    break;
+                case "-y":
+                    obj.transform.rotation = Quaternion.Euler(0, 90, 0);
+                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n90";
+                    break;
+                case "+z":
+                    obj.transform.rotation = Quaternion.Euler(0, 225, 0);
+                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n225";
+                    break;
+                case "-z":
+                    obj.transform.rotation = Quaternion.Euler(0, 270, 0);
+                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n270";
+                    break;
+            }
+        }
+    }
+
     void CreateOrUpdateARObject(ARTrackedImage trackedImage)
     {
         Vector3 cameraForward = Camera.main.transform.forward; // 현재 카메라가 바라보는 방향
-
-        // 카메라가 바라보는 가장 가까운 축을 찾음
-        float angleToX = Vector3.Angle(cameraForward, Vector3.right);
-        float angleToY = Vector3.Angle(cameraForward, Vector3.up);
-        float angleToZ = Vector3.Angle(cameraForward, Vector3.forward);
 
         // 이미지 트래킹시
         if (trackedImage.referenceImage.name == "room1")
         {
             // 0807
-            if(trackedImage.trackingState == TrackingState.Tracking)
+            if (trackedImage.trackingState == TrackingState.Tracking)
             {
                 if (currentTrackingObjectName == "room1")
+                {
                     return;
+                }
 
                 if (createdPrefab != null)
                 {
-                    //Destroy(createdPrefab);
-                    createdPrefab.SetActive(false);
+                    Destroy(createdPrefab);
                 }
-
+                
                 trackedPosition = trackedImage.transform.position;
-                GetComponent<CreatePlaceObject>().testText.text = $"camera : {Camera.main.transform.position}\n" +
-                    $"image : {trackedImage.transform.position}";
                 Vector3 spawnPosition = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
 
                 GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
                 spawnedObject.transform.position = spawnPosition;
-                spawnedObject.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
+                spawnedObject.transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y - Camera.main.transform.eulerAngles.y, 0);
+                //CurrentForwardRotation(currentForward, "room1", spawnedObject);
 
                 createdPrefab = spawnedObject;
 
@@ -118,6 +229,11 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 //placeListCanvas.SetActive(true);
 
                 currentTrackingObjectName = "room1";
+                Debug.Log($"kks room1");
+                Debug.Log($"kks spawn object rotation : {spawnedObject.transform.eulerAngles}");
+                Debug.Log($"kks cameraRotation : {Camera.main.transform.eulerAngles}");
+                GetComponent<CreatePlaceObject>().testText.text = $"room1\n" +
+                    $"ROT : {spawnedObject.transform.eulerAngles}";
             }
             else if (trackedImage.referenceImage.name == "distribution_box" || trackedImage.referenceImage.name == "distribution_box1" || trackedImage.referenceImage.name == "distribution_box2")
             {
@@ -128,8 +244,7 @@ public class TrackedImageInfomation1 : MonoBehaviour
 
                 if (createdPrefab != null)
                 {
-                    //Destroy(createdPrefab);
-                    createdPrefab.SetActive(false);
+                    Destroy(createdPrefab);
                 }
 
                 //Vector3 spawnPosition = Camera.main.transform.position + GlobalVariable.Instance.distribution_box_offset;
