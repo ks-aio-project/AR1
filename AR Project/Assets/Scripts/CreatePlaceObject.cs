@@ -73,9 +73,13 @@ public class CreatePlaceObject : MonoBehaviour
                 RaycastHit[] hits = Physics.RaycastAll(ray);
 
                 // 배치모드일때
-                PlaceModeTouch(hits);
+                if (hits.Length > 0)
+                {
+                    PlaceModeTouch(hits);                    
+                }
+
                 // 배치 모드 아닐 때
-                if(!placeMode)
+                if (!placeMode)
                 {
                     Debug.Log("KKS 터치 배치모드 X");
                     for (int i = 0; i < hits.Length; i++)
@@ -308,6 +312,24 @@ public class CreatePlaceObject : MonoBehaviour
     public void OnClickCloseImageCanvasButton(bool value)
     {
         imageCanvas.SetActive(value);
+    }
+
+    public void RoomItemListSet(GameObject obj)
+    {
+        switch(obj.name)
+        {
+            case "Button ListHide":
+                GetComponent<TrackedImageInfomation1>().placeListShowButton.SetActive(true);
+                GetComponent<TrackedImageInfomation1>().placeListCanvas.transform.GetChild(0).gameObject.SetActive(false);
+                GetComponent<FirebaseInit>().TestNotification();
+                obj.SetActive(false);
+                break;
+            case "Button ListShow":
+                GetComponent<TrackedImageInfomation1>().placeListHideButton.SetActive(true);
+                GetComponent<TrackedImageInfomation1>().placeListCanvas.transform.GetChild(0).gameObject.SetActive(true);
+                obj.SetActive(false);
+                break;
+        }
     }
 
     /// <summary>

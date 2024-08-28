@@ -13,6 +13,8 @@ public class TrackedImageInfomation1 : MonoBehaviour
     public GameObject[] arObjectPrefab;
 
     public GameObject placeListCanvas;
+    public GameObject placeListHideButton;
+    public GameObject placeListShowButton;
 
     [HideInInspector]
     public GameObject createdPrefab;
@@ -76,7 +78,7 @@ public class TrackedImageInfomation1 : MonoBehaviour
             Debug.LogError("placeCanvas 미 할당");
         }
 
-        placeListCanvas.SetActive(false);
+        //placeListCanvas.SetActive(false);
     }
     private void Update()
     {
@@ -86,7 +88,7 @@ public class TrackedImageInfomation1 : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             currentForward = hit.transform.name;
-            Debug.Log($"currentForward : {currentForward}");
+            //Debug.Log($"currentForward : {currentForward}");
         }
 
         foreach (GameObject i in objs)
@@ -216,39 +218,44 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 }
                 
                 trackedPosition = trackedImage.transform.position;
-                Vector3 spawnPosition = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
+                //Vector3 spawnPosition = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
+                Vector3 spawnPosition = Camera.main.transform.position + GlobalVariable.Instance.room_offset;
 
                 GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
                 spawnedObject.transform.position = spawnPosition;
-                spawnedObject.transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y - Camera.main.transform.eulerAngles.y, 0);
+                spawnedObject.transform.Rotate(0f, 180f, 0f);
+                //spawnedObject.transform.position = spawnPosition;
+                //spawnedObject.transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y - Camera.main.transform.eulerAngles.y, 0);
                 //CurrentForwardRotation(currentForward, "room1", spawnedObject);
 
                 createdPrefab = spawnedObject;
 
                 // 2차년도 부분
-                //placeListCanvas.SetActive(true);
+                placeListCanvas.SetActive(true);
 
                 currentTrackingObjectName = "room1";
                 Debug.Log($"kks room1");
                 Debug.Log($"kks spawn object rotation : {spawnedObject.transform.eulerAngles}");
                 Debug.Log($"kks cameraRotation : {Camera.main.transform.eulerAngles}");
-                GetComponent<CreatePlaceObject>().testText.text = $"room1\n" +
-                    $"ROT : {spawnedObject.transform.eulerAngles}";
+                //GetComponent<CreatePlaceObject>().testText.text = $"room1\n" +
+                //    $"ROT : {spawnedObject.transform.eulerAngles}";
             }
-            else if (trackedImage.referenceImage.name == "distribution_box" || trackedImage.referenceImage.name == "distribution_box1" || trackedImage.referenceImage.name == "distribution_box2")
+            else if (trackedImage.referenceImage.name == "distribution_box" || trackedImage.referenceImage.name == "distribution_box1"
+                    || trackedImage.referenceImage.name == "distribution_box2" || trackedImage.referenceImage.name == "distribution_box3"
+                    || trackedImage.referenceImage.name == "distribution_box4")
             {
-                StartCoroutineTrackingDelay();
-
                 if (currentTrackingObjectName == "distribution_box")
+                {
                     return;
+                }
 
                 if (createdPrefab != null)
                 {
                     Destroy(createdPrefab);
                 }
 
-                //Vector3 spawnPosition = Camera.main.transform.position + GlobalVariable.Instance.distribution_box_offset;
-                Vector3 spawnPosition = trackedImage.transform.position + GlobalVariable.Instance.distribution_box_offset;
+                Vector3 spawnPosition = Camera.main.transform.position + GlobalVariable.Instance.distribution_box_offset;
+                //Vector3 spawnPosition = trackedImage.transform.position + GlobalVariable.Instance.distribution_box_offset;
 
                 GameObject spawnedObject = Instantiate(arObjectPrefab[1]);
                 //spawnedObject.transform.rotation = Quaternion.identity;

@@ -58,12 +58,22 @@ MonoBehaviour:
     m_Name: distribution_box2
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
-      m_GuidLow: 5605958771426239900
-      m_GuidHigh: 13225251800527812768
+      m_GuidLow: 5019846262700943005
+      m_GuidHigh: 13508321082223169442
     m_SerializedTextureGuid:
-      m_GuidLow: 12832064710190602103
-      m_GuidHigh: 11577443950412677514
+      m_GuidLow: 6243302268229956896
+      m_GuidHigh: 4254524189513849032
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
-    m_Name: qrcode
+    m_Name: distribution_box3
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4691672272703372872
+      m_GuidHigh: 13517600693399554701
+    m_SerializedTextureGuid:
+      m_GuidLow: 11787111151766799786
+      m_GuidHigh: 14040395840313625610
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: distribution_box4
     m_Texture: {fileID: 0}

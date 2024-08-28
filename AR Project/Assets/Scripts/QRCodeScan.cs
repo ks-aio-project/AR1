@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -9,20 +11,22 @@ using ZXing.Common;
 
 public class QRCodeScan : MonoBehaviour
 {
-    public ARCameraManager CameraManager;
+    public XROrigin xrOrigin;
+    public ARCameraManager cameraManager;
+    public ARRaycastManager arRaycastManager;
     public GameObject provisioningCanvas;
 
     string lastQRCodeContent;
 
     public GameObject rectPrefab;
-
+    public GameObject GPM_webView;
     GameObject createPrefab;
 
     void Update()
     {
         if(!provisioningCanvas.activeSelf)
         {
-            if (CameraManager.TryAcquireLatestCpuImage(out XRCpuImage image))
+            if (cameraManager.TryAcquireLatestCpuImage(out XRCpuImage image))
             {
                 using (image)
                 {
@@ -43,79 +47,101 @@ public class QRCodeScan : MonoBehaviour
 
                     if (result != null && lastQRCodeContent != result.Text)
                     {
-                        // QR 코드의 위치 좌표 얻기
-                        ResultPoint[] points = result.ResultPoints;
-                        
+                        Debug.Log("QR Code detected: " + result.Text);
                         lastQRCodeContent = result.Text;
-                        provisioningCanvas.SetActive(true);
 
-                        // QR 코드의 4개 모서리 좌표를 사용하여 시각적 오브젝트 생성
-                        ResultPoint fourthPoint = CalculateFourthPoint(points[0], points[1], points[2]);
+                        // QR 코드의 3개의 코너 좌표 가져오기
+                        var points = result.ResultPoints;
+                        if (points.Length == 3)
+                        {
+                            Vector2[] imagePoints = new Vector2[3];
+                            for (int i = 0; i < points.Length; i++)
+                            {
+                                // ZXing의 좌표를 Unity에서 사용할 수 있는 Vector2로 변환
+                                imagePoints[i] = new Vector2(points[i].X, points[i].Y);
+                            }
 
-                        // 포인트 배열에 네 번째 포인트 추가
-                        ResultPoint[] fourPoints = new ResultPoint[4] { points[0], points[1], points[2], fourthPoint };
+                            Vector3 qrWorldPosition = CalculateQrCodeWorldPosition(result.ResultPoints);
+                            MoveCameraToWorldLocation(qrWorldPosition);
 
-                        DrawRectangle(fourPoints);
+                            // 각 점을 3D 공간으로 매핑
+                            Vector3[] worldPoints = new Vector3[3];
+                            for (int i = 0; i < imagePoints.Length; i++)
+                            {
+                                // 화면 공간 좌표를 3D 월드 좌표로 변환
+                                var screenPoint = new Vector3(imagePoints[i].x, imagePoints[i].y, cameraManager.GetComponent<Camera>().nearClipPlane);
+                                worldPoints[i] = cameraManager.GetComponent<Camera>().ScreenToWorldPoint(screenPoint);
+                            }
 
-                        Debug.Log($"KKS QR 인식 : {result.Text}");
+                            // 3D 공간에 QR 코드의 중심에 오브젝트를 배치
+                            Vector3 qrCenter = (worldPoints[0] + worldPoints[1] + worldPoints[2]) / 3;
+                            //if (createPrefab == null)
+                            //{
+                            //    createPrefab = Instantiate(rectPrefab, qrCenter + new Vector3(0.05f, -0.05f, 0), Quaternion.identity);
+                            //    createPrefab.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+                            //}
+                            //else
+                            //{
+                            //    createPrefab.SetActive(true);
+                            //    createPrefab.transform.position = qrCenter + new Vector3(0.05f, -0.05f, 0);
+                            //}
 
-                        provisioningCanvas.transform.rotation = Camera.main.transform.rotation;
-                        provisioningCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "제품 코드 : C-A-0012\n" +
-                            "전력 사용량 : 1000w\n" +
-                            "총 사용량 : 3500kWh";
+                            provisioningCanvas.SetActive(true);
+
+                            Debug.Log($"KKS QR 인식 : {result.Text}");
+
+                            provisioningCanvas.transform.position = qrCenter + new Vector3(0.15f, -0.15f, 0);
+                            provisioningCanvas.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
+
+                            provisioningCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "제품 코드 : C-A-0012\n" +
+                                "전력 사용량 : 1000w\n" +
+                                "총 사용량 : 3500kWh";
+
+                            if(GPM_webView != null)
+                            {
+                                //GPM_webView.GetComponent<WebviewConnect>().ShowUrlPopupDefault("https://ks-aio-project.github.io/");
+                                GPM_webView.GetComponent<WebviewConnect>().ShowUrlPopupPositionSize("https://ks-aio-project.github.io/", 0, 0, 0.5f, 0.5f);
+                            }
+                        }
+
+                        //Debug.Log("kks QR코드 인식");
+
+                        //provisioningCanvas.SetActive(true);
+
+                        //Debug.Log($"KKS QR 인식 : {result.Text}");
+
+                        //provisioningCanvas.transform.rotation = Quaternion.Euler(90, 0, 0);
+                        //Debug.Log($"kks rotation");
+                        //provisioningCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "제품 코드 : C-A-0012\n" +
+                        //    "전력 사용량 : 1000w\n" +
+                        //    "총 사용량 : 3500kWh";
+                        //Debug.Log($"kks set text");
                     }
                 }
             }
         }
     }
-    ResultPoint CalculateFourthPoint(ResultPoint topLeft, ResultPoint topRight, ResultPoint bottomLeft)
+
+    Vector3 CalculateQrCodeWorldPosition(ResultPoint[] points)
     {
-        // 대각선 벡터를 계산하고 네 번째 점을 추정
-        float dx1 = topRight.X - topLeft.X;
-        float dy1 = topRight.Y - topLeft.Y;
-        float dx2 = bottomLeft.X - topLeft.X;
-        float dy2 = bottomLeft.Y - topLeft.Y;
-
-        float fourthX = bottomLeft.X + dx1;
-        float fourthY = bottomLeft.Y + dy1;
-
-        return new ResultPoint(fourthX, fourthY);
+        Vector3 screenCenter = new Vector3(points[0].X, points[0].Y, cameraManager.GetComponent<Camera>().nearClipPlane);
+        return cameraManager.GetComponent<Camera>().ScreenToWorldPoint(screenCenter);
     }
 
-    void DrawRectangle(ResultPoint[] points)
+    void MoveCameraToWorldLocation(Vector3 desiredWorldLocation)
     {
-        Camera arCamera = CameraManager.GetComponent<Camera>();
-
-        // Convert the QR code points to world space
-        Vector3 bottomLeft = arCamera.ScreenToWorldPoint(new Vector3(points[0].X, points[0].Y, arCamera.nearClipPlane));
-        Vector3 topLeft = arCamera.ScreenToWorldPoint(new Vector3(points[1].X, points[1].Y, arCamera.nearClipPlane));
-        Vector3 topRight = arCamera.ScreenToWorldPoint(new Vector3(points[2].X, points[2].Y, arCamera.nearClipPlane));
-        Vector3 bottomRight = arCamera.ScreenToWorldPoint(new Vector3(points[3].X, points[3].Y, arCamera.nearClipPlane));
-
-        // Calculate the center position and size for the rectangle
-        Vector3 centerPosition = (bottomLeft + topRight) / 2;
-        Vector3 size = new Vector3(Vector3.Distance(bottomLeft, bottomRight), Vector3.Distance(bottomLeft, topLeft), 0.1f);
-        provisioningCanvas.transform.position = new Vector3(centerPosition.x, centerPosition.y, centerPosition.z);
-
-        // Instantiate the rectangle in the AR environment
-        createPrefab = Instantiate(rectPrefab, centerPosition, Quaternion.identity);
-        createPrefab.transform.position = new Vector3(centerPosition.x, centerPosition.y, Vector3.Distance(Camera.main.transform.position, centerPosition)+0.1f);
-        createPrefab.transform.localScale = new Vector3(0.1f, 0.1f, 0.01f);
-        createPrefab.transform.rotation = Quaternion.Euler(90, 0, 0);
-
-        GetComponent<CreatePlaceObject>().testText.text = $"centerPosition : {centerPosition}\n" +
-            $"createPrefab.position : {createPrefab.transform.position}\n" +
-            $"provisioningCanvas.position : {provisioningCanvas.transform.position}";
+        // 이 함수는 카메라 위치를 이동시키기 위해 XR Origin을 조정합니다.
+        if (xrOrigin != null)
+        {
+            Vector3 cameraOffset = xrOrigin.Camera.transform.position - xrOrigin.transform.position;
+            xrOrigin.transform.position = desiredWorldLocation - cameraOffset;
+        }
     }
 
     public void ProvisioningCanvasSetInVisible()
     {
         provisioningCanvas.SetActive(false);
         lastQRCodeContent = string.Empty;
-        rectPrefab.SetActive(false);
-        if(createPrefab != null)
-        {
-            createPrefab.SetActive(false);
-        }
+        createPrefab.SetActive(false);
     }
 }
