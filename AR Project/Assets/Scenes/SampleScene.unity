@@ -3139,7 +3139,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 5406c4afda8fdf54885da69ac47bdd0d, type: 3}
+  m_Texture: {fileID: 2800000, guid: ce1bf858c3a93564b9da55f4d8c298de, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -8868,6 +8868,12 @@ MonoBehaviour:
   notificationPanel: {fileID: 475719033}
   notificationFloorPlanImage: {fileID: 1853507618}
   notificationText: {fileID: 741453251}
+  notificationTextures:
+  - {fileID: 2800000, guid: ce1bf858c3a93564b9da55f4d8c298de, type: 3}
+  - {fileID: 2800000, guid: ed70fe8f730540043bab68571841ef3f, type: 3}
+  - {fileID: 2800000, guid: 9e8e7b92705e5414fa5940111e5d6caf, type: 3}
+  - {fileID: 2800000, guid: 8f4fb3c6a8a4c3046a481c276b419789, type: 3}
+  - {fileID: 2800000, guid: c6a561db0c314c1478d284c60a4218a5, type: 3}
   floorPlanImages:
   - {fileID: 2800000, guid: efca94ed574b1da49baa822f71f50109, type: 3}
   - {fileID: 2800000, guid: 518915114e2577c48b330d38516b8700, type: 3}

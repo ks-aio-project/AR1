@@ -15,6 +15,7 @@ public class FirebaseInit : MonoBehaviour
     string CHANNEL_ID = "myChannel";
     int apiLevel;
     public GameObject notificationCanvas, notificationImage, notificationPanel, notificationFloorPlanImage, notificationText;
+    public List<Texture> notificationTextures;
 
     public List<Texture> floorPlanImages;
 
@@ -22,11 +23,37 @@ public class FirebaseInit : MonoBehaviour
 
     public List<Button> floorButtons;
 
+    Dictionary<string, int> notificationImageKeyValue = new Dictionary<string, int>();
+
     void Start()
     {
+        for (int i = 0; i < notificationTextures.Count; i++)
+        {
+            switch (notificationTextures[i].name)
+            {
+                case "fire":
+                    notificationImageKeyValue.Add("화재", i);
+                    break;
+                case "water":
+                    notificationImageKeyValue.Add("누수", i);
+                    break;
+                case "data":
+                    notificationImageKeyValue.Add("데이터 통신 오류", i);
+                    break;
+                case "electric":
+                    notificationImageKeyValue.Add("누전", i);
+                    break;
+                case "air":
+                    notificationImageKeyValue.Add("냉난방 에너지 손실 감지", i);
+                    break;
+            }
+        }
+        Debug.Log($"KKS : Start");
 #if UNITY_ANDROID
-		InitializeAndroidLocalPush();
-		InitializeFCM();
+        Debug.Log($"KKS : Push");
+        InitializeAndroidLocalPush();
+        Debug.Log($"KKS : FCM");
+        InitializeFCM();
 #endif
 
         Debug.Log($"KKS abc ? : {abc}");
@@ -34,6 +61,7 @@ public class FirebaseInit : MonoBehaviour
 
     public void InitializeAndroidLocalPush()
     {
+        Debug.Log($"KKS : Enter Push");
         string androidInfo = SystemInfo.operatingSystem;
         Debug.Log("androidInfo: " + androidInfo);
         apiLevel = int.Parse(androidInfo.Substring(androidInfo.IndexOf("-") + 1, 2));
@@ -60,6 +88,7 @@ public class FirebaseInit : MonoBehaviour
 
     public void InitializeFCM()
     {
+        Debug.Log($"KKS : Enter FCM");
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
             if (dependencyStatus == DependencyStatus.Available)
@@ -101,6 +130,7 @@ public class FirebaseInit : MonoBehaviour
 
     public void NotificationClick()
     {
+        Debug.Log($"KKS : Enter NotiClick");
         notificationImage.SetActive(false);
         notificationPanel.SetActive(true);
         notificationFloorPlanImage.SetActive(true);
@@ -109,6 +139,7 @@ public class FirebaseInit : MonoBehaviour
 
     public void NotificationClose()
     {
+        Debug.Log($"KKS : NotiClose");
         notificationImage.SetActive(true);
         notificationCanvas.SetActive(false);
         notificationPanel.SetActive(false);
@@ -121,6 +152,7 @@ public class FirebaseInit : MonoBehaviour
 
     public void OnMessageReceived(object sender, MessageReceivedEventArgs e)
     {
+        Debug.Log($"KKS : OnMessageReceived");
         string type = "";
         string title = "";
         string body = "";
@@ -162,19 +194,21 @@ public class FirebaseInit : MonoBehaviour
             // x층, xx층을 분리
             int floor = int.Parse(bodySplit[1].Split("층")[0]);
 
-            floorButtons[floor - 1].GetComponent<Button>().Select();
-            EventSystem.current.SetSelectedGameObject(floorButtons[floor - 1].gameObject);
             notificationFloorPlanImage.GetComponent<RawImage>().texture = floorPlanImages[floor - 1];
 
             notificationPanel.SetActive(true);
             notificationFloorPlanImage.SetActive(true);
             notificationFloorPlanImage.GetComponent<RawImage>().texture = floorPlanImages[0];
+
+            floorButtons[floor - 1].GetComponent<Button>().Select();
+            EventSystem.current.SetSelectedGameObject(floorButtons[floor - 1].gameObject);
         }
+
 
         switch (bodySplit[0])
         {
-            case "화재":
-                notificationImage.GetComponent<RawImage>().color = Color.red;
+            case "화재":                
+                notificationImage.GetComponent<RawImage>().texture = notificationTextures[notificationImageKeyValue[bodySplit[0]]];
 
                 if (GetComponent<TrackedImageInfomation1>().currentTrackingObjectName == "room1")
                 {
@@ -183,11 +217,19 @@ public class FirebaseInit : MonoBehaviour
                 break;
 
             case "누수":
-                notificationImage.GetComponent<RawImage>().color = Color.blue;
+                notificationImage.GetComponent<RawImage>().texture = notificationTextures[notificationImageKeyValue[bodySplit[0]]];
                 break;
 
             case "누전":
-                notificationImage.GetComponent<RawImage>().color = Color.green;
+                notificationImage.GetComponent<RawImage>().texture = notificationTextures[notificationImageKeyValue[bodySplit[0]]];
+                break;
+
+            case "데이터 통신 오류":
+                notificationImage.GetComponent<RawImage>().texture = notificationTextures[notificationImageKeyValue[bodySplit[0]]];
+                break;
+
+            case "냉난방 에너지 손실 감지":
+                notificationImage.GetComponent<RawImage>().texture = notificationTextures[notificationImageKeyValue[bodySplit[0]]];
                 break;
         }
 
@@ -196,6 +238,8 @@ public class FirebaseInit : MonoBehaviour
         notification.Title = title;
         notification.Text = body;
         abc = body;
+        Debug.Log($"KKS abc is : {abc}");
+
         if (apiLevel >= 26)
         {
             AndroidNotificationCenter.SendNotification(notification, CHANNEL_ID);

@@ -3,7 +3,7 @@
     "m_SelectedProcess": {
         "deviceId": "R54X400328A",
         "name": "kr.allione.ar_mobile",
-        "processId": 25983,
+        "processId": 27967,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -406,21 +406,9 @@
         },
         {
             "deviceId": "R54X400328A",
-            "name": "kr.allione.ar_mobile",
-            "processId": 10968,
-            "exited": true
-        },
-        {
-            "deviceId": "R54X400328A",
             "name": "com.sec.android.app.launcher",
             "processId": 4420,
             "exited": false
-        },
-        {
-            "deviceId": "R54X400328A",
-            "name": "kr.allione.ar_mobile",
-            "processId": 16686,
-            "exited": true
         },
         {
             "deviceId": "R54X400328A",
@@ -438,6 +426,18 @@
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
             "processId": 25983,
+            "exited": true
+        },
+        {
+            "deviceId": "R54X400328A",
+            "name": "kr.allione.ar_mobile",
+            "processId": 24862,
+            "exited": true
+        },
+        {
+            "deviceId": "R54X400328A",
+            "name": "kr.allione.ar_mobile",
+            "processId": 27967,
             "exited": false
         },
         {
@@ -531,7 +531,7 @@
         "AutoCapture": true
     },
     "m_FilterOptions": {
-        "m_Filter": "asd",
+        "m_Filter": "",
         "m_UseRegularExpressions": false,
         "m_MatchCase": false
     },
@@ -558,5 +558,5 @@
             "exited": false
         }
     },
-    "m_AutoScroll": 2
+    "m_AutoScroll": 0
 }
