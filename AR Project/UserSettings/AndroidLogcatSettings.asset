@@ -3,7 +3,7 @@
     "m_SelectedProcess": {
         "deviceId": "R54X400328A",
         "name": "kr.allione.ar_mobile",
-        "processId": 27967,
+        "processId": 346,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -412,32 +412,32 @@
         },
         {
             "deviceId": "R54X400328A",
-            "name": "kr.allione.ar_mobile",
-            "processId": 17984,
+            "name": "com.android.settings",
+            "processId": 30078,
             "exited": true
         },
         {
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
-            "processId": 22714,
+            "processId": 30111,
             "exited": true
         },
         {
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
-            "processId": 25983,
+            "processId": 31307,
             "exited": true
         },
         {
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
-            "processId": 24862,
+            "processId": 32195,
             "exited": true
         },
         {
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
-            "processId": 27967,
+            "processId": 346,
             "exited": false
         },
         {

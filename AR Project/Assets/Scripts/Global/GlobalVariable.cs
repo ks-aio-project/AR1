@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class GlobalVariable
 {
     private static GlobalVariable instance;
