@@ -6,64 +6,70 @@ using UnityEngine.Android;
 
 public class JsonTest : MonoBehaviour
 {
-    private AndroidJavaObject activity;
+    AndroidJavaObject _pluginInstance;
 
-    void Start()
+    private void Awake()
     {
-        Debug.Log("kks start");
-#if UNITY_ANDROID && !UNITY_EDITOR
-        StartForegroundService();
-#endif
-    }
-    private void StartForegroundService()
-    {
-        Debug.Log("kks StartForegroundService");
-        using (var unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-        {
-            activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+        Application.runInBackground = true;
+        var pluginClass = new AndroidJavaClass("kr.allione.mylibrary.UnityPlug");
 
-            if (activity == null)
-            {
-                Debug.LogError("kks activity is null!");
-                return;
-            }
+        _pluginInstance = pluginClass.CallStatic<AndroidJavaObject>("instance");
 
-            // Intent 객체 생성
-            using (var serviceClass = new AndroidJavaClass("com.example.foregroundservice.MyForegroundService"))
-            {
-                using (var intent = new AndroidJavaObject("android.content.Intent", activity, serviceClass.Call<AndroidJavaObject>("getClass")))
-                {
-                    if (intent == null)
-                    {
-                        Debug.LogError("kks intent is null!");
-                        return;
-                    }
-
-                    // startService는 activity 인스턴스를 통해 호출해야 함
-                    activity.Call("startService", intent);
-                }
-            }
-        }
+        Debug.Log("kks Awake");
     }
 
-    void OnApplicationQuit()
+    private void Start()
     {
-        Debug.Log("kks OnApplicationQuit");
-#if UNITY_ANDROID && !UNITY_EDITOR
-        StopForegroundService();
-#endif
+        _pluginInstance.Call("unitySendMessage", gameObject.name, "CallByAndroid", "Hello Android Toast");
+        _pluginInstance.Call("startService");
+
+        Debug.Log("kks Start");
     }
 
-    private void StopForegroundService()
+    void CallByAndroid(string message)
     {
-        Debug.Log("kks StopForegroundService");
-        if (activity != null)
-        {
-            using (var intent = new AndroidJavaObject("android.content.Intent", activity, new AndroidJavaClass("com.example.foregroundservice.MyForegroundService")))
-            {
-                // stopService 역시 activity 인스턴스를 통해 호출
-                activity.Call("stopService", intent);
-            }
-        }
+        _pluginInstance.Call("showToast", message);
+
+        Debug.Log("kks call android");
+    }
+
+    public void OnStartService()
+    {
+        //_pluginInstance.Call("unitySendMessage", gameObject.name, "CallByAndroid", "Hello Android Toast222");
+        _pluginInstance.Call("unitySendMessage", gameObject.name, "StartService", "");
+        Debug.Log("kks OnStartService");
+    }
+
+    // 이 메서드는 Android에서 Unity로 데이터를 전달할 때 호출됩니다.
+    public void OnApiResponseReceived(string jsonData)
+    {
+        // jsonData를 처리하는 로직 작성
+        Debug.Log("API Response received: " + jsonData);
+
+        // JSON 데이터를 원하는 형태로 변환하여 사용할 수 있습니다.
+        // 예: JSON 파싱, UI 업데이트 등
+        ProcessApiResponse(jsonData);
+    }
+
+    private void ProcessApiResponse(string jsonData)
+    {
+        Debug.Log($"kks jsonData : {jsonData}");
+        // jsonData를 파싱하거나 데이터 구조로 변환
+        // 예를 들어, JSON 유틸리티를 사용하여 데이터를 파싱할 수 있습니다.
+        // MyData data = JsonUtility.FromJson<MyData>(jsonData);
+
+        // 데이터를 활용한 게임 로직 추가
+    }
+
+    public void StartService()
+    {
+        Debug.Log("kks call startService");
+        _pluginInstance.Call("startService");
+    }
+
+    public void StopService()
+    {
+        _pluginInstance.Call("stopService");
+        Debug.Log("kks call stopService");
     }
 }
