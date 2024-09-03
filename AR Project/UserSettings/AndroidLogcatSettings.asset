@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "R54X400328A",
     "m_SelectedProcess": {
-        "deviceId": "R54X400328A",
-        "name": "kr.allione.ar_mobile",
-        "processId": 30316,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -413,31 +413,31 @@
         {
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
-            "processId": 25614,
+            "processId": 28329,
             "exited": true
         },
         {
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
-            "processId": 26975,
+            "processId": 29246,
             "exited": true
         },
         {
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
-            "processId": 28293,
+            "processId": 29580,
             "exited": true
         },
         {
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
-            "processId": 29076,
+            "processId": 30647,
             "exited": true
         },
         {
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
-            "processId": 30316,
+            "processId": 31770,
             "exited": false
         },
         {

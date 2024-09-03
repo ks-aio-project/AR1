@@ -3,6 +3,7 @@ using Firebase.Extensions;
 using Firebase.Messaging;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using Unity.Notifications.Android;
 using UnityEngine;
@@ -250,15 +251,54 @@ public class FirebaseInit : MonoBehaviour
         }
     }
 
-    public void TestNotification()
+    /// <summary>
+    /// 안드로이드에서 수신 된 데이터로 노티피케이션 표출
+    /// </summary>
+    /// <param name="_type">알림 유형 (화재, 누전, 누수)</param>
+    /// <param name="_location">감지기 위치 (ex. 3층 회의실)</param>
+    /// <param name="_time">감지된 일시</param>
+    public void JsonNotification(string _type, string _location, string _time)
     {
-        string type = "";
-        string title = "";
-        string body = "";
+        if (!notificationCanvas.activeSelf)
+        {
+            notificationCanvas.SetActive(true);
+        }
 
-        type = "notification";
-        title = "알림";
-        body = "화재/4층/4010호";
+        _time = _time.Replace("T", " ");
+        notificationText.GetComponent<TextMeshProUGUI>().text = $"알림 : {_type} / 위치 : {_location} / 시간 : {_time}";
+
+        // 어플리케이션 활성화 중이면 바로 도면 띄움
+        if (Application.isFocused)
+        {
+            // x층, xx층을 분리
+            string location_floor = _location.Split("층")[0];
+
+            // xx실 (추후 도면이 완성되면 적용할 것)
+            string location_detail = _location.Split("층")[1];
+            int floor = int.Parse(location_floor);
+
+            floorButtons[floor - 1].Select();
+            EventSystem.current.SetSelectedGameObject(floorButtons[floor - 1].gameObject);
+            notificationFloorPlanImage.GetComponent<RawImage>().texture = floorPlanImages[floor - 1];
+
+            notificationPanel.SetActive(true);
+            notificationFloorPlanImage.SetActive(true);
+            notificationFloorPlanImage.GetComponent<RawImage>().texture = floorPlanImages[0];
+        }
+
+        notificationImage.GetComponent<RawImage>().color = Color.red;
+
+        if (GetComponent<TrackedImageInfomation1>().currentTrackingObjectName == "room1")
+        {
+            GetComponent<TrackedImageInfomation1>().createdPrefab.GetComponent<IndoorObject>().exitObject.GetComponent<ExitScript>().StartExit();
+        }
+    }
+
+    public void LocalNotification(string _type, string _title, string _body)
+    {
+        string type = _type;
+        string title = _title;
+        string body = _body;
 
         if (!notificationCanvas.activeSelf)
         {

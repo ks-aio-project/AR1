@@ -321,7 +321,7 @@ public class CreatePlaceObject : MonoBehaviour
             case "Button ListHide":
                 GetComponent<TrackedImageInfomation1>().placeListShowButton.SetActive(true);
                 GetComponent<TrackedImageInfomation1>().placeListCanvas.transform.GetChild(0).gameObject.SetActive(false);
-                GetComponent<FirebaseInit>().TestNotification();
+                GetComponent<FirebaseInit>().LocalNotification("notification", "알림", "화재/4층/4010호");
                 obj.SetActive(false);
                 break;
             case "Button ListShow":

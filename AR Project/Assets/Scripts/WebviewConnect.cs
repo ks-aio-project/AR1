@@ -117,7 +117,7 @@ public class WebviewConnect : MonoBehaviour
                 size = new GpmWebViewRequest.Size
                 {
                     hasValue = true,
-                    width = (int)(Screen.width * 0.5f),
+                    width = (int)(Screen.width * 0.3f),
                     height = (int)(Screen.height * 0.5f)
                     //width = (int)(Screen.width * 0.8f),
                     //height = (int)(Screen.height * 0.8f)
