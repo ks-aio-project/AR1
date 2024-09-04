@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using System.Xml.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.Networking;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -312,6 +314,40 @@ public class CreatePlaceObject : MonoBehaviour
     public void OnClickCloseImageCanvasButton(bool value)
     {
         imageCanvas.SetActive(value);
+        StartCoroutine(SendPostRequest());
+    }
+
+    // 서버에 POST 요청을 보내는 메서드
+    IEnumerator SendPostRequest()
+    {
+        Debug.Log($"kks sendPosrtRequest");
+        string url = "http://192.168.1.139/api/alarm/release";
+
+        // seq 값을 포함한 JSON 데이터
+        string jsonData = $"{{\"seq\" : {GetComponent<FirebaseInit>().alert_seq}}}";
+        Debug.Log($"kks alert_seq : {GetComponent<FirebaseInit>().alert_seq}");
+
+        // 요청 생성
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonData);
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        // Content-Type 헤더 설정
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        // 요청 보내기
+        yield return request.SendWebRequest();
+
+        // 요청 결과 처리
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Response: " + request.downloadHandler.text);
+        }
+        else
+        {
+            Debug.LogError("Error: " + request.error);
+        }
     }
 
     public void RoomItemListSet(GameObject obj)
@@ -321,7 +357,7 @@ public class CreatePlaceObject : MonoBehaviour
             case "Button ListHide":
                 GetComponent<TrackedImageInfomation1>().placeListShowButton.SetActive(true);
                 GetComponent<TrackedImageInfomation1>().placeListCanvas.transform.GetChild(0).gameObject.SetActive(false);
-                GetComponent<FirebaseInit>().LocalNotification("notification", "알림", "화재/4층/4010호");
+                //GetComponent<FirebaseInit>().LocalNotification("notification", "알림", "화재/4층/4010호");
                 obj.SetActive(false);
                 break;
             case "Button ListShow":

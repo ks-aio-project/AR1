@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Android;
 
-public class JsonTest : MonoBehaviour
+public class AndroidCommunicate : MonoBehaviour
 {
     public FirebaseInit firebaseInit;
     AndroidJavaObject _pluginInstance;
@@ -14,8 +15,26 @@ public class JsonTest : MonoBehaviour
     {
         public string category;
         public string alert_type;
+        public int alert_seq;
         public string alert_location;
         public string alert_time;
+    }
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (hasFocus)
+        {
+            Debug.Log("Application Focused (Resumed)");
+            // 애플리케이션이 Resume 상태에 있을 때 실행할 코드
+            if (_pluginInstance != null)
+            {
+                _pluginInstance.Call("getSaveSendData");
+            }
+        }
+        else
+        {
+            Debug.Log("Application Lost Focus (Might be Paused)");
+            // 애플리케이션이 포커스를 잃었을 때 실행할 코드
+        }
     }
 
 
@@ -28,6 +47,7 @@ public class JsonTest : MonoBehaviour
 
         Debug.Log("kks Awake");
     }
+
 
     private void Start()
     {
@@ -54,10 +74,11 @@ public class JsonTest : MonoBehaviour
     // 이 메서드는 Android에서 Unity로 데이터를 전달할 때 호출됩니다.
     public void OnApiResponseReceived(string data)
     {
+        Debug.Log($"kks getData : {data}");
         Alert alert = JsonUtility.FromJson<Alert>(data);
-        if(alert.category == "notification")
+        if (alert.category == "notification")
         {
-            firebaseInit.JsonNotification(alert.alert_type, alert.alert_location, alert.alert_time);
+            firebaseInit.JsonNotification(alert.alert_type, alert.alert_seq, alert.alert_location, alert.alert_time);
         }
     }
 

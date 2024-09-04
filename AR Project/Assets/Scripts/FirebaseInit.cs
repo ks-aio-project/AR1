@@ -1,14 +1,18 @@
 using Firebase;
 using Firebase.Extensions;
 using Firebase.Messaging;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Text;
 using TMPro;
 using Unity.Notifications.Android;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.EventSystems;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class FirebaseInit : MonoBehaviour
@@ -20,11 +24,18 @@ public class FirebaseInit : MonoBehaviour
 
     public List<Texture> floorPlanImages;
 
-    public string abc;
-
+    public int alert_seq;
+    
     public List<Button> floorButtons;
 
     Dictionary<string, int> notificationImageKeyValue = new Dictionary<string, int>();
+
+    Texture notificationFloorPlanImageTexture;
+
+    private void Awake()
+    {
+        notificationFloorPlanImageTexture = notificationFloorPlanImage.GetComponent<RawImage>().texture;
+    }
 
     void Start()
     {
@@ -49,15 +60,10 @@ public class FirebaseInit : MonoBehaviour
                     break;
             }
         }
-        Debug.Log($"KKS : Start");
 #if UNITY_ANDROID
-        Debug.Log($"KKS : Push");
         InitializeAndroidLocalPush();
-        Debug.Log($"KKS : FCM");
         InitializeFCM();
 #endif
-
-        Debug.Log($"KKS abc ? : {abc}");
     }
 
     public void InitializeAndroidLocalPush()
@@ -119,12 +125,7 @@ public class FirebaseInit : MonoBehaviour
         {
             if (floorButtons[i].gameObject == btn)
             {
-                Debug.Log("btn ok");
-                //btn.GetComponent<Button>().Select();
-                //btn.GetComponent<Image>().color = new Color(195, 195, 195, 255);
-                notificationFloorPlanImage.GetComponent<RawImage>().texture = floorPlanImages[i];
-                Debug.Log($"notificationFloorPlanImage.GetComponent<RawImage>().texture : {notificationFloorPlanImage.GetComponent<RawImage>().texture}");
-                Debug.Log($"floorPlanImages[i] : {floorPlanImages[i].name}");
+                notificationFloorPlanImageTexture = floorPlanImages[i];
             }
         }
     }
@@ -135,7 +136,7 @@ public class FirebaseInit : MonoBehaviour
         notificationImage.SetActive(false);
         notificationPanel.SetActive(true);
         notificationFloorPlanImage.SetActive(true);
-        notificationFloorPlanImage.GetComponent<RawImage>().texture = floorPlanImages[0];
+        notificationFloorPlanImageTexture = floorPlanImages[0];
     }
 
     public void NotificationClose()
@@ -144,6 +145,7 @@ public class FirebaseInit : MonoBehaviour
         notificationImage.SetActive(true);
         notificationCanvas.SetActive(false);
         notificationPanel.SetActive(false);
+        StartCoroutine(SendPostRequest());
     }
 
     public void OnTokenReceived(object sender, TokenReceivedEventArgs token)
@@ -186,8 +188,9 @@ public class FirebaseInit : MonoBehaviour
 
         string[] bodySplit = body.Split("/");
 
-        notificationText.GetComponent<TextMeshProUGUI>().text = $"발생 : {bodySplit[0]}\n" +
-            $"\n장소 : {bodySplit[1]} / {bodySplit[2]}";
+        notificationText.GetComponent<TextMeshProUGUI>().text = $"알림 : {bodySplit[0]}\n" +
+            $"위치 : {bodySplit[1]}\n" +
+            $"일시 : {bodySplit[2]}";
 
         // 어플리케이션 활성화 중이면 바로 도면 띄움
         if (Application.isFocused)
@@ -195,51 +198,22 @@ public class FirebaseInit : MonoBehaviour
             // x층, xx층을 분리
             int floor = int.Parse(bodySplit[1].Split("층")[0]);
 
-            notificationFloorPlanImage.GetComponent<RawImage>().texture = floorPlanImages[floor - 1];
+            notificationFloorPlanImageTexture = floorPlanImages[floor - 1];
 
             notificationPanel.SetActive(true);
             notificationFloorPlanImage.SetActive(true);
-            notificationFloorPlanImage.GetComponent<RawImage>().texture = floorPlanImages[0];
+            notificationFloorPlanImageTexture = floorPlanImages[0];
 
             floorButtons[floor - 1].GetComponent<Button>().Select();
             EventSystem.current.SetSelectedGameObject(floorButtons[floor - 1].gameObject);
         }
 
-
-        switch (bodySplit[0])
-        {
-            case "화재":                
-                notificationImage.GetComponent<RawImage>().texture = notificationTextures[notificationImageKeyValue[bodySplit[0]]];
-
-                if (GetComponent<TrackedImageInfomation1>().currentTrackingObjectName == "room1")
-                {
-                    GetComponent<TrackedImageInfomation1>().createdPrefab.GetComponent<IndoorObject>().exitObject.GetComponent<ExitScript>().StartExit();
-                }
-                break;
-
-            case "누수":
-                notificationImage.GetComponent<RawImage>().texture = notificationTextures[notificationImageKeyValue[bodySplit[0]]];
-                break;
-
-            case "누전":
-                notificationImage.GetComponent<RawImage>().texture = notificationTextures[notificationImageKeyValue[bodySplit[0]]];
-                break;
-
-            case "데이터 통신 오류":
-                notificationImage.GetComponent<RawImage>().texture = notificationTextures[notificationImageKeyValue[bodySplit[0]]];
-                break;
-
-            case "냉난방 에너지 손실 감지":
-                notificationImage.GetComponent<RawImage>().texture = notificationTextures[notificationImageKeyValue[bodySplit[0]]];
-                break;
-        }
+        SetNotificationImage(bodySplit[0]);
 
         var notification = new AndroidNotification();
         notification.SmallIcon = "icon_0";
         notification.Title = title;
         notification.Text = body;
-        abc = body;
-        Debug.Log($"KKS abc is : {abc}");
 
         if (apiLevel >= 26)
         {
@@ -251,22 +225,92 @@ public class FirebaseInit : MonoBehaviour
         }
     }
 
+    private void SetNotificationImage(string value)
+    {
+        switch (value)
+        {
+            case "화재":
+                notificationImage.GetComponent<RawImage>().texture = notificationTextures[0];
+
+                Debug.Log($"kks 화재 room1 ? : {GetComponent<TrackedImageInfomation1>().currentTrackingObjectName}");
+                if (GetComponent<TrackedImageInfomation1>().currentTrackingObjectName == "room1")
+                {
+                    GetComponent<TrackedImageInfomation1>().createdPrefab.GetComponent<IndoorObject>().exitObject.GetComponent<ExitScript>().StartExit();
+                }
+                break;
+
+            case "누수":
+                notificationImage.GetComponent<RawImage>().texture = notificationTextures[1];
+                break;
+
+            case "누전":
+                notificationImage.GetComponent<RawImage>().texture = notificationTextures[2];
+                break;
+
+            case "데이터 통신 오류":
+                notificationImage.GetComponent<RawImage>().texture = notificationTextures[3];
+                break;
+
+            case "냉난방 에너지 손실 감지":
+                notificationImage.GetComponent<RawImage>().texture = notificationTextures[4];
+                break;
+        }
+    }
+
+    // 서버에 POST 요청을 보내는 메서드
+    IEnumerator SendPostRequest()
+    {
+        Debug.Log($"kks sendPostRequest");
+        string url = "http://192.168.1.139/api/alarm/release";
+
+        // seq 값을 포함한 JSON 데이터
+        string jsonData = $"{{\"seq\" : {alert_seq}}}";
+        Debug.Log($"kks alert_seq : {alert_seq}");
+
+        // 요청 생성
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonData);
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        // Content-Type 헤더 설정
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        // 요청 보내기
+        yield return request.SendWebRequest();
+
+        // 요청 결과 처리
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Response: " + request.downloadHandler.text);
+        }
+        else
+        {
+            Debug.LogError("Error: " + request.error);
+        }
+    }
+
     /// <summary>
     /// 안드로이드에서 수신 된 데이터로 노티피케이션 표출
     /// </summary>
     /// <param name="_type">알림 유형 (화재, 누전, 누수)</param>
     /// <param name="_location">감지기 위치 (ex. 3층 회의실)</param>
     /// <param name="_time">감지된 일시</param>
-    public void JsonNotification(string _type, string _location, string _time)
+    public void JsonNotification(string _type, int seq, string _location, string _time)
     {
+        alert_seq = seq;
+
         if (!notificationCanvas.activeSelf)
         {
             notificationCanvas.SetActive(true);
         }
 
         _time = _time.Replace("T", " ");
-        notificationText.GetComponent<TextMeshProUGUI>().text = $"알림 : {_type} / 위치 : {_location} / 시간 : {_time}";
+        notificationText.GetComponent<TextMeshProUGUI>().text = $"알림 : {_type}\n위치 : {_location}\n시간 : {_time}";
 
+        Debug.Log($"kks _type : {_type}");
+
+        SetNotificationImage(_type);
         // 어플리케이션 활성화 중이면 바로 도면 띄움
         if (Application.isFocused)
         {
@@ -279,11 +323,11 @@ public class FirebaseInit : MonoBehaviour
 
             floorButtons[floor - 1].Select();
             EventSystem.current.SetSelectedGameObject(floorButtons[floor - 1].gameObject);
-            notificationFloorPlanImage.GetComponent<RawImage>().texture = floorPlanImages[floor - 1];
+            notificationFloorPlanImageTexture = floorPlanImages[floor - 1];
 
             notificationPanel.SetActive(true);
             notificationFloorPlanImage.SetActive(true);
-            notificationFloorPlanImage.GetComponent<RawImage>().texture = floorPlanImages[0];
+            notificationFloorPlanImageTexture = floorPlanImages[0];
         }
 
         notificationImage.GetComponent<RawImage>().color = Color.red;
@@ -318,11 +362,11 @@ public class FirebaseInit : MonoBehaviour
 
             floorButtons[floor - 1].Select();
             EventSystem.current.SetSelectedGameObject(floorButtons[floor - 1].gameObject);
-            notificationFloorPlanImage.GetComponent<RawImage>().texture = floorPlanImages[floor - 1];
+            notificationFloorPlanImageTexture = floorPlanImages[floor - 1];
 
             notificationPanel.SetActive(true);
             notificationFloorPlanImage.SetActive(true);
-            notificationFloorPlanImage.GetComponent<RawImage>().texture = floorPlanImages[0];
+            notificationFloorPlanImageTexture = floorPlanImages[0];
         }
 
         notificationImage.GetComponent<RawImage>().color = Color.red;

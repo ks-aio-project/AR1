@@ -5,15 +5,22 @@ using UnityEngine;
 public class ExitScript : MonoBehaviour
 {
     public float duration = 1.0f; // 색상 전환에 걸리는 시간
+    public bool isInit = false;
+
+    Material _material;
 
     void Start()
     {
-        GetComponent<Renderer>().material = Instantiate(GetComponent<Renderer>().material);
+        _material = GetComponent<Renderer>().material;
+
+        _material = Instantiate(_material);
         gameObject.SetActive(false);
     }
 
     public void StartExit()
     {
+        Debug.Log("kks StartExit!");
+        isInit = true;
         gameObject.SetActive(true);
         StartCoroutine(LerpColor());
     }
@@ -37,7 +44,7 @@ public class ExitScript : MonoBehaviour
         while (time < duration)
         {
             // 시간에 따라 색상을 선형 보간
-            GetComponent<Renderer>().material.color = Color.Lerp(startColor, endColor, time / duration);
+            _material.color = Color.Lerp(startColor, endColor, time / duration);
             time += Time.deltaTime;
 
             // 한 프레임 대기
@@ -45,6 +52,6 @@ public class ExitScript : MonoBehaviour
         }
 
         // 마지막 색상 설정 (누락 방지)
-        GetComponent<Renderer>().material.color = endColor;
+        _material.color = endColor;
     }
 }

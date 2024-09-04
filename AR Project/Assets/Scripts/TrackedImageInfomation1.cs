@@ -6,6 +6,9 @@ using Unity.XR.CoreUtils;
 using TMPro;
 using System.Collections;
 using Unity.VisualScripting;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
+using UnityEngine.SceneManagement;
 
 public class TrackedImageInfomation1 : MonoBehaviour
 {
@@ -32,9 +35,16 @@ public class TrackedImageInfomation1 : MonoBehaviour
 
     List<GameObject> objs = new();
 
+    float northAngle;
+
+    private Quaternion initialCameraRotation;  // 디바이스의 초기 회전값을 저장할 변수
+    private bool isCalibrated = false;  // 초기 방향이 설정되었는지 여부
 
     private void Start()
     {
+        // 나침반 활성화
+        Input.compass.enabled = true;
+
         GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
         obj.transform.localScale = new Vector3(0.1f, 0.5f, 0.5f);
         obj.name = "+x";
@@ -77,18 +87,71 @@ public class TrackedImageInfomation1 : MonoBehaviour
         {
             Debug.LogError("placeCanvas 미 할당");
         }
-
         //placeListCanvas.SetActive(false);
     }
+
+    // 각도를 기준으로 팔방위(북, 북동, 동, 남동, 남, 남서, 서, 북서) 계산
+    string GetDirectionFromAngle(float angle)
+    {
+        if (angle >= 337.5f || angle < 22.5f)
+            return "북 (N)";
+        else if (angle >= 22.5f && angle < 67.5f)
+            return "북동 (NE)";
+        else if (angle >= 67.5f && angle < 112.5f)
+            return "동 (E)";
+        else if (angle >= 112.5f && angle < 157.5f)
+            return "남동 (SE)";
+        else if (angle >= 157.5f && angle < 202.5f)
+            return "남 (S)";
+        else if (angle >= 202.5f && angle < 247.5f)
+            return "남서 (SW)";
+        else if (angle >= 247.5f && angle < 292.5f)
+            return "서 (W)";
+        else
+            return "북서 (NW)";
+    }
+
     private void Update()
     {
+        // 북쪽으로부터의 각도 (0~360도)
+        northAngle = Input.compass.trueHeading;
+
+        // 화면에 북쪽 각도 출력
+        Debug.Log("KKS 북쪽 각도 : " + northAngle + "°");
+
+        // 카메라의 현재 회전 각도에서 Y축(디바이스의 방향) 회전값을 가져옴
+        float cameraYAngle = Camera.main.transform.eulerAngles.y;
+
+        // +Z축이 바라보는 방향 (디바이스가 북쪽을 기준으로 얼마나 회전했는지)
+        float deviceDirection = (northAngle + cameraYAngle) % 360;
+
+        // 팔방위로 변환
+        string direction = GetDirectionFromAngle(deviceDirection);
+        Debug.Log("Z축이 바라보는 방향: " + direction);
+
+        // 디바이스의 초기 회전값을 저장
+        initialCameraRotation = Camera.main.transform.rotation;
+
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit))
         {
-            currentForward = hit.transform.name;
-            //Debug.Log($"currentForward : {currentForward}");
+            if(currentForward == string.Empty)
+            {
+                currentForward = hit.transform.name;
+                Debug.Log($"kks init currentForward : {currentForward}");
+                Debug.Log($"kks init cameraRotation : {Camera.main.transform.eulerAngles}");
+                Debug.Log($"kks init cameraforward : {Camera.main.transform.forward}");
+            }
+        }
+
+        // 나침반이 활성화되고 초기 방향이 설정된 후 실행
+        if (Input.compass.enabled && !isCalibrated)
+        {
+            // 초기 디바이스 회전값을 보정하여 설정
+            initialCameraRotation = Camera.main.transform.rotation;
+            isCalibrated = true;  // 보정 완료
         }
 
         foreach (GameObject i in objs)
@@ -204,6 +267,17 @@ public class TrackedImageInfomation1 : MonoBehaviour
         // 이미지 트래킹시
         if (trackedImage.referenceImage.name == "room1")
         {
+            if (SceneChangeSingleton.Instance.changeName != "room1")
+            {
+                SceneChangeSingleton.Instance.sceneChangeAble = true;
+            }
+
+            if (SceneChangeSingleton.Instance.sceneChangeAble && SceneChangeSingleton.Instance.changeName != "room1")
+            {
+                SceneChangeSingleton.Instance.sceneChangeAble = false;
+                SceneChangeSingleton.Instance.changeName = "room1";
+                SceneManager.LoadScene(0);
+            }
             // 0807
             if (trackedImage.trackingState == TrackingState.Tracking)
             {
@@ -223,10 +297,14 @@ public class TrackedImageInfomation1 : MonoBehaviour
 
                 GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
                 spawnedObject.transform.position = spawnPosition;
-                spawnedObject.transform.Rotate(0f, 180f, 0f);
-                //spawnedObject.transform.position = spawnPosition;
-                //spawnedObject.transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y - Camera.main.transform.eulerAngles.y, 0);
-                //CurrentForwardRotation(currentForward, "room1", spawnedObject);
+                spawnedObject.transform.Rotate(0f, 90f, 0f);
+
+                // 현재 카메라의 회전 값과 초기 회전값의 차이를 계산
+                Quaternion currentCameraRotation = Camera.main.transform.rotation;
+                Quaternion rotationDifference = Quaternion.Inverse(initialCameraRotation) * currentCameraRotation;
+
+                // 오브젝트를 북쪽에 맞게 회전시키기
+                //spawnedObject.transform.rotation = Quaternion.Euler(0, -northAngle, 0) * rotationDifference;
 
                 createdPrefab = spawnedObject;
 
@@ -244,6 +322,17 @@ public class TrackedImageInfomation1 : MonoBehaviour
                     || trackedImage.referenceImage.name == "distribution_box2" || trackedImage.referenceImage.name == "distribution_box3"
                     || trackedImage.referenceImage.name == "distribution_box4")
             {
+                if (SceneChangeSingleton.Instance.changeName != "distribution_box")
+                {
+                    SceneChangeSingleton.Instance.sceneChangeAble = true;
+                }
+
+                if (SceneChangeSingleton.Instance.sceneChangeAble && SceneChangeSingleton.Instance.changeName != "distribution_box")
+                {
+                    SceneChangeSingleton.Instance.sceneChangeAble = false;
+                    SceneChangeSingleton.Instance.changeName = "distribution_box";
+                    SceneManager.LoadScene(0);
+                }
                 if (currentTrackingObjectName == "distribution_box")
                 {
                     return;

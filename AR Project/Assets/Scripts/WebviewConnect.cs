@@ -6,10 +6,10 @@ using static UnityEngine.Application;
 
 public class WebviewConnect : MonoBehaviour
 {
-    void Start()
-    {
-        ShowUrlPopupPositionSize("https://ks-aio-project.github.io/", 0, 0, 0.5f, 0.5f);
-    }
+    //void Start()
+    //{
+    //    ShowUrlPopupPositionSize("https://ks-aio-project.github.io/", 0, 0, 0.5f, 0.5f);
+    //}
 
     public void ShowUrlFullScreen()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 public class GlobalVariable
 {
     private static GlobalVariable instance;
-
+    
     // 0807
     public Vector3 distribution_box_offset = new Vector3(-0.5f, -0.2f, 1.25f);
 

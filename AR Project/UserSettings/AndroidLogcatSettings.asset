@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "R54X400328A",
+    "m_SelectedDeviceId": "192.168.1.140:43213",
     "m_SelectedProcess": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "192.168.1.140:43213",
+        "name": "kr.allione.ar_mobile",
+        "processId": 30370,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -413,31 +413,31 @@
         {
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
-            "processId": 28329,
+            "processId": 26837,
             "exited": true
         },
         {
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
-            "processId": 29246,
+            "processId": 27910,
             "exited": true
         },
         {
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
-            "processId": 29580,
+            "processId": 28713,
             "exited": true
         },
         {
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
-            "processId": 30647,
+            "processId": 29706,
             "exited": true
         },
         {
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
-            "processId": 31770,
+            "processId": 30648,
             "exited": false
         },
         {
@@ -474,6 +474,36 @@
             "deviceId": "192.168.1.140:38289",
             "name": "kr.allione.ar_mobile",
             "processId": 28353,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.140:43213",
+            "name": "kr.allione.ar_mobile",
+            "processId": 21579,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.140:43213",
+            "name": "kr.allione.ar_mobile",
+            "processId": 22007,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.140:43213",
+            "name": "kr.allione.ar_mobile",
+            "processId": 27478,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.140:43213",
+            "name": "kr.allione.ar_mobile",
+            "processId": 28589,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.140:43213",
+            "name": "kr.allione.ar_mobile",
+            "processId": 30370,
             "exited": false
         }
     ],
@@ -558,5 +588,5 @@
             "exited": false
         }
     },
-    "m_AutoScroll": 2
+    "m_AutoScroll": 0
 }
