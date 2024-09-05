@@ -8974,6 +8974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f740e6b130395fe4e9677f5db254bdd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xrOrigin: {fileID: 608830382}
   trackedImageManager: {fileID: 608830378}
   arObjectPrefab:
   - {fileID: 3329032742310737361, guid: 591e0c69a15abf149a79584fd5a4adc2, type: 3}
@@ -13203,7 +13204,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1371919198
 Canvas:
   m_ObjectHideFlags: 0
@@ -13382,7 +13383,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1374859854
 Canvas:
   m_ObjectHideFlags: 0

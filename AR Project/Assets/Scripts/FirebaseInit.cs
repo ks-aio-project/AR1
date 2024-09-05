@@ -308,7 +308,7 @@ public class FirebaseInit : MonoBehaviour
         _time = _time.Replace("T", " ");
         notificationText.GetComponent<TextMeshProUGUI>().text = $"알림 : {_type}\n위치 : {_location}\n시간 : {_time}";
 
-        Debug.Log($"kks _type : {_type}");
+        Debug.Log($"kks Notofi : 알림 : {_type} 위치 : {_location} 시간 : {_time}");
 
         SetNotificationImage(_type);
         // 어플리케이션 활성화 중이면 바로 도면 띄움
