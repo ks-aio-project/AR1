@@ -10,6 +10,7 @@ using System.Diagnostics;
 using Debug = UnityEngine.Debug;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARCore;
+using System.Net;
 
 public class TrackedImageInfomation1 : MonoBehaviour
 {
@@ -31,8 +32,6 @@ public class TrackedImageInfomation1 : MonoBehaviour
     [HideInInspector]
     public string currentForward = "";
 
-    bool delay;
-
     public Vector3 trackedPosition = new();
     public Quaternion trackedRotation = new();
 
@@ -42,9 +41,13 @@ public class TrackedImageInfomation1 : MonoBehaviour
 
     private Quaternion initialCameraRotation;  // 디바이스의 초기 회전값을 저장할 변수
     private bool isCalibrated = false;  // 초기 방향이 설정되었는지 여부
+    private LineRenderer lineRenderer;
 
     private void Start()
     {
+        var rotationAngles = Camera.main.transform.rotation;
+        Debug.Log($"kks start camera Rotation X: {rotationAngles.x}°, Y: {rotationAngles.y}°, Z: {rotationAngles.z}°");
+
         // 나침반 활성화
         Input.compass.enabled = true;
 
@@ -85,6 +88,31 @@ public class TrackedImageInfomation1 : MonoBehaviour
         objs.Add(obj);
 
         Input.compass.enabled = true; // 나침반
+
+        foreach (GameObject i in objs)
+        {
+            switch (i.name)
+            {
+                case "+x":
+                    i.transform.position = Camera.main.transform.position + new Vector3(0.25f, 0, 0);
+                    break;
+                case "-x":
+                    i.transform.position = Camera.main.transform.position + new Vector3(-0.25f, 0, 0);
+                    break;
+                case "+y":
+                    i.transform.position = Camera.main.transform.position + new Vector3(0, 0.25f, 0);
+                    break;
+                case "-y":
+                    i.transform.position = Camera.main.transform.position + new Vector3(0, -0.25f, 0);
+                    break;
+                case "+z":
+                    i.transform.position = Camera.main.transform.position + new Vector3(0, 0, 0.25f);
+                    break;
+                case "-z":
+                    i.transform.position = Camera.main.transform.position + new Vector3(0, 0, -0.25f);
+                    break;
+            }
+        }
 
 
         // 디바이스의 초기 회전값을 저장
@@ -142,9 +170,6 @@ public class TrackedImageInfomation1 : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             currentForward = hit.transform.name;
-            //Debug.Log($"kks init currentForward : {currentForward}");
-            //Debug.Log($"kks init cameraRotation : {Camera.main.transform.eulerAngles}");
-            //Debug.Log($"kks init cameraforward : {Camera.main.transform.forward}");
         }
 
         // 나침반이 활성화되고 초기 방향이 설정된 후 실행
@@ -155,30 +180,30 @@ public class TrackedImageInfomation1 : MonoBehaviour
             isCalibrated = true;  // 보정 완료
         }
 
-        foreach (GameObject i in objs)
-        {
-            switch (i.name)
-            {
-                case "+x":
-                    i.transform.position = Camera.main.transform.position + new Vector3(0.25f, 0, 0);
-                    break;
-                case "-x":
-                    i.transform.position = Camera.main.transform.position + new Vector3(-0.25f, 0, 0);
-                    break;
-                case "+y":
-                    i.transform.position = Camera.main.transform.position + new Vector3(0, 0.25f, 0);
-                    break;
-                case "-y":
-                    i.transform.position = Camera.main.transform.position + new Vector3(0, -0.25f, 0);
-                    break;
-                case "+z":
-                    i.transform.position = Camera.main.transform.position + new Vector3(0, 0, 0.25f);
-                    break;
-                case "-z":
-                    i.transform.position = Camera.main.transform.position + new Vector3(0, 0, -0.25f);
-                    break;
-            }
-        }
+        //foreach (GameObject i in objs)
+        //{
+        //    switch (i.name)
+        //    {
+        //        case "+x":
+        //            i.transform.position = Camera.main.transform.position + new Vector3(0.25f, 0, 0);
+        //            break;
+        //        case "-x":
+        //            i.transform.position = Camera.main.transform.position + new Vector3(-0.25f, 0, 0);
+        //            break;
+        //        case "+y":
+        //            i.transform.position = Camera.main.transform.position + new Vector3(0, 0.25f, 0);
+        //            break;
+        //        case "-y":
+        //            i.transform.position = Camera.main.transform.position + new Vector3(0, -0.25f, 0);
+        //            break;
+        //        case "+z":
+        //            i.transform.position = Camera.main.transform.position + new Vector3(0, 0, 0.25f);
+        //            break;
+        //        case "-z":
+        //            i.transform.position = Camera.main.transform.position + new Vector3(0, 0, -0.25f);
+        //            break;
+        //    }
+        //}
     }
 
     void OnEnable()
@@ -193,71 +218,21 @@ public class TrackedImageInfomation1 : MonoBehaviour
 
     void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
-        if(!delay)
+        // 새롭게 트래킹된 이미지에 대해 처리
+        foreach (ARTrackedImage trackedImage in eventArgs.added)
         {
-            // 새롭게 트래킹된 이미지에 대해 처리
-            foreach (ARTrackedImage trackedImage in eventArgs.added)
-            {
-                CreateOrUpdateARObject(trackedImage);
-            }
-
-            // 업데이트된 이미지에 대해 처리
-            foreach (ARTrackedImage trackedImage in eventArgs.updated)
-            {
-                CreateOrUpdateARObject(trackedImage);
-            }
-
-            // 제거된 이미지에 대해 처리
-            foreach (ARTrackedImage trackedImage in eventArgs.removed)
-            {
-            }
+            CreateOrUpdateARObject(trackedImage);
         }
-    }
 
-    IEnumerator TrackingDelay()
-    {
-        yield return new WaitForSeconds(1f);
-
-        delay = false;
-    }
-
-    void StartCoroutineTrackingDelay()
-    {
-        delay = true;
-        StartCoroutine(TrackingDelay());
-    }
-
-    void CurrentForwardRotation(string _forward, string image_name, GameObject obj)
-    {
-        if(image_name.Equals("room1"))
+        // 업데이트된 이미지에 대해 처리
+        foreach (ARTrackedImage trackedImage in eventArgs.updated)
         {
-            switch (_forward)
-            {
-                case "+x":
-                    obj.transform.rotation = Quaternion.Euler(0, 180, 0);
-                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n180";
-                    break;
-                case "-x":
-                    obj.transform.rotation = Quaternion.Euler(0, -180, 0);
-                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n-180";
-                    break;
-                case "+y":
-                    obj.transform.rotation = Quaternion.Euler(0, 135, 0);
-                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n135";
-                    break;
-                case "-y":
-                    obj.transform.rotation = Quaternion.Euler(0, 90, 0);
-                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n90";
-                    break;
-                case "+z":
-                    obj.transform.rotation = Quaternion.Euler(0, 225, 0);
-                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n225";
-                    break;
-                case "-z":
-                    obj.transform.rotation = Quaternion.Euler(0, 270, 0);
-                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n270";
-                    break;
-            }
+            CreateOrUpdateARObject(trackedImage);
+        }
+
+        // 제거된 이미지에 대해 처리
+        foreach (ARTrackedImage trackedImage in eventArgs.removed)
+        {
         }
     }
 
@@ -292,96 +267,115 @@ public class TrackedImageInfomation1 : MonoBehaviour
                     Destroy(createdPrefab);
                 }
 
+                // 카메라의 회전 값 가져오기
                 Vector3 rotationAngles = Camera.main.transform.rotation.eulerAngles;
-                Debug.Log($"kks camera Rotation X: {rotationAngles.x}°, Y: {rotationAngles.y}°, Z: {rotationAngles.z}°");
+                Debug.Log($"kks Camera Rotation X: {rotationAngles.x}°, Y: {rotationAngles.y}°, Z: {rotationAngles.z}°");
 
-                trackedPosition = trackedImage.transform.position;
-                //Vector3 spawnPosition = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
+                // TrackedImage 위치
+                Vector3 trackedPosition = trackedImage.transform.position;
 
+                // 새 오브젝트 생성
                 GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
 
-                Vector3 directionToB = trackedImage.transform.position - objs[0].transform.position;
-                directionToB.Normalize();  // 방향 벡터를 정규화
+                // A에서 B(TrackedImage)로 향하는 벡터 계산
+                Vector3 directionToB = trackedPosition - objs[0].transform.position;
+                directionToB.Normalize();  // 방향 벡터 정규화
 
                 // A의 forward 벡터
                 Vector3 forwardA = objs[0].transform.forward;
 
-                // A의 forward 벡터와 A에서 B로 가는 벡터 사이의 각도 계산
-                float angle = Vector3.Angle(forwardA, directionToB);
+                // 삼각함수를 사용한 각도 계산 (Cosine 법칙)
+                float dotProduct = Vector3.Dot(forwardA, directionToB);  // 내적 계산
+                float magnitudeA = forwardA.magnitude;
+                float magnitudeB = directionToB.magnitude;
+                float cosTheta = dotProduct / (magnitudeA * magnitudeB);  // 각도 구하기 위한 Cosine
+                float angle = Mathf.Acos(cosTheta) * Mathf.Rad2Deg;  // 라디안에서 각도로 변환
 
-                // 각도를 구할 때 A의 오른쪽 벡터를 기준으로 교차 곱(Cross Product)을 사용하여 각도의 부호를 계산
+                // 부호를 결정하기 위한 외적 (Cross Product)
                 Vector3 cross = Vector3.Cross(forwardA, directionToB);
                 if (cross.y < 0)
                 {
                     angle = -angle;  // 음의 값이면 시계 방향으로 회전한 각도
                 }
 
-                if (angle < 0)
-                {
-                    angle += 360;
-                }
+                //// 360도 범위로 보정
+                //if (angle < 0)
+                //{
+                //    angle += 360;
+                //}
 
-                // 90으로 나누어서 가장 가까운 정수로 반올림하고 다시 90을 곱함
+                // 90도로 스냅 처리
                 float snappedAngle = Mathf.Round(angle / 90) * 90;
+                Debug.Log($"kks Snapped Angle: {snappedAngle}");
 
-                // 만약 360도보다 큰 값이 나오면 360도로 한정
-                if (snappedAngle >= 360)
+                // 현재 카메라 Y축 회전 각도를 삼각함수를 통해 계산
+                float cameraYRotation = Camera.main.transform.eulerAngles.y;
+
+                // 1. objs[0]에서 TrackedImage로 향하는 벡터
+                Vector3 directionFromObjToTracked = trackedImage.transform.position - objs[0].transform.position;
+                directionFromObjToTracked.Normalize();
+
+                // 2. 카메라에서 TrackedImage로 향하는 벡터
+                Vector3 directionFromCameraToTracked = trackedImage.transform.position - Camera.main.transform.position;
+                directionFromCameraToTracked.Normalize();
+
+                // 3. 두 벡터 사이의 각도 계산 (내적 사용)
+                dotProduct = Vector3.Dot(directionFromObjToTracked, directionFromCameraToTracked);
+                float angleBetweenObjAndCamera = Mathf.Acos(dotProduct) * Mathf.Rad2Deg;  // 라디안 -> 각도 변환
+
+                Debug.Log($"kks angleBetweenObjAndCamera : {angleBetweenObjAndCamera}");
+
+                // 외적을 사용해 부호 결정 (시계/반시계)
+                Vector3 crossProduct = Vector3.Cross(directionFromObjToTracked, directionFromCameraToTracked);
+                if (crossProduct.y < 0)
                 {
-                    snappedAngle = 0;
+                    angleBetweenObjAndCamera = -angleBetweenObjAndCamera;  // 시계 방향일 때 음수로 만듦
                 }
 
-                float cameraAngle;
+                // 360도 범위 보정
+                //if (angleBetweenObjAndCamera < 0)
+                //{
+                //    angleBetweenObjAndCamera += 360;
+                //}
 
-                if (rotationAngles.y < 0)
+                float result = 0;
+
+                if (cameraYRotation < 90)
                 {
-                    cameraAngle = Mathf.Round(rotationAngles.y % -90);
+                    result = 90f - cameraYRotation;
+                }
+                else if (cameraYRotation < 180)
+                {
+                    result = 180f - cameraYRotation;
+                }
+                else if (cameraYRotation < 270)
+                {
+                    result = 270f - cameraYRotation;
                 }
                 else
                 {
-                    cameraAngle = Mathf.Round(rotationAngles.y % 90);
+                    result = 360f - cameraYRotation;
                 }
 
-                Debug.Log($"kks angle : {angle}");
-                spawnedObject.transform.position = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
-                
-                spawnedObject.transform.rotation = snappedAngle == 90 ? Quaternion.Euler(0f, snappedAngle, 0f) : Quaternion.Euler(0f, snappedAngle + 90, 0f);
+                Debug.Log($"kks result : {result}");
 
-                Debug.Log($"kks angle : {angle} / snappedAngle : {snappedAngle} / cameraAngle : {cameraAngle} / sum : {snappedAngle}");
+                // 오브젝트 위치 조정 (카메라 앞쪽으로 2m)
+                spawnedObject.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 2f + Camera.main.transform.right * -0.8f + Camera.main.transform.up * -1.5f;
 
-                //switch (currentForward)
-                //{
-                //    case "+x":
-                //        Debug.Log("kks forward: +x");
-                //        spawnedObject.transform.position = Camera.main.transform.position + GlobalVariable.Instance.room_offset_x;
-                //        spawnedObject.transform.position = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
-                //        spawnedObject.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-                //        break;
-                //    case "-x":
-                //        Debug.Log("kks forward: -x");
-                //        spawnedObject.transform.position = Camera.main.transform.position + GlobalVariable.Instance.room_offset_nx;
-                //        spawnedObject.transform.position = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
-                //        spawnedObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                //        break;
-                //    case "+z":
-                //        Debug.Log("kks forward: +z");
-                //        spawnedObject.transform.position = Camera.main.transform.position + GlobalVariable.Instance.room_offset_z;
-                //        spawnedObject.transform.position = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
-                //        spawnedObject.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
-                //        break;
-                //    case "-z":
-                //        Debug.Log("kks forward: -z");
-                //        spawnedObject.transform.position = Camera.main.transform.position + GlobalVariable.Instance.room_offset_nz;
-                //        spawnedObject.transform.position = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
-                //        spawnedObject.transform.rotation = Quaternion.Euler(0f, 270f, 0f);
-                //        break;
-                //}
-
-                // 현재 카메라의 회전 값과 초기 회전값의 차이를 계산
-                Quaternion currentCameraRotation = Camera.main.transform.rotation;
-                Quaternion rotationDifference = Quaternion.Inverse(initialCameraRotation) * currentCameraRotation;
-
-                // 오브젝트를 북쪽에 맞게 회전시키기
-                //spawnedObject.transform.rotation = Quaternion.Euler(0, -northAngle, 0) * rotationDifference;
+                Debug.Log($"kks currentForwards : {currentForward}");
+                // 오브젝트의 로테이션 설정
+                if (result > 50 && angleBetweenObjAndCamera < 50)
+                {
+                    spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 180 - result, 0f);
+                }
+                else if (result > 50 && angleBetweenObjAndCamera > 50)
+                {
+                    spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 270 - result, 0f);
+                }
+                else
+                {
+                    spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 90 - result, 0f);
+                }
 
                 createdPrefab = spawnedObject;
 

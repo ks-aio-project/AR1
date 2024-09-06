@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "192.168.1.140:43213",
     "m_SelectedProcess": {
-        "deviceId": "192.168.1.140:43213",
-        "name": "kr.allione.ar_mobile",
-        "processId": 23681,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -485,31 +485,31 @@
         {
             "deviceId": "192.168.1.140:43213",
             "name": "kr.allione.ar_mobile",
-            "processId": 13743,
+            "processId": 31057,
             "exited": true
         },
         {
             "deviceId": "192.168.1.140:43213",
             "name": "kr.allione.ar_mobile",
-            "processId": 14824,
+            "processId": 2779,
             "exited": true
         },
         {
             "deviceId": "192.168.1.140:43213",
             "name": "kr.allione.ar_mobile",
-            "processId": 15363,
+            "processId": 3296,
             "exited": true
         },
         {
             "deviceId": "192.168.1.140:43213",
             "name": "kr.allione.ar_mobile",
-            "processId": 16519,
+            "processId": 11414,
             "exited": true
         },
         {
             "deviceId": "192.168.1.140:43213",
             "name": "kr.allione.ar_mobile",
-            "processId": 23681,
+            "processId": 13652,
             "exited": false
         }
     ],
@@ -594,5 +594,5 @@
             "exited": false
         }
     },
-    "m_AutoScroll": 2
+    "m_AutoScroll": 0
 }
