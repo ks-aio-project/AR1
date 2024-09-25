@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "192.168.1.140:43213",
+    "m_SelectedDeviceId": "192.168.1.140:41617",
     "m_SelectedProcess": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "192.168.1.140:41617",
+        "name": "kr.allione.ar_mobile",
+        "processId": 4617,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -413,18 +413,6 @@
         {
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
-            "processId": 26837,
-            "exited": true
-        },
-        {
-            "deviceId": "R54X400328A",
-            "name": "kr.allione.ar_mobile",
-            "processId": 27910,
-            "exited": true
-        },
-        {
-            "deviceId": "R54X400328A",
-            "name": "kr.allione.ar_mobile",
             "processId": 28713,
             "exited": true
         },
@@ -438,6 +426,18 @@
             "deviceId": "R54X400328A",
             "name": "kr.allione.ar_mobile",
             "processId": 30648,
+            "exited": true
+        },
+        {
+            "deviceId": "R54X400328A",
+            "name": "kr.allione.ar_mobile",
+            "processId": 25513,
+            "exited": true
+        },
+        {
+            "deviceId": "R54X400328A",
+            "name": "kr.allione.ar_mobile",
+            "processId": 27102,
             "exited": false
         },
         {
@@ -511,6 +511,36 @@
             "name": "kr.allione.ar_mobile",
             "processId": 13652,
             "exited": false
+        },
+        {
+            "deviceId": "192.168.1.140:41617",
+            "name": "kr.allione.ar_mobile",
+            "processId": 29619,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.140:41617",
+            "name": "kr.allione.ar_mobile",
+            "processId": 30546,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.140:41617",
+            "name": "kr.allione.ar_mobile",
+            "processId": 31489,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.140:41617",
+            "name": "kr.allione.ar_mobile",
+            "processId": 2067,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.140:41617",
+            "name": "kr.allione.ar_mobile",
+            "processId": 4617,
+            "exited": false
         }
     ],
     "m_Tags": {
@@ -567,7 +597,7 @@
         "AutoCapture": true
     },
     "m_FilterOptions": {
-        "m_Filter": "kks",
+        "m_Filter": "",
         "m_UseRegularExpressions": false,
         "m_MatchCase": false
     },

@@ -4301,8 +4301,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00048546938, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0006415857, y: 0}
+  m_SizeDelta: {x: 0, y: 16.64}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5354170533891584967
 MonoBehaviour:
@@ -9406,9 +9406,9 @@ RectTransform:
   m_Father: {fileID: 7213628449510934180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1401440407033502684
 CanvasRenderer:
@@ -14273,10 +14273,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1303337648025259571}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 41.5, y: -8.32}
+  m_SizeDelta: {x: 73, y: 6.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3635456823294050494
 CanvasRenderer:
@@ -15690,7 +15690,7 @@ RectTransform:
   m_Father: {fileID: 6541401992172199641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -19072,7 +19072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2265343905074258890
 Transform:
   m_ObjectHideFlags: 0
@@ -19082,8 +19082,8 @@ Transform:
   m_GameObject: {fileID: 8114299789165501035}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: 1, z: -9.5}
-  m_LocalScale: {x: 79.792, y: 79.792, z: 79.792}
+  m_LocalPosition: {x: 4.2, y: 1.25, z: -9.002}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1290965122086274314}
@@ -20248,7 +20248,7 @@ GameObject:
   - component: {fileID: 5037595505481148153}
   - component: {fileID: 2209208508590802826}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Exit Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

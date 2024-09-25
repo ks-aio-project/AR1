@@ -14,7 +14,7 @@ public class ExitScript : MonoBehaviour
         _material = GetComponent<Renderer>().material;
 
         _material = Instantiate(_material);
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void StartExit()

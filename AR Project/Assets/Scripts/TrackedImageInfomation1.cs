@@ -43,6 +43,8 @@ public class TrackedImageInfomation1 : MonoBehaviour
     private bool isCalibrated = false;  // 초기 방향이 설정되었는지 여부
     private LineRenderer lineRenderer;
 
+    public GameObject currentForwardObject;
+
     private void Start()
     {
         var rotationAngles = Camera.main.transform.rotation;
@@ -170,6 +172,7 @@ public class TrackedImageInfomation1 : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             currentForward = hit.transform.name;
+            currentForwardObject = hit.transform.gameObject;
         }
 
         // 나침반이 활성화되고 초기 방향이 설정된 후 실행
@@ -268,8 +271,8 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 }
 
                 // 카메라의 회전 값 가져오기
-                Vector3 rotationAngles = Camera.main.transform.rotation.eulerAngles;
-                Debug.Log($"kks Camera Rotation X: {rotationAngles.x}°, Y: {rotationAngles.y}°, Z: {rotationAngles.z}°");
+                Vector3 rotationAngles = trackedImage.transform.rotation.eulerAngles;
+                //Debug.Log($"kks Camera Rotation X: {rotationAngles.x}°, Y: {rotationAngles.y}°, Z: {rotationAngles.z}°");
 
                 // TrackedImage 위치
                 Vector3 trackedPosition = trackedImage.transform.position;
@@ -396,17 +399,6 @@ public class TrackedImageInfomation1 : MonoBehaviour
         {
             if (trackedImage.trackingState == TrackingState.Tracking)
             {
-                if (SceneChangeSingleton.Instance.changeName != "distribution_box")
-                {
-                    SceneChangeSingleton.Instance.sceneChangeAble = true;
-                }
-
-                if (SceneChangeSingleton.Instance.sceneChangeAble && SceneChangeSingleton.Instance.changeName != "distribution_box")
-                {
-                    SceneChangeSingleton.Instance.sceneChangeAble = false;
-                    SceneChangeSingleton.Instance.changeName = "distribution_box";
-                    SceneManager.LoadScene(0);
-                }
                 if (currentTrackingObjectName == "distribution_box")
                 {
                     return;
