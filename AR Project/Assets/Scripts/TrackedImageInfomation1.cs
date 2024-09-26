@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using System.Collections.Generic;
@@ -10,26 +10,8 @@ using System.Diagnostics;
 using Debug = UnityEngine.Debug;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARCore;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 using System.Net;
 using UnityEngine.PlayerLoop;
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
 
 public class TrackedImageInfomation1 : MonoBehaviour
 {
@@ -51,8 +33,6 @@ public class TrackedImageInfomation1 : MonoBehaviour
     [HideInInspector]
     public string currentForward = "";
 
-    bool delay;
-
     public Vector3 trackedPosition = new();
     public Quaternion trackedRotation = new();
 
@@ -60,29 +40,18 @@ public class TrackedImageInfomation1 : MonoBehaviour
 
     float northAngle;
 
-    private Quaternion initialCameraRotation;  // µğ¹ÙÀÌ½ºÀÇ ÃÊ±â È¸Àü°ªÀ» ÀúÀåÇÒ º¯¼ö
-    private bool isCalibrated = false;  // ÃÊ±â ¹æÇâÀÌ ¼³Á¤µÇ¾ú´ÂÁö ¿©ºÎ
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+    private Quaternion initialCameraRotation;  // ë””ë°”ì´ìŠ¤ì˜ ì´ˆê¸° íšŒì „ê°’ì„ ì €ì¥í•  ë³€ìˆ˜
+    private bool isCalibrated = false;  // ì´ˆê¸° ë°©í–¥ì´ ì„¤ì •ë˜ì—ˆëŠ”ì§€ ì—¬ë¶€
+    private LineRenderer lineRenderer;
 
     public GameObject currentForwardObject;
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
 
     private void Start()
     {
-        // ³ªÄ§¹İ È°¼ºÈ­
+        var rotationAngles = Camera.main.transform.rotation;
+        Debug.Log($"kks start camera Rotation X: {rotationAngles.x}Â°, Y: {rotationAngles.y}Â°, Z: {rotationAngles.z}Â°");
+
+        // ë‚˜ì¹¨ë°˜ í™œì„±í™”
         Input.compass.enabled = true;
 
         GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -121,110 +90,7 @@ public class TrackedImageInfomation1 : MonoBehaviour
         obj.GetComponent<Renderer>().enabled = false;
         objs.Add(obj);
 
-        Input.compass.enabled = true; // ³ªÄ§¹İ
-
-
-        // µğ¹ÙÀÌ½ºÀÇ ÃÊ±â È¸Àü°ªÀ» ÀúÀå
-        initialCameraRotation = Camera.main.transform.rotation;
-
-        if (placeListCanvas == null)
-        {
-            Debug.LogError("placeCanvas ¹Ì ÇÒ´ç");
-        }
-        //placeListCanvas.SetActive(false);
-    }
-
-    // °¢µµ¸¦ ±âÁØÀ¸·Î ÆÈ¹æÀ§(ºÏ, ºÏµ¿, µ¿, ³²µ¿, ³², ³²¼­, ¼­, ºÏ¼­) °è»ê
-    string GetDirectionFromAngle(float angle)
-    {
-        if (angle >= 337.5f || angle < 22.5f)
-            return "ºÏ (N)";
-        else if (angle >= 22.5f && angle < 67.5f)
-            return "ºÏµ¿ (NE)";
-        else if (angle >= 67.5f && angle < 112.5f)
-            return "µ¿ (E)";
-        else if (angle >= 112.5f && angle < 157.5f)
-            return "³²µ¿ (SE)";
-        else if (angle >= 157.5f && angle < 202.5f)
-            return "³² (S)";
-        else if (angle >= 202.5f && angle < 247.5f)
-            return "³²¼­ (SW)";
-        else if (angle >= 247.5f && angle < 292.5f)
-            return "¼­ (W)";
-        else
-            return "ºÏ¼­ (NW)";
-    }
-
-    private void Update()
-    {
-        // ºÏÂÊÀ¸·ÎºÎÅÍÀÇ °¢µµ (0~360µµ)
-        northAngle = Input.compass.trueHeading;
-
-        // È­¸é¿¡ ºÏÂÊ °¢µµ Ãâ·Â
-        //Debug.Log("KKS ºÏÂÊ °¢µµ : " + northAngle + "¡Æ");
-
-        // Ä«¸Ş¶óÀÇ ÇöÀç È¸Àü °¢µµ¿¡¼­ YÃà(µğ¹ÙÀÌ½ºÀÇ ¹æÇâ) È¸Àü°ªÀ» °¡Á®¿È
-        float cameraYAngle = Camera.main.transform.eulerAngles.y;
-
-        // +ZÃàÀÌ ¹Ù¶óº¸´Â ¹æÇâ (µğ¹ÙÀÌ½º°¡ ºÏÂÊÀ» ±âÁØÀ¸·Î ¾ó¸¶³ª È¸ÀüÇß´ÂÁö)
-        float deviceDirection = (northAngle + cameraYAngle) % 360;
-
-        // ÆÈ¹æÀ§·Î º¯È¯
-        string direction = GetDirectionFromAngle(deviceDirection);
-        //Debug.Log("ZÃàÀÌ ¹Ù¶óº¸´Â ¹æÇâ: " + direction);
-
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            currentForward = hit.transform.name;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            currentForwardObject = hit.transform.gameObject;
-=======
-            //Debug.Log($"kks init currentForward : {currentForward}");
-            //Debug.Log($"kks init cameraRotation : {Camera.main.transform.eulerAngles}");
-            //Debug.Log($"kks init cameraforward : {Camera.main.transform.forward}");
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-            //Debug.Log($"kks init currentForward : {currentForward}");
-            //Debug.Log($"kks init cameraRotation : {Camera.main.transform.eulerAngles}");
-            //Debug.Log($"kks init cameraforward : {Camera.main.transform.forward}");
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-            //Debug.Log($"kks init currentForward : {currentForward}");
-            //Debug.Log($"kks init cameraRotation : {Camera.main.transform.eulerAngles}");
-            //Debug.Log($"kks init cameraforward : {Camera.main.transform.forward}");
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-            //Debug.Log($"kks init currentForward : {currentForward}");
-            //Debug.Log($"kks init cameraRotation : {Camera.main.transform.eulerAngles}");
-            //Debug.Log($"kks init cameraforward : {Camera.main.transform.forward}");
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-            //Debug.Log($"kks init currentForward : {currentForward}");
-            //Debug.Log($"kks init cameraRotation : {Camera.main.transform.eulerAngles}");
-            //Debug.Log($"kks init cameraforward : {Camera.main.transform.forward}");
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-            //Debug.Log($"kks init currentForward : {currentForward}");
-            //Debug.Log($"kks init cameraRotation : {Camera.main.transform.eulerAngles}");
-            //Debug.Log($"kks init cameraforward : {Camera.main.transform.forward}");
->>>>>>> parent of 561eca8 (20240906 - E)
-        }
-
-        // ³ªÄ§¹İÀÌ È°¼ºÈ­µÇ°í ÃÊ±â ¹æÇâÀÌ ¼³Á¤µÈ ÈÄ ½ÇÇà
-        if (Input.compass.enabled && !isCalibrated)
-        {
-            // ÃÊ±â µğ¹ÙÀÌ½º È¸Àü°ªÀ» º¸Á¤ÇÏ¿© ¼³Á¤
-            initialCameraRotation = Camera.main.transform.rotation;
-            isCalibrated = true;  // º¸Á¤ ¿Ï·á
-        }
+        Input.compass.enabled = true; // ë‚˜ì¹¨ë°˜
 
         foreach (GameObject i in objs)
         {
@@ -250,6 +116,98 @@ public class TrackedImageInfomation1 : MonoBehaviour
                     break;
             }
         }
+
+
+        // ë””ë°”ì´ìŠ¤ì˜ ì´ˆê¸° íšŒì „ê°’ì„ ì €ì¥
+        initialCameraRotation = Camera.main.transform.rotation;
+
+        if (placeListCanvas == null)
+        {
+            Debug.LogError("placeCanvas ë¯¸ í• ë‹¹");
+        }
+        //placeListCanvas.SetActive(false);
+    }
+
+    // ê°ë„ë¥¼ ê¸°ì¤€ìœ¼ë¡œ íŒ”ë°©ìœ„(ë¶, ë¶ë™, ë™, ë‚¨ë™, ë‚¨, ë‚¨ì„œ, ì„œ, ë¶ì„œ) ê³„ì‚°
+    string GetDirectionFromAngle(float angle)
+    {
+        if (angle >= 337.5f || angle < 22.5f)
+            return "ë¶ (N)";
+        else if (angle >= 22.5f && angle < 67.5f)
+            return "ë¶ë™ (NE)";
+        else if (angle >= 67.5f && angle < 112.5f)
+            return "ë™ (E)";
+        else if (angle >= 112.5f && angle < 157.5f)
+            return "ë‚¨ë™ (SE)";
+        else if (angle >= 157.5f && angle < 202.5f)
+            return "ë‚¨ (S)";
+        else if (angle >= 202.5f && angle < 247.5f)
+            return "ë‚¨ì„œ (SW)";
+        else if (angle >= 247.5f && angle < 292.5f)
+            return "ì„œ (W)";
+        else
+            return "ë¶ì„œ (NW)";
+    }
+
+    private void Update()
+    {
+        // ë¶ìª½ìœ¼ë¡œë¶€í„°ì˜ ê°ë„ (0~360ë„)
+        northAngle = Input.compass.trueHeading;
+
+        // í™”ë©´ì— ë¶ìª½ ê°ë„ ì¶œë ¥
+        //Debug.Log("KKS ë¶ìª½ ê°ë„ : " + northAngle + "Â°");
+
+        // ì¹´ë©”ë¼ì˜ í˜„ì¬ íšŒì „ ê°ë„ì—ì„œ Yì¶•(ë””ë°”ì´ìŠ¤ì˜ ë°©í–¥) íšŒì „ê°’ì„ ê°€ì ¸ì˜´
+        float cameraYAngle = Camera.main.transform.eulerAngles.y;
+
+        // +Zì¶•ì´ ë°”ë¼ë³´ëŠ” ë°©í–¥ (ë””ë°”ì´ìŠ¤ê°€ ë¶ìª½ì„ ê¸°ì¤€ìœ¼ë¡œ ì–¼ë§ˆë‚˜ íšŒì „í–ˆëŠ”ì§€)
+        float deviceDirection = (northAngle + cameraYAngle) % 360;
+
+        // íŒ”ë°©ìœ„ë¡œ ë³€í™˜
+        string direction = GetDirectionFromAngle(deviceDirection);
+        //Debug.Log("Zì¶•ì´ ë°”ë¼ë³´ëŠ” ë°©í–¥: " + direction);
+
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            currentForward = hit.transform.name;
+            currentForwardObject = hit.transform.gameObject;
+        }
+
+        // ë‚˜ì¹¨ë°˜ì´ í™œì„±í™”ë˜ê³  ì´ˆê¸° ë°©í–¥ì´ ì„¤ì •ëœ í›„ ì‹¤í–‰
+        if (Input.compass.enabled && !isCalibrated)
+        {
+            // ì´ˆê¸° ë””ë°”ì´ìŠ¤ íšŒì „ê°’ì„ ë³´ì •í•˜ì—¬ ì„¤ì •
+            initialCameraRotation = Camera.main.transform.rotation;
+            isCalibrated = true;  // ë³´ì • ì™„ë£Œ
+        }
+
+        //foreach (GameObject i in objs)
+        //{
+        //    switch (i.name)
+        //    {
+        //        case "+x":
+        //            i.transform.position = Camera.main.transform.position + new Vector3(0.25f, 0, 0);
+        //            break;
+        //        case "-x":
+        //            i.transform.position = Camera.main.transform.position + new Vector3(-0.25f, 0, 0);
+        //            break;
+        //        case "+y":
+        //            i.transform.position = Camera.main.transform.position + new Vector3(0, 0.25f, 0);
+        //            break;
+        //        case "-y":
+        //            i.transform.position = Camera.main.transform.position + new Vector3(0, -0.25f, 0);
+        //            break;
+        //        case "+z":
+        //            i.transform.position = Camera.main.transform.position + new Vector3(0, 0, 0.25f);
+        //            break;
+        //        case "-z":
+        //            i.transform.position = Camera.main.transform.position + new Vector3(0, 0, -0.25f);
+        //            break;
+        //    }
+        //}
     }
 
     void OnEnable()
@@ -264,329 +222,110 @@ public class TrackedImageInfomation1 : MonoBehaviour
 
     void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
-        if(!delay)
+        // ìƒˆë¡­ê²Œ íŠ¸ë˜í‚¹ëœ ì´ë¯¸ì§€ì— ëŒ€í•´ ì²˜ë¦¬
+        foreach (ARTrackedImage trackedImage in eventArgs.added)
         {
-            // »õ·Ó°Ô Æ®·¡Å·µÈ ÀÌ¹ÌÁö¿¡ ´ëÇØ Ã³¸®
-            foreach (ARTrackedImage trackedImage in eventArgs.added)
-            {
-                CreateOrUpdateARObject(trackedImage);
-            }
-
-            // ¾÷µ¥ÀÌÆ®µÈ ÀÌ¹ÌÁö¿¡ ´ëÇØ Ã³¸®
-            foreach (ARTrackedImage trackedImage in eventArgs.updated)
-            {
-                CreateOrUpdateARObject(trackedImage);
-            }
-
-            // Á¦°ÅµÈ ÀÌ¹ÌÁö¿¡ ´ëÇØ Ã³¸®
-            foreach (ARTrackedImage trackedImage in eventArgs.removed)
-            {
-            }
+            CreateOrUpdateARObject(trackedImage);
         }
-    }
 
-    IEnumerator TrackingDelay()
-    {
-        yield return new WaitForSeconds(1f);
-
-        delay = false;
-    }
-
-    void StartCoroutineTrackingDelay()
-    {
-        delay = true;
-        StartCoroutine(TrackingDelay());
-    }
-
-    void CurrentForwardRotation(string _forward, string image_name, GameObject obj)
-    {
-        if(image_name.Equals("room1"))
+        // ì—…ë°ì´íŠ¸ëœ ì´ë¯¸ì§€ì— ëŒ€í•´ ì²˜ë¦¬
+        foreach (ARTrackedImage trackedImage in eventArgs.updated)
         {
-            switch (_forward)
-            {
-                case "+x":
-                    obj.transform.rotation = Quaternion.Euler(0, 180, 0);
-                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n180";
-                    break;
-                case "-x":
-                    obj.transform.rotation = Quaternion.Euler(0, -180, 0);
-                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n-180";
-                    break;
-                case "+y":
-                    obj.transform.rotation = Quaternion.Euler(0, 135, 0);
-                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n135";
-                    break;
-                case "-y":
-                    obj.transform.rotation = Quaternion.Euler(0, 90, 0);
-                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n90";
-                    break;
-                case "+z":
-                    obj.transform.rotation = Quaternion.Euler(0, 225, 0);
-                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n225";
-                    break;
-                case "-z":
-                    obj.transform.rotation = Quaternion.Euler(0, 270, 0);
-                    //GetComponent<CreatePlaceObject>().testText.text = $"parent Rot : {obj.transform.parent.rotation}\n270";
-                    break;
-            }
+            CreateOrUpdateARObject(trackedImage);
+        }
+
+        // ì œê±°ëœ ì´ë¯¸ì§€ì— ëŒ€í•´ ì²˜ë¦¬
+        foreach (ARTrackedImage trackedImage in eventArgs.removed)
+        {
         }
     }
 
     void CreateOrUpdateARObject(ARTrackedImage trackedImage)
     {
-        Vector3 cameraForward = Camera.main.transform.forward; // ÇöÀç Ä«¸Ş¶ó°¡ ¹Ù¶óº¸´Â ¹æÇâ
+        Vector3 cameraForward = Camera.main.transform.forward; // í˜„ì¬ ì¹´ë©”ë¼ê°€ ë°”ë¼ë³´ëŠ” ë°©í–¥
 
-        // ÀÌ¹ÌÁö Æ®·¡Å·½Ã
-        if (trackedImage.referenceImage.name == "qrcodebox")
+        // ì´ë¯¸ì§€ íŠ¸ë˜í‚¹ì‹œ
+        if (trackedImage.referenceImage.name == "room1")
         {
-            if (currentTrackingObjectName == "qrcodebox")
-            {
-                return;
-            }
-            //if (SceneChangeSingleton.Instance.changeName != "room1")
-            //{
-            //    SceneChangeSingleton.Instance.sceneChangeAble = true;
-            //}
-
-            //if (SceneChangeSingleton.Instance.sceneChangeAble && SceneChangeSingleton.Instance.changeName != "room1")
-            //{
-            //    SceneChangeSingleton.Instance.sceneChangeAble = false;
-            //    SceneChangeSingleton.Instance.changeName = "room1";
-            //    SceneManager.LoadScene(0);
-            //}
-            // 0807
             if (trackedImage.trackingState == TrackingState.Tracking)
             {
-                if (createdPrefab != null)
+                if (currentTrackingObjectName == "room1")
                 {
-                    Destroy(createdPrefab);
+                    return;
                 }
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                // Ä«¸Ş¶óÀÇ È¸Àü °ª °¡Á®¿À±â
+                // ì¹´ë©”ë¼ì˜ íšŒì „ ê°’ ê°€ì ¸ì˜¤ê¸°
                 Vector3 rotationAngles = trackedImage.transform.rotation.eulerAngles;
-                //Debug.Log($"kks Camera Rotation X: {rotationAngles.x}¡Æ, Y: {rotationAngles.y}¡Æ, Z: {rotationAngles.z}¡Æ");
-=======
-                Vector3 rotationAngles = Camera.main.transform.rotation.eulerAngles;
-                Debug.Log($"kks camera Rotation X: {rotationAngles.x}¡Æ, Y: {rotationAngles.y}¡Æ, Z: {rotationAngles.z}¡Æ");
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-                Vector3 rotationAngles = Camera.main.transform.rotation.eulerAngles;
-                Debug.Log($"kks camera Rotation X: {rotationAngles.x}¡Æ, Y: {rotationAngles.y}¡Æ, Z: {rotationAngles.z}¡Æ");
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-                Vector3 rotationAngles = Camera.main.transform.rotation.eulerAngles;
-                Debug.Log($"kks camera Rotation X: {rotationAngles.x}¡Æ, Y: {rotationAngles.y}¡Æ, Z: {rotationAngles.z}¡Æ");
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-                Vector3 rotationAngles = Camera.main.transform.rotation.eulerAngles;
-                Debug.Log($"kks camera Rotation X: {rotationAngles.x}¡Æ, Y: {rotationAngles.y}¡Æ, Z: {rotationAngles.z}¡Æ");
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-                Vector3 rotationAngles = Camera.main.transform.rotation.eulerAngles;
-                Debug.Log($"kks camera Rotation X: {rotationAngles.x}¡Æ, Y: {rotationAngles.y}¡Æ, Z: {rotationAngles.z}¡Æ");
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-                Vector3 rotationAngles = Camera.main.transform.rotation.eulerAngles;
-                Debug.Log($"kks camera Rotation X: {rotationAngles.x}¡Æ, Y: {rotationAngles.y}¡Æ, Z: {rotationAngles.z}¡Æ");
->>>>>>> parent of 561eca8 (20240906 - E)
+                //Debug.Log($"kks Camera Rotation X: {rotationAngles.x}Â°, Y: {rotationAngles.y}Â°, Z: {rotationAngles.z}Â°");
 
-                trackedPosition = trackedImage.transform.position;
-                //Vector3 spawnPosition = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
+                // TrackedImage ìœ„ì¹˜
+                Vector3 trackedPosition = trackedImage.transform.position;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                // »õ ¿ÀºêÁ§Æ® »ı¼º
+                // ìƒˆ ì˜¤ë¸Œì íŠ¸ ìƒì„±
                 GameObject spawnedObject = Instantiate(arObjectPrefab[2]);
-=======
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-                GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
->>>>>>> parent of 561eca8 (20240906 - E)
 
-                Vector3 directionToB = trackedImage.transform.position - objs[0].transform.position;
-                directionToB.Normalize();  // ¹æÇâ º¤ÅÍ¸¦ Á¤±ÔÈ­
+                // Aì—ì„œ B(TrackedImage)ë¡œ í–¥í•˜ëŠ” ë²¡í„° ê³„ì‚°
+                Vector3 directionToB = trackedPosition - objs[0].transform.position;
+                directionToB.Normalize();  // ë°©í–¥ ë²¡í„° ì •ê·œí™”
 
-                // AÀÇ forward º¤ÅÍ
+                // Aì˜ forward ë²¡í„°
                 Vector3 forwardA = objs[0].transform.forward;
 
-                // AÀÇ forward º¤ÅÍ¿Í A¿¡¼­ B·Î °¡´Â º¤ÅÍ »çÀÌÀÇ °¢µµ °è»ê
-                float angle = Vector3.Angle(forwardA, directionToB);
+                // ì‚¼ê°í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•œ ê°ë„ ê³„ì‚° (Cosine ë²•ì¹™)
+                float dotProduct = Vector3.Dot(forwardA, directionToB);  // ë‚´ì  ê³„ì‚°
+                float magnitudeA = forwardA.magnitude;
+                float magnitudeB = directionToB.magnitude;
+                float cosTheta = dotProduct / (magnitudeA * magnitudeB);  // ê°ë„ êµ¬í•˜ê¸° ìœ„í•œ Cosine
+                float angle = Mathf.Acos(cosTheta) * Mathf.Rad2Deg;  // ë¼ë””ì•ˆì—ì„œ ê°ë„ë¡œ ë³€í™˜
 
-                // °¢µµ¸¦ ±¸ÇÒ ¶§ AÀÇ ¿À¸¥ÂÊ º¤ÅÍ¸¦ ±âÁØÀ¸·Î ±³Â÷ °ö(Cross Product)À» »ç¿ëÇÏ¿© °¢µµÀÇ ºÎÈ£¸¦ °è»ê
+                // ë¶€í˜¸ë¥¼ ê²°ì •í•˜ê¸° ìœ„í•œ ì™¸ì  (Cross Product)
                 Vector3 cross = Vector3.Cross(forwardA, directionToB);
                 if (cross.y < 0)
                 {
-                    angle = -angle;  // À½ÀÇ °ªÀÌ¸é ½Ã°è ¹æÇâÀ¸·Î È¸ÀüÇÑ °¢µµ
+                    angle = -angle;  // ìŒì˜ ê°’ì´ë©´ ì‹œê³„ ë°©í–¥ìœ¼ë¡œ íšŒì „í•œ ê°ë„
                 }
 
+                //// 360ë„ ë²”ìœ„ë¡œ ë³´ì •
                 if (angle < 0)
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 {
                     angle += 360;
                 }
 
-                // 90À¸·Î ³ª´©¾î¼­ °¡Àå °¡±î¿î Á¤¼ö·Î ¹İ¿Ã¸²ÇÏ°í ´Ù½Ã 90À» °öÇÔ
+                // 90ë„ë¡œ ìŠ¤ëƒ… ì²˜ë¦¬
                 float snappedAngle = Mathf.Round(angle / 90) * 90;
+                Debug.Log($"kks Snapped Angle: {snappedAngle}");
 
-                // ¸¸¾à 360µµº¸´Ù Å« °ªÀÌ ³ª¿À¸é 360µµ·Î ÇÑÁ¤
-                if (snappedAngle >= 360)
+                // í˜„ì¬ ì¹´ë©”ë¼ Yì¶• íšŒì „ ê°ë„ë¥¼ ì‚¼ê°í•¨ìˆ˜ë¥¼ í†µí•´ ê³„ì‚°
+                float cameraYRotation = Camera.main.transform.eulerAngles.y;
+
+                // 1. objs[0]ì—ì„œ TrackedImageë¡œ í–¥í•˜ëŠ” ë²¡í„°
+                Vector3 directionFromObjToTracked = trackedImage.transform.position - objs[0].transform.position;
+                directionFromObjToTracked.Normalize();
+
+                // 2. ì¹´ë©”ë¼ì—ì„œ TrackedImageë¡œ í–¥í•˜ëŠ” ë²¡í„°
+                Vector3 directionFromCameraToTracked = trackedImage.transform.position - Camera.main.transform.position;
+                directionFromCameraToTracked.Normalize();
+
+                // 3. ë‘ ë²¡í„° ì‚¬ì´ì˜ ê°ë„ ê³„ì‚° (ë‚´ì  ì‚¬ìš©)
+                dotProduct = Vector3.Dot(directionFromObjToTracked, directionFromCameraToTracked);
+                float angleBetweenObjAndCamera = Mathf.Acos(dotProduct) * Mathf.Rad2Deg;  // ë¼ë””ì•ˆ -> ê°ë„ ë³€í™˜
+
+                Debug.Log($"kks angleBetweenObjAndCamera : {angleBetweenObjAndCamera}");
+
+                // ì™¸ì ì„ ì‚¬ìš©í•´ ë¶€í˜¸ ê²°ì • (ì‹œê³„/ë°˜ì‹œê³„)
+                Vector3 crossProduct = Vector3.Cross(directionFromObjToTracked, directionFromCameraToTracked);
+                if (crossProduct.y < 0)
                 {
-                    snappedAngle = 0;
+                    angleBetweenObjAndCamera = -angleBetweenObjAndCamera;  // ì‹œê³„ ë°©í–¥ì¼ ë•Œ ìŒìˆ˜ë¡œ ë§Œë“¦
                 }
 
-=======
+                // 360ë„ ë²”ìœ„ ë³´ì •
+                if (angleBetweenObjAndCamera < 0)
                 {
-                    angle += 360;
+                    angleBetweenObjAndCamera += 360;
                 }
 
-                // 90À¸·Î ³ª´©¾î¼­ °¡Àå °¡±î¿î Á¤¼ö·Î ¹İ¿Ã¸²ÇÏ°í ´Ù½Ã 90À» °öÇÔ
-                float snappedAngle = Mathf.Round(angle / 90) * 90;
+                float result = 0;
 
-                // ¸¸¾à 360µµº¸´Ù Å« °ªÀÌ ³ª¿À¸é 360µµ·Î ÇÑÁ¤
-                if (snappedAngle >= 360)
-                {
-                    snappedAngle = 0;
-                }
-
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-                {
-                    angle += 360;
-                }
-
-                // 90À¸·Î ³ª´©¾î¼­ °¡Àå °¡±î¿î Á¤¼ö·Î ¹İ¿Ã¸²ÇÏ°í ´Ù½Ã 90À» °öÇÔ
-                float snappedAngle = Mathf.Round(angle / 90) * 90;
-
-                // ¸¸¾à 360µµº¸´Ù Å« °ªÀÌ ³ª¿À¸é 360µµ·Î ÇÑÁ¤
-                if (snappedAngle >= 360)
-                {
-                    snappedAngle = 0;
-                }
-
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-                {
-                    angle += 360;
-                }
-
-                // 90À¸·Î ³ª´©¾î¼­ °¡Àå °¡±î¿î Á¤¼ö·Î ¹İ¿Ã¸²ÇÏ°í ´Ù½Ã 90À» °öÇÔ
-                float snappedAngle = Mathf.Round(angle / 90) * 90;
-
-                // ¸¸¾à 360µµº¸´Ù Å« °ªÀÌ ³ª¿À¸é 360µµ·Î ÇÑÁ¤
-                if (snappedAngle >= 360)
-                {
-                    snappedAngle = 0;
-                }
-
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-                {
-                    angle += 360;
-                }
-
-                // 90À¸·Î ³ª´©¾î¼­ °¡Àå °¡±î¿î Á¤¼ö·Î ¹İ¿Ã¸²ÇÏ°í ´Ù½Ã 90À» °öÇÔ
-                float snappedAngle = Mathf.Round(angle / 90) * 90;
-
-                // ¸¸¾à 360µµº¸´Ù Å« °ªÀÌ ³ª¿À¸é 360µµ·Î ÇÑÁ¤
-                if (snappedAngle >= 360)
-                {
-                    snappedAngle = 0;
-                }
-
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-                {
-                    angle += 360;
-                }
-
-                // 90À¸·Î ³ª´©¾î¼­ °¡Àå °¡±î¿î Á¤¼ö·Î ¹İ¿Ã¸²ÇÏ°í ´Ù½Ã 90À» °öÇÔ
-                float snappedAngle = Mathf.Round(angle / 90) * 90;
-
-                // ¸¸¾à 360µµº¸´Ù Å« °ªÀÌ ³ª¿À¸é 360µµ·Î ÇÑÁ¤
-                if (snappedAngle >= 360)
-                {
-                    snappedAngle = 0;
-                }
-
->>>>>>> parent of 561eca8 (20240906 - E)
-                float cameraAngle;
-
-                if (rotationAngles.y < 0)
-                {
-                    cameraAngle = Mathf.Round(rotationAngles.y % -90);
-                }
-                else
-                {
-                    cameraAngle = Mathf.Round(rotationAngles.y % 90);
-                }
-
-                Debug.Log($"kks angle : {angle}");
-                spawnedObject.transform.position = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
-                
-                spawnedObject.transform.rotation = snappedAngle == 90 ? Quaternion.Euler(0f, snappedAngle, 0f) : Quaternion.Euler(0f, snappedAngle + 90, 0f);
-
-                Debug.Log($"kks angle : {angle} / snappedAngle : {snappedAngle} / cameraAngle : {cameraAngle} / sum : {snappedAngle}");
-
-                //switch (currentForward)
-                //{
-                //    case "+x":
-                //        Debug.Log("kks forward: +x");
-                //        spawnedObject.transform.position = Camera.main.transform.position + GlobalVariable.Instance.room_offset_x;
-                //        spawnedObject.transform.position = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
-                //        spawnedObject.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-                //        break;
-                //    case "-x":
-                //        Debug.Log("kks forward: -x");
-                //        spawnedObject.transform.position = Camera.main.transform.position + GlobalVariable.Instance.room_offset_nx;
-                //        spawnedObject.transform.position = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
-                //        spawnedObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                //        break;
-                //    case "+z":
-                //        Debug.Log("kks forward: +z");
-                //        spawnedObject.transform.position = Camera.main.transform.position + GlobalVariable.Instance.room_offset_z;
-                //        spawnedObject.transform.position = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
-                //        spawnedObject.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
-                //        break;
-                //    case "-z":
-                //        Debug.Log("kks forward: -z");
-                //        spawnedObject.transform.position = Camera.main.transform.position + GlobalVariable.Instance.room_offset_nz;
-                //        spawnedObject.transform.position = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
-                //        spawnedObject.transform.rotation = Quaternion.Euler(0f, 270f, 0f);
-                //        break;
-                //}
-
-                // ÇöÀç Ä«¸Ş¶óÀÇ È¸Àü °ª°ú ÃÊ±â È¸Àü°ªÀÇ Â÷ÀÌ¸¦ °è»ê
-                Quaternion currentCameraRotation = Camera.main.transform.rotation;
-                Quaternion rotationDifference = Quaternion.Inverse(initialCameraRotation) * currentCameraRotation;
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 if (cameraYRotation < 90)
                 {
                     result = 90f - cameraYRotation;
@@ -606,11 +345,11 @@ public class TrackedImageInfomation1 : MonoBehaviour
 
                 Debug.Log($"kks result : {result}");
 
-                // ¿ÀºêÁ§Æ® À§Ä¡ Á¶Á¤ (Ä«¸Ş¶ó ¾ÕÂÊÀ¸·Î 2m)
-                spawnedObject.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 2f + Camera.main.transform.right * -0.8f + Camera.main.transform.up * -1.5f;
-                
+                // ì˜¤ë¸Œì íŠ¸ ìœ„ì¹˜ ì¡°ì • (ì¹´ë©”ë¼ ì•ìª½ìœ¼ë¡œ 2m)
+                spawnedObject.transform.position = trackedImage.transform.position;
+
                 Debug.Log($"kks currentForwards : {currentForward}");
-                // ¿ÀºêÁ§Æ®ÀÇ ·ÎÅ×ÀÌ¼Ç ¼³Á¤
+                // ì˜¤ë¸Œì íŠ¸ì˜ ë¡œí…Œì´ì…˜ ì„¤ì •
                 if (result > 50 && angleBetweenObjAndCamera < 50)
                 {
                     spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 180 - result, 0f);
@@ -623,33 +362,141 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 {
                     spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 90 - result, 0f);
                 }
-=======
-                // ¿ÀºêÁ§Æ®¸¦ ºÏÂÊ¿¡ ¸Â°Ô È¸Àü½ÃÅ°±â
-                //spawnedObject.transform.rotation = Quaternion.Euler(0, -northAngle, 0) * rotationDifference;
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-                // ¿ÀºêÁ§Æ®¸¦ ºÏÂÊ¿¡ ¸Â°Ô È¸Àü½ÃÅ°±â
-                //spawnedObject.transform.rotation = Quaternion.Euler(0, -northAngle, 0) * rotationDifference;
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-                // ¿ÀºêÁ§Æ®¸¦ ºÏÂÊ¿¡ ¸Â°Ô È¸Àü½ÃÅ°±â
-                //spawnedObject.transform.rotation = Quaternion.Euler(0, -northAngle, 0) * rotationDifference;
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-                // ¿ÀºêÁ§Æ®¸¦ ºÏÂÊ¿¡ ¸Â°Ô È¸Àü½ÃÅ°±â
-                //spawnedObject.transform.rotation = Quaternion.Euler(0, -northAngle, 0) * rotationDifference;
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-                // ¿ÀºêÁ§Æ®¸¦ ºÏÂÊ¿¡ ¸Â°Ô È¸Àü½ÃÅ°±â
-                //spawnedObject.transform.rotation = Quaternion.Euler(0, -northAngle, 0) * rotationDifference;
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
-                // ¿ÀºêÁ§Æ®¸¦ ºÏÂÊ¿¡ ¸Â°Ô È¸Àü½ÃÅ°±â
-                //spawnedObject.transform.rotation = Quaternion.Euler(0, -northAngle, 0) * rotationDifference;
->>>>>>> parent of 561eca8 (20240906 - E)
 
                 createdPrefab = spawnedObject;
-                // 2Â÷³âµµ ºÎºĞ
+                createdPrefab.transform.SetParent(trackedImage.transform);
+                // 2ì°¨ë…„ë„ ë¶€ë¶„
+                placeListCanvas.SetActive(true);
+
+                currentTrackingObjectName = "room1";
+                Debug.Log($"kks qrcodebox");
+                Debug.Log($"kks spawn object rotation : {spawnedObject.transform.eulerAngles}");
+                Debug.Log($"kks cameraRotation : {Camera.main.transform.eulerAngles}");
+                //GetComponent<CreatePlaceObject>().testText.text = $"room1\n" +
+                //    $"ROT : {spawnedObject.transform.eulerAngles}";
+            }
+        }
+        else if (trackedImage.referenceImage.name == "qrcodebox")
+        {
+            if (trackedImage.trackingState == TrackingState.Tracking)
+            {
+                if (currentTrackingObjectName == "qrcodebox")
+                {
+                    return;
+                }
+                // ì¹´ë©”ë¼ì˜ íšŒì „ ê°’ ê°€ì ¸ì˜¤ê¸°
+                Vector3 rotationAngles = trackedImage.transform.rotation.eulerAngles;
+                //Debug.Log($"kks Camera Rotation X: {rotationAngles.x}Â°, Y: {rotationAngles.y}Â°, Z: {rotationAngles.z}Â°");
+
+                // TrackedImage ìœ„ì¹˜
+                Vector3 trackedPosition = trackedImage.transform.position;
+
+                // ìƒˆ ì˜¤ë¸Œì íŠ¸ ìƒì„±
+                GameObject spawnedObject = Instantiate(arObjectPrefab[2]);
+
+                // Aì—ì„œ B(TrackedImage)ë¡œ í–¥í•˜ëŠ” ë²¡í„° ê³„ì‚°
+                Vector3 directionToB = trackedPosition - objs[0].transform.position;
+                directionToB.Normalize();  // ë°©í–¥ ë²¡í„° ì •ê·œí™”
+
+                // Aì˜ forward ë²¡í„°
+                Vector3 forwardA = objs[0].transform.forward;
+
+                // ì‚¼ê°í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•œ ê°ë„ ê³„ì‚° (Cosine ë²•ì¹™)
+                float dotProduct = Vector3.Dot(forwardA, directionToB);  // ë‚´ì  ê³„ì‚°
+                float magnitudeA = forwardA.magnitude;
+                float magnitudeB = directionToB.magnitude;
+                float cosTheta = dotProduct / (magnitudeA * magnitudeB);  // ê°ë„ êµ¬í•˜ê¸° ìœ„í•œ Cosine
+                float angle = Mathf.Acos(cosTheta) * Mathf.Rad2Deg;  // ë¼ë””ì•ˆì—ì„œ ê°ë„ë¡œ ë³€í™˜
+
+                // ë¶€í˜¸ë¥¼ ê²°ì •í•˜ê¸° ìœ„í•œ ì™¸ì  (Cross Product)
+                Vector3 cross = Vector3.Cross(forwardA, directionToB);
+                if (cross.y < 0)
+                {
+                    angle = -angle;  // ìŒì˜ ê°’ì´ë©´ ì‹œê³„ ë°©í–¥ìœ¼ë¡œ íšŒì „í•œ ê°ë„
+                }
+
+                //// 360ë„ ë²”ìœ„ë¡œ ë³´ì •
+                //if (angle < 0)
+                //{
+                //    angle += 360;
+                //}
+
+                // 90ë„ë¡œ ìŠ¤ëƒ… ì²˜ë¦¬
+                float snappedAngle = Mathf.Round(angle / 90) * 90;
+                Debug.Log($"kks Snapped Angle: {snappedAngle}");
+
+                // í˜„ì¬ ì¹´ë©”ë¼ Yì¶• íšŒì „ ê°ë„ë¥¼ ì‚¼ê°í•¨ìˆ˜ë¥¼ í†µí•´ ê³„ì‚°
+                float cameraYRotation = Camera.main.transform.eulerAngles.y;
+
+                // 1. objs[0]ì—ì„œ TrackedImageë¡œ í–¥í•˜ëŠ” ë²¡í„°
+                Vector3 directionFromObjToTracked = trackedImage.transform.position - objs[0].transform.position;
+                directionFromObjToTracked.Normalize();
+
+                // 2. ì¹´ë©”ë¼ì—ì„œ TrackedImageë¡œ í–¥í•˜ëŠ” ë²¡í„°
+                Vector3 directionFromCameraToTracked = trackedImage.transform.position - Camera.main.transform.position;
+                directionFromCameraToTracked.Normalize();
+
+                // 3. ë‘ ë²¡í„° ì‚¬ì´ì˜ ê°ë„ ê³„ì‚° (ë‚´ì  ì‚¬ìš©)
+                dotProduct = Vector3.Dot(directionFromObjToTracked, directionFromCameraToTracked);
+                float angleBetweenObjAndCamera = Mathf.Acos(dotProduct) * Mathf.Rad2Deg;  // ë¼ë””ì•ˆ -> ê°ë„ ë³€í™˜
+
+                Debug.Log($"kks angleBetweenObjAndCamera : {angleBetweenObjAndCamera}");
+
+                // ì™¸ì ì„ ì‚¬ìš©í•´ ë¶€í˜¸ ê²°ì • (ì‹œê³„/ë°˜ì‹œê³„)
+                Vector3 crossProduct = Vector3.Cross(directionFromObjToTracked, directionFromCameraToTracked);
+                if (crossProduct.y < 0)
+                {
+                    angleBetweenObjAndCamera = -angleBetweenObjAndCamera;  // ì‹œê³„ ë°©í–¥ì¼ ë•Œ ìŒìˆ˜ë¡œ ë§Œë“¦
+                }
+
+                // 360ë„ ë²”ìœ„ ë³´ì •
+                //if (angleBetweenObjAndCamera < 0)
+                //{
+                //    angleBetweenObjAndCamera += 360;
+                //}
+
+                float result = 0;
+
+                if (cameraYRotation < 90)
+                {
+                    result = 90f - cameraYRotation;
+                }
+                else if (cameraYRotation < 180)
+                {
+                    result = 180f - cameraYRotation;
+                }
+                else if (cameraYRotation < 270)
+                {
+                    result = 270f - cameraYRotation;
+                }
+                else
+                {
+                    result = 360f - cameraYRotation;
+                }
+
+                Debug.Log($"kks result : {result}");
+
+                // ì˜¤ë¸Œì íŠ¸ ìœ„ì¹˜ ì¡°ì • (ì¹´ë©”ë¼ ì•ìª½ìœ¼ë¡œ 2m)
+                spawnedObject.transform.position = trackedImage.transform.position;
+
+                Debug.Log($"kks currentForwards : {currentForward}");
+                // ì˜¤ë¸Œì íŠ¸ì˜ ë¡œí…Œì´ì…˜ ì„¤ì •
+                if (result > 50 && angleBetweenObjAndCamera < 50)
+                {
+                    spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 180 - result, 0f);
+                }
+                else if (result > 50 && angleBetweenObjAndCamera > 50)
+                {
+                    spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 270 - result, 0f);
+                }
+                else
+                {
+                    spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 90 - result, 0f);
+                }
+
+                createdPrefab = spawnedObject;
+                createdPrefab.transform.SetParent(trackedImage.transform);
+                // 2ì°¨ë…„ë„ ë¶€ë¶„
                 placeListCanvas.SetActive(true);
 
                 currentTrackingObjectName = "qrcodebox";
@@ -661,8 +508,8 @@ public class TrackedImageInfomation1 : MonoBehaviour
             }
         }
         else if (trackedImage.referenceImage.name == "distribution_box" || trackedImage.referenceImage.name == "distribution_box1"
-                || trackedImage.referenceImage.name == "distribution_box2" || trackedImage.referenceImage.name == "distribution_box3"
-                || trackedImage.referenceImage.name == "distribution_box4")
+            || trackedImage.referenceImage.name == "distribution_box2" || trackedImage.referenceImage.name == "distribution_box3"
+            || trackedImage.referenceImage.name == "distribution_box4")
         {
             if (trackedImage.trackingState == TrackingState.Tracking)
             {

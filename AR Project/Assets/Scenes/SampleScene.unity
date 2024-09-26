@@ -2394,29 +2394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2512387470528047739, guid: 48cb3fb68c91eb94999fd99957eb0cae,
         type: 3}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
       propertyPath: m_CameraYOffset
       value: 1.118
       objectReference: {fileID: 0}
     - target: {fileID: 2512387470528047739, guid: 48cb3fb68c91eb94999fd99957eb0cae,
         type: 3}
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
-=======
->>>>>>> parent of 561eca8 (20240906 - E)
       propertyPath: m_RequestedTrackingOriginMode
       value: 1
       objectReference: {fileID: 0}
@@ -2431,7 +2413,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2512387470528047719, guid: 48cb3fb68c91eb94999fd99957eb0cae,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 608830388}
+      addedObject: {fileID: 608830385}
   m_SourcePrefab: {fileID: 100100000, guid: 48cb3fb68c91eb94999fd99957eb0cae, type: 3}
 --- !u!1 &332374253
 GameObject:
@@ -5212,7 +5194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &608830388
+--- !u!114 &608830385
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9358,7 +9340,7 @@ MonoBehaviour:
   arObjectPrefab:
   - {fileID: 3329032742310737361, guid: 591e0c69a15abf149a79584fd5a4adc2, type: 3}
   - {fileID: 5139319145511490063, guid: e15230180bb58474881809623ebcaee9, type: 3}
-  - {fileID: 8350731518250670812, guid: abdac9bad406e864fbe1a62dea5d6825, type: 3}
+  - {fileID: 2779815803836374353, guid: f490b318e8e20fb49bc72e473f9d5dbf, type: 3}
   placeListCanvas: {fileID: 1371919195}
   placeListHideButton: {fileID: 1109142635}
   placeListShowButton: {fileID: 1915866700}
@@ -13588,7 +13570,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1371919198
 Canvas:
   m_ObjectHideFlags: 0
@@ -13767,7 +13749,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1374859854
 Canvas:
   m_ObjectHideFlags: 0
