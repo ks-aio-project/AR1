@@ -2396,11 +2396,14 @@ PrefabInstance:
         type: 3}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       propertyPath: m_CameraYOffset
       value: 1.118
       objectReference: {fileID: 0}
     - target: {fileID: 2512387470528047739, guid: 48cb3fb68c91eb94999fd99957eb0cae,
         type: 3}
+=======
+>>>>>>> parent of 561eca8 (20240906 - E)
 =======
 >>>>>>> parent of 561eca8 (20240906 - E)
 =======
