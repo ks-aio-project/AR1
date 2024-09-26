@@ -23,7 +23,11 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Title: Project
+=======
+  m_Title: Hierarchy
+>>>>>>> parent of 561eca8 (20240906 - E)
 =======
   m_Title: Hierarchy
 >>>>>>> parent of 561eca8 (20240906 - E)
@@ -322,7 +326,11 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 137
+=======
+  controlID: 138
+>>>>>>> parent of 561eca8 (20240906 - E)
 =======
   controlID: 138
 >>>>>>> parent of 561eca8 (20240906 - E)
@@ -452,11 +460,14 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 174}
     m_SelectedIDs: 74a30000
     m_LastClickedID: 41844
     m_ExpandedIDs: 000000004aa100004ca100004ea1000050a1000052a1000054a1000056a1000058a100005aa100005ca100005ea1000060a1000062a1000064a1000066a1000068a100006aa100006ca100006ea1000070a1000072a1000074a1000076a1000078a100007aa100007ca1000072a3000000ca9a3b
 =======
+=======
+>>>>>>> parent of 561eca8 (20240906 - E)
 =======
 >>>>>>> parent of 561eca8 (20240906 - E)
 =======
@@ -470,6 +481,9 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 561eca8 (20240906 - E)
+=======
 >>>>>>> parent of 561eca8 (20240906 - E)
 =======
 >>>>>>> parent of 561eca8 (20240906 - E)
@@ -508,7 +522,11 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 000000004aa100004ca100004ea1000050a1000052a1000054a1000056a1000058a100005aa100005ca100005ea1000060a1000062a1000064a1000066a1000068a100006aa100006ca100006ea1000070a1000072a1000074a1000076a1000078a100007aa100007ca10000
+=======
+    m_ExpandedIDs: 000000000e99000010990000129900001499000016990000189900001a9900001c9900001e99000020990000229900002499000026990000289900002a9900002c9900002e99000030990000329900003499000036990000389900003a9900003c9900003e99000040990000
+>>>>>>> parent of 561eca8 (20240906 - E)
 =======
     m_ExpandedIDs: 000000000e99000010990000129900001499000016990000189900001a9900001c9900001e99000020990000229900002499000026990000289900002a9900002c9900002e99000030990000329900003499000036990000389900003a9900003c9900003e99000040990000
 >>>>>>> parent of 561eca8 (20240906 - E)
@@ -963,9 +981,15 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: 2.5700486, y: 0.97620606, z: -0.8107358}
     speed: 2
     m_Value: {x: 2.5700486, y: 0.97620606, z: -0.8107358}
+=======
+    m_Target: {x: 5.0702195, y: 3.5580854, z: -0.5607273}
+    speed: 2
+    m_Value: {x: 5.0702195, y: 3.5580854, z: -0.5607273}
+>>>>>>> parent of 561eca8 (20240906 - E)
 =======
     m_Target: {x: 5.0702195, y: 3.5580854, z: -0.5607273}
     speed: 2
@@ -1035,9 +1059,15 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: 0.18751246, y: -0.4132864, z: 0.08772036, w: 0.8869056}
     speed: 2
     m_Value: {x: 0.18748781, y: -0.41323206, z: 0.08770882, w: 0.886789}
+=======
+    m_Target: {x: -0.12775351, y: 0.64416295, z: -0.11017472, w: -0.7461458}
+    speed: 2
+    m_Value: {x: -0.12774464, y: 0.64411825, z: -0.11016708, w: -0.74609405}
+>>>>>>> parent of 561eca8 (20240906 - E)
 =======
     m_Target: {x: -0.12775351, y: 0.64416295, z: -0.11017472, w: -0.7461458}
     speed: 2
@@ -1071,8 +1101,13 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Speed: 3.1069038
     m_SpeedNormalized: 0.3100004
+=======
+    m_Speed: 1.9081038
+    m_SpeedNormalized: 0.19000039
+>>>>>>> parent of 561eca8 (20240906 - E)
 =======
     m_Speed: 1.9081038
     m_SpeedNormalized: 0.19000039
@@ -1249,7 +1284,11 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       m_ExpandedIDs: ac4afeff644bfeffd254feff4c69feff046afeff7273feff1618ffffce18fffff421ffff162cffffce2cfffff435ffff8c4affff444bffffb254ffff1e68ffffd668fffffe71ffff6abeffff22bfffff46c8ffff3cd8fffff4d8ffff62e2ffff26fbfffff4ffffff9ef3010096f50100
+=======
+      m_ExpandedIDs: 9c7cfcff567dfcffc086fcff049dfcffbe9dfcff28a7fcffc2e0fdff7ce1fdffe6eafdfff86dfeffb26efeff1c78feffa4f8feff5ef9feffc802ffff5612ffff0e13ffff781cffffb831ffff7032ffff923bffff984bffff504cffffba55ffff30afffffe8afffff52b9ffff26fbffff
+>>>>>>> parent of 561eca8 (20240906 - E)
 =======
       m_ExpandedIDs: 9c7cfcff567dfcffc086fcff049dfcffbe9dfcff28a7fcffc2e0fdff7ce1fdffe6eafdfff86dfeffb26efeff1c78feffa4f8feff5ef9feffc802ffff5612ffff0e13ffff781cffffb831ffff7032ffff923bffff984bffff504cffffba55ffff30afffffe8afffff52b9ffff26fbffff
 >>>>>>> parent of 561eca8 (20240906 - E)
