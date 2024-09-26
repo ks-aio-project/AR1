@@ -11,8 +11,11 @@ using Debug = UnityEngine.Debug;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARCore;
 <<<<<<< HEAD
+<<<<<<< HEAD
 using System.Net;
 using UnityEngine.PlayerLoop;
+=======
+>>>>>>> parent of 561eca8 (20240906 - E)
 =======
 >>>>>>> parent of 561eca8 (20240906 - E)
 
@@ -47,8 +50,11 @@ public class TrackedImageInfomation1 : MonoBehaviour
 
     private Quaternion initialCameraRotation;  // 디바이스의 초기 회전값을 저장할 변수
     private bool isCalibrated = false;  // 초기 방향이 설정되었는지 여부
+<<<<<<< HEAD
 
     public GameObject currentForwardObject;
+=======
+>>>>>>> parent of 561eca8 (20240906 - E)
 
     private void Start()
     {
@@ -150,7 +156,13 @@ public class TrackedImageInfomation1 : MonoBehaviour
         {
             currentForward = hit.transform.name;
 <<<<<<< HEAD
+<<<<<<< HEAD
             currentForwardObject = hit.transform.gameObject;
+=======
+            //Debug.Log($"kks init currentForward : {currentForward}");
+            //Debug.Log($"kks init cameraRotation : {Camera.main.transform.eulerAngles}");
+            //Debug.Log($"kks init cameraforward : {Camera.main.transform.forward}");
+>>>>>>> parent of 561eca8 (20240906 - E)
 =======
             //Debug.Log($"kks init currentForward : {currentForward}");
             //Debug.Log($"kks init cameraRotation : {Camera.main.transform.eulerAngles}");
@@ -303,9 +315,14 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 // 카메라의 회전 값 가져오기
                 Vector3 rotationAngles = trackedImage.transform.rotation.eulerAngles;
                 //Debug.Log($"kks Camera Rotation X: {rotationAngles.x}°, Y: {rotationAngles.y}°, Z: {rotationAngles.z}°");
+=======
+                Vector3 rotationAngles = Camera.main.transform.rotation.eulerAngles;
+                Debug.Log($"kks camera Rotation X: {rotationAngles.x}°, Y: {rotationAngles.y}°, Z: {rotationAngles.z}°");
+>>>>>>> parent of 561eca8 (20240906 - E)
 =======
                 Vector3 rotationAngles = Camera.main.transform.rotation.eulerAngles;
                 Debug.Log($"kks camera Rotation X: {rotationAngles.x}°, Y: {rotationAngles.y}°, Z: {rotationAngles.z}°");
@@ -315,9 +332,12 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 //Vector3 spawnPosition = trackedImage.transform.position + GlobalVariable.Instance.room_offset;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 // 새 오브젝트 생성
                 GameObject spawnedObject = Instantiate(arObjectPrefab[2]);
 =======
+=======
+>>>>>>> parent of 561eca8 (20240906 - E)
                 GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
 >>>>>>> parent of 561eca8 (20240906 - E)
 
@@ -338,6 +358,7 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 }
 
                 if (angle < 0)
+<<<<<<< HEAD
                 {
                     angle += 360;
                 }
@@ -351,6 +372,21 @@ public class TrackedImageInfomation1 : MonoBehaviour
                     snappedAngle = 0;
                 }
 
+=======
+                {
+                    angle += 360;
+                }
+
+                // 90으로 나누어서 가장 가까운 정수로 반올림하고 다시 90을 곱함
+                float snappedAngle = Mathf.Round(angle / 90) * 90;
+
+                // 만약 360도보다 큰 값이 나오면 360도로 한정
+                if (snappedAngle >= 360)
+                {
+                    snappedAngle = 0;
+                }
+
+>>>>>>> parent of 561eca8 (20240906 - E)
                 float cameraAngle;
 
                 if (rotationAngles.y < 0)
@@ -402,6 +438,7 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 Quaternion rotationDifference = Quaternion.Inverse(initialCameraRotation) * currentCameraRotation;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if (cameraYRotation < 90)
                 {
                     result = 90f - cameraYRotation;
@@ -438,6 +475,10 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 {
                     spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 90 - result, 0f);
                 }
+=======
+                // 오브젝트를 북쪽에 맞게 회전시키기
+                //spawnedObject.transform.rotation = Quaternion.Euler(0, -northAngle, 0) * rotationDifference;
+>>>>>>> parent of 561eca8 (20240906 - E)
 =======
                 // 오브젝트를 북쪽에 맞게 회전시키기
                 //spawnedObject.transform.rotation = Quaternion.Euler(0, -northAngle, 0) * rotationDifference;
