@@ -4,9 +4,15 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         "deviceId": "192.168.1.140:41617",
         "name": "kr.allione.ar_mobile",
         "processId": 20023,
+=======
+        "deviceId": "192.168.1.140:43213",
+        "name": "kr.allione.ar_mobile",
+        "processId": 23681,
+>>>>>>> parent of 561eca8 (20240906 - E)
 =======
         "deviceId": "192.168.1.140:43213",
         "name": "kr.allione.ar_mobile",
@@ -530,6 +536,7 @@
             "processId": 23681,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             "exited": false
         },
         {
@@ -566,6 +573,8 @@
             "deviceId": "192.168.1.140:41617",
             "name": "kr.allione.ar_mobile",
             "processId": 20023,
+=======
+>>>>>>> parent of 561eca8 (20240906 - E)
 =======
 >>>>>>> parent of 561eca8 (20240906 - E)
 =======
