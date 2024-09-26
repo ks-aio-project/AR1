@@ -45,10 +45,7 @@ public class WelcomeWindow : EditorWindow
             "그 외 부가적인 설정 및 터치인식 등은 CreatePlaceObject.cs에서 관리\n" +
             "Scripts/Global/GlobalVariable.cs는 전역 변수를 담고 있는 스크립트\n" +
             "각 Prefab별로 코드를 가지고 있는 경우가 있음.\n" +
-            "Scripts/TextShow.cs에서 각종 기기들의 정보들을 표현함.\n" +
-            "안드로이드 네이티브 연동은 AndroidCommunicate.cs에서 관리\n" +
-            "AndroidCommunicate를 가진 오브젝트의 이름이 변경 될 경우 안드로이드에서도 호출시 변경해줘야함\n" +
-            "안드로이드에 해당 내용 주석있음", EditorStyles.wordWrappedLabel);
+            "Scripts/TextShow.cs에서 각종 기기들의 정보들을 표현함.", EditorStyles.wordWrappedLabel);
 
         if (GUILayout.Button("Close"))
         {

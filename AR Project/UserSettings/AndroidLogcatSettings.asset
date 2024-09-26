@@ -1,9 +1,15 @@
 {
     "m_SelectedDeviceId": "192.168.1.140:41617",
     "m_SelectedProcess": {
+<<<<<<< HEAD
         "deviceId": "192.168.1.140:41617",
         "name": "kr.allione.ar_mobile",
         "processId": 20023,
+=======
+        "deviceId": "192.168.1.140:43213",
+        "name": "kr.allione.ar_mobile",
+        "processId": 23681,
+>>>>>>> parent of 561eca8 (20240906 - E)
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -485,31 +491,31 @@
         {
             "deviceId": "192.168.1.140:43213",
             "name": "kr.allione.ar_mobile",
-            "processId": 31057,
+            "processId": 13743,
             "exited": true
         },
         {
             "deviceId": "192.168.1.140:43213",
             "name": "kr.allione.ar_mobile",
-            "processId": 2779,
+            "processId": 14824,
             "exited": true
         },
         {
             "deviceId": "192.168.1.140:43213",
             "name": "kr.allione.ar_mobile",
-            "processId": 3296,
+            "processId": 15363,
             "exited": true
         },
         {
             "deviceId": "192.168.1.140:43213",
             "name": "kr.allione.ar_mobile",
-            "processId": 11414,
+            "processId": 16519,
             "exited": true
         },
         {
             "deviceId": "192.168.1.140:43213",
             "name": "kr.allione.ar_mobile",
-            "processId": 13652,
+            "processId": 23681,
             "exited": false
         },
         {
