@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Android;
+using UnityEngine.XR.ARFoundation;
 
 public class AndroidCommunicate : MonoBehaviour
 {

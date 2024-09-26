@@ -3,7 +3,7 @@
     "m_SelectedProcess": {
         "deviceId": "192.168.1.140:41617",
         "name": "kr.allione.ar_mobile",
-        "processId": 4617,
+        "processId": 20023,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -515,31 +515,37 @@
         {
             "deviceId": "192.168.1.140:41617",
             "name": "kr.allione.ar_mobile",
-            "processId": 29619,
+            "processId": 31066,
             "exited": true
         },
         {
             "deviceId": "192.168.1.140:41617",
             "name": "kr.allione.ar_mobile",
-            "processId": 30546,
+            "processId": 5151,
+            "exited": true
+        },
+        {
+            "deviceId": "192.168.1.140:41617",
+            "name": "com.android.settings",
+            "processId": 3813,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.140:41617",
+            "name": "kr.allione.ar_mobile",
+            "processId": 16372,
             "exited": true
         },
         {
             "deviceId": "192.168.1.140:41617",
             "name": "kr.allione.ar_mobile",
-            "processId": 31489,
+            "processId": 17762,
             "exited": true
         },
         {
             "deviceId": "192.168.1.140:41617",
             "name": "kr.allione.ar_mobile",
-            "processId": 2067,
-            "exited": true
-        },
-        {
-            "deviceId": "192.168.1.140:41617",
-            "name": "kr.allione.ar_mobile",
-            "processId": 4617,
+            "processId": 20023,
             "exited": false
         }
     ],
@@ -624,5 +630,5 @@
             "exited": false
         }
     },
-    "m_AutoScroll": 0
+    "m_AutoScroll": 2
 }

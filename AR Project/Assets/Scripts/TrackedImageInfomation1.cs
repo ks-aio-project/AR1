@@ -11,6 +11,7 @@ using Debug = UnityEngine.Debug;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARCore;
 using System.Net;
+using UnityEngine.PlayerLoop;
 
 public class TrackedImageInfomation1 : MonoBehaviour
 {
@@ -244,8 +245,12 @@ public class TrackedImageInfomation1 : MonoBehaviour
         Vector3 cameraForward = Camera.main.transform.forward; // 현재 카메라가 바라보는 방향
 
         // 이미지 트래킹시
-        if (trackedImage.referenceImage.name == "room1")
+        if (trackedImage.referenceImage.name == "qrcodebox")
         {
+            if (currentTrackingObjectName == "qrcodebox")
+            {
+                return;
+            }
             //if (SceneChangeSingleton.Instance.changeName != "room1")
             //{
             //    SceneChangeSingleton.Instance.sceneChangeAble = true;
@@ -260,11 +265,6 @@ public class TrackedImageInfomation1 : MonoBehaviour
             // 0807
             if (trackedImage.trackingState == TrackingState.Tracking)
             {
-                if (currentTrackingObjectName == "room1")
-                {
-                    return;
-                }
-
                 if (createdPrefab != null)
                 {
                     Destroy(createdPrefab);
@@ -278,7 +278,7 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 Vector3 trackedPosition = trackedImage.transform.position;
 
                 // 새 오브젝트 생성
-                GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
+                GameObject spawnedObject = Instantiate(arObjectPrefab[2]);
 
                 // A에서 B(TrackedImage)로 향하는 벡터 계산
                 Vector3 directionToB = trackedPosition - objs[0].transform.position;
@@ -364,7 +364,7 @@ public class TrackedImageInfomation1 : MonoBehaviour
 
                 // 오브젝트 위치 조정 (카메라 앞쪽으로 2m)
                 spawnedObject.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 2f + Camera.main.transform.right * -0.8f + Camera.main.transform.up * -1.5f;
-
+                
                 Debug.Log($"kks currentForwards : {currentForward}");
                 // 오브젝트의 로테이션 설정
                 if (result > 50 && angleBetweenObjAndCamera < 50)
@@ -381,12 +381,11 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 }
 
                 createdPrefab = spawnedObject;
-
                 // 2차년도 부분
                 placeListCanvas.SetActive(true);
 
-                currentTrackingObjectName = "room1";
-                Debug.Log($"kks room1");
+                currentTrackingObjectName = "qrcodebox";
+                Debug.Log($"kks qrcodebox");
                 Debug.Log($"kks spawn object rotation : {spawnedObject.transform.eulerAngles}");
                 Debug.Log($"kks cameraRotation : {Camera.main.transform.eulerAngles}");
                 //GetComponent<CreatePlaceObject>().testText.text = $"room1\n" +

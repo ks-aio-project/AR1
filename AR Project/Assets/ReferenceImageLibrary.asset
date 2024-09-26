@@ -77,3 +77,13 @@ MonoBehaviour:
     m_SpecifySize: 0
     m_Name: distribution_box4
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5346707712521673758
+      m_GuidHigh: 9438663688360847518
+    m_SerializedTextureGuid:
+      m_GuidLow: 16831161767925069317
+      m_GuidHigh: 3102799492010472011
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: qrcodebox
+    m_Texture: {fileID: 0}
