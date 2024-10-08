@@ -28,62 +28,42 @@ MonoBehaviour:
     m_Name: room1
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
-      m_GuidLow: 5568316335434831368
-      m_GuidHigh: 6584364597675232154
+      m_GuidLow: 4726790911875928859
+      m_GuidHigh: 6163303667835157392
     m_SerializedTextureGuid:
-      m_GuidLow: 1307202308955656707
-      m_GuidHigh: 7215550748735794794
+      m_GuidLow: 9161452687612809153
+      m_GuidHigh: 11677253205321547128
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
-    m_Name: distribution_box
+    m_Name: 8119
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
-      m_GuidLow: 5255317092825685022
-      m_GuidHigh: 10883721450807478413
+      m_GuidLow: 5473164120228064695
+      m_GuidHigh: 420430497561652907
     m_SerializedTextureGuid:
-      m_GuidLow: 17006935221417441989
-      m_GuidHigh: 16376923281190718345
+      m_GuidLow: 7697791845585508608
+      m_GuidHigh: 11936473192611861210
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
-    m_Name: distribution_box1
+    m_Name: 8221
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
-      m_GuidLow: 5529445398703860822
-      m_GuidHigh: 15201372657731520445
+      m_GuidLow: 5038309270262676547
+      m_GuidHigh: 885859337036191137
     m_SerializedTextureGuid:
-      m_GuidLow: 11332437825706100208
-      m_GuidHigh: 7308755732796522313
+      m_GuidLow: 1203822063495228965
+      m_GuidHigh: 11622247843700679355
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
-    m_Name: distribution_box2
+    m_Name: 8212-2
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
-      m_GuidLow: 5019846262700943005
-      m_GuidHigh: 13508321082223169442
+      m_GuidLow: 5288668837026656736
+      m_GuidHigh: 8701062261861889920
     m_SerializedTextureGuid:
-      m_GuidLow: 6243302268229956896
-      m_GuidHigh: 4254524189513849032
+      m_GuidLow: 4567902902291834433
+      m_GuidHigh: 7455268447573284043
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
-    m_Name: distribution_box3
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
-      m_GuidLow: 4691672272703372872
-      m_GuidHigh: 13517600693399554701
-    m_SerializedTextureGuid:
-      m_GuidLow: 11787111151766799786
-      m_GuidHigh: 14040395840313625610
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
-    m_Name: distribution_box4
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
-      m_GuidLow: 5346707712521673758
-      m_GuidHigh: 9438663688360847518
-    m_SerializedTextureGuid:
-      m_GuidLow: 16831161767925069317
-      m_GuidHigh: 3102799492010472011
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
-    m_Name: qrcodebox
+    m_Name: box
     m_Texture: {fileID: 0}

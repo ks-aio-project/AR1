@@ -14,12 +14,14 @@ public class AndroidCommunicate : MonoBehaviour
     [System.Serializable]
     public class Alert
     {
-        public string category;
-        public string alert_type;
-        public int alert_seq;
-        public string alert_location;
-        public string alert_time;
+        public string category; // 카테고리 (알림)
+        public string alert_seq; // 알림이 울린 장비 이름
+        public string alert_location; // 장비 위치
+        public string alert_type; // 알림 종류 (화재 누수 누전...)
+        public string alert_time; // 장비가 울린 시간
+        public string currentAlert; // 울린 센서
     }
+
     void OnApplicationFocus(bool hasFocus)
     {
         if (hasFocus)
@@ -54,7 +56,6 @@ public class AndroidCommunicate : MonoBehaviour
     {
         //_pluginInstance.Call("unitySendMessage", gameObject.name, "CallByAndroid", "Hello Android Toast");
         _pluginInstance.Call("startService");
-
         Debug.Log("kks Start");
     }
 
@@ -76,10 +77,12 @@ public class AndroidCommunicate : MonoBehaviour
     public void OnApiResponseReceived(string data)
     {
         Debug.Log($"kks getData : {data}");
+        Debug.Log($"kks 1234");
         Alert alert = JsonUtility.FromJson<Alert>(data);
+        Debug.Log($"kks alert.currentAlert : {alert.currentAlert}");
         if (alert.category == "notification")
         {
-            firebaseInit.JsonNotification(alert.alert_type, alert.alert_seq, alert.alert_location, alert.alert_time);
+            firebaseInit.JsonNotification(alert.alert_seq, alert.alert_location, alert.alert_type, alert.alert_time, alert.currentAlert);
         }
     }
 

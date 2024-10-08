@@ -83,7 +83,7 @@ public class TextShow : MonoBehaviour
     {
         switch (transform.name)
         {
-            case "Air":
+            case "8221_Air Conditioner1":
                 switch(textIndex)
                 {
                     case 0:
@@ -99,7 +99,7 @@ public class TextShow : MonoBehaviour
                         break;
                 }
                 break;
-            case "tv":
+            case "8221_PC1":
                 switch (textIndex)
                 {
                     case 0:
@@ -134,32 +134,11 @@ public class TextShow : MonoBehaviour
 
             if (webRequest.result == UnityWebRequest.Result.Success)
             {
-                if(transform.name == "Air")
+                if(transform.name == "PC1")
                 {
                     if (textIndex == 0)
                     {
-                        //TestIdentity Identity = JsonUtility.FromJson<TestIdentity>(webRequest.downloadHandler.text);
-                        TestIdentity test1 = new();
 
-                        test1.category = "냉난방기";
-                        test1.deviceName = "시스템 에어컨";
-                        test1.modelNmae = "삼성 시스템 에어컨";
-                        test1.useElecWeek = "2023. 08. 05";
-
-                        string json = JsonUtility.ToJson(test1);
-
-                        TestIdentity Identity = JsonUtility.FromJson<TestIdentity>(json);
-
-                        // 변환된 데이터 출력
-                        canvas.SetActive(true);
-                        canvas.transform.LookAt(Camera.main.transform);
-                        canvas.transform.Rotate(0, 180, 0);
-
-                        defaultText.GetComponent<TextMeshProUGUI>().text =
-                            $"{Identity.category}\n" +
-                            $"장치명 : {Identity.deviceName}\n" +
-                            $"모델명 : {Identity.modelNmae}\n" +
-                            $"설치시기 : {Identity.useElecWeek}";
                     }
                     else if (textIndex == 1)
                     {

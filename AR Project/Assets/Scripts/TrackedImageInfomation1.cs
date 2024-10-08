@@ -5,13 +5,43 @@ using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using TMPro;
 using System.Collections;
-using Unity.VisualScripting;
-using System.Diagnostics;
-using Debug = UnityEngine.Debug;
-using UnityEngine.SceneManagement;
-using UnityEngine.XR.ARCore;
-using System.Net;
-using UnityEngine.PlayerLoop;
+using UnityEngine.Networking;
+using Newtonsoft.Json;
+
+public class DeviceData
+{
+    public string serial;
+    public string mac;
+    public string ip;
+    public int port;
+    public string name;
+    public int sync;
+    public int init;
+    public int use;
+    public int state;
+    public string create;
+    public string update;
+    public string lasttime;
+}
+
+public static class JsonHelper
+{
+    // JSON 배열 파싱을 도와주는 유틸리티
+    public static List<T> FromJson<T>(string json)
+    {
+        // JSON이 배열 형식이면 배열을 감싸주는 새로운 JSON 구조로 변경
+        string newJson = "{ \"Items\": " + json + "}";
+        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(newJson);
+        return wrapper.Items;
+    }
+
+    [System.Serializable]
+    private class Wrapper<T>
+    {
+        public List<T> Items;
+    }
+}
+
 
 public class TrackedImageInfomation1 : MonoBehaviour
 {
@@ -46,6 +76,115 @@ public class TrackedImageInfomation1 : MonoBehaviour
 
     public GameObject currentForwardObject;
 
+    Coroutine currentCoroutine;
+
+    public static class JsonHelper
+{
+    // JSON 배열 파싱을 도와주는 유틸리티
+    public static List<T> FromJson<T>(string json)
+    {
+        string newJson = "{\"Items\":" + json + "}";
+        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(newJson);
+        return wrapper.Items;
+    }
+
+    [System.Serializable]
+    private class Wrapper<T>
+    {
+        public List<T> Items;
+    }
+}
+    // API 호출 함수
+    IEnumerator GetInstalledEquipment(string equipmentName, string location)
+    {
+        while (true) // 무한 루프
+        {
+            Debug.Log("kks start Coroutine");
+            string url;
+            // URL 생성 (API의 엔드포인트에 쿼리 파라미터 추가)
+            if (location != "")
+            {
+                url = $"http://bola.iptime.org:9080/device/searchlocation/?location={location}";
+            }
+            else
+            {
+                url = $"http://192.168.1.155:9080/device/all/";
+            }
+
+            Debug.Log("kks url : " + url);
+            // UnityWebRequest를 사용해 GET 요청 보내기
+            using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
+            {
+                // 요청을 보내고 응답이 올 때까지 기다림
+                yield return webRequest.SendWebRequest();
+
+                // 네트워크 에러 체크
+                if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogError("KKS Error: " + webRequest.error);
+                }
+                else
+                {
+                    // 성공적으로 데이터를 받았을 때
+                    Debug.Log("KKS Response: " + webRequest.downloadHandler.text);
+
+                    // 받은 데이터를 처리 (필요한 경우 JSON 파싱 등)
+                    ProcessResponse(webRequest.downloadHandler.text);
+                }
+            }
+            // 5초 대기
+            yield return new WaitForSeconds(5);
+        }
+    }
+
+    // API에서 받은 응답 데이터를 처리하는 함수 (필요시 구현)
+    void ProcessResponse(string jsonResponse)
+    {
+        // JSON을 Unity에서 다루기 위해 C# 객체로 변환하는 등의 처리
+        // 예시: JsonUtility를 사용해 데이터를 파싱할 수 있습니다
+        // EquipmentData equipment = JsonUtility.FromJson<EquipmentData>(jsonResponse);
+        // 필요한 장치만 출력하거나 사용
+
+        List<DeviceData> devices = JsonConvert.DeserializeObject<List<DeviceData>>(jsonResponse);
+
+        // 필요한 장치만 출력하거나 사용
+        foreach (DeviceData device in devices)
+        {
+            Debug.Log("Name: " + device.name);
+            // 필요한 데이터만 사용
+            if (device.name.StartsWith("pc"))
+            {
+                // "pcmain"인 경우 처리
+                if (device.name == "pcmain")
+                {
+                    Debug.Log("Using device: pcmain");
+
+                    GameObject obj = GameObject.Find("pcmain");
+
+                    Material mat = Instantiate(obj.GetComponent<Renderer>().material);
+
+                    mat.color = device.use == 1 ? Color.red : Color.blue;  // 원하는 색상으로 처리
+                    obj.GetComponent<Renderer>().material = mat;
+                }
+                else
+                {
+                    int deviceNumber = int.Parse(device.name.Substring(2));
+                    if (deviceNumber >= 1 && deviceNumber <= 41)
+                    {
+                        // 여기에 필요한 로직 추가 (예: 장치 처리)
+                        Debug.Log("Using device: " + deviceNumber);
+
+                        GameObject obj = GameObject.Find($"pc{deviceNumber}");
+
+                        Material mat = Instantiate(obj.GetComponent<Renderer>().material);
+
+                        mat.color = device.use == 1 ? Color.red : Color.blue;
+                        obj.GetComponent<Renderer>().material = mat;
+                    }
+                }
+            }
+        }
+    }
     private void Start()
     {
         var rotationAngles = Camera.main.transform.rotation;
@@ -245,14 +384,20 @@ public class TrackedImageInfomation1 : MonoBehaviour
         Vector3 cameraForward = Camera.main.transform.forward; // 현재 카메라가 바라보는 방향
 
         // 이미지 트래킹시
-        if (trackedImage.referenceImage.name == "room1")
+        if (trackedImage.referenceImage.name == "8221")
         {
-            if (trackedImage.trackingState == TrackingState.Tracking)
+            if (trackedImage.trackingState == TrackingState.Tracking && GlobalVariable.Instance.last_qrcode == "8221")
             {
-                if (currentTrackingObjectName == "room1")
+                if (currentTrackingObjectName == trackedImage.referenceImage.name)
                 {
                     return;
                 }
+
+                if (createdPrefab != null)
+                {
+                    Destroy(createdPrefab);
+                }
+
                 // 카메라의 회전 값 가져오기
                 Vector3 rotationAngles = trackedImage.transform.rotation.eulerAngles;
                 //Debug.Log($"kks Camera Rotation X: {rotationAngles.x}°, Y: {rotationAngles.y}°, Z: {rotationAngles.z}°");
@@ -261,7 +406,7 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 Vector3 trackedPosition = trackedImage.transform.position;
 
                 // 새 오브젝트 생성
-                GameObject spawnedObject = Instantiate(arObjectPrefab[2]);
+                GameObject spawnedObject = Instantiate(arObjectPrefab[0]);
 
                 // A에서 B(TrackedImage)로 향하는 벡터 계산
                 Vector3 directionToB = trackedPosition - objs[0].transform.position;
@@ -346,44 +491,56 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 Debug.Log($"kks result : {result}");
 
                 // 오브젝트 위치 조정 (카메라 앞쪽으로 2m)
-                spawnedObject.transform.position = trackedImage.transform.position;
+                spawnedObject.transform.localRotation = Quaternion.Euler(90, 0, 0);
+                spawnedObject.transform.position = trackedImage.transform.position + new Vector3(0, 0, 2f);
 
                 Debug.Log($"kks currentForwards : {currentForward}");
                 // 오브젝트의 로테이션 설정
-                if (result > 50 && angleBetweenObjAndCamera < 50)
-                {
-                    spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 180 - result, 0f);
-                }
-                else if (result > 50 && angleBetweenObjAndCamera > 50)
-                {
-                    spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 270 - result, 0f);
-                }
-                else
-                {
-                    spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 90 - result, 0f);
-                }
+                //if (result > 50 && angleBetweenObjAndCamera < 50)
+                //{
+                //    spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 180 - result, 0f);
+                //}
+                //else if (result > 50 && angleBetweenObjAndCamera > 50)
+                //{
+                //    spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 270 - result, 0f);
+                //}
+                //else
+                //{
+                //    spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 90 - result, 0f);
+                //}
 
                 createdPrefab = spawnedObject;
                 createdPrefab.transform.SetParent(trackedImage.transform);
+                //createdPrefab.transform.rotation = Quaternion.Euler(0, 270, 0);
                 // 2차년도 부분
                 placeListCanvas.SetActive(true);
 
-                currentTrackingObjectName = "room1";
+                currentTrackingObjectName = trackedImage.referenceImage.name;
                 Debug.Log($"kks qrcodebox");
                 Debug.Log($"kks spawn object rotation : {spawnedObject.transform.eulerAngles}");
                 Debug.Log($"kks cameraRotation : {Camera.main.transform.eulerAngles}");
                 //GetComponent<CreatePlaceObject>().testText.text = $"room1\n" +
                 //    $"ROT : {spawnedObject.transform.eulerAngles}";
+
+                //if (currentCoroutine != null) { StopCoroutine(currentCoroutine); }
+
+                //currentCoroutine = StartCoroutine(GetInstalledEquipment("", "8221"));
             }
         }
-        else if (trackedImage.referenceImage.name == "qrcodebox")
+        else if (trackedImage.referenceImage.name == "8119")
         {
-            if (trackedImage.trackingState == TrackingState.Tracking)
+            if (trackedImage.trackingState == TrackingState.Tracking && GlobalVariable.Instance.last_qrcode == "8119")
             {
-                if (currentTrackingObjectName == "qrcodebox")
+                if (currentTrackingObjectName == trackedImage.referenceImage.name)
                 {
                     return;
                 }
+
+                if (createdPrefab != null)
+                {
+                    Destroy(createdPrefab);
+                }
+
                 // 카메라의 회전 값 가져오기
                 Vector3 rotationAngles = trackedImage.transform.rotation.eulerAngles;
                 //Debug.Log($"kks Camera Rotation X: {rotationAngles.x}°, Y: {rotationAngles.y}°, Z: {rotationAngles.z}°");
@@ -392,7 +549,7 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 Vector3 trackedPosition = trackedImage.transform.position;
 
                 // 새 오브젝트 생성
-                GameObject spawnedObject = Instantiate(arObjectPrefab[2]);
+                GameObject spawnedObject = Instantiate(arObjectPrefab[1]);
 
                 // A에서 B(TrackedImage)로 향하는 벡터 계산
                 Vector3 directionToB = trackedPosition - objs[0].transform.position;
@@ -493,27 +650,23 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 {
                     spawnedObject.transform.rotation = Quaternion.Euler(0f, snappedAngle + 90 - result, 0f);
                 }
+                spawnedObject.transform.rotation = Quaternion.identity;
 
                 createdPrefab = spawnedObject;
                 createdPrefab.transform.SetParent(trackedImage.transform);
                 // 2차년도 부분
                 placeListCanvas.SetActive(true);
 
-                currentTrackingObjectName = "qrcodebox";
-                Debug.Log($"kks qrcodebox");
-                Debug.Log($"kks spawn object rotation : {spawnedObject.transform.eulerAngles}");
-                Debug.Log($"kks cameraRotation : {Camera.main.transform.eulerAngles}");
-                //GetComponent<CreatePlaceObject>().testText.text = $"room1\n" +
-                //    $"ROT : {spawnedObject.transform.eulerAngles}";
+                currentTrackingObjectName = trackedImage.referenceImage.name;
+                //if(currentCoroutine != null) { StopCoroutine(currentCoroutine); }
+                //currentCoroutine = StartCoroutine(GetInstalledEquipment("", "8119"));
             }
         }
-        else if (trackedImage.referenceImage.name == "distribution_box" || trackedImage.referenceImage.name == "distribution_box1"
-            || trackedImage.referenceImage.name == "distribution_box2" || trackedImage.referenceImage.name == "distribution_box3"
-            || trackedImage.referenceImage.name == "distribution_box4")
+        else if (trackedImage.referenceImage.name == "8212-2")
         {
-            if (trackedImage.trackingState == TrackingState.Tracking)
+            if (trackedImage.trackingState == TrackingState.Tracking && GlobalVariable.Instance.last_qrcode == "8212-2")
             {
-                if (currentTrackingObjectName == "distribution_box")
+                if (currentTrackingObjectName == trackedImage.referenceImage.name)
                 {
                     return;
                 }
@@ -526,14 +679,41 @@ public class TrackedImageInfomation1 : MonoBehaviour
                 Vector3 spawnPosition = Camera.main.transform.position + GlobalVariable.Instance.distribution_box_offset;
                 //Vector3 spawnPosition = trackedImage.transform.position + GlobalVariable.Instance.distribution_box_offset;
 
-                GameObject spawnedObject = Instantiate(arObjectPrefab[1]);
+                GameObject spawnedObject = Instantiate(arObjectPrefab[2]);
                 //spawnedObject.transform.rotation = Quaternion.identity;
                 spawnedObject.transform.position = spawnPosition;
                 createdPrefab = spawnedObject;
 
                 placeListCanvas.SetActive(false);
 
-                currentTrackingObjectName = "distribution_box";
+                currentTrackingObjectName = trackedImage.referenceImage.name;
+            }
+        }
+        else if (trackedImage.referenceImage.name == "box" && GlobalVariable.Instance.last_qrcode == "box")
+        {
+            if (trackedImage.trackingState == TrackingState.Tracking)
+            {
+                if (currentTrackingObjectName == trackedImage.referenceImage.name)
+                {
+                    return;
+                }
+
+                if (createdPrefab != null)
+                {
+                    Destroy(createdPrefab);
+                }
+
+                Vector3 spawnPosition = Camera.main.transform.position + GlobalVariable.Instance.distribution_box_offset;
+                //Vector3 spawnPosition = trackedImage.transform.position + GlobalVariable.Instance.distribution_box_offset;
+
+                GameObject spawnedObject = Instantiate(arObjectPrefab[3]);
+                //spawnedObject.transform.rotation = Quaternion.identity;
+                spawnedObject.transform.position = spawnPosition;
+                createdPrefab = spawnedObject;
+
+                placeListCanvas.SetActive(false);
+
+                currentTrackingObjectName = trackedImage.referenceImage.name;
             }
         }
     }

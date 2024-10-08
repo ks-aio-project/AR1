@@ -61,6 +61,8 @@ public class QRCodeScan : MonoBehaviour
                         Debug.Log($"KKS QR 텍스트 : {result.Text}");
                         lastQRCodeContent = result.Text;
 
+                        GlobalVariable.Instance.last_qrcode = lastQRCodeContent;
+
                         //// QR 코드의 3개의 코너 좌표 가져오기
                         //var points = result.ResultPoints;
                         //float x = points[0].X;

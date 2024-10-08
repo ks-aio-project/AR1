@@ -1553,7 +1553,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935867793}
   m_CullTransparentMesh: 1
---- !u!114 &188148739 stripped
+--- !u!114 &188148742 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2512387469002778329, guid: 48cb3fb68c91eb94999fd99957eb0cae,
     type: 3}
@@ -2503,7 +2503,7 @@ GameObject:
   - component: {fileID: 345197593}
   - component: {fileID: 345197592}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6333,52 +6333,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &709372851
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 709372853}
-  - component: {fileID: 709372852}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &709372852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 709372851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dff52efd683d69f4087ec77221baf902, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneChangeAble: 1
-  changeName: 
---- !u!4 &709372853
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 709372851}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.024002105, y: 0.37492853, z: -1.7384344}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &717440024
 GameObject:
   m_ObjectHideFlags: 0
@@ -9338,9 +9292,10 @@ MonoBehaviour:
   xrOrigin: {fileID: 608830382}
   trackedImageManager: {fileID: 608830378}
   arObjectPrefab:
-  - {fileID: 3329032742310737361, guid: 591e0c69a15abf149a79584fd5a4adc2, type: 3}
-  - {fileID: 5139319145511490063, guid: e15230180bb58474881809623ebcaee9, type: 3}
+  - {fileID: 5930425206456642473, guid: c0f3020f4d6823441a96419a03e47334, type: 3}
+  - {fileID: 4181139760055092573, guid: 31b8518826c76f84d928b158b4b692ae, type: 3}
   - {fileID: 2779815803836374353, guid: f490b318e8e20fb49bc72e473f9d5dbf, type: 3}
+  - {fileID: 1412263696610869855, guid: 0bcc303b71ef31749bab34ad5ac812c0, type: 3}
   placeListCanvas: {fileID: 1371919195}
   placeListHideButton: {fileID: 1109142635}
   placeListShowButton: {fileID: 1915866700}
@@ -9390,13 +9345,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xrOrigin: {fileID: 608830382}
-  cameraManager: {fileID: 188148739}
+  cameraManager: {fileID: 188148742}
   arRaycastManager: {fileID: 608830380}
   arPlaneManager: {fileID: 151853166}
-  arAnchorManager: {fileID: 0}
+  arAnchorManager: {fileID: 608830385}
   provisioningCanvas: {fileID: 922729192}
-  rectPrefab: {fileID: 4374356016549628745, guid: de9a571077bb40949ace2b396312656d,
-    type: 3}
+  rectPrefab: {fileID: 0}
   GPM_webView: {fileID: 1879667091}
   PlaneShowToggle: {fileID: 684408205}
 --- !u!114 &911302163
@@ -9423,15 +9377,17 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 8f4fb3c6a8a4c3046a481c276b419789, type: 3}
   - {fileID: 2800000, guid: c6a561db0c314c1478d284c60a4218a5, type: 3}
   floorPlanImages:
-  - {fileID: 2800000, guid: efca94ed574b1da49baa822f71f50109, type: 3}
-  - {fileID: 2800000, guid: 518915114e2577c48b330d38516b8700, type: 3}
-  - {fileID: 2800000, guid: bc4b1bf4b1f303c4592d01144d282188, type: 3}
-  - {fileID: 2800000, guid: 44ac8d6e417bb0d49960754ba56c10c7, type: 3}
-  - {fileID: 2800000, guid: 3de31519313b96947ba46ab81cc80927, type: 3}
-  - {fileID: 2800000, guid: 0e50afcc0b2c17d46ab0296249457ddd, type: 3}
-  - {fileID: 2800000, guid: 81a9df39f4ccce24bb5a886b872712e5, type: 3}
-  - {fileID: 2800000, guid: 032dc5bdb7902284c907b23063d70021, type: 3}
-  alert_seq: 0
+  - {fileID: 2800000, guid: 46233bcdff5e5ed4ebfc5db41c0b0a76, type: 3}
+  - {fileID: 2800000, guid: b1ee3ad9a7a4bee47ba9b75d998774a6, type: 3}
+  - {fileID: 2800000, guid: 653bf744fa94d3e4eb05d224ceeb93b2, type: 3}
+  - {fileID: 2800000, guid: 134effd07d8f2984d99bf5623cb7c59e, type: 3}
+  - {fileID: 2800000, guid: 67c0f4cc735b02246923e78cb21a7888, type: 3}
+  - {fileID: 2800000, guid: 8bbbdb13202ed5b4e8be8ced634a55fc, type: 3}
+  - {fileID: 2800000, guid: 61d1001d45f5a9548b0c8314e5668857, type: 3}
+  - {fileID: 2800000, guid: 1cc71bb125ec1854f98ffd4d8c6522ef, type: 3}
+  - {fileID: 2800000, guid: 6f97be19b5d97cc46aa9374d32337375, type: 3}
+  - {fileID: 2800000, guid: 5cdd2847ece411248a1f5fcae9a5bf71, type: 3}
+  alert_seq: 
   floorButtons:
   - {fileID: 753878838}
   - {fileID: 1909889041}
@@ -13570,7 +13526,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &1371919198
 Canvas:
   m_ObjectHideFlags: 0
@@ -13749,7 +13705,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &1374859854
 Canvas:
   m_ObjectHideFlags: 0
@@ -21730,5 +21686,4 @@ SceneRoots:
   - {fileID: 541289572}
   - {fileID: 1879667093}
   - {fileID: 1161188876}
-  - {fileID: 709372853}
   - {fileID: 345197595}

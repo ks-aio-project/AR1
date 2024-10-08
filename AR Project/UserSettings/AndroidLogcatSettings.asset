@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "192.168.1.140:41617",
+    "m_SelectedDeviceId": "R54X400328A",
     "m_SelectedProcess": {
-        "deviceId": "192.168.1.140:41617",
+        "deviceId": "R54X400328A",
         "name": "kr.allione.ar_mobile",
-        "processId": 26794,
+        "processId": 12369,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -12,6 +12,60 @@
             "deviceId": "192.168.1.140:41617",
             "name": "kr.allione.ar_mobile",
             "processId": 26794,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.54.87:46609",
+            "name": "kr.allione.ar_mobile",
+            "processId": 23883,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.54.87:38315",
+            "name": "kr.allione.ar_mobile",
+            "processId": 25949,
+            "exited": false
+        },
+        {
+            "deviceId": "R54X400328A",
+            "name": "com.sec.android.app.launcher",
+            "processId": 4420,
+            "exited": false
+        },
+        {
+            "deviceId": "R54X400328A",
+            "name": "com.samsung.android.lool",
+            "processId": 11112,
+            "exited": false
+        },
+        {
+            "deviceId": "R54X400328A",
+            "name": "kr.allione.ar_mobile",
+            "processId": 19833,
+            "exited": true
+        },
+        {
+            "deviceId": "R54X400328A",
+            "name": "kr.allione.ar_mobile",
+            "processId": 20794,
+            "exited": true
+        },
+        {
+            "deviceId": "R54X400328A",
+            "name": "kr.allione.ar_mobile",
+            "processId": 31208,
+            "exited": true
+        },
+        {
+            "deviceId": "R54X400328A",
+            "name": "kr.allione.ar_mobile",
+            "processId": 31921,
+            "exited": true
+        },
+        {
+            "deviceId": "R54X400328A",
+            "name": "kr.allione.ar_mobile",
+            "processId": 12369,
             "exited": false
         }
     ],
@@ -69,7 +123,7 @@
         "AutoCapture": true
     },
     "m_FilterOptions": {
-        "m_Filter": "",
+        "m_Filter": "kks",
         "m_UseRegularExpressions": false,
         "m_MatchCase": false
     },

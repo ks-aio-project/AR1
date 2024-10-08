@@ -1,19 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using System.Xml.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.Networking;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
-using Button = UnityEngine.UI.Button;
-using Touch = UnityEngine.Touch;
 
 public class CreatePlaceObject : MonoBehaviour
 {
@@ -53,10 +45,10 @@ public class CreatePlaceObject : MonoBehaviour
 
     void Update()
     {
-        if(GetComponent<TrackedImageInfomation1>().createdPrefab != null && GetComponent<TrackedImageInfomation1>().currentTrackingObjectName == "room1")
-        {
-            ceiling = GetComponent<TrackedImageInfomation1>().createdPrefab.GetComponent<IndoorObject>().placeableObject;
-        }
+        //if(GetComponent<TrackedImageInfomation1>().createdPrefab != null && GetComponent<TrackedImageInfomation1>().currentTrackingObjectName == "room1")
+        //{
+        //    ceiling = GetComponent<TrackedImageInfomation1>().createdPrefab.GetComponent<IndoorObject>().placeableObject;
+        //}
 
         // ÅÍÄ¡
         if (Input.touchCount > 0)
@@ -113,6 +105,7 @@ public class CreatePlaceObject : MonoBehaviour
 
                         if (hits[i].collider.CompareTag("Touchable"))
                         {
+                            Debug.Log($"kks touchable");
                             if (hits[i].collider.GetComponent<TextShow>())
                             {
                                 hits[i].collider.GetComponent<TextShow>().SetVisible();
